@@ -1,0 +1,99 @@
+.landing-howitworks {
+  /* Full-bleed band, same technique as .landing-hero/.usp-slider, in a light warm tone so the
+     three bold sections (amber hero, dark USP band, warm how-it-works band) read as a
+     deliberate alternating rhythm down the page. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--accent-tint);
+  padding: var(--space-8) var(--space-5);
+}
+
+.landing-howitworks-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.landing-section-eyebrow-centered,
+.landing-section-title-centered {
+  text-align: center;
+}
+
+.landing-section-title-centered {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.howitworks-flow {
+  display: flex;
+  align-items: flex-start;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--space-5);
+  margin: var(--space-8) 0 var(--space-6);
+}
+
+.howitworks-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  max-width: 240px;
+}
+
+.howitworks-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 4px 14px rgba(184, 117, 46, 0.35);
+  margin-bottom: var(--space-4);
+}
+
+.howitworks-step-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-2);
+}
+
+.howitworks-step-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+.howitworks-arrow {
+  color: var(--accent);
+  flex-shrink: 0;
+  align-self: center;
+  margin-top: 26px;
+}
+
+.landing-howitworks-cta {
+  display: flex;
+  justify-content: center;
+}
+
+@media (max-width: 780px) {
+  .howitworks-flow {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .howitworks-arrow {
+    transform: rotate(90deg);
+    margin: 0;
+  }
+
+  .howitworks-step {
+    max-width: 320px;
+  }
+}

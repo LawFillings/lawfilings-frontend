@@ -1,0 +1,67 @@
+.bench-help {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin: 0 0 var(--space-3);
+  max-width: 480px;
+}
+
+.bench-list {
+  margin-top: var(--space-3);
+  max-width: 420px;
+  max-height: 220px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: 6px;
+}
+
+.bench-item {
+  text-align: left;
+  border: none;
+  background: transparent;
+  padding: 8px 10px;
+  border-radius: var(--radius-sm);
+  display: flex;
+  flex-direction: column;
+}
+
+.bench-item:hover {
+  background: var(--line-soft);
+}
+
+.bench-item.active {
+  background: var(--accent-tint);
+}
+
+.bench-city {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.bench-drat {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.bench-empty {
+  font-size: 12px;
+  color: var(--text-muted);
+  padding: 8px;
+}
+
+.bench-verify-note {
+  font-size: 11px;
+  color: var(--text-muted);
+  margin-top: var(--space-3);
+  max-width: 420px;
+  line-height: 1.5;
+}
+
+.bench-verify-note a {
+  color: var(--accent-deep);
+}

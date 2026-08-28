@@ -1,0 +1,156 @@
+/* Hidden by default — mobile relies on AppSidebar's off-canvas drawer instead. Shown at the same
+   860px breakpoint AppSidebar collapses at, so the two are always mutually exclusive. */
+.top-nav {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .top-nav {
+    display: grid;
+    /* Equal 1fr side columns balance the CTA's width so .top-nav-links centers on the full bar,
+       not just the leftover space beside the CTA. */
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    height: 56px;
+    padding: 0 var(--space-5);
+    background: var(--accent-deep);
+    border-bottom: 1px solid rgba(212, 175, 55, 0.35);
+    position: sticky;
+    top: var(--masthead-height);
+    z-index: 39;
+  }
+}
+
+.top-nav-links {
+  grid-column: 2;
+  justify-self: center;
+  display: flex;
+  align-items: center;
+  gap: var(--space-5);
+  height: 100%;
+}
+
+.top-nav-link {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 15px;
+  font-weight: 500;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.top-nav-link:hover {
+  color: #FFFFFF;
+}
+
+.top-nav-link.active {
+  color: var(--accent-gold-soft);
+  font-weight: 600;
+}
+
+.top-nav-link.active::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  height: 2px;
+  background: var(--accent-gold);
+}
+
+.top-nav-item-dropdown {
+  position: relative;
+  display: flex;
+  align-items: center;
+  height: 100%;
+}
+
+.top-nav-caret {
+  font-size: 10px;
+  margin-left: 4px;
+  color: rgba(255, 255, 255, 0.55);
+}
+
+.top-nav-dropdown-menu {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  min-width: 220px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: var(--space-2);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.1);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(-4px);
+  transition: opacity 0.15s ease, transform 0.15s ease, visibility 0.15s;
+  z-index: 41;
+}
+
+.top-nav-item-dropdown:hover .top-nav-dropdown-menu,
+.top-nav-item-dropdown:focus-within .top-nav-dropdown-menu {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+/* The "More" dropdown sits near the right end of the links row — right-align its panel so it
+   doesn't spill past the bar's edge on narrower desktop widths. */
+.top-nav-dropdown-menu-right {
+  left: auto;
+  right: 0;
+}
+
+.top-nav-dropdown-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: var(--space-2) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+.top-nav-dropdown-item:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.top-nav-cta {
+  grid-column: 3;
+  justify-self: end;
+  flex-shrink: 0;
+  background: var(--accent-gold);
+  color: var(--accent-deep);
+  font-size: 14px;
+  font-weight: 600;
+  padding: var(--space-2) var(--space-4);
+  border-radius: var(--radius);
+}
+
+.top-nav-cta:hover {
+  background: var(--accent-gold-soft);
+}
+
+/* The site-wide focus ring is navy (--accent), which disappears against this bar's own navy
+   background — swap it for gold here so keyboard focus stays visible. */
+.top-nav button:focus-visible {
+  outline-color: var(--accent-gold);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .top-nav-dropdown-menu {
+    transition: none;
+  }
+}

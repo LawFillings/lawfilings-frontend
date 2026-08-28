@@ -1,0 +1,43 @@
+.route-question {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-5);
+}
+
+.route-options {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  max-width: 480px;
+}
+
+.route-card {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.route-card:hover {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.route-card-label {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.route-card-help {
+  font-size: 12px;
+  color: var(--text-secondary);
+}

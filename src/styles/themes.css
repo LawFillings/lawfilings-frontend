@@ -1,0 +1,27 @@
+/* The default preset — matches :root in tokens.css exactly. Written out explicitly (rather than
+   left as an implicit fallback when no [data-color-theme] rule matches) so the default palette
+   is a deliberate, visible choice here alongside the other presets, not an accident of what
+   happens to be unset. */
+[data-color-theme='amber'] {
+  --accent: #1F3A5F;
+  --accent-deep: #14273F;
+  --accent-tint: #E7EDF4;
+}
+
+[data-color-theme='teal'] {
+  --accent: #2F7A6B;
+  --accent-deep: #1F5B4F;
+  --accent-tint: #DCEFEA;
+}
+
+[data-color-theme='crimson'] {
+  --accent: #A6383E;
+  --accent-deep: #7C282D;
+  --accent-tint: #F3DEDF;
+}
+
+[data-color-theme='indigo'] {
+  --accent: #3E4A9A;
+  --accent-deep: #2C3570;
+  --accent-tint: #E1E3F5;
+}

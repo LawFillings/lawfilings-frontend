@@ -1,0 +1,52 @@
+import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
+import { en } from './translations/en';
+import { hi } from './translations/hi';
+import type { Translations } from './translations/en';
+
+export type Language = 'en' | 'hi';
+
+export const LANGUAGES: { id: Language; label: string }[] = [
+  { id: 'en', label: 'English' },
+  { id: 'hi', label: 'हिन्दी' },
+];
+
+const DICTIONARIES: Record<Language, Translations> = { en, hi };
+
+const STORAGE_KEY = 'legalassist:language';
+
+function loadLanguage(): Language {
+  try {
+    const raw = localStorage.getItem(STORAGE_KEY);
+    return raw === 'hi' ? 'hi' : 'en';
+  } catch {
+    return 'en';
+  }
+}
+
+interface LanguageContextValue {
+  language: Language;
+  setLanguage: (l: Language) => void;
+  t: Translations;
+}
+
+const LanguageContext = createContext<LanguageContextValue | null>(null);
+
+export function LanguageProvider({ children }: { children: ReactNode }) {
+  const [language, setLanguage] = useState<Language>(loadLanguage);
+
+  useEffect(() => {
+    localStorage.setItem(STORAGE_KEY, language);
+  }, [language]);
+
+  return (
+    <LanguageContext.Provider value={{ language, setLanguage, t: DICTIONARIES[language] }}>
+      {children}
+    </LanguageContext.Provider>
+  );
+}
+
+export function useLanguage() {
+  const ctx = useContext(LanguageContext);
+  if (!ctx) throw new Error('useLanguage must be used within a LanguageProvider');
+  return ctx;
+}

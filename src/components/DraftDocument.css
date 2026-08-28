@@ -1,0 +1,231 @@
+.draft-doc-toolbar {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  margin-bottom: var(--space-4);
+  max-width: 640px;
+}
+
+.draft-doc-toolbar-note {
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.draft-doc-edit-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-1);
+  padding: var(--space-2);
+  margin-bottom: var(--space-3);
+  max-width: 640px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.draft-doc-edit-toolbar-sep {
+  width: 1px;
+  align-self: stretch;
+  background: var(--line);
+  margin: 0 var(--space-1);
+}
+
+.draft-doc-toolbtn {
+  border: 1px solid transparent;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 13px;
+  font-weight: 600;
+  min-width: 28px;
+  height: 28px;
+  border-radius: var(--radius-sm);
+  cursor: pointer;
+}
+
+.draft-doc-toolbtn:hover {
+  background: var(--line-soft);
+  color: var(--ink);
+}
+
+.draft-doc-toolbtn.active {
+  background: var(--accent-deep);
+  color: var(--paper);
+}
+
+.draft-doc-print-setup-panel {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-4);
+  padding: var(--space-4);
+  margin-bottom: var(--space-4);
+  max-width: 640px;
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+}
+
+.draft-doc-print-setup-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  font-size: 12px;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+.draft-doc-print-setup-field select {
+  font-family: var(--font-body);
+  font-size: 13px;
+  font-weight: 500;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.draft-doc {
+  background: var(--paper-raised);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-6) var(--space-8);
+  font-family: var(--font-display);
+  max-width: 640px;
+  box-shadow: 0 1px 3px rgba(28, 43, 51, 0.06);
+}
+
+.draft-doc-header {
+  text-align: center;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.draft-doc-title {
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+}
+
+.draft-doc-subtitle {
+  font-size: 13px;
+  color: var(--text-secondary);
+  margin: 0;
+  font-family: var(--font-mono);
+}
+
+.draft-doc-body {
+  font-size: 14px;
+  line-height: 1.75;
+  color: var(--text);
+}
+
+.draft-doc-body .ProseMirror {
+  outline: none;
+}
+
+.draft-doc-body h3 {
+  font-size: 12px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent-deep);
+  margin: var(--space-5) 0 var(--space-3);
+}
+
+.draft-doc-body h3:first-child {
+  margin-top: 0;
+}
+
+.draft-doc-body ol {
+  margin: 0 0 var(--space-3);
+  padding-left: var(--space-6);
+}
+
+.draft-doc-body li {
+  margin-bottom: var(--space-3);
+}
+
+.draft-doc-body li p {
+  margin: 0;
+  text-align: justify;
+}
+
+.draft-doc-body blockquote {
+  border-left: 3px solid var(--line);
+  padding-left: var(--space-4);
+  color: var(--text-secondary);
+  font-style: italic;
+  margin: var(--space-3) 0;
+}
+
+.draft-doc-body table {
+  border-collapse: collapse;
+  width: 100%;
+  margin: var(--space-3) 0;
+}
+
+.draft-doc-body th,
+.draft-doc-body td {
+  border: 1px solid var(--line);
+  padding: var(--space-2) var(--space-3);
+  text-align: left;
+}
+
+.draft-doc-body th {
+  background: var(--paper-raised);
+  font-weight: 700;
+}
+
+/* Cause-title party lines (name left, label right, one line, no visible table) — see
+   PartyLineTableCell in DraftDocument.tsx and partyBlock() in legalDocumentFormat.ts. */
+.draft-doc-body table:has(td.party-cell) {
+  margin: 0;
+  width: 100%;
+  table-layout: fixed;
+}
+
+.draft-doc-body td.party-cell {
+  border: none;
+  padding: 0;
+  overflow-wrap: break-word;
+  word-break: break-word;
+}
+
+.draft-doc-body td.party-cell-name {
+  text-align: left;
+  width: 60%;
+}
+
+.draft-doc-body td.party-cell-label {
+  text-align: right;
+  width: 40%;
+}
+
+/* Page size/margin come from a <style> tag injected at print time (see handlePrint in
+   DraftDocument.tsx) — @page can't be scoped per-element, and which document is printing varies
+   per click when a wizard renders several DraftDocument instances on one page. */
+@media print {
+  .draft-doc-toolbar,
+  .draft-doc-edit-toolbar,
+  .draft-doc-print-setup-panel {
+    display: none !important;
+  }
+
+  .draft-doc {
+    box-shadow: none;
+    border: none;
+    max-width: none;
+    padding: 0;
+  }
+
+  .draft-doc-body {
+    font-family: var(--print-font-family, 'Times New Roman', Times, serif);
+    font-size: var(--print-font-size, 12pt);
+    line-height: var(--print-line-height, 2);
+  }
+}

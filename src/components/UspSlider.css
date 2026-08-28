@@ -1,0 +1,73 @@
+.usp-slider {
+  /* Full-bleed band, same technique as .landing-hero. Matches --paper — the same light cream the
+     Law Library page (and the rest of the site's body content) uses — rather than the deeper
+     --card-tint used for cards/sidebar, so it reads as part of the page, not a separate card. */
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--paper);
+  padding: var(--space-6) var(--space-5);
+}
+
+.usp-slider-inner {
+  max-width: 640px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+.usp-slide {
+  min-height: 84px;
+  animation: usp-fade-in 0.4s ease;
+}
+
+@keyframes usp-fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.usp-slide-title {
+  font-family: var(--font-display);
+  font-size: 21px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-2);
+}
+
+.usp-slide-body {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+}
+
+.usp-dots {
+  display: flex;
+  justify-content: center;
+  gap: var(--space-2);
+  margin-top: var(--space-5);
+}
+
+.usp-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(22, 24, 29, 0.2);
+  border: none;
+  padding: 0;
+  transition: background 0.15s ease, transform 0.15s ease;
+}
+
+.usp-dot:hover {
+  background: rgba(22, 24, 29, 0.35);
+}
+
+.usp-dot.active {
+  background: var(--accent);
+  transform: scale(1.25);
+}

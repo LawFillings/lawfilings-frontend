@@ -1,0 +1,104 @@
+.case-calendar {
+  background: var(--paper-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+  max-width: 360px;
+}
+
+.case-calendar-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.case-calendar-month {
+  font-family: var(--font-display);
+  font-size: 15px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+.case-calendar-nav-btn {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text-secondary);
+  width: 26px;
+  height: 26px;
+  border-radius: var(--radius-sm);
+  font-size: 15px;
+  line-height: 1;
+}
+
+.case-calendar-nav-btn:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+.case-calendar-weekdays,
+.case-calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 2px;
+  text-align: center;
+}
+
+.case-calendar-weekdays span {
+  font-size: 10px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  padding-bottom: var(--space-2);
+}
+
+.case-calendar-cell {
+  position: relative;
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--text);
+  padding: 6px 0;
+  border-radius: var(--radius-sm);
+}
+
+.case-calendar-cell.empty {
+  visibility: hidden;
+}
+
+.case-calendar-cell.today {
+  font-weight: 700;
+  color: var(--accent-deep);
+}
+
+.case-calendar-cell.marked {
+  cursor: pointer;
+  background: var(--accent-tint);
+}
+
+.case-calendar-cell.marked:hover {
+  background: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.case-calendar-dot {
+  display: block;
+  width: 4px;
+  height: 4px;
+  border-radius: 50%;
+  background: var(--accent-deep);
+  margin: 2px auto 0;
+}
+
+.case-calendar-cell.marked:hover .case-calendar-dot {
+  background: var(--text-on-accent);
+}
+
+.case-calendar-empty {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: var(--space-3) 0 0;
+}

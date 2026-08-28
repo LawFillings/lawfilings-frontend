@@ -1,0 +1,153 @@
+.settings-page {
+  max-width: 720px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.settings-hero {
+  margin-bottom: var(--space-8);
+}
+
+.settings-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  letter-spacing: 0.03em;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.settings-title {
+  font-size: 30px;
+  margin-bottom: var(--space-3);
+}
+
+.settings-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 var(--space-4);
+  max-width: 56ch;
+}
+
+.settings-reset-all {
+  border: 1px solid var(--line);
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: 9px 15px;
+  border-radius: var(--radius);
+}
+
+.settings-reset-all:hover {
+  border-color: var(--accent);
+  color: var(--accent-deep);
+}
+
+.settings-section {
+  border-top: 1px solid var(--line);
+  padding: var(--space-6) 0;
+}
+
+.settings-section-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  margin-bottom: var(--space-5);
+}
+
+.settings-section-title {
+  font-size: 19px;
+}
+
+.settings-reset-page {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 12px;
+  text-decoration: underline;
+}
+
+.settings-reset-page:hover {
+  color: var(--accent-deep);
+}
+
+.settings-block {
+  margin-bottom: var(--space-5);
+}
+
+.settings-block:last-child {
+  margin-bottom: 0;
+}
+
+.settings-block-label {
+  font-size: 12px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-3);
+}
+
+.settings-swatches {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+}
+
+.settings-swatch {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  padding: 9px 13px;
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: var(--text);
+}
+
+.settings-swatch.active {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+
+.settings-swatch-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 50%;
+  display: inline-block;
+  flex-shrink: 0;
+}
+
+.settings-widget-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.settings-widget-row {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-3);
+  cursor: pointer;
+}
+
+.settings-widget-row input {
+  margin-top: 3px;
+}
+
+.settings-widget-name {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+  color: var(--text);
+}
+
+.settings-widget-desc {
+  display: block;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.45;
+}

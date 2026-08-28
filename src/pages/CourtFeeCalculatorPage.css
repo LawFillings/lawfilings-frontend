@@ -1,0 +1,83 @@
+.cfc-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.cfc-hero {
+  margin-bottom: var(--space-6);
+}
+
+.cfc-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.cfc-title {
+  font-size: 32px;
+  margin-bottom: var(--space-3);
+}
+
+.cfc-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.cfc-form {
+  max-width: 420px;
+}
+
+.cfc-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.cfc-result {
+  margin-top: var(--space-5);
+  background: var(--accent-tint);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+}
+
+.cfc-result-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+}
+
+.cfc-result-label {
+  font-size: 13px;
+  color: var(--accent-deep);
+}
+
+.cfc-result-value {
+  font-family: var(--font-mono);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.cfc-cap-note {
+  font-size: 12px;
+  color: var(--accent-deep);
+  margin: var(--space-2) 0 0;
+}
+
+.cfc-provision {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(140, 90, 31, 0.15);
+  line-height: 1.5;
+}

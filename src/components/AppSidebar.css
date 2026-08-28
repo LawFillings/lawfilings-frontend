@@ -1,0 +1,149 @@
+/* ---- Sidebar itself ----
+   Now an off-canvas drawer at every width (opened via TopMasthead's hamburger) — the persistent
+   site-wide nav on desktop is TopNav's horizontal bar instead. This still carries the full link
+   set (including account-only items TopNav doesn't show: billing/settings/language/log out). */
+.app-sidebar {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 50;
+  width: 280px;
+  max-width: 82vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  padding: var(--space-5) var(--space-4);
+  background: var(--card-tint);
+  border-right: 1px solid var(--line-soft);
+  overflow-y: auto;
+  transform: translateX(-100%);
+  transition: transform 0.2s ease;
+  box-shadow: none;
+}
+
+.app-sidebar.open {
+  transform: translateX(0);
+  box-shadow: 2px 0 16px rgba(0, 0, 0, 0.15);
+}
+
+.app-sidebar-header {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: var(--space-2);
+}
+
+.app-mobile-close-btn {
+  display: inline-block;
+  border: none;
+  background: none;
+  font-size: 24px;
+  line-height: 1;
+  color: var(--text-muted);
+  padding: 0 var(--space-2);
+}
+
+.app-sidebar-links {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+}
+
+.app-sidebar-link {
+  display: block;
+  width: 100%;
+  border: none;
+  background: none;
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  text-align: left;
+  text-decoration: none;
+  padding: var(--space-2) var(--space-2);
+  border-radius: var(--radius-sm);
+}
+
+.app-sidebar-link:hover {
+  color: var(--ink);
+  background: var(--paper);
+}
+
+.app-sidebar-expand-btn {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.app-sidebar-expand-caret {
+  font-size: 11px;
+  color: var(--text-muted);
+}
+
+.app-sidebar-submenu {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-1);
+  margin: 0 0 var(--space-1);
+}
+
+.app-sidebar-sublink {
+  padding-left: calc(var(--space-2) + var(--space-4));
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.app-sidebar-divider {
+  height: 1px;
+  background: var(--line-soft);
+  margin: var(--space-2) 0;
+}
+
+.app-sidebar-cta {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 14px;
+  font-weight: 500;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  margin-top: var(--space-2);
+}
+
+.app-sidebar-cta:hover {
+  background: var(--ink-soft);
+}
+
+.app-sidebar-footer {
+  margin-top: auto;
+  padding-top: var(--space-4);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-top: 1px solid var(--line-soft);
+}
+
+.app-sidebar-settings {
+  border: none;
+  background: none;
+  color: var(--text-muted);
+  font-size: 16px;
+  line-height: 1;
+  padding: 4px var(--space-2);
+}
+
+.app-sidebar-settings:hover {
+  color: var(--accent-deep);
+}
+
+.app-sidebar-backdrop {
+  display: block;
+  position: fixed;
+  inset: 0;
+  background: rgba(28, 43, 51, 0.4);
+  z-index: 45;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .app-sidebar {
+    transition: none;
+  }
+}

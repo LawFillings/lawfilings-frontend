@@ -1,0 +1,48 @@
+.deposit-result {
+  margin-top: var(--space-5);
+  background: var(--accent-tint);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  max-width: 460px;
+}
+
+.deposit-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  padding: var(--space-2) 0;
+}
+
+.deposit-row + .deposit-row {
+  border-top: 1px solid rgba(140, 90, 31, 0.15);
+}
+
+.deposit-row-label {
+  font-size: 13px;
+  color: var(--accent-deep);
+}
+
+.deposit-row-note {
+  font-size: 11px;
+  color: var(--text-secondary);
+}
+
+.deposit-row-value {
+  font-family: var(--font-mono);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.deposit-row-reduced .deposit-row-value {
+  color: var(--accent-deep);
+}
+
+.deposit-provision {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: var(--space-3) 0 0;
+  padding-top: var(--space-3);
+  border-top: 1px solid rgba(140, 90, 31, 0.15);
+  line-height: 1.5;
+}

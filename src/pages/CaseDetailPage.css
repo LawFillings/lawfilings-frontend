@@ -1,0 +1,156 @@
+.case-detail-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.case-detail-hero {
+  margin-bottom: var(--space-6);
+}
+
+.case-detail-title {
+  font-size: 26px;
+  margin: 0;
+}
+
+.case-detail-title-row {
+  display: flex;
+  align-items: baseline;
+  gap: var(--space-3);
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.case-detail-edit-block {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-2);
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.case-detail-type-line {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-2);
+}
+
+.case-detail-title-input {
+  flex: 1;
+  font-family: var(--font-display);
+  font-size: 20px;
+  padding: var(--space-2) var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.case-detail-delete-case {
+  margin-top: var(--space-3);
+  border: none;
+  background: none;
+  font-size: 13px;
+  color: var(--status-danger-text);
+  text-decoration: underline;
+}
+
+.case-detail-sub {
+  font-size: 14px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+.case-detail-section {
+  border-top: 1px solid var(--line);
+  padding: var(--space-5) 0;
+}
+
+.case-detail-section-title {
+  font-size: 19px;
+  margin-bottom: var(--space-3);
+}
+
+.case-detail-draft {
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  padding: var(--space-2) 0;
+  border-bottom: 1px solid var(--line-soft);
+}
+
+.case-detail-draft-meta {
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
+.case-detail-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.case-detail-chip {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--text);
+  font-size: 14px;
+  padding: 7px 15px;
+  border-radius: 999px;
+}
+
+.case-detail-chip:hover {
+  border-color: var(--accent);
+}
+
+.case-detail-chip.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.case-detail-update-form {
+  margin-bottom: var(--space-5);
+}
+
+.case-detail-timeline {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+}
+
+.case-detail-timeline-item {
+  border-left: 2px solid var(--line);
+  padding-left: var(--space-3);
+}
+
+.case-detail-timeline-label {
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.case-detail-timeline-date {
+  display: block;
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+.case-detail-timeline-note {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 4px 0 0;
+}
+
+.case-detail-timeline-actions {
+  display: flex;
+  gap: var(--space-3);
+  margin-top: var(--space-2);
+}
+
+.case-detail-timeline-actions .para-btn {
+  font-size: 12px;
+}

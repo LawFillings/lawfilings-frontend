@@ -1,0 +1,54 @@
+.tier-slider {
+  width: 100%;
+  max-width: 420px;
+  accent-color: var(--accent);
+  display: block;
+  margin-top: var(--space-2);
+}
+
+.tier-value-row {
+  display: flex;
+  justify-content: space-between;
+  max-width: 420px;
+  margin: var(--space-2) 0 var(--space-5);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.tier-value {
+  font-family: var(--font-mono);
+  font-size: 18px;
+  font-weight: 500;
+  color: var(--ink);
+}
+
+.tier-result {
+  background: var(--accent-tint);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  max-width: 420px;
+}
+
+.tier-result-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-1);
+}
+
+.tier-result-name {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-2);
+}
+
+.tier-result-note {
+  font-size: 12px;
+  color: var(--text-secondary);
+  margin: 0;
+  line-height: 1.5;
+}

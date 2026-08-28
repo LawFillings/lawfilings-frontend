@@ -1,0 +1,66 @@
+.about-page {
+  max-width: 680px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.about-hero {
+  margin-bottom: var(--space-7);
+}
+
+.about-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 var(--space-2);
+}
+
+.about-title {
+  font-size: 34px;
+  margin-bottom: var(--space-4);
+}
+
+.about-intro {
+  font-size: 17px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  margin: 0;
+  max-width: 64ch;
+}
+
+.about-block {
+  margin-bottom: var(--space-6);
+  padding-top: var(--space-6);
+  border-top: 1px solid var(--line-soft);
+}
+
+.about-block-heading {
+  font-size: 22px;
+  margin: 0 0 var(--space-3);
+}
+
+.about-block-body {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.65;
+  max-width: 64ch;
+  margin: 0;
+}
+
+.about-page .landing-cta-primary,
+.about-page .about-cta {
+  background: var(--ink);
+  color: var(--paper);
+  font-size: 15px;
+  font-weight: 600;
+  padding: 14px 24px;
+  border-radius: var(--radius);
+  margin-top: var(--space-3);
+}
+
+.about-page .landing-cta-primary:hover,
+.about-page .about-cta:hover {
+  background: var(--ink-soft);
+}

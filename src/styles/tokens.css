@@ -1,0 +1,91 @@
+@import url('https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,500;8..60,600;8..60,700&family=Inter:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Noto+Serif+Devanagari:wght@400;500;600;700&family=Noto+Sans+Devanagari:wght@400;500;600;700&display=swap');
+
+:root {
+  --ink: #16181D;
+  --ink-soft: #4A4E57;
+  --paper: #F3E3C5;
+  --paper-raised: #FFFFFF;
+  --card-tint: #E7CE9C;
+  --accent: #1F3A5F;
+  --accent-deep: #14273F;
+  --accent-tint: #E7EDF4;
+  --accent-gold: #D4AF37;
+  --accent-gold-soft: #E8CC6E;
+  --line: #CBAE79;
+  --line-soft: #DFCA9A;
+  --text: #16181D;
+  --text-secondary: #4A4E57;
+  --text-muted: #8A8D93;
+  --text-on-accent: #FFFFFF;
+
+  --status-safe-bg: #E8EFE9;
+  --status-safe-text: #2C5C3F;
+  --status-safe-border: #B7D0BE;
+  --status-warn-bg: #FBF0DD;
+  --status-warn-text: #8C5A1F;
+  --status-warn-border: #E8CE9E;
+  --status-danger-bg: #F7E7E3;
+  --status-danger-text: #8C3A26;
+  --status-danger-border: #E5B7A9;
+
+  --font-display: 'Source Serif 4', 'Noto Serif Devanagari', Georgia, serif;
+  --font-body: 'Inter', 'Noto Sans Devanagari', -apple-system, sans-serif;
+  --font-mono: 'IBM Plex Mono', 'Noto Sans Devanagari', ui-monospace, monospace;
+
+  --masthead-height: 64px;
+
+  --radius-sm: 4px;
+  --radius: 8px;
+  --radius-lg: 14px;
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 24px;
+  --space-6: 32px;
+  --space-8: 48px;
+}
+
+* { box-sizing: border-box; }
+
+html, body, #root {
+  height: 100%;
+  margin: 0;
+}
+
+body {
+  background: var(--paper);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: 16px;
+  line-height: 1.55;
+  -webkit-font-smoothing: antialiased;
+}
+
+h1, h2, h3 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0;
+}
+
+button {
+  font-family: var(--font-body);
+  cursor: pointer;
+}
+
+button:focus-visible,
+input:focus-visible,
+textarea:focus-visible,
+select:focus-visible,
+[tabindex]:focus-visible {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

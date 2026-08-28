@@ -1,0 +1,142 @@
+.app-root {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-shell {
+  flex: 1;
+}
+
+.app-content {
+  min-width: 0;
+}
+
+.back-link {
+  display: block;
+  max-width: 920px;
+  margin: var(--space-5) auto 0;
+  padding: 0 var(--space-5);
+  border: none;
+  background: none;
+  color: var(--text-secondary);
+  font-size: 14px;
+  text-align: left;
+}
+
+.back-link:hover {
+  color: var(--accent-deep);
+}
+
+.step-heading {
+  font-family: var(--font-display);
+  font-size: 21px;
+  margin: 0 0 var(--space-2);
+}
+
+.step-help {
+  font-size: 15px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0 0 var(--space-5);
+  max-width: 60ch;
+}
+
+.form-grid {
+  display: grid;
+  gap: var(--space-4);
+  max-width: 420px;
+}
+
+.form-field {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+}
+
+.form-field input,
+.form-field select {
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.facts-textarea {
+  width: 100%;
+  max-width: 560px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  color: var(--text);
+  resize: vertical;
+  line-height: 1.55;
+}
+
+.doc-checklist {
+  margin: 0;
+  padding-left: var(--space-5);
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+
+.doc-checklist li {
+  font-size: 15px;
+  color: var(--text);
+  line-height: 1.5;
+}
+
+.grounds-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: var(--space-3);
+}
+
+.ground-card {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--paper);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  font-size: 14px;
+  color: var(--text);
+  transition: border-color 0.15s ease, background 0.15s ease;
+}
+
+.ground-card:hover {
+  border-color: var(--accent);
+}
+
+.ground-card.active {
+  background: var(--accent-tint);
+  border-color: var(--accent);
+  color: var(--accent-deep);
+  font-weight: 500;
+}
+
+.coming-soon-card {
+  max-width: 620px;
+  margin: var(--space-6) auto 0;
+  padding: 0 var(--space-5);
+}
+
+.coming-soon-card h2 {
+  font-size: 24px;
+  margin: var(--space-2) 0 var(--space-4);
+}
+
+.coming-soon-card p {
+  font-size: 14px;
+  line-height: 1.6;
+  color: var(--text-secondary);
+}

@@ -1,0 +1,308 @@
+.law-library {
+  max-width: 1120px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.ll-layout {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--space-6);
+}
+
+.ll-main {
+  flex: 1;
+  min-width: 0;
+  max-width: 760px;
+}
+
+/* Below 860px (the same breakpoint the app's main AppSidebar collapses at), the category rail
+   gives way to the .ll-category-filter <select> that's rendered inline in the browse view —
+   there isn't room for a persistent 220px rail alongside content on a phone/tablet screen. */
+.ll-category-rail {
+  display: none;
+}
+
+@media (min-width: 860px) {
+  .ll-category-rail {
+    display: flex;
+    flex-direction: column;
+    gap: var(--space-1);
+    width: 220px;
+    flex-shrink: 0;
+    padding: var(--space-4);
+    background: var(--paper-raised);
+    border: 1px solid var(--line-soft);
+    border-radius: var(--radius);
+    position: sticky;
+    top: calc(var(--masthead-height) + var(--space-5));
+  }
+
+  .ll-category-filter {
+    display: none;
+  }
+}
+
+.ll-category-rail-btn {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  background: none;
+  font-family: var(--font-body);
+  font-size: 14px;
+  font-weight: 500;
+  color: var(--text-secondary);
+  padding: var(--space-3) var(--space-3);
+  border-radius: var(--radius-sm);
+}
+
+.ll-category-rail-btn:hover {
+  background: var(--paper);
+  color: var(--ink);
+}
+
+.ll-category-rail-btn.active {
+  background: var(--accent-tint);
+  color: var(--accent-deep);
+  font-weight: 600;
+}
+
+.ll-hero {
+  margin-bottom: var(--space-6);
+}
+
+.ll-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.ll-title {
+  font-size: 32px;
+  margin-bottom: var(--space-3);
+}
+
+.ll-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0 0 var(--space-5);
+  max-width: 60ch;
+}
+
+.ll-search {
+  width: 100%;
+  font-size: 15px;
+  padding: var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font-family: var(--font-body);
+}
+
+.ll-category-filter {
+  margin-bottom: var(--space-5);
+}
+
+.ll-category-select {
+  width: 100%;
+  max-width: 320px;
+  font-family: var(--font-body);
+  font-size: 15px;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius-sm);
+  background: var(--paper);
+  color: var(--text);
+}
+
+.ll-state-search-label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-2);
+}
+
+.ll-state-picker {
+  margin-bottom: var(--space-5);
+  max-width: 360px;
+}
+
+.ll-state-select {
+  width: 100%;
+  font-size: 15px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font-family: var(--font-body);
+  color: var(--ink);
+}
+
+.ll-state-empty {
+  color: var(--text-secondary);
+  font-size: 14px;
+  line-height: 1.6;
+  max-width: 56ch;
+}
+
+.ll-results-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-4);
+}
+
+.ll-act-picker {
+  margin-bottom: var(--space-5);
+  max-width: 480px;
+}
+
+.ll-act-picker-wide {
+  max-width: none;
+}
+
+.ll-option-list {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  overflow: hidden;
+  background: var(--paper-raised);
+}
+
+.ll-option-list-item {
+  display: block;
+  width: 100%;
+  text-align: left;
+  border: none;
+  border-bottom: 1px solid var(--line-soft);
+  background: none;
+  font-family: var(--font-body);
+  padding: var(--space-3) var(--space-4);
+  color: var(--ink);
+}
+
+.ll-option-list-item:last-child {
+  border-bottom: none;
+}
+
+.ll-option-list-item:hover {
+  background: var(--paper);
+  color: var(--accent-deep);
+}
+
+.ll-option-list-item-title {
+  display: block;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+.ll-option-list-item-meta {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+  margin-top: 2px;
+}
+
+.ll-act-detail-title {
+  font-size: 26px;
+  margin-bottom: var(--space-2);
+}
+
+.ll-act-detail-subtitle {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.ll-repealed-tag {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+  color: var(--danger, #a6383e);
+  border: 1px solid var(--danger, #a6383e);
+  border-radius: 999px;
+  padding: 1px 7px;
+  margin-left: var(--space-2);
+  vertical-align: middle;
+}
+
+.ll-repealed-banner {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: var(--space-3);
+  background: rgba(166, 56, 62, 0.08);
+  border: 1px solid var(--danger, #a6383e);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.ll-repealed-banner p {
+  flex: 1;
+  min-width: 220px;
+  font-size: 14px;
+  color: var(--text);
+  margin: 0;
+}
+
+.ll-act-source {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: 0 0 var(--space-5);
+}
+
+.ll-act-source a {
+  color: var(--accent-deep);
+}
+
+.ll-section-card {
+  background: var(--paper-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: var(--space-5);
+  margin-bottom: var(--space-3);
+}
+
+.ll-section-act {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin: 0 0 var(--space-2);
+}
+
+.ll-section-heading {
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-3);
+}
+
+.ll-section-text {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--text);
+  margin: 0;
+}
+
+.ll-section-not-sourced {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+.ll-section-not-sourced a {
+  color: var(--accent-deep);
+  font-style: normal;
+}
+
