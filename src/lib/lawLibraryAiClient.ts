@@ -12,7 +12,6 @@ export interface ActQaTurn {
   question: string;
   answer: string;
   citedSections: ActCitation[];
-  answeredFromProvidedText: boolean;
   /** 'general' turns come from ask-general (the model's own knowledge, unverified) rather than
    *  the grounded Library search — kept distinct so the UI never renders the two identically. */
   mode: 'grounded' | 'general';

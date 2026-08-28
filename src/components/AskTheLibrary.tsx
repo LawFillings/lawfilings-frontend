@@ -38,9 +38,6 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [elapsedSeconds, setElapsedSeconds] = useState(0);
-  // Set only right after a zero-search-match miss, so the "get a general answer" offer appears
-  // exactly once for the question that triggered it, not permanently once any miss has occurred.
-  const [offerGeneralFor, setOfferGeneralFor] = useState<string | null>(null);
 
   useEffect(() => {
     if (!loading) {
@@ -61,7 +58,6 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
 
     setLoading(true);
     setError(null);
-    setOfferGeneralFor(null);
 
     const matches = searchLibrarySections(trimmed);
     if (matches.length === 0) {
@@ -71,33 +67,34 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
     }
 
     const result = await askLibrary(matches, trimmed, historyForApi(), language);
-    setLoading(false);
 
     if (!result.ok) {
+      setLoading(false);
       setError(result.error);
       return;
     }
 
+    if (!result.answeredFromProvidedText) {
+      await askGeneralFor(trimmed);
+      return;
+    }
+
+    setLoading(false);
     setTurns((prev) => [
       ...prev,
       {
         question: trimmed,
         answer: result.answer,
         citedSections: result.citedSections,
-        answeredFromProvidedText: result.answeredFromProvidedText,
         mode: 'grounded',
       },
     ]);
-    if (!result.answeredFromProvidedText) {
-      setOfferGeneralFor(trimmed);
-    }
     setQuestion('');
   };
 
   const askGeneralFor = async (q: string) => {
     setLoading(true);
     setError(null);
-    setOfferGeneralFor(null);
 
     const result = await askGeneral(q, historyForApi(), language);
     setLoading(false);
@@ -107,10 +104,7 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
       return;
     }
 
-    setTurns((prev) => [
-      ...prev,
-      { question: q, answer: result.answer, citedSections: [], answeredFromProvidedText: false, mode: 'general' },
-    ]);
+    setTurns((prev) => [...prev, { question: q, answer: result.answer, citedSections: [], mode: 'general' }]);
     setQuestion('');
   };
 
@@ -134,11 +128,7 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
             <div className={`aaa-turn${turn.mode === 'general' ? ' aaa-turn-general' : ''}`} key={i}>
               {turn.mode === 'general' && <span className="aaa-general-badge">{copy.generalInfoBadge}</span>}
               <p className="aaa-question">{turn.question}</p>
-              <p className="aaa-answer">
-                {turn.mode === 'grounded' && !turn.answeredFromProvidedText
-                  ? `${turn.answer} ${copy.notInText}`
-                  : turn.answer}
-              </p>
+              <p className="aaa-answer">{turn.answer}</p>
               {turn.mode === 'general' && <p className="aaa-general-disclaimer">{copy.generalInfoDisclaimer}</p>}
               {turn.citedSections.length > 0 && (
                 <p className="aaa-cited">
@@ -170,15 +160,6 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
       )}
 
       {user && error && <p className="aaa-error">{error}</p>}
-
-      {user && offerGeneralFor && !loading && (
-        <div className="aaa-general-offer">
-          <p>{copy.generalInfoOffer}</p>
-          <button type="button" className="para-btn" onClick={() => askGeneralFor(offerGeneralFor)}>
-            {copy.generalInfoButton}
-          </button>
-        </div>
-      )}
 
       {user && (
         <form className="aaa-form" onSubmit={submit}>
