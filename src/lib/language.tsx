@@ -7,9 +7,10 @@ import { as } from './translations/as';
 import { bn } from './translations/bn';
 import { mr } from './translations/mr';
 import { ta } from './translations/ta';
+import { te } from './translations/te';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn' | 'mr' | 'ta';
+export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn' | 'mr' | 'ta' | 'te';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
@@ -20,9 +21,10 @@ export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'bn', label: 'বাংলা' },
   { id: 'mr', label: 'मराठी' },
   { id: 'ta', label: 'தமிழ்' },
+  { id: 'te', label: 'తెలుగు' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn, mr, ta };
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn, mr, ta, te };
 
 const STORAGE_KEY = 'legalassist:language';
 
