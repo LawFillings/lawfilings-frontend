@@ -2,7 +2,7 @@ import { LANGUAGES, useLanguage } from '../lib/language';
 import '../pages/AuthForm.css';
 
 interface Props {
-  /** Compact renders a single button that flips to the other language — for nav placement. */
+  /** Compact renders a dropdown of all languages, current one selected — for nav placement. */
   compact?: boolean;
   className?: string;
 }
@@ -11,11 +11,19 @@ export function LanguageSwitcher({ compact, className }: Props) {
   const { language, setLanguage } = useLanguage();
 
   if (compact) {
-    const other = LANGUAGES.find((l) => l.id !== language)!;
     return (
-      <button className={className} onClick={() => setLanguage(other.id)} aria-label="Change language">
-        {other.label}
-      </button>
+      <select
+        className={className}
+        value={language}
+        onChange={(e) => setLanguage(e.target.value as (typeof LANGUAGES)[number]['id'])}
+        aria-label="Change language"
+      >
+        {LANGUAGES.map((l) => (
+          <option key={l.id} value={l.id}>
+            {l.label}
+          </option>
+        ))}
+      </select>
     );
   }
 

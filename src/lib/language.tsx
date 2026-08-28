@@ -1,23 +1,25 @@
 import { createContext, useContext, useEffect, useState, type ReactNode } from 'react';
 import { en } from './translations/en';
 import { hi } from './translations/hi';
+import { pa } from './translations/pa';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi';
+export type Language = 'en' | 'hi' | 'pa';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
   { id: 'hi', label: 'हिन्दी' },
+  { id: 'pa', label: 'ਪੰਜਾਬੀ' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi };
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa };
 
 const STORAGE_KEY = 'legalassist:language';
 
 function loadLanguage(): Language {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw === 'hi' ? 'hi' : 'en';
+    return raw === 'hi' || raw === 'pa' ? raw : 'en';
   } catch {
     return 'en';
   }
