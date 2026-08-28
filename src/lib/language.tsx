@@ -2,24 +2,26 @@ import { createContext, useContext, useEffect, useState, type ReactNode } from '
 import { en } from './translations/en';
 import { hi } from './translations/hi';
 import { pa } from './translations/pa';
+import { gu } from './translations/gu';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi' | 'pa';
+export type Language = 'en' | 'hi' | 'pa' | 'gu';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
   { id: 'hi', label: 'हिन्दी' },
   { id: 'pa', label: 'ਪੰਜਾਬੀ' },
+  { id: 'gu', label: 'ગુજરાતી' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi, pa };
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu };
 
 const STORAGE_KEY = 'legalassist:language';
 
 function loadLanguage(): Language {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw === 'hi' || raw === 'pa' ? raw : 'en';
+    return raw === 'hi' || raw === 'pa' || raw === 'gu' ? raw : 'en';
   } catch {
     return 'en';
   }
