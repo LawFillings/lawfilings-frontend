@@ -5,9 +5,10 @@ import { pa } from './translations/pa';
 import { gu } from './translations/gu';
 import { as } from './translations/as';
 import { bn } from './translations/bn';
+import { mr } from './translations/mr';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn';
+export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn' | 'mr';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
@@ -16,16 +17,17 @@ export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'gu', label: 'ગુજરાતી' },
   { id: 'as', label: 'অসমীয়া' },
   { id: 'bn', label: 'বাংলা' },
+  { id: 'mr', label: 'मराठी' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn };
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn, mr };
 
 const STORAGE_KEY = 'legalassist:language';
 
 function loadLanguage(): Language {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw === 'hi' || raw === 'pa' || raw === 'gu' || raw === 'as' || raw === 'bn' ? raw : 'en';
+    return LANGUAGES.some((l) => l.id === raw) ? (raw as Language) : 'en';
   } catch {
     return 'en';
   }
