@@ -4,9 +4,10 @@ import { hi } from './translations/hi';
 import { pa } from './translations/pa';
 import { gu } from './translations/gu';
 import { as } from './translations/as';
+import { bn } from './translations/bn';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as';
+export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
@@ -14,16 +15,17 @@ export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'pa', label: 'ਪੰਜਾਬੀ' },
   { id: 'gu', label: 'ગુજરાતી' },
   { id: 'as', label: 'অসমীয়া' },
+  { id: 'bn', label: 'বাংলা' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as };
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn };
 
 const STORAGE_KEY = 'legalassist:language';
 
 function loadLanguage(): Language {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw === 'hi' || raw === 'pa' || raw === 'gu' || raw === 'as' ? raw : 'en';
+    return raw === 'hi' || raw === 'pa' || raw === 'gu' || raw === 'as' || raw === 'bn' ? raw : 'en';
   } catch {
     return 'en';
   }
