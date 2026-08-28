@@ -108,11 +108,7 @@ export function TopMasthead({
             <span className="top-masthead-account-caret" aria-hidden="true">▾</span>
           </button>
           <div className="top-masthead-account-menu" aria-label={t.nav.accountMenu}>
-            {user && (
-              <button className="top-masthead-account-menu-item" onClick={onOpenBilling}>
-                {t.nav.billing}
-              </button>
-            )}
+            <LanguageSwitcher compact className="top-masthead-account-menu-item" />
             <button className="top-masthead-account-menu-item" onClick={onOpenSettings}>
               {t.nav.pageSettings}
             </button>
@@ -121,7 +117,11 @@ export function TopMasthead({
                 Library gaps
               </button>
             )}
-            <LanguageSwitcher compact className="top-masthead-account-menu-item" />
+            {user && (
+              <button className="top-masthead-account-menu-item" onClick={onOpenBilling}>
+                {t.nav.billing}
+              </button>
+            )}
             {user && (
               <button className="top-masthead-account-menu-item" onClick={logout}>
                 {t.nav.logOut}

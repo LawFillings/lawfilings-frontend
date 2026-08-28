@@ -26,7 +26,7 @@ export const pa: Translations = {
     news: 'ਖ਼ਬਰਾਂ',
     myCases: 'ਮੇਰੇ ਮਾਮਲੇ',
     pricing: 'ਕੀਮਤ',
-    billing: 'ਬਿਲਿੰਗ',
+    billing: 'ਮੇਰਾ ਖਾਤਾ',
     logOut: 'ਲੌਗ ਆਊਟ ਕਰੋ',
     logIn: 'ਲੌਗ ਇਨ ਕਰੋ',
     startAFiling: 'ਫਾਈਲਿੰਗ ਸ਼ੁਰੂ ਕਰੋ',
