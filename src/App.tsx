@@ -339,10 +339,6 @@ function AppScreens() {
           openLoginNav();
           closeMobileMenu();
         }}
-        onOpenMyCases={() => {
-          openMyCasesNav();
-          closeMobileMenu();
-        }}
         onOpenBilling={() => {
           openBillingNav();
           closeMobileMenu();

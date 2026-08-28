@@ -11,7 +11,6 @@ interface Props {
   onGoHome: () => void;
   onOpenCaseLawSearch: () => void;
   onOpenLogin: () => void;
-  onOpenMyCases: () => void;
   onOpenBilling: () => void;
   onOpenSettings: () => void;
   onOpenAdminGaps: () => void;
@@ -28,7 +27,6 @@ export function TopMasthead({
   onGoHome,
   onOpenCaseLawSearch,
   onOpenLogin,
-  onOpenMyCases,
   onOpenBilling,
   onOpenSettings,
   onOpenAdminGaps,
@@ -103,10 +101,17 @@ export function TopMasthead({
           {t.nav.search}
         </button>
         <div className="top-masthead-account">
-          <button className="top-masthead-btn top-masthead-btn-primary" onClick={user ? onOpenMyCases : onOpenLogin}>
-            {user ? t.nav.myCases : t.nav.logIn}
-            <span className="top-masthead-account-caret" aria-hidden="true">▾</span>
-          </button>
+          {user ? (
+            <button type="button" className="top-masthead-btn top-masthead-btn-primary">
+              {t.nav.accountMenu}
+              <span className="top-masthead-account-caret" aria-hidden="true">▾</span>
+            </button>
+          ) : (
+            <button className="top-masthead-btn top-masthead-btn-primary" onClick={onOpenLogin}>
+              {t.nav.logIn}
+              <span className="top-masthead-account-caret" aria-hidden="true">▾</span>
+            </button>
+          )}
           <div className="top-masthead-account-menu" aria-label={t.nav.accountMenu}>
             <LanguageSwitcher compact className="top-masthead-account-menu-item" />
             <button className="top-masthead-account-menu-item" onClick={onOpenSettings}>
