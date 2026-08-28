@@ -3,25 +3,27 @@ import { en } from './translations/en';
 import { hi } from './translations/hi';
 import { pa } from './translations/pa';
 import { gu } from './translations/gu';
+import { as } from './translations/as';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi' | 'pa' | 'gu';
+export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
   { id: 'hi', label: 'हिन्दी' },
   { id: 'pa', label: 'ਪੰਜਾਬੀ' },
   { id: 'gu', label: 'ગુજરાતી' },
+  { id: 'as', label: 'অসমীয়া' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu };
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as };
 
 const STORAGE_KEY = 'legalassist:language';
 
 function loadLanguage(): Language {
   try {
     const raw = localStorage.getItem(STORAGE_KEY);
-    return raw === 'hi' || raw === 'pa' || raw === 'gu' ? raw : 'en';
+    return raw === 'hi' || raw === 'pa' || raw === 'gu' || raw === 'as' ? raw : 'en';
   } catch {
     return 'en';
   }
