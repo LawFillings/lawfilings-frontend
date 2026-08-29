@@ -4,6 +4,7 @@ import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
 import { UspSlider } from '../components/UspSlider';
 import { HowItWorks } from '../components/HowItWorks';
+import { BrandMark } from '../components/BrandMark';
 import './LandingPage.css';
 
 interface Props {
@@ -37,6 +38,7 @@ export function LandingPage({
             <span className="starfield-sparkle landing-hero-sparkle" key={i} />
           ))}
         </div>
+        <BrandMark size={420} halo wordmark className="landing-hero-watermark" />
         <div className="landing-hero-inner">
           <h1 className="landing-hero-title">
             {t.landing.hero.titleLine1}
