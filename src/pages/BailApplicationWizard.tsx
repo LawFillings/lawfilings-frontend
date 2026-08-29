@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
@@ -10,6 +10,8 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
+import { extractFirFromText } from '../lib/documentExtractionClient';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -93,6 +95,41 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
   const [draftId, setDraftId] = useState<string | null>(null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [firExtractState, setFirExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
+  const [firExtractError, setFirExtractError] = useState<string | null>(null);
+  const firFileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleFirFileSelected = async (file: File) => {
+    if (!token) return;
+    setFirExtractState('extracting');
+    setFirExtractError(null);
+    try {
+      const text = await extractTextFromPdf(file);
+      const extracted = await extractFirFromText(text, token);
+      // Never overwrite something the user already typed — only fill what's still blank.
+      if (extracted.applicantName && !applicantName) setApplicantName(extracted.applicantName);
+      if (extracted.applicantAge && !applicantAge) setApplicantAge(extracted.applicantAge);
+      if (extracted.applicantAddress && !applicantAddress) setApplicantAddress(extracted.applicantAddress);
+      if (extracted.firNumber && !firNumber) setFirNumber(extracted.firNumber);
+      if (extracted.policeStation && !policeStation) setPoliceStation(extracted.policeStation);
+      if (extracted.bnsSections && !bnsSections) setBnsSections(extracted.bnsSections);
+      if (extracted.firFacts && !firFacts) setFirFacts(extracted.firFacts);
+      setFirExtractState('done');
+    } catch (err) {
+      if (err instanceof NoTextLayerError) {
+        setFirExtractError(
+          "This looks like a scanned FIR — text extraction only works with text-based PDFs for now. Please fill in the details below manually."
+        );
+      } else if (err instanceof ApiError && err.status === 402) {
+        setFirExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
+      } else if (err instanceof ApiError) {
+        setFirExtractError(err.message);
+      } else {
+        setFirExtractError("Couldn't read that file — please make sure it's a PDF and try again.");
+      }
+      setFirExtractState('error');
+    }
+  };
 
   const toggleGround = (id: string) =>
     setSelectedGrounds((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
@@ -366,6 +403,41 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
         {step === 2 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Applicant and case details' : 'Your details and the case'}</h3>
+            <div style={{ marginBottom: 'var(--space-5)' }}>
+              <input
+                ref={firFileInputRef}
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  e.target.value = '';
+                  if (file) handleFirFileSelected(file);
+                }}
+              />
+              <button
+                type="button"
+                className="para-btn"
+                onClick={() => firFileInputRef.current?.click()}
+                disabled={firExtractState === 'extracting'}
+              >
+                {firExtractState === 'extracting' ? 'Reading FIR…' : 'Fill from FIR (PDF)'}
+              </button>
+              <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                Only text-based PDFs are supported for now, not scanned copies. This fills in blank fields below
+                from the FIR — review everything before continuing.
+              </p>
+              {firExtractState === 'done' && (
+                <p className="step-help" style={{ color: 'var(--status-safe-text)', margin: 'var(--space-1) 0 0' }}>
+                  Filled in from the FIR — please check these before continuing.
+                </p>
+              )}
+              {firExtractState === 'error' && firExtractError && (
+                <p className="step-help" style={{ color: 'var(--status-danger-text)', margin: 'var(--space-1) 0 0' }}>
+                  {firExtractError}
+                </p>
+              )}
+            </div>
             <div className="form-grid">
               <label className="form-field">
                 <span>
