@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
@@ -9,6 +9,8 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
+import { extractLegalNoticeSourceFromText } from '../lib/documentExtractionClient';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -66,6 +68,38 @@ export function LegalNoticeWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
   const [draftId, setDraftId] = useState<string | null>(null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [sourceExtractState, setSourceExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
+  const [sourceExtractError, setSourceExtractError] = useState<string | null>(null);
+  const sourceFileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSourceFileSelected = async (file: File) => {
+    if (!token) return;
+    setSourceExtractState('extracting');
+    setSourceExtractError(null);
+    try {
+      const text = await extractTextFromPdf(file);
+      const extracted = await extractLegalNoticeSourceFromText(text, token);
+      if (extracted.recipientName && !recipientName) setRecipientName(extracted.recipientName);
+      if (extracted.recipientAddress && !recipientAddress) setRecipientAddress(extracted.recipientAddress);
+      if (extracted.subject && !subject) setSubject(extracted.subject);
+      if (extracted.factsNarrative && !factsNarrative) setFactsNarrative(extracted.factsNarrative);
+      if (extracted.demandAction && !demandAction) setDemandAction(extracted.demandAction);
+      setSourceExtractState('done');
+    } catch (err) {
+      if (err instanceof NoTextLayerError) {
+        setSourceExtractError(
+          "This looks like a scanned document — text extraction only works with text-based PDFs for now. Try running it through a free online OCR/text-conversion tool and re-uploading the result, or fill in the details below manually."
+        );
+      } else if (err instanceof ApiError && err.status === 402) {
+        setSourceExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
+      } else if (err instanceof ApiError) {
+        setSourceExtractError(err.message);
+      } else {
+        setSourceExtractError("Couldn't read that file — please make sure it's a PDF and try again.");
+      }
+      setSourceExtractState('error');
+    }
+  };
 
   const rule = noticeType ? NOTICE_TYPE_RULES[noticeType] : undefined;
   const effectivePeriod = noticePeriod.trim() || rule?.defaultPeriod || '15 days';
@@ -199,6 +233,42 @@ export function LegalNoticeWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
         {step === 1 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Sender and recipient' : 'Who is this to, and from?'}</h3>
+            <div style={{ marginBottom: 'var(--space-5)' }}>
+              <input
+                ref={sourceFileInputRef}
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  e.target.value = '';
+                  if (file) handleSourceFileSelected(file);
+                }}
+              />
+              <button
+                type="button"
+                className="para-btn"
+                onClick={() => sourceFileInputRef.current?.click()}
+                disabled={sourceExtractState === 'extracting'}
+              >
+                {sourceExtractState === 'extracting' ? 'Reading document…' : 'Fill from a document (PDF)'}
+              </button>
+              <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                Upload the underlying agreement, or a notice you already received — only text-based PDFs are
+                supported for now, not scanned copies. This fills in blank fields below and on the next step;
+                review everything before continuing.
+              </p>
+              {sourceExtractState === 'done' && (
+                <p className="step-help" style={{ color: 'var(--status-safe-text)', margin: 'var(--space-1) 0 0' }}>
+                  Filled in from the document — please check these before continuing.
+                </p>
+              )}
+              {sourceExtractState === 'error' && sourceExtractError && (
+                <p className="step-help" style={{ color: 'var(--status-danger-text)', margin: 'var(--space-1) 0 0' }}>
+                  {sourceExtractError}
+                </p>
+              )}
+            </div>
             <div className="form-grid">
               <label className="form-field">
                 <span>{mode === 'advocate' ? 'Advocate name' : 'Your name'}</span>

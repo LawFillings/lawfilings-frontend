@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DebtThresholdSelector } from '../components/DebtThresholdSelector';
 import { LocationSelector } from '../components/LocationSelector';
@@ -26,6 +26,8 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
+import { extractOaLoanRecallFromText } from '../lib/documentExtractionClient';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -142,6 +144,64 @@ export function DrtOaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
   const [draftId, setDraftId] = useState<string | null>(null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [recallNoticeExtractState, setRecallNoticeExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>(
+    'idle'
+  );
+  const [recallNoticeExtractError, setRecallNoticeExtractError] = useState<string | null>(null);
+  const recallNoticeFileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleRecallNoticeFileSelected = async (file: File) => {
+    if (!token) return;
+    setRecallNoticeExtractState('extracting');
+    setRecallNoticeExtractError(null);
+    try {
+      const text = await extractTextFromPdf(file);
+      const extracted = await extractOaLoanRecallFromText(text, token);
+      if (extracted.loanAgreementPlace && !loanAgreementPlace) setLoanAgreementPlace(extracted.loanAgreementPlace);
+      if (extracted.loanAgreementNo1 && !loanAgreementNo1) setLoanAgreementNo1(extracted.loanAgreementNo1);
+      if (extracted.loanAgreementDate1 && !loanAgreementDate1) setLoanAgreementDate1(extracted.loanAgreementDate1);
+      if (extracted.defaultDate1 && !defaultDate1) setDefaultDate1(extracted.defaultDate1);
+      if (extracted.loanRecallNoticePlace && !loanRecallNoticePlace) setLoanRecallNoticePlace(extracted.loanRecallNoticePlace);
+      if (extracted.loanRecallNoticeDate && !loanRecallNoticeDate) setLoanRecallNoticeDate(extracted.loanRecallNoticeDate);
+      if (extracted.principalAmount && !principalAmount) setPrincipalAmount(extracted.principalAmount);
+      if (extracted.interestRate && !interestRate) setInterestRate(extracted.interestRate);
+      if (extracted.interestAmount && !interestAmount) setInterestAmount(extracted.interestAmount);
+      if (extracted.totalAmount && !totalAmount) setTotalAmount(extracted.totalAmount);
+      if (extracted.calculationDate && !calculationDate) setCalculationDate(extracted.calculationDate);
+      if (extracted.loanAmount && !loanAmount) setLoanAmount(extracted.loanAmount);
+      if (extracted.sanctionDate && !sanctionDate) setSanctionDate(extracted.sanctionDate);
+      if (extracted.securityDescription && !securityDescription) setSecurityDescription(extracted.securityDescription);
+      if (extracted.npaDate && !npaDate) setNpaDate(extracted.npaDate);
+      if (extracted.propertyDetails && !propertyDetails) setPropertyDetails(extracted.propertyDetails);
+      if (extracted.factsNarrative && !factsNarrative) setFactsNarrative(extracted.factsNarrative);
+      // The wizard always starts with one blank defendant row — only fill it in if the user
+      // hasn't already named a defendant there, same "never overwrite" rule as every other field.
+      if (extracted.defendantName && defendants.length === 1 && !defendants[0].name.trim()) {
+        setDefendants([
+          {
+            ...defendants[0],
+            name: extracted.defendantName,
+            address: extracted.defendantAddress || defendants[0].address,
+            type: extracted.defendantType === 'institution' ? 'institution' : 'individual',
+          },
+        ]);
+      }
+      setRecallNoticeExtractState('done');
+    } catch (err) {
+      if (err instanceof NoTextLayerError) {
+        setRecallNoticeExtractError(
+          "This looks like a scanned document — text extraction only works with text-based PDFs for now. Try running it through a free online OCR/text-conversion tool and re-uploading the result, or fill in the details below manually."
+        );
+      } else if (err instanceof ApiError && err.status === 402) {
+        setRecallNoticeExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
+      } else if (err instanceof ApiError) {
+        setRecallNoticeExtractError(err.message);
+      } else {
+        setRecallNoticeExtractError("Couldn't read that file — please make sure it's a PDF and try again.");
+      }
+      setRecallNoticeExtractState('error');
+    }
+  };
 
   const selectedBench = drtBenchLocations.find((b) => b.id === benchId);
 
@@ -740,6 +800,41 @@ export function DrtOaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
         {step === 4 && (
           <div>
             <h3 className="step-heading">3. Jurisdiction of the Tribunal</h3>
+            <div style={{ marginBottom: 'var(--space-5)' }}>
+              <input
+                ref={recallNoticeFileInputRef}
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  e.target.value = '';
+                  if (file) handleRecallNoticeFileSelected(file);
+                }}
+              />
+              <button
+                type="button"
+                className="para-btn"
+                onClick={() => recallNoticeFileInputRef.current?.click()}
+                disabled={recallNoticeExtractState === 'extracting'}
+              >
+                {recallNoticeExtractState === 'extracting' ? 'Reading notice…' : 'Fill from Loan Recall Notice (PDF)'}
+              </button>
+              <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                Only text-based PDFs are supported for now, not scanned copies. This fills in blank fields here and
+                on the Facts and Amount due steps — review everything before continuing.
+              </p>
+              {recallNoticeExtractState === 'done' && (
+                <p className="step-help" style={{ color: 'var(--status-safe-text)', margin: 'var(--space-1) 0 0' }}>
+                  Filled in from the notice — please check these before continuing.
+                </p>
+              )}
+              {recallNoticeExtractState === 'error' && recallNoticeExtractError && (
+                <p className="step-help" style={{ color: 'var(--status-danger-text)', margin: 'var(--space-1) 0 0' }}>
+                  {recallNoticeExtractError}
+                </p>
+              )}
+            </div>
             <div className="form-grid">
               <label className="form-field">
                 <span>Place of execution of the Loan Agreement</span>

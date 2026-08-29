@@ -118,7 +118,7 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
     } catch (err) {
       if (err instanceof NoTextLayerError) {
         setFirExtractError(
-          "This looks like a scanned FIR — text extraction only works with text-based PDFs for now. Please fill in the details below manually."
+          "This looks like a scanned FIR — text extraction only works with text-based PDFs for now. Try running it through a free online OCR/text-conversion tool and re-uploading the result, or fill in the details below manually."
         );
       } else if (err instanceof ApiError && err.status === 402) {
         setFirExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
