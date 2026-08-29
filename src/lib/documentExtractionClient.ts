@@ -70,3 +70,15 @@ export interface OaLoanRecallExtraction {
 export function extractOaLoanRecallFromText(text: string, token: string): Promise<OaLoanRecallExtraction> {
   return postExtraction('extract-oa-loan-recall', text, token);
 }
+
+export interface AppealOrderExtraction {
+  orderDate: string;
+  appellantName: string;
+  respondentName: string;
+  appellantAge: string;
+  appellantAddress: string;
+}
+
+export function extractAppealOrderFromText(text: string, token: string): Promise<AppealOrderExtraction> {
+  return postExtraction('extract-appeal-order', text, token);
+}

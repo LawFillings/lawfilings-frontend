@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { AppealRouteSelector } from '../components/AppealRouteSelector';
 import { DeadlineCalculator } from '../components/DeadlineCalculator';
@@ -19,6 +19,8 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
+import { extractAppealOrderFromText } from '../lib/documentExtractionClient';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { AppealGroup, UserRole } from '../types';
 
@@ -61,6 +63,38 @@ export function AppealWizard({ group, onBack, onOpenCheckout, onOpenPricing }: P
   const [draftId, setDraftId] = useState<string | null>(null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [orderExtractState, setOrderExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
+  const [orderExtractError, setOrderExtractError] = useState<string | null>(null);
+  const orderFileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleOrderFileSelected = async (file: File) => {
+    if (!token) return;
+    setOrderExtractState('extracting');
+    setOrderExtractError(null);
+    try {
+      const text = await extractTextFromPdf(file);
+      const extracted = await extractAppealOrderFromText(text, token);
+      if (extracted.orderDate && !orderDate) setOrderDate(extracted.orderDate);
+      if (extracted.appellantName && !appellantName) setAppellantName(extracted.appellantName);
+      if (extracted.respondentName && !respondentName) setRespondentName(extracted.respondentName);
+      if (extracted.appellantAge && !appellantAge) setAppellantAge(extracted.appellantAge);
+      if (extracted.appellantAddress && !appellantAddress) setAppellantAddress(extracted.appellantAddress);
+      setOrderExtractState('done');
+    } catch (err) {
+      if (err instanceof NoTextLayerError) {
+        setOrderExtractError(
+          "This looks like a scanned document — text extraction only works with text-based PDFs for now. Try running it through a free online OCR/text-conversion tool and re-uploading the result, or fill in the details below manually."
+        );
+      } else if (err instanceof ApiError && err.status === 402) {
+        setOrderExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
+      } else if (err instanceof ApiError) {
+        setOrderExtractError(err.message);
+      } else {
+        setOrderExtractError("Couldn't read that file — please make sure it's a PDF and try again.");
+      }
+      setOrderExtractState('error');
+    }
+  };
 
   const resolvedCaseType = resolvedId ? caseTypes.find((ct) => ct.id === resolvedId) ?? null : null;
 
@@ -246,6 +280,42 @@ export function AppealWizard({ group, onBack, onOpenCheckout, onOpenPricing }: P
                 ? `Standard period is ${resolvedCaseType.limitationDays} days, extendable by up to ${resolvedCaseType.condonableExtensionDays} more.`
                 : `Standard period is ${resolvedCaseType.limitationDays} days. This can be extended on sufficient cause shown, with no fixed outer limit — but don't treat that as a safety net.`}
             </p>
+            <div style={{ marginBottom: 'var(--space-5)' }}>
+              <input
+                ref={orderFileInputRef}
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  e.target.value = '';
+                  if (file) handleOrderFileSelected(file);
+                }}
+              />
+              <button
+                type="button"
+                className="para-btn"
+                onClick={() => orderFileInputRef.current?.click()}
+                disabled={orderExtractState === 'extracting'}
+              >
+                {orderExtractState === 'extracting' ? 'Reading order…' : 'Fill from the order appealed against (PDF)'}
+              </button>
+              <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                Only text-based PDFs are supported for now, not scanned copies. This fills in the order date
+                below and the Appellant/Respondent names on the Grounds step — review everything before
+                continuing.
+              </p>
+              {orderExtractState === 'done' && (
+                <p className="step-help" style={{ color: 'var(--status-safe-text)', margin: 'var(--space-1) 0 0' }}>
+                  Filled in from the order — please check these before continuing.
+                </p>
+              )}
+              {orderExtractState === 'error' && orderExtractError && (
+                <p className="step-help" style={{ color: 'var(--status-danger-text)', margin: 'var(--space-1) 0 0' }}>
+                  {orderExtractError}
+                </p>
+              )}
+            </div>
             <label className="field-label" htmlFor="order-date">
               Date of order
             </label>
@@ -303,11 +373,11 @@ export function AppealWizard({ group, onBack, onOpenCheckout, onOpenPricing }: P
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Your age</span>
+                <span>Appellant's age</span>
                 <input type="text" value={appellantAge} onChange={(e) => setAppellantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Your address</span>
+                <span>Appellant's address</span>
                 <input type="text" value={appellantAddress} onChange={(e) => setAppellantAddress(e.target.value)} />
               </label>
               <label className="form-field">
