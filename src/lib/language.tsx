@@ -10,9 +10,11 @@ import { ta } from './translations/ta';
 import { te } from './translations/te';
 import { kn } from './translations/kn';
 import { ml } from './translations/ml';
+import { or } from './translations/or';
+import { ur } from './translations/ur';
 import type { Translations } from './translations/en';
 
-export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn' | 'mr' | 'ta' | 'te' | 'kn' | 'ml';
+export type Language = 'en' | 'hi' | 'pa' | 'gu' | 'as' | 'bn' | 'mr' | 'ta' | 'te' | 'kn' | 'ml' | 'or' | 'ur';
 
 export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'en', label: 'English' },
@@ -26,9 +28,13 @@ export const LANGUAGES: { id: Language; label: string }[] = [
   { id: 'te', label: 'తెలుగు' },
   { id: 'kn', label: 'ಕನ್ನಡ' },
   { id: 'ml', label: 'മലയാളം' },
+  { id: 'or', label: 'ଓଡ଼ିଆ' },
+  { id: 'ur', label: 'اردو' },
 ];
 
-const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn, mr, ta, te, kn, ml };
+const RTL_LANGUAGES: ReadonlySet<Language> = new Set(['ur']);
+
+const DICTIONARIES: Record<Language, Translations> = { en, hi, pa, gu, as, bn, mr, ta, te, kn, ml, or, ur };
 
 const STORAGE_KEY = 'legalassist:language';
 
@@ -54,6 +60,11 @@ export function LanguageProvider({ children }: { children: ReactNode }) {
 
   useEffect(() => {
     localStorage.setItem(STORAGE_KEY, language);
+  }, [language]);
+
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = RTL_LANGUAGES.has(language) ? 'rtl' : 'ltr';
   }, [language]);
 
   return (

@@ -57,7 +57,7 @@
   font-size: 14px;
   font-weight: 500;
   color: var(--text-secondary);
-  text-align: left;
+  text-align: start;
   text-decoration: none;
   padding: var(--space-2) var(--space-2);
   border-radius: var(--radius-sm);
@@ -87,7 +87,7 @@
 }
 
 .app-sidebar-sublink {
-  padding-left: calc(var(--space-2) + var(--space-4));
+  padding-inline-start: calc(var(--space-2) + var(--space-4));
   font-size: 13px;
   color: var(--text-muted);
 }
@@ -146,4 +146,19 @@
   .app-sidebar {
     transition: none;
   }
+}
+
+/* RTL (Urdu): the drawer opens from the reading-start edge, which is the right side in RTL —
+   flip the anchor, closed-state offscreen direction, and border side to match. */
+:root[dir='rtl'] .app-sidebar {
+  left: auto;
+  right: 0;
+  border-right: none;
+  border-left: 1px solid var(--line-soft);
+  transform: translateX(100%);
+}
+
+:root[dir='rtl'] .app-sidebar.open {
+  transform: translateX(0);
+  box-shadow: -2px 0 16px rgba(0, 0, 0, 0.15);
 }

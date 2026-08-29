@@ -71,14 +71,14 @@
 
 .top-nav-caret {
   font-size: 10px;
-  margin-left: 4px;
+  margin-inline-start: 4px;
   color: rgba(255, 255, 255, 0.55);
 }
 
 .top-nav-dropdown-menu {
   position: absolute;
   top: 100%;
-  left: 0;
+  inset-inline-start: 0;
   display: flex;
   flex-direction: column;
   gap: var(--space-1);
@@ -105,14 +105,14 @@
 /* The "More" dropdown sits near the right end of the links row — right-align its panel so it
    doesn't spill past the bar's edge on narrower desktop widths. */
 .top-nav-dropdown-menu-right {
-  left: auto;
-  right: 0;
+  inset-inline-start: auto;
+  inset-inline-end: 0;
 }
 
 .top-nav-dropdown-item {
   display: block;
   width: 100%;
-  text-align: left;
+  text-align: start;
   border: none;
   background: none;
   font-size: 14px;
