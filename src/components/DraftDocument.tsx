@@ -5,6 +5,7 @@ import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import { Table, TableRow, TableHeader, TableCell } from '@tiptap/extension-table';
 import { exportDraftAsPdf } from '../lib/exportPdf';
+import { exportDraftAsDocx } from '../lib/exportDocx';
 import './DraftDocument.css';
 
 // Adds a data-party-role attribute so the borderless name/label cells used by the cause-title
@@ -189,6 +190,13 @@ export function DraftDocument({ title, subtitle, sections, causeTitleHtml }: Dra
     exportDraftAsPdf(title, subtitle ?? '', editor.getJSON(), filename, printSettings, Boolean(causeTitleHtml));
   };
 
+  // Word gives the user full control over page setup at print time — the paper actually loaded
+  // in their printer, margins, zoom — which a generated PDF's fixed page size can't offer.
+  const handleExportDocx = () => {
+    const filename = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
+    void exportDraftAsDocx(title, subtitle ?? '', editor.getJSON(), filename, printSettings, Boolean(causeTitleHtml));
+  };
+
   // Only this document (identified by printRootId) should end up on paper, even when a wizard
   // renders several DraftDocument instances on the same page (e.g. Index/Application/Affidavit).
   // The browser's own "paper size" dropdown still overrides the @page size suggestion below on
@@ -220,6 +228,9 @@ export function DraftDocument({ title, subtitle, sections, causeTitleHtml }: Dra
       <div className="draft-doc-toolbar">
         <button className="para-btn" onClick={handleExport}>
           Download PDF
+        </button>
+        <button className="para-btn" onClick={handleExportDocx}>
+          Download Word
         </button>
         <button className="para-btn" onClick={handlePrint}>
           Print

@@ -15,6 +15,7 @@
     "@tiptap/extension-underline": "^3.29.2",
     "@tiptap/react": "^3.29.2",
     "@tiptap/starter-kit": "^3.29.2",
+    "docx": "^9.7.1",
     "jspdf": "^4.2.1",
     "pdfjs-dist": "^6.2.108",
     "react": "^19.2.7",
