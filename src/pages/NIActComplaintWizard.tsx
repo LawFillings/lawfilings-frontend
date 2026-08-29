@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
-import { buildCauseTitleHtml, buildVerificationSection, buildDocumentListParagraphs } from '../lib/legalDocumentFormat';
+import { buildCauseTitleHtml, buildVerificationSection, buildDocumentListParagraphs, toThatClause } from '../lib/legalDocumentFormat';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, underlyingDebtNatureOptions, chequeDishonourReasonOptions } from '../data/mockData';
@@ -174,26 +174,32 @@ export function NIActComplaintWizard({ onBack, onOpenCheckout, onOpenPricing }: 
     {
       heading: 'Facts',
       paragraphs: [
-        fillTemplate(clauseByCode('NC-01').bodyTemplate, {
-          debt_amount: debtAmount,
-          debt_nature: debtNatureLabel.toLowerCase(),
-          cheque_number: chequeNumber,
-          cheque_date: chequeDate,
-          cheque_amount: chequeAmount,
-          drawee_bank: draweeBank,
-          drawee_branch: draweeBranch,
-          drawer_account: drawerAccount,
-        }),
-        fillTemplate(clauseByCode('NC-02').bodyTemplate, {
-          presentation_date: presentationDate,
-          dishonour_date: dishonourDate,
-          dishonour_reason: dishonourReasonLabel,
-        }),
-        fillTemplate(clauseByCode('NC-03').bodyTemplate, {
-          notice_date: noticeDate,
-          notice_service_detail: noticeServiceDetail,
-        }),
-        clauseByCode('NC-04').bodyTemplate,
+        toThatClause(
+          fillTemplate(clauseByCode('NC-01').bodyTemplate, {
+            debt_amount: debtAmount,
+            debt_nature: debtNatureLabel.toLowerCase(),
+            cheque_number: chequeNumber,
+            cheque_date: chequeDate,
+            cheque_amount: chequeAmount,
+            drawee_bank: draweeBank,
+            drawee_branch: draweeBranch,
+            drawer_account: drawerAccount,
+          })
+        ),
+        toThatClause(
+          fillTemplate(clauseByCode('NC-02').bodyTemplate, {
+            presentation_date: presentationDate,
+            dishonour_date: dishonourDate,
+            dishonour_reason: dishonourReasonLabel,
+          })
+        ),
+        toThatClause(
+          fillTemplate(clauseByCode('NC-03').bodyTemplate, {
+            notice_date: noticeDate,
+            notice_service_detail: noticeServiceDetail,
+          })
+        ),
+        toThatClause(clauseByCode('NC-04').bodyTemplate),
       ],
       incomplete: !debtNature || !chequeNumber || !chequeDate || !dishonourDate || !noticeDate,
     },
@@ -203,9 +209,11 @@ export function NIActComplaintWizard({ onBack, onOpenCheckout, onOpenPricing }: 
     {
       heading: 'Jurisdiction',
       paragraphs: [
-        `The cheque was issued, presented, and dishonoured, and the notice under Section 138 was issued, within the territorial jurisdiction of this Hon'ble Court at ${
-          courtCity || '[City]'
-        }, which is accordingly competent to entertain, try, and decide this complaint.`,
+        toThatClause(
+          `The cheque was issued, presented, and dishonoured, and the notice under Section 138 was issued, within the territorial jurisdiction of this Hon'ble Court at ${
+            courtCity || '[City]'
+          }, which is accordingly competent to entertain, try, and decide this complaint.`
+        ),
       ],
     },
     {

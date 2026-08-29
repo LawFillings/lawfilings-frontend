@@ -12,6 +12,7 @@ import {
   buildFiledByBlock,
   buildDocumentListParagraphs,
   withPeriod,
+  toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { findConsumerJurisdictionCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
@@ -132,22 +133,22 @@ export function ConsumerComplaintWizard({ onBack, onOpenCaseLawSearch, onOpenChe
   const draftSections: DraftSection[] = [
     {
       heading: 'Jurisdiction',
-      paragraphs: [clauseByCode('CC-01').bodyTemplate],
+      paragraphs: [toThatClause(clauseByCode('CC-01').bodyTemplate)],
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
       : []),
     {
       heading: 'Statement of facts',
-      paragraphs: [fillTemplate(clauseByCode('CC-02').bodyTemplate, { facts_narrative: facts })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('CC-02').bodyTemplate, { facts_narrative: facts }))],
       incomplete: !facts,
     },
     ...(verifiedPrecedents.length > 0
       ? [
           {
             heading: 'Case law relied upon',
-            paragraphs: verifiedPrecedents.map(
-              (p) => `${p.caseTitle}, ${p.citation} (${p.court}, ${p.year}). (Source: ${p.sourceUrl})`
+            paragraphs: verifiedPrecedents.map((p) =>
+              toThatClause(`${p.caseTitle}, ${p.citation} (${p.court}, ${p.year}). (Source: ${p.sourceUrl})`)
             ),
           },
         ]

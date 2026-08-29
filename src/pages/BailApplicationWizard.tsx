@@ -2,7 +2,7 @@ import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
-import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs } from '../lib/legalDocumentFormat';
+import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, toThatClause } from '../lib/legalDocumentFormat';
 import { findBailCitations, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, bailTypeOptions, courtLevelOptions, bailGroundsOptions } from '../data/mockData';
@@ -250,12 +250,14 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
   const draftSections: DraftSection[] = [
     {
       heading: 'Case details',
-      paragraphs: [fillTemplate(clauseByCode('BA-01').bodyTemplate, { fir_number: firNumber, police_station: policeStation, bns_sections: bnsSections })],
+      paragraphs: [
+        toThatClause(fillTemplate(clauseByCode('BA-01').bodyTemplate, { fir_number: firNumber, police_station: policeStation, bns_sections: bnsSections })),
+      ],
       incomplete: !firNumber || !policeStation || !bnsSections,
     },
     {
       heading: 'Facts alleged in the FIR',
-      paragraphs: [firFacts.trim() || '[Describe the facts/allegations mentioned in the FIR]'],
+      paragraphs: [toThatClause(firFacts.trim() || '[Describe the facts/allegations mentioned in the FIR]')],
       incomplete: !firFacts.trim(),
     },
     ...(citations.length > 0
@@ -263,12 +265,12 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
       : []),
     {
       heading: 'Grounds for bail',
-      paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs : ['[Select grounds for bail]'],
+      paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs.map(toThatClause) : ['[Select grounds for bail]'],
       incomplete: groundsParagraphs.length === 0,
     },
     {
       heading: 'Undertaking',
-      paragraphs: [fillTemplate(clauseByCode('BA-03').bodyTemplate, { jurisdiction_area: jurisdictionArea })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('BA-03').bodyTemplate, { jurisdiction_area: jurisdictionArea }))],
       incomplete: !jurisdictionArea,
     },
     {

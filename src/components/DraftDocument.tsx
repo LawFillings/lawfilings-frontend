@@ -4,7 +4,7 @@ import StarterKit from '@tiptap/starter-kit';
 import Underline from '@tiptap/extension-underline';
 import TextAlign from '@tiptap/extension-text-align';
 import { Table, TableRow, TableHeader, TableCell } from '@tiptap/extension-table';
-import { exportPlainTextAsPdf } from '../lib/exportPdf';
+import { exportDraftAsPdf } from '../lib/exportPdf';
 import './DraftDocument.css';
 
 // Adds a data-party-role attribute so the borderless name/label cells used by the cause-title
@@ -186,8 +186,7 @@ export function DraftDocument({ title, subtitle, sections, causeTitleHtml }: Dra
 
   const handleExport = () => {
     const filename = title.toLowerCase().replace(/[^a-z0-9]+/g, '-').replace(/^-|-$/g, '');
-    const bodyText = editor.getText({ blockSeparator: '\n\n' });
-    exportPlainTextAsPdf(title, subtitle ?? '', bodyText, filename);
+    exportDraftAsPdf(title, subtitle ?? '', editor.getJSON(), filename, printSettings, Boolean(causeTitleHtml));
   };
 
   // Only this document (identified by printRootId) should end up on paper, even when a wizard
@@ -195,9 +194,12 @@ export function DraftDocument({ title, subtitle, sections, causeTitleHtml }: Dra
   // The browser's own "paper size" dropdown still overrides the @page size suggestion below on
   // some browsers/printers — this sets the default, not a hard guarantee.
   const handlePrint = () => {
+    // Legal-size filings conventionally run wider side margins than A4/Letter for binding/
+    // annotation space — matches the same per-page-size rule applied to PDF export (exportPdf.ts).
+    const horizontalMargin = printSettings.pageSize === 'legal' ? '3cm' : '1in';
     const styleEl = document.createElement('style');
     styleEl.textContent = `
-      @page { size: ${printSettings.pageSize}; margin: 1in; }
+      @page { size: ${printSettings.pageSize}; margin: 1in ${horizontalMargin}; }
       @media print {
         body * { visibility: hidden; }
         #${printRootId}, #${printRootId} * { visibility: visible; }

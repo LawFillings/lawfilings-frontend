@@ -8,6 +8,7 @@ import {
   buildFiledByBlock,
   buildDocumentListParagraphs,
   partyLabels,
+  toThatClause,
 } from '../lib/legalDocumentFormat';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { useAuth } from '../lib/auth';
@@ -120,15 +121,19 @@ export function ExecutionWizard({ caseType, onBack, onOpenCheckout, onOpenPricin
     {
       heading: 'Background',
       paragraphs: [
-        `This Hon'ble forum, by order dated ${orderDate || '[order date]'} in ${orderNumber || '[case number]'}, directed the Respondent to ${reliefOrdered || '[relief ordered — not yet entered]'}.`,
+        toThatClause(
+          `This Hon'ble forum, by order dated ${orderDate || '[order date]'} in ${orderNumber || '[case number]'}, directed the Respondent to ${reliefOrdered || '[relief ordered — not yet entered]'}.`
+        ),
       ],
       incomplete: !orderDate || !reliefOrdered,
     },
     {
       heading: 'Non-compliance',
       paragraphs: [
-        nonComplianceDetails ||
-          'Despite the above order, the Respondent has failed to comply, as detailed below. [not yet entered]',
+        toThatClause(
+          nonComplianceDetails ||
+            'Despite the above order, the Respondent has failed to comply, as detailed below. [not yet entered]'
+        ),
       ],
       incomplete: !nonComplianceDetails,
     },

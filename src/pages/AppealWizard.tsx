@@ -11,6 +11,7 @@ import {
   buildFiledByBlock,
   buildDocumentListParagraphs,
   withPeriod,
+  toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
@@ -177,9 +178,11 @@ export function AppealWizard({ group, onBack, onOpenCheckout, onOpenPricing }: P
     {
       heading: 'Grounds of appeal',
       paragraphs: [
-        groundsClause
-          ? fillTemplate(groundsClause.bodyTemplate, { order_date: orderDate, grounds_of_appeal: groundsText })
-          : groundsText || '[grounds not yet entered]',
+        toThatClause(
+          groundsClause
+            ? fillTemplate(groundsClause.bodyTemplate, { order_date: orderDate, grounds_of_appeal: groundsText })
+            : groundsText || '[grounds not yet entered]'
+        ),
       ],
       incomplete: !groundsText,
     },

@@ -778,7 +778,7 @@ export const clauses: ClauseDef[] = [
     category: 'case_details',
     title: 'Case details',
     bodyTemplate:
-      'FIR No. {{fir_number}}, registered at {{police_station}} Police Station, under Sections {{bns_sections}} of the Bharatiya Nyaya Sanhita, 2023.',
+      'The present case arises out of FIR No. {{fir_number}}, registered at {{police_station}} Police Station under Sections {{bns_sections}} of the Bharatiya Nyaya Sanhita, 2023.',
     plainLanguageExplanation: 'The FIR number, police station, and the sections the accused has been booked under.',
   },
   {

@@ -5,7 +5,7 @@ import { ActReferencePanel } from '../components/ActReferencePanel';
 import { findRelevantActSections, findCommercialCourtsActCitations, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
-import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod } from '../lib/legalDocumentFormat';
+import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod, toThatClause } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, moneyRecoveryCauseOptions } from '../data/mockData';
 import {
@@ -182,11 +182,11 @@ export function MoneyRecoverySuitWizard({ onBack, onOpenCheckout, onOpenPricing,
   const draftSections: DraftSection[] = [
     {
       heading: 'Jurisdiction',
-      paragraphs: [jurisdictionParagraph],
+      paragraphs: [toThatClause(jurisdictionParagraph)],
     },
     {
       heading: 'Cause of action',
-      paragraphs: [fillTemplate(clauseByCode('MRS-02').bodyTemplate, { facts_narrative: factsNarrative })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('MRS-02').bodyTemplate, { facts_narrative: factsNarrative }))],
       incomplete: !factsNarrative,
     },
     ...(citationMatches.length > 0
@@ -194,7 +194,7 @@ export function MoneyRecoverySuitWizard({ onBack, onOpenCheckout, onOpenPricing,
       : []),
     {
       heading: 'Valuation',
-      paragraphs: [fillTemplate(clauseByCode('MRS-03').bodyTemplate, { claim_amount: claimAmount })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('MRS-03').bodyTemplate, { claim_amount: claimAmount }))],
       incomplete: !claimAmount,
     },
     ...(qualifiesForCommercialCourt
@@ -202,11 +202,13 @@ export function MoneyRecoverySuitWizard({ onBack, onOpenCheckout, onOpenPricing,
           {
             heading: 'Pre-institution mediation',
             paragraphs: [
-              mediationStatus === 'urgent_relief'
-                ? "This suit contemplates urgent interim relief; pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 is therefore not required before institution."
-                : mediationStatus === 'completed'
-                  ? 'The Plaintiff has exhausted the remedy of pre-institution mediation under Section 12A of the Commercial Courts Act, 2015, and annexes the certificate of non-settlement herewith.'
-                  : 'Pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 has not yet been completed — this suit cannot be validly instituted until it is, unless urgent interim relief is genuinely being sought.',
+              toThatClause(
+                mediationStatus === 'urgent_relief'
+                  ? "This suit contemplates urgent interim relief; pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 is therefore not required before institution."
+                  : mediationStatus === 'completed'
+                    ? 'The Plaintiff has exhausted the remedy of pre-institution mediation under Section 12A of the Commercial Courts Act, 2015, and annexes the certificate of non-settlement herewith.'
+                    : 'Pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 has not yet been completed — this suit cannot be validly instituted until it is, unless urgent interim relief is genuinely being sought.'
+              ),
             ],
             incomplete: mediationStatus === null || mediationStatus === 'not_yet',
           },

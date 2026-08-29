@@ -6,7 +6,7 @@ import { ActReferencePanel } from '../components/ActReferencePanel';
 import { findRelevantActSections, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
-import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod } from '../lib/legalDocumentFormat';
+import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod, toThatClause } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, moneyRecoveryCauseOptions } from '../data/mockData';
 import {
@@ -129,11 +129,11 @@ export function SummarySuitWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
   const draftSections: DraftSection[] = [
     {
       heading: 'Jurisdiction and summary procedure',
-      paragraphs: [clauseByCode('SS-01').bodyTemplate],
+      paragraphs: [toThatClause(clauseByCode('SS-01').bodyTemplate)],
     },
     {
       heading: 'Nature of the written contract or instrument',
-      paragraphs: [fillTemplate(clauseByCode('SS-02').bodyTemplate, { facts_narrative: factsNarrative })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('SS-02').bodyTemplate, { facts_narrative: factsNarrative }))],
       incomplete: !factsNarrative,
     },
     ...(citationMatches.length > 0
@@ -141,7 +141,7 @@ export function SummarySuitWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
       : []),
     {
       heading: 'Valuation',
-      paragraphs: [fillTemplate(clauseByCode('SS-03').bodyTemplate, { claim_amount: claimAmount })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('SS-03').bodyTemplate, { claim_amount: claimAmount }))],
       incomplete: !claimAmount,
     },
     {

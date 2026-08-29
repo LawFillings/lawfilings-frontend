@@ -122,6 +122,25 @@ export function withPeriod(text: string): string {
   return /[.!?]$/.test(t) ? t : `${t}.`;
 }
 
+/** Prefixes a pleading paragraph with "That " — the standard opening for numbered averments in
+ *  applications before Indian courts/tribunals (e.g. "That the Applicant has been cooperating
+ *  with the investigation"). Idempotent — won't double up if the text already starts with "That".
+ *  Lowercases the sentence's own leading word first when it's one of the common sentence-starters
+ *  ("The Applicant..." -> "that the Applicant...") so the joined sentence reads naturally; any
+ *  other leading word (a name, an acronym, a number) is left exactly as written, since guessing at
+ *  its capitalisation risks mangling a proper noun. Not for the Prayer, party-title, or signature
+ *  blocks, which conventionally don't take a "That" prefix. */
+export function toThatClause(text: string): string {
+  const t = text.trim();
+  if (!t) return t;
+  const withoutPrefix = t.replace(/^that\s+/i, '');
+  const lowerStarters = /^(The|This|It|A|An|His|Her|Their|There|They|Bail|No)\b/;
+  const adjusted = lowerStarters.test(withoutPrefix)
+    ? withoutPrefix.charAt(0).toLowerCase() + withoutPrefix.slice(1)
+    : withoutPrefix;
+  return `That ${adjusted}`;
+}
+
 /**
  * Renders the standard cause-title block as an HTML fragment, meant to be prepended into
  * DraftDocument's editable content — matching an actual filed, notarised DRT OA we were shown

@@ -10,6 +10,7 @@ import {
   buildFiledByBlock,
   buildDocumentListParagraphs,
   withPeriod,
+  toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
@@ -119,18 +120,20 @@ export function NcltSection9Wizard({ onBack, onOpenCheckout, onOpenPricing }: Pr
   const draftSections: DraftSection[] = [
     {
       heading: 'Jurisdiction',
-      paragraphs: [fillTemplate(clauseByCode('NCLT-01').bodyTemplate, { debtor_registered_office: registeredOffice })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('NCLT-01').bodyTemplate, { debtor_registered_office: registeredOffice }))],
       incomplete: !registeredOffice,
     },
     {
       heading: 'Default and demand notice',
       paragraphs: [
-        fillTemplate(clauseByCode('NCLT-02').bodyTemplate, {
-          default_amount: defaultAmount,
-          nature_of_debt: natureOfDebt,
-          notice_date: noticeDate,
-          delivery_date: deliveryDate,
-        }),
+        toThatClause(
+          fillTemplate(clauseByCode('NCLT-02').bodyTemplate, {
+            default_amount: defaultAmount,
+            nature_of_debt: natureOfDebt,
+            notice_date: noticeDate,
+            delivery_date: deliveryDate,
+          })
+        ),
       ],
       incomplete: !defaultAmount || !natureOfDebt,
     },
@@ -139,7 +142,7 @@ export function NcltSection9Wizard({ onBack, onOpenCheckout, onOpenPricing }: Pr
       : []),
     {
       heading: 'Affidavit',
-      paragraphs: [fillTemplate(clauseByCode('NCLT-03').bodyTemplate, { applicant_name: applicantName })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('NCLT-03').bodyTemplate, { applicant_name: applicantName }))],
       incomplete: !applicantName,
     },
     {

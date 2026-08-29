@@ -190,12 +190,17 @@ export function findBailCitations(bailType: 'regular' | 'regular_sessions' | 'an
 }
 
 /** Formats matched Act sections as citation paragraphs for a "Statutory provisions relied upon"
- * draft section — one paragraph per match, naming the section, Act, and heading the way a real
- * pleading would cite it. The India Code source URL (act.sourceUrl) is deliberately left out of
- * this — it's for verifying the text was sourced correctly while drafting, not something a filed
- * document itself should contain. */
+ * draft section — one paragraph per match, phrased as a numbered pleading averment ("That the
+ * provisions of Section ... are applicable...") per the standard convention for applications
+ * before Indian courts/tribunals, quoting the section's own heading rather than paraphrasing it.
+ * The India Code source URL (act.sourceUrl) is deliberately left out of this — it's for verifying
+ * the text was sourced correctly while drafting, not something a filed document itself should
+ * contain. */
 export function buildCitationParagraphs(matches: ActReferenceMatch[]): string[] {
-  return matches.map(({ act, section }) => `Section ${section.sectionNo}, ${act.shortTitle} — ${section.heading}.`);
+  return matches.map(({ act, section }) => {
+    const heading = section.heading.replace(/\.$/, '');
+    return `That the provisions of Section ${section.sectionNo} of ${act.shortTitle}, which deal with "${heading}", are applicable to the present case.`;
+  });
 }
 
 export interface CaseLawCitation {

@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
-import { buildCauseTitleHtml, buildVerificationSection } from '../lib/legalDocumentFormat';
+import { buildCauseTitleHtml, buildVerificationSection, toThatClause } from '../lib/legalDocumentFormat';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, mediationDisputeNatureOptions } from '../data/mockData';
@@ -117,12 +117,16 @@ export function MediationApplicationWizard({ onBack, onOpenCheckout, onOpenPrici
     {
       heading: 'Details of parties',
       paragraphs: [
-        `Applicant: ${applicantName || '[Applicant Name]'}, ${applicantAddress || '[Applicant Address]'}${
-          applicantPhone ? `, Phone: ${applicantPhone}` : ''
-        }${applicantEmail ? `, Email: ${applicantEmail}` : ''}.`,
-        `Opposite party: ${oppositePartyList.join('; ') || '[Opposite Party Name]'}, ${
-          oppositePartyAddress || '[Opposite Party Address]'
-        }.`,
+        toThatClause(
+          `Applicant: ${applicantName || '[Applicant Name]'}, ${applicantAddress || '[Applicant Address]'}${
+            applicantPhone ? `, Phone: ${applicantPhone}` : ''
+          }${applicantEmail ? `, Email: ${applicantEmail}` : ''}.`
+        ),
+        toThatClause(
+          `Opposite party: ${oppositePartyList.join('; ') || '[Opposite Party Name]'}, ${
+            oppositePartyAddress || '[Opposite Party Address]'
+          }.`
+        ),
       ],
     },
     {
@@ -139,7 +143,7 @@ export function MediationApplicationWizard({ onBack, onOpenCheckout, onOpenPrici
         }),
         fillTemplate(clauseByCode('MA-03').bodyTemplate, { resolution_attempt: resolutionAttempt }),
         ...(additionalFacts.trim() ? [additionalFacts.trim()] : []),
-      ],
+      ].map(toThatClause),
       incomplete: !disputeNature || !transactionDate || !transactionAmount || !defaultDescription,
     },
     ...(citations.length > 0
@@ -147,20 +151,22 @@ export function MediationApplicationWizard({ onBack, onOpenCheckout, onOpenPrici
       : []),
     {
       heading: 'Quantum of claim',
-      paragraphs: [fillTemplate(clauseByCode('MA-04').bodyTemplate, { claim_amount: claimAmount })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('MA-04').bodyTemplate, { claim_amount: claimAmount }))],
       incomplete: !claimAmount,
     },
     {
       heading: 'Territorial jurisdiction',
-      paragraphs: [fillTemplate(clauseByCode('MA-05').bodyTemplate, { jurisdiction_place: jurisdictionPlace })],
+      paragraphs: [toThatClause(fillTemplate(clauseByCode('MA-05').bodyTemplate, { jurisdiction_place: jurisdictionPlace }))],
       incomplete: !jurisdictionPlace,
     },
     {
       heading: 'Details of fee paid',
       paragraphs: [
-        `An amount of Rs. 1,000/- has been paid to the Authority as the fee for this application, vide ${
-          feeReference || '[Demand Draft / online transaction reference]'
-        }, in accordance with Rule 3(1) of the Commercial Courts (Pre-Institution Mediation and Settlement) Rules, 2018.`,
+        toThatClause(
+          `An amount of Rs. 1,000/- has been paid to the Authority as the fee for this application, vide ${
+            feeReference || '[Demand Draft / online transaction reference]'
+          }, in accordance with Rule 3(1) of the Commercial Courts (Pre-Institution Mediation and Settlement) Rules, 2018.`
+        ),
       ],
     },
     {
