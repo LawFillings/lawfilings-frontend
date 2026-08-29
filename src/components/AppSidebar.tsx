@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useAuth } from '../lib/auth';
 import { useLanguage } from '../lib/language';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { BrandMark } from './BrandMark';
 import type { ActCategory } from '../pages/LawLibrary';
 import './AppSidebar.css';
 
@@ -31,8 +32,9 @@ interface Props {
 /**
  * Persistent left-hand navigation, present on every screen (unlike the old landing-page-only
  * nav bar). Collapses to a slide-in drawer behind TopMasthead's hamburger toggle below the mobile
- * breakpoint — see AppSidebar.css for the two layout modes. The brand mark itself lives in
- * TopMasthead, not here, so this component starts straight with the close button on mobile.
+ * breakpoint — see AppSidebar.css for the two layout modes. Carries its own brand mark at the top
+ * (same asset as TopMasthead's, just larger and with its wordmark on), since this drawer has no
+ * other "LawFilings" labelling of its own.
  */
 export function AppSidebar({
   isLandingPage,
@@ -79,6 +81,9 @@ export function AppSidebar({
 
       <aside className={isMobileMenuOpen ? 'app-sidebar open' : 'app-sidebar'}>
         <div className="app-sidebar-header">
+          <button className="app-sidebar-brand" onClick={go(onGoHome)} aria-label={t.landing.logo}>
+            <BrandMark size={72} wordmark className="app-sidebar-brand-mark" />
+          </button>
           <button className="app-mobile-close-btn" onClick={close} aria-label={t.nav.closeMenu}>
             ×
           </button>

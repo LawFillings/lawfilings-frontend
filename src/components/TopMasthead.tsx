@@ -1,6 +1,7 @@
 import { useAuth } from '../lib/auth';
 import { useLanguage } from '../lib/language';
 import { LanguageSwitcher } from './LanguageSwitcher';
+import { BrandMark } from './BrandMark';
 import './TopMasthead.css';
 
 // Real access control is enforced server-side (requireAdmin) — this only hides/shows the nav
@@ -48,6 +49,7 @@ export function TopMasthead({
           ☰
         </button>
         <button className="top-masthead-logo" onClick={onGoHome}>
+          <BrandMark size={44} wordmark className="top-masthead-brand-mark" />
           {t.landing.logo}
         </button>
       </div>

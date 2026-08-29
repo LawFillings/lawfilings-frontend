@@ -29,8 +29,17 @@
 
 .app-sidebar-header {
   display: flex;
-  justify-content: flex-end;
-  margin-bottom: var(--space-2);
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: var(--space-3);
+}
+
+.app-sidebar-brand {
+  display: inline-flex;
+  border: none;
+  background: none;
+  padding: 0;
+  line-height: 0;
 }
 
 .app-mobile-close-btn {

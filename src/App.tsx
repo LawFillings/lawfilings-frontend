@@ -37,6 +37,7 @@ import { AppSidebar } from './components/AppSidebar';
 import { TopMasthead } from './components/TopMasthead';
 import { TopNav } from './components/TopNav';
 import { DictationControl } from './components/DictationControl';
+import { BrandWatermark } from './components/BrandWatermark';
 import { SettingsProvider } from './lib/settings';
 import { AuthProvider, useAuth } from './lib/auth';
 import { LanguageProvider } from './lib/language';
@@ -326,6 +327,7 @@ function AppScreens() {
 
   return (
     <div className="app-root">
+      <BrandWatermark />
       <TopMasthead
         onGoHome={() => {
           goHome();
