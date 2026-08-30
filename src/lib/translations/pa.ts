@@ -41,8 +41,9 @@ export const pa: Translations = {
     hero: {
       eyebrow: 'ਕਾਨੂੰਨ ਲਾਇਬ੍ਰੇਰੀ, ਕਾਨੂੰਨੀ ਡਰਾਫਟਿੰਗ ਅਤੇ ਫਾਈਲਿੰਗ, ਤੁਹਾਡੇ ਲਈ ਤਿਆਰ',
       titleLine1: 'ਕਾਨੂੰਨ ਨੂੰ ਸਮਝੋ।',
-      titleLine2: 'ਆਪਣੀ ਫਾਈਲਿੰਗ ਤਿਆਰ ਕਰੋ।',
-      titleLine3: 'ਆਪਣੀ ਸਮਾਂ-ਸੀਮਾ ਜਾਣੋ।',
+      titleLine2: 'ਆਪਣੀ ਸਮਾਂ-ਸੀਮਾ ਜਾਣੋ।',
+      titleLine3: 'ਆਪਣੀ ਫਾਈਲਿੰਗ ਤਿਆਰ ਕਰੋ।',
+      titleLine4: 'ਆਪਣੇ ਮਾਮਲਿਆਂ ਦਾ ਪ੍ਰਬੰਧਨ ਕਰੋ।',
       sub: 'ਵਕੀਲਾਂ ਅਤੇ ਨਿਆਂ ਭਾਲਣ ਵਾਲਿਆਂ ਲਈ ਜ਼ਿਲਾ ਅਦਾਲਤਾਂ, ਕੰਜ਼ਿਊਮਰ ਫੋਰਮਾਂ, DRT/DRAT ਅਤੇ NCLT/NCLAT ਵਿੱਚ ਅਰਜ਼ੀਆਂ / ਹਲਫ਼ਨਾਮਿਆਂ ਦੀ ਫਾਈਲਿੰਗ ਅਤੇ ਕਾਨੂੰਨੀ ਮਾਮਲਿਆਂ ਨੂੰ ਸੰਭਾਲਣ ਲਈ ਇੱਕ ਮੰਚ।',
       startFiling: 'ਫਾਈਲਿੰਗ ਸ਼ੁਰੂ ਕਰੋ →',
       browseActs: 'ਕਾਨੂੰਨ ਲਾਇਬ੍ਰੇਰੀ ਦੇਖੋ — ਮੁਫ਼ਤ, ਬਿਨਾਂ ਖਾਤੇ ਦੇ',
@@ -306,6 +307,7 @@ export const pa: Translations = {
     savedOn: (date: string) => `${date} ਨੂੰ ਸੰਭਾਲਿਆ ਗਿਆ`,
     drafts: 'ਡਰਾਫਟ',
     versionStatus: (version: number, status: string) => `ਵਰਜਨ ${version} · ${status}`,
+    openInWizard: 'ਸੰਪਾਦਿਤ ਕਰਨ ਲਈ ਖੋਲ੍ਹੋ',
     caseStatus: 'ਮਾਮਲੇ ਦੀ ਸਥਿਤੀ',
     statusHelp: 'ਤੁਸੀਂ ਇਸਨੂੰ ਖੁਦ ਅੱਪਡੇਟ ਕਰਦੇ ਹੋ — ਇਹ ਐਪ ਆਪਣੇ-ਆਪ e-Courts ਜਾਂ ਕਾਜ਼ ਲਿਸਟ ਦੀ ਜਾਂਚ ਨਹੀਂ ਕਰਦਾ।',
     suggestedStatuses: {

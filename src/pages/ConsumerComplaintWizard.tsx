@@ -24,6 +24,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -46,42 +47,76 @@ interface DocEntry {
   pageNo: string;
 }
 
+interface SavedContent {
+  disputeType: string | null;
+  claimValue: number;
+  stateId: string;
+  district: string;
+  facts: string;
+  relief: string | null;
+  complainantName: string;
+  opponentName: string;
+  complainantAge: string;
+  complainantAddress: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  verificationPlace: string;
+  documentEntries: DocEntry[];
+}
+
 interface Props {
   onBack: () => void;
   onOpenCaseLawSearch?: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function ConsumerComplaintWizard({ onBack, onOpenCaseLawSearch, onOpenCheckout, onOpenPricing }: Props) {
+export function ConsumerComplaintWizard({
+  onBack,
+  onOpenCaseLawSearch,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [disputeType, setDisputeType] = useState<string | null>(null);
-  const [claimValue, setClaimValue] = useState(500000);
-  const [stateId, setStateId] = useState('');
-  const [district, setDistrict] = useState('');
-  const [facts, setFacts] = useState('');
-  const [relief, setRelief] = useState<string | null>(null);
-  const [complainantName, setComplainantName] = useState('');
-  const [opponentName, setOpponentName] = useState('');
-  const [complainantAge, setComplainantAge] = useState('');
-  const [complainantAddress, setComplainantAddress] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [disputeType, setDisputeType] = useState<string | null>(saved?.disputeType ?? null);
+  const [claimValue, setClaimValue] = useState(saved?.claimValue ?? 500000);
+  const [stateId, setStateId] = useState(saved?.stateId ?? '');
+  const [district, setDistrict] = useState(saved?.district ?? '');
+  const [facts, setFacts] = useState(saved?.facts ?? '');
+  const [relief, setRelief] = useState<string | null>(saved?.relief ?? null);
+  const [complainantName, setComplainantName] = useState(saved?.complainantName ?? '');
+  const [opponentName, setOpponentName] = useState(saved?.opponentName ?? '');
+  const [complainantAge, setComplainantAge] = useState(saved?.complainantAge ?? '');
+  const [complainantAddress, setComplainantAddress] = useState(saved?.complainantAddress ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
   const [precedents, setPrecedents] = useState<PrecedentRecord[]>([]);
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -89,7 +124,27 @@ export function ConsumerComplaintWizard({ onBack, onOpenCaseLawSearch, onOpenChe
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = { disputeType, claimValue, stateId, district, facts, relief, complainantName, opponentName };
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
+      disputeType,
+      claimValue,
+      stateId,
+      district,
+      facts,
+      relief,
+      complainantName,
+      opponentName,
+      complainantAge,
+      complainantAddress,
+      advocateName,
+      advocateAddress,
+      advocatePhone,
+      advocateEmail,
+      filingPlace,
+      filingDate,
+      verificationPlace,
+      documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-cc-complaint',
+    };
     try {
       if (caseId && draftId) {
         await casesClient.updateDraft(caseId, draftId, content, token);

@@ -12,6 +12,7 @@ import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractFirFromText } from '../lib/documentExtractionClient';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -20,6 +21,30 @@ const STEPS = ['Bail type', 'Court', 'Case & FIR details', 'Grounds for bail', '
 interface DocEntry {
   particulars: string;
   pageNo: string;
+}
+
+interface SavedContent {
+  bailType: 'regular' | 'anticipatory' | null;
+  courtLevel: string | null;
+  benchCity: string;
+  stateName: string;
+  applicantName: string;
+  applicantAge: string;
+  applicantAddress: string;
+  firNumber: string;
+  policeStation: string;
+  bnsSections: string;
+  firFacts: string;
+  selectedGrounds: string[];
+  additionalGrounds: string;
+  jurisdictionArea: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  documentEntries: DocEntry[];
 }
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-bail-application')!;
@@ -64,35 +89,47 @@ interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function BailApplicationWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [bailType, setBailType] = useState<'regular' | 'anticipatory' | null>(null);
-  const [courtLevel, setCourtLevel] = useState<string | null>(null);
-  const [benchCity, setBenchCity] = useState('');
-  const [stateName, setStateName] = useState('');
-  const [applicantName, setApplicantName] = useState('');
-  const [applicantAge, setApplicantAge] = useState('');
-  const [applicantAddress, setApplicantAddress] = useState('');
-  const [firNumber, setFirNumber] = useState('');
-  const [policeStation, setPoliceStation] = useState('');
-  const [bnsSections, setBnsSections] = useState('');
-  const [firFacts, setFirFacts] = useState('');
-  const [selectedGrounds, setSelectedGrounds] = useState<string[]>([]);
-  const [additionalGrounds, setAdditionalGrounds] = useState('');
-  const [jurisdictionArea, setJurisdictionArea] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [bailType, setBailType] = useState<'regular' | 'anticipatory' | null>(saved?.bailType ?? null);
+  const [courtLevel, setCourtLevel] = useState<string | null>(saved?.courtLevel ?? null);
+  const [benchCity, setBenchCity] = useState(saved?.benchCity ?? '');
+  const [stateName, setStateName] = useState(saved?.stateName ?? '');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
+  const [firNumber, setFirNumber] = useState(saved?.firNumber ?? '');
+  const [policeStation, setPoliceStation] = useState(saved?.policeStation ?? '');
+  const [bnsSections, setBnsSections] = useState(saved?.bnsSections ?? '');
+  const [firFacts, setFirFacts] = useState(saved?.firFacts ?? '');
+  const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
+  const [additionalGrounds, setAdditionalGrounds] = useState(saved?.additionalGrounds ?? '');
+  const [jurisdictionArea, setJurisdictionArea] = useState(saved?.jurisdictionArea ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
   const [firExtractState, setFirExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
@@ -159,7 +196,7 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       bailType,
       courtLevel,
       benchCity,
@@ -181,6 +218,7 @@ export function BailApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }:
       filingPlace,
       filingDate,
       documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-bail-application',
     };
     try {
       if (caseId && draftId) {

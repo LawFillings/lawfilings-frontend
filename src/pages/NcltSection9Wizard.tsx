@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -43,43 +44,76 @@ interface DocEntry {
   pageNo: string;
 }
 
+interface SavedContent {
+  benchId: string;
+  companyName: string;
+  registeredOffice: string;
+  natureOfDebt: string;
+  defaultAmount: string;
+  noticeDate: string;
+  deliveryDate: string;
+  applicantName: string;
+  applicantAge: string;
+  applicantAddress: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  verificationPlace: string;
+  documentEntries: DocEntry[];
+}
+
 interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function NcltSection9Wizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function NcltSection9Wizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
   const [gatesCleared, setGatesCleared] = useState(false);
   const [blocked, setBlocked] = useState(false);
-  const [benchId, setBenchId] = useState('');
+  const [benchId, setBenchId] = useState(saved?.benchId ?? '');
 
-  const [companyName, setCompanyName] = useState('');
-  const [registeredOffice, setRegisteredOffice] = useState('');
-  const [natureOfDebt, setNatureOfDebt] = useState('');
-  const [defaultAmount, setDefaultAmount] = useState('');
-  const [noticeDate, setNoticeDate] = useState('');
-  const [deliveryDate, setDeliveryDate] = useState('');
-  const [applicantName, setApplicantName] = useState('');
-  const [applicantAge, setApplicantAge] = useState('');
-  const [applicantAddress, setApplicantAddress] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [companyName, setCompanyName] = useState(saved?.companyName ?? '');
+  const [registeredOffice, setRegisteredOffice] = useState(saved?.registeredOffice ?? '');
+  const [natureOfDebt, setNatureOfDebt] = useState(saved?.natureOfDebt ?? '');
+  const [defaultAmount, setDefaultAmount] = useState(saved?.defaultAmount ?? '');
+  const [noticeDate, setNoticeDate] = useState(saved?.noticeDate ?? '');
+  const [deliveryDate, setDeliveryDate] = useState(saved?.deliveryDate ?? '');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -87,7 +121,27 @@ export function NcltSection9Wizard({ onBack, onOpenCheckout, onOpenPricing }: Pr
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = { benchId, companyName, registeredOffice, natureOfDebt, defaultAmount, noticeDate, deliveryDate, applicantName };
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
+      benchId,
+      companyName,
+      registeredOffice,
+      natureOfDebt,
+      defaultAmount,
+      noticeDate,
+      deliveryDate,
+      applicantName,
+      applicantAge,
+      applicantAddress,
+      advocateName,
+      advocateAddress,
+      advocatePhone,
+      advocateEmail,
+      filingPlace,
+      filingDate,
+      verificationPlace,
+      documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-nclt-s9',
+    };
     try {
       if (caseId && draftId) {
         await casesClient.updateDraft(caseId, draftId, content, token);

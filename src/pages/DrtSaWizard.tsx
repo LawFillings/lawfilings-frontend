@@ -25,6 +25,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -119,68 +120,110 @@ function buildSaDocumentsTableHtml(entries: DocEntry[]): string {
   );
 }
 
-export function DrtSaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+interface SavedContent {
+  benchId: string;
+  propertyAddress: string;
+  loanAmount: string;
+  securityDescription: string;
+  sarfaesiSections: string[];
+  noticeDate: string;
+  applicantName: string;
+  applicantRelation: 'S/o' | 'W/o' | 'D/o';
+  applicantRelativeName: string;
+  applicantAge: string;
+  applicantAddress: string;
+  applicantServiceAddress: string;
+  respondents: RespondentEntry[];
+  factsNarrative: string;
+  groundsText: string;
+  reliefText: string;
+  interimText: string;
+  matterPendingText: string;
+  feePaymentMode: 'online' | 'draft';
+  draftBankName: string;
+  draftNumber: string;
+  draftDate: string;
+  draftAmount: string;
+  advocateName: string;
+  advocateEnrollment: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  verificationPlace: string;
+  registrarAddressText: string;
+  documentEntries: DocEntry[];
+}
+
+export function DrtSaWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [benchId, setBenchId] = useState('');
+  const [benchId, setBenchId] = useState(saved?.benchId ?? '');
 
   // --- Property & SARFAESI action ---
-  const [propertyAddress, setPropertyAddress] = useState('');
-  const [loanAmount, setLoanAmount] = useState('');
-  const [securityDescription, setSecurityDescription] = useState('');
-  const [sarfaesiSections, setSarfaesiSections] = useState<string[]>(['13(4)']);
+  const [propertyAddress, setPropertyAddress] = useState(saved?.propertyAddress ?? '');
+  const [loanAmount, setLoanAmount] = useState(saved?.loanAmount ?? '');
+  const [securityDescription, setSecurityDescription] = useState(saved?.securityDescription ?? '');
+  const [sarfaesiSections, setSarfaesiSections] = useState<string[]>(saved?.sarfaesiSections ?? ['13(4)']);
   const toggleSarfaesiSection = (value: string) =>
     setSarfaesiSections((s) => (s.includes(value) ? s.filter((v) => v !== value) : [...s, value]));
-  const [noticeDate, setNoticeDate] = useState('');
+  const [noticeDate, setNoticeDate] = useState(saved?.noticeDate ?? '');
 
   // --- Particulars of Applicant ---
-  const [applicantName, setApplicantName] = useState('');
-  const [applicantRelation, setApplicantRelation] = useState<'S/o' | 'W/o' | 'D/o'>('S/o');
-  const [applicantRelativeName, setApplicantRelativeName] = useState('');
-  const [applicantAge, setApplicantAge] = useState('');
-  const [applicantAddress, setApplicantAddress] = useState('');
-  const [applicantServiceAddress, setApplicantServiceAddress] = useState('');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantRelation, setApplicantRelation] = useState<'S/o' | 'W/o' | 'D/o'>(saved?.applicantRelation ?? 'S/o');
+  const [applicantRelativeName, setApplicantRelativeName] = useState(saved?.applicantRelativeName ?? '');
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
+  const [applicantServiceAddress, setApplicantServiceAddress] = useState(saved?.applicantServiceAddress ?? '');
 
   // --- Particulars of Respondents (heterogeneous — bank/FI, companies, individuals) ---
-  const [respondents, setRespondents] = useState<RespondentEntry[]>([emptyRespondent()]);
+  const [respondents, setRespondents] = useState<RespondentEntry[]>(saved?.respondents ?? [emptyRespondent()]);
   const addRespondent = () => setRespondents((r) => [...r, emptyRespondent()]);
   const removeRespondent = (i: number) => setRespondents((r) => r.filter((_, idx) => idx !== i));
   const updateRespondent = (i: number, patch: Partial<RespondentEntry>) =>
     setRespondents((r) => r.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
 
   // --- Facts & Grounds — one point per blank-line-separated paragraph, auto (I)/(II)… and A/B/C… ---
-  const [factsNarrative, setFactsNarrative] = useState('');
-  const [groundsText, setGroundsText] = useState('');
+  const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
+  const [groundsText, setGroundsText] = useState(saved?.groundsText ?? '');
 
   // --- Relief & Interim — one prayer per blank-line-separated paragraph, auto a)/b)/c)… ---
-  const [reliefText, setReliefText] = useState('');
-  const [interimText, setInterimText] = useState('');
+  const [reliefText, setReliefText] = useState(saved?.reliefText ?? '');
+  const [interimText, setInterimText] = useState(saved?.interimText ?? '');
 
   // --- Filing details ---
-  const [matterPendingText, setMatterPendingText] = useState('');
-  const [feePaymentMode, setFeePaymentMode] = useState<'online' | 'draft'>('online');
-  const [draftBankName, setDraftBankName] = useState('');
-  const [draftNumber, setDraftNumber] = useState('');
-  const [draftDate, setDraftDate] = useState('');
-  const [draftAmount, setDraftAmount] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateEnrollment, setAdvocateEnrollment] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [registrarAddressText, setRegistrarAddressText] = useState('');
+  const [matterPendingText, setMatterPendingText] = useState(saved?.matterPendingText ?? '');
+  const [feePaymentMode, setFeePaymentMode] = useState<'online' | 'draft'>(saved?.feePaymentMode ?? 'online');
+  const [draftBankName, setDraftBankName] = useState(saved?.draftBankName ?? '');
+  const [draftNumber, setDraftNumber] = useState(saved?.draftNumber ?? '');
+  const [draftDate, setDraftDate] = useState(saved?.draftDate ?? '');
+  const [draftAmount, setDraftAmount] = useState(saved?.draftAmount ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateEnrollment, setAdvocateEnrollment] = useState(saved?.advocateEnrollment ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [registrarAddressText, setRegistrarAddressText] = useState(saved?.registrarAddressText ?? '');
 
   // --- Documents (Annexure A, B, C…) ---
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
 
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -190,13 +233,14 @@ export function DrtSaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       benchId, propertyAddress, loanAmount, securityDescription, sarfaesiSections, noticeDate,
       applicantName, applicantRelation, applicantRelativeName, applicantAge, applicantAddress, applicantServiceAddress,
       respondents, factsNarrative, groundsText, reliefText, interimText,
       matterPendingText, feePaymentMode, draftBankName, draftNumber, draftDate, draftAmount,
       advocateName, advocateEnrollment, advocatePhone, advocateEmail, filingPlace, verificationPlace,
       registrarAddressText, documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-drt-sa',
     };
     try {
       if (caseId && draftId) {
@@ -864,4 +908,8 @@ interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }

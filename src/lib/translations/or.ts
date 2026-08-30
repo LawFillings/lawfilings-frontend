@@ -41,8 +41,9 @@ export const or: Translations = {
     hero: {
       eyebrow: 'ଆଇନ ଗ୍ରନ୍ଥାଗାର, ଆଇନଗତ ଡ୍ରାଫ୍ଟିଂ ଏବଂ ଫାଇଲିଂ, ଆପଣଙ୍କ ପାଇଁ ପ୍ରସ୍ତୁତ',
       titleLine1: 'ଆଇନ ବୁଝନ୍ତୁ।',
-      titleLine2: 'ଆପଣଙ୍କ ଫାଇଲିଂ ପ୍ରସ୍ତୁତ କରନ୍ତୁ।',
-      titleLine3: 'ଆପଣଙ୍କ ଶେଷ ତାରିଖ ଜାଣନ୍ତୁ।',
+      titleLine2: 'ଆପଣଙ୍କ ଶେଷ ତାରିଖ ଜାଣନ୍ତୁ।',
+      titleLine3: 'ଆପଣଙ୍କ ଫାଇଲିଂ ପ୍ରସ୍ତୁତ କରନ୍ତୁ।',
+      titleLine4: 'ଆପଣଙ୍କ ମାମଲାଗୁଡ଼ିକ ପରିଚାଳନା କରନ୍ତୁ।',
       sub: 'ଓକିଲ ଏବଂ ନ୍ୟାୟ ଖୋଜୁଥିବା ଲୋକଙ୍କ ପାଇଁ ଏକ ମଞ୍ଚ, ଜିଲ୍ଲା ଅଦାଲତ, ଉପଭୋକ୍ତା ଫୋରମ, DRT/DRAT ଏବଂ NCLT/NCLAT ରେ ଆବେଦନ/ଶପଥନାମା ଦାଖଲ କରିବା ଏବଂ ଆଇନଗତ ମାମଲାଗୁଡ଼ିକୁ ପରିଚାଳନା କରିବା ପାଇଁ।',
       startFiling: 'ଫାଇଲିଂ ଆରମ୍ଭ କରନ୍ତୁ →',
       browseActs: 'ଆଇନ ଗ୍ରନ୍ଥାଗାର ଦେଖନ୍ତୁ — ମାଗଣା, ଖାତା ଆବଶ୍ୟକ ନାହିଁ',
@@ -306,6 +307,7 @@ export const or: Translations = {
     savedOn: (date: string) => `${date} ରେ ସେଭ୍ ହୋଇଛି`,
     drafts: 'ଡ୍ରାଫ୍ଟଗୁଡ଼ିକ',
     versionStatus: (version: number, status: string) => `ସଂସ୍କରଣ ${version} · ${status}`,
+    openInWizard: 'ସମ୍ପାଦନା କରିବାକୁ ଖୋଲନ୍ତୁ',
     caseStatus: 'ମାମଲା ସ୍ଥିତି',
     statusHelp: 'ଆପଣ ଏହାକୁ ନିଜେ ଅପଡେଟ୍ କରନ୍ତି — ଏହି ଆପ୍ ସ୍ୱୟଂଚାଳିତ ଭାବେ e-Courts କିମ୍ବା କଜ୍ ଲିଷ୍ଟ ଯାଞ୍ଚ କରେ ନାହିଁ।',
     suggestedStatuses: {

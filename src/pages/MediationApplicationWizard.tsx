@@ -10,6 +10,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -20,38 +21,73 @@ const maClauses = clauses.filter((c) => c.caseTypeId === 'ct-mediation-applicati
 const clauseByCode = (code: string) => maClauses.find((c) => c.code === code)!;
 const citations = findFixedCaseTypeCitation('ct-mediation-application');
 
+interface SavedContent {
+  needsUrgentRelief: boolean | null;
+  disputeNature: string | null;
+  applicantName: string;
+  applicantAddress: string;
+  applicantPhone: string;
+  applicantEmail: string;
+  oppositePartyNames: string;
+  oppositePartyAddress: string;
+  transactionDate: string;
+  transactionAmount: string;
+  defaultDescription: string;
+  defaultDate: string;
+  resolutionAttempt: string;
+  additionalFacts: string;
+  claimAmount: string;
+  jurisdictionPlace: string;
+  district: string;
+  feeReference: string;
+  advocateName: string;
+  filingDate: string;
+}
+
 interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function MediationApplicationWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function MediationApplicationWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [needsUrgentRelief, setNeedsUrgentRelief] = useState<boolean | null>(null);
-  const [disputeNature, setDisputeNature] = useState<string | null>(null);
-  const [applicantName, setApplicantName] = useState('');
-  const [applicantAddress, setApplicantAddress] = useState('');
-  const [applicantPhone, setApplicantPhone] = useState('');
-  const [applicantEmail, setApplicantEmail] = useState('');
-  const [oppositePartyNames, setOppositePartyNames] = useState('');
-  const [oppositePartyAddress, setOppositePartyAddress] = useState('');
-  const [transactionDate, setTransactionDate] = useState('');
-  const [transactionAmount, setTransactionAmount] = useState('');
-  const [defaultDescription, setDefaultDescription] = useState('');
-  const [defaultDate, setDefaultDate] = useState('');
-  const [resolutionAttempt, setResolutionAttempt] = useState('');
-  const [additionalFacts, setAdditionalFacts] = useState('');
-  const [claimAmount, setClaimAmount] = useState('');
-  const [jurisdictionPlace, setJurisdictionPlace] = useState('');
-  const [district, setDistrict] = useState('');
-  const [feeReference, setFeeReference] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [needsUrgentRelief, setNeedsUrgentRelief] = useState<boolean | null>(saved?.needsUrgentRelief ?? null);
+  const [disputeNature, setDisputeNature] = useState<string | null>(saved?.disputeNature ?? null);
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
+  const [applicantPhone, setApplicantPhone] = useState(saved?.applicantPhone ?? '');
+  const [applicantEmail, setApplicantEmail] = useState(saved?.applicantEmail ?? '');
+  const [oppositePartyNames, setOppositePartyNames] = useState(saved?.oppositePartyNames ?? '');
+  const [oppositePartyAddress, setOppositePartyAddress] = useState(saved?.oppositePartyAddress ?? '');
+  const [transactionDate, setTransactionDate] = useState(saved?.transactionDate ?? '');
+  const [transactionAmount, setTransactionAmount] = useState(saved?.transactionAmount ?? '');
+  const [defaultDescription, setDefaultDescription] = useState(saved?.defaultDescription ?? '');
+  const [defaultDate, setDefaultDate] = useState(saved?.defaultDate ?? '');
+  const [resolutionAttempt, setResolutionAttempt] = useState(saved?.resolutionAttempt ?? '');
+  const [additionalFacts, setAdditionalFacts] = useState(saved?.additionalFacts ?? '');
+  const [claimAmount, setClaimAmount] = useState(saved?.claimAmount ?? '');
+  const [jurisdictionPlace, setJurisdictionPlace] = useState(saved?.jurisdictionPlace ?? '');
+  const [district, setDistrict] = useState(saved?.district ?? '');
+  const [feeReference, setFeeReference] = useState(saved?.feeReference ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -65,7 +101,7 @@ export function MediationApplicationWizard({ onBack, onOpenCheckout, onOpenPrici
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       needsUrgentRelief,
       disputeNature,
       applicantName,
@@ -86,6 +122,7 @@ export function MediationApplicationWizard({ onBack, onOpenCheckout, onOpenPrici
       feeReference,
       advocateName,
       filingDate,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-mediation-application',
     };
     try {
       if (caseId && draftId) {

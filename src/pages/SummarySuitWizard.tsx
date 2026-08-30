@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
@@ -45,42 +46,75 @@ interface DocEntry {
   pageNo: string;
 }
 
+interface SavedContent {
+  stateId: string;
+  districtId: string;
+  plaintiffName: string;
+  defendantName: string;
+  defendantAddress: string;
+  causeType: string | null;
+  factsNarrative: string;
+  claimAmount: string;
+  plaintiffAge: string;
+  plaintiffAddress: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  verificationPlace: string;
+  documentEntries: DocEntry[];
+}
+
 interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function SummarySuitWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function SummarySuitWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [gatesCleared, setGatesCleared] = useState(false);
   const [blocked, setBlocked] = useState(false);
   const [step, setStep] = useState(0);
-  const [stateId, setStateId] = useState('');
-  const [districtId, setDistrictId] = useState('');
-  const [plaintiffName, setPlaintiffName] = useState('');
-  const [defendantName, setDefendantName] = useState('');
-  const [defendantAddress, setDefendantAddress] = useState('');
-  const [causeType, setCauseType] = useState<string | null>(null);
-  const [factsNarrative, setFactsNarrative] = useState('');
-  const [claimAmount, setClaimAmount] = useState('');
-  const [plaintiffAge, setPlaintiffAge] = useState('');
-  const [plaintiffAddress, setPlaintiffAddress] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [stateId, setStateId] = useState(saved?.stateId ?? '');
+  const [districtId, setDistrictId] = useState(saved?.districtId ?? '');
+  const [plaintiffName, setPlaintiffName] = useState(saved?.plaintiffName ?? '');
+  const [defendantName, setDefendantName] = useState(saved?.defendantName ?? '');
+  const [defendantAddress, setDefendantAddress] = useState(saved?.defendantAddress ?? '');
+  const [causeType, setCauseType] = useState<string | null>(saved?.causeType ?? null);
+  const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
+  const [claimAmount, setClaimAmount] = useState(saved?.claimAmount ?? '');
+  const [plaintiffAge, setPlaintiffAge] = useState(saved?.plaintiffAge ?? '');
+  const [plaintiffAddress, setPlaintiffAddress] = useState(saved?.plaintiffAddress ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -95,7 +129,27 @@ export function SummarySuitWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = { stateId, districtId, plaintiffName, defendantName, defendantAddress, causeType, factsNarrative, claimAmount };
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
+      stateId,
+      districtId,
+      plaintiffName,
+      defendantName,
+      defendantAddress,
+      causeType,
+      factsNarrative,
+      claimAmount,
+      plaintiffAge,
+      plaintiffAddress,
+      advocateName,
+      advocateAddress,
+      advocatePhone,
+      advocateEmail,
+      filingPlace,
+      filingDate,
+      verificationPlace,
+      documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-dc-summary-suit',
+    };
     try {
       if (caseId && draftId) {
         await casesClient.updateDraft(caseId, draftId, content, token);

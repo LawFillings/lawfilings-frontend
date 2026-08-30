@@ -41,8 +41,9 @@ export const bn: Translations = {
     hero: {
       eyebrow: 'আইন লাইব্রেরি, আইনি ড্রাফটিং এবং ফাইলিং, আপনার জন্য প্রস্তুত',
       titleLine1: 'আইন বুঝুন।',
-      titleLine2: 'আপনার ফাইলিং তৈরি করুন।',
-      titleLine3: 'আপনার সময়সীমা জানুন।',
+      titleLine2: 'আপনার সময়সীমা জানুন।',
+      titleLine3: 'আপনার ফাইলিং তৈরি করুন।',
+      titleLine4: 'আপনার মামলা পরিচালনা করুন।',
       sub: 'অধিবক্তা এবং ন্যায়প্রার্থীদের জন্য একটি মঞ্চ, জেলা আদালত, ভোক্তা ফোরাম, DRT/DRAT এবং NCLT/NCLAT-এ আবেদন/হলফনামা দাখিল করা এবং আইনি বিষয়গুলি পরিচালনা করার জন্য।',
       startFiling: 'ফাইলিং শুরু করুন →',
       browseActs: 'আইন লাইব্রেরি দেখুন — বিনামূল্যে, অ্যাকাউন্ট ছাড়াই',
@@ -306,6 +307,7 @@ export const bn: Translations = {
     savedOn: (date: string) => `${date}-এ সংরক্ষিত`,
     drafts: 'ড্রাফট',
     versionStatus: (version: number, status: string) => `সংস্করণ ${version} · ${status}`,
+    openInWizard: 'সম্পাদনার জন্য খুলুন',
     caseStatus: 'মামলার অবস্থা',
     statusHelp: 'আপনি এটি নিজেই আপডেট করেন — এই অ্যাপটি স্বয়ংক্রিয়ভাবে e-Courts বা কজ লিস্ট পরীক্ষা করে না।',
     suggestedStatuses: {

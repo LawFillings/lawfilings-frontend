@@ -47,7 +47,16 @@ import './App.css';
 type Screen =
   | { kind: 'landing' }
   | { kind: 'home' }
-  | { kind: 'caseType'; caseType: CaseType }
+  | {
+      kind: 'caseType';
+      caseType: CaseType;
+      /** Set when resuming an existing saved draft rather than starting a new one — threaded
+       * through to the wizard so it hydrates its fields from initialContent instead of starting
+       * blank, and updates the same case/draft on save instead of creating a new one. */
+      caseId?: string;
+      draftId?: string;
+      initialContent?: unknown;
+    }
   | { kind: 'appealGroup'; group: AppealGroup }
   | { kind: 'lawLibrary'; category?: ActCategory }
   | { kind: 'caseLawSearch' }
@@ -217,7 +226,17 @@ function AppScreens() {
         />
       );
     }
-    if (screen.kind === 'caseDetail') return <CaseDetailPage caseId={screen.caseId} onBack={onBack} />;
+    if (screen.kind === 'caseDetail') {
+      return (
+        <CaseDetailPage
+          caseId={screen.caseId}
+          onBack={onBack}
+          onOpenDraft={(draft, ct) => {
+            navigate({ kind: 'caseType', caseType: ct, caseId: draft.caseId, draftId: draft.id, initialContent: draft.content });
+          }}
+        />
+      );
+    }
     if (screen.kind === 'appealGroup') {
       return (
         <AppealWizard
@@ -254,6 +273,7 @@ function AppScreens() {
     }
 
     const ct = screen.caseType;
+    const resumeProps = { caseId: screen.caseId, draftId: screen.draftId, initialContent: screen.initialContent };
 
     if (ct.id === 'ct-drt-ws') {
       return (
@@ -262,6 +282,7 @@ function AppScreens() {
           onOpenCaseLawSearch={openCaseLawSearchNav}
           onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
+          {...resumeProps}
         />
       );
     }
@@ -272,17 +293,20 @@ function AppScreens() {
           onOpenCaseLawSearch={openCaseLawSearchNav}
           onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
+          {...resumeProps}
         />
       );
     }
     if (ct.id === 'ct-nclt-s9') {
-      return <NcltSection9Wizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return (
+        <NcltSection9Wizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
     }
     if (ct.id === 'ct-drt-sa') {
-      return <DrtSaWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return <DrtSaWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-drt-oa') {
-      return <DrtOaWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return <DrtOaWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
 
     if (ct.id === 'ct-dc-money-recovery') {
@@ -292,35 +316,50 @@ function AppScreens() {
           onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
           onOpenLawLibrary={openLawLibraryNav}
+          {...resumeProps}
         />
       );
     }
     if (ct.id === 'ct-dc-summary-suit') {
-      return <SummarySuitWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return <SummarySuitWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-legal-notice') {
-      return <LegalNoticeWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return <LegalNoticeWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-contract-agreement') {
-      return <ContractAgreementWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return (
+        <ContractAgreementWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
     }
     if (ct.id === 'ct-bail-application') {
-      return <BailApplicationWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return (
+        <BailApplicationWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
     }
     if (ct.id === 'ct-mediation-application') {
-      return <MediationApplicationWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return (
+        <MediationApplicationWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
     }
     if (ct.id === 'ct-ni-act-complaint') {
-      return <NIActComplaintWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />;
+      return (
+        <NIActComplaintWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
     }
 
     if (ct.filingCategory === 'execution') {
       return (
-        <ExecutionWizard caseType={ct} onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} />
+        <ExecutionWizard
+          caseType={ct}
+          onBack={onBack}
+          onOpenCheckout={openCheckout}
+          onOpenPricing={openPricingNav}
+          {...resumeProps}
+        />
       );
     }
 
-    return <GenericCaseWizard caseType={ct} onBack={onBack} />;
+    return <GenericCaseWizard caseType={ct} onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
   }
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);

@@ -46,6 +46,8 @@ export function LandingPage({
             {t.landing.hero.titleLine2}
             <br />
             {t.landing.hero.titleLine3}
+            <br />
+            {t.landing.hero.titleLine4}
           </h1>
           <p className="landing-hero-sub">{t.landing.hero.sub}</p>
           <p className="landing-hero-eyebrow">{t.landing.hero.eyebrow}</p>

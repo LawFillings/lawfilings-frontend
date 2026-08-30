@@ -10,6 +10,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -18,6 +19,32 @@ const STEPS = ['Cheque & debt details', 'Dishonour & notice', 'Parties', 'Filing
 interface DocEntry {
   particulars: string;
   pageNo: string;
+}
+
+interface SavedContent {
+  debtNature: string | null;
+  debtAmount: string;
+  chequeNumber: string;
+  chequeDate: string;
+  chequeAmount: string;
+  draweeBank: string;
+  draweeBranch: string;
+  drawerAccount: string;
+  presentationDate: string;
+  dishonourDate: string;
+  dishonourReason: string | null;
+  noticeDate: string;
+  noticeReceivedDate: string;
+  noticeServiceDetail: string;
+  complainantName: string;
+  complainantAddress: string;
+  accusedName: string;
+  accusedAddress: string;
+  courtCity: string;
+  witnesses: string;
+  documentEntries: DocEntry[];
+  advocateName: string;
+  filingDate: string;
 }
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-ni-act-complaint')!;
@@ -46,37 +73,49 @@ interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function NIActComplaintWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function NIActComplaintWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [debtNature, setDebtNature] = useState<string | null>(null);
-  const [debtAmount, setDebtAmount] = useState('');
-  const [chequeNumber, setChequeNumber] = useState('');
-  const [chequeDate, setChequeDate] = useState('');
-  const [chequeAmount, setChequeAmount] = useState('');
-  const [draweeBank, setDraweeBank] = useState('');
-  const [draweeBranch, setDraweeBranch] = useState('');
-  const [drawerAccount, setDrawerAccount] = useState('');
-  const [presentationDate, setPresentationDate] = useState('');
-  const [dishonourDate, setDishonourDate] = useState('');
-  const [dishonourReason, setDishonourReason] = useState<string | null>(null);
-  const [noticeDate, setNoticeDate] = useState('');
-  const [noticeReceivedDate, setNoticeReceivedDate] = useState('');
-  const [noticeServiceDetail, setNoticeServiceDetail] = useState('due service of the notice');
-  const [complainantName, setComplainantName] = useState('');
-  const [complainantAddress, setComplainantAddress] = useState('');
-  const [accusedName, setAccusedName] = useState('');
-  const [accusedAddress, setAccusedAddress] = useState('');
-  const [courtCity, setCourtCity] = useState('');
-  const [witnesses, setWitnesses] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
-  const [advocateName, setAdvocateName] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [debtNature, setDebtNature] = useState<string | null>(saved?.debtNature ?? null);
+  const [debtAmount, setDebtAmount] = useState(saved?.debtAmount ?? '');
+  const [chequeNumber, setChequeNumber] = useState(saved?.chequeNumber ?? '');
+  const [chequeDate, setChequeDate] = useState(saved?.chequeDate ?? '');
+  const [chequeAmount, setChequeAmount] = useState(saved?.chequeAmount ?? '');
+  const [draweeBank, setDraweeBank] = useState(saved?.draweeBank ?? '');
+  const [draweeBranch, setDraweeBranch] = useState(saved?.draweeBranch ?? '');
+  const [drawerAccount, setDrawerAccount] = useState(saved?.drawerAccount ?? '');
+  const [presentationDate, setPresentationDate] = useState(saved?.presentationDate ?? '');
+  const [dishonourDate, setDishonourDate] = useState(saved?.dishonourDate ?? '');
+  const [dishonourReason, setDishonourReason] = useState<string | null>(saved?.dishonourReason ?? null);
+  const [noticeDate, setNoticeDate] = useState(saved?.noticeDate ?? '');
+  const [noticeReceivedDate, setNoticeReceivedDate] = useState(saved?.noticeReceivedDate ?? '');
+  const [noticeServiceDetail, setNoticeServiceDetail] = useState(saved?.noticeServiceDetail ?? 'due service of the notice');
+  const [complainantName, setComplainantName] = useState(saved?.complainantName ?? '');
+  const [complainantAddress, setComplainantAddress] = useState(saved?.complainantAddress ?? '');
+  const [accusedName, setAccusedName] = useState(saved?.accusedName ?? '');
+  const [accusedAddress, setAccusedAddress] = useState(saved?.accusedAddress ?? '');
+  const [courtCity, setCourtCity] = useState(saved?.courtCity ?? '');
+  const [witnesses, setWitnesses] = useState(saved?.witnesses ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -105,7 +144,7 @@ export function NIActComplaintWizard({ onBack, onOpenCheckout, onOpenPricing }: 
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       debtNature,
       debtAmount,
       chequeNumber,
@@ -129,6 +168,7 @@ export function NIActComplaintWizard({ onBack, onOpenCheckout, onOpenPricing }: 
       documentEntries,
       advocateName,
       filingDate,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-ni-act-complaint',
     };
     try {
       if (caseId && draftId) {

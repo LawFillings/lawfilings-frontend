@@ -23,6 +23,7 @@ import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractOaFromText } from '../lib/documentExtractionClient';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { ParaResponse, UserRole } from '../types';
 
@@ -48,48 +49,83 @@ interface DocEntry {
   pageNo: string;
 }
 
+interface SavedContent {
+  benchId: string;
+  bankName: string;
+  oaNumber: string;
+  defendantName: string;
+  daysSince: number | null;
+  selectedGrounds: string[];
+  paraResponses: Record<number, ParaResponse>;
+  allegations: typeof defaultParaWiseAllegations;
+  defendantAge: string;
+  defendantAddress: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  verificationPlace: string;
+  documentEntries: DocEntry[];
+}
+
 interface Props {
   onBack: () => void;
   onOpenCaseLawSearch?: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenCheckout, onOpenPricing }: Props) {
+export function DrtWrittenStatementWizard({
+  onBack,
+  onOpenCaseLawSearch,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [benchId, setBenchId] = useState('');
-  const [daysSince, setDaysSince] = useState<number | null>(null);
-  const [selectedGrounds, setSelectedGrounds] = useState<string[]>([]);
-  const [paraResponses, setParaResponses] = useState<Record<number, ParaResponse>>({});
+  const [benchId, setBenchId] = useState(saved?.benchId ?? '');
+  const [daysSince, setDaysSince] = useState<number | null>(saved?.daysSince ?? null);
+  const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
+  const [paraResponses, setParaResponses] = useState<Record<number, ParaResponse>>(saved?.paraResponses ?? {});
   // Starts as the same 4-item stand-in every filing used to be stuck with — replaced wholesale by
   // handleOaFileSelected once the actual OA is read, so the para-wise reply responds to what was
-  // really pleaded in this case instead of a generic placeholder.
-  const [allegations, setAllegations] = useState(defaultParaWiseAllegations);
+  // really pleaded in this case instead of a generic placeholder. Resuming a saved draft restores
+  // whichever allegations (placeholder or OA-derived) it was saved with, matching its paraResponses.
+  const [allegations, setAllegations] = useState(saved?.allegations ?? defaultParaWiseAllegations);
 
-  const [bankName, setBankName] = useState('');
-  const [oaNumber, setOaNumber] = useState('');
-  const [defendantName, setDefendantName] = useState('');
-  const [defendantAge, setDefendantAge] = useState('');
-  const [defendantAddress, setDefendantAddress] = useState('');
+  const [bankName, setBankName] = useState(saved?.bankName ?? '');
+  const [oaNumber, setOaNumber] = useState(saved?.oaNumber ?? '');
+  const [defendantName, setDefendantName] = useState(saved?.defendantName ?? '');
+  const [defendantAge, setDefendantAge] = useState(saved?.defendantAge ?? '');
+  const [defendantAddress, setDefendantAddress] = useState(saved?.defendantAddress ?? '');
   const [oaExtractState, setOaExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
   const [oaExtractError, setOaExtractError] = useState<string | null>(null);
   const oaFileInputRef = useRef<HTMLInputElement>(null);
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -99,7 +135,27 @@ export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenC
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = { benchId, bankName, oaNumber, defendantName, daysSince, selectedGrounds, paraResponses };
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
+      benchId,
+      bankName,
+      oaNumber,
+      defendantName,
+      daysSince,
+      selectedGrounds,
+      paraResponses,
+      allegations,
+      defendantAge,
+      defendantAddress,
+      advocateName,
+      advocateAddress,
+      advocatePhone,
+      advocateEmail,
+      filingPlace,
+      filingDate,
+      verificationPlace,
+      documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-drt-ws',
+    };
     try {
       if (caseId && draftId) {
         await casesClient.updateDraft(caseId, draftId, content, token);

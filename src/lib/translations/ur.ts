@@ -41,8 +41,9 @@ export const ur: Translations = {
     hero: {
       eyebrow: 'قانون لائبریری، قانونی مسودہ سازی اور فائلنگ، آپ کے لیے تیار',
       titleLine1: 'قانون کو سمجھیں۔',
-      titleLine2: 'اپنی فائلنگ تیار کریں۔',
-      titleLine3: 'اپنی آخری تاریخ جانیں۔',
+      titleLine2: 'اپنی آخری تاریخ جانیں۔',
+      titleLine3: 'اپنی فائلنگ تیار کریں۔',
+      titleLine4: 'اپنے مقدمات کا انتظام کریں۔',
       sub: 'وکلاء اور انصاف کے متلاشی افراد کے لیے ایک پلیٹ فارم، ضلعی عدالتوں، صارف فورمز، DRT/DRAT اور NCLT/NCLAT میں درخواستیں/حلف نامے داخل کرنے اور قانونی مقدمات کو سنبھالنے کے لیے۔',
       startFiling: 'فائلنگ شروع کریں ←',
       browseActs: 'قانون لائبریری دیکھیں — مفت، اکاؤنٹ کی ضرورت نہیں',
@@ -306,6 +307,7 @@ export const ur: Translations = {
     savedOn: (date: string) => `${date} کو محفوظ کیا گیا`,
     drafts: 'مسودے',
     versionStatus: (version: number, status: string) => `v${version} · ${status}`,
+    openInWizard: 'ترمیم کے لیے کھولیں',
     caseStatus: 'مقدمہ کی حیثیت',
     statusHelp: 'آپ اسے خود اپ ڈیٹ کرتے ہیں — یہ ایپ خود بخود e-Courts یا کاز لسٹس چیک نہیں کرتی۔',
     suggestedStatuses: {

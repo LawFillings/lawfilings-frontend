@@ -41,8 +41,9 @@ export const hi: Translations = {
     hero: {
       eyebrow: 'विधि पुस्तकालय, कानूनी ड्राफ्टिंग और फाइलिंग, आपके लिए तैयार',
       titleLine1: 'कानून को समझें।',
-      titleLine2: 'अपनी फाइलिंग तैयार करें।',
-      titleLine3: 'अपनी समय-सीमा जानें।',
+      titleLine2: 'अपनी समय-सीमा जानें।',
+      titleLine3: 'अपनी फाइलिंग तैयार करें।',
+      titleLine4: 'अपने मामलों का प्रबंधन करें।',
       sub: 'अधिवक्ताओं और न्याय चाहने वालों के लिए एक मंच, जो ज़िला अदालतों, उपभोक्ता फोरम, DRT/DRAT और NCLT/NCLAT में आवेदन/शपथ-पत्र दाखिल करने और मामलों को संभालने में मदद करता है।',
       startFiling: 'फाइलिंग शुरू करें →',
       browseActs: 'विधि पुस्तकालय देखें — मुफ़्त, बिना खाते के',
@@ -306,6 +307,7 @@ export const hi: Translations = {
     savedOn: (date: string) => `${date} को सहेजा गया`,
     drafts: 'ड्राफ्ट',
     versionStatus: (version: number, status: string) => `संस्करण ${version} · ${status}`,
+    openInWizard: 'संपादित करने के लिए खोलें',
     caseStatus: 'मामले की स्थिति',
     statusHelp: 'आप इसे स्वयं अपडेट करते हैं — यह ऐप स्वचालित रूप से e-Courts या कॉज़ लिस्ट की जांच नहीं करता।',
     suggestedStatuses: {

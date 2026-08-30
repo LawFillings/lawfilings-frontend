@@ -41,8 +41,9 @@ export const gu: Translations = {
     hero: {
       eyebrow: 'કાયદા લાઇબ્રેરી, કાનૂની ડ્રાફ્ટિંગ અને ફાઇલિંગ, તમારા માટે તૈયાર',
       titleLine1: 'કાયદો સમજો.',
-      titleLine2: 'તમારી ફાઇલિંગ તૈયાર કરો.',
-      titleLine3: 'તમારી સમય-મર્યાદા જાણો.',
+      titleLine2: 'તમારી સમય-મર્યાદા જાણો.',
+      titleLine3: 'તમારી ફાઇલિંગ તૈયાર કરો.',
+      titleLine4: 'તમારા કેસોનું સંચાલન કરો.',
       sub: 'વકીલો અને ન્યાય શોધનારાઓ માટે એક મંચ, જિલ્લા અદાલતો, કન્ઝ્યુમર ફોરમ, DRT/DRAT અને NCLT/NCLAT માં અરજીઓ/સોગંદનામાં ફાઇલ કરવા અને કાનૂની બાબતોને સંભાળવા માટે.',
       startFiling: 'ફાઇલિંગ શરૂ કરો →',
       browseActs: 'કાયદા લાઇબ્રેરી જુઓ — મફત, ખાતા વગર',
@@ -306,6 +307,7 @@ export const gu: Translations = {
     savedOn: (date: string) => `${date} ના રોજ સાચવેલ`,
     drafts: 'ડ્રાફ્ટ',
     versionStatus: (version: number, status: string) => `વર્ઝન ${version} · ${status}`,
+    openInWizard: 'સંપાદિત કરવા ખોલો',
     caseStatus: 'કેસની સ્થિતિ',
     statusHelp: 'તમે આ જાતે અપડેટ કરો છો — આ ઍપ આપમેળે e-Courts કે કૉઝ લિસ્ટ તપાસતી નથી.',
     suggestedStatuses: {

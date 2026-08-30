@@ -28,6 +28,7 @@ import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractOaLoanRecallFromText } from '../lib/documentExtractionClient';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -66,82 +67,142 @@ interface DefendantEntry {
 
 const emptyDefendant = (): DefendantEntry => ({ name: '', type: 'individual', address: '', serviceAddress: '' });
 
+interface SavedContent {
+  benchId: string;
+  applicantBankName: string;
+  applicantRegisteredOffice: string;
+  applicantBranchOffice: string;
+  applicantServiceAddress: string;
+  defendants: DefendantEntry[];
+  loanAgreementPlace: string;
+  loanRecallNoticePlace: string;
+  loanRecallNoticeDate: string;
+  debtAssetEntries: DebtAssetEntry[];
+  defaultDate1: string;
+  loanAgreementNo1: string;
+  loanAgreementDate1: string;
+  defaultDate2: string;
+  loanAgreementNo2: string;
+  loanAgreementDate2: string;
+  authorisedRepName: string;
+  boardResolutionDate: string;
+  factsNarrative: string;
+  principalAmount: string;
+  interestRate: string;
+  interestAmount: string;
+  totalAmount: string;
+  calculationDate: string;
+  loanAmount: string;
+  sanctionDate: string;
+  securityDescription: string;
+  npaDate: string;
+  propertyDetails: string;
+  additionalReliefText: string;
+  interimReliefText: string;
+  draftBankName: string;
+  draftNumber: string;
+  draftDate: string;
+  draftAmount: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  authorisedRepFatherName: string;
+  authorisedRepAge: string;
+  verificationPlace: string;
+  documentEntries: DocumentEntry[];
+}
+
 interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function DrtOaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function DrtOaWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [acknowledgedGate, setAcknowledgedGate] = useState(false);
   const [step, setStep] = useState(0);
-  const [benchId, setBenchId] = useState('');
+  const [benchId, setBenchId] = useState(saved?.benchId ?? '');
 
   // Particulars of Applicant
-  const [applicantBankName, setApplicantBankName] = useState('');
-  const [applicantRegisteredOffice, setApplicantRegisteredOffice] = useState('');
-  const [applicantBranchOffice, setApplicantBranchOffice] = useState('');
-  const [applicantServiceAddress, setApplicantServiceAddress] = useState('');
+  const [applicantBankName, setApplicantBankName] = useState(saved?.applicantBankName ?? '');
+  const [applicantRegisteredOffice, setApplicantRegisteredOffice] = useState(saved?.applicantRegisteredOffice ?? '');
+  const [applicantBranchOffice, setApplicantBranchOffice] = useState(saved?.applicantBranchOffice ?? '');
+  const [applicantServiceAddress, setApplicantServiceAddress] = useState(saved?.applicantServiceAddress ?? '');
 
   // Particulars of Defendants — a repeatable list, since an OA can name any number of
   // defendants/respondents (co-borrowers, guarantors, corporate defendants, etc.), not just two.
-  const [defendants, setDefendants] = useState<DefendantEntry[]>([emptyDefendant()]);
+  const [defendants, setDefendants] = useState<DefendantEntry[]>(saved?.defendants ?? [emptyDefendant()]);
 
   // Jurisdiction & limitation
-  const [loanAgreementPlace, setLoanAgreementPlace] = useState('');
-  const [loanRecallNoticePlace, setLoanRecallNoticePlace] = useState('');
-  const [loanRecallNoticeDate, setLoanRecallNoticeDate] = useState('');
-  const [debtAssetEntries, setDebtAssetEntries] = useState<DebtAssetEntry[]>([]);
-  const [defaultDate1, setDefaultDate1] = useState('');
-  const [loanAgreementNo1, setLoanAgreementNo1] = useState('');
-  const [loanAgreementDate1, setLoanAgreementDate1] = useState('');
-  const [defaultDate2, setDefaultDate2] = useState('');
-  const [loanAgreementNo2, setLoanAgreementNo2] = useState('');
-  const [loanAgreementDate2, setLoanAgreementDate2] = useState('');
+  const [loanAgreementPlace, setLoanAgreementPlace] = useState(saved?.loanAgreementPlace ?? '');
+  const [loanRecallNoticePlace, setLoanRecallNoticePlace] = useState(saved?.loanRecallNoticePlace ?? '');
+  const [loanRecallNoticeDate, setLoanRecallNoticeDate] = useState(saved?.loanRecallNoticeDate ?? '');
+  const [debtAssetEntries, setDebtAssetEntries] = useState<DebtAssetEntry[]>(saved?.debtAssetEntries ?? []);
+  const [defaultDate1, setDefaultDate1] = useState(saved?.defaultDate1 ?? '');
+  const [loanAgreementNo1, setLoanAgreementNo1] = useState(saved?.loanAgreementNo1 ?? '');
+  const [loanAgreementDate1, setLoanAgreementDate1] = useState(saved?.loanAgreementDate1 ?? '');
+  const [defaultDate2, setDefaultDate2] = useState(saved?.defaultDate2 ?? '');
+  const [loanAgreementNo2, setLoanAgreementNo2] = useState(saved?.loanAgreementNo2 ?? '');
+  const [loanAgreementDate2, setLoanAgreementDate2] = useState(saved?.loanAgreementDate2 ?? '');
 
   // Facts & cause of action
-  const [authorisedRepName, setAuthorisedRepName] = useState('');
-  const [boardResolutionDate, setBoardResolutionDate] = useState('');
-  const [factsNarrative, setFactsNarrative] = useState('');
+  const [authorisedRepName, setAuthorisedRepName] = useState(saved?.authorisedRepName ?? '');
+  const [boardResolutionDate, setBoardResolutionDate] = useState(saved?.boardResolutionDate ?? '');
+  const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
 
   // Amount due
-  const [principalAmount, setPrincipalAmount] = useState('');
-  const [interestRate, setInterestRate] = useState('');
-  const [interestAmount, setInterestAmount] = useState('');
-  const [totalAmount, setTotalAmount] = useState('');
-  const [calculationDate, setCalculationDate] = useState('');
-  const [loanAmount, setLoanAmount] = useState('');
-  const [sanctionDate, setSanctionDate] = useState('');
-  const [securityDescription, setSecurityDescription] = useState('');
-  const [npaDate, setNpaDate] = useState('');
+  const [principalAmount, setPrincipalAmount] = useState(saved?.principalAmount ?? '');
+  const [interestRate, setInterestRate] = useState(saved?.interestRate ?? '');
+  const [interestAmount, setInterestAmount] = useState(saved?.interestAmount ?? '');
+  const [totalAmount, setTotalAmount] = useState(saved?.totalAmount ?? '');
+  const [calculationDate, setCalculationDate] = useState(saved?.calculationDate ?? '');
+  const [loanAmount, setLoanAmount] = useState(saved?.loanAmount ?? '');
+  const [sanctionDate, setSanctionDate] = useState(saved?.sanctionDate ?? '');
+  const [securityDescription, setSecurityDescription] = useState(saved?.securityDescription ?? '');
+  const [npaDate, setNpaDate] = useState(saved?.npaDate ?? '');
 
   // Relief & interim order
-  const [propertyDetails, setPropertyDetails] = useState('');
-  const [additionalReliefText, setAdditionalReliefText] = useState('');
-  const [interimReliefText, setInterimReliefText] = useState('');
+  const [propertyDetails, setPropertyDetails] = useState(saved?.propertyDetails ?? '');
+  const [additionalReliefText, setAdditionalReliefText] = useState(saved?.additionalReliefText ?? '');
+  const [interimReliefText, setInterimReliefText] = useState(saved?.interimReliefText ?? '');
 
   // Filing details
-  const [draftBankName, setDraftBankName] = useState('');
-  const [draftNumber, setDraftNumber] = useState('');
-  const [draftDate, setDraftDate] = useState('');
-  const [draftAmount, setDraftAmount] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [authorisedRepFatherName, setAuthorisedRepFatherName] = useState('');
-  const [authorisedRepAge, setAuthorisedRepAge] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
+  const [draftBankName, setDraftBankName] = useState(saved?.draftBankName ?? '');
+  const [draftNumber, setDraftNumber] = useState(saved?.draftNumber ?? '');
+  const [draftDate, setDraftDate] = useState(saved?.draftDate ?? '');
+  const [draftAmount, setDraftAmount] = useState(saved?.draftAmount ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [authorisedRepFatherName, setAuthorisedRepFatherName] = useState(saved?.authorisedRepFatherName ?? '');
+  const [authorisedRepAge, setAuthorisedRepAge] = useState(saved?.authorisedRepAge ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
 
   // Documents (Index / List of Documents)
-  const [documentEntries, setDocumentEntries] = useState<DocumentEntry[]>([]);
+  const [documentEntries, setDocumentEntries] = useState<DocumentEntry[]>(saved?.documentEntries ?? []);
 
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
   const [recallNoticeExtractState, setRecallNoticeExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>(
@@ -209,7 +270,7 @@ export function DrtOaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       benchId,
       applicantBankName,
       applicantRegisteredOffice,
@@ -255,6 +316,7 @@ export function DrtOaWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
       authorisedRepAge,
       verificationPlace,
       documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-drt-oa',
     };
     try {
       if (caseId && draftId) {

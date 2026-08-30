@@ -41,8 +41,9 @@ export const as: Translations = {
     hero: {
       eyebrow: 'আইন লাইব্ৰেৰী, আইনী ড্ৰাফ্টিং আৰু ফাইলিং, আপোনাৰ বাবে সাজু',
       titleLine1: 'আইন বুজক।',
-      titleLine2: 'আপোনাৰ ফাইলিং সাজু কৰক।',
-      titleLine3: 'আপোনাৰ সময়সীমা জানক।',
+      titleLine2: 'আপোনাৰ সময়সীমা জানক।',
+      titleLine3: 'আপোনাৰ ফাইলিং সাজু কৰক।',
+      titleLine4: 'আপোনাৰ গোচৰ পৰিচালনা কৰক।',
       sub: 'অধিবক্তা আৰু ন্যায় বিচৰাসকলৰ বাবে এটা মঞ্চ, জিলা আদালত, উপভোক্তা ফ’ৰাম, DRT/DRAT আৰু NCLT/NCLAT ত আবেদন/শপথনামা ফাইল কৰা আৰু আইনী বিষয় চোৱাচিতা কৰাৰ বাবে।',
       startFiling: 'ফাইলিং আৰম্ভ কৰক →',
       browseActs: 'আইন লাইব্ৰেৰী চাওক — বিনামূলীয়া, একাউণ্টৰ প্ৰয়োজন নাই',
@@ -306,6 +307,7 @@ export const as: Translations = {
     savedOn: (date: string) => `${date} ত সাঁচি থোৱা হৈছে`,
     drafts: 'ড্ৰাফ্ট',
     versionStatus: (version: number, status: string) => `সংস্কৰণ ${version} · ${status}`,
+    openInWizard: 'সম্পাদনা কৰিবলৈ খোলক',
     caseStatus: 'গোচৰৰ স্থিতি',
     statusHelp: 'আপুনি এইটো নিজে আপডেট কৰে — এই এপ্‌টোৱে স্বয়ংক্ৰিয়ভাৱে e-Courts বা কজ লিষ্ট পৰীক্ষা নকৰে।',
     suggestedStatuses: {

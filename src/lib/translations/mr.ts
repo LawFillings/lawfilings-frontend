@@ -41,8 +41,9 @@ export const mr: Translations = {
     hero: {
       eyebrow: 'कायदा ग्रंथालय, कायदेशीर मसुदा तयार करणे आणि फायलिंग, तुमच्यासाठी सज्ज',
       titleLine1: 'कायदा समजून घ्या.',
-      titleLine2: 'तुमची फायलिंग तयार करा.',
-      titleLine3: 'तुमची मुदत जाणून घ्या.',
+      titleLine2: 'तुमची मुदत जाणून घ्या.',
+      titleLine3: 'तुमची फायलिंग तयार करा.',
+      titleLine4: 'तुमची प्रकरणे व्यवस्थापित करा.',
       sub: 'वकील आणि न्याय शोधणाऱ्यांसाठी एक व्यासपीठ, जिल्हा न्यायालये, ग्राहक मंच, DRT/DRAT आणि NCLT/NCLAT मध्ये अर्ज/शपथपत्रे दाखल करण्यासाठी आणि कायदेशीर प्रकरणे हाताळण्यासाठी.',
       startFiling: 'फायलिंग सुरू करा →',
       browseActs: 'कायदा ग्रंथालय पहा — मोफत, खाते नाही',
@@ -306,6 +307,7 @@ export const mr: Translations = {
     savedOn: (date: string) => `${date} रोजी जतन केले`,
     drafts: 'मसुदे',
     versionStatus: (version: number, status: string) => `आवृत्ती ${version} · ${status}`,
+    openInWizard: 'संपादित करण्यासाठी उघडा',
     caseStatus: 'प्रकरणाची स्थिती',
     statusHelp: 'तुम्ही हे स्वतः अद्ययावत करता — हे अ‍ॅप आपोआप e-Courts किंवा कॉज लिस्ट तपासत नाही.',
     suggestedStatuses: {

@@ -15,6 +15,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { CaseType, UserRole } from '../types';
 
@@ -25,32 +26,61 @@ interface DocEntry {
   pageNo: string;
 }
 
+interface SavedContent {
+  orderDate: string;
+  orderNumber: string;
+  reliefOrdered: string;
+  nonComplianceDetails: string;
+  applicantName: string;
+  respondentName: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  documentEntries: DocEntry[];
+}
+
 interface Props {
   caseType: CaseType;
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function ExecutionWizard({ caseType, onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function ExecutionWizard({
+  caseType,
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [orderDate, setOrderDate] = useState('');
-  const [orderNumber, setOrderNumber] = useState('');
-  const [reliefOrdered, setReliefOrdered] = useState('');
-  const [nonComplianceDetails, setNonComplianceDetails] = useState('');
-  const [applicantName, setApplicantName] = useState('');
-  const [respondentName, setRespondentName] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [orderDate, setOrderDate] = useState(saved?.orderDate ?? '');
+  const [orderNumber, setOrderNumber] = useState(saved?.orderNumber ?? '');
+  const [reliefOrdered, setReliefOrdered] = useState(saved?.reliefOrdered ?? '');
+  const [nonComplianceDetails, setNonComplianceDetails] = useState(saved?.nonComplianceDetails ?? '');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -63,7 +93,7 @@ export function ExecutionWizard({ caseType, onBack, onOpenCheckout, onOpenPricin
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       orderDate,
       orderNumber,
       reliefOrdered,
@@ -77,6 +107,7 @@ export function ExecutionWizard({ caseType, onBack, onOpenCheckout, onOpenPricin
       filingPlace,
       filingDate,
       documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: caseType.id,
     };
     try {
       if (caseId && draftId) {

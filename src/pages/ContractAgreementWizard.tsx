@@ -9,6 +9,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -79,31 +80,59 @@ const CONTRACT_TYPE_CONFIGS: Record<string, ContractTypeConfig> = {
   },
 };
 
+interface SavedContent {
+  contractType: string | null;
+  partyAName: string;
+  partyAAddress: string;
+  partyBName: string;
+  partyBAddress: string;
+  consideration: string;
+  startDate: string;
+  termDescription: string;
+  terminationTerms: string;
+  jurisdictionPlace: string;
+  additionalClauses: string;
+  executionDate: string;
+  executionPlace: string;
+}
+
 interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function ContractAgreementWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function ContractAgreementWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [contractType, setContractType] = useState<string | null>(null);
-  const [partyAName, setPartyAName] = useState('');
-  const [partyAAddress, setPartyAAddress] = useState('');
-  const [partyBName, setPartyBName] = useState('');
-  const [partyBAddress, setPartyBAddress] = useState('');
-  const [consideration, setConsideration] = useState('');
-  const [startDate, setStartDate] = useState('');
-  const [termDescription, setTermDescription] = useState('');
-  const [terminationTerms, setTerminationTerms] = useState('');
-  const [jurisdictionPlace, setJurisdictionPlace] = useState('');
-  const [additionalClauses, setAdditionalClauses] = useState('');
-  const [executionDate, setExecutionDate] = useState('');
-  const [executionPlace, setExecutionPlace] = useState('');
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [contractType, setContractType] = useState<string | null>(saved?.contractType ?? null);
+  const [partyAName, setPartyAName] = useState(saved?.partyAName ?? '');
+  const [partyAAddress, setPartyAAddress] = useState(saved?.partyAAddress ?? '');
+  const [partyBName, setPartyBName] = useState(saved?.partyBName ?? '');
+  const [partyBAddress, setPartyBAddress] = useState(saved?.partyBAddress ?? '');
+  const [consideration, setConsideration] = useState(saved?.consideration ?? '');
+  const [startDate, setStartDate] = useState(saved?.startDate ?? '');
+  const [termDescription, setTermDescription] = useState(saved?.termDescription ?? '');
+  const [terminationTerms, setTerminationTerms] = useState(saved?.terminationTerms ?? '');
+  const [jurisdictionPlace, setJurisdictionPlace] = useState(saved?.jurisdictionPlace ?? '');
+  const [additionalClauses, setAdditionalClauses] = useState(saved?.additionalClauses ?? '');
+  const [executionDate, setExecutionDate] = useState(saved?.executionDate ?? '');
+  const [executionPlace, setExecutionPlace] = useState(saved?.executionPlace ?? '');
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -113,7 +142,7 @@ export function ContractAgreementWizard({ onBack, onOpenCheckout, onOpenPricing 
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       contractType,
       partyAName,
       partyAAddress,
@@ -127,6 +156,7 @@ export function ContractAgreementWizard({ onBack, onOpenCheckout, onOpenPricing 
       additionalClauses,
       executionDate,
       executionPlace,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-contract-agreement',
     };
     try {
       if (caseId && draftId) {

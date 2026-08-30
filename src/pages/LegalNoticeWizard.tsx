@@ -11,6 +11,7 @@ import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractLegalNoticeSourceFromText } from '../lib/documentExtractionClient';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
@@ -40,32 +41,61 @@ const NOTICE_TYPE_RULES: Record<string, { defaultPeriod: string; statutoryNote?:
   other: { defaultPeriod: '15 days' },
 };
 
+interface SavedContent {
+  noticeType: string | null;
+  senderName: string;
+  senderAddress: string;
+  senderPhone: string;
+  senderEmail: string;
+  clientName: string;
+  clientAddress: string;
+  recipientName: string;
+  recipientAddress: string;
+  subject: string;
+  factsNarrative: string;
+  demandAction: string;
+  noticePeriod: string;
+  date: string;
+}
+
 interface Props {
   onBack: () => void;
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function LegalNoticeWizard({ onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function LegalNoticeWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [noticeType, setNoticeType] = useState<string | null>(null);
-  const [senderName, setSenderName] = useState('');
-  const [senderAddress, setSenderAddress] = useState('');
-  const [senderPhone, setSenderPhone] = useState('');
-  const [senderEmail, setSenderEmail] = useState('');
-  const [clientName, setClientName] = useState('');
-  const [clientAddress, setClientAddress] = useState('');
-  const [recipientName, setRecipientName] = useState('');
-  const [recipientAddress, setRecipientAddress] = useState('');
-  const [subject, setSubject] = useState('');
-  const [factsNarrative, setFactsNarrative] = useState('');
-  const [demandAction, setDemandAction] = useState('');
-  const [noticePeriod, setNoticePeriod] = useState('');
-  const [date, setDate] = useState('');
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [noticeType, setNoticeType] = useState<string | null>(saved?.noticeType ?? null);
+  const [senderName, setSenderName] = useState(saved?.senderName ?? '');
+  const [senderAddress, setSenderAddress] = useState(saved?.senderAddress ?? '');
+  const [senderPhone, setSenderPhone] = useState(saved?.senderPhone ?? '');
+  const [senderEmail, setSenderEmail] = useState(saved?.senderEmail ?? '');
+  const [clientName, setClientName] = useState(saved?.clientName ?? '');
+  const [clientAddress, setClientAddress] = useState(saved?.clientAddress ?? '');
+  const [recipientName, setRecipientName] = useState(saved?.recipientName ?? '');
+  const [recipientAddress, setRecipientAddress] = useState(saved?.recipientAddress ?? '');
+  const [subject, setSubject] = useState(saved?.subject ?? '');
+  const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
+  const [demandAction, setDemandAction] = useState(saved?.demandAction ?? '');
+  const [noticePeriod, setNoticePeriod] = useState(saved?.noticePeriod ?? '');
+  const [date, setDate] = useState(saved?.date ?? '');
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
   const [sourceExtractState, setSourceExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
@@ -108,7 +138,7 @@ export function LegalNoticeWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       noticeType,
       senderName,
       senderAddress,
@@ -123,6 +153,7 @@ export function LegalNoticeWizard({ onBack, onOpenCheckout, onOpenPricing }: Pro
       demandAction,
       noticePeriod,
       date,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-legal-notice',
     };
     try {
       if (caseId && draftId) {

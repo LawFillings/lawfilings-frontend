@@ -5,6 +5,9 @@ import * as casesClient from '../lib/casesClient';
 import { formatDateOnly } from '../lib/casesClient';
 import type { CaseRecord, DraftRecord, StatusUpdateRecord } from '../lib/casesClient';
 import { listCaseTypes, type CaseTypeOption } from '../lib/catalogClient';
+import { caseTypes as allCaseTypes } from '../data/mockData';
+import { resolveWizardCaseTypeId } from '../lib/draftResume';
+import type { CaseType } from '../types';
 import './CaseDetailPage.css';
 import './AuthForm.css';
 import './MyCasesPage.css';
@@ -14,6 +17,8 @@ const CUSTOM_TYPE_VALUE = '__custom__';
 interface Props {
   caseId: string;
   onBack: () => void;
+  /** Opens a draft back in its wizard, prefilled from its saved content, for further editing. */
+  onOpenDraft: (draft: DraftRecord, caseType: CaseType) => void;
 }
 
 const STATUS_TONE: Record<CaseRecord['status'], 'warn' | 'safe' | 'neutral'> = {
@@ -24,7 +29,7 @@ const STATUS_TONE: Record<CaseRecord['status'], 'warn' | 'safe' | 'neutral'> = {
   disposed: 'neutral',
 };
 
-export function CaseDetailPage({ caseId, onBack }: Props) {
+export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
   const { token } = useAuth();
   const { t } = useLanguage();
   const [caseRecord, setCaseRecord] = useState<(CaseRecord & { drafts: DraftRecord[] }) | null>(null);
@@ -264,12 +269,28 @@ export function CaseDetailPage({ caseId, onBack }: Props) {
           {caseRecord.drafts.length > 0 && (
             <section className="case-detail-section">
               <h2 className="case-detail-section-title">{t.caseDetail.drafts}</h2>
-              {caseRecord.drafts.map((d) => (
-                <div className="case-detail-draft" key={d.id}>
-                  <span>{d.title}</span>
-                  <span className="case-detail-draft-meta">{t.caseDetail.versionStatus(d.version, d.status)}</span>
-                </div>
-              ))}
+              {caseRecord.drafts.map((d) => {
+                const wizardCaseTypeId = resolveWizardCaseTypeId(d.content);
+                const ct = wizardCaseTypeId ? allCaseTypes.find((c) => c.id === wizardCaseTypeId) : undefined;
+                return ct ? (
+                  <button
+                    type="button"
+                    className="case-detail-draft case-detail-draft-open"
+                    key={d.id}
+                    onClick={() => onOpenDraft(d, ct)}
+                  >
+                    <span>{d.title}</span>
+                    <span className="case-detail-draft-meta">
+                      {t.caseDetail.versionStatus(d.version, d.status)} · {t.caseDetail.openInWizard}
+                    </span>
+                  </button>
+                ) : (
+                  <div className="case-detail-draft" key={d.id}>
+                    <span>{d.title}</span>
+                    <span className="case-detail-draft-meta">{t.caseDetail.versionStatus(d.version, d.status)}</span>
+                  </div>
+                );
+              })}
             </section>
           )}
 

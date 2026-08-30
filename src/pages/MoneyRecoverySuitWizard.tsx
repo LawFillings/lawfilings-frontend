@@ -19,6 +19,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
@@ -41,6 +42,29 @@ const clauseByCode = (code: string) => mrsClauses.find((c) => c.code === code)!;
 interface DocEntry {
   particulars: string;
   pageNo: string;
+}
+
+interface SavedContent {
+  stateId: string;
+  districtId: string;
+  plaintiffName: string;
+  defendantName: string;
+  defendantAddress: string;
+  causeType: string | null;
+  factsNarrative: string;
+  claimAmount: string;
+  isCommercialDispute: 'yes' | 'no' | null;
+  mediationStatus: 'urgent_relief' | 'completed' | 'not_yet' | null;
+  plaintiffAge: string;
+  plaintiffAddress: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  verificationPlace: string;
+  documentEntries: DocEntry[];
 }
 
 // Commercial Courts Act, 2015 branch — only offered for states where an actual Commercial Court
@@ -70,38 +94,53 @@ interface Props {
   onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
   onOpenLawLibrary?: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
-export function MoneyRecoverySuitWizard({ onBack, onOpenCheckout, onOpenPricing, onOpenLawLibrary }: Props) {
+export function MoneyRecoverySuitWizard({
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  onOpenLawLibrary,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
   const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [stateId, setStateId] = useState('');
-  const [districtId, setDistrictId] = useState('');
-  const [plaintiffName, setPlaintiffName] = useState('');
-  const [defendantName, setDefendantName] = useState('');
-  const [defendantAddress, setDefendantAddress] = useState('');
-  const [causeType, setCauseType] = useState<string | null>(null);
-  const [factsNarrative, setFactsNarrative] = useState('');
-  const [claimAmount, setClaimAmount] = useState('');
-  const [isCommercialDispute, setIsCommercialDispute] = useState<'yes' | 'no' | null>(null);
-  const [mediationStatus, setMediationStatus] = useState<'urgent_relief' | 'completed' | 'not_yet' | null>(null);
-  const [plaintiffAge, setPlaintiffAge] = useState('');
-  const [plaintiffAddress, setPlaintiffAddress] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [stateId, setStateId] = useState(saved?.stateId ?? '');
+  const [districtId, setDistrictId] = useState(saved?.districtId ?? '');
+  const [plaintiffName, setPlaintiffName] = useState(saved?.plaintiffName ?? '');
+  const [defendantName, setDefendantName] = useState(saved?.defendantName ?? '');
+  const [defendantAddress, setDefendantAddress] = useState(saved?.defendantAddress ?? '');
+  const [causeType, setCauseType] = useState<string | null>(saved?.causeType ?? null);
+  const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
+  const [claimAmount, setClaimAmount] = useState(saved?.claimAmount ?? '');
+  const [isCommercialDispute, setIsCommercialDispute] = useState<'yes' | 'no' | null>(saved?.isCommercialDispute ?? null);
+  const [mediationStatus, setMediationStatus] = useState<'urgent_relief' | 'completed' | 'not_yet' | null>(
+    saved?.mediationStatus ?? null
+  );
+  const [plaintiffAge, setPlaintiffAge] = useState(saved?.plaintiffAge ?? '');
+  const [plaintiffAddress, setPlaintiffAddress] = useState(saved?.plaintiffAddress ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
-  const [caseId, setCaseId] = useState<string | null>(null);
-  const [draftId, setDraftId] = useState<string | null>(null);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
 
@@ -130,7 +169,7 @@ export function MoneyRecoverySuitWizard({ onBack, onOpenCheckout, onOpenPricing,
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
-    const content = {
+    const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
       stateId,
       districtId,
       plaintiffName,
@@ -141,6 +180,17 @@ export function MoneyRecoverySuitWizard({ onBack, onOpenCheckout, onOpenPricing,
       claimAmount,
       isCommercialDispute,
       mediationStatus,
+      plaintiffAge,
+      plaintiffAddress,
+      advocateName,
+      advocateAddress,
+      advocatePhone,
+      advocateEmail,
+      filingPlace,
+      filingDate,
+      verificationPlace,
+      documentEntries,
+      [WIZARD_CASE_TYPE_KEY]: 'ct-dc-money-recovery',
     };
     try {
       if (caseId && draftId) {

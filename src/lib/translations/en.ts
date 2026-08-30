@@ -39,8 +39,9 @@ export const en = {
     hero: {
       eyebrow: 'Law Library, legal drafting and filing tailor made for you',
       titleLine1: 'Understand the law.',
-      titleLine2: 'Draft your filing.',
-      titleLine3: 'Know your deadline.',
+      titleLine2: 'Know your deadline.',
+      titleLine3: 'Draft your filing.',
+      titleLine4: 'Manage your cases.',
       sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, DRTs/DRATs and NCLT/NCLAT.',
       startFiling: 'Start a filing →',
       browseActs: 'Browse the Law Library — free, no account',
@@ -304,6 +305,7 @@ export const en = {
     savedOn: (date: string) => `Saved ${date}`,
     drafts: 'Drafts',
     versionStatus: (version: number, status: string) => `v${version} · ${status}`,
+    openInWizard: 'Open to edit',
     caseStatus: 'Case status',
     statusHelp: 'You update this yourself — this app does not check e-Courts or cause lists automatically.',
     suggestedStatuses: {

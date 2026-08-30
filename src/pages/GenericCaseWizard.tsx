@@ -16,7 +16,11 @@ import {
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractTribunalOrderFromText, extractConsumerComplaintFromText } from '../lib/documentExtractionClient';
 import { useAuth } from '../lib/auth';
+import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
+import { PaywallBlock } from '../components/PaywallBlock';
+import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
+import type { CheckoutIntent } from './CheckoutScreen';
 import type { CaseType, UserRole } from '../types';
 
 // The case types that reference an existing Tribunal ORDER, where uploading it can prefill the
@@ -30,6 +34,12 @@ const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
 interface Props {
   caseType: CaseType;
   onBack: () => void;
+  onOpenCheckout: (intent: CheckoutIntent) => void;
+  onOpenPricing: () => void;
+  /** Set when resuming an existing saved draft rather than starting a new one. */
+  caseId?: string;
+  draftId?: string;
+  initialContent?: unknown;
 }
 
 interface DocEntry {
@@ -37,31 +47,110 @@ interface DocEntry {
   pageNo: string;
 }
 
-export function GenericCaseWizard({ caseType, onBack }: Props) {
-  const { token } = useAuth();
+interface SavedContent {
+  applicantName: string;
+  respondentName: string;
+  parentCaseNumber: string;
+  orderDate: string;
+  details: string;
+  reliefSought: string;
+  applicantAge: string;
+  applicantAddress: string;
+  advocateName: string;
+  advocateAddress: string;
+  advocatePhone: string;
+  advocateEmail: string;
+  filingPlace: string;
+  filingDate: string;
+  verificationPlace: string;
+  documentEntries: DocEntry[];
+}
+
+export function GenericCaseWizard({
+  caseType,
+  onBack,
+  onOpenCheckout,
+  onOpenPricing,
+  caseId: initialCaseId,
+  draftId: initialDraftId,
+  initialContent,
+}: Props) {
+  const { user, token } = useAuth();
+  const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [applicantName, setApplicantName] = useState('');
-  const [respondentName, setRespondentName] = useState('');
-  const [parentCaseNumber, setParentCaseNumber] = useState('');
-  const [orderDate, setOrderDate] = useState('');
-  const [details, setDetails] = useState('');
-  const [reliefSought, setReliefSought] = useState('');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
+  const [parentCaseNumber, setParentCaseNumber] = useState(saved?.parentCaseNumber ?? '');
+  const [orderDate, setOrderDate] = useState(saved?.orderDate ?? '');
+  const [details, setDetails] = useState(saved?.details ?? '');
+  const [reliefSought, setReliefSought] = useState(saved?.reliefSought ?? '');
 
-  const [applicantAge, setApplicantAge] = useState('');
-  const [applicantAddress, setApplicantAddress] = useState('');
-  const [advocateName, setAdvocateName] = useState('');
-  const [advocateAddress, setAdvocateAddress] = useState('');
-  const [advocatePhone, setAdvocatePhone] = useState('');
-  const [advocateEmail, setAdvocateEmail] = useState('');
-  const [filingPlace, setFilingPlace] = useState('');
-  const [filingDate, setFilingDate] = useState('');
-  const [verificationPlace, setVerificationPlace] = useState('');
-  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>([]);
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
+  const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
+  const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
+  const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
+  const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
+  const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
+  const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
+  const [paywall, setPaywall] = useState(false);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
     setDocumentEntries((d) => d.map((entry, idx) => (idx === i ? { ...entry, ...patch } : entry)));
+
+  const handleSaveDraft = async () => {
+    if (!user || !token) return;
+    setSaveState('saving');
+    setPaywall(false);
+    const content: SavedContent = {
+      applicantName,
+      respondentName,
+      parentCaseNumber,
+      orderDate,
+      details,
+      reliefSought,
+      applicantAge,
+      applicantAddress,
+      advocateName,
+      advocateAddress,
+      advocatePhone,
+      advocateEmail,
+      filingPlace,
+      filingDate,
+      verificationPlace,
+      documentEntries,
+    };
+    const contentWithWizardKey = { ...content, [WIZARD_CASE_TYPE_KEY]: caseType.id };
+    const title = `${applicantName || 'Applicant'} vs. ${respondentName || 'Respondent'} — ${caseType.name}`;
+    try {
+      if (caseId && draftId) {
+        await casesClient.updateDraft(caseId, draftId, contentWithWizardKey, token);
+      } else {
+        const created = await casesClient.createCase(
+          { title, ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker' },
+          token
+        );
+        setCaseId(created.id);
+        const draft = await casesClient.createDraft(created.id, title, contentWithWizardKey, token);
+        setDraftId(draft.id);
+      }
+      setSaveState('saved');
+    } catch (err) {
+      if (err instanceof ApiError && err.status === 402) {
+        setPaywall(true);
+        setSaveState('idle');
+      } else {
+        setSaveState('error');
+      }
+    }
+  };
 
   const hasDeadline = caseType.deadlineSource !== undefined;
   // Every case type routed through this shared wizard is filed with a tribunal or commission
@@ -385,6 +474,24 @@ export function GenericCaseWizard({ caseType, onBack }: Props) {
         {step === previewStepIndex && (
           <div>
             <h3 className="step-heading">Preview</h3>
+            {user ? (
+              <div style={{ marginBottom: 'var(--space-4)' }}>
+                <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
+                  {saveState === 'saving' ? 'Saving…' : caseId ? 'Update saved draft' : 'Save draft'}
+                </button>
+                {saveState === 'saved' && <p className="step-help">Saved to My Cases.</p>}
+                {saveState === 'error' && <p className="step-help">Couldn't save — check your connection and try again.</p>}
+                {paywall && (
+                  <div style={{ marginTop: 'var(--space-3)' }}>
+                    <PaywallBlock onChoosePlan={onOpenPricing} />
+                  </div>
+                )}
+              </div>
+            ) : (
+              <p className="step-help" style={{ marginBottom: 'var(--space-4)' }}>
+                Log in to save this draft and come back to it later.
+              </p>
+            )}
             <p className="step-help">A filed {caseType.name} is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
             <DraftDocument title={`${caseType.name} — Index`} causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
