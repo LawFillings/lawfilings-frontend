@@ -6,14 +6,20 @@ interface DeadlineCalculatorProps {
   caseType: CaseType;
   mode: UserRole;
   onDaysSinceChange?: (days: number | null) => void;
+  /** Lets a parent that needs the raw trigger date itself (e.g. to prefill it from an uploaded
+   *  order's extracted date) control this field instead of the component's own internal state.
+   *  Omit both to keep the previous fully-internal behaviour. */
+  value?: string;
+  onChange?: (value: string) => void;
 }
 
 function formatDate(d: Date) {
   return d.toLocaleDateString('en-IN', { day: 'numeric', month: 'short', year: 'numeric' });
 }
 
-export function DeadlineCalculator({ caseType, mode, onDaysSinceChange }: DeadlineCalculatorProps) {
-  const [triggerDate, setTriggerDate] = useState('');
+export function DeadlineCalculator({ caseType, mode, onDaysSinceChange, value, onChange }: DeadlineCalculatorProps) {
+  const [internalTriggerDate, setInternalTriggerDate] = useState('');
+  const triggerDate = value !== undefined ? value : internalTriggerDate;
 
   const daysSince = useMemo(() => {
     if (!triggerDate) return null;
@@ -22,13 +28,14 @@ export function DeadlineCalculator({ caseType, mode, onDaysSinceChange }: Deadli
     return Math.floor((today.getTime() - served.getTime()) / 86_400_000);
   }, [triggerDate]);
 
-  const handleChange = (value: string) => {
-    setTriggerDate(value);
-    if (!value) {
+  const handleChange = (nextValue: string) => {
+    if (onChange) onChange(nextValue);
+    else setInternalTriggerDate(nextValue);
+    if (!nextValue) {
       onDaysSinceChange?.(null);
       return;
     }
-    const served = new Date(value);
+    const served = new Date(nextValue);
     const today = new Date();
     onDaysSinceChange?.(Math.floor((today.getTime() - served.getTime()) / 86_400_000));
   };

@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DeadlineCalculator } from '../components/DeadlineCalculator';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
@@ -11,8 +11,21 @@ import {
   buildDocumentListParagraphs,
   splitIntoParagraphs,
   withPeriod,
+  toThatClause,
 } from '../lib/legalDocumentFormat';
+import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
+import { extractTribunalOrderFromText, extractConsumerComplaintFromText } from '../lib/documentExtractionClient';
+import { useAuth } from '../lib/auth';
+import { ApiError } from '../lib/apiError';
 import type { CaseType, UserRole } from '../types';
+
+// The case types that reference an existing Tribunal ORDER, where uploading it can prefill the
+// applicant/respondent names, the connected case number, and (where a deadline step exists) the
+// order date. IA/MA-general reference a pending case rather than a specific order, and NCLT Reply
+// reads a live application rather than an order — out of scope for this pass. See
+// ct-cc-written-version below for the one non-order source document (a Consumer Complaint).
+const ORDER_UPLOAD_CASE_TYPE_IDS = new Set(['ct-drt-review', 'ct-nclt-restoration', 'ct-nclt-12a']);
+const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
 
 interface Props {
   caseType: CaseType;
@@ -25,11 +38,13 @@ interface DocEntry {
 }
 
 export function GenericCaseWizard({ caseType, onBack }: Props) {
+  const { token } = useAuth();
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
   const [applicantName, setApplicantName] = useState('');
   const [respondentName, setRespondentName] = useState('');
   const [parentCaseNumber, setParentCaseNumber] = useState('');
+  const [orderDate, setOrderDate] = useState('');
   const [details, setDetails] = useState('');
   const [reliefSought, setReliefSought] = useState('');
 
@@ -58,10 +73,51 @@ export function GenericCaseWizard({ caseType, onBack }: Props) {
   const documentsStepIndex = filingDetailsStepIndex + 1;
   const previewStepIndex = STEPS.length - 1;
 
+  const isOrderUpload = ORDER_UPLOAD_CASE_TYPE_IDS.has(caseType.id);
+  const isComplaintUpload = caseType.id === COMPLAINT_UPLOAD_CASE_TYPE_ID;
+  const [extractState, setExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
+  const [extractError, setExtractError] = useState<string | null>(null);
+  const sourceFileInputRef = useRef<HTMLInputElement>(null);
+
+  const handleSourceFileSelected = async (file: File) => {
+    if (!token) return;
+    setExtractState('extracting');
+    setExtractError(null);
+    try {
+      const text = await extractTextFromPdf(file);
+      if (isOrderUpload) {
+        const extracted = await extractTribunalOrderFromText(text, token);
+        if (extracted.applicantName && !applicantName) setApplicantName(extracted.applicantName);
+        if (extracted.respondentName && !respondentName) setRespondentName(extracted.respondentName);
+        if (extracted.caseNumber && !parentCaseNumber) setParentCaseNumber(extracted.caseNumber);
+        if (extracted.orderDate && !orderDate) setOrderDate(extracted.orderDate);
+      } else if (isComplaintUpload) {
+        const extracted = await extractConsumerComplaintFromText(text, token);
+        if (extracted.complainantName && !applicantName) setApplicantName(extracted.complainantName);
+        if (extracted.oppositePartyName && !respondentName) setRespondentName(extracted.oppositePartyName);
+        if (extracted.complaintNumber && !parentCaseNumber) setParentCaseNumber(extracted.complaintNumber);
+      }
+      setExtractState('done');
+    } catch (err) {
+      if (err instanceof NoTextLayerError) {
+        setExtractError(
+          'This looks like a scanned document — text extraction only works with text-based PDFs for now. Try running it through a free online OCR/text-conversion tool and re-uploading the result, or fill in the details below manually.'
+        );
+      } else if (err instanceof ApiError && err.status === 402) {
+        setExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
+      } else if (err instanceof ApiError) {
+        setExtractError(err.message);
+      } else {
+        setExtractError("Couldn't read that file — please make sure it's a PDF and try again.");
+      }
+      setExtractState('error');
+    }
+  };
+
   const groundsParagraphs = splitIntoParagraphs(details);
   const draftSections: DraftSection[] = [
     {
-      paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs : ['Details not yet entered.'],
+      paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs.map(toThatClause) : ['Details not yet entered.'],
       incomplete: !details,
     },
     buildPrayerSection(reliefSought, caseType.forumType),
@@ -160,6 +216,47 @@ export function GenericCaseWizard({ caseType, onBack }: Props) {
             {caseType.plainLanguageSummary && mode === 'justice_seeker' && (
               <p className="step-help">{caseType.plainLanguageSummary}</p>
             )}
+            {(isOrderUpload || isComplaintUpload) && (
+              <div style={{ marginBottom: 'var(--space-5)' }}>
+                <input
+                  ref={sourceFileInputRef}
+                  type="file"
+                  accept="application/pdf"
+                  style={{ display: 'none' }}
+                  onChange={(e) => {
+                    const file = e.target.files?.[0];
+                    e.target.value = '';
+                    if (file) handleSourceFileSelected(file);
+                  }}
+                />
+                <button
+                  type="button"
+                  className="para-btn"
+                  onClick={() => sourceFileInputRef.current?.click()}
+                  disabled={extractState === 'extracting'}
+                >
+                  {extractState === 'extracting'
+                    ? 'Reading…'
+                    : isOrderUpload
+                      ? 'Fill from order (PDF)'
+                      : 'Fill from Consumer Complaint (PDF)'}
+                </button>
+                <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                  Only text-based PDFs are supported for now, not scanned copies. This fills in blank fields
+                  below — review everything before continuing.
+                </p>
+                {extractState === 'done' && (
+                  <p className="step-help" style={{ color: 'var(--status-safe-text)', margin: 'var(--space-1) 0 0' }}>
+                    Filled in from the document — please check these before continuing.
+                  </p>
+                )}
+                {extractState === 'error' && extractError && (
+                  <p className="step-help" style={{ color: 'var(--status-danger-text)', margin: 'var(--space-1) 0 0' }}>
+                    {extractError}
+                  </p>
+                )}
+              </div>
+            )}
             <div className="form-grid">
               <label className="form-field">
                 <span>
@@ -187,7 +284,7 @@ export function GenericCaseWizard({ caseType, onBack }: Props) {
         {hasDeadline && step === 1 && (
           <div>
             <h3 className="step-heading">Deadline</h3>
-            <DeadlineCalculator caseType={caseType} mode={mode} />
+            <DeadlineCalculator caseType={caseType} mode={mode} value={orderDate} onChange={setOrderDate} />
           </div>
         )}
 

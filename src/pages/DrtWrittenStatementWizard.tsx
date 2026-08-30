@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DeadlineCalculator } from '../components/DeadlineCalculator';
 import { LocationSelector } from '../components/LocationSelector';
@@ -11,15 +11,18 @@ import {
   buildFiledByBlock,
   buildDocumentListParagraphs,
   withPeriod,
+  toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
-import { caseTypes, clauses, paraWiseAllegations, groundsOfDefenceOptions } from '../data/mockData';
+import { caseTypes, clauses, paraWiseAllegations as defaultParaWiseAllegations, groundsOfDefenceOptions } from '../data/mockData';
 import { drtBenchLocations } from '../data/forumLocations';
 import { DRT_WS_CASE_TYPE_ID } from '../data/backendCaseTypeIds';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
+import { extractOaFromText } from '../lib/documentExtractionClient';
 import type { CheckoutIntent } from './CheckoutScreen';
 import type { ParaResponse, UserRole } from '../types';
 
@@ -60,12 +63,19 @@ export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenC
   const [daysSince, setDaysSince] = useState<number | null>(null);
   const [selectedGrounds, setSelectedGrounds] = useState<string[]>([]);
   const [paraResponses, setParaResponses] = useState<Record<number, ParaResponse>>({});
+  // Starts as the same 4-item stand-in every filing used to be stuck with — replaced wholesale by
+  // handleOaFileSelected once the actual OA is read, so the para-wise reply responds to what was
+  // really pleaded in this case instead of a generic placeholder.
+  const [allegations, setAllegations] = useState(defaultParaWiseAllegations);
 
   const [bankName, setBankName] = useState('');
   const [oaNumber, setOaNumber] = useState('');
   const [defendantName, setDefendantName] = useState('');
   const [defendantAge, setDefendantAge] = useState('');
   const [defendantAddress, setDefendantAddress] = useState('');
+  const [oaExtractState, setOaExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
+  const [oaExtractError, setOaExtractError] = useState<string | null>(null);
+  const oaFileInputRef = useRef<HTMLInputElement>(null);
   const [advocateName, setAdvocateName] = useState('');
   const [advocateAddress, setAdvocateAddress] = useState('');
   const [advocatePhone, setAdvocatePhone] = useState('');
@@ -116,6 +126,42 @@ export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenC
     }
   };
 
+  const handleOaFileSelected = async (file: File) => {
+    if (!token) return;
+    setOaExtractState('extracting');
+    setOaExtractError(null);
+    try {
+      const text = await extractTextFromPdf(file);
+      const extracted = await extractOaFromText(text, token);
+      if (extracted.bankName && !bankName) setBankName(extracted.bankName);
+      if (extracted.oaNumber && !oaNumber) setOaNumber(extracted.oaNumber);
+      if (extracted.defendantName && !defendantName) setDefendantName(extracted.defendantName);
+      if (extracted.defendantAge && !defendantAge) setDefendantAge(extracted.defendantAge);
+      if (extracted.defendantAddress && !defendantAddress) setDefendantAddress(extracted.defendantAddress);
+      // Wholesale replacement, not a merge — these are the OA's own real allegations standing in
+      // for the generic 4-item placeholder, so old placeholder-keyed Admit/Deny/No-knowledge
+      // answers no longer correspond to anything and are cleared along with them.
+      if (extracted.allegations.length > 0) {
+        setAllegations(extracted.allegations.map((text, i) => ({ id: i + 1, text })));
+        setParaResponses({});
+      }
+      setOaExtractState('done');
+    } catch (err) {
+      if (err instanceof NoTextLayerError) {
+        setOaExtractError(
+          "This looks like a scanned OA — text extraction only works with text-based PDFs for now. Try running it through a free online OCR/text-conversion tool and re-uploading the result, or fill in the details below manually."
+        );
+      } else if (err instanceof ApiError && err.status === 402) {
+        setOaExtractError('This feature needs an active plan — see Pricing, or fill in the details below manually.');
+      } else if (err instanceof ApiError) {
+        setOaExtractError(err.message);
+      } else {
+        setOaExtractError("Couldn't read that file — please make sure it's a PDF and try again.");
+      }
+      setOaExtractState('error');
+    }
+  };
+
   const toggleGround = (id: string) => {
     setSelectedGrounds((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
   };
@@ -129,22 +175,28 @@ export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenC
     .map((id) => groundsOfDefenceOptions.find((g) => g.id === id)?.label)
     .filter(Boolean)
     .join('; ');
+  // Lowercased since it's embedded mid-sentence after "further submits that " — the option
+  // labels themselves are written sentence-initial-style ("The amount claimed is wrong") for
+  // display as checkboxes, but none start with an acronym/proper noun, so this is safe.
+  const groundsTextForClause = groundsText ? groundsText.charAt(0).toLowerCase() + groundsText.slice(1) : groundsText;
 
   const draftSections: DraftSection[] = [
     {
       heading: 'Para-wise reply',
-      paragraphs: paraWiseAllegations.map((a) => {
+      paragraphs: allegations.map((a) => {
         const r = paraResponses[a.id];
         const verb = r === 'Admit' ? 'admits' : r === 'Deny' ? 'denies' : r === 'No knowledge' ? 'has no knowledge of' : '[not yet answered]';
-        return `In reply to the averment that ${a.text.toLowerCase()}, the Defendant ${verb} the same.`;
+        return toThatClause(`In reply to the averment that ${a.text.toLowerCase()}, the Defendant ${verb} the same.`);
       }),
     },
     {
       heading: 'Grounds of defence',
       paragraphs: [
-        fillTemplate(clauseByCode('WS-03').bodyTemplate, {
-          grounds_of_defence: groundsText || undefined,
-        }),
+        toThatClause(
+          fillTemplate(clauseByCode('WS-03').bodyTemplate, {
+            grounds_of_defence: groundsTextForClause || undefined,
+          })
+        ),
       ],
       incomplete: selectedGrounds.length === 0,
     },
@@ -253,6 +305,42 @@ export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenC
                 ? 'Enter the OA number, bank/FI name, and claimed amount.'
                 : 'Tell us about the bank’s case against you — this helps us reference it correctly in your reply.'}
             </p>
+            <div style={{ marginBottom: 'var(--space-5)' }}>
+              <input
+                ref={oaFileInputRef}
+                type="file"
+                accept="application/pdf"
+                style={{ display: 'none' }}
+                onChange={(e) => {
+                  const file = e.target.files?.[0];
+                  e.target.value = '';
+                  if (file) handleOaFileSelected(file);
+                }}
+              />
+              <button
+                type="button"
+                className="para-btn"
+                onClick={() => oaFileInputRef.current?.click()}
+                disabled={oaExtractState === 'extracting'}
+              >
+                {oaExtractState === 'extracting' ? 'Reading OA…' : 'Fill from OA (PDF)'}
+              </button>
+              <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                Only text-based PDFs are supported for now, not scanned copies. This fills in blank fields below
+                and replaces the para-wise reply's placeholder allegations with the OA's actual ones — review
+                everything before continuing.
+              </p>
+              {oaExtractState === 'done' && (
+                <p className="step-help" style={{ color: 'var(--status-safe-text)', margin: 'var(--space-1) 0 0' }}>
+                  Filled in from the OA — please check these before continuing.
+                </p>
+              )}
+              {oaExtractState === 'error' && oaExtractError && (
+                <p className="step-help" style={{ color: 'var(--status-danger-text)', margin: 'var(--space-1) 0 0' }}>
+                  {oaExtractError}
+                </p>
+              )}
+            </div>
             <div className="form-grid">
               <label className="form-field">
                 <span>{mode === 'advocate' ? 'Applicant (Bank/FI)' : 'Which bank filed this?'}</span>
@@ -318,7 +406,7 @@ export function DrtWrittenStatementWizard({ onBack, onOpenCaseLawSearch, onOpenC
             <h3 className="step-heading">
               {mode === 'advocate' ? 'Para-wise reply' : 'Respond to each claim in the bank’s application'}
             </h3>
-            <ParaWiseReply allegations={paraWiseAllegations} value={paraResponses} onChange={setParaResponses} />
+            <ParaWiseReply allegations={allegations} value={paraResponses} onChange={setParaResponses} />
           </div>
         )}
 

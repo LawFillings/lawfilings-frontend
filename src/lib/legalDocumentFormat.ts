@@ -134,7 +134,7 @@ export function toThatClause(text: string): string {
   const t = text.trim();
   if (!t) return t;
   const withoutPrefix = t.replace(/^that\s+/i, '');
-  const lowerStarters = /^(The|This|It|A|An|His|Her|Their|There|They|Bail|No)\b/;
+  const lowerStarters = /^(The|This|It|A|An|His|Her|Their|There|They|Bail|No|In|Without)\b/;
   const adjusted = lowerStarters.test(withoutPrefix)
     ? withoutPrefix.charAt(0).toLowerCase() + withoutPrefix.slice(1)
     : withoutPrefix;

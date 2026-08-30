@@ -278,6 +278,7 @@ export const caseTypes: CaseType[] = [
     deadlineSource: 'statutory_fixed',
     limitationDays: 30,
     condonableExtensionDays: 15,
+    parentRequired: true,
   },
   {
     id: 'ct-cc-revision-district',

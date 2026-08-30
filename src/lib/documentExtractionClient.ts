@@ -82,3 +82,37 @@ export interface AppealOrderExtraction {
 export function extractAppealOrderFromText(text: string, token: string): Promise<AppealOrderExtraction> {
   return postExtraction('extract-appeal-order', text, token);
 }
+
+export interface TribunalOrderExtraction {
+  orderDate: string;
+  applicantName: string;
+  respondentName: string;
+  caseNumber: string;
+}
+
+export function extractTribunalOrderFromText(text: string, token: string): Promise<TribunalOrderExtraction> {
+  return postExtraction('extract-tribunal-order', text, token);
+}
+
+export interface OaExtraction {
+  bankName: string;
+  oaNumber: string;
+  defendantName: string;
+  defendantAge: string;
+  defendantAddress: string;
+  allegations: string[];
+}
+
+export function extractOaFromText(text: string, token: string): Promise<OaExtraction> {
+  return postExtraction('extract-oa', text, token);
+}
+
+export interface ConsumerComplaintExtraction {
+  complainantName: string;
+  oppositePartyName: string;
+  complaintNumber: string;
+}
+
+export function extractConsumerComplaintFromText(text: string, token: string): Promise<ConsumerComplaintExtraction> {
+  return postExtraction('extract-consumer-complaint', text, token);
+}
