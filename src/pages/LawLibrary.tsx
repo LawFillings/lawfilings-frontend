@@ -12,13 +12,14 @@ interface Props {
    * (e.g. "Central Acts"), so the page skips its own default constitution-first landing state. */
   initialCategory?: ActCategory;
   onOpenLogin: () => void;
+  onOpenTranslateDocument: () => void;
 }
 
 export type ActCategory = 'constitution' | 'central' | 'state' | 'rules';
 
 const constitutionAct = acts.find((act) => act.id === 'act-constitution-india') ?? null;
 
-export function LawLibrary({ onBack, initialCategory, onOpenLogin }: Props) {
+export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTranslateDocument }: Props) {
   const { settings } = useSettings();
   const { color, widgets } = settings.lawLibrary;
   const { t } = useLanguage();
@@ -113,6 +114,13 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin }: Props) {
           />
         )}
       </header>
+
+      <p className="ll-translate-nudge">
+        {t.lawLibrary.translateNudge}{' '}
+        <button type="button" className="ll-translate-nudge-link" onClick={onOpenTranslateDocument}>
+          {t.lawLibrary.translateNudgeLink}
+        </button>
+      </p>
 
       {widgets.askAi && <AskTheLibrary onOpenLogin={onOpenLogin} />}
 

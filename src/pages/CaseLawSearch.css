@@ -28,6 +28,22 @@
   max-width: 60ch;
 }
 
+.cls-translate-nudge {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-5);
+}
+
+.cls-translate-nudge-link {
+  background: none;
+  border: none;
+  padding: 0;
+  font: inherit;
+  color: var(--accent);
+  text-decoration: underline;
+  cursor: pointer;
+}
+
 .cls-empty {
   display: flex;
   flex-direction: column;

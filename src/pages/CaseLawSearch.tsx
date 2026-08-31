@@ -20,9 +20,10 @@ function stripHtml(text: string): string {
 interface Props {
   onBack: () => void;
   onOpenLogin: () => void;
+  onOpenTranslateDocument: () => void;
 }
 
-export function CaseLawSearch({ onBack, onOpenLogin }: Props) {
+export function CaseLawSearch({ onBack, onOpenLogin, onOpenTranslateDocument }: Props) {
   const { user, token } = useAuth();
   const { t } = useLanguage();
   const [query, setQuery] = useState('');
@@ -65,6 +66,13 @@ export function CaseLawSearch({ onBack, onOpenLogin }: Props) {
         <h1 className="cls-title">{t.caseLawSearch.title}</h1>
         <p className="cls-sub">{t.caseLawSearch.sub}</p>
       </header>
+
+      <p className="cls-translate-nudge">
+        {t.caseLawSearch.translateNudge}{' '}
+        <button type="button" className="cls-translate-nudge-link" onClick={onOpenTranslateDocument}>
+          {t.caseLawSearch.translateNudgeLink}
+        </button>
+      </p>
 
       {!user && (
         <div className="cls-empty">

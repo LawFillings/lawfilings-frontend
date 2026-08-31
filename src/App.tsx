@@ -19,6 +19,7 @@ import { GenericCaseWizard } from './pages/GenericCaseWizard';
 import { LawLibrary, type ActCategory } from './pages/LawLibrary';
 import { CaseLawSearch } from './pages/CaseLawSearch';
 import { CourtFeeCalculatorPage } from './pages/CourtFeeCalculatorPage';
+import { TranslateDocumentPage } from './pages/TranslateDocumentPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
@@ -61,6 +62,7 @@ type Screen =
   | { kind: 'lawLibrary'; category?: ActCategory }
   | { kind: 'caseLawSearch' }
   | { kind: 'courtFeeCalculator' }
+  | { kind: 'translateDocument' }
   | { kind: 'about' }
   | { kind: 'contact' }
   | { kind: 'privacyPolicy' }
@@ -118,6 +120,7 @@ function AppScreens() {
   const openLawLibraryCategoryNav = (category: ActCategory) => navigate({ kind: 'lawLibrary', category });
   const openCaseLawSearchNav = () => navigate({ kind: 'caseLawSearch' });
   const openCourtFeeCalculatorNav = () => navigate({ kind: 'courtFeeCalculator' });
+  const openTranslateDocumentNav = () => navigate({ kind: 'translateDocument' });
   const openAboutNav = () => navigate({ kind: 'about' });
   const openContactNav = () => navigate({ kind: 'contact' });
   const openPrivacyPolicyNav = () => navigate({ kind: 'privacyPolicy' });
@@ -169,14 +172,18 @@ function AppScreens() {
           initialCategory={screen.category}
           key={screen.category ?? 'default'}
           onOpenLogin={openLoginNav}
+          onOpenTranslateDocument={openTranslateDocumentNav}
         />
       );
     }
     if (screen.kind === 'caseLawSearch') {
-      return <CaseLawSearch onBack={onBack} onOpenLogin={openLoginNav} />;
+      return <CaseLawSearch onBack={onBack} onOpenLogin={openLoginNav} onOpenTranslateDocument={openTranslateDocumentNav} />;
     }
     if (screen.kind === 'courtFeeCalculator') {
       return <CourtFeeCalculatorPage onBack={onBack} />;
+    }
+    if (screen.kind === 'translateDocument') {
+      return <TranslateDocumentPage onBack={onBack} onOpenLogin={openLoginNav} />;
     }
     if (screen.kind === 'about') return <AboutPage onBack={onBack} onStartFiling={startFilingNav} />;
     if (screen.kind === 'contact') return <ContactPage onBack={onBack} />;
@@ -401,6 +408,7 @@ function AppScreens() {
         onOpenLawLibraryCategory={openLawLibraryCategoryNav}
         onOpenCaseLawSearch={openCaseLawSearchNav}
         onOpenCourtFeeCalculator={openCourtFeeCalculatorNav}
+        onOpenTranslateDocument={openTranslateDocumentNav}
         onOpenPricing={openPricingNav}
         onOpenAbout={openAboutNav}
         onOpenContact={openContactNav}
@@ -418,6 +426,7 @@ function AppScreens() {
           onOpenLawLibraryCategory={openLawLibraryCategoryNav}
           onOpenCaseLawSearch={openCaseLawSearchNav}
           onOpenCourtFeeCalculator={openCourtFeeCalculatorNav}
+          onOpenTranslateDocument={openTranslateDocumentNav}
           onOpenAbout={openAboutNav}
           onOpenContact={openContactNav}
           onOpenSettings={openSettingsNav}

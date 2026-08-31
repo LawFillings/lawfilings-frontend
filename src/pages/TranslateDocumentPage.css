@@ -1,0 +1,115 @@
+.td-page {
+  max-width: 640px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.td-hero {
+  margin-bottom: var(--space-5);
+}
+
+.td-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.td-title {
+  font-size: 32px;
+  margin-bottom: var(--space-3);
+}
+
+.td-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 60ch;
+}
+
+.td-disclaimer {
+  font-size: 13px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  background: var(--accent-tint);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-5);
+}
+
+.td-disclaimer-inline {
+  margin: var(--space-4) 0 0;
+}
+
+.td-login-gate {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.td-form {
+  max-width: 480px;
+}
+
+.td-filename {
+  display: inline-block;
+  margin-left: var(--space-3);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.td-error {
+  color: var(--status-danger-text);
+  font-size: 14px;
+  margin: var(--space-3) 0 0;
+}
+
+.td-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.td-result {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-5);
+}
+
+.td-result-header {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+  margin-bottom: var(--space-3);
+}
+
+.td-result-heading {
+  font-size: 20px;
+  margin: 0;
+}
+
+.td-truncated-notice {
+  font-size: 13px;
+  color: var(--status-warn-text);
+  margin: 0 0 var(--space-3);
+}
+
+.td-result-text {
+  white-space: pre-wrap;
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--ink);
+  background: var(--paper);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+  max-height: 600px;
+  overflow-y: auto;
+}
