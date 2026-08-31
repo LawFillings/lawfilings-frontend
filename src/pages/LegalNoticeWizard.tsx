@@ -269,7 +269,7 @@ export function LegalNoticeWizard({
                 ref={sourceFileInputRef}
                 type="file"
                 accept="application/pdf"
-                style={{ display: 'none' }}
+                className="file-input-hidden"
                 onChange={(e) => {
                   const file = e.target.files?.[0];
                   e.target.value = '';

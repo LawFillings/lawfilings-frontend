@@ -140,3 +140,20 @@
   line-height: 1.6;
   color: var(--text-secondary);
 }
+
+/* Hides a file input while keeping it clickable via a ref'd .click() call from a visible
+   trigger button. Deliberately NOT display:none — Safari silently refuses to open the native
+   file picker from a programmatic .click() on a display:none input (no error, nothing happens),
+   while Chrome/Firefox don't mind. Clipping to zero size keeps the input in the layout/AX tree
+   (satisfying Safari) without it being visible or taking up space. */
+.file-input-hidden {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
