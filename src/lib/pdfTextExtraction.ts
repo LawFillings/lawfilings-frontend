@@ -1,4 +1,7 @@
-import pdfWorkerUrl from 'pdfjs-dist/build/pdf.worker.min.mjs?url';
+// A thin wrapper around pdfjs-dist's real worker script, not the script itself — see
+// pdfWorkerEntry.ts for why (a Safari-only ReadableStream gap the worker hits internally).
+import pdfWorkerUrl from './pdfWorkerEntry?url';
+import { polyfillReadableStreamAsyncIterator } from './polyfillReadableStreamAsyncIterator';
 
 /**
  * Thrown when a PDF has no usable text layer (a scanned/image-only document) — the caller should
@@ -18,11 +21,20 @@ const MIN_TEXT_LENGTH = 50;
 /** Extracts plain text from a text-layer PDF, entirely in the browser — the file itself never
  *  leaves the client, only whatever text this pulls out of it. */
 export async function extractTextFromPdf(file: File): Promise<string> {
+  // Main-thread half of the same fix as pdfWorkerEntry.ts — pdf.js needs this polyfill on both
+  // sides of the worker boundary. Must run before the dynamic import below, which is what
+  // actually first touches pdf.js's own code.
+  polyfillReadableStreamAsyncIterator();
   const pdfjs = await import('pdfjs-dist');
   pdfjs.GlobalWorkerOptions.workerSrc = pdfWorkerUrl;
 
   const buffer = await file.arrayBuffer();
-  const doc = await pdfjs.getDocument({ data: buffer }).promise;
+  // disableStream/disableAutoFetch: the whole file is already in memory (no URL to stream or
+  // range-fetch from), so these have no effect on Chrome/Firefox either way — kept for intent.
+  // Does NOT fix the Safari worker-transfer ReadableStream issue (see NoTextLayerError catch
+  // site in callers) — that needs a different approach; pdfjs-dist 6.x removed the old
+  // `disableWorker` document-init option, so it can no longer be forced off this way.
+  const doc = await pdfjs.getDocument({ data: new Uint8Array(buffer), disableStream: true, disableAutoFetch: true }).promise;
 
   const pageTexts: string[] = [];
   for (let pageNo = 1; pageNo <= doc.numPages; pageNo++) {

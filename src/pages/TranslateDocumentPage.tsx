@@ -60,6 +60,7 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
       if (err instanceof NoTextLayerError) {
         setError(copy.scannedError);
       } else {
+        console.error('PDF text extraction failed:', err);
         setError(copy.genericFileError);
       }
       setSourceText('');
