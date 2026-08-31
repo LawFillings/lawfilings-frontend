@@ -401,7 +401,8 @@ export const as: Translations = {
     translateNudgeLink: 'এটা নথি অনুবাদ কৰক →',
     searchPlaceholder: "সকলো আইনত সন্ধান কৰক — যেনে 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} টা ধাৰা পোৱা গ’ল`,
-    sectionHeading: (no: string, heading: string, unit: string = 'ধাৰা') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'ধাৰা') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'নিয়ম',
     rulesUnitPlural: 'নিয়মসমূহ',
@@ -466,6 +467,10 @@ export const as: Translations = {
     logInPrompt: 'নথি অনুবাদ কৰিবলৈ লগ ইন কৰক।',
     disclaimer:
       'এইটো এটা যান্ত্ৰিক অনুবাদ সুবিধা, কোনো প্ৰমাণিত বা পেছাদাৰী অনুবাদ নহয়। অনুবাদৰ সময়ত অৰ্থ — বিশেষকৈ আইনী পৰিভাষাৰ — হেৰাই যাব পাৰে বা সলনি হ’ব পাৰে। আপুনি যিহৰ ওপৰত নিৰ্ভৰ কৰিছে, সদায় সেয়া মূল নথিৰ সৈতে মিলাই চাওক, আৰু ইয়াৰ ভিত্তিত পদক্ষেপ ল’বলৈ আগতে এজন অধিবক্তাৰ সৈতে পৰামৰ্শ কৰক।',
+    uploadTab: 'PDF আপল’ড কৰক',
+    searchTab: 'আইন লাইব্ৰেৰী সন্ধান কৰক',
+    searchPlaceholder: "সকলো আইনত সন্ধান কৰক — যেনে 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'মিল থকা কোনো খণ্ড পোৱা নগ’ল।',
     uploadLabel: 'উৎস নথি (PDF)',
     chooseFile: 'এটা PDF বাছনি কৰক',
     onlyTextPdf: 'আপাততে কেৱল টেক্সট-ভিত্তিক PDF সমৰ্থিত, স্কেন কৰা কপি নহয়।',

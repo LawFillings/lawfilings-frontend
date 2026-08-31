@@ -60,6 +60,72 @@
   color: var(--text-secondary);
 }
 
+.td-mode-tabs {
+  display: flex;
+  gap: var(--space-2);
+  margin-bottom: var(--space-4);
+}
+
+.td-mode-tab {
+  border: 1px solid var(--line);
+  background: var(--paper);
+  color: var(--text-secondary);
+  font-size: 14px;
+  padding: var(--space-2) var(--space-4);
+  border-radius: 999px;
+  cursor: pointer;
+}
+
+.td-mode-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.td-results-count {
+  font-size: 12px;
+  color: var(--text-muted);
+  margin: var(--space-3) 0 var(--space-2);
+}
+
+.td-search-results {
+  max-height: 360px;
+  overflow-y: auto;
+}
+
+.td-section-card {
+  display: block;
+  width: 100%;
+  text-align: left;
+  background: var(--paper-raised);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  margin-bottom: var(--space-2);
+  cursor: pointer;
+}
+
+.td-section-card.selected {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.td-section-act {
+  display: block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 4px;
+}
+
+.td-section-heading {
+  display: block;
+  font-size: 14px;
+  color: var(--ink);
+}
+
 .td-error {
   color: var(--status-danger-text);
   font-size: 14px;

@@ -401,7 +401,8 @@ export const gu: Translations = {
     translateNudgeLink: 'દસ્તાવેજનો અનુવાદ કરો →',
     searchPlaceholder: "બધા ઍક્ટમાં શોધો — જેમ કે 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} કલમ${n !== 1 ? 'ો' : ''} મળી`,
-    sectionHeading: (no: string, heading: string, unit: string = 'કલમ') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'કલમ') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'નિયમ',
     rulesUnitPlural: 'નિયમો',
@@ -466,6 +467,10 @@ export const gu: Translations = {
     logInPrompt: 'દસ્તાવેજનો અનુવાદ કરવા માટે લૉગ ઇન કરો.',
     disclaimer:
       'આ એક મશીન અનુવાદ સુવિધા છે, પ્રમાણિત કે વ્યાવસાયિક અનુવાદ નહીં. અર્થ — ખાસ કરીને કાનૂની શબ્દોનો — અનુવાદમાં ખોવાઈ શકે છે અથવા બદલાઈ શકે છે. તમે જેના પર આધાર રાખો તે હંમેશા મૂળ દસ્તાવેજ સાથે સરખાવીને ચકાસો, અને તેના પર પગલાં લેતા પહેલાં વકીલની સલાહ લો.',
+    uploadTab: 'PDF અપલોડ કરો',
+    searchTab: 'કાયદા લાઇબ્રેરી શોધો',
+    searchPlaceholder: "બધા ઍક્ટમાં શોધો — જેમ કે 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'કોઈ મેળ ખાતો વિભાગ મળ્યો નથી.',
     uploadLabel: 'સ્રોત દસ્તાવેજ (PDF)',
     chooseFile: 'એક PDF પસંદ કરો',
     onlyTextPdf: 'હાલમાં ફક્ત ટેક્સ્ટ-આધારિત PDF જ સમર્થિત છે, સ્કેન કરેલી નકલો નહીં.',

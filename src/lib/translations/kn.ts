@@ -401,7 +401,8 @@ export const kn: Translations = {
     translateNudgeLink: 'ಒಂದು ದಾಖಲೆಯನ್ನು ಅನುವಾದಿಸಿ →',
     searchPlaceholder: "ಎಲ್ಲಾ ಕಾಯಿದೆಗಳಲ್ಲಿ ಹುಡುಕಿ — ಉದಾ. 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} ಸೆಕ್ಷನ್‌ಗಳು ಕಂಡುಬಂದಿವೆ`,
-    sectionHeading: (no: string, heading: string, unit: string = 'ಸೆಕ್ಷನ್') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'ಸೆಕ್ಷನ್') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'ನಿಯಮ',
     rulesUnitPlural: 'ನಿಯಮಗಳು',
@@ -466,6 +467,10 @@ export const kn: Translations = {
     logInPrompt: 'ಒಂದು ದಾಖಲೆಯನ್ನು ಅನುವಾದಿಸಲು ಲಾಗಿನ್ ಮಾಡಿ.',
     disclaimer:
       "ಇದು ಒಂದು ಯಂತ್ರ ಅನುವಾದ ಸೌಲಭ್ಯ, ಪ್ರಮಾಣೀಕೃತ ಅಥವಾ ವೃತ್ತಿಪರ ಅನುವಾದವಲ್ಲ. ಅರ್ಥ — ವಿಶೇಷವಾಗಿ ಕಾನೂನು ಪದಗಳ ಅರ್ಥ — ಅನುವಾದದಲ್ಲಿ ಕಳೆದುಹೋಗಬಹುದು ಅಥವಾ ಬದಲಾಗಬಹುದು. ನೀವು ಅವಲಂಬಿಸುವ ಯಾವುದನ್ನಾದರೂ ಯಾವಾಗಲೂ ಮೂಲ ದಾಖಲೆಯೊಂದಿಗೆ ಪರಿಶೀಲಿಸಿ, ಮತ್ತು ಅದರ ಆಧಾರದ ಮೇಲೆ ಕ್ರಮ ಕೈಗೊಳ್ಳುವ ಮೊದಲು ಒಬ್ಬ ವಕೀಲರೊಂದಿಗೆ ಸಮಾಲೋಚಿಸಿ.",
+    uploadTab: 'PDF ಅಪ್‌ಲೋಡ್ ಮಾಡಿ',
+    searchTab: 'ಕಾನೂನು ಗ್ರಂಥಾಲಯವನ್ನು ಹುಡುಕಿ',
+    searchPlaceholder: "ಎಲ್ಲಾ ಕಾಯಿದೆಗಳಲ್ಲಿ ಹುಡುಕಿ — ಉದಾ. 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'ಹೊಂದಾಣಿಕೆಯಾಗುವ ವಿಭಾಗಗಳು ಕಂಡುಬಂದಿಲ್ಲ.',
     uploadLabel: 'ಮೂಲ ದಾಖಲೆ (PDF)',
     chooseFile: 'ಒಂದು PDF ಅನ್ನು ಆಯ್ಕೆಮಾಡಿ',
     onlyTextPdf: 'ಪ್ರಸ್ತುತ ಪಠ್ಯ ಆಧಾರಿತ PDFಗಳು ಮಾತ್ರ ಬೆಂಬಲಿತವಾಗಿವೆ, ಸ್ಕ್ಯಾನ್ ಮಾಡಿದ ಪ್ರತಿಗಳಲ್ಲ.',

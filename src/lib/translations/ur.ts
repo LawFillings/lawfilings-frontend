@@ -401,7 +401,8 @@ export const ur: Translations = {
     translateNudgeLink: 'دستاویز کا ترجمہ کریں ←',
     searchPlaceholder: "تمام قوانین میں تلاش کریں — مثلاً 'تحریری بیان'، 'حد بندی'، 'اپیل ڈپازٹ'",
     resultsCount: (n: number) => `${n} دفعہ ملی`,
-    sectionHeading: (no: string, heading: string, unit: string = 'دفعہ') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'دفعہ') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'قاعدہ',
     rulesUnitPlural: 'قواعد',
@@ -466,6 +467,10 @@ export const ur: Translations = {
     logInPrompt: 'دستاویز کا ترجمہ کرنے کے لیے لاگ ان کریں۔',
     disclaimer:
       'یہ ایک مشینی ترجمے کی سہولت ہے، کوئی تصدیق شدہ یا پیشہ ورانہ ترجمہ نہیں۔ ترجمے میں معنی — خاص طور پر قانونی اصطلاحات کے — ضائع یا تبدیل ہو سکتے ہیں۔ آپ جس چیز پر انحصار کر رہے ہیں اسے ہمیشہ اصل دستاویز سے ملا کر دیکھیں، اور اس پر عمل کرنے سے پہلے کسی وکیل سے مشورہ کریں۔',
+    uploadTab: 'PDF اپ لوڈ کریں',
+    searchTab: 'قانون لائبریری تلاش کریں',
+    searchPlaceholder: "تمام قوانین میں تلاش کریں — مثلاً 'تحریری بیان'، 'حد بندی'، 'اپیل ڈپازٹ'",
+    searchNoResults: 'کوئی مماثل دفعہ نہیں ملی۔',
     uploadLabel: 'ماخذ دستاویز (PDF)',
     chooseFile: 'ایک PDF منتخب کریں',
     onlyTextPdf: 'فی الحال صرف ٹیکسٹ پر مبنی PDF سپورٹ کی جاتی ہیں، اسکین شدہ کاپیاں نہیں۔',

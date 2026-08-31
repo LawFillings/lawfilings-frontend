@@ -401,7 +401,8 @@ export const ml: Translations = {
     translateNudgeLink: 'ഒരു രേഖ വിവർത്തനം ചെയ്യുക →',
     searchPlaceholder: "എല്ലാ നിയമങ്ങളിലും തിരയുക — ഉദാ. 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} വകുപ്പുകൾ കണ്ടെത്തി`,
-    sectionHeading: (no: string, heading: string, unit: string = 'വകുപ്പ്') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'വകുപ്പ്') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'ചട്ടം',
     rulesUnitPlural: 'ചട്ടങ്ങൾ',
@@ -466,6 +467,10 @@ export const ml: Translations = {
     logInPrompt: 'ഒരു രേഖ വിവർത്തനം ചെയ്യാൻ ലോഗിൻ ചെയ്യുക.',
     disclaimer:
       "ഇത് ഒരു യന്ത്ര വിവർത്തന സൗകര്യമാണ്, സാക്ഷ്യപ്പെടുത്തിയതോ പ്രൊഫഷണലോ ആയ ഒന്നല്ല. അർത്ഥം — പ്രത്യേകിച്ച് നിയമ പദങ്ങളുടെ അർത്ഥം — വിവർത്തനത്തിൽ നഷ്ടപ്പെടുകയോ മാറുകയോ ചെയ്യാം. നിങ്ങൾ ആശ്രയിക്കുന്ന എന്തും എപ്പോഴും യഥാർത്ഥ രേഖയുമായി പരിശോധിക്കുക, കൂടാതെ അതിന്റെ അടിസ്ഥാനത്തിൽ പ്രവർത്തിക്കുന്നതിന് മുമ്പ് ഒരു അഭിഭാഷകനുമായി കൂടിയാലോചിക്കുക.",
+    uploadTab: 'PDF അപ്‌ലോഡ് ചെയ്യുക',
+    searchTab: 'നിയമ ലൈബ്രറി തിരയുക',
+    searchPlaceholder: "എല്ലാ നിയമങ്ങളിലും തിരയുക — ഉദാ. 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'പൊരുത്തപ്പെടുന്ന വകുപ്പുകൾ ഒന്നും കണ്ടെത്തിയില്ല.',
     uploadLabel: 'മൂല രേഖ (PDF)',
     chooseFile: 'ഒരു PDF തിരഞ്ഞെടുക്കുക',
     onlyTextPdf: 'നിലവിൽ ടെക്സ്റ്റ് അധിഷ്ഠിത PDF-കൾ മാത്രമേ പിന്തുണയ്ക്കുന്നുള്ളൂ, സ്കാൻ ചെയ്ത പകർപ്പുകൾ അല്ല.',

@@ -399,7 +399,12 @@ export const en = {
     translateNudgeLink: 'Translate a document →',
     searchPlaceholder: "Search across all Acts — e.g. 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} section${n !== 1 ? 's' : ''} found`,
-    sectionHeading: (no: string, heading: string, unit: string = 'Section') => `${unit} ${no} — ${heading}`,
+    // Most section numbers are bare (e.g. '17A') and need the unit word in front ('Section 17A').
+    // Some already carry their own label baked in (e.g. 'Article 134', 'Order VII Rule 11', 'First
+    // Schedule', 'Preamble') — prefixing those too would read as 'Section Article 134'. A leading
+    // digit reliably tells the two apart, since every bare section number starts with one.
+    sectionHeading: (no: string, heading: string, unit: string = 'Section') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'Rule',
     rulesUnitPlural: 'rules',
@@ -464,6 +469,10 @@ export const en = {
     logInPrompt: 'Log in to translate a document.',
     disclaimer:
       "This is a machine translation facility, not a certified or professional one. Meaning — especially of legal terms — can be lost or changed in translation. Always check anything you rely on against the original document, and consult an advocate before acting on it.",
+    uploadTab: 'Upload a PDF',
+    searchTab: 'Search the Law Library',
+    searchPlaceholder: "Search Acts — e.g. 'limitation', 'written statement'",
+    searchNoResults: 'No matching sections found.',
     uploadLabel: 'Source document (PDF)',
     chooseFile: 'Choose a PDF',
     onlyTextPdf: 'Only text-based PDFs are supported for now, not scanned copies.',

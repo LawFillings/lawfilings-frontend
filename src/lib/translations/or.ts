@@ -401,7 +401,8 @@ export const or: Translations = {
     translateNudgeLink: 'ଏକ ଦଲିଲ ଅନୁବାଦ କରନ୍ତୁ →',
     searchPlaceholder: "ସମସ୍ତ ଆଇନରେ ସନ୍ଧାନ କରନ୍ତୁ — ଉଦାହରଣ 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} ଧାରା ମିଳିଲା`,
-    sectionHeading: (no: string, heading: string, unit: string = 'ଧାରା') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'ଧାରା') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'ନିୟମ',
     rulesUnitPlural: 'ନିୟମଗୁଡ଼ିକ',
@@ -466,6 +467,10 @@ export const or: Translations = {
     logInPrompt: 'ଦଲିଲ ଅନୁବାଦ କରିବାକୁ ଲଗ ଇନ କରନ୍ତୁ।',
     disclaimer:
       'ଏହା ଏକ ଯାନ୍ତ୍ରିକ ଅନୁବାଦ ସୁବିଧା, କୌଣସି ପ୍ରମାଣିତ କିମ୍ବା ପେସାଦାର ଅନୁବାଦ ନୁହେଁ। ଅନୁବାଦ ସମୟରେ ଅର୍ଥ — ବିଶେଷତଃ ଆଇନଗତ ଶବ୍ଦାବଳୀର — ହଜିଯାଇପାରେ କିମ୍ବା ବଦଳିଯାଇପାରେ। ଆପଣ ଯାହା ଉପରେ ନିର୍ଭର କରୁଛନ୍ତି, ତାହା ସର୍ବଦା ମୂଳ ଦଲିଲ ସହିତ ମିଳାଇ ଦେଖନ୍ତୁ, ଏବଂ ଏହା ଆଧାରରେ କୌଣସି ପଦକ୍ଷେପ ନେବା ପୂର୍ବରୁ ଜଣେ ଓକିଲଙ୍କ ସହିତ ପରାମର୍ଶ କରନ୍ତୁ।',
+    uploadTab: 'PDF ଅପଲୋଡ୍ କରନ୍ତୁ',
+    searchTab: 'ଆଇନ ଗ୍ରନ୍ଥାଗାର ସନ୍ଧାନ କରନ୍ତୁ',
+    searchPlaceholder: "ସମସ୍ତ ଆଇନରେ ସନ୍ଧାନ କରନ୍ତୁ — ଉଦାହରଣ 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'କୌଣସି ମେଳ ଖାଉଥିବା ଧାରା ମିଳିଲା ନାହିଁ।',
     uploadLabel: 'ଉତ୍ସ ଦଲିଲ (PDF)',
     chooseFile: 'ଏକ PDF ବାଛନ୍ତୁ',
     onlyTextPdf: 'ଆପାତତଃ କେବଳ ଟେକ୍ସଟ୍-ଆଧାରିତ PDF ସମର୍ଥିତ, ସ୍କାନ୍ କରାଯାଇଥିବା କପି ନୁହେଁ।',

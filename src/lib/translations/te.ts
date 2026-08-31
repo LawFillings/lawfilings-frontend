@@ -401,7 +401,8 @@ export const te: Translations = {
     translateNudgeLink: 'ఒక పత్రాన్ని అనువదించండి →',
     searchPlaceholder: "అన్ని చట్టాలలో శోధించండి — ఉదా. 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} సెక్షన్‌లు కనుగొనబడ్డాయి`,
-    sectionHeading: (no: string, heading: string, unit: string = 'సెక్షన్') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'సెక్షన్') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'నియమం',
     rulesUnitPlural: 'నియమాలు',
@@ -466,6 +467,10 @@ export const te: Translations = {
     logInPrompt: 'ఒక పత్రాన్ని అనువదించడానికి లాగిన్ చేయండి.',
     disclaimer:
       "ఇది ఒక యంత్ర అనువాద సదుపాయం, ధృవీకరించబడిన లేదా వృత్తిపరమైన అనువాదం కాదు. అర్థం — ముఖ్యంగా న్యాయ పదాల అర్థం — అనువాదంలో కోల్పోవచ్చు లేదా మారవచ్చు. మీరు ఆధారపడే దేనినైనా ఎల్లప్పుడూ మూల పత్రంతో సరిచూసుకోండి, మరియు దాని ఆధారంగా చర్య తీసుకునే ముందు ఒక న్యాయవాదిని సంప్రదించండి.",
+    uploadTab: 'PDF అప్‌లోడ్ చేయండి',
+    searchTab: 'చట్ట గ్రంథాలయాన్ని శోధించండి',
+    searchPlaceholder: "అన్ని చట్టాలలో శోధించండి — ఉదా. 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'సరిపోలే సెక్షన్‌లు ఏవీ కనుగొనబడలేదు.',
     uploadLabel: 'మూల పత్రం (PDF)',
     chooseFile: 'ఒక PDF ని ఎంచుకోండి',
     onlyTextPdf: 'ప్రస్తుతం టెక్స్ట్-ఆధారిత PDFలు మాత్రమే మద్దతు ఇవ్వబడతాయి, స్కాన్ చేసిన కాపీలు కాదు.',

@@ -401,7 +401,8 @@ export const bn: Translations = {
     translateNudgeLink: 'একটি নথি অনুবাদ করুন →',
     searchPlaceholder: "সব আইনে অনুসন্ধান করুন — যেমন 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n}টি ধারা পাওয়া গেছে`,
-    sectionHeading: (no: string, heading: string, unit: string = 'ধারা') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'ধারা') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'নিয়ম',
     rulesUnitPlural: 'নিয়মাবলী',
@@ -466,6 +467,10 @@ export const bn: Translations = {
     logInPrompt: 'নথি অনুবাদ করতে লগ ইন করুন।',
     disclaimer:
       'এটি একটি যন্ত্র অনুবাদ সুবিধা, কোনো প্রত্যয়িত বা পেশাদার অনুবাদ নয়। অনুবাদের সময় অর্থ — বিশেষত আইনি পরিভাষার — হারিয়ে যেতে পারে বা বদলে যেতে পারে। আপনি যার উপর নির্ভর করছেন তা সবসময় মূল নথির সাথে মিলিয়ে দেখুন, এবং এর ভিত্তিতে পদক্ষেপ নেওয়ার আগে একজন অধিবক্তার সাথে পরামর্শ করুন।',
+    uploadTab: 'PDF আপলোড করুন',
+    searchTab: 'আইন লাইব্রেরি অনুসন্ধান করুন',
+    searchPlaceholder: "সব আইনে অনুসন্ধান করুন — যেমন 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'কোনো মিলযুক্ত ধারা পাওয়া যায়নি।',
     uploadLabel: 'উৎস নথি (PDF)',
     chooseFile: 'একটি PDF বেছে নিন',
     onlyTextPdf: 'আপাতত শুধুমাত্র টেক্সট-ভিত্তিক PDF সমর্থিত, স্ক্যান করা কপি নয়।',

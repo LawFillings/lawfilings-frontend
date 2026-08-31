@@ -401,7 +401,8 @@ export const pa: Translations = {
     translateNudgeLink: 'ਦਸਤਾਵੇਜ਼ ਦਾ ਅਨੁਵਾਦ ਕਰੋ →',
     searchPlaceholder: "ਸਾਰੇ ਐਕਟਾਂ ਵਿੱਚ ਖੋਜੋ — ਜਿਵੇਂ 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} ਧਾਰਾ${n !== 1 ? 'ਵਾਂ' : ''} ਮਿਲੀ${n !== 1 ? 'ਆਂ' : ''}`,
-    sectionHeading: (no: string, heading: string, unit: string = 'ਧਾਰਾ') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'ਧਾਰਾ') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'ਨਿਯਮ',
     rulesUnitPlural: 'ਨਿਯਮ',
@@ -466,6 +467,10 @@ export const pa: Translations = {
     logInPrompt: 'ਦਸਤਾਵੇਜ਼ ਦਾ ਅਨੁਵਾਦ ਕਰਨ ਲਈ ਲੌਗ ਇਨ ਕਰੋ।',
     disclaimer:
       'ਇਹ ਇੱਕ ਮਸ਼ੀਨ ਅਨੁਵਾਦ ਸਹੂਲਤ ਹੈ, ਪ੍ਰਮਾਣਿਤ ਜਾਂ ਪੇਸ਼ੇਵਰ ਅਨੁਵਾਦ ਨਹੀਂ। ਅਰਥ — ਖਾਸ ਕਰਕੇ ਕਾਨੂੰਨੀ ਸ਼ਬਦਾਂ ਦਾ — ਅਨੁਵਾਦ ਵਿੱਚ ਗੁਆਚ ਸਕਦਾ ਹੈ ਜਾਂ ਬਦਲ ਸਕਦਾ ਹੈ। ਜਿਸ ਵੀ ਗੱਲ ਉੱਤੇ ਤੁਸੀਂ ਭਰੋਸਾ ਕਰਦੇ ਹੋ, ਉਸਨੂੰ ਹਮੇਸ਼ਾ ਮੂਲ ਦਸਤਾਵੇਜ਼ ਨਾਲ ਮਿਲਾ ਕੇ ਜਾਂਚੋ, ਅਤੇ ਇਸ ਉੱਤੇ ਕਾਰਵਾਈ ਕਰਨ ਤੋਂ ਪਹਿਲਾਂ ਕਿਸੇ ਵਕੀਲ ਨਾਲ ਸਲਾਹ ਕਰੋ।',
+    uploadTab: 'PDF ਅੱਪਲੋਡ ਕਰੋ',
+    searchTab: 'ਕਾਨੂੰਨ ਲਾਇਬ੍ਰੇਰੀ ਖੋਜੋ',
+    searchPlaceholder: "ਸਾਰੇ ਐਕਟਾਂ ਵਿੱਚ ਖੋਜੋ — ਜਿਵੇਂ 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'ਕੋਈ ਮੇਲ ਖਾਂਦਾ ਭਾਗ ਨਹੀਂ ਮਿਲਿਆ।',
     uploadLabel: 'ਸਰੋਤ ਦਸਤਾਵੇਜ਼ (PDF)',
     chooseFile: 'ਇੱਕ PDF ਚੁਣੋ',
     onlyTextPdf: 'ਫਿਲਹਾਲ ਸਿਰਫ਼ ਟੈਕਸਟ-ਅਧਾਰਿਤ PDF ਸਮਰਥਿਤ ਹਨ, ਸਕੈਨ ਕੀਤੀਆਂ ਕਾਪੀਆਂ ਨਹੀਂ।',

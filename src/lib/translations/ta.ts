@@ -401,7 +401,8 @@ export const ta: Translations = {
     translateNudgeLink: 'ஒரு ஆவணத்தை மொழிபெயர்க்கவும் →',
     searchPlaceholder: "அனைத்து சட்டங்களிலும் தேடுங்கள் — எடுத்துக்காட்டாக 'written statement', 'limitation', 'appeal deposit'",
     resultsCount: (n: number) => `${n} பிரிவுகள் கிடைத்தன`,
-    sectionHeading: (no: string, heading: string, unit: string = 'பிரிவு') => `${unit} ${no} — ${heading}`,
+    sectionHeading: (no: string, heading: string, unit: string = 'பிரிவு') =>
+      /^\d/.test(no) ? `${unit} ${no} — ${heading}` : `${no} — ${heading}`,
     actMeta: (actNumber: string) => actNumber,
     ruleUnit: 'விதி',
     rulesUnitPlural: 'விதிகள்',
@@ -466,6 +467,10 @@ export const ta: Translations = {
     logInPrompt: 'ஒரு ஆவணத்தை மொழிபெயர்க்க உள்நுழையவும்.',
     disclaimer:
       "இது ஒரு இயந்திர மொழிபெயர்ப்பு வசதி, சான்றளிக்கப்பட்ட அல்லது தொழில்முறை மொழிபெயர்ப்பு அல்ல. பொருள் — குறிப்பாக சட்ட சொற்களின் பொருள் — மொழிபெயர்ப்பில் இழக்கப்படலாம் அல்லது மாறலாம். நீங்கள் நம்பும் எதையும் எப்போதும் மூல ஆவணத்துடன் சரிபார்க்கவும், மேலும் அதன்படி செயல்படுவதற்கு முன் ஒரு வழக்கறிஞரிடம் ஆலோசிக்கவும்.",
+    uploadTab: 'PDF பதிவேற்றவும்',
+    searchTab: 'சட்ட நூலகத்தைத் தேடவும்',
+    searchPlaceholder: "அனைத்து சட்டங்களிலும் தேடுங்கள் — எடுத்துக்காட்டாக 'written statement', 'limitation', 'appeal deposit'",
+    searchNoResults: 'பொருந்தும் பிரிவுகள் எதுவும் கிடைக்கவில்லை.',
     uploadLabel: 'மூல ஆவணம் (PDF)',
     chooseFile: 'ஒரு PDF ஐத் தேர்ந்தெடுக்கவும்',
     onlyTextPdf: 'தற்போது உரை அடிப்படையிலான PDFக்கள் மட்டுமே ஆதரிக்கப்படுகின்றன, ஸ்கேன் செய்யப்பட்ட நகல்கள் அல்ல.',
