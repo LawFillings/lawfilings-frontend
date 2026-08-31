@@ -147,7 +147,8 @@
 .my-cases-type-custom-label {
   font-family: var(--font-body);
   font-size: 13px;
-  color: var(--text);
+  color: var(--accent);
+  text-decoration: underline;
   background: none;
   border: 1px solid transparent;
   border-radius: var(--radius-sm);

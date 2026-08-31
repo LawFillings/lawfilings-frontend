@@ -294,6 +294,7 @@
   display: block;
   font-size: 14px;
   color: var(--text-secondary);
+  text-decoration: underline;
   margin-bottom: var(--space-2);
   background: none;
   border: none;
