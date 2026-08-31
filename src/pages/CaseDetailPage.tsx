@@ -279,10 +279,11 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
                     key={d.id}
                     onClick={() => onOpenDraft(d, ct)}
                   >
-                    <span>{d.title}</span>
-                    <span className="case-detail-draft-meta">
-                      {t.caseDetail.versionStatus(d.version, d.status)} · {t.caseDetail.openInWizard}
+                    <span>
+                      <span className="case-detail-draft-open-title">{d.title}</span>{' '}
+                      <span className="case-detail-draft-meta">{t.caseDetail.versionStatus(d.version, d.status)}</span>
                     </span>
+                    <span className="case-detail-draft-open-cta">{t.caseDetail.openInWizard} →</span>
                   </button>
                 ) : (
                   <div className="case-detail-draft" key={d.id}>

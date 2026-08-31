@@ -41,7 +41,7 @@ export const en = {
       titleLine1: 'Understand the law.',
       titleLine2: 'Know your deadline.',
       titleLine3: 'Draft your filing.',
-      titleLine4: 'Manage your cases.',
+      titleLine4: 'Monitor your matters.',
       sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, DRTs/DRATs and NCLT/NCLAT.',
       startFiling: 'Start a filing →',
       browseActs: 'Browse the Law Library — free, no account',

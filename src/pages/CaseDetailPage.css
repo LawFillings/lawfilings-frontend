@@ -30,7 +30,8 @@
 
 .case-detail-type-line {
   font-size: 13px;
-  color: var(--text-muted);
+  font-weight: 600;
+  color: var(--text-secondary);
   margin: 0 0 var(--space-2);
 }
 
@@ -94,8 +95,18 @@
   color: inherit;
 }
 
-.case-detail-draft-open:hover {
+.case-detail-draft-open-title {
   color: var(--accent);
+  text-decoration: underline;
+}
+
+.case-detail-draft-open-cta {
+  color: var(--accent);
+  font-weight: 600;
+}
+
+.case-detail-draft-open:hover {
+  background: var(--paper-raised);
 }
 
 .case-detail-chips {
