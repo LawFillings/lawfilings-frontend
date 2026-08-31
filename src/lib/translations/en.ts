@@ -121,6 +121,54 @@ export const en = {
         },
       ],
     },
+    uspSlider: {
+      ariaLabel: 'Why this platform',
+      slides: [
+        {
+          title: 'A real Law Library, always free',
+          body: 'The Constitution of India, and the actual text of the Consumer Protection Act, RDDBFI Act, SARFAESI Act, and IBC — sourced directly from India Code.',
+        },
+        {
+          title: 'Wizards built on real procedure',
+          body: 'Deadline calculators, jurisdiction checks, and eligibility gates run before you draft, not after you’ve wasted time on the wrong form.',
+        },
+        {
+          title: 'Now covering District Courts',
+          body: 'Money recovery and summary suits for Delhi, Jammu & Kashmir, Punjab, Haryana, Himachal Pradesh, Uttar Pradesh, and Rajasthan.',
+        },
+        {
+          title: 'Track your case yourself',
+          body: 'Save a case and add status updates over time, entered by you — no dependency on an external court portal.',
+        },
+        {
+          title: 'A real, assembled draft',
+          body: 'Clause-templated documents, downloadable as a PDF — no placeholder brackets left for you to fill in by hand.',
+        },
+      ],
+    },
+    howItWorks: {
+      eyebrow: 'How it works',
+      title: 'Four steps, not a blank page',
+      steps: [
+        {
+          title: 'Answer plain questions',
+          body: "Plain-language questions if you're filing for yourself, precise legal phrasing if you're an advocate filing for a client — the same facts captured either way.",
+        },
+        {
+          title: 'Or upload what you have',
+          body: "For many filings, upload the FIR, notice, order, or complaint you received and we'll fill in what we can before you type a word.",
+        },
+        {
+          title: 'We catch deadlines and gaps',
+          body: "A live deadline calculator, jurisdiction checks, and eligibility gates run before you draft — not after you've wasted time on the wrong form.",
+        },
+        {
+          title: 'Get your assembled draft',
+          body: 'A real, formatted document — no placeholder brackets left for you to fill in by hand — downloadable as a PDF or Word document.',
+        },
+      ],
+      cta: 'Try the DRT Written Statement flow →',
+    },
     footer: {
       brand: 'LawFilings',
       note: 'A drafting aid, not legal advice. Complex matters are flagged for an advocate, not resolved automatically.',
