@@ -14,7 +14,7 @@ export const en = {
   },
   nav: {
     home: 'Home',
-    actsAndRules: 'Law Library',
+    actsAndRules: 'Constitution & Key Statutes',
     caseLaw: 'Case Law',
     search: 'Search',
     courtFeeCalculator: 'Court Fee Calculator',
@@ -38,20 +38,20 @@ export const en = {
   landing: {
     logo: 'LawFilings',
     hero: {
-      eyebrow: 'Law Library, legal drafting and filing tailor made for you',
+      eyebrow: 'Constitution & Key Statutes, legal drafting and filing tailor made for you',
       titleLine1: 'Understand the law.',
       titleLine2: 'Know your deadline.',
       titleLine3: 'Draft your filing.',
       titleLine4: 'Monitor your matters.',
       sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, DRTs/DRATs and NCLT/NCLAT.',
       startFiling: 'Start a filing →',
-      browseActs: 'Browse the Law Library — free, no account',
+      browseActs: 'Browse Constitution & Key Statutes — free, no account',
     },
     actsSection: {
       eyebrow: 'Free, always',
-      title: 'Law Library',
+      title: 'Constitution & Key Statutes',
       sub: 'The Constitution and the actual text of the Acts behind these case types — sourced directly from India Code, not summarised.',
-      browseAll: 'Browse the Law Library →',
+      browseAll: 'Browse Constitution & Key Statutes →',
     },
     news: {
       eyebrow: 'Law news',
@@ -65,7 +65,7 @@ export const en = {
       items: [
         {
           tag: 'Sourced, not summarised',
-          title: 'A Law Library you can actually cite',
+          title: 'Constitution & Key Statutes you can actually cite',
           body: 'Every Act section is the verbatim text from India Code, with a source link and the date it was last checked.',
         },
         {
@@ -91,7 +91,7 @@ export const en = {
         {
           tag: 'हिन्दी + English',
           title: 'The platform works in Hindi, not just English',
-          body: 'Wizards, the Law Library, and this site itself are available in both languages — not just a translated homepage.',
+          body: 'Wizards, Constitution & Key Statutes, and this site itself are available in both languages — not just a translated homepage.',
         },
       ],
     },
@@ -108,7 +108,7 @@ export const en = {
         {
           tag: 'For self-represented litigants',
           title: 'Individuals filing on their own',
-          body: 'Plain-language questions instead of legal forms, with the Law Library free to browse before you ever start a case — no account needed to look something up.',
+          body: 'Plain-language questions instead of legal forms, with Constitution & Key Statutes free to browse before you ever start a case — no account needed to look something up.',
         },
         {
           tag: 'For businesses',
@@ -126,7 +126,7 @@ export const en = {
       ariaLabel: 'Why this platform',
       slides: [
         {
-          title: 'A real Law Library, always free',
+          title: 'Constitution & Key Statutes, always free',
           body: 'The Constitution of India, and the actual text of the Consumer Protection Act, RDDBFI Act, SARFAESI Act, and IBC — sourced directly from India Code.',
         },
         {
@@ -208,7 +208,7 @@ export const en = {
     eyebrow: 'A drafting platform for Indian tribunals and courts',
     settingsLink: '⚙ Settings',
     title: 'Where do you need to file?',
-    browseActs: 'Browse the Law Library — free, no account needed →',
+    browseActs: 'Browse Constitution & Key Statutes — free, no account needed →',
     categoryLabels: {
       original: 'Start a case',
       reply: 'Respond to something filed against you',
@@ -231,18 +231,18 @@ export const en = {
     pageLabels: {
       landing: 'Landing page',
       home: 'Home (filing picker)',
-      lawLibrary: 'Law Library',
+      lawLibrary: 'Constitution & Key Statutes',
       wizard: 'Filing wizards (all case types)',
     },
     widgetDefs: {
       howItWorks: { label: 'How it works', description: 'The three-step explainer section.' },
-      lawLibraryTeaser: { label: 'Law Library teaser', description: 'Grid of Acts linking into the Law Library.' },
+      lawLibraryTeaser: { label: 'Constitution & Key Statutes teaser', description: 'Grid of Acts linking into Constitution & Key Statutes.' },
       news: { label: 'Law news', description: 'Verified law-change news cards.' },
-      lawLibraryCta: { label: 'Law Library button', description: 'The button linking to the Law Library.' },
+      lawLibraryCta: { label: 'Constitution & Key Statutes button', description: 'The button linking to Constitution & Key Statutes.' },
       caseDescriptions: { label: 'Case descriptions', description: 'Plain-language summary text on each case-type card.' },
       search: { label: 'Search bar', description: 'The free-text search box across all Acts.' },
       askAi: {
-        label: 'Ask a question about the Law Library',
+        label: 'Ask a question about Constitution & Key Statutes',
         description: 'Global Q&A box below the Constitution/Acts dropdown, answered strictly from Acts sourced into the Library.',
       },
       thirdPartyNudge: {
@@ -393,7 +393,7 @@ export const en = {
   },
   lawLibrary: {
     eyebrow: 'Free, always — no account needed',
-    title: 'Law Library',
+    title: 'Constitution & Key Statutes',
     sub: 'The Constitution of India and the actual text of the Acts behind the case types on this platform, sourced directly from India Code, the official government repository.',
     translateNudge: 'Need an Act in another language?',
     translateNudgeLink: 'Translate a document →',
@@ -437,7 +437,7 @@ export const en = {
       citedSections: 'Based on:',
       error: 'Something went wrong',
       clear: 'Clear conversation',
-      logInPrompt: 'Log in to ask a question — the Law Library itself stays free to browse, no account needed.',
+      logInPrompt: 'Log in to ask a question — Constitution & Key Statutes stays free to browse, no account needed.',
       generalInfoAsking: 'Thinking (general answer)…',
       generalInfoBadge: 'General answer — unverified',
       generalInfoDisclaimer: 'Not checked against the Library’s sourced text. Confirm with a lawyer before relying on this.',
@@ -617,11 +617,11 @@ export const en = {
       {
         heading: '6. Intellectual Property',
         paragraphs: [
-          'The Platform — including its wizards, the curation and formatting of the Law Library, and underlying software — is owned by LawFilings and protected by applicable intellectual property law. You retain all rights to the case information and documents you input or generate through the Platform. You grant us a limited licence to process that information solely to provide the service to you.',
+          'The Platform — including its wizards, the curation and formatting of Constitution & Key Statutes, and underlying software — is owned by LawFilings and protected by applicable intellectual property law. You retain all rights to the case information and documents you input or generate through the Platform. You grant us a limited licence to process that information solely to provide the service to you.',
         ],
       },
       {
-        heading: '7. Accuracy of the Law Library',
+        heading: '7. Accuracy of Constitution & Key Statutes',
         paragraphs: [
           'We source Act text directly from India Code and other primary sources and note when each section was last checked. Laws change, and a source document may be amended after we last verified it — always confirm the current text of a provision before relying on it for a filing.',
         ],

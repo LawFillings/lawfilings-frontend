@@ -38,9 +38,9 @@ export const newsItems: NewsItem[] = [
   {
     id: 'sarfaesi-added',
     date: 'Just added',
-    title: 'SARFAESI Act now in the Law Library',
+    title: 'SARFAESI Act now in Constitution & Key Statutes',
     summary:
       'Enforcement, DRT application, appeal, and limitation provisions — sourced directly from India Code, not summarised. Read alongside the RDDBFI Act if you’re dealing with a bank enforcement action.',
-    tag: 'Law Library',
+    tag: 'Constitution & Key Statutes',
   },
 ];

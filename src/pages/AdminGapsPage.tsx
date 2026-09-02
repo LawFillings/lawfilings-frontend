@@ -56,7 +56,7 @@ export function AdminGapsPage({ onBack }: Props) {
 
       <header className="my-cases-hero">
         <p className="my-cases-eyebrow">Admin</p>
-        <h1 className="my-cases-title">Law Library gaps</h1>
+        <h1 className="my-cases-title">Constitution & Key Statutes gaps</h1>
       </header>
 
       {error && <div className="auth-error">{error}</div>}

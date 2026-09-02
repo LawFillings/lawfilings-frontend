@@ -31,27 +31,27 @@ interface WidgetDef {
 export const PAGE_LABELS: Record<PageKey, string> = {
   landing: 'Landing page',
   home: 'Home (filing picker)',
-  lawLibrary: 'Law Library',
+  lawLibrary: 'Constitution & Key Statutes',
   wizard: 'Filing wizards (all case types)',
 };
 
 export const WIDGET_DEFS: Record<PageKey, WidgetDef[]> = {
   landing: [
     { key: 'howItWorks', label: 'How it works', description: 'The three-step explainer section.' },
-    { key: 'lawLibraryTeaser', label: 'Law Library teaser', description: 'Grid of Acts linking into the Law Library.' },
+    { key: 'lawLibraryTeaser', label: 'Constitution & Key Statutes teaser', description: 'Grid of Acts linking into Constitution & Key Statutes.' },
     { key: 'whyChooseUs', label: 'Why Choose Us', description: 'Feature-highlight grid explaining what the platform does today.' },
     { key: 'whoItsFor', label: "Who It's For", description: 'Audience cards — advocates, self-represented litigants, corporates, law students.' },
     { key: 'news', label: 'Law news', description: 'Verified law-change news cards.' },
   ],
   home: [
-    { key: 'lawLibraryCta', label: 'Law Library button', description: 'The button linking to the Law Library.' },
+    { key: 'lawLibraryCta', label: 'Constitution & Key Statutes button', description: 'The button linking to Constitution & Key Statutes.' },
     { key: 'caseDescriptions', label: 'Case descriptions', description: 'Plain-language summary text on each case-type card.' },
   ],
   lawLibrary: [
     { key: 'search', label: 'Search bar', description: 'The free-text search box across all Acts.' },
     {
       key: 'askAi',
-      label: 'Ask a question about the Law Library',
+      label: 'Ask a question about Constitution & Key Statutes',
       description: 'Q&A box below the Constitution/Acts dropdown, answered strictly from Acts sourced into the Library.',
     },
   ],

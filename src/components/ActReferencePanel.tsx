@@ -46,7 +46,7 @@ export function ActReferencePanel({ causeType, stateLabel, onOpenLawLibrary }: A
       </ul>
       {onOpenLawLibrary && (
         <button className="arp-library-link" onClick={onOpenLawLibrary}>
-          Read the full Act in the Law Library →
+          Read the full Act in Constitution & Key Statutes →
         </button>
       )}
     </div>
