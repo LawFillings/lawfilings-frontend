@@ -4333,6 +4333,26 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-meghalaya-court-fees-amendment-2019',
+    shortTitle: 'The Court Fees (Meghalaya Amendment) Act, 2019',
+    year: 2019,
+    actNumber: 'Meghalaya Act No. 7 of 2019',
+    sourceUrl: 'https://meglaw.gov.in/Notification/LL_(B)_62_90_372_Dated_Shillong_the_15th_October_2019.pdf',
+    jurisdiction: { type: 'state', state: 'Meghalaya' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Court Fees (Meghalaya Amendment) Act, 2019. (2) It shall come into force on the date of notification in the Official Gazette. [Note: like several other states in this Library, Meghalaya has not re-enacted its own Court Fees Act — it continues to apply the Central Court-Fees Act, 1870, and this Act only amends that central Act as it applies within Meghalaya. This Act (assented 9 October 2019) replaced an identical Ordinance (Ordinance No. 4 of 2019, promulgated 6 August 2019) that lapsed on enactment; section 3 of this Act repeals that Ordinance while preserving anything already done under it.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Section 25A — refund by e-payment',
+        text: 'In Section 25A of the Court Fees Act, 1870, the following shall be amended, namely,— (a) In sub-clause (ii) of clause (a) in between the words "Treasury or Sub-Treasury", and "and shall", the following new words "or by way of e-payment, in the manner as prescribed by rules" shall be inserted. (b) After sub-clause (ii) of clause (a) the following new proviso shall be added, namely:— "Provided that where court fee is paid by e-payment, the officer competent to cancel stamps shall verify the genuiness of the payment and after satisfying himself that the court fee is paid, shall lock the entry in the computer and make an endorsement under his signature on the documents that the court fee is paid and the entry is locked".',
+      },
+    ],
+  },
+  {
     id: 'act-tripura-court-fees-amendment-2020',
     shortTitle: 'The Court Fees (Tripura Amendment) Act, 2020',
     year: 2020,
@@ -4349,6 +4369,21 @@ export const acts: Act[] = [
         sectionNo: '2',
         heading: 'Amendment of Section 13 — refund by electronic transfer',
         text: 'In section 13 of the principal Act, the expression "the Appellate Court shall grant to the appellant a certificate, authorizing him to receive back from the Collector the full amount of fee paid on the memorandum of appeal", shall be substituted with the expression "the Appellate Court shall grant to the appellant a certificate, authorizing him to receive back from the Collector or by way of electronic transfer in such manner as may be prescribed, the full amount of fee paid on the memorandum of appeal".',
+      },
+    ],
+  },
+  {
+    id: 'act-andaman-nicobar-court-fees-amendment-1957',
+    shortTitle: 'The Court-fees (Andaman and Nicobar Islands Amendment) Regulation, 1957',
+    year: 1957,
+    actNumber: 'Notification No. 109/57',
+    sourceUrl: 'https://www.legitquest.com/act/court-fees-andaman-and-nicobar-islands-amendment-regulation-1957/FE39',
+    jurisdiction: { type: 'state', state: 'Andaman and Nicobar Islands' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Court-fees (Andaman and Nicobar Islands Amendment) Regulation, 1957. (2) It extends to the whole of the Andaman and Nicobar Islands. (3) It shall come into force on the 1st day of August, 1957. [Note: unlike the states in this Library, the Andaman and Nicobar Islands have no legislature of their own — this Regulation was made by the President under article 240 of the Constitution (issued by Notification No. 109/57 dated 26 July 1957), rather than passed by a State Legislative Assembly, which is why it carries a notification number rather than an "Act No." It amends the Central Court-Fees Act, 1870 as it applies in the Islands; only this short-title section could be verified in full text for this Library — its substantive regulations (2 through 17), which restructure Chapter II and substitute fee-schedule provisions, could not be confirmed in verbatim, current form and are not reproduced here.]',
       },
     ],
   },
@@ -5686,7 +5721,38 @@ export const acts: Act[] = [
         text: '(1) The Government may, from time to time, by notification, specify the maximum rates of interest for any local area chargeable by money lenders and accredited loan providers, and separate rates of interest may be specified in respect of secured and unsecured loans. (2) If any money lender or accredited loan provider charges or receives from a borrower interest at a rate exceeding the maximum rate fixed by the Government under sub-section (1), he shall be liable for punishment under this Act.',
       },
     ],
-  },  {
+  },
+  {
+    id: 'act-jk-money-lenders-2010-ladakh',
+    shortTitle: 'The Jammu and Kashmir Money Lenders and Accredited Loan Providers Act, 2010 (as applicable to Ladakh)',
+    year: 2010,
+    actNumber: 'Act No. XXIII of 2010',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/16463/1/money_lenders_and_accredited_loan_providers_act%2c_2010.pdf',
+    jurisdiction: { type: 'state', state: 'Ladakh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Jammu and Kashmir Money Lenders and Accredited Loan Providers Act, 2010. (2) It shall extend to the whole of the Union territory of Jammu and Kashmir. (3) It shall come into force on such date as the Government may, by notification in the Official Gazette, appoint. [Note: when the former State of Jammu and Kashmir was reorganised in 2019 into the Union territories of Jammu and Kashmir and Ladakh, this Act was one of the existing state laws listed in Table-2 of the Fifth Schedule to the Jammu and Kashmir Reorganisation Act, 2019 (see sections 95-96) that continue to apply to both successor Union territories, rather than being repealed or confined to Jammu and Kashmir alone — so it remains the applicable money-lending law in Ladakh too, notwithstanding its text (reproduced here as it stands for Jammu and Kashmir) not separately naming Ladakh. Confirm against a current Ladakh-specific adaptation order before relying on any specific figure.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "loan" and "money lender"',
+        text: '(8) "loan" means an advance whether money or kind at interest, with or without security, and includes advance, discount, money paid for or on account of or on behalf of or at the request of any person, or the forbearance to require payment of money owing on any account whatsoever, and every agreement (whatever its terms or form may be) which is in substance or effect a loan of money, and also an agreement to secure the repayment of any such loan, but does not include—(a) a deposit of money or other property in a Government Post Office Bank or in a Government Savings Bank; (b) a loan advanced by the Government or by any local authority authorized by the Government; (c) a deposit of money with or a loan advanced by a co-operative society; (d)-(h) loans advanced by specified central financial institutions (NABARD, EXIM Bank, SIDBI, National Housing Bank, State Financial Corporations); (i) a loan advanced by any institution established by or under an Act of Parliament or a State Legislature, or notified by the Government in consultation with the Reserve Bank; (j) an advance to a Provident Fund subscriber from his own credited amount; (k) a loan to or by an insurance company; (l) a loan or debenture listed on a Stock Exchange; (m) a loan or deposit to or by a registered non-banking financial company; (n) a loan to, by, or a deposit with, a registered charitable society or association; (o) an advance on a negotiable instrument other than a promissory note; (p) a loan or advance made by a trader bona fide carrying on any business other than money lending, in the regular course of that business. (10) "money lender" means a person whose main or subsidiary occupation is the business of advancing and realizing loans in the Union territory.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Money lender to obtain registration',
+        text: '(1) No money lender shall commence or carry on the business of providing loan at any place to which this Act applies without obtaining a registration under this Act. (2) Every application for a money lender\'s registration and for renewal of a money lender\'s registration shall be in writing in the prescribed manner and form and shall be made to the registering authority along with the prescribed fee.',
+      },
+      {
+        sectionNo: '17',
+        heading: 'Limitation on rates of interest charged by money lenders and accredited loan providers',
+        text: '(1) The Government may, from time to time, by notification, specify the maximum rates of interest for any local area chargeable by money lenders and accredited loan providers, and separate rates of interest may be specified in respect of secured and unsecured loans. (2) If any money lender or accredited loan provider charges or receives from a borrower interest at a rate exceeding the maximum rate fixed by the Government under sub-section (1), he shall be liable for punishment under this Act.',
+      },
+    ],
+  },
+  {
     id: 'act-ni-1881',
     shortTitle: 'The Negotiable Instruments Act, 1881',
     year: 1881,
