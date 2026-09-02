@@ -4328,6 +4328,56 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-madhya-pradesh-money-lenders-1934',
+    shortTitle: 'The Madhya Pradesh Money-Lenders Act, 1934',
+    year: 1934,
+    actNumber: '13 of 1934',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/12760/1/the_chhattisgarh_money_lenders_act%2c_1934_no._13_of_1934_date_03.08.1934_%28final%29.pdf',
+    jurisdiction: { type: 'state', state: 'Madhya Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Madhya Pradesh Money-lenders Act, 1934. (2) It extends to and shall be in force in the whole of Madhya Pradesh. [Note: this is the same pre-2000 Madhya Pradesh Money-Lenders Act, 1934 (No. 13 of 1934) that continued as the separate law of both successor states after Chhattisgarh was carved out of Madhya Pradesh in November 2000. The only digitized copy of it located for this Library is the one India Code itself has filed under the title "The Chhattisgarh Money-Lenders Act, 1934" (also in this Library, under that title) — the text below is sourced from that same copy. Since 2000, Madhya Pradesh and Chhattisgarh have been free to amend their own copies of this Act independently; whether this text still matches Madhya Pradesh\'s own current, separately-amended version has not been verified — confirm against a current Madhya Pradesh bare Act before relying on any specific figure.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "money-lender", "interest" and "loan"',
+        text: '(v) "money-lender" means a person who, in the regular course of business, advances a loan as defined in this Act and shall include, subject to the provisions of section 3, the legal representatives, and the successors in interest whether by inheritance, assignment or otherwise, of the person who advanced the loan, and "money-lending" shall be construed accordingly. (vi) "interest" includes the return to be made over and above what was actually lent, whether the same is charged or sought to be recovered specifically by way of interest or otherwise, whether or not such interest is capitalized, within twelve years from the date of the last transaction. (vii) "loan" means an actual advance made within twelve years from the date of the last transaction, whether of money or in kind, at interest, and shall include any transaction which the court finds to be in substance a loan, but it shall not include—(a) a deposit of money or other property in a Government post office, bank or any other bank or in a company or with a co-operative society; (b) a loan to or by or a deposit with any society or association registered under the Societies Registration Act, 1860, or under any other enactment; (c) a loan advanced by any Government or by any local authority authorized by any Government; (d) a loan advanced by a bank, a co-operative society or a company whose accounts are subject to audit by a certificated auditor under the Companies Act, 1913; (e) an advance made on the basis of a negotiable instrument, as defined in the Negotiable Instruments Act, 1881, other than a promissory note; (f) a transaction which is a charge created by operation of law on, or is in substance a sale of, immovable property; (g) a loan advanced to an agricultural labourer by his employer.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Power of court to limit interest to the extent of principal of loan',
+        text: 'No court shall, in respect of any loan made after this Act comes into force, decree on account of arrears of interest a sum greater than the principal of the loan. [Note: section 9 imposes the equivalent cap — no more than the principal as arrears of interest — for loans made before the Act came into force.]',
+      },
+    ],
+  },
+  {
+    id: 'act-madhya-pradesh-court-fees-amendment-2011',
+    shortTitle: 'The Court-fees (Madhya Pradesh Amendment) Act, 2011',
+    year: 2011,
+    actNumber: 'Madhya Pradesh Act No. 13 of 2011',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/madhya-pradesh/1958/Madhya%20Pradesh%20Act%20No.%2015%20of%201958.pdf',
+    jurisdiction: { type: 'state', state: 'Madhya Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Court-fees (Madhya Pradesh Amendment) Act, 2011. (2) It shall come into force from the date of its publication in the Madhya Pradesh Gazette. [Note: like Bihar and Chhattisgarh, Madhya Pradesh has not re-enacted its own Court Fees Act — it continues to apply the Central Court-Fees Act, 1870 (No. VII of 1870), and this Act only amends that central Act as it applies within Madhya Pradesh. Published in the Madhya Pradesh Gazette (Extraordinary) of 26 April 2011; the English text reproduced here is the version the notification itself designates as authoritative under article 348(3) of the Constitution of India.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Central Act No. VII of 1870 in its application to the State of Madhya Pradesh',
+        text: 'The court-fees Act, 1870 (No. VII of 1870) (hereinafter referred to as the principal Act), in its application to the State of Madhya Pradesh be amended in the manner hereinafter provided.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Amendment of Schedule II — fee on a complaint for a dishonoured cheque',
+        text: 'In the Schedule II to the principal Act, in article 1, in clause (b), for items (i), (ii) and (iii) and entries relating thereto, the following items and entries relating thereto shall be substituted, namely:— "(i) When the amount of dishonoured cheque involved in the complaint is upto one lakh — Five percent of the amount of dishonoured cheque subject to the minimum of two hundred rupees. (ii) When the amount of dishonoured cheque involved in the complaint is more than one lakh rupees but upto five lakh rupees — Minimum five thousand rupees, plus four percent on the amount in excess of one lakh rupees. (iii) When the amount of dishonoured cheque involved in the complaint is more than five lakh rupees — Minimum twenty one thousand rupees, plus three percent on the amount in excess of five lakh rupees subject to maximum one lakh fifty thousand rupees." [Note: this amendment sets the court-fee payable specifically on a complaint under section 138 of the Negotiable Instruments Act, 1881 (dishonour of a cheque) in Madhya Pradesh — a fee slab calculated on the cheque amount itself, distinct from the general ad valorem suit fee.]',
+      },
+    ],
+  },
+  {
     id: 'act-odisha-money-lenders-1939',
     shortTitle: 'The Orissa Money-Lenders Act, 1939',
     year: 1939,
@@ -4359,6 +4409,66 @@ export const acts: Act[] = [
         sectionNo: '10',
         heading: 'Maximum amount of interest that may be decreed',
         text: '(1) Notwithstanding anything to the contrary contained in any other law or in anything having the force of law or in any contract, no Court shall, in any suit brought by a money-lender in respect of a loan advanced before or after the commencement of this Act, pass a decree for an amount of interest for the period preceding the institution of the suit which, together with any amount already realised as interest through Court or otherwise, is greater than the amount of the loan originally advanced. (2) Where, in any suit as is referred to in sub-section (1), it is found that the amount already realised as interest through Court or otherwise, for the period preceding the institution of the suit, is greater than the amount of the loan originally advanced, so much of the said amount of interest as is in excess of the loan shall be appropriated towards the satisfaction of the loan and the Court shall pass a decree for the payment of the balance of the loan, if any.',
+      },
+    ],
+  },
+  {
+    id: 'act-bengal-money-lenders-1940',
+    shortTitle: 'The Bengal Money-Lenders Act, 1940',
+    year: 1940,
+    actNumber: 'Bengal Act X of 1940',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/west-bengal/1940/1940WB10.pdf',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Bengal Money-lenders Act, 1940. (2) It extends to the whole of West Bengal but it shall not apply to the Reserve Bank of India constituted by the Reserve Bank of India Act, 1934. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: brought into force on 1 September 1940. This compiled edition (reflecting amendments up to the Bengal Money-lenders (Amendment) Act, 1981, West Bengal Act IV of 1981) is the most recent full consolidated text located for this Act; confirm against a more current bare Act before relying on any specific figure below.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "interest", "lender", "loan" and "money-lender"',
+        text: '(8) "interest" includes any sum by whatsoever name called, in excess of the principal paid or payable to a lender in consideration of, or otherwise in respect of, a loan whether the same is charged or sought to be recovered specifically by way of interest or otherwise, but does not include any sum lawfully charged by a lender in accordance with the provisions of this Act or any other law for the time being in force for or on account of costs, charges or expenses. (9) "lender" means a person who advances a loan and includes a money-lender. (12) "loan" means an advance, whether of money or in kind, made on condition of repayment with interest and includes any transaction which is in substance a loan but does not include—(c) a loan taken or advanced by the Central Government or any State Government or by any local authority in West Bengal; (d) a loan advanced before or after the commencement of this Act—(i) by a bank; or (ii) by a co-operative life insurance society, co-operative society, insurance company, life assurance company, Life Insurance Corporation of India, mutual insurance company, provident insurance society or provident society or from a provident fund; (e) an advance made on the basis of a negotiable instrument as defined in the Negotiable Instruments Act, 1881, other than a promissory note; (h) a loan made to or by the Administrator-General and Official Trustee of West Bengal or the Commissioner of Wakfs or the Official Assignee or the Official Receiver of the High Court in Calcutta; (i) a loan or debenture in respect of which dealings are listed on any Stock Exchange. [Note: sub-clauses (a), (b), (f) and (g) of the original clause were later omitted by amendment (in 1965 and 1981) and are not reproduced here.] (13) "money-lender" means a person who carries on the business of money-lending in West Bengal or who has a place of such business in West Bengal, and includes a pawnee as defined in section 172 of the Indian Contract Act, 1872.',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Money-lending business not to be carried on except under licence',
+        text: 'After such date not less than six months after the commencement of this Act as the State Government shall, by notification in the Official Gazette, appoint in this behalf, no money-lender shall carry on the business of money-lending unless he holds an effective licence. Explanation.—An effective licence for the purposes of this Act comprises a licence issued to a person who is not disqualified for holding a licence.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Stay of suit when money-lender does not hold licence',
+        text: '(1) No Court shall pass a decree or order in favour of a money-lender in any suit instituted by a money-lender for the recovery of a loan advanced after the date notified under section 8, or in any suit instituted by a money-lender for the enforcement of an agreement entered into or security taken, or for the recovery of any security given, in respect of such loan, unless the Court is satisfied that, at the time or times when the loan or any part thereof was advanced, the money-lender held an effective licence. (2) If during the trial of a suit to which sub-section (1) applies, the Court finds that the money-lender did not hold such licence, the Court shall, before proceeding with the suit, require the money-lender to pay in the prescribed manner and within the period to be fixed by the Court such penalty as the Court thinks fit, not exceeding three times the amount of the licence fee specified in section 10. (3) If the money-lender fails to pay the penalty within the period fixed under sub-section (2) or within such further time as the Court may allow, the Court shall dismiss the suit; if the money-lender pays the penalty within such period, the Court shall proceed with the suit. (4) The provisions of this section shall apply to a claim for a set-off by or on behalf of a money-lender.',
+      },
+      {
+        sectionNo: '30',
+        heading: 'Limitations as to the amount and rate of interest recoverable',
+        text: 'Notwithstanding anything contained in any law for the time being in force, or any agreement,—(1) no borrower other than a borrower of commercial loan shall be liable to pay after the commencement of this Act—(a) any sum in respect of principal and interest which together with any amount already paid or included in any decree in respect of a loan exceeds twice the principal of the original loan, (b) on account of interest outstanding on the date up to which such liability is computed, a sum greater than the principal outstanding on such date, (c) any interest other than simple interest at a rate per annum not exceeding in the case of—(i) unsecured loans—twelve and a half per centum, (ii) secured loans—ten per centum, whether such loan was advanced or such amount was paid or such decree was passed or such interest accrued before or after the commencement of this Act; (2) no borrower other than a borrower of commercial loan shall after the commencement of this Act, be deemed to have been liable to pay before the date of such commencement in respect of interest paid before such date or included in a decree passed before such date, interest at rates per annum exceeding those specified in sub-clause (c) of clause (1); (3) a lender shall be entitled to institute a suit at any time after the commencement of this Act in respect of a transaction to which either or both of the preceding clauses applies or apply. [Note: section 30A (added in 1981) separately caps interest on a commercial loan at 20% per annum unsecured / 17% per annum secured, not reproduced here. This compiled text reflects amendments up to 1981; confirm against a current bare Act before relying on any specific rate.]',
+      },
+    ],
+  },
+  {
+    id: 'act-west-bengal-court-fees-1970',
+    shortTitle: 'The West Bengal Court-Fees Act, 1970',
+    year: 1970,
+    actNumber: 'West Bengal Act X of 1970',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/west-bengal/1970/Act%20No.%2010%20of%201970%20WB.pdf',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and application',
+        text: '(1) This Act may be called the West Bengal Court-fees Act, 1970. (2) It extends to the whole of the State of West Bengal. (3) The provisions of this Act shall not apply to fees or stamps relating to documents presented or to be presented before any officer serving under the Central Government. (4) Where any other law contains provisions relating to the levy of fee in respect of proceedings under such other law, the provisions of this Act relating to the levy of fee in respect of such proceedings shall apply subject to the said provisions of such other law. [Note: this Act repealed and replaced the Central Court-Fees Act, 1870 in its application to West Bengal — unlike some other states (e.g. Bihar, Chhattisgarh, Madhya Pradesh), West Bengal has its own self-contained Court-fees Act rather than only a set of amendments to the 1870 Act.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Levy of fee in Courts and public offices',
+        text: '(1) No document which is chargeable with fee under this Act shall—(i) be filed, exhibited or recorded in, or be acted on or furnished by, any Court including the High Court, or (ii) be filed, exhibited or recorded in any public office or be acted on or furnished by any public officer, unless in respect of such document there be paid a fee of an amount not less than that indicated as chargeable under this Act: Provided that, whenever the filing or exhibition in a Criminal Court of a document in respect of which the proper fee has not been paid is, in the opinion of the Court, necessary to prevent a failure of justice, nothing contained in this section shall be deemed to prohibit such filing or exhibition: Provided further that no fees chargeable under this Act shall be payable on documents that may be filed by the State Government in any proceedings before a Civil Court including High Court. Explanation.—For the purposes of this proviso "documents" means and includes plaints, memorandum of appeal, petitions and papers of any kind required to be filed in connection with any proceedings before a Civil Court including High Court. (2) Notwithstanding anything contained in sub-section (1) or in any other Act, a Court may receive a plaint or memorandum of appeal in respect of which an insufficient fee has been paid subject to the condition that the plaint or memorandum of appeal shall be rejected unless the plaintiff or appellant, as the case may be, pays to the Court within a time to be fixed by the Court such reasonable sum on account of court-fees as the Court may direct.',
+      },
+      {
+        sectionNo: '7(i)',
+        heading: 'Computation of fees payable in certain suits — for money',
+        text: 'The amount of fee payable under this Act in the suits next hereinafter mentioned shall be computed as follows:—(i) In suits for money including suits for damages or compensation, or arrears of maintenance, of annuities, or of other sums payable periodically—according to the amount claimed: Provided that no fee shall be payable in suits for damages for defamation.',
       },
     ],
   },
@@ -4499,6 +4609,66 @@ export const acts: Act[] = [
         sectionNo: '33',
         heading: 'Limitation on rate of interest',
         text: '(1) The State Government may, from time to time by notification in the Official Gazette, fix the maximum rates of interest for any local area or class of business of money-lending in respect of secured and unsecured loans. (2) No agreement between a Money-Lender and a debtor for payment of interest at rates exceeding the maximum rates fixed by the State Government under sub-section (1) shall be valid and no Court shall in any suit to which this Act applies award interest exceeding the said rates. (3) No Money-Lender or a person advancing a loan shall make an oral or written demand or charge or receive from a debtor interest at a rate exceeding the maximum rate fixed by the State Government under sub-section (1). (4) Any loan in respect of which the Money-Lender or any person has realized from the debtor an interest at rates exceeding the maximum rates fixed by the State Government under sub-section (1), shall stand discharged and the amount of excessive interest, if any, so realized shall be refunded by the Money-Lender or any person, as the case may be, to the debtor. If the Money-Lender or any person fails to pay such amount of excessive interest to the debtor, it shall be recoverable from him as an arrears of land revenue, and on recovery thereof, it shall be paid to the debtor.',
+      },
+    ],
+  },
+  {
+    id: 'act-maharashtra-money-lending-2014',
+    shortTitle: 'The Maharashtra Money-Lending (Regulation) Act, 2014',
+    year: 2014,
+    actNumber: 'Maharashtra Act VIII of 2014',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/19683/1/20148.pdf',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Maharashtra Money-Lending (Regulation) Act, 2014. (2) It extends to the whole of the State of Maharashtra. (3) It shall be deemed to have come into force on the 16th January 2014. [Note: enacted after a wave of farmer suicides linked to harassment by unlicensed money-lenders; the preamble records this directly as the Act\'s reason for being.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "interest", "loan" and "money-lender"',
+        text: '(9) "interest" includes any sum by whatsoever name called, in excess of the principal paid or payable to a money-lender in consideration of, or otherwise in respect of, a loan, but does not include any sum lawfully charged by a money-lender for, or, on account of costs, charges or expenses in accordance with the provisions of this Act, or any other law for the time being in force. (13) "loan" means an advance at interest whether of money or in kind but does not include,—(a) a deposit of money or other property in a Government Post Office bank or in any other bank or in a company or co-operative society; (b) a loan to, or by, or a deposit with any society or association registered under the Societies Registration Act, 1860 or any other enactment relating to a public, religious or charitable object; (c) a loan advanced by the Government or by any local authority authorized by the Government; (d) a loan advanced to a Government servant from a fund, established for the welfare or assistance of Government servants, and which is sanctioned by the State Government; (e) a deposit of money with, or a loan advanced by, a co-operative society; (f) an advance made to a subscriber to, or a depositor, in a provident fund from the amount standing to his credit in the fund in accordance with the rules of the fund; (g) a loan to, or by, an insurance company as defined in the Insurance Act, 1938; (h) a loan to, or by, a bank; (i) a loan to, or by, or deposit with, any corporation (being a body not falling under any of the other provisions of this clause), established by or under any law for the time being in force which grants any loan or advance in pursuance of that Act; (j) an advance of any sum exceeding rupees three thousand made on the basis of a negotiable instrument as defined in the Negotiable Instruments Act, 1881, other than a promissory note; (k) an advance of any sum exceeding rupees three thousand made on the basis of a hundi (written in English or any Indian language); (l) an advance made bonafide by any person carrying on any business, not having for its primary object the lending of money, if such advance is made in the regular course of his business; (m) except for the purposes of sections 29 and 31,-(i) a loan, by a landlord to his tenant for financing of crops or seasonal finance, of not more than Rs. 1,000 per acre of land held by the tenant; (ii) a loan advanced to an agricultural labourer by his employer. (14) "money-lender" means,—(i) an individual; or (ii) an undivided Hindu family; or (iii) a company other than a non-banking financial company regulated under Chapter IIIB of the Reserve Bank of India Act, 1934; (iv) an unincorporated body of individuals, who or which,—(a) carries on the business of money-lending in the State; or (b) has his or its principal place of such business in the State; and includes a pawn-broker, but does not include,—(i) Government; (ii) a local authority; (iii) a Bank; (iv) a Co-operative Bank; (v) a multi-state Co-operative Bank; (vi) a Non-Banking Financial Company; (vii) a primary credit society; (viii) a Regional Rural Bank; (ix) the Reserve Bank of India; (x) the Agricultural Refinance Corporation constituted under the Agricultural Refinance Corporation Act, 1963; or (xi) any other banking or financial institution which the State Government may, by notification in the Official Gazette specify in this behalf.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Money-lender not to carry on business except for area under licence and except in accordance with terms of licence',
+        text: 'No money-lender shall carry on the business of money-lending except in the area for which he has been granted a licence and except in accordance with the terms and conditions of such licence.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Suits by money-lenders not holding licence',
+        text: '(1) No court shall pass a decree in favour of a money-lender in any suit unless the court is satisfied that at the time when the loan or any part thereof, to which the suit relates was lent, the money-lender held a valid licence, and if the court is satisfied that the money-lender did not hold a valid licence, it shall dismiss the suit. (2) Nothing in this section shall affect the powers of a Court of Wards, or an Official Assignee, a receiver, an administrator or a Court under the provisions of the Presidency Towns Insolvency Act, 1909, or the Provincial Insolvency Act, 1920 or any other law in force corresponding to that Act, or of a liquidator under the Companies Act, 1956, or the Companies Act, 2013, as the case may be, to realise the property of a money-lender.',
+      },
+      {
+        sectionNo: '31',
+        heading: 'Limitation on rates of interest',
+        text: '(1) The State Government may, from time to time, by notification in the Official Gazette, fix the maximum rates of interest to be charged by a money-lender in respect of secured loan and unsecured loan. (2) No money-lender shall receive from a debtor or intending debtor any sum by way of compound interest on a loan advanced or intended to be advanced or any sum by way of interest at a rate higher than the rate fixed under sub-section (1). (3) Notwithstanding anything contained in any other law for the time being in force, a money-lender shall not charge or recover from any debtor, on account of interest, a sum greater than the amount of principal of loan whether advanced before or after commencement of this Act. (4) Notwithstanding anything contained in any other law for the time being in force, no agreement between a money-lender and a debtor for payment of interest at rates exceeding the maximum rates fixed by the State Government under sub-section (1) and no agreement in contravention of the provisions of sub-sections (2) and (3) shall be valid. [Note: the compiled edition consulted lists a further amendment (No. 39 of 2026) on top of the 2014 Act\'s own 23 of 2014 amendment; this section\'s text above is as compiled with those amendments appended, but the specific effect (if any) of the 2026 amendment on this particular section has not been separately confirmed — check a current bare Act before relying on this for a live matter.]',
+      },
+    ],
+  },
+  {
+    id: 'act-maharashtra-court-fees-1959',
+    shortTitle: 'The Maharashtra Court-Fees Act, 1959',
+    year: 1959,
+    actNumber: 'Bom. Act XXXVI of 1959',
+    sourceUrl: 'https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2025/02/20250210836169435.pdf',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Maharashtra Court-fees Act. (2) It extends to the whole of the State of Maharashtra. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. (4) The provisions of this Act shall not apply to fees or stamps relating to documents presented or to be presented before any officer serving under the Central Government. (5) In the absence of any specific provision to the contrary nothing in this Act shall affect any special law now in force relating to fees taken in the courts and public offices. [Note: originally enacted as the Bombay Court-fees Act, 1959 for the State of Bombay; renamed to its current short title by Maharashtra Act 24 of 2012, with "State of Bombay" earlier updated to "State of Maharashtra" by the Maharashtra Adaptation of Laws (State and Concurrent Subjects) Order, 1960.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Fees on documents filed, etc., in Courts or in public offices',
+        text: '(1) No document of any of the kinds specified as chargeable in the first or second Schedule to this Act annexed shall be filed, exhibited or recorded, in any Court of Justice, or shall be received or furnished by any public officer, unless in respect of such document there has been paid a fee of an amount not less than that indicated by either of the said Schedules as the proper fee for such document. (2) When any difference arises between the officer whose duty it is to see that any fee is paid under this Act and any suitor or his pleader, as to the necessity of paying a fee or the amount thereof, the question shall, when the question arises in the High Court, be referred to the taxing officer whose decision thereon shall be final, subject to revision, on an application, made within thirty days from the date of the decision, by the suitor or his pleader or such officer as may be appointed in this behalf by the State Government, by the Chief Justice or by such Judge of the High Court as the Chief Justice shall appoint either generally or specially in this behalf. (3) When any such difference arises in the City Civil Court, Bombay, the question shall be referred to the Registrar of the City Civil Court whose decision shall be final, subject to revision, on an application, made within thirty days from the date of the decision, by the party concerned or such officer as may be appointed in this behalf by the State Government, by the Principal Judge or such other Judge of the said Court as the Principal Judge shall appoint either generally or specially in this behalf. (4) When such difference arises in any other Court, the question shall be referred to the final decision of the Judge presiding over such Court.',
+      },
+      {
+        sectionNo: '6(i)',
+        heading: 'Computation of fees payable in certain suits — for money',
+        text: 'The amount of fee payable under this Act in the suits next hereinafter mentioned shall be computed as follows :— (i) for money.— In suits for money (including suits for damages or compensation, or arrears of maintenance, of annuities, or of other sums payable periodically)—according to the amount claimed.',
       },
     ],
   },
