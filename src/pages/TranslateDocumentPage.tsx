@@ -4,8 +4,8 @@ import { useLanguage, LANGUAGES, type Language } from '../lib/language';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { translateDocumentText } from '../lib/documentTranslationClient';
 import { ApiError } from '../lib/apiError';
-import { searchLibrarySections } from '../lib/searchLibrarySections';
-import type { Act, ActSection } from '../data/lawLibraryData';
+import { acts } from '../data/lawLibraryData';
+import type { Act } from '../data/lawLibraryData';
 import './TranslateDocumentPage.css';
 
 interface Props {
@@ -23,6 +23,7 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
 
   const [sourceMode, setSourceMode] = useState<SourceMode>('upload');
   const [sourceLabel, setSourceLabel] = useState<string | null>(null);
+  const [selectedActId, setSelectedActId] = useState<string | null>(null);
   const [sourceText, setSourceText] = useState('');
   const [searchQuery, setSearchQuery] = useState('');
   const [targetLanguage, setTargetLanguage] = useState<Language>(language);
@@ -33,14 +34,26 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
   const [copied, setCopied] = useState(false);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
-  const searchResults = useMemo(
-    () => (searchQuery.trim() ? searchLibrarySections(searchQuery) : []),
-    [searchQuery]
-  );
+  // Sorted once, up front — every render either filters or reuses this same array.
+  const sortedActs = useMemo(() => [...acts].sort((a, b) => a.shortTitle.localeCompare(b.shortTitle)), []);
+
+  const actResults = useMemo(() => {
+    const q = searchQuery.trim().toLowerCase();
+    if (!q) return sortedActs;
+    return sortedActs.filter((act) => act.shortTitle.toLowerCase().includes(q));
+  }, [searchQuery, sortedActs]);
+
+  const actJurisdictionLabel = (act: Act) => {
+    if (act.id === 'act-constitution-india') return t.lawLibrary.categoryConstitution;
+    if (act.instrumentType === 'rules') return t.lawLibrary.categoryRules;
+    if (act.jurisdiction.type === 'state') return act.jurisdiction.state;
+    return t.lawLibrary.categoryCentralActs;
+  };
 
   const switchMode = (mode: SourceMode) => {
     setSourceMode(mode);
     setSourceLabel(null);
+    setSelectedActId(null);
     setSourceText('');
     setTranslatedText('');
     setError(null);
@@ -68,15 +81,14 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
     }
   };
 
-  const handleSectionSelected = (act: Act, section: ActSection) => {
-    setSourceText(section.text);
-    setSourceLabel(
-      `${act.shortTitle} — ${t.lawLibrary.sectionHeading(
-        section.sectionNo,
-        section.heading,
-        act.instrumentType === 'rules' ? t.lawLibrary.ruleUnit : undefined
-      )}`
-    );
+  const handleActSelected = (act: Act) => {
+    const unit = act.instrumentType === 'rules' ? t.lawLibrary.ruleUnit : undefined;
+    const fullText = act.sections
+      .map((section) => `${t.lawLibrary.sectionHeading(section.sectionNo, section.heading, unit)}\n${section.text}`)
+      .join('\n\n');
+    setSourceText(fullText);
+    setSourceLabel(act.shortTitle);
+    setSelectedActId(act.id);
     setTranslatedText('');
     setError(null);
     setStatus('idle');
@@ -87,9 +99,11 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
     setStatus('translating');
     setError(null);
     setCopied(false);
+    setTranslatedText('');
     try {
-      const result = await translateDocumentText(sourceText, targetLanguage, token);
-      setTranslatedText(result.translatedText);
+      const result = await translateDocumentText(sourceText, targetLanguage, token, (chunk) => {
+        setTranslatedText((prev) => prev + chunk);
+      });
       setTruncated(result.truncated);
       setStatus('done');
     } catch (err) {
@@ -193,46 +207,31 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
                 className="td-select"
                 placeholder={copy.searchPlaceholder}
                 value={searchQuery}
-                onChange={(e) => {
-                  setSearchQuery(e.target.value);
-                  setSourceLabel(null);
-                  setSourceText('');
-                  setTranslatedText('');
-                }}
+                onChange={(e) => setSearchQuery(e.target.value)}
               />
 
-              {searchQuery.trim() && (
-                <div className="td-search-results">
-                  {searchResults.length === 0 ? (
-                    <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
-                      {copy.searchNoResults}
-                    </p>
-                  ) : (
-                    <>
-                      <p className="td-results-count">{t.lawLibrary.resultsCount(searchResults.length)}</p>
-                      {searchResults.map(({ act, section }) => {
-                        const heading = t.lawLibrary.sectionHeading(
-                          section.sectionNo,
-                          section.heading,
-                          act.instrumentType === 'rules' ? t.lawLibrary.ruleUnit : undefined
-                        );
-                        const isSelected = sourceLabel === `${act.shortTitle} — ${heading}`;
-                        return (
-                          <button
-                            type="button"
-                            key={`${act.id}-${section.sectionNo}`}
-                            className={isSelected ? 'td-section-card selected' : 'td-section-card'}
-                            onClick={() => handleSectionSelected(act, section)}
-                          >
-                            <span className="td-section-act">{act.shortTitle}</span>
-                            <span className="td-section-heading">{heading}</span>
-                          </button>
-                        );
-                      })}
-                    </>
-                  )}
-                </div>
-              )}
+              <div className="td-search-results">
+                {actResults.length === 0 ? (
+                  <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
+                    {copy.searchNoResults}
+                  </p>
+                ) : (
+                  <>
+                    <p className="td-results-count">{copy.actResultsCount(actResults.length)}</p>
+                    {actResults.map((act) => (
+                      <button
+                        type="button"
+                        key={act.id}
+                        className={selectedActId === act.id ? 'td-section-card selected' : 'td-section-card'}
+                        onClick={() => handleActSelected(act)}
+                      >
+                        <span className="td-section-act">{actJurisdictionLabel(act)}</span>
+                        <span className="td-section-heading">{act.shortTitle}</span>
+                      </button>
+                    ))}
+                  </>
+                )}
+              </div>
             </>
           )}
 

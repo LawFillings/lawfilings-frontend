@@ -468,9 +468,10 @@ export const hi: Translations = {
     disclaimer:
       'यह एक मशीन अनुवाद सुविधा है, प्रमाणित या पेशेवर अनुवाद नहीं। अर्थ — विशेष रूप से कानूनी शब्दों का — अनुवाद में खो सकता है या बदल सकता है। जिस भी बात पर आप भरोसा करें, उसे हमेशा मूल दस्तावेज़ से मिलाकर जांचें, और इस पर कार्रवाई करने से पहले किसी वकील से सलाह लें।',
     uploadTab: 'PDF अपलोड करें',
-    searchTab: 'विधि पुस्तकालय खोजें',
-    searchPlaceholder: "सभी अधिनियमों में खोजें — जैसे 'written statement', 'limitation', 'appeal deposit'",
-    searchNoResults: 'कोई मेल खाता अनुभाग नहीं मिला।',
+    searchTab: 'अधिनियम चुनें',
+    searchPlaceholder: "अधिनियम के नाम से खोजें — जैसे 'Consumer Protection', 'Limitation'",
+    searchNoResults: 'कोई मेल खाता अधिनियम नहीं मिला।',
+    actResultsCount: (n: number) => `${n} अधिनियम मिले`,
     uploadLabel: 'स्रोत दस्तावेज़ (PDF)',
     chooseFile: 'एक PDF चुनें',
     onlyTextPdf: 'फ़िलहाल केवल टेक्स्ट-आधारित PDF समर्थित हैं, स्कैन की गई प्रतियां नहीं।',

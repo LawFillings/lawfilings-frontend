@@ -468,9 +468,10 @@ export const as: Translations = {
     disclaimer:
       'এইটো এটা যান্ত্ৰিক অনুবাদ সুবিধা, কোনো প্ৰমাণিত বা পেছাদাৰী অনুবাদ নহয়। অনুবাদৰ সময়ত অৰ্থ — বিশেষকৈ আইনী পৰিভাষাৰ — হেৰাই যাব পাৰে বা সলনি হ’ব পাৰে। আপুনি যিহৰ ওপৰত নিৰ্ভৰ কৰিছে, সদায় সেয়া মূল নথিৰ সৈতে মিলাই চাওক, আৰু ইয়াৰ ভিত্তিত পদক্ষেপ ল’বলৈ আগতে এজন অধিবক্তাৰ সৈতে পৰামৰ্শ কৰক।',
     uploadTab: 'PDF আপল’ড কৰক',
-    searchTab: 'আইন লাইব্ৰেৰী সন্ধান কৰক',
-    searchPlaceholder: "সকলো আইনত সন্ধান কৰক — যেনে 'written statement', 'limitation', 'appeal deposit'",
-    searchNoResults: 'মিল থকা কোনো খণ্ড পোৱা নগ’ল।',
+    searchTab: 'আইন বাছনি কৰক',
+    searchPlaceholder: "আইনৰ নামেৰে সন্ধান কৰক — যেনে 'Consumer Protection', 'Limitation'",
+    searchNoResults: 'মিল থকা কোনো আইন পোৱা নগ’ল।',
+    actResultsCount: (n: number) => `${n} টা আইন পোৱা গ’ল`,
     uploadLabel: 'উৎস নথি (PDF)',
     chooseFile: 'এটা PDF বাছনি কৰক',
     onlyTextPdf: 'আপাততে কেৱল টেক্সট-ভিত্তিক PDF সমৰ্থিত, স্কেন কৰা কপি নহয়।',

@@ -468,9 +468,10 @@ export const mr: Translations = {
     disclaimer:
       'ही एक यांत्रिक भाषांतर सुविधा आहे, प्रमाणित किंवा व्यावसायिक भाषांतर नाही. अर्थ — विशेषतः कायदेशीर संज्ञांचा — भाषांतरात हरवू शकतो किंवा बदलू शकतो. तुम्ही ज्यावर विसंबता ते नेहमी मूळ दस्तऐवजाशी जुळवून तपासा, आणि त्यावर कृती करण्यापूर्वी वकिलाचा सल्ला घ्या.',
     uploadTab: 'PDF अपलोड करा',
-    searchTab: 'कायदा ग्रंथालय शोधा',
-    searchPlaceholder: "सर्व कायद्यांमध्ये शोधा — उदा. 'written statement', 'limitation', 'appeal deposit'",
-    searchNoResults: 'कोणताही जुळणारा विभाग सापडला नाही.',
+    searchTab: 'कायदा निवडा',
+    searchPlaceholder: "कायद्याच्या नावाने शोधा — उदा. 'Consumer Protection', 'Limitation'",
+    searchNoResults: 'कोणताही जुळणारा कायदा सापडला नाही.',
+    actResultsCount: (n: number) => `${n} कायदे सापडले`,
     uploadLabel: 'स्रोत दस्तऐवज (PDF)',
     chooseFile: 'एक PDF निवडा',
     onlyTextPdf: 'सध्या फक्त टेक्स्ट-आधारित PDF समर्थित आहेत, स्कॅन केलेल्या प्रती नाहीत.',

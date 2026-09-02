@@ -468,9 +468,10 @@ export const gu: Translations = {
     disclaimer:
       'આ એક મશીન અનુવાદ સુવિધા છે, પ્રમાણિત કે વ્યાવસાયિક અનુવાદ નહીં. અર્થ — ખાસ કરીને કાનૂની શબ્દોનો — અનુવાદમાં ખોવાઈ શકે છે અથવા બદલાઈ શકે છે. તમે જેના પર આધાર રાખો તે હંમેશા મૂળ દસ્તાવેજ સાથે સરખાવીને ચકાસો, અને તેના પર પગલાં લેતા પહેલાં વકીલની સલાહ લો.',
     uploadTab: 'PDF અપલોડ કરો',
-    searchTab: 'કાયદા લાઇબ્રેરી શોધો',
-    searchPlaceholder: "બધા ઍક્ટમાં શોધો — જેમ કે 'written statement', 'limitation', 'appeal deposit'",
-    searchNoResults: 'કોઈ મેળ ખાતો વિભાગ મળ્યો નથી.',
+    searchTab: 'ઍક્ટ પસંદ કરો',
+    searchPlaceholder: "ઍક્ટના નામથી શોધો — જેમ કે 'Consumer Protection', 'Limitation'",
+    searchNoResults: 'કોઈ મેળ ખાતો ઍક્ટ મળ્યો નથી.',
+    actResultsCount: (n: number) => `${n} ઍક્ટ મળ્યા`,
     uploadLabel: 'સ્રોત દસ્તાવેજ (PDF)',
     chooseFile: 'એક PDF પસંદ કરો',
     onlyTextPdf: 'હાલમાં ફક્ત ટેક્સ્ટ-આધારિત PDF જ સમર્થિત છે, સ્કેન કરેલી નકલો નહીં.',

@@ -470,9 +470,10 @@ export const en = {
     disclaimer:
       "This is a machine translation facility, not a certified or professional one. Meaning — especially of legal terms — can be lost or changed in translation. Always check anything you rely on against the original document, and consult an advocate before acting on it.",
     uploadTab: 'Upload a PDF',
-    searchTab: 'Search the Law Library',
-    searchPlaceholder: "Search Acts — e.g. 'limitation', 'written statement'",
-    searchNoResults: 'No matching sections found.',
+    searchTab: 'Choose an Act',
+    searchPlaceholder: "Search by Act name — e.g. 'Consumer Protection', 'Limitation'",
+    searchNoResults: 'No matching Acts found.',
+    actResultsCount: (n: number) => `${n} Act${n !== 1 ? 's' : ''} found`,
     uploadLabel: 'Source document (PDF)',
     chooseFile: 'Choose a PDF',
     onlyTextPdf: 'Only text-based PDFs are supported for now, not scanned copies.',

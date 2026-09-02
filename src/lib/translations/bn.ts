@@ -468,9 +468,10 @@ export const bn: Translations = {
     disclaimer:
       'এটি একটি যন্ত্র অনুবাদ সুবিধা, কোনো প্রত্যয়িত বা পেশাদার অনুবাদ নয়। অনুবাদের সময় অর্থ — বিশেষত আইনি পরিভাষার — হারিয়ে যেতে পারে বা বদলে যেতে পারে। আপনি যার উপর নির্ভর করছেন তা সবসময় মূল নথির সাথে মিলিয়ে দেখুন, এবং এর ভিত্তিতে পদক্ষেপ নেওয়ার আগে একজন অধিবক্তার সাথে পরামর্শ করুন।',
     uploadTab: 'PDF আপলোড করুন',
-    searchTab: 'আইন লাইব্রেরি অনুসন্ধান করুন',
-    searchPlaceholder: "সব আইনে অনুসন্ধান করুন — যেমন 'written statement', 'limitation', 'appeal deposit'",
-    searchNoResults: 'কোনো মিলযুক্ত ধারা পাওয়া যায়নি।',
+    searchTab: 'আইন বেছে নিন',
+    searchPlaceholder: "আইনের নাম দিয়ে অনুসন্ধান করুন — যেমন 'Consumer Protection', 'Limitation'",
+    searchNoResults: 'কোনো মিলযুক্ত আইন পাওয়া যায়নি।',
+    actResultsCount: (n: number) => `${n}টি আইন পাওয়া গেছে`,
     uploadLabel: 'উৎস নথি (PDF)',
     chooseFile: 'একটি PDF বেছে নিন',
     onlyTextPdf: 'আপাতত শুধুমাত্র টেক্সট-ভিত্তিক PDF সমর্থিত, স্ক্যান করা কপি নয়।',
