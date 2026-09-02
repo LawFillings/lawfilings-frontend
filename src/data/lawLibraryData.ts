@@ -4183,6 +4183,61 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-jharkhand-money-lending-prohibition-2016',
+    shortTitle: 'The Jharkhand Private Money Lending (Prohibition) Act, 2016',
+    year: 2016,
+    actNumber: 'Jharkhand Act 2 of 2017',
+    sourceUrl: 'https://indiankanoon.org/doc/76741890/',
+    jurisdiction: { type: 'state', state: 'Jharkhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: 'This Act may be called the Jharkhand Private Money Lending (Prohibition) Act, 2016. It shall extend to the whole of the State of Jharkhand. It shall come into force on such date as the State Government may by notification in the Official Gazette, appoint. [Note: notified/numbered as Jharkhand Act 2 of 2017. Unlike every other state Money-Lenders Act in this Library, which regulate and license money-lending, this Act instead prohibits private money-lending outright, subject to the exemption power in section 3.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "loan", "interest" and "private money lender"',
+        text: '"Loan" means a loan on interest advanced by a money lender whether in cash or in kind and shall include mandeorha, sawaiya, rehan, bandhaki, pauni, sudbharna, kishti and any transaction which, in substance, is a loan but shall not include—(a) a loan advanced by the Central/State Government or by any local body authorised by the Central/State Government; (b) a loan advanced on a deposit of money, in Post Office Savings Bank or a deposit of money or any other property in any other bank or any Company or a Co-operative Society registered under the Bihar and Orissa Co-operative Societies Act, 1935; (c) a loan advanced by Public Sector Undertakings or any Private Limited Company registered under the Indian Companies Act to its employees; (d) an advance made to a subscriber to, or a depositor in, a Provident Fund from the amount standing to his credit in the fund in accordance with the rules of the fund; (e) a loan to or by an Insurance Company as defined in the Insurance Act, 1938; (f) a loan to or by a Bank. "Interest" means and includes the return to be made over and above what was actually lent whether the same is charged or sought to be recovered specifically by way of interest or otherwise. "Private Money Lender" means an individual or group of individuals advancing loan and shall include a Hindu undivided family and the legal representatives and successors-in-interest, whether by inheritance, assignment or otherwise, of a person who advances a loan, but does not include any corporation incorporated by the Central or State Government as a Bank or Financial Corporation or a Co-operative Society or registered Financial Institution.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Exemption of certain loan from operation of this Act',
+        text: 'The State Government may, by notification, for any special reason or reasons which shall be stated in such notification exempt any class of loan in whole of the State of Jharkhand from the operation of all or any of the provisions of this Act.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Prohibition of money lending',
+        text: 'No person shall carry on business of money-lending, whether in cash or kind on usufructuary mortgage of property or on pledge of gold, ornaments and any other articles.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Punishment',
+        text: '(i) If any person after the commencement of this Act, shall carry on business of money lending, in contravention of section (4), he shall be punishable with imprisonment for a term which may extend to three years and with fine which may extend to five thousand rupees. (ii) Whoever having been convicted of an offence under this Act is again convicted of an offence under this Act shall be punishable with imprisonment for a term which may extend to five years and with fine which may extend to ten thousand rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-jharkhand-court-fees-amendment-2022',
+    shortTitle: 'The Court Fees (Jharkhand Amendment) Act, 2022',
+    year: 2022,
+    actNumber: 'Jharkhand Act 14 of 2023',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/jharkhand/2023/Act14of2023Jharkhand.pdf',
+    jurisdiction: { type: 'state', state: 'Jharkhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(i) This Act, may be called "The Court Fees (Jharkhand Amendment), Act, 2022". (ii) It extends to the whole of the State of Jharkhand. (iii) It shall come into force from the date as notified in the State Gazette. [Note: like Bihar, Madhya Pradesh and Chhattisgarh, Jharkhand has not re-enacted its own Court Fees Act — it continues to apply the Central Court-Fees Act, 1870, and this Act only substitutes that central Act\'s fee Schedules as they apply within Jharkhand. Published in the Jharkhand Gazette (Extraordinary) of 24 November 2023; the English text reproduced here is the version the notification itself designates as authoritative under article 348(3) of the Constitution of India.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Substitution of Schedule I and II — ad valorem fee on a plaint or memorandum of appeal',
+        text: 'Substitution of Schedule I and II appended to the Court Fees Act, 1870 — the schedule I and II appended to the Court Fees Act 1870 shall be substituted by the following schedule. Schedule-I, Ad valorem Fees, Item 1: Plaint, written statement pleading a set-off or counter claim or memorandum of appeal or of cross objection not otherwise provided for in this Act, presented to any Civil or Revenue Court except those mentioned in Section 3. When the amount or value of the subject matter in dispute—(i) up to Rs. 30,000: 15% of the amount or value; (ii) exceeds Rs. 30,000 but does not exceed Rs. 50,000: Rs. 4,500 + 10% of the amount or value exceeding Rs. 30,000; (iii) exceeds Rs. 50,000 but does not exceed Rs. 20,00,000: Rs. 6,500 + 3% of the amount or value exceeding Rs. 50,000; (iv) exceeds Rs. 20,00,000 but does not exceed Rs. 1 crore: Rs. 65,500 + 0.5% of the amount or value exceeding Rs. 20,00,000; (v) exceeds Rs. 1 crore: Rs. 1,05,000 + 0.3% of the amount or value exceeding Rs. 1 crore, subject to a maximum of Rs. 3,00,000.',
+      },
+    ],
+  },
+  {
     id: 'act-goa-suits-valuation-1965',
     shortTitle: 'The Goa, Daman and Diu Suits Valuation Act, 1965',
     year: 1965,
@@ -4469,6 +4524,56 @@ export const acts: Act[] = [
         sectionNo: '7(i)',
         heading: 'Computation of fees payable in certain suits — for money',
         text: 'The amount of fee payable under this Act in the suits next hereinafter mentioned shall be computed as follows:—(i) In suits for money including suits for damages or compensation, or arrears of maintenance, of annuities, or of other sums payable periodically—according to the amount claimed: Provided that no fee shall be payable in suits for damages for defamation.',
+      },
+    ],
+  },
+  {
+    id: 'act-assam-money-lenders-1934',
+    shortTitle: "The Assam Money Lenders' Act, 1934",
+    year: 1934,
+    actNumber: 'Assam Act IV of 1934',
+    sourceUrl: 'https://legislative.assam.gov.in/sites/default/files/swf_utility_folder/departments/legislative_medhassu_in_oid_3/menu/document/The%20Assam%20Money%20lenders%20Act,%201934.pdf',
+    jurisdiction: { type: 'state', state: 'Assam' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Assam Money-Lenders Act, 1934. (2) It extends to the whole of Assam including the territories mentioned in section 14 of the Assam General Clauses Act, 1915. (3) It shall come into force on such date as the Local Government may by notification direct. [Note: sourced from an original scanned copy of the Act as enacted, held by the Assam Legislative Assembly Library, with contemporary handwritten annotations noting that several provisions (including the clause (1) "money-lender" definition below) were later substituted by the Assam Money-Lenders (Amendment) Act, 1948 — those 1948 (and later 1968) amendments are not incorporated into the text below. This Act has also since been supplemented by the Assam Micro Finance Institutions (Regulation of Money Lending) Act, 2020, which is not reproduced here. Confirm against a current Assam bare Act before relying on any specific provision.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "money-lender", "interest" and "loan"',
+        text: '(1) "Money-lender" means a person who grants a loan. (2) "Interest" means rate of interest and includes the return to be made over and above what was actually lent whether the same is charged or sought to be recovered specifically by way of interest or otherwise. (3) "Loan" means an advance (whether of money or in kind) at interest made by a money-lender and shall include any bond bearing interest executed in respect of past liabilities and any transaction which in substance is a loan; [Explanation.—A bond bearing interest executed in respect of goods taken on credit constitutes a loan.] and (4) "Prescribed" means prescribed by rules made under this Act.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Prohibition of compound interest and provisions as to defaulting',
+        text: 'Any contract made after the commencement of this Act for the loan of money by a money-lender shall be illegal in so far as it provides directly or indirectly for the payment of compound interest or for the rate or amount of interest being increased by reason of any default in the payment of sums due under the contract: Provided that provision may be made by any such contract that if default is made in the payment upon the due date of any sum payable to the money-lender under the contract, whether in respect of principal or interest, or both, the money-lender shall be entitled to charge simple interest on that sum from the date of the default until the sum is paid, at a rate not exceeding the rate payable in respect of the principal apart from any default, and any interest so charged shall not be reckoned for the purposes of this Act as part of the interest charged in respect of the loan.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Penalty in case of fraud',
+        text: '(1) Where in any suit in respect of any money lent or in respect of any security taken for money lent by a money-lender, the trying Court is of opinion that the money-lender has been guilty of fraud, or of any contravention of the provisions of this Act, or is otherwise unfit to carry on the business of money-lending, the Court may make an order debarring him from carrying on such business for such time as may be specified in the order and an appeal shall lie from such an order to the court to which an appeal ordinarily lies under the provisions of the Code of Civil Procedure, 1908, irrespective of the money value of the suit. (2) Any money-lender carrying on the business of money-lending in contravention of any order made under sub-section (1) shall, on conviction, be liable to a fine which may extend to five hundred rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-assam-court-fees-amendment-2020',
+    shortTitle: 'The Court-Fees (Assam Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Assam Act No. IV of 2020',
+    sourceUrl: 'https://ghconline.gov.in/General/Notification-22-05-2020-4.pdf',
+    jurisdiction: { type: 'state', state: 'Assam' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Court-Fees (Assam Amendment) Act, 2020. (2) It extends to the whole of the State of Assam. (3) It shall come into force at once. [Note: like Bihar, Madhya Pradesh, Chhattisgarh and Jharkhand, Assam has not re-enacted its own Court Fees Act — it continues to apply the Central Court-Fees Act, 1870, and this Act only amends that central Act as it applies within Assam. An earlier Assam amendment, the Court-Fees (Assam Amendment) Act, 1972, substituted the fee Schedules themselves, but its rupee/paise figures (the lowest bracket is fifty-five paise) are now over 50 years stale and are not reproduced here — confirm the current fee schedule with the Gauhati High Court or a current bare Act rather than relying on that 1972 table.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of section 13 — refund by electronic transfer',
+        text: 'In the principal Act, in section 13, in the fifth line, in between the words, "the Collector" and "the full" the following words, "or by way of electronic transfer in such manner as may be prescribed", shall be inserted. [Note: section 13 of the Court-Fees Act, 1870 governs refund of court-fee via a Collector-issued cheque; this 2020 amendment adds electronic transfer as an alternative refund method. The same insertion is separately repeated for sections 14, 15 and 16 of the principal Act by sections 3-5 of this Act (not reproduced here), each covering a different refund/repayment scenario.]',
       },
     ],
   },
@@ -5319,6 +5424,61 @@ export const acts: Act[] = [
         sectionNo: '18',
         heading: 'Bar to certain suits by money-lenders',
         text: 'No suit on the basis of any loan, agreement or security referred to in sub-section (1) of section 15 shall be instituted by a money-lender, unless at the time of advancing such loan or making such agreement or taking such security—(a) such money-lender held a valid certificate of registration; or (b) such money-lender had applied for such certificate and the same had not been refused; or (c) the period specified in the proviso to sub-section (1) of section 7 had not expired.',
+      },
+    ],
+  },
+  {
+    id: 'act-uttarakhand-regulation-money-lending-1976',
+    shortTitle: 'The Uttarakhand Regulation of Money-Lending Act, 1976',
+    year: 1976,
+    actNumber: 'U.P. Act No. 29 of 1976',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/11718/1/money_lending_%28english%29.pdf',
+    jurisdiction: { type: 'state', state: 'Uttarakhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Uttar Pradesh Regulation of Money-Lending Act, 1976. (2) It extends to the whole of Uttar Pradesh. (3) It shall come into force on such date as the State Government may, by notification, appoint in this behalf. [Note: this is the same 1976 Act that continued as the separate law of both successor states after Uttarakhand was carved out of Uttar Pradesh in November 2000 — India Code itself lists a distinct Uttarakhand copy of this Act (as "Uttarakhand act 029 of 1976"), but the digitized text located for this Library is the Uttar Pradesh copy (also in this Library, under the title "The Uttar Pradesh Regulation of Money-Lending Act, 1976"), which this entry\'s text is sourced from. Uttarakhand made its own implementing Regulation of Money-Lending Rules in 2018; whether it has separately amended the Act\'s own substantive provisions since 2000 has not been verified — confirm against a current Uttarakhand bare Act before relying on any specific figure.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Definitions — "loan" and "money-lender"',
+        text: '(5) "loan" means an advance at interest whether of money or in kind and includes any transaction which is in substance a loan, but does not include sale of any goods by a dealer in such goods whether on credit or on hire-purchase. (6) "money-lender" means a person who carries on the business of money-lending. (4) "interest" in relation to a loan, includes any sum, by whatever name called, in excess of the principal, paid or payable to a money-lender in consideration of or otherwise in respect of the loan, but does not include any sum lawfully charged by a money-lender for or on account of costs, charges or expenses in accordance with the provisions of this Act or any other law for the time being in force. (7) "principal", in relation to a loan, means the amount actually advanced to the debtor.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Restriction on business of money lending',
+        text: '(1) No person shall carry on the business of money-lending, unless he holds a valid certificate of registration: Provided that a person referred to in the proviso to sub-section (1) of section 7 may, subject to other provisions of this Act, continue to carry on such business for the period mentioned in that proviso and thereafter until his application for registration is refused. (2) Every registered money-lender shall display his certificate of registration in such manner as may be prescribed.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Bar to certain suits by money-lenders',
+        text: 'No suit on the basis of any loan, agreement or security referred to in sub-section (1) of section 15 shall be instituted by a money-lender, unless at the time of advancing such loan or making such agreement or taking such security—(a) such money-lender held a valid certificate of registration; or (b) such money-lender had applied for such certificate and the same had not been refused; or (c) the period specified in the proviso to sub-section (1) of section 7 had not expired.',
+      },
+    ],
+  },
+  {
+    id: 'act-uttarakhand-court-fees-amendment-2018',
+    shortTitle: 'The Court Fees (Uttarakhand Amendment) Act, 2018',
+    year: 2018,
+    actNumber: 'Uttarakhand Act No. 29 of 2018',
+    sourceUrl: 'https://cdnbbsr.s3waas.gov.in/s3bc7f621451b4f5df308a8e098112185d/uploads/2025/03/202503261276546453.pdf',
+    jurisdiction: { type: 'state', state: 'Uttarakhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Court Fees (Uttarakhand Amendment) Act, 2018. (2) It extends to the whole of the State of Uttarakhand. (3) It shall come into force at once. [Note: like several other states in this Library, Uttarakhand has not re-enacted its own Court Fees Act — it continues to apply the Central Court-Fees Act, 1870, and this Act only amends that central Act as it applies within Uttarakhand.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Insertion of new Section 1B — definition of "e-Payment"',
+        text: 'In the Court Fees Act, 1870 (as applicable in State of Uttarakhand) (hereinafter referred to as "the Principal Act"), a new Section 1B shall be inserted after Section 1A, namely: "1B. Definition of \'e-Payment\'.— In this Act, \'e-Payment\' means any transaction of payment for goods and services through any electronic medium."',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Amendment of Section 13 — refund of fee by e-Payment',
+        text: 'In Section 13 of the Principal Act, after the words "from the collector", the words "or by way of e-Payment" shall be inserted.',
       },
     ],
   },
