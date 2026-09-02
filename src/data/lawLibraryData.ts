@@ -4288,6 +4288,91 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-mizoram-money-lenders-2010',
+    shortTitle: 'The Mizoram Money Lenders and Accredited Loan Providers (Regulation) Act, 2010',
+    year: 2010,
+    actNumber: 'Mizoram Act No. 12 of 2010',
+    sourceUrl: 'https://finance.mizoram.gov.in/uploads/attachments/ed411770105259922572bfd0e209601a/the-mizoram-money-lenders-act-2010.pdf',
+    jurisdiction: { type: 'state', state: 'Mizoram' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Mizoram Money Lenders and Accredited Loan Providers (Regulation) Act, 2010. (2) It shall extend to the whole of the State of Mizoram except the areas covered under Lai, Mara and Chakma Autonomous Districts constituted under Sixth Schedule to the Constitution of India. (3) It shall come into force on such date as the State Government may, by notification in the official Gazette, appoint: Provided that different dates may be appointed for different sections of the Act. (4) Nothing contained in this Act shall apply to the Reserve Bank or any bank or any Non-Banking Financial Companies/Micro Finance Companies registered under the Reserve Bank of India.',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "interest", "loan" and "money lender"',
+        text: '"Interest" includes the return to be made over and above what is actually lent whether the same is charged or sought to be recovered specifically by way of interest or otherwise, but does not include any sum lawfully charged by a money lender or accredited loan provider as costs, charges, expenses towards evaluation, assessment and creation of the security. "Loan" means an advance, whether of money or kind, at interest, with or without security, and includes advance, discount, money paid for or on account of or on behalf of or at the request of any person, or the forbearance to require payment of money owing on any account whatsoever, and every agreement (whatever its terms or form may be) which is in substance or effect a loan of money, and also an agreement to secure the repayment of any such loan, but does not include, among other things: (a) a deposit of money or other property in a Government Post Office Bank or in a Government Savings Bank; (b) a loan advanced by the State Government or by any local authority authorised by the State Government; (c) a deposit of money with or a loan advanced by a co-operative society; (m) a loan or deposit to or by a non-banking financial company registered with Reserve Bank under chapter III B of the Reserve Bank of India Act, 1934; (o) an advance made on the basis of a negotiable instrument as defined in the Negotiable Instruments Act, 1881 other than a promissory note; (p) a loan or advance made by a trader bonafide carrying on any business, other than money lending, if such loan is advanced in the regular course of such business. "Money lender" means a person whose main or subsidiary occupation is the business of advancing and realising loans in the State.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Money lender to obtain registration',
+        text: '(1) No money lender shall commence or carry on the business of providing loan at any place to which this Act applies without obtaining a registration under this Act.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Procedure in disputes regarding loan',
+        text: 'For the protection of debtors and for settlement of disputes under the Act, the state Government after consultation with the High Court, and by notification— (a) shall, as soon as may be after the commencement of this Act, establish for every district in the State a Fast-Track Court. (b) may establish Fast-Track Court for such other areas in the State, as it may deem necessary. [Note: this dedicated Fast-Track Court mechanism for money-lending disputes is distinctive to this Act — most other states\' Money-Lenders Acts in this Library instead route disputes through the ordinary civil courts.]',
+      },
+    ],
+  },
+  {
+    id: 'act-mizoram-court-fees-amendment-1996',
+    shortTitle: 'The Court-fees (Mizoram Amendment) Act, 1996',
+    year: 1996,
+    actNumber: 'Mizoram Act No. 5 of 1997',
+    sourceUrl: 'https://mizoramassembly.in/storage/Assembly/Gazette/EO/GZEO26_ISS082.pdf',
+    jurisdiction: { type: 'state', state: 'Mizoram' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Court-fees (Mizoram Amendment) Act, 1996. (2) It extends to the whole of the State of Mizoram. (3) It shall come into force on and from such date as may be appointed by the State Government of Mizoram by publication in the Mizoram Gazette. [Note: like several other states in this Library, Mizoram has not re-enacted its own Court Fees Act — it continues to apply the Central Court-Fees Act, 1870, and this Act only substitutes that central Act\'s Schedule I as it applies within Mizoram. Notified as Mizoram Act No. 5 of 1997. This Act\'s substituted fee table (denominated in specific rupee figures per bracket of claim value) is not reproduced here, since a 1996 rupee-figure schedule is very likely to have been superseded by later notification — confirm the current fee schedule with the Mizoram High Court or a current bare Act before relying on any specific amount. No later Mizoram Court-Fees amendment could be located for this Library.]',
+      },
+    ],
+  },
+  {
+    id: 'act-tripura-court-fees-amendment-2020',
+    shortTitle: 'The Court Fees (Tripura Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Tripura Act No. 17 of 2020',
+    sourceUrl: 'https://tripura.gov.in/sites/default/files/The-Court-Fees-tripura%20Amendment-Act-2020.pdf',
+    jurisdiction: { type: 'state', state: 'Tripura' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This may be called "The Court Fees (Tripura Amendment) Act, 2020". (2) It shall come into force on the date of its publication in the Tripura Gazette. [Note: the Court Fees Act, 1870, as was in force in the State of Assam, was adapted to the State of Tripura with effect from 21 January 1972, by the North-Eastern Areas (Reorganisation) (Tripura) Adaptation of Laws Order, 1973 — Tripura has not re-enacted its own Court Fees Act. This 2020 amendment was made pursuant to a Supreme Court e-Committee suggestion, at the request of the High Court of Tripura, to facilitate online payment of court fees, penalties and fines.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Section 13 — refund by electronic transfer',
+        text: 'In section 13 of the principal Act, the expression "the Appellate Court shall grant to the appellant a certificate, authorizing him to receive back from the Collector the full amount of fee paid on the memorandum of appeal", shall be substituted with the expression "the Appellate Court shall grant to the appellant a certificate, authorizing him to receive back from the Collector or by way of electronic transfer in such manner as may be prescribed, the full amount of fee paid on the memorandum of appeal".',
+      },
+    ],
+  },
+  {
+    id: 'act-sikkim-court-fees-stamps-amendment-2013',
+    shortTitle: 'The Sikkim Court Fees and Stamps on Documents (Amendment) Act, 2013',
+    year: 2013,
+    actNumber: 'Sikkim Act No. 12 of 2013',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/sikkim/2002/2002Sikkim7.pdf',
+    jurisdiction: { type: 'state', state: 'Sikkim' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Sikkim Court Fees and Stamps on Document (Amendment) Act, 2013. (2) It shall come into force on the date of its publication in the Official Gazette. [Note: Sikkim, uniquely among the states in this Library, does not apply the Central Court-Fees Act, 1870 at all — under Article 371F of the Constitution, its own pre-1975 law, the Sikkim Court Fees and Stamps on Documents Rules, 1928, continues in force instead, amended from time to time by an Act such as this one.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule (A) — ad valorem fee on plaints in civil suits',
+        text: 'In the Sikkim Court Fees and Stamps on Documents Rules, 1928, in \'Schedule (A)\' under the heading "Nature of Petition", in serial number (1), against the "Plaints in Civil Suits or Civil Appeals", under the column "Value of stamp chargeable" for the words and figure "6 (six) percentum", the following shall be substituted, namely:— "(i) Rs. 1.00 to Rs. 3.00 lakhs - 1%; (ii) Rs. 3.00 lakhs to Rs. 6.00 lakhs - 1.25%; (iii) Rs. 6.00 lakhs to Rs. 10.00 lakhs - 1.50%; (iv) Rs. 10.00 lakhs to Rs. 15.00 lakhs - 1.75%; (v) Rs. 15.00 lakhs to Rs. 25.00 lakhs - 2.00%; (vi) Rs. 25.00 lakhs to Rs. 40.00 lakhs - 2.25%; (vii) Rs. 40.00 lakhs to Rs. 60.00 lakhs - 2.50%; (viii) Rs. 60.00 lakhs to Rs. 1 crore - 2.75%; (ix) Rs. 1 crore and above - 3.00%." [Note: this 2013 figure is percentage-of-value based, unlike the flat rupee/paise brackets that have gone stale in several other states\' schedules in this Library — but it may itself have been superseded by a later notification since 2013; confirm the current rate with the Sikkim High Court before relying on it.]',
+      },
+    ],
+  },
+  {
     id: 'act-tamil-nadu-court-fees-1955',
     shortTitle: 'The Tamil Nadu Court-Fees and Suits Valuation Act, 1955',
     year: 1955,
@@ -4309,6 +4394,56 @@ export const acts: Act[] = [
         sectionNo: '22',
         heading: 'Suits for money',
         text: 'In a suit for money (including a suit for damages or compensation, or arrears of maintenance, of annuities, or of other sums payable periodically), fee shall be computed on the amount claimed. [Note: as with the parallel Andhra Pradesh and Telangana Acts, this Act\'s fee Schedules are denominated in "naye Paise" — the transitional currency subunit used only between 1957 and 1964 — and Schedule II is confirmed to still carry those historical figures (merely relabelled from "annas" by a 1960 Act, with no change to the underlying amounts). The Schedule I ad valorem fee table has not been reproduced here for the same reason: it is not the current operative fee schedule. Confirm the applicable fee with the Madras High Court or a current bare Act before relying on any specific amount.]',
+      },
+    ],
+  },
+  {
+    id: 'act-puducherry-money-lenders-1970',
+    shortTitle: "The Puducherry Money Lender's Act, 1970",
+    year: 1970,
+    actNumber: 'No. 26 of 1970',
+    sourceUrl: 'https://police.py.gov.in/Acts%20related%20to%20Puducherry%20UT/Puducherry%20Money%20Lenders%20Act%201970.pdf',
+    jurisdiction: { type: 'state', state: 'Puducherry' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Puducherry Money Lender\'s Act, 1970. (2) It extends to the whole of the Union territory of Puducherry. (3) It shall come into force on such date as the Government may, by notification in the Official Gazette, appoint. [Note: came into force on 1 October 1970. Amended by Act No. 7 of 1983 (which inserted the non-citizen bar in section 18A, reflecting Puducherry\'s French-administration history) and by Act No. 7 of 2004.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "interest", "loan" and "money-lender"',
+        text: '"Interest" includes the return to be made over and above what is actually lent, whether the same is charged or sought to be recovered specifically by way of interest or otherwise but does not include any sum charged by a lender in accordance with the provisions of this Act or any other law for the time being in force, for or on account of costs, charges or expenses. "Loan" means an advance whether of money or in kind at interest, and includes any transaction which the court finds in substance to amount to such an advance, but does not include, among other things — (i) a deposit of money or other property in a Government Post Office Savings Bank or in a Bank or in a company or with a co-operative society; (ii) an advance made by a bank or a co-operative society or an advance made from a provident fund to which the Provident Funds Act, 1925 applies; (iii) an advance made by any Government or by any person authorised by Government to make advances on their behalf, or by any local authority; (v) an advance made bona fide by any person carrying on any business, not having for its primary object the lending of money, if such loan is advanced in the regular course of such business; (vi) an advance made on the basis of a negotiable instrument as defined in the Negotiable Instruments Act, 1881 exceeding rupees ten thousand; (ix) an advance made by an agriculturist to his tenant. "Money-lender" means a person whose main or subsidiary occupation is the business of advancing and realising loans, but excludes a bank or a co-operative society.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Money-lender to obtain licence',
+        text: '(1) No person shall on and after the date on which the provisions of this Act are brought into force, carry on, or continue to carry on, business as a money-lender in the Union territory, except under and in accordance with the terms of a licence. (2) Where a money-lender has more than one shop or place of business, whether in the same town or village or in different towns or villages, he shall obtain a separate licence in respect of each such shop or place of business.',
+      },
+      {
+        sectionNo: '20-A',
+        heading: 'Power of court to limit interest recoverable in certain cases',
+        text: 'Notwithstanding anything contained in any agreement or any law for the time being in force, no court shall in respect of any loan whether advanced before or after the date of the publication of the Puducherry Money Lenders (Amendment) Act, 1983 in the Official Gazette, decree on account of interest a sum greater than the principal of the loan due on the date of the decree.',
+      },
+    ],
+  },
+  {
+    id: 'act-pondicherry-court-fees-1972',
+    shortTitle: 'The Pondicherry Court-Fees and Suits Valuation Act, 1972',
+    year: 1972,
+    actNumber: 'No. 6 of 1973',
+    sourceUrl: 'https://cdn.s3waas.gov.in/s3b4288d9c0ec0a1841b3b3728321e7088/uploads/2021/02/2021020219.pdf',
+    jurisdiction: { type: 'state', state: 'Puducherry' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Pondicherry Court-fees and Suits Valuation Act, 1972. (2) It extends to the whole of the Union territory of Pondicherry. (3) It shall come into force on such date as the Government may, by notification in the Official Gazette, appoint. [Note: came into force 1 September 1974. Section 21, "Fees to be computed to the nearest multiple of five paise", confirms this Act\'s fee Schedules are still paise-denominated — they are not reproduced here for that reason; confirm the current applicable fee with the Puducherry courts or a current bare Act.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Levy of fee in Courts and Public offices',
+        text: 'No document which is chargeable with fee under this Act shall,— (i) be filed, exhibited or recorded in, or be acted on or furnished by, any Court including the High Court, or (ii) be filed, exhibited or recorded in any public office, or be acted on or furnished by any public officer, unless in respect of such document there be paid a fee of an amount not less than that indicated as chargeable under this Act: Provided that, whenever the filing or exhibition in a Criminal Court of a document in respect of which the proper fee has not been paid is in the opinion of the Court necessary to prevent a failure of justice, nothing contained in this section shall be deemed to prohibit such filing or exhibition.',
       },
     ],
   },
@@ -5334,6 +5469,41 @@ export const acts: Act[] = [
         sectionNo: '1',
         heading: 'Short title, extent and commencement',
         text: '(1) This Act shall be called the Punjab Registration of Money-lenders\' Act, 1938. (3) It shall come into force on such date as the Central Government may, by notification, direct. [Note: like the Punjab Courts Act, 1918, this is an undivided-Punjab-era enactment extended to Delhi in the pre-independence and early post-independence period, and it continues to be indexed as applicable Delhi/NCT law by legal-research databases. The India Code copy used as the source here carries extent language for the Union Territory of Chandigarh specifically (per a 1968 adaptation order) rather than Delhi by name, since that is the specific consolidated copy available there — the substantive sections reproduced below are the same text applicable in Delhi. Confirm current Delhi-specific amendments before relying on section numbers for anything beyond the core scheme described here.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "money lender" and "loan"',
+        text: '(8) "Loan" means an advance whether secured or unsecured of money or in kind at interest and shall include any transaction which the court finds to be in substance a loan, but it shall not include—(i) an advance in kind made by a landlord to his tenant for the purposes of husbandry, provided the market value of the return does not exceed the market value of the advance as estimated at the time of advance; (ii) a deposit of money or other property in a Government Post Office Bank, or any other Bank, or with a company, or with a co-operative society, or with any employer as security from his employees; (iii) a loan to, or by, or a deposit with any society or association registered under the Societies Registration Act, 1860, or under any other enactment; (iv) a loan advanced by or to the Central or any State Government or by or to any local body under the authority of the Central or any State Government; (v) a loan advanced by a bank, a co-operative society or a company whose accounts are subject to audit by a certificated auditor under the Indian Companies Act, 1913; (vi) a loan advanced by a trader to a trader, in the regular course of business, in accordance with trade usage; (vii) an advance made on the basis of a negotiable instrument as defined in the Negotiable Instruments Act, 1881, other than a promissory note. (9) "Money lender" means a person or a firm carrying on the business of advancing loans as defined in this Act, and shall include the legal representatives and the successors-in-interest, whether by inheritance, assignment or otherwise, of such person or firm; provided that nothing in this definition shall apply to (a) a person who is the legal representative or the successor-in-interest by inheritance of the estate of a deceased money-lender, provided such person only winds up the estate, realises outstanding loans, and does not renew any existing loan nor advance any fresh loan; or (b) a bona fide assignment by a money-lender of a single loan to any one other than his or her spouse or a person descended from a common grandfather of the assignor.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Suits and applications by money-lenders barred, unless money-lender is registered and licensed',
+        text: 'Notwithstanding anything contained in any other enactment for the time being in force, a suit by a money-lender for the recovery of a loan, or an application by a money-lender for the execution of a decree relating to a loan, shall, after the commencement of this Act, be dismissed, unless the money-lender—(a) at the time of the institution of the suit or presentation of the application for execution; or (b) at the time of decreeing the suit or deciding the application for execution—(i) is registered; and (ii) holds a valid licence, in such form and manner as may be prescribed; or (iii) holds a certificate from a Commissioner granted under section 11, specifying the loan in respect of which the suit is instituted, or the decree in respect of which the application for execution is presented; or (iv) if he is not already a registered and licensed money-lender, satisfies the Court that he has applied to the Collector to be registered and licensed and that such application is pending: provided that in such a case, the suit or application shall not be finally disposed of until the application of the money-lender for registration and grant of licence pending before the Collector is finally disposed of.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Registration of money-lenders',
+        text: 'Every money-lender may apply for registration of his name at the office of the Collector of the District; and his name shall be registered on furnishing such particulars as may be prescribed and on payment of a fee of Rs. 5.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Licensing of money-lenders',
+        text: 'Every money-lender may apply to the Collector for a licence which shall be granted for such period, in such form, and on such conditions, and on payment of such fees, as may be prescribed. Explanation.—When an application for the renewal of a licence has been received from a licensed money-lender before the expiry of his licence, the existing licence shall be deemed to continue in force until orders on the application have been issued.',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-registration-money-lenders-1938-chandigarh',
+    shortTitle: 'The Punjab Registration of Money-Lenders Act, 1938 (as applicable to Chandigarh)',
+    year: 1938,
+    actNumber: 'Punjab Act No. III of 1938',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/21886/1/finance-registration_of_money_lenders.pdf',
+    jurisdiction: { type: 'state', state: 'Chandigarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act shall be called the Punjab Registration of Money-lenders\' Act, 1938. (2) It shall extend to the Union Territory of Chandigarh. (3) It shall come into force on such date as the Central Government may, by notification, direct. [Note: this extent language — naming the Union Territory of Chandigarh specifically — reflects the Punjab Re-organisation (Chandigarh) (Adaptation of Laws on State and Concurrent Subjects) Order, 1968, and is the India Code copy\'s own text as consolidated, unlike the Punjab/Haryana/Delhi copies of this same Act (also in this Library), which reuse this same source text despite it naming Chandigarh rather than themselves.]',
       },
       {
         sectionNo: '2',
