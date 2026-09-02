@@ -4483,6 +4483,26 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-lma-laws-regulation-1965',
+    shortTitle: 'The Laccadive, Minicoy and Amindivi Islands (Laws) Regulation, 1965',
+    year: 1965,
+    actNumber: 'Promulgated under article 240',
+    sourceUrl: 'https://cdn.s3waas.gov.in/s358238e9ae2dd305d79c2ebc8c1883422/uploads/2024/02/2024020512.pdf',
+    jurisdiction: { type: 'state', state: 'Lakshadweep' },
+    sections: [
+      {
+        sectionNo: 'Schedule',
+        heading: 'Entry extending the Court-fees Act, 1870 to the Islands',
+        text: 'Year: 1870. No.: 7. Short title: The Court-fees Act, 1870. Modifications: none specified. [Note: Lakshadweep (until 1973 named the Laccadive, Minicoy and Amindivi Islands) has no legislature of its own — this Regulation was promulgated by the President under article 240 of the Constitution to extend a schedule of Acts to the Islands, and under its section 3(1) every Act listed in the Schedule extends to the Islands subject only to whatever modification the Schedule itself specifies against that entry. No modification is specified against the Court-fees Act, 1870, so it applies to Lakshadweep in the same form as centrally enacted — there is no separate "Court-fees (Lakshadweep Amendment)" Act of the kind found for other states in this Library. Sourced from a 22 February 2024 circular of the Lakshadweep Law Department reproducing the Schedule for departmental reference; a companion instrument, The Laccadive, Minicoy and Amindivi Islands (Laws) No. 2 Regulation, 1970, extends a further, shorter list of Acts and does not include the Court-fees Act or any money-lending law. Neither Schedule contains a Money-Lenders Act of any kind — unlike every state in this Library, Lakshadweep appears to have no dedicated money-lending legislation at all.]',
+      },
+      {
+        sectionNo: '6(1)(b)',
+        heading: 'Construction of references to "State Government"',
+        text: '(1) In any Act or in any of the rules, notifications, orders, regulations and bye-laws made or issued thereunder and extended to the Islands by this Regulation— (a) ....... (b) any reference to the State Government shall be construed as a reference to the Central Government and, unless the Central Government otherwise directs in any case, also as including a reference to the Administrator. [Note: this means that wherever the Court-fees Act, 1870 refers to "the State Government" — for example, in fixing the fee schedules or appointing the Chief Controlling Revenue Authority — that power in Lakshadweep is exercised by the Administrator, since the Islands are centrally administered and have no state or union territory legislature of their own.]',
+      },
+    ],
+  },
+  {
     id: 'act-rajasthan-money-lenders-1963',
     shortTitle: 'The Rajasthan Money-Lenders Act, 1963',
     year: 1963,
