@@ -4032,6 +4032,636 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-maharashtra-stamp-1958',
+    shortTitle: 'The Maharashtra Stamp Act, 1958',
+    year: 1958,
+    actNumber: 'Bom. LX of 1958',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/22026/1/the_maharashtra_stamp_act,_1958.pdf',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Maharashtra Stamp Act. (2) It extends to the whole of the State of Maharashtra. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, direct. [Note: this Act was originally enacted as "the Bombay Stamp Act, 1958" (Bombay Act No. LX of 1958) and renamed to its current short title by section 2 of the Maharashtra Act No. 24 of 2012 — which is why the original enacting-Act citation reads "Bom." rather than "Mah."]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in Schedule I, the following instruments shall be chargeable with duty of the amount indicated in Schedule I as the proper duty therefor respectively, that is to say— (a) every instrument mentioned in Schedule I, which, not having been previously executed by any person, is executed in the State on or after the date of commencement of this Act; (b) every instrument mentioned in Schedule I, which, not having been previously executed by any person, is executed out of the State on or after the said date, relates to any property situate, or to any matter or thing done or to be done in this State and is received in this State: Provided that a copy or extract, whether certified to be a true copy or not and whether a facsimile image or otherwise of the original instrument on which stamp duty is chargeable under the provisions of this section, shall be chargeable with full stamp duty indicated in Schedule I if the proper duty payable on such original instrument is not paid. [Note: this Library does not curate Schedule I\'s duty rates themselves — those are amended frequently by Maharashtra Finance Acts and vary by instrument type (agreement, conveyance, mortgage, power of attorney, etc.); confirm the current rate directly with the IGR Maharashtra (Inspector General of Registration & Controller of Stamps) before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-karnataka-stamp-1957',
+    shortTitle: 'The Karnataka Stamp Act, 1957',
+    year: 1957,
+    actNumber: '34 of 1957',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/7744/1/34_of_1957(e).pdf',
+    jurisdiction: { type: 'state', state: 'Karnataka' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Karnataka Stamp Act, 1957. (2) It extends to the whole of the State of Karnataka. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in the Schedule, the following instruments shall be chargeable with duty of the amount indicated in that Schedule as the proper duty therefor, respectively, that is to say— (a) every instrument mentioned in that Schedule which, not having been previously executed by any person, is executed in the territories of the State of Karnataka on or after the commencement of this Act; and (b) every instrument mentioned in that Schedule which, not having been previously executed by any person, is executed out of the State of Karnataka on or after that day, relates to any property situate, or to any matter or thing done or to be done, in the territories of the State of Karnataka and is received in the territories of the State of Karnataka. [Note: this Library does not curate the Schedule\'s duty rates themselves — those are amended frequently by Karnataka Finance Acts and vary by instrument type; confirm the current rate directly with the Karnataka Department of Stamps and Registration before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-kerala-stamp-1959',
+    shortTitle: 'The Kerala Stamp Act, 1959',
+    year: 1959,
+    actNumber: '17 of 1959',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/20283/1/17.pdf',
+    jurisdiction: { type: 'state', state: 'Kerala' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Kerala Stamp Act, 1959. (2) It extends to the whole of the State of Kerala. (3) It shall come into force on such date as the Government may by notification in the Gazette appoint.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in the Schedule, the following instruments shall be chargeable with duty of the amount indicated in that Schedule as the proper duty therefore, respectively, that is to say— (a) every instrument mentioned in the Schedule which, not having been previously executed by any person, is executed in the territories of the State of Kerala on or after the commencement of this Act, and (b) every instrument mentioned in that Schedule which not having been previously executed by any person, is executed out of the State of Kerala on or after that day, relates to any property situate, or to any matter or thing done or to be done, in the territories of the State of Kerala and is received in the territories of the State of Kerala. Provided that no duty shall be chargeable in respect of— (1) any instrument, executed by, or on behalf of, or in favour of, the Central Government or this or any other State Government, in cases where, but for this exemption, the Central Government or the State Government, would be liable to pay the duty chargeable in respect of such instrument. [Note: this Library does not curate the Schedule\'s duty rates themselves — those are amended frequently by Kerala Finance Acts and vary by instrument type; confirm the current rate directly with the Kerala Registration Department before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-gujarat-stamp-1958',
+    shortTitle: 'The Gujarat Stamp Act, 1958',
+    year: 1958,
+    actNumber: 'Bom. LX of 1958',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/22026/1/the_maharashtra_stamp_act,_1958.pdf',
+    jurisdiction: { type: 'state', state: 'Gujarat' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Gujarat Stamp Act. (2) It extends to the whole of the State of Gujarat. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, direct. [Note: this Act was originally enacted as "the Bombay Stamp Act, 1958" (Bombay Act No. LX of 1958) — a single Act that, at the 1960 bifurcation of the former State of Bombay, continued in both successor states. In Gujarat it was adapted by the Gujarat Adaptation of Laws (State and Concurrent Subjects) Order, 1960 (substituting "Gujarat" for "Bombay") and then formally renamed "the Gujarat Stamp Act" by the Gujarat Short Titles (Amendment) Act, 2011 (Gujarat Act No. 15 of 2011), part of a single exercise that renamed 67 Bombay-titled Acts across the statute book. Maharashtra separately renamed its own copy of the same original Act to "the Maharashtra Stamp Act" by Maharashtra Act No. 24 of 2012 — see that entry. This section\'s text mirrors the two Acts\' shared 1958 original with only the state name substituted; confirm the current wording against a certified Gujarat copy before relying on it verbatim.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in Schedule I, the following instruments shall be chargeable with duty of the amount indicated in Schedule I as the proper duty therefor respectively, that is to say— (a) every instrument mentioned in Schedule I, which, not having been previously executed by any person, is executed in the State on or after the date of commencement of this Act; (b) every instrument mentioned in Schedule I, which, not having been previously executed by any person, is executed out of the State on or after the said date, relates to any property situate, or to any matter or thing done or to be done in this State and is received in this State. [Note: this Library does not curate Schedule I\'s duty rates themselves — those are amended frequently by Gujarat Finance/Amendment Acts and vary by instrument type; confirm the current rate directly with the Gujarat Revenue Department (Stamp Duty) before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-bihar-stamp-amendment-2013',
+    shortTitle: 'The Indian Stamp (Bihar Amendment) Act, 2013',
+    year: 2013,
+    actNumber: 'Bihar Act 5, 2013',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/bihar/2013/2013Bihar5.pdf',
+    jurisdiction: { type: 'state', state: 'Bihar' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Bihar Amendment) Act, 2013. (2) It shall extend to the whole of the State of Bihar. (3) It shall come into force at once. [Note: like Bihar\'s Court Fees Act amendment already in this Library, Bihar has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Bihar. The original notification is bilingual; the English text reproduced here is the version the notification itself designates as authoritative under article 348(3) of the Constitution of India.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Substitution in sub-section (1) of section 47-A of the Indian Stamp Act, 1899',
+        text: 'Section 47-A(1) of the Indian Stamp Act, 1899 (as amended from time to time) shall be substituted by the following:— "(1) Where the registering officer appointed under the Registration Act, 1908 while registering any instrument of conveyance, exchange, gift, partition or settlement is satisfied that the classification of the property and/or the measurement of the structure contained in the property which is subject matter of such instrument has been set forth wrongly or the market value of the property, which is subject matter of such instrument has been set forth at a lower rate than the Guideline Register of Estimated Minimum Value prepared under the rules framed under the provision of this Act, he shall refer such instrument before registering it to the Collector for determination of the proper market value of such property and the proper duty payable thereon."',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-stamp-amendment-2013',
+    shortTitle: 'The Indian Stamp (Punjab Amendment) Act, 2013',
+    year: 2013,
+    actNumber: 'Punjab Act 56 of 2013',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/punjab/2013/2013PB56.pdf',
+    jurisdiction: { type: 'state', state: 'Punjab' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Punjab Amendment) Act, 2013. (2) It shall come into force on and with effect from the date of its publication in the Official Gazette. [Note: like Bihar, Punjab has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899, Schedule I-A, as it applies within Punjab, and replaced an ordinance (Punjab Ordinance No. 5 of 2013) covering the same ground. Punjab has since made further amendments to Schedule I-A (including a 2016 Amendment Act) not reproduced here.]',
+      },
+      {
+        sectionNo: '2',
+        heading: "Amendment of Schedule I-A — power of attorney to sell immovable property",
+        text: 'In the Indian Stamp Act, 1899, in its application to the State of Punjab, in Schedule I-A, in entry 48, the following item is substituted: "When given to a person other than a family member, authorizing the attorney to sell any immovable property — 2% of the amount of the consideration, or of the Collector rate in respect of the property mentioned in the instrument, whichever is higher. Note: \'Family member\' includes spouse, child, parent, sibling, grandparent and grandchild." [Note: this is the specific entry in Schedule I-A governing stamp duty on a power of attorney authorising sale of immovable property — one of the more commonly encountered instruments this Library\'s wizards touch. This Library does not curate the rest of Schedule I-A\'s duty rates, which are amended frequently; confirm the current rate directly with the Punjab Department of Revenue, Rehabilitation and Disaster Management before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-delhi-stamp-amendment-2007',
+    shortTitle: 'The Indian Stamp (Delhi Amendment) Act, 2007',
+    year: 2007,
+    actNumber: 'Delhi Act 8 of 2007',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/delhi/2001/2001Delhi8.pdf',
+    jurisdiction: { type: 'state', state: 'Delhi (NCT)' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Delhi Amendment) Act, 2007. (2) It extends to the whole of the National Capital Territory of Delhi. (3) It shall come into force on such date as the Lieutenant Governor of the National Capital Territory of Delhi may, by notification in the Delhi Gazette, appoint. [Note: like several other Union Territories/states in this Library, Delhi has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899, Schedule I-A, as it applies within the NCT of Delhi. The only available source for this Act is a scanned gazette copy whose Schedule I-A amendment text is not reliably legible, so it is not reproduced here — this Library only curates the confirmed short title/extent/commencement clause. Delhi has made further Schedule I-A amendments since, including changes effective 1 July 2020; confirm the current rate directly with the Delhi Department of Revenue before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-haryana-stamp-amendment-2020',
+    shortTitle: 'The Indian Stamp (Haryana Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Haryana Act No. 7 of 2020',
+    sourceUrl: 'https://thc.nic.in/Central%20Governmental%20Acts/Indian%20Stamp%20(Haryana%20Amendment)%20Act,%202020.pdf',
+    jurisdiction: { type: 'state', state: 'Haryana' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Haryana Amendment) Act, 2020. (2) It shall come into force on the date of its publication in the Official Gazette. [Note: like Punjab (from which Haryana was carved out in 1966), Haryana has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899, as it applies within Haryana; Punjab\'s own amendments to the central Act (see the Indian Stamp (Punjab Amendment) Act, 2013 in this Library) do not automatically extend to Haryana.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Substitution of section 47-A — instruments under-valued how to be dealt with',
+        text: 'For section 47-A of the Indian Stamp Act, 1899 (hereinafter called the principal Act), the following section shall be substituted, namely— "47-A. Instruments under-valued how to be dealt with.— (1) If the market value of any property, which is the subject of any instrument on which duty is chargeable on market value as set forth in such instrument, is less than the minimum value determined in accordance with the rules made under this Act, the Registering Officer appointed under the Registration Act, 1908 (Central Act 16 of 1908), shall after registering the instrument, refer the same to the Collector for determination of market value of such property and the proper duty payable thereon. (2) On receipt of reference under sub-section (1), the Collector shall, after giving the parties a reasonable opportunity of being heard and after holding an enquiry in such manner, as may be prescribed by rules, determine the market value of the property and the duty as aforesaid, and the deficient amount of duty, if any, shall be payable by the person liable to pay the duty." [Note: the substituted section 47-A also gives the Collector a further suo motu power, exercisable within three years of registration, to re-examine an instrument\'s market value on his own initiative or on a reference from the Inspector-General of Registration, a District Registrar, or an audit report — not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-tamil-nadu-stamp-amendment-2023',
+    shortTitle: 'The Indian Stamp (Tamil Nadu Amendment) Act, 2023',
+    year: 2023,
+    actNumber: 'Tamil Nadu Act No. 13 of 2024',
+    sourceUrl: 'https://uncomplycate.com/wp-content/uploads/2024/06/Indian-Stamp-Tamil-Nadu-Amendment-Act-2023_MAY272024.pdf',
+    jurisdiction: { type: 'state', state: 'Tamil Nadu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Tamil Nadu Amendment) Act, 2023. (2) It extends to the whole of the State of Tamil Nadu. (3) It shall come into force at once. [Note: Tamil Nadu introduced a standalone "Tamil Nadu Stamp Bill, 2019" (L.A. Bill No. 5 of 2019) that would have replaced the central Indian Stamp Act, 1899 outright, but this Library could not confirm it was ever enacted and brought into force — no commencement notification could be located, and this later 2023 Act (assented and numbered in 2024) amends the central Act\'s own Schedule I rather than the 2019 Bill\'s text, which is strong evidence Tamil Nadu still runs on the central Act. Treat any reference to a fully separate "Tamil Nadu Stamp Act, 2019" with caution until its status is independently confirmed.]',
+      },
+      {
+        sectionNo: '2(4)',
+        heading: 'Amendment of Schedule I — Articles of Association of a company',
+        text: 'For Article 10 of Schedule I to the Indian Stamp Act, 1899, the following Article shall be substituted, namely— "10. ARTICLES OF ASSOCIATION OF A COMPANY — Five hundred rupees on every ten lakh rupees of authorised capital or part thereof subject to a maximum of rupees five lakh. Exemption.— Articles of any association not formed for profit and registered under the Companies Act, 2013 (Central Act 18 of 2013)." [Note: this is the Tamil Nadu duty rate for stamping a company\'s Articles of Association, relevant to any NCLT-facing incorporation or company-law filing. This Library does not curate the rest of this Act\'s many other Schedule I rate changes (it revises duty on over 20 instrument types); confirm the current rate directly with the Tamil Nadu Registration Department before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-andhra-pradesh-stamp-amendment-1986',
+    shortTitle: 'The Indian Stamp (Andhra Pradesh Amendment) Act, 1986',
+    year: 1986,
+    actNumber: 'Act No. 17 of 1986',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/andhra-pradesh/1986/1986AP17.pdf',
+    jurisdiction: { type: 'state', state: 'Andhra Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Andhra Pradesh Amendment) Act, 1986. (2) It extends to the whole of the State of Andhra Pradesh. (3) It shall come into force on such date as the State Government may by notification in the Andhra Pradesh Gazette appoints. [Note: Andhra Pradesh has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Andhra Pradesh, and remains the most recent Andhra-Pradesh-specific amendment this Library could independently source and read (further amendments up to 8 of 2003 are noted as appended in the source copy but not independently verified here). At the 2014 bifurcation, both successor states — Andhra Pradesh and Telangana — continued applying this Act; Telangana has since made its own further amendment (see the Indian Stamp (Telangana Amendment) Act, 2022 in this Library), while this Library could not confirm any equivalent further Andhra-Pradesh-specific amendment since the split.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of section 2, clause (15) — definition of "instrument of partition"',
+        text: 'In the Indian Stamp Act, 1899 (hereinafter referred to as the principal Act) as in force in the State of Andhra Pradesh, in section 2, in clause (15), the following words shall be added at the end, namely:— "and a memorandum regarding past partition."',
+      },
+    ],
+  },
+  {
+    id: 'act-telangana-stamp-amendment-2022',
+    shortTitle: 'The Indian Stamp (Telangana Amendment) Act, 2022',
+    year: 2022,
+    actNumber: 'Telangana Act No. 5 of 2022',
+    sourceUrl: 'https://law.telangana.gov.in/fileShow?fileName=%2FUploads%2FLawDepartment%2Fpdf%2FAct+No+5+of+2022_20042022_141803.pdf',
+    jurisdiction: { type: 'state', state: 'Telangana' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Telangana Amendment) Act, 2022. (2) It extends to the whole of the State of Telangana. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: like Andhra Pradesh (from which Telangana was carved out in 2014), Telangana has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Telangana. Passed by the Telangana Legislature on 15 March 2021, it received the assent of the President of India on 31 March 2022 and was first published on 19 April 2022.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Substitution of section 47-A — instruments of conveyance, etc. undervalued, how to be dealt with',
+        text: 'In the Indian Stamp Act, 1899 as in force in the State of Telangana, for section 47-A, the following section shall be substituted, namely— "47-A. Instruments of conveyance, etc., valuation how to be dealt with.— Any instrument of conveyance, exchange, gift, partition, settlement, release, agreement relating to construction, development or sale of any immovable property or power of attorney given for sale, development of immovable property, or any such instrument which is subject to market value under Schedule I-A shall be presented for registration before the registering officer appointed under the Registration Act, 1908, only after payment of the full amount of the Stamp Duty payable on the consideration value of the property set forth in the instrument or the market value determined as per the Market Value Guidelines prescribed by the Government from time to time, whichever is higher: Provided that in respect of instruments executed by or on behalf of the Central Government or the State Government or any authority or body incorporate by or under any law for the time being in force and wholly owned by Central or State Government, the market value of any property shall be the value shown in such instrument." [Note: this requires full stamp duty to be paid up front, at the higher of the stated consideration or the government\'s Market Value Guideline rate, before a registering officer will even accept a conveyance, gift, partition, or property-sale power of attorney for registration — directly relevant to any property-related agreement this Library\'s wizards help draft for use in Telangana.]',
+      },
+    ],
+  },
+  {
+    id: 'act-west-bengal-finance-2024-stamp',
+    shortTitle: 'The West Bengal Finance Act, 2024',
+    year: 2024,
+    actNumber: 'West Bengal Act V of 2024',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/west-bengal/2024/Act5of2024WB.pdf',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the West Bengal Finance Act, 2024. (2) Save as otherwise provided, this section shall come into force with immediate effect, and the other provisions of this Act shall come into force on such date, with prospective or retrospective effect as required, as the State Government may, by notification in the Official Gazette, appoint. [Note: West Bengal has not re-enacted its own Indian Stamp Act — this omnibus annual Finance Act is how West Bengal amends the central Indian Stamp Act, 1899 as it applies within the State (this particular Act also separately amends the Bengal Excise Act, 1909, not curated in this Library). Assented to by the Governor and published in the Kolkata Gazette, Extraordinary, on 20 March 2024.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule IA — duty on a Gift capped at Rs. 1,000',
+        text: '(1) The Indian Stamp Act, 1899, in its application to West Bengal (hereinafter referred to as the principal Act), shall be amended for the purpose and in the manner hereinafter provided. (2) In Schedule IA to the principal Act, against item (i) of article 33 in the first column under heading "Description of Instruments", in the second column under heading "Proper Stamp Duty", after the words and symbols "one-half of one per centum of the market value of the property which is the subject matter of the Gift", the words "subject to maximum of rupees one thousand" shall be inserted. [Note: this caps the stamp duty payable on a Gift Deed (article 33(i) of Schedule IA) at Rs. 1,000, however high the market value of the gifted property, rather than leaving it uncapped at half a percent of market value.]',
+      },
+    ],
+  },
+  {
+    id: 'act-up-stamp-amendment-2024',
+    shortTitle: 'The Indian Stamp (Uttar Pradesh Amendment) Act, 2024',
+    year: 2024,
+    actNumber: 'U.P. Act (Bill No. 20 of 2024, as introduced)',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/bills_states/uttar-pradesh/2024/Bill20of2024UP.pdf',
+    jurisdiction: { type: 'state', state: 'Uttar Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Uttar Pradesh Amendment) Act, 2024. (2) It extends to the whole of Uttar Pradesh. (3) It shall be deemed to have come into force on 28 December 2023. [Note: this Library\'s only located source for this Act is the Uttar Pradesh Legislative Assembly\'s Hindi-language gazette publication of the Bill as introduced (6 February 2024), which section 3 shows repealed and replaced the Indian Stamp (Uttar Pradesh Amendment) Ordinance, 2023 (U.P. Ordinance No. 19 of 2023) — the ordinance this Act\'s retrospective 28 December 2023 commencement date matches. No official English text or confirmation of the final assented Act number could be located; the English text of sections 1 and 2 given here is this Library\'s own translation of the Hindi original, not an official translation, and should be verified against a certified English copy before being relied upon.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Article 48, Schedule I-B — power of attorney to sell immovable property',
+        text: 'In Article 48 of Schedule I-B to the Indian Stamp Act, 1899, as amended in its application to Uttar Pradesh, clauses (i) and (ii) are replaced with the following: (i)(a) when an irrevocable authority is given to an attorney to sell immovable property; and (i)(b) when authority to sell immovable property is given for consideration — in both cases, the same duty as on a conveyance (Article 23, clause (a)) of the market value of the immovable property that is the subject matter of the power of attorney. (ii)(a) when authorised in favour of a family member (father, mother, husband, wife, son, daughter-in-law, daughter, son-in-law, brother, sister, or a grandchild through a son or daughter) with proof of the relationship — a flat duty of Rs. 5,000. (ii)(b) when authorised, by a power of attorney to sell immovable property, in favour of any person other than a family member described in (ii)(a) — the same duty as on a conveyance (Article 23, clause (a)) of the market value of the immovable property. [Note: this is the flat Rs. 5,000 stamp duty for a power of attorney to sell property between blood relatives that was widely reported when this Act was passed — a significant reduction from the ad valorem conveyance-rate duty that still applies to a power of attorney in favour of a non-family member.]',
+      },
+    ],
+  },
+  {
+    id: 'act-madhya-pradesh-stamp-amendment-2016',
+    shortTitle: 'The Indian Stamp (Madhya Pradesh Amendment) Act, 2016',
+    year: 2016,
+    actNumber: 'M.P. Act No. 30 of 2017',
+    sourceUrl: 'https://lawtrend.in/wp-content/uploads/bsk-pdf-manager/2022/10/Indian-Stamp-Madhya-Pradesh-Amendment-Act-2016.pdf',
+    jurisdiction: { type: 'state', state: 'Madhya Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Madhya Pradesh Amendment) Act, 2016. (2) It shall come into force from the date of its publication in the Madhya Pradesh Gazette. [Note: Madhya Pradesh has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Madhya Pradesh. Passed as the "2016" Act, it received the assent of the President on 21 September 2017 and was first published on 23 October 2017. Madhya Pradesh has made at least one further amendment since (the Indian Stamp (Madhya Pradesh Amendment) Act, 2022, M.P. Act No. 17 of 2022) not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Amendment of section 2 — "duly stamped", "e-stamp", "impound" and "market value"',
+        text: 'In Section 2 of the principal Act— (i) for clause (11), the following clause shall be substituted: "(11) \'Duly Stamped\' as applied to an instrument means that the instrument bears a stamp of not less than the proper amount chargeable as per the Schedule I and Schedule I-A to this Act and that such stamp has been affixed or used in accordance with the law for the time being in force in India"; (ii) after clause (11), the following clause shall be inserted: "(11-A) \'e-stamp or electronic stamp\' means an electronic record or its impression on paper, created to denote the payment of stamp duty"; (iii) after clause (12), the following clause shall be inserted: "(12-A) \'Impound\' means to take an instrument into custody of the Public Officer with an endorsement made thereon in this regard"; (iv) after clause (16-A), the following clauses shall be inserted: "(16-B) \'Market value\' in relation to any property which is the subject matter of an instrument, means the price which such property would fetch or would have fetched if sold in the open market on the date of execution of such instrument determined by the Authority empowered to do so in the manner laid down under this Act or rules made thereunder, or the consideration stated in the instrument, whichever applicable; (16-C) \'Market value Guidelines\' means the set of market values of immovable property in different villages, planning areas, municipalities, corporations and other areas in the State notified by the designated authority." [Note: these definitions underpin how Madhya Pradesh values property for stamp duty purposes — the Market Value Guidelines figure (the state\'s official "circle rate") is compared against the consideration actually stated in an instrument, and duty is charged on whichever is higher, the same mechanism seen in this Library\'s Telangana and Bihar/Haryana Stamp Act entries.]',
+      },
+    ],
+  },
+  {
+    id: 'act-chhattisgarh-stamp-amendment-2020',
+    shortTitle: 'The Indian Stamp (Chhattisgarh Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Chhattisgarh Act',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/chhattisgarh/2005/Act4of2005CG.pdf',
+    jurisdiction: { type: 'state', state: 'Chhattisgarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Chhattisgarh Amendment) Act, 2020. (2) It shall come into force from the date of its publication in the Official Gazette. [Note: Chhattisgarh has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Chhattisgarh. This Library\'s only located source is a PRS Legislative Research mirror with visible OCR/scanning artifacts (e.g. "2O2O" for "2020"); the section text here has been cleaned of obvious character-recognition errors but should still be verified against a certified copy. Chhattisgarh has also made an earlier, separate amendment — the Indian Stamp Act, 1899 (Chhattisgarh Amendment) Act, 2013 (Act No. 27 of 2013) — not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Amendment of Schedule I-A — omission of Article 20-A (Clearance List)',
+        text: "In Schedule I-A of the principal Act, \"Article 20-A Clearance List\" along with its clauses shall be omitted.",
+      },
+    ],
+  },
+  {
+    id: 'act-jharkhand-stamp-amendment-2018',
+    shortTitle: 'The Indian Stamp (Jharkhand Amendment) Act, 2018',
+    year: 2018,
+    actNumber: 'Jharkhand Act 16, 2019',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/jharkhand/2019/2019JR16.pdf',
+    jurisdiction: { type: 'state', state: 'Jharkhand' },
+    sections: [
+      {
+        sectionNo: '(i)',
+        heading: 'Short title, extent and commencement',
+        text: 'Short Title and extent:— (i) This Act may be called: The Indian Stamp (Jharkhand Amendment) Act, 2018. (ii) It shall extend to the whole of the State of Jharkhand. (iii) It shall come into force on such date as the State Government may by notification in the Official Gazette appoint. [Note: Jharkhand has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Jharkhand. Enacted as the "2018" Act, it was published in the Jharkhand Gazette (Extraordinary) on 30 October 2019 as Jharkhand Act 16, 2019.]',
+      },
+      {
+        sectionNo: '(iv)',
+        heading: 'Substitution of section 10(1) — duties how to be paid',
+        text: 'The section 10(1) of the Principal Act, is substituted in the following manner:— "10. Duties how to be paid.— (1) If otherwise not provided in this Act, all duties with which instruments are chargeable, shall be paid and such payment shall be indicated on such instruments, by means of stamps or through any other manner as may be prescribed by the State Government as follows:— (a) according to the provisions herein contained or (b) when no such provision is applicable thereto as the State Government may by rule direct."',
+      },
+    ],
+  },
+  {
+    id: 'act-odisha-stamp-amendment-2021',
+    shortTitle: 'The Indian Stamp (Odisha Amendment) Act, 2021',
+    year: 2021,
+    actNumber: 'Odisha Act',
+    sourceUrl: 'https://revenue.odisha.gov.in/sites/default/files/2021-10/Indian_Stamp_Odisha%20Amendment_Act_2021.pdf',
+    jurisdiction: { type: 'state', state: 'Odisha' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title',
+        text: 'This Act may be called the Indian Stamp (Odisha Amendment) Act, 2021. [Note: Odisha has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Odisha. Passed by the Odisha Legislative Assembly on 24 August 2021, it received the assent of the Governor on 27 August 2021 and was published (and came into force) on 15 September 2021; the official gazette copy sourced here refers to itself once, inconsistently, as a "Bill" in section 1 itself, but its own preamble and publication notice confirm it as an enacted, assented Act.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I-A — agreement for sale involving possession, or development agreement',
+        text: 'In the Schedule I-A of the Indian Stamp Act, 1899— (a) In article 5, after clause (b), the following clause shall be inserted, namely:— "(bb) if relating to an agreement for sale of immovable property involving delivery of possession of such property or Development agreement in respect of any immovable property — Two per centum of the amount of consideration of the property as set forth in the agreement or market value of such property, whichever is higher, subject to the adjustment of duty chargeable at the time of execution of deed of conveyance made in pursuance of such agreement between the same parties. Explanation.— The expression \'Development agreement\' means agreement executed by any person giving authority or power to a promoter or developer, by whatever name called, for construction or development in any manner of any immovable property." [Note: this brings an agreement for sale that hands over possession, and a builder/developer Development Agreement, within stamp duty at 2% of consideration or market value — but credits that duty against the stamp duty later payable on the actual conveyance deed between the same parties, so the two aren\'t both paid in full.]',
+      },
+    ],
+  },
+  {
+    id: 'act-assam-stamp-amendment-2021',
+    shortTitle: 'The Indian Stamp (Assam Amendment) Act, 2021',
+    year: 2021,
+    actNumber: 'Assam Act No. XXVII of 2021',
+    sourceUrl: 'https://legislative.assam.gov.in/sites/default/files/swf_utility_folder/departments/legislative_medhassu_in_oid_3/menu/document/the_indian_stamp_assam_amendment_act_2021_assam_act_no._xxvii_of_2021.pdf',
+    jurisdiction: { type: 'state', state: 'Assam' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Assam Amendment) Act, 2021. (2) It extends to the whole of Assam. (3) It shall come into force at once. [Note: Assam has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Assam. Published in the Assam Gazette, Extraordinary, of 16 September 2021. Assam has since gone further, with an Indian Stamp (Assam Amendment) Ordinance, 2024 (Assam Ordinance No. III of 2024) and a further amendment bill introduced in 2025, neither yet curated in this Library.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I — flat-fee duty on common instruments',
+        text: 'In the principal Act, in Schedule I, for the item nos. 1-12, 13(b)(c), 14-20, 22-65 the following shall be substituted: "1. Acknowledgement — Rs. 100/-. 2. Administrative Bond — Rs. 1000/-. 3. Adoption Deed — Rs. 500/-. 4. Affidavit including affirmation or declaration — Rs. 100/-. 5. Agreement or memorandum of an Agreement — (a) Agreement for conveyance: Rs. 100/- for agreement value up to Rs. 1,00,000/-, Rs. 1000/- for agreement value from Rs. 1,00,000/- to 10,00,000/-, Rs. 5,000/- for agreement value above Rs. 10,00,000/-; (b) Development Agreement — Rs. 5,000/-; (c) Other Agreement — Rs. 100/-." [Note: this replaces most of Schedule I\'s ad valorem duty structure with flat or lightly-tiered fees for a long list of common, lower-value instrument types — a significant simplification. This Library reproduces only the first several items (through item 5) of a much longer substituted table; confirm the fee for any instrument not listed here directly with the Assam Revenue and Disaster Management Department.]',
+      },
+    ],
+  },
+  {
+    id: 'act-himachal-pradesh-stamp-amendment-1988',
+    shortTitle: 'The Indian Stamp (Himachal Pradesh Amendment) Act, 1988',
+    year: 1988,
+    actNumber: 'Himachal Pradesh Act',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/himachal-pradesh/1953/1953HP4.pdf',
+    jurisdiction: { type: 'state', state: 'Himachal Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title',
+        text: 'This Act may be called the Indian Stamp (Himachal Pradesh Amendment) Act, 1988. [Note: Himachal Pradesh has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Himachal Pradesh. Himachal Pradesh has since made further amendments, including an Indian Stamp (Himachal Pradesh Amendment) Ordinance, 2025 (Ordinance No. 1 of 2025) and a corresponding 2025 Bill, neither yet curated in this Library.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Insertion of section 47-A — instruments under-valued, how to be dealt with',
+        text: 'After section 47 of the principal Act, the following new section shall be added, namely— "47-A. Instruments under-valued, how to be dealt with.— (1) If the Registering Officer, appointed under the Registration Act, 1908 (16 of 1908) while registering any instrument relating to the transfer of any property, has reason to believe that the market value of the property or the consideration, as the case may be, has not been truly set forth in the instrument, he may, after registering such instrument, refer the same to the Collector for determination of the market value or consideration, as the case may be, and the proper duty payable thereon." [Note: section 2 of this Act separately amends section 27 of the principal Act so that "the consideration (if any)" that must be set out in an instrument reserving interest reads instead as "the consideration, if any, the market value of the property" — the same undervaluation-referral mechanism this Library\'s Bihar, Haryana, and Telangana Stamp Act entries also show, each state\'s own version of it.]',
+      },
+    ],
+  },
+  {
+    id: 'act-uttaranchal-stamp-amendment-2002',
+    shortTitle: 'The Indian Stamp (Uttaranchal Amendment) Act, 2002',
+    year: 2002,
+    actNumber: 'Uttaranchal Act',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/uttarakhand/2002/2002UK14.pdf',
+    jurisdiction: { type: 'state', state: 'Uttarakhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Uttaranchal Amendment) Act, 2002. (2) It shall extend to the whole of Uttaranchal. (3) It shall come into force on such date as the State Government may, by notification, appoint. [Note: Uttarakhand has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within the state, then named Uttaranchal (renamed Uttarakhand in 2007 by a separate central Act, which did not retitle Acts the state had already passed under its former name). This Act\'s own substantive amendment — to Schedule I-B, Article 35 (Lease) — is on a scanned source too degraded to transcribe reliably and is not reproduced here. Uttarakhand has made at least one further amendment since (the Indian Stamp (Uttarakhand Amendment) Act, 2015, Act No. 1 of 2016) not yet curated in this Library.]',
+      },
+    ],
+  },
+  {
+    id: 'act-goa-stamp-amendment-2020',
+    shortTitle: 'The Indian Stamp (Goa Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Goa Act 16 of 2020',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/goa/2020/Act%2016%20of%202020%20Goa.pdf',
+    jurisdiction: { type: 'state', state: 'Goa' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Goa Amendment) Act, 2020. (2) It shall be deemed to have come into force on 9th day of June, 2020. [Note: Goa has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Goa, and replaced the Indian Stamp (Goa Amendment) Ordinance, 2020 (Ordinance No. 6 of 2020) covering the same ground. Goa has made further amendments since, including a 2025 Act (Goa Act 14 of 2025) not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I-A — Article 4 duty raised',
+        text: 'In Schedule I-A of the Indian Stamp Act, 1899 (2 of 1899), as in force in the State of Goa, against article 4, in column (2), for the words "Fifty rupees", the words "Hundred rupees" shall be substituted.',
+      },
+    ],
+  },
+  {
+    id: 'act-arunachal-pradesh-stamp-amendment-2018',
+    shortTitle: 'The Indian Stamp Act, 1899 (Act No. 2 of 1899) (in its application to the State of Arunachal Pradesh) (Amendment) Act, 2018',
+    year: 2018,
+    actNumber: 'Arunachal Pradesh',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/arunachal-pradesh/2018/Act%2016%20of%202018%20Arunachal%20Pradesh.pdf',
+    jurisdiction: { type: 'state', state: 'Arunachal Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp Act, 1899 (Act No. 2 of 1899) (in its application to the State of Arunachal Pradesh) (Amendment) Act, 2018. (2) It shall extend to whole of the State of Arunachal Pradesh. (3) It shall come into force from the date of its publication in the Arunachal Pradesh Gazette. [Note: unlike most states in this Library, Arunachal Pradesh re-adopted the central Indian Stamp Act, 1899 under its own consolidated short title — the Indian Stamp Act, 1899 (Act No. 2 of 1899) (in its application to the State of Arunachal Pradesh) Act, 2007 (Act No. 5 of 2007) — the same pattern already seen in this Library\'s Arunachal Pradesh Court Fees Act, 2023 and Money Lending (Regulation) Act, 2018 entries. This 2018 Act only amends that 2007 consolidation. Published in the Arunachal Pradesh Gazette, Extraordinary, of 22 October 2018.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I, item 40(a) — mortgage with possession',
+        text: 'In Schedule I of the Indian Stamp Act, 1899 (Act No. 2 of 1899) (in its application to the State of Arunachal Pradesh) Act 2007, for item No. 40, in sub-item (a), the following shall be substituted, namely— "When possession of the property or any part of the property comprised in such deed is given by the mortgagor or agreed to be given. (i) Where the amount or value of the consideration for such conveyance as set forth therein does not exceed Rs. 1,000 — Rs. 10. (ii) Where it exceeds Rs. 1,000 — 1%."',
+      },
+    ],
+  },
+  {
+    id: 'act-manipur-stamp-second-amendment-2011',
+    shortTitle: 'The Indian Stamp (Manipur Second Amendment) Act, 2011',
+    year: 2011,
+    actNumber: 'Manipur Act No. 6 of 2011',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/manipur/2011/2011Manipur6.pdf',
+    jurisdiction: { type: 'state', state: 'Manipur' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Manipur Second Amendment) Act, 2011. (2) It extends to the whole of the State of Manipur. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: Manipur has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Manipur. It received the assent of the Governor of Manipur on 16 December 2011 and was published on 26 December 2011.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I — Conveyance (Article 23)',
+        text: 'Amendment of Schedule I.— In Schedule I of the Indian Stamp Act, 1899 (No. 2 of 1899), for the instruments described in Article 23, the following shall be substituted, namely— "23. CONVEYANCE [as defined by section 2(10)], not being a Transfer charged or exempted under No. 62 — Three rupees for every Rs. 100 or part thereof of the consideration for such conveyance or, as the case may be, the market value of the property which is the subject matter or such conveyance whichever is greater."',
+      },
+    ],
+  },
+  {
+    id: 'act-meghalaya-stamp-amendment-2020',
+    shortTitle: 'The Indian Stamp (Meghalaya Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Meghalaya Act No. 6 of 2020',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/meghalaya/2020/Act%206%20of%20Meghalaya%202020.pdf',
+    jurisdiction: { type: 'state', state: 'Meghalaya' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This act may be called the Indian Stamp (Meghalaya Amendment) Act, 2020. (2) It extends to the whole of the State of Meghalaya. (3) It shall come into force at once. [Note: Meghalaya has not re-enacted its own Indian Stamp Act — this Act amends the Indian Stamp (Meghalaya Amendment) Act, 1993 (Meghalaya Act 5 of 1993), which itself amends the central Indian Stamp Act, 1899 as it applies within Meghalaya. It received the assent of the Governor on 31 March 2020 and was published the next day.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I, Articles 35 to — new entry (d), lease for mining of minerals',
+        text: 'In Articles 35 to Schedule 1 of the Indian Stamp Act, 1899, (as amended by Meghalaya) after entry No. (c), new entry (d) shall be inserted as follows— "(d) Where lease is granted for mining of minerals: (i) where the lease is granted for more than one year and not exceeding ten years — one rupee for every hundred rupees of the total amount of the average annual royalty payable calculated on the highest annual extraction of minerals as per approved mining plan; (ii) where the lease is granted for more than ten years and not exceeding twenty years — two rupees for every hundred rupees of the total amount of the average annual royalty calculated on the highest annual extraction of minerals as per approved mining plan; (iii) where the lease is granted for more than twenty years and not exceeding thirty years — three rupees of every hundred rupees of the total amount of the average annual royalty payable calculated on the highest annual extraction of minerals as per approved mining plan; (iv) where the lease is granted for more than thirty years and not exceeding fifty years — four rupees for every hundred rupees of the total amount of the average annual royalty payable calculated on the highest annual extraction of minerals as per approved mining plan." [Note: this is a narrow, mining-specific provision — a lease-duty scale tied to a mineral lease\'s average annual royalty rather than the property\'s market value, reflecting Meghalaya\'s significant coal and limestone mining sector.]',
+      },
+    ],
+  },
+  {
+    id: 'act-mizoram-stamp-amendment-2016',
+    shortTitle: 'The Indian Stamp (Mizoram Amendment) Act, 2016',
+    year: 2016,
+    actNumber: 'Mizoram Act No. 4 of 2016',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/mizoram/2016/ActNo.4of2016Mizoram.pdf',
+    jurisdiction: { type: 'state', state: 'Mizoram' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Mizoram Amendment) Act, 2016. (2) It extends to the whole of the State of Mizoram. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: Mizoram has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Mizoram. Mizoram has made at least one further amendment since (the Indian Stamp (Mizoram Amendment) Act, 2023) not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Insertion of new sections 47A and 47B — instrument of conveyance, etc. undervalued',
+        text: 'After section 47 of the principal Act, the following new sections shall be inserted, namely— "47A. Instrument of conveyance, etc. undervalued how to be dealt with.— (1) If the registering officer appointed under the Registration Act, 1908 (Central Act XVI of 1908) while registering any instrument of conveyance, gift, exchange of property, settlement, has reason to believe having regard to the estimated market value published by the Committee constituted under section 47B, if any or otherwise, that the market value of the property which is the subject matter of such instrument has not been truly set forth, he shall, after arriving at the estimated market value, communicate the same to the parties and unless the parties pay the duty on the basis of such valuation, within the period specified by the Registering Officer, shall keep pending the process of registration and refer the matter to the Collector for determination of the market value of the property and the proper duty payable." [Note: this Library reproduces only the operative part of section 47A; section 47B, establishing the market-value-estimating Committee itself, is not reproduced here. Unlike the Collector-only undervaluation mechanism seen elsewhere in this Library (e.g. Bihar, Haryana), Mizoram routes the initial valuation through this dedicated Committee before a registering officer withholds registration.]',
+      },
+    ],
+  },
+  {
+    id: 'act-an-islands-stamp-amendment-1961',
+    shortTitle: 'The Indian Stamp (Andaman and Nicobar Islands Amendment) Regulation, 1961',
+    year: 1961,
+    actNumber: 'No. 1 of 1961',
+    sourceUrl: 'https://andamannicobar.gov.in/admin-pannel/pressupload/1774428285_THE%20INDIAN%20STAMP%20(A&N%20ISLANDS%20AMENDMENT)%20REGULATION%201961.pdf',
+    jurisdiction: { type: 'state', state: 'Andaman and Nicobar Islands' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Indian Stamp (Andaman and Nicobar Islands Amendment) Regulation, 1961. (2) It extends to the whole of the Union territory of the Andaman and Nicobar Islands. (3) It shall come into force at once. [Note: promulgated by the President under article 240 of the Constitution — the same mechanism this Library\'s other Andaman and Nicobar Islands and Lakshadweep entries use, since neither territory has its own legislature. This Library\'s only located source is a 1961 Gazette of India scan with visible OCR artifacts (e.g. "af inbia" for "of India"); the text here has been cleaned of obvious character-recognition errors but should be verified against a certified copy.]',
+      },
+      {
+        sectionNo: '2(a)',
+        heading: 'Insertion of section 79 — rounding of fractions of five naye paise',
+        text: 'In the Indian Stamp Act, 1899, as in force in the Union territory of the Andaman and Nicobar Islands immediately before the commencement of this Regulation, after section 78, the following section shall be, and shall be deemed always to have been, inserted, namely— "79. For the purpose of determining the stamp duty payable, or an allowance to be made, under this Act, any fraction of five naye paise shall be reckoned as five naye paise."',
+      },
+    ],
+  },
+  {
+    id: 'act-tripura-stamp-fifth-amendment-2020',
+    shortTitle: 'The Indian Stamp (Tripura Fifth Amendment) Act, 2020',
+    year: 2020,
+    actNumber: 'Tripura Act No. 18 of 2020',
+    sourceUrl: 'https://tripura.gov.in/sites/default/files/The-Indian-Stamp-Tripura-Fifth-Amendment-Act-2020.pdf',
+    jurisdiction: { type: 'state', state: 'Tripura' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This may be called the "Indian Stamp (Tripura Fifth Amendment) Act, 2020". (2) It extends to the whole of Tripura. (3) It shall come into force at once. [Note: Tripura has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Tripura. Section 2 of this Act itself records an unusual provenance: the principal Act it amends is "the Indian Stamp Act, 1899... as in force in the State of Assam and as extended to the State of Tripura" — Tripura inherited Assam\'s version of the Act rather than adopting the plain central text directly. Tripura has made at least one further amendment since (the Indian Stamp (Tripura Sixth Amendment) Act, 2023, Act No. 5 of 2023) not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Amendment of Schedule I — item 3, Adoption-Deed',
+        text: 'For item Nos. 3, 4, 5(e), 6(1)(a), 6(2)(b), 15, 17, 23, 24, 25, 29, 40(c), 46A(b), 48(a)(c)(d)(e)(f), 54(b), 55(b) and 57(b) of Schedule I of the Act, the following shall be substituted, namely— "3. ADOPTION-DEED, that is to say, any instrument (other than a will) recording an adoption or conferring or purporting to confer an authority to adopt — One Thousand Rupees." [Note: this Library reproduces only item 3 of the much longer substituted table (which covers roughly twenty different instrument descriptions, including Affidavit, item 4); confirm the duty for any other listed instrument directly with the Tripura Registration Department.]',
+      },
+    ],
+  },
+  {
+    id: 'act-puducherry-stamp-amendment-1970',
+    shortTitle: 'The Indian Stamp (Pondicherry Amendment) Act, 1970',
+    year: 1970,
+    actNumber: 'Act No. 21 of 1970',
+    sourceUrl: 'https://regn.py.gov.in/downloads/India%20stamp%20(pondicherry%20amendment)%20act,1970.pdf',
+    jurisdiction: { type: 'state', state: 'Puducherry' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and extent',
+        text: '(1) This Act may be called the Indian Stamp (Pondicherry Amendment) Act, 1970. (2) It extends to the whole of the Union territory of Pondicherry. [Note: Puducherry has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within the territory. Enacted before the territory\'s 2006 renaming from Pondicherry to Puducherry, and — like this Library\'s Pondicherry Court-Fees and Suits Valuation Act, 1972 entry — the Act\'s own short title has not itself been formally renamed, so "Pondicherry" remains its correct current legal name; the territory\'s own Registration Department still hosts it under that title.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Substitution of section 24 — how transfer of property subject to a mortgage is charged',
+        text: 'For section 24 of the Indian Stamp Act, 1899 (Central Act 2 of 1899) (hereinafter referred to as the principal Act), the following section shall be substituted, namely— "24. How transfer in consideration of debt, or subject to future payment, etc., to be charged.— Where property subject to a mortgage is transferred to the mortgagee, he shall be entitled to deduct from the duty payable on the transfer the amount of any duty already paid in respect of the mortgage. Illustration.— A mortgages a house to B for Rs. 5,000. A afterwards sells the house to B. The market value of the house at the time of sale is Rs. 10,000. Stamp duty is payable on Rs. 10,000 less the amount of stamp duty already paid for the mortgage."',
+      },
+    ],
+  },
+  {
+    id: 'act-nagaland-stamp-amendment-1989',
+    shortTitle: 'The Indian Stamp Duty (Nagaland Amendment) Act, 1989',
+    year: 1989,
+    actNumber: 'Nagaland Act No. 6 of 1989',
+    sourceUrl: 'https://nagaland.gov.in/storage/PostFiles/The-Indian-Stamp-Duty-(Nagaland-Amendment)-Act,-1989.pdf',
+    jurisdiction: { type: 'state', state: 'Nagaland' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Indian Stamp Duty (Nagaland Amendment) Act, 1989. (2) It shall extend to the whole State of Nagaland. (3) It shall come into force on such date as the State Government may, by notification in the official gazette, appoint. [Note: Nagaland has not re-enacted its own Indian Stamp Act — this Act only amends the central Indian Stamp Act, 1899 as it applies within Nagaland. It received the assent of the Governor on 30 June 1989 and was published the same day. This Library\'s only located source has significant OCR/scanning artifacts; the text here has been cleaned of obvious character-recognition errors but should be verified against a certified copy. Nagaland has made at least two further amendments since (a Second Amendment Act, 1999, Act No. 8 of 1999, and a Third Amendment Act, 2004, Act No. 6 of 2004) not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Amendment of Schedule I — item 3, Adoption-Deed',
+        text: 'Amendment of Schedule I of Act II of 1899.— In Schedule I to the principal Act, the following shall be substituted, namely— "3. ADOPTION-DEED, that is to say, any instrument (other than a will) recording an adoption or conferring or purporting to confer an authority to adopt — Sixty rupees." [Note: this Library reproduces only item 3 of a longer substituted table (covering items including Acknowledgement of debt and Administration-Bond); confirm the duty for any other listed instrument directly with the Nagaland Excise and Registration Department.]',
+      },
+    ],
+  },
+  {
+    id: 'act-lakshadweep-stamp-amendment-2025',
+    shortTitle: 'The Lakshadweep (Indian Stamp Amendment) Regulation, 2025',
+    year: 2025,
+    actNumber: 'No. 20 of 2025',
+    sourceUrl: 'https://advocategandhi.com/wp-content/uploads/2025/12/Lakshadweep-Indian-Stamp-Amendment-Regulation-2025-Gazette-of-India-Extraordinary-Part-II-Section-1-No.-65-dated-26-December-2025.pdf',
+    jurisdiction: { type: 'state', state: 'Lakshadweep' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Lakshadweep (Indian Stamp Amendment) Regulation, 2025. (2) It extends to the whole of the Union territory of Lakshadweep. (3) It shall come into force on such date as the Administrator of the Union territory of Lakshadweep may, by notification in the Official Gazette, appoint. [Note: promulgated by the President under article 240 of the Constitution — the same mechanism this Library\'s other Lakshadweep and Andaman and Nicobar Islands Stamp Act entries use, since Lakshadweep has no legislature of its own. Published in the Gazette of India, Extraordinary, Part II — Section 1, No. 65, dated 26 December 2025, making this the most recently enacted instrument in this Library at the time it was added. This is a dedicated stamp-duty Regulation, distinct from this Library\'s existing Laccadive, Minicoy and Amindivi Islands (Laws) Regulation, 1965 entry, which merely lists the Court-Fees Act, 1870 as extended to the Islands and does not itself concern stamp duty.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Replacement of "Schedule I" with "the Schedule" throughout the principal Act',
+        text: 'Throughout the Indian Stamp Act, 1899 (hereinafter referred to as the principal Act), for the word and letter "Schedule I", the words "the Schedule" shall be substituted. [Note: this is a structural/renumbering amendment — later sections of this Regulation (not reproduced here) go on to substitute a wholly new consolidated Schedule for Lakshadweep, converting duty amounts still expressed in pre-decimal "naye paise" into whole rupees and rounding duty up to the next higher rupee; this entry only captures the short title and this opening renumbering provision.]',
+      },
+    ],
+  },
+  {
+    id: 'act-jk-stamp-1977',
+    shortTitle: 'The Stamp Act, 1977 (1920 A.D.)',
+    year: 1977,
+    actNumber: 'Act No. XL of Svt. 1977',
+    sourceUrl: 'https://igr.jk.gov.in/files/Stamp%20Act%20J%26K%20samvat_1977.pdf',
+    jurisdiction: { type: 'state', state: 'Jammu and Kashmir' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Name, extent and enforcement',
+        text: '(1) This Act may be called the Stamp Act, 1977. (2) It extends to the whole of Jammu and Kashmir State. It shall come into force on the 1st day of Baisakh, 1978. [Note: like this Library\'s existing Jammu and Kashmir State Civil Courts Act, 1977 (1920 A.D.) entry, the "1977" here is a Vikrami Samvat year (Svt. 1977), corresponding to 1920 A.D. — this is a genuinely standalone Stamp Act, not a central-Act amendment, one of only a handful of states/UTs in this Library with one (see also Maharashtra, Karnataka, Kerala, and Gujarat). Whether and how this Act currently applies to the Union territory of Ladakh, carved out of the former State of Jammu and Kashmir in 2019, is unsettled — reported litigation (Srinagar Stamp Vendors Association v. State of J&K, J&K High Court, 2020) has considered whether the central Indian Stamp Act, 1899 was instead separately extended to the successor Union territories under the Jammu and Kashmir Reorganisation Act, 2019, which would displace this Act. This Library does not curate a separate Ladakh Stamp Act entry pending clearer resolution of that question.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in Schedule I, the following instruments shall be chargeable with duty of the amount indicated in that schedule as the proper duty therefor respectively, that is to say— (a) every instrument mentioned in that schedule which, not having been previously executed by any person, is executed in the State on or after the date on which this Act comes into force; (b) every bill of exchange payable otherwise than on demand or promissory note drawn or made out of the State on or after that day and accepted or paid, or presented for acceptance or payment, or endorsed, transferred or otherwise negotiated, in the State; and (c) every instrument (other than a bill of exchange or promissory note) mentioned in that Schedule, which, not having been previously executed by any person, is executed out of the State on or after that day, relates to any property situate, or to any matter or thing done or to be done, in the State and is received in the State. [Note: this Library does not curate Schedule I\'s duty rates themselves, which are amended from time to time and vary by instrument type; confirm the current rate directly with the Jammu and Kashmir Inspector General of Registration before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-stamp-amendment-1994-chandigarh',
+    shortTitle: 'The Indian Stamp (Punjab Amendment) Act, 1994 (as extended to the Union territory of Chandigarh)',
+    year: 1994,
+    actNumber: 'Punjab Act No. 17 of 1994',
+    sourceUrl: 'https://indiankanoon.org/doc/131296541/',
+    jurisdiction: { type: 'state', state: 'Chandigarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and commencement',
+        text: '(1) This Act may be called the Indian Stamp (Punjab Amendment) Act, 1994. (2) It shall come into force at once. [Note: Chandigarh has no legislature of its own and re-enacts nothing independently — this Punjab Act was extended to the Union territory of Chandigarh, as in force in the State of Punjab, by a central notification (G.S.R. 716(E), dated 15 November 2007) issued under section 87 of the Punjab Reorganisation Act, 1966, the same mechanism this Library\'s Punjab Registration of Money-Lenders Act, 1938 (as applicable to Chandigarh) entry uses. That notification also separately extended the Indian Stamp (Punjab Amendment) Act, 1998 to Chandigarh, not yet curated in this Library, and modified this Act\'s own section 1 so that its short title, as it applies in Chandigarh, itself reads "the Indian Stamp (Punjab Amendment) Act, 1994, as extended to the Union territory of Chandigarh."]',
+      },
+      {
+        sectionNo: '2(i)',
+        heading: 'Amendment of section 27 — disclosure of land revenue, rent and taxes in instruments',
+        text: 'Existing section 27 of the Indian Stamp Act, 1899, as in force in the State of Punjab, is renumbered as sub-section (1), and a new sub-section (2) is inserted requiring that any instrument relating to immovable property fully and truly set forth the annual land revenue in the case of revenue-paying land, the annual rental or gross assets (as the case may be) in the case of other immovable property, and the local rates, municipal or other taxes (if any) to which the property is subject. [Note: this Library reproduces only this disclosure requirement; the Act\'s other amendments — an expanded three-year suo motu undervaluation-review power for the Collector under section 47-A(3), and a wholesale revision of Schedule I-A covering 65 categories of instruments — are not reproduced here.]',
+      },
+    ],
+  },
+  {
     id: 'act-gujarat-court-fees-2004',
     shortTitle: 'The Gujarat Court-fees Act, 2004',
     year: 2004,
@@ -6956,6 +7586,1376 @@ export const acts: Act[] = [
         sectionNo: '402',
         heading: 'Powers of Company Law Board on application under section 397 or 398',
         text: "Without prejudice to the generality of the powers of the Company Law Board under section 397 or 398, any order under either section may provide for— (a) the regulation of the conduct of the company's affairs in future; (b) the purchase of the shares or interests of any members of the company by other members thereof or by the company; (c) in the case of a purchase of its shares by the company as aforesaid, the consequent reduction of its share capital; (d) the termination, setting aside or modification of any agreement, howsoever arrived at, between the company and the managing director or any other director or manager, upon such terms and conditions as may, in the opinion of the Company Law Board, be just and equitable in all the circumstances of the case; (e) the termination, setting aside or modification of any agreement between the company and any person other than those referred to in clause (d), provided that no such agreement shall be terminated, set aside or modified except after due notice to the party concerned and after obtaining the consent of the party concerned; (f) the setting aside of any transfer, delivery of goods, payment, execution or other act relating to property made or done by or against the company within three months before the date of the application under section 397 or 398, which would, if made or done by or against an individual, be deemed in his insolvency to be a fraudulent preference; (g) any other matter for which, in the opinion of the Company Law Board, it is just and equitable that provision should be made. [Note: this section has been repealed and replaced by Section 242 of The Companies Act, 2013 (also in this Library), with effect from 1 June 2016 — the remedy list carries forward closely, with the forum renamed from Company Law Board to Tribunal.]",
+      },
+    ],
+  },
+  {
+    id: 'act-delhi-rent-control-1958',
+    shortTitle: 'The Delhi Rent Control Act, 1958',
+    year: 1958,
+    actNumber: 'No. 59 of 1958',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/19223/1/a1958-59.pdf',
+    jurisdiction: { type: 'state', state: 'Delhi (NCT)' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Delhi Rent Control Act, 1958. (2) It extends to the areas included within the limits of the New Delhi Municipal Committee and the Delhi Cantonment Board and to such urban areas within the limits of the Municipal Corporation of Delhi as are specified in the First Schedule: Provided that the Central Government may, by notification in the Official Gazette, extend this Act or any provision thereof, to any other urban area included within the limits of the Municipal Corporation of Delhi or exclude any area from the operation of this Act or any provision thereof. (3) It shall come into force on such date as the Central Government may, by notification in the Official Gazette, appoint. [Note: this is a Parliament-enacted Act (Delhi being a Union territory), not a state legislature Act like most other entries in this Library\'s Rent Control category. It does not apply territory-wide, only to the specified urban areas — notably, premises with a monthly rent above a statutory ceiling are excluded from its rent-control provisions by later amendment, not reproduced here.]',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Protection of tenant against eviction',
+        text: '(1) Notwithstanding anything to the contrary contained in any other law or contract, no order or decree for the recovery of possession of any premises shall be made by any court or Controller in favour of the landlord against a tenant: Provided that the Controller may, on an application made to him in the prescribed manner, make an order for the recovery of possession of the premises on one or more of the following grounds only, namely— (a) that the tenant has neither paid nor tendered the whole of the arrears of the rent legally recoverable from him within two months of the date on which a notice of demand for the arrears of rent has been served on him by the landlord in the manner provided in section 106 of the Transfer of Property Act, 1882; (b) that the tenant has, on or after the 9th day of June, 1952, sub-let, assigned or otherwise parted with the possession of the whole or any part of the premises without obtaining the consent in writing of the landlord; (c) that the tenant has used the premises for a purpose other than that for which they were let; (d) that the premises were let for use as a residence and neither the tenant nor any member of his family has been residing therein for a period of six months immediately before the date of the filing of the application for the recovery of possession thereof; (e) that the premises let for residential purposes are required bona fide by the landlord for occupation as a residence for himself or for any member of his family dependent on him, if he is the owner thereof, and that the landlord or such person has no other reasonably suitable residential accommodation. [Note: this Library reproduces only the chapeau and grounds (a) through (e) of a list that continues through clause (l) or further (covering, among others, unsafe premises requiring repair, bona fide need to rebuild, and a tenant who has since acquired alternative accommodation) — this is the single most litigated section of the Act; confirm the complete current list, and any monetary/procedural provisos attached to individual grounds, before relying on it.]',
+      },
+    ],
+  },
+  {
+    id: 'act-maharashtra-rent-control-1999',
+    shortTitle: 'The Maharashtra Rent Control Act, 1999',
+    year: 1999,
+    actNumber: 'Mah. Act No. XVIII of 2000',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/15817/3/eng_maharashtra_rent_control_ac.pdf',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Maharashtra Rent Control Act, 1999. (2) It shall extend to the whole of the State of Maharashtra. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: this Act repealed and replaced the earlier Bombay Rents, Hotel and Lodging House Rates Control Act, 1947, unifying rent control across Maharashtra under a single, more modern Act.]',
+      },
+      {
+        sectionNo: '16',
+        heading: 'When landlord may recover possession',
+        text: 'Notwithstanding anything contained in this Act but subject to the provisions of section 25, a landlord shall be entitled to recover possession of any premises if the court is satisfied— (a) that the tenant has committed any act contrary to the provisions of clause (o) of section 108 of the Transfer of Property Act, 1882; ... (g) that the premises are reasonably and bona fide required by the landlord for occupation by himself or by any person for whose benefit the premises are held, or where the landlord is a trustee of a public charitable trust, that the premises are required for occupation for the purposes of the trust. [Note: this Library reproduces only the chapeau and grounds (a) and (g) of a list running to thirteen grounds in total (clauses (a) through (n), covering also unauthorised structural alterations, nuisance, unlawful sub-letting, need for repairs or demolition/reconstruction, and prolonged non-use). This section was sourced via a bare-act mirror (advocatekhoj.com) rather than a directly machine-readable government PDF — India Code blocks automated access to its own copy of this Act — so verify the exact wording against a certified copy before relying on it.]',
+      },
+    ],
+  },
+  {
+    id: 'act-tamil-nadu-tenancy-2017',
+    shortTitle: 'The Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017',
+    year: 2017,
+    actNumber: 'Tamil Nadu Act 42 of 2017',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/tamil-nadu/2017/2017TN42.pdf',
+    jurisdiction: { type: 'state', state: 'Tamil Nadu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Tamil Nadu Regulation of Rights and Responsibilities of Landlords and Tenants Act, 2017. (2) It shall extend to all urban areas of the State of Tamil Nadu. (3) It shall come into force on such date as the Government may, by notification, appoint and different dates may be appointed for different provisions of this Act: Provided that the Government may, by notification, exclude any area or units or class of buildings from the operation of this Act or any provision thereof. [Note: this Act — modelled on the Union Government\'s Model Tenancy Act — repealed and replaced the Tamil Nadu Buildings (Lease and Rent Control) Act, 1960 outright, rather than merely amending it. It received the Governor\'s assent on 4 August 2017 but did not actually come into force until 22 February 2019. It replaces the old regime\'s court-supervised standard-rent/eviction-grounds model with mandatory written, Rent-Authority-registered tenancy agreements.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Period of tenancy',
+        text: '(1) All tenancies entered into after the commencement of this Act shall be for a period as agreed between the landlord and the tenant and as specified in the tenancy agreement. (2) The tenant may approach the landlord for renewal or extension of the tenancy, within the period agreed to in the tenancy agreement, prior to the end of tenancy period and if agreeable to the landlord may enter into a new tenancy agreement with the landlord on mutually agreed terms and conditions. [Note: unlike the classic Rent Control Act model (see this Library\'s Delhi, Karnataka, West Bengal and Rajasthan entries), this Act does not fix a statutory ceiling on rent or list court-adjudicated grounds for eviction — tenancy length, rent, and renewal are left to the written agreement itself, with the Rent Authority/Rent Court\'s role limited to registration and dispute resolution.]',
+      },
+    ],
+  },
+  {
+    id: 'act-karnataka-rent-1999',
+    shortTitle: 'The Karnataka Rent Act, 1999',
+    year: 1999,
+    actNumber: 'Karnataka Act No. 34 of 2001',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/7810/1/34_of_2001_e.pdf',
+    jurisdiction: { type: 'state', state: 'Karnataka' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Karnataka Rent Act, 1999. (2) It extends to the whole of the State of Karnataka. (3) It shall come into force from such date as the State Government may, by notification, appoint and different dates may be appointed for different areas or for different provisions of this Act. [Note: the Act came into force with effect from 31 December 2001, vide Notification No. RD 24 BHANIVI 2001, dated 5 December 2001 — over two years after being enacted. Chapters I to III and V to VIII apply to areas specified in the First Schedule; Chapters I and IV apply only to areas specified in the Second Schedule.]',
+      },
+      {
+        sectionNo: '27',
+        heading: 'Protection of tenants against eviction',
+        text: '(1) Notwithstanding anything to the contrary contained in any other law or contract, no order or decree for the recovery of possession of any premises shall be made by the Court, District Judge or High Court in favour of the landlord against a tenant, save as provided in sub-section (2). (2) The Court may, on an application made to it in the prescribed manner, make an order for the recovery of possession of the premises on one or more of the following grounds only, namely— (a) that the tenant has neither paid nor tendered the whole of the arrears of the rent and other charges legally recoverable from him within two months from the date on which a notice of demand for payment has been served on him by the landlord in the manner provided in section 106 of the Transfer of Property Act, 1882: Provided that a tenant shall not be entitled to the benefit of service of notice by the landlord under this clause where, having obtained such benefit once in respect of any premises, he again makes a default in the payment of rent and other charges payable in respect of those premises. [Note: this Library reproduces only the chapeau and ground (a) of a longer list. This section is close to word-for-word identical to this Library\'s Delhi Rent Control Act, 1958 section 14 entry — both descend from the same historical Rent Control Act template used across many Indian states.]',
+      },
+    ],
+  },
+  {
+    id: 'act-west-bengal-tenancy-1997',
+    shortTitle: 'The West Bengal Premises Tenancy Act, 1997',
+    year: 1997,
+    actNumber: 'West Bengal Act XXXVII of 1997',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/west-bengal/1997/1997WB37.pdf',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, commencement and extent',
+        text: '(1) This Act may be called the West Bengal Premises Tenancy Act, 1997. (2) It shall come into force on such date as the State Government may, by notification, appoint. (3) It extends to the areas included within the limits of the Calcutta Municipal Corporation and the Howrah Municipal Corporation and to the municipal areas within the meaning of the West Bengal Municipal Act, 1993: Provided that the State Government may, by notification, extend this Act or any provision thereof to any other area specified in the notification, or may, by notification, exclude any area from the operation of this Act or any provision thereof.',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Protection of tenant against eviction',
+        text: '(1) Notwithstanding anything to the contrary contained in any other law for the time being in force or in any contract, no order or decree for the recovery of the possession of any premises shall be made by the Civil Judge having jurisdiction in favour of the landlord against the tenant, except on a suit being instituted by such landlord on one or more of the following grounds— (a) where the tenant has sublet, assigned or otherwise parted with the possession of whole or any part of the premises without obtaining the consent in writing of the landlord or the tenant has used the premises for a purpose other than that for which it was let out without obtaining the consent in writing of the landlord; (b) where the tenant has made default in payment of rent for three months within a period of twelve months, or for three rental periods within a period of three years where the rent is not payable monthly; (c) where the premises is required by the landlord for the purpose of building or rebuilding or for making substantial addition or alteration thereto and such building or rebuilding or substantial addition or alteration cannot be carried out without the premises being vacated; (d) where the landlord or any person, for whose benefit the premises is held, reasonably requires the premises for his own occupation and the landlord or such person is not in possession of any suitable accommodation within the same Municipal Corporation or Municipality or in any other area within ten kilometres from such premises where this Act extends. [Note: this Library reproduces only grounds (a) through (d) of a longer list; the power to sue was itself substituted for an earlier application-to-Controller procedure by later amendments (West Bengal Acts 6 of 2005 and 12 of 2006), reflected in this text.]',
+      },
+    ],
+  },
+  {
+    id: 'act-rajasthan-rent-control-2001',
+    shortTitle: 'The Rajasthan Rent Control Act, 2001',
+    year: 2001,
+    actNumber: 'Rajasthan Act',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/18822/1/rajasthan_rent_control_act_2001_with_amendments.pdf',
+    jurisdiction: { type: 'state', state: 'Rajasthan' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Rajasthan Rent Control Act, 2001. (2) It shall extend in the first instance to such of the municipal areas which are comprising the District Headquarters in the State and later on to such of the other municipal areas having a population exceeding fifty thousand as per 1991 Census as the State Government may, by notification in the official Gazette, specify from time to time. (3) It shall come into force with effect from such date as the State Government may, by notification in the Official Gazette, appoint. [Note: unlike a flat state-wide extension, this Act phases in by municipal area, starting with District Headquarters and expanding by population threshold — so whether it even applies to a given property depends on whether the relevant municipal area has been separately notified.]',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Eviction of tenants',
+        text: 'Notwithstanding anything contained in any other law or contract but subject to other provisions of this Act, Rent Tribunal shall not order eviction of tenant unless it is satisfied that— (a) the tenant has neither paid nor tendered the amount of rent due from him for four months: Provided that the ground under this clause shall not be available to the landlord if he has not disclosed to the tenant his bank account number and name of the bank in the same municipal area, in the rent agreement or by a notice sent to him by registered post, acknowledgement due: Provided further that no petition on the ground under this clause shall be filed unless the landlord has given a notice to the tenant by registered post, acknowledgement due, demanding arrears of rent and the tenant has not made payment of arrears of rent within a period of thirty days from the date of service of notice; or (b) the tenant has wilfully caused or permitted to be caused substantial damage to the premises; or (c) the tenant has without written permission of the landlord made or permitted to be made any construction which has materially altered the premises or is likely to diminish the value thereof; or (d) the tenant has created a nuisance or has done any act which is inconsistent with the purpose for which he was admitted to the tenancy of the premises. [Note: this Library reproduces only grounds (a) through (d) of a longer list, and adjudication here runs through a dedicated Rent Tribunal rather than an ordinary civil court, unlike most of this Library\'s other Rent Control Act entries.]',
+      },
+    ],
+  },
+  {
+    id: 'act-madhya-pradesh-accommodation-control-1961',
+    shortTitle: 'The Madhya Pradesh Accommodation Control Act, 1961',
+    year: 1961,
+    actNumber: 'No. 41 of 1961',
+    sourceUrl: 'https://vault.drishtijudiciary.com/english_file_uploads/1742308712_M_P_Accommodation_Control_Act_1961.pdf',
+    jurisdiction: { type: 'state', state: 'Madhya Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called The Madhya Pradesh Accommodation Control Act, 1961. (2) It extends to the whole of Madhya Pradesh. (3) The Act shall, in the first instance, be in force in the areas specified in the first Schedule. It shall come into force in other areas of the State on such dates as the State Government may, by notification, appoint and different dates may be appointed for different areas and for different provisions of the Act and thereupon the first Schedule shall be deemed to have been amended accordingly. [Note: like Rajasthan\'s Rent Control Act in this Library, coverage phases in area by area rather than applying state-wide from commencement — whether it applies to a given property depends on whether that area has been separately notified.]',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Restriction on eviction of tenants',
+        text: '(1) Notwithstanding anything to the contrary contained in any other law or contract, no suit shall be filed in any civil Court against a tenant for his eviction from any accommodation except on one or more of the following grounds only, namely— (a) that the tenant has neither paid nor tendered the whole of the arrears of the rent legally recoverable from him within two months of the date on which a notice of demand for the arrears of rent has been served on him by the landlord in the prescribed manner; (b) that the tenant has, whether before or after the commencement of this Act, unlawfully sub-let, assigned or otherwise parted with the possession of the whole or any part of the accommodation for consideration or otherwise; (c) that the tenant or any person residing with him has created a nuisance or has done any act which is inconsistent with the purpose for which he was admitted to the tenancy of the accommodation, or which is likely to affect adversely and substantially the interest of the landlord therein: Provided that the use by a tenant of a portion of the accommodation as his office shall not be deemed to be an act inconsistent with the purpose for which he was admitted to the tenancy; (d) that the accommodation has not been used without reasonable cause for which it was let, for a continuous period of six months immediately preceding the date of the filing of the suit for the recovery of possession thereof; (e) that the accommodation let for residential purposes is required bonafide by the landlord for occupation as a residence for himself or for any member of his family, if he is the owner thereof, or for any person for whose benefit the accommodation is held. [Note: this Library reproduces only grounds (a) through (e) of a longer list. A separate, later Chapter III-A (sections 23-A to 23-J), not reproduced here, creates an expedited summons procedure specifically for bona fide requirement claims.]',
+      },
+    ],
+  },
+  {
+    id: 'act-up-urban-buildings-1972',
+    shortTitle: 'The Uttar Pradesh Urban Buildings (Regulation of Letting, Rent and Eviction) Act, 1972',
+    year: 1972,
+    actNumber: 'U.P. Act No. 13 of 1972',
+    sourceUrl: 'https://indiankanoon.org/doc/94302775/',
+    jurisdiction: { type: 'state', state: 'Uttar Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: 'This Act may be called the Uttar Pradesh Urban Buildings (Regulation of Letting, Rent and Eviction) Act, 1972. It extends to the whole of Uttar Pradesh. [Note: this Library reproduces only the short title and extent clause of section 1; the section also carries application/exemption and staggered-commencement provisions not reproduced here — sourced via indiankanoon.org rather than a directly machine-readable government PDF, since India Code and other UP-hosted mirrors block automated access; verify the complete clause against a certified copy.]',
+      },
+      {
+        sectionNo: '21',
+        heading: "Proceeding for release of building under occupation of tenant — landlord's own occupation",
+        text: 'The prescribed authority may, on an application of the landlord in that behalf, order the eviction of a tenant from the building under tenancy or any specified part thereof if it is satisfied that any of the following grounds exists, namely— (a) that the building is bona fide required either in its existing form or after demolition and new construction by the landlord for occupation by himself or any member of his family, or any person for whose benefit it is held by him, either for residential purposes or for purposes of any profession, trade or calling. [Note: this Library reproduces only the chapeau and ground (a); the section continues with further grounds and detailed hardship/comparative-need criteria the prescribed authority must weigh before ordering release, not reproduced here. Unlike this Library\'s other classic Rent Control Act entries, adjudication under this Act runs through a "prescribed authority" (typically the District Magistrate or a delegate) rather than an ordinary civil court in the first instance.]',
+      },
+    ],
+  },
+  {
+    id: 'act-andhra-pradesh-buildings-1960',
+    shortTitle: 'The Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960',
+    year: 1960,
+    actNumber: 'Act 15 of 1960',
+    sourceUrl: 'https://indiankanoon.org/doc/23986625/',
+    jurisdiction: { type: 'state', state: 'Andhra Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and application',
+        text: 'This Act may be called the Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960. [Note: this Act consolidated two predecessor laws — the Madras Buildings (Lease and Rent Control) Act, 1949 (in force in the Andhra area) and the Hyderabad Houses (Rent, Eviction and Lease) Control Act, 1954 (in force in the Telangana area) — into a single Act for the unified state of Andhra Pradesh. At the 2014 bifurcation, Telangana adapted its own copy of this Act into a separately maintained "Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960" (also in this Library) via the Telangana Adaptation of Laws Order, 2016; this entry\'s copy continues to apply, under its original name, to the residuary State of Andhra Pradesh. Sourced via indiankanoon.org rather than a government PDF; verify the complete extent/application clause (covering Hyderabad, Secunderabad, Visakhapatnam, Vijayawada and Andhra Pradesh\'s Municipal Corporations/Municipalities) against a certified copy.]',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Eviction of tenants',
+        text: '(1) A tenant shall not be evicted whether in execution of a decree or otherwise except in accordance with the provisions of this Section or Sections 12 and 13. (2) A landlord who seeks to evict his tenant shall apply to the Controller for a direction in that behalf. If the Controller, after giving the tenant a reasonable opportunity of showing cause against the application, is satisfied— (i) that the tenant has not paid or tendered the rent due by him in respect of the building within fifteen days after the expiry of the time fixed in the agreement of tenancy with his landlord or, in the absence of any such agreement, by the last day of the month next following that for which the rent is payable... the Controller shall make an order directing the tenant to put the landlord in possession of the building. [Note: this Library reproduces only the chapeau and ground (i) of a longer list (which continues through unauthorised subletting/change of use, waste, nuisance, and bona fide requirement for personal or institutional occupation); this section is close to word-for-word identical to this Library\'s Punjab (East Punjab Urban Rent Restriction Act, 1949) entry — both share the same historical drafting template.]',
+      },
+    ],
+  },
+  {
+    id: 'act-telangana-buildings-1960',
+    shortTitle: 'The Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960',
+    year: 1960,
+    actNumber: 'Act No. 15 of 1960',
+    sourceUrl: 'https://indiankanoon.org/doc/188353822/',
+    jurisdiction: { type: 'state', state: 'Telangana' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and application',
+        text: 'This Act may be called the Telangana Buildings (Lease, Rent and Eviction) Control Act, 1960. [Note: this Act is Telangana\'s own adapted copy of the former unified Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960 (Act 15 of 1960, also in this Library) — adapted for Telangana by the Telangana Adaptation of Laws Order, 2016 (G.O.Ms.No.45, Law (F) Department, dated 1 June 2016) following the 2014 state bifurcation. Its substantive provisions, including the eviction-grounds section (section 10), are otherwise identical in structure to the Andhra Pradesh version.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Notice of vacancy',
+        text: '(1) Every landlord shall, within ten days after the building becomes vacant by his ceasing to occupy it, or by the termination of a tenancy, or by the eviction of the tenant or by release from requisition or otherwise, give notice of the vacancy in writing to the officer authorised in that behalf by the Government. [Note: a landlord who regains possession under section 10(3) and subsequently leases the property to a tenant is, by an Explanation to this section not reproduced here, treated as having failed to give proper notice under this section — a check against landlords using an eviction ground as a pretext to simply re-let at a higher rent.]',
+      },
+    ],
+  },
+  {
+    id: 'act-gujarat-rents-1947',
+    shortTitle: 'The Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947',
+    year: 1947,
+    actNumber: 'Bombay Act No. 57 of 1947',
+    sourceUrl: 'https://indiankanoon.org/doc/145688774/',
+    jurisdiction: { type: 'state', state: 'Gujarat' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title',
+        text: 'This Act may be called the Bombay Rents, Hotel and Lodging House Rates Control Act, 1947. [Note: as with this Library\'s Gujarat Stamp Act, 1958 entry, this Act was originally enacted for the united State of Bombay and later renamed for Gujarat — here to "the Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947" — by the same Gujarat Short Titles (Amendment) Act, 2011 (Gujarat Act No. 15 of 2011) that renamed 67 Bombay-titled Acts across the statute book; the indiankanoon.org mirror used as this Library\'s source still shows the pre-2011 name in its own cached text. Unusually for a Rent Control Act, this one is not permanent — its operation has repeatedly been extended by further Gujarat Acts under section 3(2), most recently to 31 March 2026 by Gujarat Bill No. 4 of 2024, so its continued applicability depends on the State Legislature renewing it again before that date.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Extent',
+        text: '(1) Parts I and IV of this Act shall extend to the whole of the State of Gujarat. (2) Part II shall extend to the areas specified in Schedule I to this Act and shall continue to extend to any such area notwithstanding that the area ceases to be of the description therein specified. (2-A) Part II shall extend also to those areas of the Saurashtra area of the State of Gujarat to which Part II of the Saurashtra Rent Control Act, 1951 (Saurashtra Act XXII of 1951), extended immediately before the commencement of the Bombay Rents, Hotel and Lodging House Rates Control (Gujarat Extension and Amendment) Act, 1963 (Gujarat LVII of 1963). [Note: this Library does not reproduce sub-section (2-B), which extends Parts II and III to the former Kutch area on similar historical terms — this Act\'s extent provisions reflect the layered merger of the former Bombay, Saurashtra, and Kutch regions into a single Gujarat, each carrying forward its own prior area of rent-control coverage.]',
+      },
+    ],
+  },
+  {
+    id: 'act-kerala-buildings-1965',
+    shortTitle: 'The Kerala Buildings (Lease and Rent Control) Act, 1965',
+    year: 1965,
+    actNumber: 'Kerala Act 2 of 1965',
+    sourceUrl: 'https://indiankanoon.org/doc/80300754/',
+    jurisdiction: { type: 'state', state: 'Kerala' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: 'This Act may be called the Kerala Buildings (Lease and Rent Control) Act, 1965. [Note: sourced via indiankanoon.org rather than a government PDF, since India Code blocks automated access to its own copy of this Act; verify the complete extent/commencement clause against a certified copy.]',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Eviction of tenants',
+        text: '(1) Notwithstanding anything to the contrary contained in any other law or contract a tenant shall not be evicted, whether in execution of a decree or otherwise, except in accordance with the provisions of this Act. (2)(b) If the Rent Control Court, on an application made to it, after giving the tenant a reasonable opportunity of showing cause against the application, is satisfied that the tenant has not paid or tendered the rent due by him in respect of the building within fifteen days after the expiry of the time fixed in the agreement of tenancy with his landlord or, in the absence of any such agreement, by the last day of the month next following that for which the rent is payable, it shall make an order directing the tenant to put the landlord in possession of the building. [Note: this Library reproduces only sub-section (1) and the non-payment ground; adjudication runs through a dedicated Rent Control Court, similar to this Library\'s Rajasthan (Rent Tribunal) and Uttar Pradesh (prescribed authority) entries rather than an ordinary civil court.]',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-urban-rent-restriction-1949',
+    shortTitle: 'The East Punjab Urban Rent Restriction Act, 1949',
+    year: 1949,
+    actNumber: 'Punjab Act No. 3 of 1949',
+    sourceUrl: 'https://indiankanoon.org/doc/117135027/',
+    jurisdiction: { type: 'state', state: 'Punjab' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the East Punjab Urban Rent Restriction Act, 1949. (2) It extends to all urban areas in Punjab (substituted for "East Punjab" by the Adaptation of Laws Order, 1950) but nothing herein contained shall be deemed to affect the regulation of house accommodation in any Cantonment area. (3) It shall come into force at once. [Note: this Act — like this Library\'s Punjab Registration of Money-Lenders Act, 1938 and Indian Stamp (Punjab Amendment) Act, 1994 entries — has separately been extended to Haryana and to the Union territory of Chandigarh by central notification, since both were carved out of the former undivided Punjab; those extensions are not yet separately curated in this Library.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Eviction of tenants',
+        text: '(1) A tenant in possession of a building or rented land shall not be evicted therefrom in execution of a decree passed before or after the commencement of this Act or otherwise and whether before or after the termination of the tenancy, except in accordance with the provisions of this Section. (2) A landlord who seeks to evict his tenant shall apply to the Controller for a direction in that behalf. If the Controller, after giving the tenant a reasonable opportunity of showing cause against the application, is satisfied— (i) that the tenant has not paid or tendered the rent due by him in respect of the building or rented land within fifteen days after the expiry of the time fixed in the agreement of tenancy with his landlord or, in the absence of any such agreement, by the last day of the month next following that for which the rent is payable: Provided that if the tenant on the first hearing of the application for ejectment after due service pays or tenders the arrears of rent and interest at six per cent per annum on such arrears together with the cost of application assessed by the Controller, the tenant shall be deemed to have duly paid or tendered the rent within the time aforesaid; (ii) that the tenant has after the commencement of this Act without the written consent of the landlord (a) transferred his right under the lease or sublet the entire building or rented land or any portion thereof; or (b) used the building or rented land for a purpose other than that for which it was leased. [Note: this Library reproduces only grounds (i) and (ii) of a longer list; this section is close to word-for-word identical to this Library\'s Andhra Pradesh Buildings (Lease, Rent and Eviction) Control Act, 1960 entry — both share the same historical drafting template.]',
+      },
+    ],
+  },
+  {
+    id: 'act-bihar-buildings-1982',
+    shortTitle: 'The Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982',
+    year: 1982,
+    actNumber: 'Bihar Act 4 of 1983',
+    sourceUrl: 'https://lawtrend.in/wp-content/uploads/bsk-pdf-manager/2022/07/Bihar-Buildings-Lease-Rent-Eviction-Control-Act-1982.pdf',
+    jurisdiction: { type: 'state', state: 'Bihar' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982. (2) It applies to the whole of the State of Bihar. (3) Section 28 shall come in force immediately and the remaining provisions of this Act shall be deemed to have come into force on the 1st of April, 1981 and shall continue to remain in force: Provided that the period between expiration of the Bihar Buildings (Lease, Rent and Eviction) Control Act, 1977 (Bihar Act XVI of 1977) and the commencement of this Act shall not render recoverable any sum which during the continuation thereof was irrecoverable or affect the right of a tenant to recover any sum which during the continuance of the Act was recoverable by him thereunder, or affect any liability incurred under that Act. [Note: this Act, assented to by the President on 29 January 1983 as Bihar Act 4 of 1983, applies retrospectively from 1 April 1981 and replaces an earlier 1977 Act of the same name.]',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Eviction of tenants',
+        text: '(1) Notwithstanding anything contained in any contract or law to the contrary but subject to the provisions of the Industrial Disputes Act, 1947, and to those of Section 18, where a tenant is in possession of any building, he shall not be liable to eviction therefrom except in execution of a decree passed by the Court on one or more of the following grounds— (a) for breach of the conditions of the tenancy, or for sub-letting the building or any portion thereof without the consent of the landlord, or if he is an employee of the landlord occupying the building as an employee, on his ceasing to be in such employment; (b) where the condition of the building has materially deteriorated owing to acts of waste by, or negligence or default of, the tenant or of any person residing with the tenant or for whose behaviour the tenant is responsible; (c) where the building is reasonably and in good faith required by the landlord for his own occupation or for the occupation of any person for whose benefit the building is held by the landlord: Provided that where the Court thinks that the reasonable requirement of such occupation may be substantially satisfied by evicting the tenant from a part only of the building and allowing the tenant to continue occupation of the rest, and the tenant agrees to such occupation, the Court shall pass a decree accordingly and fix proportionately fair rent for the portion in occupation of the tenant. [Note: this Library reproduces only grounds (a) through (c) of a longer list; eviction proceeds by ordinary civil suit and decree, unlike the Controller-application model seen in this Library\'s Delhi, Karnataka, Punjab, and Andhra Pradesh/Telangana entries.]',
+      },
+    ],
+  },
+  {
+    id: 'act-haryana-urban-rent-1973',
+    shortTitle: 'The Haryana Urban (Control of Rent and Eviction) Act, 1973',
+    year: 1973,
+    actNumber: 'Haryana Act 11 of 1973',
+    sourceUrl: 'https://ulbharyana.gov.in/Website/DirectorateofUrbanLocalBodies/Images/ce6043b4-e666-4bec-b4c0-7ceb1be94bc6.pdf',
+    jurisdiction: { type: 'state', state: 'Haryana' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: 'This Act may be called the Haryana Urban (Control of Rent and Eviction) Act, 1973. [Note: Haryana has its own distinct Rent Act, separate from Punjab\'s East Punjab Urban Rent Restriction Act, 1949 (also in this Library) — despite Haryana having been carved out of undivided Punjab in 1966, it did not simply continue applying the Punjab Act. Received the assent of the Governor on 25 April 1973 and extends to all urban areas in Haryana except cantonment areas. This Library\'s only located source has significant OCR/scanning artifacts; the text here has been cleaned of obvious character-recognition errors but should be verified against a certified copy before relying on it, and this Library could not reliably extract a second, eviction-grounds section from that source.]',
+      },
+    ],
+  },
+  {
+    id: 'act-assam-urban-rent-1972',
+    shortTitle: 'The Assam Urban Areas Rent Control Act, 1972',
+    year: 1972,
+    actNumber: 'Assam Act XVII of 1972',
+    sourceUrl: 'https://legislative.assam.gov.in/sites/default/files/swf_utility_folder/departments/legislative_medhassu_in_oid_3/menu/document/The%20Assam%20Urban%20Areas%20Rent%20Control%20Act,%201972%20(Assam%20Act%20XVII%20of%201972)..pdf',
+    jurisdiction: { type: 'state', state: 'Assam' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Assam Urban Areas Rent Control Act, 1972. (2)(a) It extends to all urban areas in Assam. (b) The State Government may, by notification in the official Gazette, extend it also to all such areas as are declared town lands under rule 64(a) of the Settlement Rules under the Assam Land and Revenue Regulation, 1886 or the Assam Land Revenue Reassessment Act, 1936. (c) Nothing in this Act shall apply to any premises belonging to the Central Government, or to any tenancy or other relationship created by a grant from the Central Government in respect of premises taken on lease or requisitioned by the Central Government. (3) It shall come into force at once. [Note: received the assent of the President on 1 May 1972 and was published in the Assam Gazette Extraordinary the next day.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "pucca structure" and "standard rent"',
+        text: '(d) "pucca structure" means a structure with— (i) cemented or wooden floor, (ii) iron, brick or concrete posts, and (iii) roof of reinforced concrete, or of galvanised iron, aluminium or asbestos sheets. (e) "standard rent" in relation to any house means the rent calculated on the basis of annual payment of an amount equal to seven and half per cent of the aggregate amount of the estimated cost of construction and the market price of the land together with the total municipal taxes payable [in respect of the house]. [Note: unlike states where "standard rent" is fixed case-by-case by a Controller weighing comparable rents, Assam\'s Act defines it by a fixed formula — 7.5% annually of (construction cost + land value), plus municipal taxes — applied uniformly.]',
+      },
+    ],
+  },
+  {
+    id: 'act-orissa-house-rent-1967',
+    shortTitle: 'The Orissa House Rent Control Act, 1967',
+    year: 1967,
+    actNumber: 'Orissa Act 4 of 1968',
+    sourceUrl: 'https://law.odisha.gov.in/sites/default/files/2020-12/act_1764767553_1437987516.pdf',
+    jurisdiction: { type: 'state', state: 'Odisha' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and duration',
+        text: '(1) This Act may be called the Orissa House-Rent Control Act, 1967. (2) It extends to the whole of the State of Orissa. (3) It shall be deemed to have come into force on the 4th day of May, 1967 in those local areas of the State in which the Orissa House-Rent Control Act, 1958 was in force immediately prior to its expiry, and it shall come into force in such other local area or areas on such date as the State Government may, by notification, appoint in that behalf: Provided that sections 17 and 18 shall come into force in the earlier mentioned local areas on the day on which the assent of the President to this Act is first published in the Gazette. (4) It shall cease to have effect on the 4th day of May, 1981 (as substituted by the Orissa House-rent Control (Amendment) Act, 1974, for the original "on the expiry of seven years from the date of its commencement") except as respects things done or omitted to be done before the expiration thereof, and section 5 of the Orissa General Clauses Act, 1937 shall apply upon the expiry of this Act as if it had then been repealed by an Orissa Act. [Note: this is a sunset-clause Act — by its own sub-section (4), it ceased to have effect on 4 May 1981 unless further extended. This Library could not confirm a further extension beyond that date: no reported case citing this Act appears to postdate the 1990s, and the Odisha government has separately circulated a draft "Odisha Urban Area Rent Control Act, 2026" for public consultation — consistent with Odisha currently having no functioning rent-control statute. Treat this Act as historical unless you can independently confirm it (or a successor) is presently in force.]',
+      },
+    ],
+  },
+  {
+    id: 'act-himachal-pradesh-urban-rent-1987',
+    shortTitle: 'The Himachal Pradesh Urban Rent Control Act, 1987',
+    year: 1987,
+    actNumber: 'Himachal Pradesh Act',
+    sourceUrl: 'https://ud.hp.gov.in/sites/default/files/documents/urban_rent_control_act_1987.pdf',
+    jurisdiction: { type: 'state', state: 'Himachal Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Himachal Pradesh Urban Rent Control Act, 1987. (2) It extends to all urban areas in the State of Himachal Pradesh. (3) This Act shall, and shall be deemed to, have come into force on the 17th day of November, 1971, but specified provisions instead take effect from other dates set out in the rest of this section — some from an "appointed day", others from whenever the corresponding provision was first inserted into the predecessor Himachal Pradesh Urban Rent Control Act, 1971 (23 of 1971), and section 35 at once. [Note: this Act consolidated and replaced the earlier Himachal Pradesh Urban Rent Control Act, 1971 (23 of 1971) — its unusual retrospective 1971 commencement date preserves continuity with that predecessor Act rather than starting the clock fresh in 1987. This Library reproduces only the general commencement statement, not the four detailed sub-clauses mapping each provision to its specific commencement date; sourced via a bare-act mirror (legitquest.com) since the Himachal Pradesh government\'s own hosted copy returned a broken link at the time this entry was added — verify against a certified copy.]',
+      },
+    ],
+  },
+  {
+    id: 'act-chhattisgarh-rent-control-2011',
+    shortTitle: 'The Chhattisgarh Rent Control Act, 2011',
+    year: 2011,
+    actNumber: 'Act No. 19 of 2011',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/chhattisgarh/2012/2012CHG19.pdf',
+    jurisdiction: { type: 'state', state: 'Chhattisgarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Chhattisgarh Rent Control Act, 2011. (2) It shall extend in the first instance to such of the Municipal areas which are comprising the District Headquarters in the State and later on to such of the other Municipal areas or any areas within the State as the State Government may, by Notification in the Official Gazette, specify from time to time. (3) It shall come into force from the date of its publication in the Official Gazette. [Note: this Act repealed and replaced the Chhattisgarh Accommodation Control Act, 1961 (No. XLI of 1961) — the Act Chhattisgarh had inherited, and continued to apply largely unchanged, from Madhya Pradesh at the 2000 bifurcation (see this Library\'s Madhya Pradesh Accommodation Control Act, 1961 entry, which remains current law in Madhya Pradesh itself). Like Madhya Pradesh\'s and Rajasthan\'s Rent Control Acts in this Library, coverage phases in area by area starting with District Headquarters rather than applying state-wide from commencement. This Library\'s only located source has visible OCR/scanning artifacts; the text here has been cleaned of obvious character-recognition errors but should be verified against a certified copy.]',
+      },
+    ],
+  },
+  {
+    id: 'act-jharkhand-building-2011',
+    shortTitle: 'The Jharkhand Building (Lease, Rent & Eviction) Control Act, 2011',
+    year: 2011,
+    actNumber: 'Act No. 06 of 2012',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/5362/1/jharkhand_building(lease,_rent_&_eviction)_control_act_2011.pdf',
+    jurisdiction: { type: 'state', state: 'Jharkhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Jharkhand Building (Lease, Rent & Eviction) Control Act, 2011. (2) This Act shall apply to the whole of the State of Jharkhand. (3) It shall come into force on such date as the Government of Jharkhand may, by notification in the Official Gazette, appoint. [Note: this Act replaced the Bihar Buildings (Lease, Rent and Eviction) Control Act, 1982 (also in this Library, still current law in Bihar itself), which Jharkhand had continued to apply, adapted to itself, since the 2000 bifurcation until this Act was published on 9 February 2012 (Act No. 06 of 2012).]',
+      },
+    ],
+  },
+  {
+    id: 'act-uttarakhand-tenancy-2021',
+    shortTitle: 'The Uttarakhand Tenancy Act, 2021',
+    year: 2021,
+    actNumber: 'Act No. 2 of 2022',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/uttarakhand/2022/Act2of2022UK.pdf',
+    jurisdiction: { type: 'state', state: 'Uttarakhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Uttarakhand Tenancy Act, 2021. (2) It extends to the whole of Uttarakhand. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint and different dates may be appointed for different provisions of this Act. [Note: like this Library\'s Tamil Nadu entry, this Act is modelled on the Union Government\'s Model Tenancy Act — it governs tenancies created on or after its commencement, while the Uttar Pradesh Urban Buildings (Regulation of Letting, Rent and Eviction) Act, 1972 (also in this Library, inherited from undivided UP and still current for Uttarakhand\'s pre-existing rent-controlled tenancies) continues to apply to tenancies that predate it.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Tenancy agreement',
+        text: '(1) Notwithstanding anything contained in this Act or any other law for the time being in force, no person shall, after the commencement of this Act, let or take on rent any premises except by an agreement in writing, which shall be informed to the Rent Authority by the landlord and tenant jointly, in the form specified in the First Schedule within a period of two months from the date of tenancy agreement. [Note: as with Tamil Nadu\'s 2017 Act in this Library, this replaces the classic Rent Control Act model (court-fixed standard rent, statutory eviction grounds) with mandatory written, Rent-Authority-registered tenancy agreements — the terms of the tenancy itself are left to the agreement, not a fixed statutory rent.]',
+      },
+    ],
+  },
+  {
+    id: 'act-jk-houses-shops-rent-1966',
+    shortTitle: 'The Jammu and Kashmir Houses and Shops Rent Control Act, 1966',
+    year: 1966,
+    actNumber: 'J&K Act',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/jammu-and-kashmir/1966/1966J&K39.pdf',
+    jurisdiction: { type: 'state', state: 'Jammu and Kashmir' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and extent',
+        text: '(1) This Act may be called the Jammu and Kashmir Houses and Shops Rent Control Act, 1966. (2) It shall extend to the Municipalities of Jammu and Srinagar and to such other urban areas to which the Jammu and Kashmir Houses and Shops Rent Control Act, Samvat 2009 extended at its expiration: Provided that the Government may, by notification, extend this Act or any specified part thereof to any other urban area specified in the notification. [Note: received the assent of the Governor on 28 October 1966 and was published the next day. This Act replaced an earlier Samvat-dated predecessor (Samvat 2009 corresponds to 1952 A.D.) — the same vintage-dating convention seen in this Library\'s Stamp Act, 1977 (1920 A.D.) and Civil Courts Act, 1977 (1920 A.D.) entries for Jammu and Kashmir; whether and how it currently applies to the Union territory of Ladakh, carved out of the former State in 2019, is subject to the same unresolved question noted in this Library\'s Stamp Act, 1977 entry.]',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Protection of a tenant against eviction',
+        text: '(1) Notwithstanding anything to the contrary in any other Act or law, no order or decree for the recovery of possession of any house or shop shall be made by any Court in favour of the landlord against a tenant, including a tenant whose lease has expired: Provided that nothing in this sub-section shall apply to any suit for decree for such recovery of possession— (a) against a tenant who has transferred his tenancy right in whole or in part with possession otherwise than by sub-lease; (b) against such transferee; (c) against a tenant who has sub-let the whole or a major portion of the house or shop for more than seven consecutive months: Provided that if a tenant, who has sub-let a major portion of the house or shop, agrees to possess as a tenant the portion not sub-let on payment of rent fixed by the Court, the Court shall pass a decree for ejectment from only the portion sub-let and fix proportionately fair rent for the portion kept in his possession: Provided further that no order or decree for recovery of possession shall be made in favour of the landlord if the tenant has sub-let the house or shop or portion thereof with the written consent of the owner. [Note: this Library reproduces only the chapeau and grounds (a) through (c) of a longer list; unusually among this Library\'s Rent Control Act entries, the baseline rule protects even a tenant whose lease has already expired, with eviction available only on the specifically listed grounds.]',
+      },
+    ],
+  },
+  {
+    id: 'act-goa-buildings-1968',
+    shortTitle: 'The Goa, Daman and Diu Buildings (Lease, Rent and Eviction) Control Act, 1968',
+    year: 1968,
+    actNumber: 'Act 15 of 1968',
+    sourceUrl: 'https://archive.org/stream/1969GOA2/1969GOA2_djvu.txt',
+    jurisdiction: { type: 'state', state: 'Goa' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Goa, Daman and Diu Buildings (Lease, Rent and Eviction) Control Act, 1968. (2) It extends, in the first instance, to the cities of Panaji, Margao, Mapusa and Vasco (including the Harbour area) and to Daman (Nani and Moti) in the Union Territory of Goa, Daman and Diu but the Administrator may, from time to time, by notification in the Official Gazette extend this Act or any provision thereof to any other area in the said Union Territory. (3) It shall come into force on such date as the Administrator may, by notification in the Official Gazette, appoint. [Note: enacted before the 1987 split of the former Union Territory of Goa, Daman and Diu into the State of Goa and the (later merged) Union Territory of Daman and Diu; both successors continued applying this Act to their own territory under its original name, and this Library could not confirm whether Goa has since formally renamed its own copy (as it did for its Stamp Act and Rents Act, both also in this Library, via the Gujarat-style pattern of a state Short Titles Act) — the Goa Legislative Assembly\'s own website still lists a Bill captioned simply "The Goa Buildings (Lease, Rent...", suggesting it may have been renamed; verify the current short title against a certified copy before relying on it.]',
+      },
+    ],
+  },
+  {
+    id: 'act-tripura-buildings-1975',
+    shortTitle: 'The Tripura Buildings (Lease and Rent Control) Act, 1975',
+    year: 1975,
+    actNumber: 'Tripura Act No. 5 of 1975',
+    sourceUrl: 'https://thc.nic.in/Tripura%20State%20Lagislation%20Acts/Tripura%20Building%20(Lease%20And%20Rent%20Control)%20Act,%201975.pdf',
+    jurisdiction: { type: 'state', state: 'Tripura' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: 'This Act may be called the Tripura Buildings (Lease and Rent Control) Act, 1975. [Note: sourced from the Tripura High Court\'s own hosted copy. This Library reproduces only the confirmed short title; the full extent, application and commencement sub-clauses were not independently captured — verify against a certified copy.]',
+      },
+    ],
+  },
+  {
+    id: 'act-puducherry-buildings-1969',
+    shortTitle: 'The Puducherry Buildings (Lease and Rent Control) Act, 1969',
+    year: 1969,
+    actNumber: 'Puducherry Act',
+    sourceUrl: 'https://police.py.gov.in/The%20Puducherry%20Buildings%20(Lease%20and%20Rent%20Control)%20Act%201969.pdf',
+    jurisdiction: { type: 'state', state: 'Puducherry' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Puducherry Buildings (Lease and Rent Control) Act, 1969. (2) It shall extend to the whole of the Union territory of Puducherry. (3) It shall come into force on such date as the Government may, by notification in the Official Gazette, appoint: Provided that different dates may be appointed for different provisions of this Act and for different areas and any reference in any such provision to the commencement of this Act shall be construed as a reference to the coming into force of that provision. [Note: like this Library\'s Indian Stamp (Pondicherry Amendment) Act, 1970 entry, this Act was enacted before the territory\'s 2006 renaming from Pondicherry to Puducherry but is itself titled "Puducherry" throughout, unlike that Stamp Act amendment — the territory\'s Registration/Police Department continues to host and apply it under this name. In force from 1 August 1969.]',
+      },
+    ],
+  },
+  {
+    id: 'act-east-punjab-rent-restriction-extension-chandigarh-1974',
+    shortTitle: 'The East Punjab Urban Rent Restriction Act (Extension to Chandigarh) Act, 1974',
+    year: 1974,
+    actNumber: 'Act 54 of 1974',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1610/2/A1974-54.pdf',
+    jurisdiction: { type: 'state', state: 'Chandigarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title',
+        text: 'This Act may be called the East Punjab Urban Rent Restriction Act (Extension to Chandigarh) Act, 1974. [Note: Chandigarh has no legislature of its own — this is a Parliament Act extending the East Punjab Urban Rent Restriction Act, 1949 (also in this Library) to the Union territory of Chandigarh, the same extension pattern this Library\'s Chandigarh Stamp Act entry shows for a different central Act. Sourced via advocatekhoj.com since India Code blocks automated access to its own copy.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Extension of East Punjab Act III of 1949 to Chandigarh',
+        text: 'Notwithstanding anything contained in any judgment, decree or order of any court, the Act shall, subject to the modifications specified in the Schedule, be in force in, and be deemed to have been in force with effect from the 4th day of November, 1972 in, the Union territory of Chandigarh as if the provisions of the Act as so modified had been included in and formed part of this section and as if this section had been in force at all material times. [Note: this Library does not reproduce the Schedule\'s specific modifications (chiefly substituting Chandigarh-specific authorities and figures for the Punjab-specific ones in the original 1949 Act). A later East Punjab Urban Rent Restriction (Chandigarh Amendment) Act, 1982 further amended this extension, but most of that 1982 Act\'s own operative sections were themselves repealed by the Repealing and Amending Act, 1988, leaving only a narrow transitional provision in force.]',
+      },
+    ],
+  },
+  {
+    id: 'act-mizoram-urban-rent-1974',
+    shortTitle: 'The Mizoram Urban Areas Rent Control Act, 1974',
+    year: 1974,
+    actNumber: 'Mizoram Act',
+    sourceUrl: 'https://www.legitquest.com/act/mizoram-urban-areas-rent-control-act-1974/603B',
+    jurisdiction: { type: 'state', state: 'Mizoram' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Mizoram Urban Areas Rent Control Act, 1974. (2)(a) It shall extend to all urban areas declared as such by the Administrator. (b) Nothing in this Act shall apply to any premises belonging to Central Government. (3) It shall be deemed to have come into force on such date as may be notified by the Administrator in the Official Gazette of Mizoram. [Note: this Act was passed shortly after Mizoram became a Union Territory separate from Assam (1972); a subsequent Mizoram Urban Areas Rent Control (Amendment) Act, 1975 provides that actions taken following the principles of the Assam Urban Areas Rent Control Act, 1966, insofar as not inconsistent with this Act, are deemed to have been done under this Act — preserving continuity with the Assam-era practice this territory had previously followed.]',
+      },
+    ],
+  },
+  {
+    id: 'act-delhi-shops-establishments-1954',
+    shortTitle: 'The Delhi Shops and Establishments Act, 1954',
+    year: 1954,
+    actNumber: 'No. 33 of 1954',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/delhi/1954/1954Delhi7.pdf',
+    jurisdiction: { type: 'state', state: 'Delhi (NCT)' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Delhi Shops and Establishments Act, 1954. (2) It extends to the whole of Union Territory of Delhi. (3) It shall come into force on such date as Government may, by notification in the Official Gazette, appoint in this behalf. (4) It shall apply in the first instance only to the Municipal Areas, Notified Areas and Cantonment limits of Delhi, New Delhi, Shahadra, Civil Lines, Mehrauli, Red Fort and Delhi Cantonment but Government may, by notification in the Official Gazette, direct that it shall come into force in any other local area or areas or shall apply to such shops or establishments or class of shops and establishments in such other areas as may be specified in the notification. [Note: received the assent of the President on 19 June 1954 and came into force from 1 February 1955.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Registration of Establishments',
+        text: '(1) Within the period specified in sub-section (5), the occupier of every establishment shall send to the Chief Inspector a statement in a prescribed form, together with such fees as may be prescribed, containing— (a) the name of the employer and the manager, if any; (b) the postal address of establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, i.e., whether it is a shop, commercial establishment, residential hotel, restaurant, eating house, theatre or other place of public amusement or entertainment; (e) the number of employees working about the business of the establishment; and (f) such other particulars as may be prescribed. (2) On receipt of the statement and the fees, the Chief Inspector shall, on being satisfied about the correctness of the statement, register the establishment in the Register of Establishments, in such manner as may be prescribed and shall issue, in a prescribed form a registration certificate to the occupier. (3) The registration certificate shall be prominently displayed at the establishment and shall be renewed at such intervals as may be prescribed in this respect.',
+      },
+    ],
+  },
+  {
+    id: 'act-maharashtra-shops-establishments-2017',
+    shortTitle: 'The Maharashtra Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017',
+    year: 2017,
+    actNumber: 'Mah. Act No. LXI of 2017',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/maharashtra/2017/2017MH61.pdf',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: '(1) This Act may be called the Maharashtra Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017. (2) It extends to the whole of the State of Maharashtra. (3) The provisions of this Act, except section 7, shall apply to the establishments employing ten or more workers and the provisions of section 7 shall apply to the establishments employing less than ten workers. (4) It shall come into force on such date as the State Government may by notification in the Official Gazette appoint. [Note: this Act repealed and replaced the earlier Bombay Shops and Establishments Act, 1948, as it applied to Maharashtra — the same Bombay-lineage repeal-and-replace pattern this Library\'s Maharashtra Rent Control Act, 1999 entry shows for the Bombay Rents Act.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments',
+        text: '(1) Within a period of sixty days from the date of commencement of this Act or the date on which establishment commences its business, the employer of every establishment employing ten or more workers shall submit application online in a prescribed form for registration to the Facilitator of the local area concerned, together with such fees and such self-declaration and self-certified documents as may be prescribed, containing— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; (d) the actual nature of the business of the establishment; and (e) such other particulars as may be prescribed. (2) On receipt of the application along with documents and the fees online, the Facilitator shall register the establishment in the register of establishments and shall issue online, in a prescribed form, a registration certificate along with the Labour Identification Number (LIN) to the employer within the prescribed time limit. (3) A registration certificate granted under sub-section (2) shall be valid for such period as may be requested by the applicant and specified therein subject to a maximum period of ten years. [Note: this modernised, wholly-online registration process (self-certification, a Labour Identification Number, up to a 10-year validity) reflects a much lighter compliance regime than this Library\'s Delhi and Karnataka Shops and Establishments Act entries, both of which still contemplate a paper statement filed with a physical Inspector.]',
+      },
+    ],
+  },
+  {
+    id: 'act-karnataka-shops-establishments-1961',
+    shortTitle: 'The Karnataka Shops and Commercial Establishments Act, 1961',
+    year: 1961,
+    actNumber: '1962: Kar. Act 8',
+    sourceUrl: 'https://www.datocms-assets.com/40521/1623320334-karnataka-shops-and-commercial-establishment-act-1961.pdf',
+    jurisdiction: { type: 'state', state: 'Karnataka' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Karnataka Shops and Commercial Establishments Act, 1961. (2) It extends to the whole of the State of Karnataka. (3) It shall come into force on such date as the State Government may by notification appoint. (4)(a) It shall apply, in the first instance, to the areas specified in the Schedule to this Act, and to such other areas in which any of the Acts repealed by section 42 applied. (b) It shall apply to any other area with effect from such date as the State Government may by notification specify which date shall not be earlier than the expiry of three months from the date of publication of such notification in the official Gazette. [Note: adapted from "Mysore" to "Karnataka" by the Karnataka Adaptations of Laws Order, 1973, w.e.f. 1 November 1973 — the Act itself came into force on 1 October 1964.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Registration of Establishments',
+        text: '(1) Within the period specified in sub-section (3), the employer of every establishment shall send to the Inspector of the area concerned, a statement in the prescribed form together with such fees as may be prescribed, containing— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; and (d) such other particulars as may be prescribed. (2) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such manner as may be prescribed, and shall issue, in a prescribed form, a registration certificate to the employer. The registration certificate shall be prominently displayed at the establishment. (3) Within thirty days from the date on which this Act comes into force (for an existing establishment) or the date on which the establishment commences its work (for a new establishment), the statement together with fees shall be sent to the Inspector under sub-section (1).',
+      },
+    ],
+  },
+  {
+    id: 'act-west-bengal-shops-establishments-1963',
+    shortTitle: 'The West Bengal Shops and Establishments Act, 1963',
+    year: 1963,
+    actNumber: 'West Ben. Act XIII of 1963',
+    sourceUrl: 'https://wbshopsonline.gov.in/home/download/acts/wb_shops_esta_act_1963.pdf',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the West Bengal Shops and Establishments Act, 1963. (2) It extends to the whole of West Bengal. (3) It shall come into force on such date as the State Government may, by notification, appoint. (4) It shall apply to the areas and to the classes of shops and establishments to which the Bengal Shops and Establishments Act, 1940 applied immediately before the commencement of this Act; and shall also apply to such other areas or to such other classes of shops or establishments as the State Government may, by notification, specify in this behalf. [Note: enacted in the Thirteenth Year of the Republic of India, replacing the Bengal Shops and Establishments Act, 1940. This Library\'s only located source has visible OCR/scanning artifacts from a poor-quality scan; the text here has been cleaned of obvious character-recognition errors but should be verified against a certified copy.]',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Registration',
+        text: '(1) Every shop-keeper or employer shall— (i) in the case of shops or establishments in existence on the date on which this Act applies, within such date as the State Government may, by notification, specify, and (ii) in the case of new shops or establishments, within such period as may be prescribed, apply for registration under this Act to the registering authority, in such form together with such fee as may be prescribed. Every such application shall contain— (a) the name of the shop-keeper or the employer; (b) the postal address of the shop or the establishment; (c) the name of the shop or the establishment; (d) declaration of weekly closing days in the case of a shop; (e) such other particulars as may be prescribed. The registering authority, on being satisfied about the correctness of the particulars, shall register the shop or the establishment in such manner as may be prescribed and shall issue a certificate of registration in the prescribed form to the shop-keeper or the employer. (2) The registering authority shall maintain a Register of Shops and Establishments in the prescribed form. (3) Every shop-keeper or employer shall display the certificate of registration issued under sub-section (1) in a conspicuous place in the shop or the establishment.',
+      },
+    ],
+  },
+  {
+    id: 'act-gujarat-shops-establishments-2019',
+    shortTitle: 'The Gujarat Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2019',
+    year: 2019,
+    actNumber: 'Gujarat Act',
+    sourceUrl: 'https://prsindia.org/acts_bills/acts_state/files/pdf/gujarat/2019/2019Gujarat4.pdf',
+    jurisdiction: { type: 'state', state: 'Gujarat' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: '(1) This Act may be called the Gujarat Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2019. (2) It extends to the whole of the State of Gujarat. (3) The provisions of this Act, except section 7, shall apply to the shops and establishments employing ten or more workers; and the provisions of section 7 shall apply to the shops and establishments employing less than ten workers. (4) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: notified 1 May 2019, this Act repealed and replaced the Gujarat Shops and Establishments Act, 1948 (Bom. LXXIX of 1948) — itself a Bombay-lineage Act, the same predecessor relationship this Library\'s Gujarat Stamp Act, 1958 and Gujarat Rents, Hotel and Lodging House Rates Control Act, 1947 entries show, though here Gujarat replaced the old Act outright rather than merely renaming it. A further Amendment Ordinance was issued in December 2025, not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of shops or establishments',
+        text: '(1) Within a period of sixty days from the date of commencement of this Act or the date on which any shop or establishment commences its business, the employer of every shop and establishment shall submit an application in a prescribed form for registration to the concerned Inspector, together with such fees and such self-declaration and self-certified documents as may be prescribed: Provided that, nothing contained hereinabove shall apply to the shops and establishments already having valid registration under the Gujarat Shops and Establishments Act, 1948 until the expiry of their registration. (2) On receipt of the application along with the documents and the fees, the Inspector shall register the shop or establishment in the register of establishments and shall issue, in a prescribed form, a registration certificate to the employer within the prescribed time limit. (3) A registration certificate issued under sub-section (2) shall remain in force from the date of issue till the change in ownership or nature of business takes place.',
+      },
+    ],
+  },
+  {
+    id: 'act-tamil-nadu-shops-establishments-1947',
+    shortTitle: 'The Tamil Nadu Shops and Establishments Act, 1947',
+    year: 1947,
+    actNumber: 'Act XXXVI of 1947',
+    sourceUrl: 'https://indiankanoon.org/doc/20567117/',
+    jurisdiction: { type: 'state', state: 'Tamil Nadu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Tamil Nadu Shops and Establishments Act, 1947. (2) It extends to the whole of the State of Tamil Nadu. (3)(a) It shall come into force in the following areas on such date as the State Government may, by notification, appoint— (i) the City of Madras, (ii) all the municipalities constituted under the Madras District Municipalities Act, 1920, and (iii) all areas within the jurisdiction of panchayats which, under rule 2 of Schedule III to the Madras Village Panchayats Act, 1950, should be deemed to be constituted under that Act, and which immediately before the commencement of that Act were classified by the State Government as major panchayats and all areas within the jurisdiction of panchayats constituted or reconstituted under that Act. [Note: sourced via indiankanoon.org rather than a directly machine-readable government PDF — the PRS Legislative Research mirror otherwise used throughout this Library\'s state-Act entries turned out, on this specific URL, to actually contain the text of the Tamil Nadu Shops and Establishments (Amendment) Act, 2008 rather than the 1947 principal Act; this Library could not locate a second, cleanly-extractable substantive section (e.g. registration) from an accessible source and reproduces only section 1.]',
+      },
+    ],
+  },
+  {
+    id: 'act-andhra-pradesh-shops-establishments-1988',
+    shortTitle: 'The Andhra Pradesh Shops and Establishments Act, 1988',
+    year: 1988,
+    actNumber: 'Act 20 of 1988',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/andhra-pradesh/1988/1988AP20.pdf',
+    jurisdiction: { type: 'state', state: 'Andhra Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Andhra Pradesh Shops and Establishments Act, 1988. (2) It extends to the whole of the State of Andhra Pradesh. (3) It shall come into force on such date as the Government may, by notification, appoint. (4) It shall apply— (i) in the first instance to all areas in which the Andhra Pradesh Shops and Establishments Act, 1966 was in force immediately before the commencement of this Act; (ii) to such other areas in the State on such date as the Government may, by notification, specify. [Note: at the 2014 bifurcation, Telangana adapted its own copy of this Act into a separately maintained Telangana Shops and Establishments Act, 1988 (also in this Library, same Act No. 20 of 1988) via a 2016 Adaptation of Laws notification; this entry continues to apply, under its original name, to the residuary State of Andhra Pradesh.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Registration of Establishments',
+        text: '(1) Every employer of an establishment shall— (i) in the case of an establishment existing on the date of commencement of this Act, within thirty days from that date; and (ii) in the case of a new establishment, within thirty days from the date on which the establishment commences its work, send to the Inspector concerned a statement, containing such particulars, together with such fees, as may be prescribed. (2) On receipt of such statement, the Inspector shall register the establishment in the register of establishments in such manner as may be prescribed and shall issue in the prescribed form a registration certificate to the employer who shall display it at a prominent place of the establishment. (3) Every registration certificate issued under sub-section (2), shall be valid with effect from the date on which it is issued upto the 31st day of December following.',
+      },
+    ],
+  },
+  {
+    id: 'act-telangana-shops-establishments-1988',
+    shortTitle: 'The Telangana Shops and Establishments Act, 1988',
+    year: 1988,
+    actNumber: 'Act No. 20 of 1988',
+    sourceUrl: 'https://corridalegal.com/wp-content/uploads/2025/10/Telangana-Shops-and-Establishments-Act-1988-Bare-Act-PDF.pdf',
+    jurisdiction: { type: 'state', state: 'Telangana' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Telangana Shops and Establishments Act, 1988. (2) It extends to the whole of the State of Telangana. (3) It shall come into force on such date as the Government may, by notification, appoint. (4) It shall apply— (i) in the first instance to all areas in Telangana in which the Andhra Pradesh Shops and Establishments Act, 1966 was in force immediately before the commencement of this Act; (ii) to such other areas in the State on such date as the Government may, by notification, specify. [Note: this Act is Telangana\'s own adapted copy of the former unified Andhra Pradesh Shops and Establishments Act, 1988 (Act No. 20 of 1988, also in this Library) — same Act number, adapted for Telangana following the 2014 bifurcation.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Registration of Establishments',
+        text: '(1) Every employer of an establishment shall— (i) in the case of an establishment existing on the date of commencement of this Act, within thirty days from that date; and (ii) in the case of a new establishment, within thirty days from the date on which the establishment commences its work, send to the Inspector concerned a statement containing such particulars, together with such fees, as may be prescribed. (2) On receipt of such statement, the Inspector shall register the establishment in the register of establishments in such manner as may be prescribed and shall issue in the prescribed form a registration certificate to the employer who shall display it at a prominent place of the establishment: Provided that if no adverse order is passed by the Inspector within thirty days from the date of submission of the statement under sub-section (1), then the registration shall be deemed to be duly granted. Provided further that to facilitate the starting of business, no inspection need be conducted prior to registration. Provided also that, on uploading the application for registration along with other enclosures as may be prescribed, provisional registration shall be granted within 24 business hours and be valid until a final order is passed on the application for registration. [Note: the deemed-registration proviso was added by a 2016 Adaptation notification and the 24-hour provisional-registration proviso by Telangana Act No. 28 of 2017 — Telangana has amended its copy of this originally-shared Act to be significantly more ease-of-business-friendly than Andhra Pradesh\'s unamended original, which still requires the Inspector to actually register the establishment before any certificate issues (see this Library\'s Andhra Pradesh Shops and Establishments Act, 1988 entry, section 3).]',
+      },
+    ],
+  },
+  {
+    id: 'act-rajasthan-shops-establishments-1958',
+    shortTitle: 'The Rajasthan Shops and Commercial Establishments Act, 1958',
+    year: 1958,
+    actNumber: 'Act No. 31 of 1958',
+    sourceUrl: 'https://www.comply360.in/labor-law-library/wp-content/uploads/2023/12/THE-RAJASTHAN-SHOPS-AND-COMMERCIAL-ESTABLISHMENTS-ACT-1958-1.pdf',
+    jurisdiction: { type: 'state', state: 'Rajasthan' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Rajasthan Shops and Commercial Establishments Act, 1958. (2) It extends to the whole of the State of Rajasthan. (3) It shall come into force, on such date as the State Government may, by notification in the Official Gazette, appoint in this behalf. (4) It shall apply, in the first instance, to such areas as the State Government may specify by notification in the official Gazette. (5) The State Government may, after giving three months\' notice of its intention of so doing, by notification in the Official Gazette, extend the provisions of the Act or any of them to such other areas as may be specified. [Note: Rajasthan amended this Act very recently — the Rajasthan Shops and Commercial Establishments (Amendment) Act, 2026, deemed in force from 17 December 2025, raises the minimum age for an "apprentice" under section 2 from twelve to fourteen years — not yet separately curated in this Library, but the definition currently reproduced nowhere in this entry\'s two sections should not be assumed to still say "twelve" if consulted elsewhere.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Registration of Establishments',
+        text: '(1) Within the period specified in sub-section (3), the employer of every establishment shall send to the Inspector of the area concerned a statement in the prescribed form, together with such fees as may be prescribed, containing— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; and (d) such other particulars as may be prescribed. (2) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such manner as may be prescribed and shall issue, in a prescribed form, a registration certificate to the employer. The registration certificate shall be prominently displayed at the establishment. (3) Within thirty days from the date mentioned in column 2 in respect of an establishment mentioned in column 1, the statement together with fees shall be sent to the Inspector under sub-section (1).',
+      },
+    ],
+  },
+  {
+    id: 'act-madhya-pradesh-shops-establishments-1958',
+    shortTitle: 'The Madhya Pradesh Shops and Establishments Act, 1958',
+    year: 1958,
+    actNumber: 'Act No. 25 of 1958',
+    sourceUrl: 'https://www.comply360.in/labor-law-library/wp-content/uploads/2023/12/THE-MADHYA-PRADESH-SHOPS-AND-ESTABLISHMENT-ACT-1958-1.pdf',
+    jurisdiction: { type: 'state', state: 'Madhya Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, operation and application',
+        text: '(1) This Act may be called the Madhya Pradesh Shops and Establishments Act, 1958. (2) It extends to the whole of Madhya Pradesh. (3) It shall come into force on such date as the Government may, by notification appoint in this behalf. (4) This Act shall apply in the first instance to the local areas specified in Schedule I. The State Government may, by notification, direct that all or any of the provisions of this Act shall apply to any other local area as may be specified in the notification on such date as may fixed therein and different dates may be fixed for different provisions of this Act and for different classes of establishments. [Note: at the 2000 bifurcation, Chhattisgarh continued applying its own copy of this Act, renamed the C.G. Shops & Establishments Act, 1958 (also Act No. 25 of 1958) — not yet separately curated in this Library — while this entry\'s copy continues to apply, under its original name, to Madhya Pradesh itself.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments',
+        text: '(1) Every establishment to which this Act applies shall be registered in accordance with the provision of this section. (2) Within thirty days from the date on which this Act applies to an establishment, its employer shall send to the Inspector of the area concerned a statement, in the prescribed form, together with such fees, as may be prescribed, containing— (a) the name of the employer, the manager and the person holding positions of management, if any; (b) the postal address of and the date of starting the business by the establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, i.e. whether it is a shop, commercial establishment, residential hotel, restaurant, eating-house, theatre, or other place of public amusement or entertainment; and (e) such other particulars, as may be prescribed. (3) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishment in such manner as may be prescribed and shall issue in the prescribed form, a registration certificate to the employer. The registration certificate shall be prominently displayed at the establishment; Provided that if no adverse order is passed by the Inspector within the prescribed period from the date of the statement, the registration shall be deemed to be duly granted.',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-shops-establishments-1958',
+    shortTitle: 'The Punjab Shops and Commercial Establishments Act, 1958',
+    year: 1958,
+    actNumber: 'Act No. 15 of 1958',
+    sourceUrl: 'https://www.guptaconsultants.com/wp-content/uploads/2018/10/18-The_Punjab_Shops_and_Commercial_Establishments_Act_1958.pdf',
+    jurisdiction: { type: 'state', state: 'Haryana' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Punjab Shops and Commercial Establishments Act, 1958. (2) It extends to the whole of the State of Haryana. (3) It shall come into force on such date as Government may, by notification in the Official Gazette, appoint in this behalf. (4) It shall apply in the first instance to the areas specified in the Schedule, but Government may by notification direct that it shall also apply to such other area and on such date as may be specified in the notification. [Note: unlike this Library\'s Haryana Urban (Control of Rent and Eviction) Act, 1973 entry, Haryana never enacted its own Shops and Establishments Act — it continues to apply this originally-Punjab Act, word-substituted ("Haryana" for "Punjab") and amended in its own right since (visible amendment footnotes in the source cite Haryana amending Act No. 21 of 2004 and Haryana amending Act No. 1 of 1997). Punjab itself continues to apply its own copy of the same Act, not yet separately curated in this Library.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Registration of Establishments',
+        text: '(1) Within the period specified in sub-section (3), the employer of every establishment shall send to the prescribed authority concerned a statement in the prescribed form accompanied by such fee as may be prescribed and containing— (a) the name of the employer and the manager, if any; (b) postal address of the establishment; (c) the name, if any, of the establishment; (d) number of persons employed in the establishment; and (e) such other particulars as may be prescribed. (2)(i) On receipt of the statement and the prescribed fee, the authority shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such a manner as may be prescribed and shall issue in a prescribed form a registration certificate to the employer. The registration certificate shall, on demand by the Inspector, be shown to him by the employer. (iii) The registration certificate shall be renewable by the 31st March after every three years.',
+      },
+    ],
+  },
+  {
+    id: 'act-kerala-shops-establishments-1960',
+    shortTitle: 'The Kerala Shops and Commercial Establishments Act, 1960',
+    year: 1960,
+    actNumber: 'Kerala Act No. 34 of 1960',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/kerala/1960/1960KERALA34.pdf',
+    jurisdiction: { type: 'state', state: 'Kerala' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Kerala Shops and Commercial Establishments Act, 1960. (2) It extends to the whole of the State of Kerala. (3) It shall come into force on such date as the Government may, by notification in the Gazette, appoint. (4) It shall apply, in the first instance, to the following areas— (i) the city of Trivandrum; (ii) all the municipalities constituted under the Madras District Municipalities Act, 1920 in its application to the Malabar district referred to in section 5(2) of the State Reorganisation Act, 1956, the Travancore District Municipalities Act, 1116 and the Cochin Municipal Act XVIII of 1113. [Note: the Travancore and Cochin Act citations use the Malayalam Era calendar (1116 M.E. / 1113 M.E.), not the Gregorian year — a reminder that Kerala\'s pre-1956 legal history spans three separate former administrations (Travancore, Cochin, and Malabar district of Madras Presidency) that this Act consolidated.]',
+      },
+      {
+        sectionNo: '5A',
+        heading: 'Registration of establishments',
+        text: '(1) The employer of every establishment shall make an application to such authority as the Government may by notification in the Gazette, specify in this behalf (in this Chapter referred to as the "competent authority"), in such form and on payment of such fees as may be prescribed, for a registration certificate in respect of that establishment. (2) An application under sub-section (1) shall be made within sixty days from the date of commencement of this section: Provided that in the case of an establishment started after the commencement of this section, such application shall be made within sixty days from the date on which the establishment commences its work. (3) The application shall specify the following particulars, namely— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, that is to say whether it is a shop or a commercial establishment; (e) the number and names of employees employed in the establishment; (f) such other particulars as may be prescribed. [Note: the "5A" numbering (inserted into a later Chapter IA) shows this registration requirement was added to the Act well after its original 1960 enactment, not part of the original scheme.]',
+      },
+    ],
+  },
+  {
+    id: 'act-bihar-shops-establishments-1953',
+    shortTitle: 'The Bihar Shops and Establishments Act, 1953',
+    year: 1953,
+    actNumber: 'Bihar Act VIII of 1954',
+    sourceUrl: 'https://www.datocms-assets.com/40521/1639920996-bihar-shops-and-establishment-act-1953.pdf',
+    jurisdiction: { type: 'state', state: 'Bihar' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Bihar Shops and Establishments Act, 1953. (2) It extends to the whole of the State of Bihar. (3) It shall come into force on such date as the State Government may, by notification appoint and different dates may be appointed for different provisions of this Act or for different areas or for different classes of shops or establishments. (4) It shall apply, in the first instance, to the local areas comprised within a municipality, notified area or a municipal corporation constituted and established under any law for the time being in force, relating to municipalities and to any mining settlement for which a Mines Board of Health has been established. [Note: enacted in 1953 but numbered and assented to in 1954 (Bihar Act VIII of 1954) — received the assent of the President on 17 March 1954 and came into force from 15 February 1955.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments and renewal thereof',
+        text: 'The State Government may make rules requiring the registration of establishment or any class of establishments or renewal thereof and prescribing manner and the fees payable for such registration or renewal. [Note: unlike every other Shops and Establishments Act in this Library, Bihar\'s own registration section is a bare rule-making delegation rather than a self-contained procedure — the actual registration mechanics live in the Bihar Shops and Establishments Rules, 1955 (not curated in this Library), not in the Act itself.]',
+      },
+    ],
+  },
+  {
+    id: 'act-odisha-shops-establishments-1956',
+    shortTitle: 'The Odisha Shops and Commercial Establishments Act, 1956',
+    year: 1956,
+    actNumber: 'Odisha Act 30 of 1956',
+    sourceUrl: 'https://labourdirectorate.odisha.gov.in/sites/default/files/2024-04/The%20OS%26CE%20Act,%201956_11zon.pdf',
+    jurisdiction: { type: 'state', state: 'Odisha' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Odisha Shops and Commercial Establishments Act, 1956. (2) It extends to the whole of the State of Odisha. (3) This section shall come into force at once. (4) The remaining sections shall come into force in the first instance in such areas and on such date as the State Government may specify by notification in this behalf. (5) The State Government may, after giving ninety days\' notice of its intention of so doing, by notification bring into force the remaining provisions of this Act to such other area or areas and on such date or dates as may be appointed in this behalf.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Registration of establishment',
+        text: '(1) Within the period specified in sub-section (4), the employer of every establishment shall send to the Inspector of the area concerned, a statement in the prescribed form, together with such fees as may be prescribed containing— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, that is whether it is a shop, commercial establishment, hotel, restaurant, cafe, boarding or eating house, theatre or other place of public amusement of entertainment; and (e) such other particulars as may be prescribed. (2) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correct-ness of the statement, register the establishment in the register of establishments in such manner as may be prescribed and shall issue in prescribed form a registration certificate to the employer. The registration certificate shall be prominently displayed at the establishment. (3) In the event of any doubt or difference of opinion between an employer and the Inspector as to the category to which an establishment should belong, the Inspector shall refer the matter to the Chief Inspector who shall, after such enquiry as may be prescribed, decide the category of such establishment and his decision shall be final for the purpose of this Act. (4) Within thirty days from the date mentioned in respect of an establishment, the statement together with fees shall be sent to the Inspector under sub-section (1). [Note: sourced from a scanned Odisha Labour Directorate copy (OCR read via document image); minor artefacts in the original scan were corrected against the visible text — verify against the official Gazette copy before relying on this for compliance purposes.]',
+      },
+    ],
+  },
+  {
+    id: 'act-assam-shops-establishments-1971',
+    shortTitle: 'The Assam Shops and Establishments Act, 1971',
+    year: 1971,
+    actNumber: 'Assam Act XXI of 1974',
+    sourceUrl: 'https://legislative.assam.gov.in/',
+    jurisdiction: { type: 'state', state: 'Assam' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Assam Shops and Establishments Act, 1971. (2) It extends to the State of Assam. (3) It shall come into force on such date as the State Government may, by notification in the official Gazette, appoint. (4) It shall apply, in the first instance, to the Municipalities as declared or constituted under the provision of the Assam Municipal Act, 1956 and to all such areas and to all shops, commercial establishments and establishments for public entertainment or amusement to which the Assam Shops and Establishments Act, 1948 applied immediately before the commencement of this Act and thereafter it shall apply to such other areas, or to such shops, commercial establishments or establishments for public entertainment or amusement in such other areas on such date or dates as the State Government may, by notification, specify. [Note: despite carrying "1971" in its short title, the Act received presidential assent only on 12 August 1974 and was published in the Assam Gazette on 4 September 1974 (Assam Act XXI of 1974) — the title year reflects when the Bill was introduced, not enactment.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Daily and weekly hours',
+        text: 'No employee in any establishment shall be required or allowed to work for more than eight hours in any day and forty-eight hours in any week: Provided that the total number of hours of work including overtime, shall not exceed ten hours in any day except on days of stock taking and preparation of accounts and the total number of hours of overtime shall not exceed fifty for any quarter. [Note: unlike most other states\' Shops and Establishments Acts in this Library, Assam\'s 1971 Act has no chapter requiring registration or licensing of establishments at all — its nine chapters run Preliminary, Hours of Work, Leave, Wages, Employment of Children and Women, Health and Safety, Enforcement and Inspection, Penalties, and Miscellaneous, with no registration mechanism among them. Section 6 (daily/weekly hours) is given here instead as the most practically relevant compliance provision.]',
+      },
+    ],
+  },
+  {
+    id: 'act-himachal-pradesh-shops-establishments-1969',
+    shortTitle: 'The Himachal Pradesh Shops and Commercial Establishments Act, 1969',
+    year: 1969,
+    actNumber: 'H.P. Act (assented 3 March 1970)',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/himachal-pradesh/1969/Act3of2026HP.pdf',
+    jurisdiction: { type: 'state', state: 'Himachal Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Himachal Pradesh Shops and Commercial Establishments Act, 1969. (2) It extends to the whole of the State of Himachal Pradesh. (3) It shall come into force at once. (4) It shall apply in the first instance to the limits of the Simla Municipal Corporation and to the municipal areas and cantonment limits; but the Government may by notification in the Official Gazette, direct that it shall come into force in any other local area or shall apply to such establishments in such other areas as may be specified in the notification.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Registration of establishments',
+        text: '(1) Within the period specified in sub-section (3), the employer of every establishment shall send to the prescribed authority a statement in the prescribed form accompanied by such fees as may be prescribed and containing:— (a) the name of the employer and the manager, if any; (b) postal address of the establishment; (c) the name, if any, of the establishment; (d) number of persons employed in the establishment; and (e) such other particulars as may be prescribed. (2)(i) On receipt of the statement and the prescribed fee, the prescribed authority shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such manner as may be prescribed and shall issue in the prescribed form a registration certificate to the employer. The registration certificate shall, on demand by the Inspector, be shown to him by the employer. (ii) The registration certificate shall, on payment of the prescribed fee, be renewable by the 31st March, every year. Thirty days\' grace time shall, however, be allowed for the renewal of the certificate.',
+      },
+    ],
+  },
+  {
+    id: 'act-chhattisgarh-shops-establishments-1958',
+    shortTitle: 'The Chhattisgarh Shops and Establishments Act, 1958',
+    year: 1958,
+    actNumber: 'Act No. 25 of 1958 (as continued and adapted by Chhattisgarh)',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/chhattisgarh/1958/Act4of2005CG.pdf',
+    jurisdiction: { type: 'state', state: 'Chhattisgarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, operation and application',
+        text: '(1) This Act may be called the Chhattisgarh Shops and Establishments Act, 1958. (2) It extends to the whole of Chhattisgarh. (3) It shall come into force on such date as the Government may, by notification appoint in this behalf. (4) This Act shall apply in the first instance to the local areas specified in Schedule I. The State Government may, by notification, direct that all or any of the provisions of this Act shall apply to any other local area as may be specified in the notification on such date as may fixed therein and different dates may be fixed for different provisions of this Act and for different classes of establishments. [Note: Chhattisgarh continues the pre-bifurcation Madhya Pradesh Shops and Establishments Act, 1958 (also Act No. 25 of 1958, see the Madhya Pradesh entry in this Library) as its own statute post-2000, since renamed and independently amended as "The Chhattisgarh Shops and Establishments Act, 1958".]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments',
+        text: '(1) Every establishment to which this Act applies shall be registered in accordance with the provision of this section. (2) Within thirty days from the date on which this Act applies to an establishment, its employer shall send to the Inspector of the area concerned a statement, in the prescribed form, together with such fees, as may be prescribed, containing— (a) the name of the employer, the manager and the person holding positions of management, if any; (b) the postal address of and the date of starting the business by the establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, i.e. whether it is a shop, commercial establishment, residential hotel, restaurant, eating-house, theatre, or other place of public amusement or entertainment; and (e) such other particulars, as may be prescribed. (3) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishment in such manner as may be prescribed and shall issue in the prescribed form, a registration certificate to the employer. The registration certificate shall be prominently displayed at the establishment. (4) In the event of any doubt or difference of opinion between an employer and the Inspector as to the category to which an establishment should belong the Inspector shall refer the matter to the Labour Commissioner who shall, after such inquiry as he thinks proper, decide the category of such establishment and his decision shall be final for the purposes of this Act. (5) The Government may, by notification, require renewal of registration certificate issued under this section at such intervals as may be specified.',
+      },
+    ],
+  },
+  {
+    id: 'act-jharkhand-shops-establishments-1953',
+    shortTitle: 'The Bihar Shops and Establishments Act, 1953 (as adapted for Jharkhand)',
+    year: 1953,
+    actNumber: 'Bihar Act VIII of 1954 (adapted for Jharkhand by Notification S.O. 2/SEA(LC)501/2001-L&T 2870, dated 14 November 2002)',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/7513/1/jharkhand_shopsandestablishment_act.pdf',
+    jurisdiction: { type: 'state', state: 'Jharkhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Bihar Shops and Establishments Act, 1953. (2) It extends to the whole of the State of Jharkhand. (3) It shall come into force on such date as the State Government may, by notification appoint and different dates may be appointed for different provisions of this Act or for different areas or for different classes of shops or establishments. (4) It shall apply, in the first instance, to the local areas comprised within a municipality, notified area or a municipal corporation constituted and established under any law for the time being in force, relating to municipalities and to any mining settlement for which a Mines Board of Health has been established. [Note: after Jharkhand\'s creation in 2000, the State adapted the pre-existing Bihar Shops and Establishments Act, 1953 for its own use under Section 85 of the Bihar Reorganisation Act, 2000 — wherever the word "Bihar" appears in the Act it is deemed substituted with "Jharkhand", but the Act\'s own title and year were never formally renamed, so it is still correctly cited as "the Bihar Shops and Establishments Act, 1953" even when applied in Jharkhand. Claims of a separate "Jharkhand Shops and Establishments Act, 2015" appear only in secondary compliance sources and could not be verified against any primary Gazette citation — treated as unconfirmed.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments and renewal thereof',
+        text: 'The State Government may make rules requiring the registration of establishment or any class of establishments or renewal thereof and prescribing manner and the fees payable for such registration or renewal. [Note: as in Bihar\'s own copy, this is a bare rule-making delegation — Jharkhand exercised it via the Jharkhand Shops and Establishment Rules, 2001 (not curated in this Library), which set out the actual registration procedure (application to the Inspecting Officer within thirty days in Form I).]',
+      },
+    ],
+  },
+  {
+    id: 'act-uttarakhand-shops-establishments-2018',
+    shortTitle: 'The Uttarakhand Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017',
+    year: 2018,
+    actNumber: 'Uttarakhand Act No. 3 of 2018',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/uttarakhand/2017/Act3of2017UK.pdf',
+    jurisdiction: { type: 'state', state: 'Uttarakhand' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Uttarakhand Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2017. (2) It shall come into force to the shops and establishments employed to the ten or more employees. (3) It shall come into force on such date, as the Government may, by notification in the Official Gazette appoint. [Note: although the short title carries "2017" (the year the Bill was passed by the Uttarakhand Legislative Assembly), the Governor\'s assent was given only on 3 January 2018 and the Act was Gazetted the same week as "Uttarakhand Adhiniyam Sankhya 3, Varsh 2018" — it is more precisely cited as Uttarakhand Act No. 3 of 2018. English-text source is a compliance-database rendering rather than the official Hindi Gazette text (which is what this platform verified directly) — recommended to cross-check exact wording against the official Gazette before relying on it for drafting.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Registration of shops and establishment and issue of labour identification number',
+        text: '(1) On the commencement of this Act every shop or establishment employing ten or more employees on such date of commencement, or that to which such shop or establishment becomes subject within the period of six months, shall apply for registration and shall get a labour identification number. (2) Every shop and establishment employing fewer than ten employees, and any other establishment or persons exempted from application of the Act, shall apply for registration in such form and procedure as may be prescribed. (3) The authority nominated in sub-section (2), on receipt of an application under sub-section (2), shall register the shop or establishment and a labour identification number shall be issued in such form as may be prescribed. (4) Notwithstanding anything in this section, registered shops and establishments shall be deemed registered for the purposes of this Act and under the Employees\' State Insurance Act, 1948 or under the rules, regulations and scheme made thereunder: Provided that such shops and establishments shall, within the period of six months from the commencement of this Act, obtain a labour identification number in such procedure as may be prescribed.',
+      },
+    ],
+  },
+  {
+    id: 'act-uttar-pradesh-shops-establishments-1962',
+    shortTitle: 'The Uttar Pradesh Dookan Aur Vanijya Adhishthan Adhiniyam, 1962',
+    year: 1962,
+    actNumber: 'U.P. Act No. 26 of 1962',
+    sourceUrl: 'https://uplabour.gov.in/MediaGallery/Uttar%20Pradesh%20Dookan%20Aur%20Vanijya%20,%201962.pdf',
+    jurisdiction: { type: 'state', state: 'Uttar Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and application',
+        text: '(1) This Act may be called the Uttar Pradesh Dookan aur Vanijya Adhishthan Adhiniyam, 1962. (2) It extends to the whole of Uttar Pradesh. (3) The provisions of this Act referred to in Schedule I shall, in the areas mentioned in the said Schedule, apply to the extent specified therein and the State Government may from time to time, direct, by notification in the Gazette, that all or any of the provisions of this Act shall also apply in relation to such areas and to such extent as may be specified in the notification.',
+      },
+      {
+        sectionNo: '4-B',
+        heading: 'Registration',
+        text: '(1) Every owner of a shop or commercial establishment shall within three months of the commencement of such business or within three months of the commencement of the Uttar Pradesh Dookan Aur Vanijya Adhisthan (Sansodhan) Adhiniyam, 1976, whichever is later, apply to the Chief Inspector for registration of his shop or commercial establishment. (2) Every application for registration under sub-section (1) shall be in such form and shall be accompanied by such fees as may be prescribed. (3) The Chief Inspector shall, on being satisfied that the prescribed fee has been deposited, register the shop or commercial establishment in the register maintained under section 4-A and shall issue a certificate of registration to the owner in such form and in such manner, as may be prescribed. [Note: Chapter I-A (sections 4-A to 4-D), inserted by the 1976 Amendment Act, added the registration mechanism to what was originally a registration-free 1962 Act — section 4-A requires the Chief Inspector to maintain the register itself, and section 4-C governs the registration certificate\'s validity/renewal.]',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-shops-establishments-1958-own',
+    shortTitle: 'The Punjab Shops and Commercial Establishments Act, 1958',
+    year: 1958,
+    actNumber: 'Punjab Act No. 15 of 1958',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/punjab/1958/1958PB15.pdf',
+    jurisdiction: { type: 'state', state: 'Punjab' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Punjab Shops and Commercial Establishments Act, 1958. (2) It extends to the whole of the State of Punjab. (3) It shall come into force on such date as Government may, by notification in the Official Gazette, appoint in this behalf. (4) It shall apply in the first instance to the areas specified in the Schedule, but Government may by notification direct that it shall also apply to such other area and on such date as may be specified in the notification. [Note: Punjab\'s own copy of this Act (see also the word-substituted Haryana copy elsewhere in this Library, "Haryana" for "Punjab") remains current law, most recently amended by the Punjab Shops and Commercial Establishments (Amendment) Act, 2025 (in force 29 August 2025), which narrowed the Act\'s application to establishments employing twenty or more workers (previously all establishments regardless of size) and extended the registration window from thirty days to six months of commencing business — the section text below reflects the position before this 2025 amendment; verify against the amended text for current compliance purposes.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Registration of Establishments',
+        text: '(1) Within the period specified in sub-section (3), the employer of every establishment shall send to the prescribed authority concerned a statement in the prescribed form accompanied by such fee as may be prescribed and containing— (a) the name of the employer and the manager, if any; (b) postal address of the establishment; (c) the name, if any, of the establishment; (d) number of persons employed in the establishment; and (e) such other particulars as may be prescribed. (2)(i) On receipt of the statement and the prescribed fee, the authority shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such a manner as may be prescribed and shall issue in a prescribed form a registration certificate to the employer. The registration certificate shall, on demand by the Inspector, be shown to him by the employer. (ii) The registration certificate shall be renewable by the 31st March after every three years. [Note: see the 2025 Amendment note under section 1 — the registration window is now six months rather than the period originally specified here, for establishments of twenty or more workers.]',
+      },
+    ],
+  },
+  {
+    id: 'act-chandigarh-shops-establishments-1958',
+    shortTitle: 'The Punjab Shops and Commercial Establishments Act, 1958 (as extended to Chandigarh)',
+    year: 1958,
+    actNumber: 'Punjab Act No. 15 of 1958, extended to Chandigarh under the Punjab Reorganisation Act, 1966',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/punjab/1958/1958PB15.pdf',
+    jurisdiction: { type: 'state', state: 'Chandigarh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Punjab Shops and Commercial Establishments Act, 1958. (2) It extends to the whole of the State of Punjab. (3) It shall come into force on such date as Government may, by notification in the Official Gazette, appoint in this behalf. (4) It shall apply in the first instance to the areas specified in the Schedule, but Government may by notification direct that it shall also apply to such other area and on such date as may be specified in the notification. [Note: like Haryana, the Union Territory of Chandigarh has no shops and establishments law of its own — it continues to apply this originally-Punjab Act as extended under the Punjab Reorganisation Act, 1966. The Punjab Shops and Commercial Establishments (Amendment) Act, 2025 (twenty-or-more-worker threshold, six-month registration window) was itself extended to Chandigarh effective 5 December 2025.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Registration of Establishments',
+        text: '(1) Within the period specified in sub-section (3), the employer of every establishment shall send to the prescribed authority concerned a statement in the prescribed form accompanied by such fee as may be prescribed and containing— (a) the name of the employer and the manager, if any; (b) postal address of the establishment; (c) the name, if any, of the establishment; (d) number of persons employed in the establishment; and (e) such other particulars as may be prescribed. (2)(i) On receipt of the statement and the prescribed fee, the authority shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such a manner as may be prescribed and shall issue in a prescribed form a registration certificate to the employer. The registration certificate shall, on demand by the Inspector, be shown to him by the employer. (ii) The registration certificate shall be renewable by the 31st March after every three years.',
+      },
+    ],
+  },
+  {
+    id: 'act-goa-shops-establishments-2025',
+    shortTitle: 'The Goa Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2025',
+    year: 2025,
+    actNumber: 'Goa Act No. 23 of 2025',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/goa/2025/Act23of2025GA.pdf',
+    jurisdiction: { type: 'state', state: 'Goa' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: '(1) This Act may be called the Goa Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2025. (2) It shall extend to the whole of the State of Goa. (3) The provisions of this Act, except section 7, shall apply to the establishments employing twenty or more workers and the provisions of section 7 shall apply to the establishments employing less than twenty workers. (4) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: published in the Goa Official Gazette on 1 October 2025, this Act replaces the earlier Goa, Daman and Diu Shops and Establishments Act, 1973 (Goa Act No. 13 of 1974) for the State of Goa — see the separate Dadra and Nagar Haveli and Daman and Diu entry in this Library for how the pre-2025 lineage continues to apply in that Union Territory via the Gujarat Act instead.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments',
+        text: '(1) Within a period of sixty days from the date of commencement of this Act or the date on which establishment commences its business, the employer of every establishment employing twenty or more workers shall submit application online in a prescribed form for registration to the Facilitator-cum-Inspector of the local area concerned, together with such fees and such self declaration and self-certified documents as may be prescribed, containing— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; (d) the actual nature of the business of the establishment; and (e) such other particulars as may be prescribed: Provided that, nothing contained hereinabove shall apply to the establishments already having valid registration or renewal under the Goa Shops and Establishments Act, 1973 (Goa Act No. 13 of 1974), until expiry of their registration or renewal. (2) On receipt of the application along with documents and the fees online, the Facilitator-cum-Inspector shall register the establishment in the register of establishments in such manner as may be prescribed and shall issue online, in a prescribed form, a registration certificate along with the Labour Identification Number (LIN) to the employer within the prescribed time.',
+      },
+    ],
+  },
+  {
+    id: 'act-tripura-shops-establishments-1970',
+    shortTitle: 'The Tripura Shops and Establishments Act, 1970',
+    year: 1970,
+    actNumber: 'Tripura Act No. 8 of 1970',
+    sourceUrl: 'https://thc.nic.in/Tripura%20State%20Lagislation%20Acts/Shops%20&%20Establishment%20Act,1970,%20Tripura%20As%20amended%20upto%205th%20amendment%20dt.24.05.2021.pdf',
+    jurisdiction: { type: 'state', state: 'Tripura' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, commencement and application',
+        text: '(1) This Act may be called the Tripura Shops and Establishments Act, 1970. (2) It extends to the whole of the Union territory of Tripura. (3) It shall come into force on such date as the Administrator may, by notification in the Tripura Gazette, appoint; and different dates may be appointed for different provisions of this Act or for different areas or for different class or classes of concerns or undertakings or for different class or classes of shops or establishments. [Note: enacted in 1970 while Tripura was still a Union Territory (it became a full State on 21 January 1972 under the North-Eastern Areas (Reorganisation) Act, 1971) — the extent clause\'s "Union territory of Tripura" wording was not found to have been textually amended, but is read today as the State of Tripura. As amended up to its Fifth Amendment Act, 2021, and further amended by a Seventh Amendment (Ordinance 2025, Act 2025) not yet curated in this Library.]',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Registration of shops and establishments',
+        text: '(1) Every shop-keeper or employer shall— (i) in the case of shops or establishments in existence on the date on which this Act applies, within such date as the Administrator may, by notification, specify, and (ii) in the case of new shops or establishments, within such period as may be prescribed, apply for registration under this Act to the registering authority, in such form together with such fee as may be prescribed. Every such application shall contain— (a) the name of the shop-keeper or the employer; (b) the postal address of the shop or the establishment; (c) the name of the shop or the establishment; (d) declaration of weekly closing days in the case of a shop; (e) such other particulars as may be prescribed. The registering authority on being satisfied about the correctness of the particulars shall register the shop or the establishment in such manner as may be prescribed and shall issue a certificate of registration in the prescribed form to the shop-keeper or the employer. (2) The registering authority shall maintain a register of Shops and Establishments in the prescribed form. (3) Every shop-keeper or employer shall display the certificate of registration issued under sub-section (1) in a conspicuous place in the shop or the establishment. (4)(a) Every shop-keeper or employer shall inform the registering authority in the prescribed form of any change in respect of any particulars contained in the application under sub-section (1) within seven days after the change has taken place: Provided that the declaration of weekly closing days in the case of a shop shall not be changed more than once in any year. (b) The registering authority, on receipt of such information and on payment of such fee as may be prescribed, shall, if satisfied about the correctness of the information, make necessary changes in the Register of Shops and Establishments and shall amend the certificate of registration accordingly.',
+      },
+    ],
+  },
+  {
+    id: 'act-jammu-kashmir-shops-establishments-2025',
+    shortTitle: 'The Jammu and Kashmir Shops and Establishments (Licensing, Regulation of Employment and Conditions of Service) Act, 2025',
+    year: 2025,
+    actNumber: 'J&K Act No. 6 of 2025',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/jammu-and-kashmir/2025/Act6of2025JK.pdf',
+    jurisdiction: { type: 'state', state: 'Jammu and Kashmir' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: '(1) This Act may be called the Jammu and Kashmir Shops and Establishments (Licensing, Regulation of Employment and Conditions of Service) Act, 2025. (2) It shall extend to the whole of Union Territory of Jammu and Kashmir. (3) It shall come into force on such date as the Government may by notification in Official Gazette, appoint. (4) It shall apply to all the shops and establishments in the Jammu and Kashmir. [Note: assented to and Gazetted 1 November 2025, this Act repeals and replaces the much older Jammu and Kashmir Shops and Establishments Act, 1966 (Act No. 39 of 1966) — a "current Act names win" case where the pre-2019-reorganisation Act has now been fully superseded, not merely renamed. Registrations under the 1966 Act carry over — see section 5 below.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Registration of establishments and renewal of registrations',
+        text: '(1) Every shop and establishment to which this Act applies shall within a period of sixty days from the date of its commencement of trade or business or the date on which such shop or establishment comes into existence, apply for registration online to the Inspector cum facilitator of the area concerned together with such fee and documents as may be prescribed and obtain a Registration Certificate: Provided that the registration shall be optional for shops and establishments who have less than twenty employees: Provided further that the shops and establishments already registered under the provisions of the Jammu and Kashmir Shops and Establishment Act, 1966 shall be deemed to have been registered under the provisions of this Act. (2) The Inspector cum Facilitator shall, on receipt of an application under sub-section (1) duly accompanied by documents and fee, register the shop or establishment after being satisfied about the correctness/genuineness and issue the registration certificate in such form as may be prescribed. (3) The registration certificate shall initially be valid up to ten years ending 31st December of that year and may be renewed at a time up to a period of 5 years on payment of such fee/late fee as may be prescribed. (4) In the event of any doubt or difference of opinion between an employer and the Inspector Cum Facilitator in respect of any provisions of this Act, the decision of the Assistant Labour Commissioner shall be final and binding on both the parties. (5) The registration certificate shall be exhibited in the shop or establishment and be provided to the Inspector Cum Facilitator on demand.',
+      },
+    ],
+  },
+  {
+    id: 'act-puducherry-shops-establishments-1964',
+    shortTitle: 'The Puducherry Shops and Establishments Act, 1964',
+    year: 1964,
+    actNumber: 'No. 9 of 1964',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/puducherry/1964/1964Pondicherry9.pdf',
+    jurisdiction: { type: 'state', state: 'Puducherry' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Puducherry Shops and Establishments Act, 1964. (2) It extends to the whole of the Union territory of Puducherry. (3) It shall come into force at once. [Note: originally enacted as "the Pondicherry Shops and Establishments Act, 1964" — the Union Territory itself, and this Act along with it, is now cited under its post-2006 name following the Pondicherry (Alteration of Name) Act, 2006, per the Puducherry Labour Department\'s own current usage.]',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Registration of shops and establishments under this Act',
+        text: '(1) Within the period specified in sub-section (3), every employer shall send to the Inspector a statement in such form together with such fees, as may be prescribed. (2) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correctness of the statement, register such establishment in such manner as may be prescribed in the register of shops and establishments maintained for the purpose and shall issue, in the prescribed form, a registration certificate to the employer. A registration certificate shall be prominently displayed at such establishment. (3) The statement under sub-section (1) shall be sent within thirty days from the date on which this Act comes into force in the case of shops and establishments existing on such date, and within thirty days from the date of commencement of work in the case of new shops and establishments. (4) A registration certificate shall be valid for a financial year and shall be renewed from financial year to financial year on payment of such fees as may be prescribed.',
+      },
+    ],
+  },
+  {
+    id: 'act-meghalaya-shops-establishment-2004',
+    shortTitle: 'The Meghalaya Shops and Establishment Act, 2004',
+    year: 2004,
+    actNumber: 'Meghalaya Act No. 4 of 2004',
+    sourceUrl: 'https://meglc.gov.in/acts/Meghalaya%20Shops%20and%20Establishment%20Act%202004.pdf',
+    jurisdiction: { type: 'state', state: 'Meghalaya' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Meghalaya Shops and Establishment Act 2004. (2) It extends to the whole of the State of Meghalaya. (3) It shall come into force on such date as the State Government may by notification in the Official Gazette, appoint, and different dates may be appointed for different areas or for different classes of shops or establishment. [Note: the Act received the Governor\'s assent on 2 April 2004 and was Gazetted on 5 April 2004 as "Meghalaya Act 4 of 2004" — the Act\'s own section 1 text confusingly reads "Act 2003" in some circulated copies, but the Gazette\'s own notification header and India Code both cite it as the 2004 Act; this resolves the conflicting "Act 7 of 1972" / "Act 21 of 1972" citations this Library had previously found for Meghalaya rent legislation research — for Shops and Establishments specifically, this 2004 Act is the clean, current citation.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Registration',
+        text: '(1) Every establishment shall be registered under this Act. The registration shall be valid for calendar year and thereafter shall be renewed for every calendar year. (2) The application for registration or for renewal of registration shall be made to the Labour Commissioner or to such other officer as the Labour Commissioner may authorise in this behalf in such forms and within such date and containing such particulars as may be prescribed. (3) The fees payable for registration or for renewal of registration shall be such as may be prescribed by the State Government. (4) Where an establishment is registered under this Act or when the registration of an establishment is renewed there shall be issued to the employer a certificate of registration or a renewal certificate of registration as the case may be containing such particulars as may be prescribed. (5) The certificate of registration or the renewal certificate, as the case may be, shall be kept prominently displayed at some conspicuous place of the establishment.',
+      },
+    ],
+  },
+  {
+    id: 'act-nagaland-shops-establishments-1982',
+    shortTitle: 'The Nagaland Shops and Establishments Act, 1982',
+    year: 1982,
+    actNumber: 'Nagaland Act No. 5 of 1985',
+    sourceUrl: 'https://nagaland.gov.in/storage/PostFiles/The-Nagaland-Shops-and-Establishments-Act-1982.pdf',
+    jurisdiction: { type: 'state', state: 'Nagaland' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Nagaland Shops and Establishments Act, 1982. (2) It extends to the State of Nagaland. (3) It shall come into force on such date as the State Government may, by notification in the official Gazette appoint. (4)(i) It shall apply, in the first instance to the Town Committees as declared or constituted under the provision of the Naga Hills District (Constitution of Town Committee) Rules, 1954. (ii) It shall apply to such other areas or to such shops, commercial establishments or establishments for public entertainment or amusement in such other areas on such date or dates as the State Government may, by notification, specify. [Note: enacted in 1982 but numbered Nagaland Act No. 5 of 1985 — sourced from a text closely modelled on (in places word-for-word identical to) the neighbouring Assam Shops and Establishments Act, 1971.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Daily and weekly hours',
+        text: 'No employee in any establishment shall be required or allowed to work for more than eight hours in any day and forty-eight hours in any week: Provided that the total number of hours of work including overtime, shall not exceed ten hours in any day except on days of stock taking and preparation of accounts and the total number of hours of overtime shall not exceed fifty for any quarter. [Note: like the Assam Act it is modelled on (see this Library\'s Assam entry), Nagaland\'s 1982 Act has no chapter requiring registration or licensing of establishments — its structure runs Preliminary, Hours of Work, Leave, Wages, Employment of Children and Women, Health and Safety, Enforcement and Inspection, Offences/Penalties/Procedure, and Miscellaneous, with no registration mechanism among them. Section 6 (daily/weekly hours) is given here instead as the most practically relevant compliance provision.]',
+      },
+    ],
+  },
+  {
+    id: 'act-sikkim-shops-establishments-1983',
+    shortTitle: 'The Sikkim Shops and Commercial Establishments Act, 1983',
+    year: 1983,
+    actNumber: 'Sikkim Act',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/sikkim/1983/1983SK6.pdf',
+    jurisdiction: { type: 'state', state: 'Sikkim' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called The Sikkim Shops and Commercial Establishments Act, 1983. (2) It extends to the whole of Sikkim. (3) It shall come into force on such date as the State Government may, by notification, appoint and different dates may be appointed for different provisions of this Act and for different areas or different classes of establishments. [Note: as amended up to Sikkim Act 19 of 2022. This is a distinct statute from Sikkim\'s rent-control position (where this Library found no comprehensive rent-control legislation exists) — Sikkim does have a dedicated, current Shops and Commercial Establishments Act.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments',
+        text: '(1) Every establishment to which this Act applies shall be registered in accordance with the provisions of this section. (2) Within thirty days from the date on which the Act applies to an establishment, the employer shall send to the Chief Inspector, a statement in a prescribed form, together with such fees as may be prescribed containing: (a) the name of the employer and the manager, if any; (b) postal address of the establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, i.e. whether it is a shop, commercial establishment, residential hotel, restaurant, eating house, theatre or place of public amusement or entertainment; and (e) such other particulars as may be prescribed. (3) On the receipt of the statement and the fees, the Chief Inspector on being satisfied about the correctness of the statements made therein, shall register an establishment in the register of establishments and shall issue in the prescribed form, a registration certificate to the employer. The registration certificate shall be displayed at a conspicuous place in the establishment. (4) Registration certificate granted under sub-section (2), shall be valid upto the end of the year for which it is granted. An application for the renewal of a registration certificate shall be submitted not less than fifteen days before the date of expiry of the registration certificate or of the renewed registration, as the case may be, and shall be accompanied by such fees as may be prescribed and the renewed registration certificate shall be in such form, as may be prescribed.',
+      },
+    ],
+  },
+  {
+    id: 'act-manipur-shops-establishments-2021',
+    shortTitle: 'The Manipur Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2021',
+    year: 2021,
+    actNumber: 'Manipur Act No. 9 of 2023',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/manipur/2023/Act9of2023Manipur.pdf',
+    jurisdiction: { type: 'state', state: 'Manipur' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, application and commencement',
+        text: 'This Act may be called the Manipur Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2021. It shall apply to the shops and establishments employing ten or more workers. It shall be deemed to have come into force with effect from the 29th day of June, 2021. [Note: passed in 2021 but formally notified only on 2 November 2023 (numbered Manipur Act No. 9 of 2023), repealing the earlier Manipur Shops and Establishments Act, 1972. Source text quoted from a secondary legal database (PRS\'s own copy of the Gazette PDF was a non-text scan); verify exact wording against the official Manipur Gazette before relying on it for drafting.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Registration of establishments and issue of labour identification number',
+        text: 'Every employer of a shop or an establishment employing ten or more workers, shall get his shop or establishment registered under this Act within a period of six months from the date of such commencement or the date on which such shop or establishment comes into existence and obtain a Labour Identification Number. A certificate of registration or renewal of registration, as the case may be, containing such particulars in such form as may be prescribed shall be issued to the employer who applies for registration or renewal of registration. The authority referred to in sub-section (2) shall, on receipt of an application under sub-section (2) register the shop or establishment and issue a Labour Identification Number in such form as may be prescribed.',
+      },
+    ],
+  },
+  {
+    id: 'act-mizoram-shops-establishments-2010',
+    shortTitle: 'The Mizoram Shops and Establishments Act, 2010',
+    year: 2010,
+    actNumber: 'Mizoram Act No. 14 of 2010',
+    sourceUrl: 'https://lesde.mizoram.gov.in/uploads/attachments/2023/10/a761419fb7eed44f9c92f0ab33f0da65/pages-112-the-mizoram-shops-establishment-act-2010.pdf',
+    jurisdiction: { type: 'state', state: 'Mizoram' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Mizoram Shops and Establishments Act, 2010. (2) It extends to the whole of Mizoram. (3) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint and different dates may be appointed for different areas. [Note: received the Governor of Mizoram\'s assent on 13 October 2010, Gazetted 28 October 2010.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Registration of Establishment',
+        text: '(1) Every employer shall— (a) in relation to an establishment to which this Act applies on its commencement, within a period of sixty days from such commencement, and (b) in relation to any other establishment to which this Act may be applicable at any time after such commencement, within a period of sixty days from the date on which this Act becomes applicable to such establishment, make an application to the Registering Officer for the registration of such establishment: Provided that the registering officer may entertain any such application after the expiry of the periods aforesaid, if he is satisfied that the applicant was prevented by sufficient cause from making the application within such period. (2) Every application under sub-section (1) shall be in such form and shall contain such particulars and shall be accompanied by such fees as may be prescribed. (3) After the receipt of an application under sub-section (1), the registering officer shall register the establishment and issue a certificate of registration to the employer thereof in such form and within such time as may be prescribed. (4) Every employer shall display the registration certificate issued under the Act in a conspicuous place in the establishment. (5) Where, after the registration of an establishment under this section, any change occurs in the ownership or management or other particulars prescribed for such establishment, such changes shall be intimated by the employer to the registering officer within thirty days of such change. (6) The registration certificate issued under sub-section (3) shall be valid for a period of one year from the date on which it was issued or renewed and the employer to whom such certificate is issued may, within thirty days immediately before the expiry of the validity of such certificate, apply to the Registering Officer in such form accompanied by such fees as may be prescribed. Registering Officer shall, on receipt of the application and the requisite fees, renew the registration for a further period of one year at a time.',
+      },
+    ],
+  },
+  {
+    id: 'act-dnhdd-shops-establishments-2019',
+    shortTitle: 'The Gujarat Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2019 (as applied to Dadra and Nagar Haveli and Daman and Diu)',
+    year: 2019,
+    actNumber: 'Gujarat Act, applied to DNH&DD via the Dadra & Nagar Haveli and Daman & Diu Shops and Establishments (Regulation of Employment and Conditions of Service) Rules, 2025',
+    sourceUrl: 'https://prsindia.org/acts_bills/acts_state/files/pdf/gujarat/2019/2019Gujarat4.pdf',
+    jurisdiction: { type: 'state', state: 'Dadra and Nagar Haveli and Daman and Diu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent, application and commencement',
+        text: '(1) This Act may be called the Gujarat Shops and Establishments (Regulation of Employment and Conditions of Service) Act, 2019. (2) It extends to the whole of the State of Gujarat. (3) The provisions of this Act, except section 7, shall apply to the shops and establishments employing ten or more workers; and the provisions of section 7 shall apply to the shops and establishments employing less than ten workers. (4) It shall come into force on such date as the State Government may, by notification in the Official Gazette, appoint. [Note: the Union Territory of Dadra and Nagar Haveli and Daman and Diu has no shops and establishments Act of its own — the UT Administration applies this Gujarat Act\'s substantive framework, most recently formalised through the Dadra & Nagar Haveli and Daman & Diu Shops and Establishments (Regulation of Employment and Conditions of Service) Rules, 2025 (notified 24 June 2025, in force 27 June 2025), which superseded the UT\'s own older Goa, Daman and Diu Shops and Establishment Rules, 1975 (as applicable in Daman and Diu) and the Dadra and Nagar Haveli Shops and Establishment Rules, 2000. Establishments with ten or more employees require compulsory registration; smaller establishments file an intimation of commencement instead.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of shops or establishments',
+        text: '(1) Within a period of sixty days from the date of commencement of this Act or the date on which any shop or establishment commences its business, the employer of every shop and establishment shall submit an application in a prescribed form for registration to the concerned Inspector, together with such fees and such self-declaration and self-certified documents as may be prescribed. (2) On receipt of the application along with the documents and the fees, the Inspector shall register the shop or establishment in the register of establishments and shall issue, in a prescribed form, a registration certificate to the employer within the prescribed time limit. (3) A registration certificate issued under sub-section (2) shall remain in force from the date of issue till the change in ownership or nature of business takes place.',
+      },
+    ],
+  },
+  {
+    id: 'act-jk-stamp-1977-ladakh',
+    shortTitle: 'The Stamp Act, 1977 (1920 A.D.) (as applicable to Ladakh)',
+    year: 1977,
+    actNumber: 'Act No. XL of Svt. 1977',
+    sourceUrl: 'https://igr.jk.gov.in/files/Stamp%20Act%20J%26K%20samvat_1977.pdf',
+    jurisdiction: { type: 'state', state: 'Ladakh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Name, extent and enforcement',
+        text: '(1) This Act may be called the Stamp Act, 1977. (2) It extends to the whole of Jammu and Kashmir State. It shall come into force on the 1st day of Baisakh, 1978. [Note: this Library\'s Jammu and Kashmir Stamp Act, 1977 (1920 A.D.) entry flagged this Act\'s continued application to the Union territory of Ladakh (carved out of the former State in 2019) as unsettled, pending litigation (Srinagar Stamp Vendors Association v. State of J&K, J&K High Court, 2020) over whether the central Indian Stamp Act, 1899 was instead separately extended under the Jammu and Kashmir Reorganisation Act, 2019. Secondary sources now report that Ladakh in practice continues to follow this Act rather than the central Act, and that stamp duty rates across Union territories (including Ladakh) were administratively unified with effect from 1 April 2022 — treated here as the better-supported current position, though the underlying litigation\'s formal resolution could not be independently confirmed; verify with the Ladakh Revenue Department before relying on this for a specific transaction.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in Schedule I, the following instruments shall be chargeable with duty of the amount indicated in that schedule as the proper duty therefor respectively, that is to say— (a) every instrument mentioned in that schedule which, not having been previously executed by any person, is executed in the State on or after the date on which this Act comes into force; (b) every bill of exchange payable otherwise than on demand or promissory note drawn or made out of the State on or after that day and accepted or paid, or presented for acceptance or payment, or endorsed, transferred or otherwise negotiated, in the State; and (c) every instrument (other than a bill of exchange or promissory note) mentioned in that Schedule, which, not having been previously executed by any person, is executed out of the State on or after that day, relates to any property situate, or to any matter or thing done or to be done, in the State and is received in the State. [Note: this Library does not curate Schedule I\'s duty rates themselves; confirm the current rate directly with the Ladakh Revenue/Registration authority before relying on a figure.]',
+      },
+    ],
+  },
+  {
+    id: 'act-stamp-1899-dadra-nagar-haveli',
+    shortTitle: 'The Indian Stamp Act, 1899 (as extended to Dadra and Nagar Haveli)',
+    year: 1899,
+    actNumber: '2 of 1899, extended to Dadra and Nagar Haveli by Regulation 6 of 1963',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/13205/1/the_indian_stamp_act,_1899.pdf',
+    jurisdiction: { type: 'state', state: 'Dadra and Nagar Haveli' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Extension note',
+        text: 'The central Indian Stamp Act, 1899 (also in this Library) was extended to the then Union territory of Dadra and Nagar Haveli, following its 1961 integration into India, by the Dadra and Nagar Haveli (Application of Laws) Regulation, 1963 (Regulation 6 of 1963), section 2 read with Schedule I. Unlike Daman and Diu (which continues under a separate Goa-lineage amendment history — see this Library\'s Daman and Diu Stamp Act entry), Dadra and Nagar Haveli retained its own, materially different stamp duty rate structure even after the 2020 merger of the two territories into the single Union Territory of Dadra and Nagar Haveli and Daman and Diu — current rates apply a uniform stamp duty on sale consideration, with a lower concessional rate for certain tribal-status transfers, fixed by the UT Administration\'s own Revenue Department notification rather than by amending the Act\'s own Schedule I. [Note: this Library does not independently curate Regulation 6 of 1963\'s own text; verify current rates directly with the Dadra and Nagar Haveli Revenue Department.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in Schedule I, the following instruments shall be chargeable with duty of the amount indicated in that Schedule as the proper duty therefor, respectively, that is to say:— (a) every instrument mentioned in that Schedule which, not having been previously executed by any person, is executed in India on or after the first day of July, 1899; (b) every bill of exchange payable otherwise than on demand or promissory note drawn or made out of India on or after that day and accepted or paid, or presented for acceptance or payment, or endorsed, transferred, or otherwise negotiated in India; and (c) every instrument (other than a bill of exchange or promissory note) mentioned in that Schedule, which, not having been previously executed by any person, is executed out of India on or after that day, relates to any property situate, or to any matter or thing done or to be done, in India, and is received in India: Provided that no duty shall be chargeable in respect of any instrument executed by, or on behalf of, or in favour of, the Government in cases where, but for this exemption, the Government would be liable to pay the duty chargeable in respect of such instrument.',
+      },
+    ],
+  },
+  {
+    id: 'act-stamp-1899-daman-diu',
+    shortTitle: 'The Indian Stamp Act, 1899 (as extended to Daman and Diu)',
+    year: 1899,
+    actNumber: '2 of 1899, extended by Regulation 11 of 1963 and amended for the territory by the Indian Stamp (Goa, Daman and Diu Amendment) Act, 1968 (Act 8 of 1969) and successors',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/goa/1968/1968GOA17.pdf',
+    jurisdiction: { type: 'state', state: 'Daman and Diu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Extension note',
+        text: 'The central Indian Stamp Act, 1899 (also in this Library) was extended to the then Portuguese-annexed territories of Goa, Daman and Diu by the Goa, Daman and Diu (Administration) Regulation, 1962 read with Regulation 11 of 1963, and locally amended by the Indian Stamp (Goa, Daman and Diu Amendment) Act, 1968 (Act No. 8 of 1969, assented 11 April 1969, in force 1 July 1969) and a chain of successor amendments. When Goa attained statehood in 1987, Goa and the remaining Union Territory of Daman and Diu each continued applying this shared amendment lineage independently — Goa has since further amended its own copy (through Goa Act No. 9 of 1993 and later Acts, not tracked in this entry; see this Library\'s separate Goa Stamp Act entry), while Daman and Diu (merged with Dadra and Nagar Haveli into a single Union Territory in 2020) retains its own separate rate structure, fixed by UT notification rather than by further amending Act text — current rates are markedly lower than Dadra and Nagar Haveli\'s own rates under the same merged UT (see this Library\'s separate Dadra and Nagar Haveli Stamp Act entry), with concessions for female and joint male/female ownership. [Note: this Library does not independently curate the 1968 Amendment Act\'s substantive rate changes; verify current rates directly with the Daman and Diu Sub-Registrar.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Instruments chargeable with duty',
+        text: 'Subject to the provisions of this Act and the exemptions contained in Schedule I, the following instruments shall be chargeable with duty of the amount indicated in that Schedule as the proper duty therefor, respectively, that is to say:— (a) every instrument mentioned in that Schedule which, not having been previously executed by any person, is executed in India on or after the first day of July, 1899; (b) every bill of exchange payable otherwise than on demand or promissory note drawn or made out of India on or after that day and accepted or paid, or presented for acceptance or payment, or endorsed, transferred, or otherwise negotiated in India; and (c) every instrument (other than a bill of exchange or promissory note) mentioned in that Schedule, which, not having been previously executed by any person, is executed out of India on or after that day, relates to any property situate, or to any matter or thing done or to be done, in India, and is received in India: Provided that no duty shall be chargeable in respect of any instrument executed by, or on behalf of, or in favour of, the Government in cases where, but for this exemption, the Government would be liable to pay the duty chargeable in respect of such instrument.',
+      },
+    ],
+  },
+  {
+    id: 'act-meghalaya-urban-rent-1972',
+    shortTitle: 'The Meghalaya Urban Areas Rent Control Act, 1972',
+    year: 1972,
+    actNumber: 'Meghalaya Act 7 of 1972, as consolidated by the Meghalaya Urban Areas Rent Control (Amendment) Act, 1972 (Act 21 of 1972)',
+    sourceUrl: 'https://indiankanoon.org/doc/163210458/',
+    jurisdiction: { type: 'state', state: 'Meghalaya' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Meghalaya Urban Areas Rent Control Act, (Amendment) Act, 1972. (2)(a) It extends to all urban areas in Meghalaya. (b) The State Government may, by notification, extend the Act to such area or areas as are included in a Town Committee constituted by the District Council and also to other areas of the Khasi Hills as fall within a radius of eight kilometres from the Court House of the Deputy Commissioner, Khasi Hills District. (c) Nothing in this Act shall apply— (i) to any premises belonging to Central Government, or (ii) to any tenancy or other relationship created by a grant from Central Government in respect of premises taken on lease, or requisitioned by Central Government: Provided that where any premises belonging to Central Government have been or are lawfully let by any person by virtue of an agreement with that Government or otherwise, then notwithstanding any judgement, decree or order of any Court or other authority, the provisions of this Act shall apply to such tenancy. (3) It shall be deemed to have come into force on the 13th day of March, 1972. [Note: this Library had earlier flagged conflicting act-number citations for Meghalaya\'s rent legislation ("Act 7 of 1972" versus "Act 21 of 1972"); confirmed here that both refer to the same statute — the original 1972 Act as substantially amended/consolidated by its own 1972 Amendment Act, which itself carries this self-description as its short title in the operative text quoted above.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Bar against passing and execution of decree and orders for ejectment',
+        text: '(1) No order or decree for the recovery of possession of any house shall be made or executed by any Court so long as the tenant pays rent to the full extent allowable under this Act and performs the conditions of the tenancy: Provided that nothing in this sub-section shall apply in a suit or proceedings for eviction of the tenant from the house— (a) where the tenant has done anything contrary to the provisions of clause (m), clause (o) or clause (p) of section 108 of the Transfer of Property Act, 1882 (Central Act 4 of 1882) or to the spirit of the aforesaid clauses in areas where the said Act does not apply, or (b) where the tenant has been guilty of conduct which is a nuisance or an annoyance to the occupiers of the adjoining or neighbouring houses, or (c) where the house is bonafide required by the landlord either for purposes of repairs or re-building, or for his own occupation or for the occupation of any person for whose benefit the house is held, or where the landlord can show any other cause which may be deemed satisfactory by the Court, or (d) where the tenant sublets the house or any part thereof or otherwise transfers his interest in the house or any part thereof without permission in writing from the landlord, or (e) where the tenant has not paid the rent lawfully due from him in respect of the house within a fortnight of its falling due, or (f) where the tenant has built, acquired or been allotted a suitable residence. (2) The transfer of the interest of the landlord in the house shall not affect the right of the tenant provided the tenant pays rent allowable under this Act to the transferee.',
+      },
+    ],
+  },
+  {
+    id: 'act-arunachal-pradesh-building-rent-2014',
+    shortTitle: 'The Arunachal Pradesh Building (Lease, Rent and Eviction) Control Act, 2014',
+    year: 2014,
+    actNumber: 'Act No. 08 of 2014',
+    sourceUrl: 'https://www.indianemployees.com/acts-rules/details/arunachal-pradesh-building-lease-rent-and-eviction-control-act-2014',
+    jurisdiction: { type: 'state', state: 'Arunachal Pradesh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Arunachal Pradesh Building (Lease, Rent and Eviction) Control Bill, 2014. (2) This Act shall apply to the whole of the State of Arunachal Pradesh. (3) It shall come into force on such date as the Government of Arunachal Pradesh may, by notification in the Official Gazette, appoint. [Note: assented to 4 June 2014 (Act No. 08 of 2014) — the Act\'s own section 1(1) is a drafting slip left over from Bill stage, self-describing as a "Bill" rather than an "Act", carried through into the enacted text. This is a different, more directly on-point statute than the Arunachal Pradesh Tenancy Act, 2022 (Act No. 17 of 2022, not yet curated in this Library) which coexists with it and separately establishes a Rent Authority — this Library found no indication that the 2022 Act repealed this 2014 Act.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Tenancy Agreement to be in writing',
+        text: '(1) Notwithstanding anything contained in section 107 of the Transfer of Property Act, 1882 (Central Act 4 of 1882), no person shall, after the commencement of this Act, let or take on rent any building except by an agreement in writing. (2) Where in relation to a tenancy created before the commencement of this Act, no agreement in writing was entered into, the landlord and the tenant shall enter into an agreement in writing with regard to the tenancy including the amount of rent and the period of tenancy, and deposit a copy thereof before the Controller concerned as described in section 13(c) of this Act: Provided that where the landlord and the tenant fail to present jointly a copy of the tenancy agreement under this sub-section, such landlord and tenant shall separately file the particulars about such tenancy with the Controller concerned in such form and in such manner as may be prescribed. [Note: this Library could not source verbatim text for the Act\'s later eviction/recovery-of-possession provisions (around section 13 onward) despite extensive attempts — the India Code bitstream link for this Act now returns 404, and several mirror sites (CaseMine, indiankanoon) block automated access. Secondary sources describe the eviction grounds as including breach of tenancy conditions, unauthorised subletting, an employee-tenant\'s continued occupation after employment ends, and two months\' rent arrears — treat this as a paraphrase, not a verified quotation, until sourced directly.]',
+      },
+    ],
+  },
+  {
+    id: 'act-gangtok-rent-control-1956',
+    shortTitle: 'The Gangtok Rent Control and Eviction Act, 1956',
+    year: 1956,
+    actNumber: 'Act I of 1956',
+    sourceUrl: 'https://hcs.gov.in/hcs/sites/default/files/rules/sikkimcodevol2.pdf',
+    jurisdiction: { type: 'state', state: 'Sikkim' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, commencement and extent',
+        text: '(i) Short Title: This Act shall be called the Gangtok Rent Control Eviction Act I of 1956. (ii) Commencement: It shall come into force from the date of its publication in the Sikkim Darbar Gazette. (iii) Extent: It shall extend to all Buildings & Construction situated within the area of Gangtok Bazar, which may be fixed from time to time by the Sikkim Darbar. [Note: received the assent of His Highness the Maharaja of Sikkim on 31 May 1956, predating Sikkim\'s 1975 merger with India — sourced from the Sikkim High Court\'s own compiled "Sikkim Code" (Volume II), where this short-title/commencement/extent clause is laid out after the Act\'s substantive sections in the original typeset, an unusual but faithfully-reproduced ordering. This Act is deliberately narrow — confined to the Gangtok Bazar area only — and is the sole dedicated rent-control legislation this Library could confirm exists for Sikkim; the Sikkim High Court has itself publicly observed that the State otherwise lacks comprehensive rent-control legislation.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Grounds for eviction',
+        text: 'A Landlord may not ordinarily eject any tenant. When, however, whole or part of the premises are required for the bonafide occupation of the landlord or his dependents or for thorough overhauling excluding addition and alterations, or when the rent in arrears amounts to four months\' rent or more, the landlord may evict the tenant on filing a suit of ejectment in the Court of the Chief Magistrate. The tenant so evicted shall, however, have the first right to re-occupy the premises after overhauling, on such enhanced rent as may be fixed by the Sikkim Darbar before it is let out to any other tenant.',
+      },
+    ],
+  },
+  {
+    id: 'act-jk-houses-shops-rent-1966-ladakh',
+    shortTitle: 'The Jammu and Kashmir Houses and Shops Rent Control Act, 1966 (as applicable to Ladakh)',
+    year: 1966,
+    actNumber: 'J&K Act No. XXXIX of 1966',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/jammu-and-kashmir/1966/1966J&K39.pdf',
+    jurisdiction: { type: 'state', state: 'Ladakh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title and extent',
+        text: '(1) This Act may be called the Jammu and Kashmir Houses and Shops Rent Control Act, 1966. (2) It shall extend to the Municipalities of Jammu and Srinagar and to such other urban areas to which the Jammu and Kashmir Houses and Shops Rent Control Act, Samvat 2009 extended at its expiration: Provided that the Government may, by notification, extend this Act or any specified part thereof to any other urban area specified in the notification. [Note: this Library\'s Jammu and Kashmir entry for this Act flags the same unresolved question noted in its Stamp Act, 1977 entry — whether this Act, or the central Indian framework, currently governs the Union territory of Ladakh (carved out of the former State in 2019). No specific resolution for rent-control (as distinct from stamp duty, where a 2022 rate-unification was found) could be confirmed; secondary sources referencing Ladakh rent agreements continue to describe this Act\'s framework (a Controller, "fair rent" determination) as applicable. Treated here as the best-supported current position, not a certainty — verify with a Ladakh-based advocate before relying on it.]',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Protection of a tenant against eviction',
+        text: '(1) Notwithstanding anything to the contrary in any other Act or law, no order or decree for the recovery of possession of any house or shop shall be made by any Court in favour of the landlord against a tenant, including a tenant whose lease has expired: Provided that nothing in this sub-section shall apply to any suit for decree for such recovery of possession— (a) against a tenant who has transferred his tenancy right in whole or in part with possession otherwise than by sub-lease; (b) against such transferee; (c) against a tenant who has sub-let the whole or a major portion of the house or shop for more than seven consecutive months: Provided that if a tenant, who has sub-let a major portion of the house or shop, agrees to possess as a tenant the portion not sub-let on payment of rent fixed by the Court, the Court shall pass a decree for ejectment from only the portion sub-let and fix proportionately fair rent for the portion kept in his possession: Provided further that no order or decree for recovery of possession shall be made in favour of the landlord if the tenant has sub-let the house or shop or portion thereof with the written consent of the owner.',
+      },
+    ],
+  },
+  {
+    id: 'act-andaman-nicobar-tenancy-2023',
+    shortTitle: 'The Andaman and Nicobar Islands Tenancy Regulation, 2023',
+    year: 2023,
+    actNumber: 'No. 2 of 2023',
+    sourceUrl: 'https://egazette.gov.in/WriteReadData/2023/250253.pdf',
+    jurisdiction: { type: 'state', state: 'Andaman and Nicobar Islands' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Andaman and Nicobar Islands Tenancy Regulation, 2023. (2) It extends to the whole of the Union territory of Andaman and Nicobar Islands. (3) It shall come into force on such date as the Administrator may, by notification in the Official Gazette, appoint and different dates may be appointed for different provisions of this Regulation and any reference in any such provision to the commencement of this Regulation shall be construed as a reference to the coming into force of that provision. [Note: promulgated by the President under Article 240 of the Constitution on 24 November 2023, alongside identically-structured Tenancy Regulations for Lakshadweep and for Dadra and Nagar Haveli and Daman and Diu (both also in this Library) — all three follow the Model Tenancy Act, 2021 framework (a Rent Authority, Rent Court and Rent Tribunal structure) and largely share operative text differing only in the territory named. This Regulation supersedes any earlier rent-control regime for the territory.]',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Eviction and recovery of possession of premises by landlord',
+        text: '(1) A tenant shall not be evicted during the continuance of tenancy agreement unless otherwise agreed to in writing by the landlord and tenant, except in accordance with the provisions of sub-section (2) or in accordance with the provisions of section 22. (2) The Rent Court may, on an application made to it by the landlord in such manner as may be prescribed, make an order for eviction and recovery of possession of the premises on one or more of the following grounds, namely:— (a) that the tenant does not agree to pay the rent payable under sub-section (1) of section 8; (b) that the tenant has not paid the arrears of rent and other charges payable in full as specified in sub-section (1) of section 13 for two consecutive months, including interest for delayed payment as may be specified in the tenancy agreement within a period of one month from the date of service of notice of demand, for payment of such arrears of rent and other charges payable to the landlord, in the manner provided in sub-section (4) of section 106 of the Transfer of Property Act, 1882; (c) that the tenant has, after the commencement of this Regulation, parted with the possession of whole or any part of the premises without obtaining the written consent of the landlord; (d) that the tenant has continued to misuse the premises even after receipt of notice from the landlord to desist from such misuse; (e) where it is necessary for the landlord to carry out any repair or construction or rebuilding or addition or alteration or demolition in respect of the premises or any part thereof, which is not possible to be carried out without the premises being vacated: Provided that after such repair, construction, rebuilding, addition or alteration, the tenant may be allowed to reoccupy the premises only when it has been mutually agreed to between the landlord and the tenant and a new tenancy agreement has been submitted with the Rent Authority and if the term of such agreement exceeds eleven months, then such agreement shall be registered under the provisions of the Registration Act, 1908.',
+      },
+    ],
+  },
+  {
+    id: 'act-lakshadweep-tenancy-2023',
+    shortTitle: 'The Lakshadweep Tenancy Regulation, 2023',
+    year: 2023,
+    actNumber: 'No. 4 of 2023',
+    sourceUrl: 'https://www.ricago.com/assets/front/base/file/file_management/973.pdf',
+    jurisdiction: { type: 'state', state: 'Lakshadweep' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Lakshadweep Tenancy Regulation, 2023. (2) It extends to the whole of the Union territory of Lakshadweep. (3) It shall come into force on such date as the Administrator may, by notification in the Official Gazette, appoint and different dates may be appointed for different provisions of this Regulation and any reference in any such provision to the commencement of this Regulation shall be construed as a reference to the coming into force of that provision. [Note: promulgated by the President under Article 240 of the Constitution on 24 November 2023, alongside identically-structured Tenancy Regulations for the Andaman and Nicobar Islands and for Dadra and Nagar Haveli and Daman and Diu (both also in this Library) — all three follow the Model Tenancy Act, 2021 framework and share substantially identical operative text, differing only in the territory named.]',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Eviction and recovery of possession of premises by landlord',
+        text: '(1) A tenant shall not be evicted during the continuance of tenancy agreement unless otherwise agreed to in writing by the landlord and tenant, except in accordance with the provisions of sub-section (2) or in accordance with the provisions of section 22. (2) The Rent Court may, on an application made to it by the landlord in such manner as may be prescribed, make an order for eviction and recovery of possession of the premises on one or more of the following grounds, namely:— (a) that the tenant does not agree to pay the rent payable under sub-section (1) of section 8; (b) that the tenant has not paid the arrears of rent and other charges payable in full as specified in sub-section (1) of section 13 for two consecutive months, including interest for delayed payment as may be specified in the tenancy agreement within a period of one month from the date of service of notice of demand, for payment of such arrears of rent and other charges payable to the landlord, in the manner provided in sub-section (4) of section 106 of the Transfer of Property Act, 1882; (c) that the tenant has, after the commencement of this Regulation, parted with the possession of whole or any part of the premises without obtaining the written consent of the landlord; (d) that the tenant has continued to misuse the premises even after receipt of notice from the landlord to desist from such misuse; (e) where it is necessary for the landlord to carry out any repair or construction or rebuilding or addition or alteration or demolition in respect of the premises or any part thereof, which is not possible to be carried out without the premises being vacated: Provided that after such repair, construction, rebuilding, addition or alteration, the tenant may be allowed to reoccupy the premises only when it has been mutually agreed to between the landlord and the tenant and a new tenancy agreement has been submitted with the Rent Authority and if the term of such agreement exceeds eleven months, then such agreement shall be registered under the provisions of the Registration Act, 1908.',
+      },
+    ],
+  },
+  {
+    id: 'act-dnhdd-tenancy-2023',
+    shortTitle: 'The Dadra and Nagar Haveli and Daman and Diu Tenancy Regulation, 2023',
+    year: 2023,
+    actNumber: 'No. 3 of 2023',
+    sourceUrl: 'https://cdnbbsr.s3waas.gov.in/s380537a945c7aaa788ccfcdf1b99b5d8f/uploads/2023/10/202312151685199179.pdf',
+    jurisdiction: { type: 'state', state: 'Dadra and Nagar Haveli and Daman and Diu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Dadra and Nagar Haveli and Daman and Diu Tenancy Regulation, 2023. (2) It extends to the whole of the Union territory of Dadra and Nagar Haveli and Daman and Diu. (3) It shall come into force on such date as the Administrator may, by notification in the Official Gazette, appoint and different dates may be appointed for different provisions of this Regulation and any reference in any such provision to the commencement of this Regulation shall be construed as a reference to the coming into force of that provision. [Note: promulgated by the President under Article 240 of the Constitution on 24 November 2023, alongside identically-structured Tenancy Regulations for the Andaman and Nicobar Islands and for Lakshadweep (both also in this Library) — all three follow the Model Tenancy Act, 2021 framework and share substantially identical operative text, differing only in the territory named. Unlike this Library\'s separate Dadra and Nagar Haveli and Daman and Diu Stamp Act entries (which remain genuinely split between the two constituent territories\' own historical rate regimes even after their 2020 merger), this Tenancy Regulation applies uniformly across the whole merged Union Territory.]',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Eviction and recovery of possession of premises by landlord',
+        text: '(1) A tenant shall not be evicted during the continuance of tenancy agreement unless otherwise agreed to in writing by the landlord and tenant, except in accordance with the provisions of sub-section (2) or in accordance with the provisions of section 22. (2) The Rent Court may, on an application made to it by the landlord in such manner as may be prescribed, make an order for eviction and recovery of possession of the premises on one or more of the following grounds, namely:— (a) that the tenant does not agree to pay the rent payable under sub-section (1) of section 8; (b) that the tenant has not paid the arrears of rent and other charges payable in full as specified in sub-section (1) of section 13 for two consecutive months, including interest for delayed payment as may be specified in the tenancy agreement within a period of one month from the date of service of notice of demand, for payment of such arrears of rent and other charges payable to the landlord, in the manner provided in sub-section (4) of section 106 of the Transfer of Property Act, 1882; (c) that the tenant has, after the commencement of this Regulation, parted with the possession of whole or any part of the premises without obtaining the written consent of the landlord; (d) that the tenant has continued to misuse the premises even after receipt of notice from the landlord to desist from such misuse; (e) where it is necessary for the landlord to carry out any repair or construction or rebuilding or addition or alteration or demolition in respect of the premises or any part thereof, which is not possible to be carried out without the premises being vacated: Provided that after such repair, construction, rebuilding, addition or alteration, the tenant may be allowed to reoccupy the premises only when it has been mutually agreed to between the landlord and the tenant and a new tenancy agreement has been submitted with the Rent Authority and if the term of such agreement exceeds eleven months, then such agreement shall be registered under the provisions of the Registration Act, 1908.',
+      },
+    ],
+  },
+  {
+    id: 'act-andaman-nicobar-shops-establishments-2004',
+    shortTitle: 'The Andaman and Nicobar Islands Shops and Establishments Regulation, 2004',
+    year: 2004,
+    actNumber: 'No. 1 of 2004',
+    sourceUrl: 'https://thc.nic.in/Central%20Governmental%20Regulations/Andaman%20&%20Nicobar%20Islands%20Shops%20&%20Establishment%20Regulation%202004.pdf',
+    jurisdiction: { type: 'state', state: 'Andaman and Nicobar Islands' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Regulation may be called the Andaman and Nicobar Islands Shops and Establishments Regulation, 2004. (2) It extends to the whole of the Union territory of the Andaman and Nicobar Islands. (3) It shall come into force on such date as the Administrator may, by notification, appoint; and different dates may be appointed for different provisions of this Regulation and for different areas and any reference in any such provision to the commencement of this Regulation shall be construed as a reference to the coming into force of that provision. [Note: promulgated by the President under Article 240 of the Constitution on 12 February 2004 (No. 1 of 2004), sourced by this Library from a scanned Gazette copy hosted by the Tripura High Court (vision-OCR read from the document image) after India Code\'s own bitstream link and several other mirrors proved unfetchable — cross-check against a certified copy before relying on it for compliance purposes. Most recently amended by the Andaman and Nicobar Islands Shops and Establishments (Amendment) Regulation, 2025 (Notification No. 47, 19 November 2025, in force 21 November 2025), which made registration mandatory only for establishments employing twenty or more workers and removed the periodic registration-renewal requirement — the text below reflects the position before this 2025 amendment.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Registration of establishments',
+        text: '(1) The Administrator shall, by notification, appoint one or more Assistant Labour Commissioners to be the Registering Officers (hereafter in this Regulation referred to as the Registering Officers) for the purposes of registering the establishments and define their local limits of jurisdiction in that notification. (2) The employer of an establishment shall, within the period specified in sub-section (6), apply in the prescribed form to the Registering Officer for registration of the establishment together with such fees not exceeding the amount specified in column (3) of the Schedule which the Administrator may, from time to time, by order, determine. (3) Every application for registration under sub-section (2) shall contain— (a) the name of the establishment; (b) the name of the employer of the establishment and the manager thereof, if any; (c) the postal address of the establishment; (d) the category of the establishment, that is to say, whether it is a shop or a commercial establishment or any other category of establishment; (e) the number of employees working in the establishment; and (f) such other particulars as may be prescribed. (4) On receipt of the application and the requisite fees under sub-section (1), the Registering Officer shall, on being satisfied about correctness of the particulars contained therein, register the establishment and make the entries in the register of establishment in such manner as may be prescribed, and shall issue, in a prescribed form, a registration certificate to the employer. (5) Every employer shall display the registration certificate issued under sub-section (4) in a conspicuous place in the establishment. (6) Within thirty days from the date— (a) in the case of an establishment existing at the commencement of this Regulation, on which this Regulation comes into force; (b) in the case of an establishment established on or after the commencement of this Regulation, on which the establishment is established, the employer of the establishment shall apply under sub-section (2). (7) The registration certificate issued under sub-section (4) shall be valid for a period of one year from the date on which it is issued or renewed and the employer to whom such certificate is issued may, within thirty days immediately before the expiry of the validity of such certificate, apply to the Registering Officer in the prescribed form together with such fees not exceeding the amount specified in column (4) of the Schedule which the Administrator may, from time to time, by order, determine and the Registering Officer shall, on receipt of the application and the requisite fees, renew the registration certificate for a further period of one year at a time and for such purpose he shall record such renewal on the back of the certificate under his hand and seal.',
+      },
+    ],
+  },
+  {
+    id: 'act-jk-shops-establishments-1966-ladakh',
+    shortTitle: 'The Jammu and Kashmir Shops and Establishments Act, 1966 (as applicable to Ladakh)',
+    year: 1966,
+    actNumber: 'J&K Act (as amended by Act XI of 1970)',
+    sourceUrl: 'https://indiankanoon.org/doc/168704749/',
+    jurisdiction: { type: 'state', state: 'Ladakh' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Jammu and Kashmir Shops and Establishments Act, 1966. (2) It shall extend to the whole of the State. (3) It shall come into force on such date as the Government may by notification in the Government Gazette, appoint in this behalf and different dates may be appointed for different areas. [Enforced in the cities of certain towns of Jammu and Kashmir Provinces w.e.f. 15.11.1966 by SRO 445-A dated 15.11.1966, in Jammu Cantt. w.e.f. 1.8.1967 by SRO-290 dated 18.7.1967, and in Badami Bagh Cantt. w.e.f. 1.2.1970 by SRO-37 dated 24.1.1970.] [Note: this Act — distinct from the Jammu and Kashmir Houses and Shops Rent Control Act, 1966 (also in this Library) despite the similar year — pre-dates the 2019 reorganisation and, unlike the newer Jammu and Kashmir Shops and Establishments (Licensing, Regulation of Employment and Conditions of Service) Act, 2025 (also in this Library), which by its own section 1(2) extends only to "Union Territory of Jammu and Kashmir", was never replaced for Ladakh specifically. Whether it continues to govern Ladakh, or whether some other framework has since applied, does not appear to have been definitively resolved in any source this Library could find — the same open question already flagged in this Library\'s Ladakh Stamp Act and Ladakh Rent Control Act entries. Treated here as the best-supported current position pending clearer authority.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Registration of establishments',
+        text: '(1) Every establishment to which this Act applies shall be registered in accordance with the provisions this section. (2) Within thirty days from the date on which this Act applies to an establishment, its employer shall send to the Inspector of the area concerned a statement, in the prescribed form, together with such fees, as may be prescribed, containing— (a) the name of the employer and the manager, if any; (b) the postal address of the establishment; (c) the name, if any, of the establishment; (d) the category of the establishment, i.e., whether it is a shop, commercial establishment, residential hotel, restaurant, eating house, theatre, or other place of public amusement or entertainment; and (e) such other particulars as may be prescribed: Provided that where, before the commencement of the Jammu and Kashmir Shops and Establishment (Amendment) Act, 1970, any employer of an establishment as aforesaid could not send to the Inspector of the area concerned a statement in the prescribed form together with fees, within the time specified above, for the reason that rules prescribing the form and fee were not made, it shall be so sent within thirty days after such commencement. (3) On receipt of the statement and the fees, the Inspector shall, on being satisfied about the correctness of the statement, register the establishment in the register of establishments in such manner as may be prescribed and shall issue in the prescribed form, a registration certificate to the employer. The registration certificate shall be prominently displayed at the establishment.',
       },
     ],
   },
