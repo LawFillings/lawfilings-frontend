@@ -1,0 +1,101 @@
+.cl-page {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.cl-hero {
+  margin-bottom: var(--space-5);
+}
+
+.cl-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.cl-title {
+  font-size: 32px;
+  margin-bottom: var(--space-3);
+}
+
+.cl-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  margin: 0;
+  max-width: 68ch;
+}
+
+.cl-login-gate {
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.cl-form {
+  max-width: 480px;
+}
+
+.cl-select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.cl-portal-link {
+  display: inline-block;
+  font-size: 14px;
+  color: var(--accent-deep);
+  text-decoration: underline;
+}
+
+.cl-error {
+  color: var(--status-danger-text);
+  font-size: 14px;
+  margin: var(--space-3) 0 0;
+}
+
+.cl-result {
+  margin-top: var(--space-6);
+  border-top: 1px solid var(--line);
+  padding-top: var(--space-5);
+  max-width: 860px;
+}
+
+.cl-result-heading {
+  font-size: 18px;
+  margin: 0 0 var(--space-3);
+}
+
+.cl-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 14px;
+}
+
+.cl-table th,
+.cl-table td {
+  text-align: left;
+  padding: var(--space-2) var(--space-3);
+  border-bottom: 1px solid var(--line-soft);
+  vertical-align: top;
+}
+
+.cl-table th {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  color: var(--text-muted);
+}
+
+.cl-row-match {
+  background: var(--accent-tint);
+  font-weight: 600;
+}

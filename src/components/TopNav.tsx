@@ -12,6 +12,7 @@ interface Props {
   onOpenCaseLawSearch: () => void;
   onOpenCourtFeeCalculator: () => void;
   onOpenTranslateDocument: () => void;
+  onOpenCauseList: () => void;
   onOpenPricing: () => void;
   onOpenAbout: () => void;
   onOpenContact: () => void;
@@ -33,6 +34,7 @@ export function TopNav({
   onOpenCaseLawSearch,
   onOpenCourtFeeCalculator,
   onOpenTranslateDocument,
+  onOpenCauseList,
   onOpenPricing,
   onOpenAbout,
   onOpenContact,
@@ -85,6 +87,9 @@ export function TopNav({
         </button>
         <button className={linkClass('courtFeeCalculator')} onClick={onOpenCourtFeeCalculator}>
           {t.nav.courtFeeCalculator}
+        </button>
+        <button className={linkClass('causeList')} onClick={onOpenCauseList}>
+          Cause List
         </button>
         {user && (
           <button className={linkClass('myCases')} onClick={onOpenMyCases}>
