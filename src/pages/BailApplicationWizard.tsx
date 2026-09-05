@@ -3,7 +3,7 @@ import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
 import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, toThatClause } from '../lib/legalDocumentFormat';
-import { findBailCitations, buildCitationParagraphs } from '../lib/actReferenceMatcher';
+import { findBailCitations, buildCitationParagraphs, findBailCaseLaw, buildCaseLawParagraphs } from '../lib/actReferenceMatcher';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, bailTypeOptions, courtLevelOptions, bailGroundsOptions } from '../data/mockData';
 import { useAuth } from '../lib/auth';
@@ -37,6 +37,8 @@ interface SavedContent {
   firFacts: string;
   selectedGrounds: string[];
   additionalGrounds: string;
+  seekIoRestraint: boolean;
+  investigatingOfficerName: string;
   jurisdictionArea: string;
   advocateName: string;
   advocateAddress: string;
@@ -120,6 +122,8 @@ export function BailApplicationWizard({
   const [firFacts, setFirFacts] = useState(saved?.firFacts ?? '');
   const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
   const [additionalGrounds, setAdditionalGrounds] = useState(saved?.additionalGrounds ?? '');
+  const [seekIoRestraint, setSeekIoRestraint] = useState(saved?.seekIoRestraint ?? false);
+  const [investigatingOfficerName, setInvestigatingOfficerName] = useState(saved?.investigatingOfficerName ?? '');
   const [jurisdictionArea, setJurisdictionArea] = useState(saved?.jurisdictionArea ?? '');
   const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
   const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
@@ -191,6 +195,7 @@ export function BailApplicationWizard({
   const applicationTitle = bailType === 'anticipatory' ? 'Anticipatory Bail Application' : 'Bail Application';
   const caveat = getBailCaveat(bailType, courtLevel);
   const citations = findBailCitations(citationBailType);
+  const caseLawCitations = findBailCaseLaw(citationBailType);
 
   const handleSaveDraft = async () => {
     if (!user || !token) return;
@@ -210,6 +215,8 @@ export function BailApplicationWizard({
       firFacts,
       selectedGrounds,
       additionalGrounds,
+      seekIoRestraint,
+      investigatingOfficerName,
       jurisdictionArea,
       advocateName,
       advocateAddress,
@@ -252,6 +259,17 @@ export function BailApplicationWizard({
       : `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to release the Applicant on bail in connection with FIR No. ${
           firNumber || '[FIR No.]'
         }, on such terms and conditions as this Hon'ble Court may deem fit and proper.`;
+
+  // Optional, anticipatory-only: asks the Court to additionally restrain the Investigating
+  // Officer from coercive action and to direct compliance with the arrest-notice procedure —
+  // belt-and-suspenders relief on top of the core "release on bail if arrested" prayer above,
+  // since an anticipatory bail order doesn't itself prevent arrest from being attempted.
+  const ioRestraintPrayer =
+    bailType === 'anticipatory' && seekIoRestraint
+      ? `It is further prayed that, pending disposal of this application, the Investigating Officer${
+          investigatingOfficerName.trim() ? `, ${investigatingOfficerName.trim()},` : ''
+        } be restrained from taking any coercive action against the Applicant, and be directed to comply with the notice procedure under Section 35 of the Bharatiya Nagarik Suraksha Sanhita, 2023 before effecting any arrest.`
+      : null;
 
   const selectedGroundSentences = bailGroundsOptions
     .filter((g) => selectedGrounds.includes(g.id))
@@ -301,6 +319,9 @@ export function BailApplicationWizard({
     ...(citations.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citations) }]
       : []),
+    ...(caseLawCitations.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawCitations) }]
+      : []),
     {
       heading: 'Grounds for bail',
       paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs.map(toThatClause) : ['[Select grounds for bail]'],
@@ -313,7 +334,7 @@ export function BailApplicationWizard({
     },
     {
       heading: 'Prayer',
-      paragraphs: [prayerText],
+      paragraphs: ioRestraintPrayer ? [prayerText, ioRestraintPrayer] : [prayerText],
       incomplete: !firNumber && bailType !== 'anticipatory',
     },
     ...closingSections,
@@ -552,6 +573,32 @@ export function BailApplicationWizard({
                 placeholder="Add any other ground specific to this case"
               />
             </label>
+            {bailType === 'anticipatory' && (
+              <div style={{ marginTop: 'var(--space-4)' }}>
+                <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                  <input
+                    type="checkbox"
+                    checked={seekIoRestraint}
+                    onChange={(e) => setSeekIoRestraint(e.target.checked)}
+                  />
+                  <span>
+                    Also ask the Court to restrain the Investigating Officer from coercive action and to direct
+                    compliance with the Section 35 BNSS notice-before-arrest procedure
+                  </span>
+                </label>
+                {seekIoRestraint && (
+                  <label className="form-field" style={{ marginTop: 'var(--space-2)', maxWidth: 480 }}>
+                    <span>Name of Investigating Officer (optional)</span>
+                    <input
+                      type="text"
+                      value={investigatingOfficerName}
+                      onChange={(e) => setInvestigatingOfficerName(e.target.value)}
+                      placeholder="e.g. Inspector [Name], [Police Station]"
+                    />
+                  </label>
+                )}
+              </div>
+            )}
             <label className="form-field" style={{ marginTop: 'var(--space-4)', maxWidth: 480 }}>
               <span>Jurisdiction area (for the undertaking not to leave without permission)</span>
               <input

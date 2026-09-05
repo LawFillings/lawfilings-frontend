@@ -209,7 +209,11 @@ export interface CaseLawCitation {
   court: string;
   year: number;
   sourceUrl: string;
-  /** Why this judgment is being cited for this filing — kept short, printed alongside it. */
+  /** The holding itself, phrased to slot directly after "...held that " — lowercase unless it
+   * opens with a proper noun, no leading "Holds"/"Upholds" verb of its own. Used to build the
+   * "That the Hon'ble [Court] in [Case], [Citation], has held that [note]." pleading sentence that
+   * buildCaseLawParagraphs produces, matching the standard "That..." averment convention used
+   * throughout Indian pleadings (and this platform's other citation paragraphs). */
   note: string;
 }
 
@@ -228,7 +232,7 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       court: 'Supreme Court of India',
       year: 2000,
       sourceUrl: 'https://indiankanoon.org/doc/677551/',
-      note: 'Holds that the RDDBFI Act, 1993 gives the Tribunal exclusive jurisdiction over recovery of debts due to banks and financial institutions, overriding other fora.',
+      note: 'the RDDBFI Act, 1993 gives the Tribunal exclusive jurisdiction over recovery of debts due to banks and financial institutions, overriding other fora.',
     },
   ],
   'ct-drt-sa': [
@@ -238,7 +242,7 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       court: 'Supreme Court of India',
       year: 2004,
       sourceUrl: 'https://indiankanoon.org/doc/1059476/',
-      note: 'Upholds the constitutional validity of the SARFAESI Act, 2002 while striking down the requirement that a borrower deposit 75% of the claimed dues before a Section 17 application can be entertained.',
+      note: 'the SARFAESI Act, 2002 is constitutionally valid, save for the requirement that a borrower deposit 75% of the claimed dues before a Section 17 application can be entertained, which was struck down.',
     },
   ],
 };
@@ -249,9 +253,66 @@ export function findFixedCaseTypeCaseLaw(caseTypeId?: string | null): CaseLawCit
   return FIXED_CASE_TYPE_CASE_LAW[caseTypeId] ?? [];
 }
 
-/** Formats matched case law as citation paragraphs for a "Case law relied upon" draft section.
- * Same reasoning as buildCitationParagraphs above — the IndianKanoon source URL stays out of the
- * drafted text itself. */
+/** Formats matched case law as citation paragraphs for a "Case law relied upon" draft section, in
+ * the standard "That the Hon'ble [Court] in [Case], [Citation], held that ..." pleading-averment
+ * form — the same convention every other clause in a filed application follows — rather than a
+ * bare reference-list entry. The IndianKanoon source URL stays out of the drafted text itself,
+ * same reasoning as buildCitationParagraphs above. */
 export function buildCaseLawParagraphs(citations: CaseLawCitation[]): string[] {
-  return citations.map((c) => `${c.caseTitle}, ${c.citation} (${c.court}, ${c.year}) — ${c.note}`);
+  return citations.map((c) => `That the Hon'ble ${c.court} in ${c.caseTitle}, ${c.citation}, has held that ${c.note}`);
+}
+
+// Bail Application wizard only: same "one case type, citations vary by bailType" split as
+// BAIL_SECTIONS_BY_TYPE above, applied to case law instead of statute sections. Arnesh Kumar
+// (arrest-necessity guidelines under Section 41/41A CrPC, now Section 35 BNSS) is relevant to
+// both regular and anticipatory bail; the other three go specifically to the scope and duration
+// of anticipatory bail under Section 438 CrPC (now Section 482 BNSS), so they're anticipatory-only.
+// Each citation independently verified (case title + reported citation) against indiankanoon.org
+// before being added — same discipline as FIXED_CASE_TYPE_CASE_LAW above.
+const ARNESH_KUMAR: CaseLawCitation = {
+  caseTitle: 'Arnesh Kumar v. State of Bihar',
+  citation: '(2014) 8 SCC 273',
+  court: 'Supreme Court of India',
+  year: 2014,
+  sourceUrl: 'https://indiankanoon.org/doc/2982624/',
+  note: 'arrest must not be automatic or mechanical merely because an offence is registered; a police officer must be satisfied that arrest is necessary under Section 41 CrPC (now Section 35 BNSS), and record reasons before arresting.',
+};
+
+const BAIL_CASE_LAW_BY_TYPE: Record<'regular' | 'regular_sessions' | 'anticipatory', CaseLawCitation[]> = {
+  regular: [ARNESH_KUMAR],
+  regular_sessions: [ARNESH_KUMAR],
+  anticipatory: [
+    {
+      caseTitle: 'Gurbaksh Singh Sibbia v. State of Punjab',
+      citation: '(1980) 2 SCC 565',
+      court: 'Supreme Court of India',
+      year: 1980,
+      sourceUrl: 'https://indiankanoon.org/doc/1308768/',
+      note: 'Section 438 confers a wide discretion on the High Court and Court of Session to grant anticipatory bail, which courts may not narrow by reading in rigid conditions absent from the statute itself.',
+    },
+    {
+      caseTitle: 'Siddharam Satlingappa Mhetre v. State of Maharashtra',
+      citation: '(2011) 1 SCC 694',
+      court: 'Supreme Court of India',
+      year: 2011,
+      sourceUrl: 'https://indiankanoon.org/doc/1108032/',
+      note: 'anticipatory bail should not, as a rule, be limited to a fixed period, reaffirming the wide protective scope of Section 438.',
+    },
+    {
+      caseTitle: 'Sushila Aggarwal v. State (NCT of Delhi)',
+      citation: '(2020) 5 SCC 1',
+      court: 'Supreme Court of India',
+      year: 2020,
+      sourceUrl: 'https://indiankanoon.org/doc/123660783/',
+      note: 'anticipatory bail need not be time-bound and, absent special circumstances, may continue until the end of the trial.',
+    },
+    ARNESH_KUMAR,
+  ],
+};
+
+/** Returns the curated case-law citations matching which bail application (regular or
+ * anticipatory) the wizard has resolved to. */
+export function findBailCaseLaw(bailType: 'regular' | 'regular_sessions' | 'anticipatory' | null): CaseLawCitation[] {
+  if (!bailType) return [];
+  return BAIL_CASE_LAW_BY_TYPE[bailType];
 }

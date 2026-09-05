@@ -31,9 +31,17 @@ import type { UserRole } from '../types';
 // A precedent is only safe to cite in an exported filing once it's a real, sourced judgment —
 // the `precedents` table also holds inert "[PLACEHOLDER — UNVERIFIED]" rows seeded so the
 // panel-during-drafting feature could be built before every case type had real case law sourced.
-// Never cite one of those, even if it has slipped through to the panel.
+// Never cite one of those, even if it has slipped through to the panel. `court` and `summary` are
+// both required too — the drafted paragraph is a "That the Hon'ble [court] ... has held that
+// [summary]" pleading averment (see below), which needs both to form a real sentence.
 function isVerifiedPrecedent(p: PrecedentRecord): boolean {
-  return Boolean(p.citation) && Boolean(p.sourceUrl) && !p.caseTitle.startsWith('[PLACEHOLDER');
+  return (
+    Boolean(p.citation) &&
+    Boolean(p.court) &&
+    Boolean(p.summary) &&
+    Boolean(p.sourceUrl) &&
+    !p.caseTitle.startsWith('[PLACEHOLDER')
+  );
 }
 
 const STEPS = ['Dispute type', 'Forum', 'Location', 'Facts', 'Relief', 'Filing details', 'Documents', 'Preview'];
@@ -202,8 +210,11 @@ export function ConsumerComplaintWizard({
       ? [
           {
             heading: 'Case law relied upon',
-            paragraphs: verifiedPrecedents.map((p) =>
-              toThatClause(`${p.caseTitle}, ${p.citation} (${p.court}, ${p.year}). (Source: ${p.sourceUrl})`)
+            // Same "That the Hon'ble [Court] in [Case], [Citation], has held that [holding]."
+            // pleading-averment convention as buildCaseLawParagraphs (actReferenceMatcher.ts) —
+            // and, per that convention, the source URL stays out of the drafted text itself.
+            paragraphs: verifiedPrecedents.map(
+              (p) => `That the Hon'ble ${p.court} in ${p.caseTitle}, ${p.citation}, has held that ${p.summary}`
             ),
           },
         ]
