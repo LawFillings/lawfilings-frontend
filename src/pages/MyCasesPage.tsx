@@ -292,7 +292,7 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin }: Props) {
                       >
                         <td className="my-cases-type-cell" onClick={(e) => e.stopPropagation()}>
                           {c.hasDraft ? (
-                            c.caseTypeName ?? '—'
+                            c.customTypeLabel ?? c.caseTypeName ?? '—'
                           ) : customTypeEditingId === c.id ? (
                             <input
                               type="text"
