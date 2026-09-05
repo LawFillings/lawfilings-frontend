@@ -22,13 +22,11 @@ import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractAppealOrderFromText } from '../lib/documentExtractionClient';
-import type { CheckoutIntent } from './CheckoutScreen';
 import type { AppealGroup, UserRole } from '../types';
 
 interface Props {
   group: AppealGroup;
   onBack: () => void;
-  onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
 }
 
@@ -37,7 +35,7 @@ interface DocEntry {
   pageNo: string;
 }
 
-export function AppealWizard({ group, onBack, onOpenCheckout, onOpenPricing }: Props) {
+export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
   const { user, token } = useAuth();
   const [mode, setMode] = useState<UserRole>('advocate');
   const [resolvedId, setResolvedId] = useState<string | null>(null);

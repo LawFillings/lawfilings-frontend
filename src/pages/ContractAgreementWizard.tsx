@@ -10,7 +10,6 @@ import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
-import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
 const STEPS = ['Contract type', 'Parties', 'Key terms', 'Additional clauses', 'Execution details', 'Preview'];
@@ -98,7 +97,6 @@ interface SavedContent {
 
 interface Props {
   onBack: () => void;
-  onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
   /** Set when resuming an existing saved draft rather than starting a new one. */
   caseId?: string;
@@ -108,7 +106,6 @@ interface Props {
 
 export function ContractAgreementWizard({
   onBack,
-  onOpenCheckout,
   onOpenPricing,
   caseId: initialCaseId,
   draftId: initialDraftId,

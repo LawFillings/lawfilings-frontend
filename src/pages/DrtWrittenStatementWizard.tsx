@@ -24,7 +24,6 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractOaFromText } from '../lib/documentExtractionClient';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
-import type { CheckoutIntent } from './CheckoutScreen';
 import type { ParaResponse, UserRole } from '../types';
 
 // Bundled with an Index page first and an Affidavit page last, matching the convention
@@ -73,7 +72,6 @@ interface SavedContent {
 interface Props {
   onBack: () => void;
   onOpenCaseLawSearch?: () => void;
-  onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
   /** Set when resuming an existing saved draft rather than starting a new one. */
   caseId?: string;
@@ -84,7 +82,6 @@ interface Props {
 export function DrtWrittenStatementWizard({
   onBack,
   onOpenCaseLawSearch,
-  onOpenCheckout,
   onOpenPricing,
   caseId: initialCaseId,
   draftId: initialDraftId,

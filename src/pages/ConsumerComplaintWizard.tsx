@@ -25,7 +25,6 @@ import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
-import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
 // A precedent is only safe to cite in an exported filing once it's a real, sourced judgment —
@@ -79,7 +78,6 @@ interface SavedContent {
 interface Props {
   onBack: () => void;
   onOpenCaseLawSearch?: () => void;
-  onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
   /** Set when resuming an existing saved draft rather than starting a new one. */
   caseId?: string;
@@ -90,7 +88,6 @@ interface Props {
 export function ConsumerComplaintWizard({
   onBack,
   onOpenCaseLawSearch,
-  onOpenCheckout,
   onOpenPricing,
   caseId: initialCaseId,
   draftId: initialDraftId,

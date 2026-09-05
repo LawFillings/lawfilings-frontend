@@ -13,7 +13,6 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractFirFromText } from '../lib/documentExtractionClient';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
-import type { CheckoutIntent } from './CheckoutScreen';
 import type { UserRole } from '../types';
 
 const STEPS = ['Bail type', 'Court', 'Case & FIR details', 'Grounds for bail', 'Filing details', 'Documents (Index)', 'Preview'];
@@ -89,7 +88,6 @@ function bailTypeLabel(id: 'regular' | 'anticipatory', mode: UserRole): string {
 
 interface Props {
   onBack: () => void;
-  onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
   /** Set when resuming an existing saved draft rather than starting a new one. */
   caseId?: string;
@@ -99,7 +97,6 @@ interface Props {
 
 export function BailApplicationWizard({
   onBack,
-  onOpenCheckout,
   onOpenPricing,
   caseId: initialCaseId,
   draftId: initialDraftId,

@@ -20,7 +20,6 @@ import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
-import type { CheckoutIntent } from './CheckoutScreen';
 import type { CaseType, UserRole } from '../types';
 
 // The case types that reference an existing Tribunal ORDER, where uploading it can prefill the
@@ -34,7 +33,6 @@ const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
 interface Props {
   caseType: CaseType;
   onBack: () => void;
-  onOpenCheckout: (intent: CheckoutIntent) => void;
   onOpenPricing: () => void;
   /** Set when resuming an existing saved draft rather than starting a new one. */
   caseId?: string;
@@ -69,7 +67,6 @@ interface SavedContent {
 export function GenericCaseWizard({
   caseType,
   onBack,
-  onOpenCheckout,
   onOpenPricing,
   caseId: initialCaseId,
   draftId: initialDraftId,

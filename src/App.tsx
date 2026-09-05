@@ -135,7 +135,6 @@ function AppScreens() {
   const openPricingNav = () => navigate({ kind: 'pricing' });
   const openBillingNav = () => navigate({ kind: 'billing' });
   const openAdminGapsNav = () => navigate({ kind: 'adminGaps' });
-  const openCheckout = (intent: CheckoutIntent) => navigate({ kind: 'checkout', intent });
 
   function renderScreen() {
     if (screen.kind === 'landing') {
@@ -255,7 +254,6 @@ function AppScreens() {
         <AppealWizard
           group={screen.group}
           onBack={onBack}
-          onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
         />
       );
@@ -293,7 +291,6 @@ function AppScreens() {
         <DrtWrittenStatementWizard
           onBack={onBack}
           onOpenCaseLawSearch={openCaseLawSearchNav}
-          onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
           {...resumeProps}
         />
@@ -304,7 +301,6 @@ function AppScreens() {
         <ConsumerComplaintWizard
           onBack={onBack}
           onOpenCaseLawSearch={openCaseLawSearchNav}
-          onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
           {...resumeProps}
         />
@@ -312,21 +308,20 @@ function AppScreens() {
     }
     if (ct.id === 'ct-nclt-s9') {
       return (
-        <NcltSection9Wizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+        <NcltSection9Wizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-drt-sa') {
-      return <DrtSaWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
+      return <DrtSaWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-drt-oa') {
-      return <DrtOaWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
+      return <DrtOaWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
 
     if (ct.id === 'ct-dc-money-recovery') {
       return (
         <MoneyRecoverySuitWizard
           onBack={onBack}
-          onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
           onOpenLawLibrary={openLawLibraryNav}
           {...resumeProps}
@@ -334,29 +329,29 @@ function AppScreens() {
       );
     }
     if (ct.id === 'ct-dc-summary-suit') {
-      return <SummarySuitWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
+      return <SummarySuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-legal-notice') {
-      return <LegalNoticeWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
+      return <LegalNoticeWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-contract-agreement') {
       return (
-        <ContractAgreementWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+        <ContractAgreementWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-bail-application') {
       return (
-        <BailApplicationWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+        <BailApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-mediation-application') {
       return (
-        <MediationApplicationWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+        <MediationApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-ni-act-complaint') {
       return (
-        <NIActComplaintWizard onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />
+        <NIActComplaintWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 
@@ -365,14 +360,13 @@ function AppScreens() {
         <ExecutionWizard
           caseType={ct}
           onBack={onBack}
-          onOpenCheckout={openCheckout}
           onOpenPricing={openPricingNav}
           {...resumeProps}
         />
       );
     }
 
-    return <GenericCaseWizard caseType={ct} onBack={onBack} onOpenCheckout={openCheckout} onOpenPricing={openPricingNav} {...resumeProps} />;
+    return <GenericCaseWizard caseType={ct} onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
   }
 
   const closeMobileMenu = () => setIsMobileMenuOpen(false);
