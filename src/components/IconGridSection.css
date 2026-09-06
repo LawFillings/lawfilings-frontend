@@ -1,0 +1,102 @@
+/* Full-bleed band, same technique as HowItWorks — a light, greyish-tinted background so this
+   reads as the same family of section rather than a plain white card list. */
+.icon-grid-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: var(--accent-tint);
+  padding: var(--space-8) var(--space-5);
+}
+
+.icon-grid-section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.icon-grid-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 14px;
+  color: var(--accent-deep);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  margin: 0 0 var(--space-2);
+  text-align: center;
+}
+
+.icon-grid-title {
+  font-size: 30px;
+  margin: 0 0 var(--space-3);
+  text-align: center;
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.icon-grid-sub {
+  font-size: 16px;
+  color: var(--text-secondary);
+  line-height: 1.6;
+  text-align: center;
+  max-width: 64ch;
+  margin: 0 auto;
+}
+
+.icon-grid-flow {
+  display: grid;
+  grid-template-columns: repeat(var(--icon-grid-columns, 3), 1fr);
+  align-items: start;
+  gap: var(--space-6) var(--space-5);
+  margin: var(--space-8) 0 0;
+}
+
+.icon-grid-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.icon-grid-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 68px;
+  height: 68px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: var(--text-on-accent);
+  box-shadow: 0 4px 14px rgba(20, 39, 63, 0.25);
+  margin-bottom: var(--space-4);
+}
+
+.icon-grid-item-title {
+  font-family: var(--font-display);
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: 0 0 var(--space-2);
+}
+
+.icon-grid-item-body {
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.55;
+  margin: 0;
+}
+
+@media (max-width: 900px) {
+  .icon-grid-flow {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 480px) {
+  .icon-grid-flow {
+    grid-template-columns: 1fr;
+    justify-items: center;
+  }
+
+  .icon-grid-item {
+    max-width: 320px;
+  }
+}

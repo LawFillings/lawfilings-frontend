@@ -59,8 +59,8 @@ export const en = {
       sub: 'Every item here was checked against a primary source — the Act itself, a court judgment, or an official notification — not repeated from a secondary site.',
     },
     whyChooseUs: {
-      eyebrow: 'Why LawFilings',
-      title: 'Built to be checked, not just trusted',
+      eyebrow: 'LawFilings',
+      title: "Because it's built to be checked, not just trusted",
       sub: 'Every claim here is about something the platform actually does today — not a roadmap.',
       items: [
         {
@@ -96,8 +96,8 @@ export const en = {
       ],
     },
     whoItsFor: {
-      eyebrow: "Who it's for",
-      title: 'Built for who actually files these cases',
+      eyebrow: 'Built for',
+      title: 'Anyone who actually files these cases',
       sub: "Each card below is about a feature that exists today, not one we're planning.",
       items: [
         {
