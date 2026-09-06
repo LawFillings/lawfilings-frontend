@@ -63,6 +63,17 @@ export function TopNav({
           {t.nav.home}
         </button>
 
+        <button className="top-nav-link" onClick={onStartFiling}>
+          {t.nav.startAFiling}
+        </button>
+
+        <button className={linkClass('courtFeeCalculator')} onClick={onOpenCourtFeeCalculator}>
+          {t.nav.courtFeeCalculator}
+        </button>
+        <button className={linkClass('causeList')} onClick={onOpenCauseList}>
+          Cause List
+        </button>
+
         <div className="top-nav-item-dropdown">
           <button className={linkClass('lawLibrary')} onClick={onOpenLawLibrary}>
             {t.nav.actsAndRules}
@@ -84,12 +95,6 @@ export function TopNav({
 
         <button className={linkClass('caseLawSearch')} onClick={onOpenCaseLawSearch}>
           {t.nav.caseLaw}
-        </button>
-        <button className={linkClass('courtFeeCalculator')} onClick={onOpenCourtFeeCalculator}>
-          {t.nav.courtFeeCalculator}
-        </button>
-        <button className={linkClass('causeList')} onClick={onOpenCauseList}>
-          Cause List
         </button>
         {user && (
           <button className={linkClass('myCases')} onClick={onOpenMyCases}>
@@ -118,10 +123,6 @@ export function TopNav({
           </div>
         </div>
       </div>
-
-      <button className="top-nav-cta" onClick={onStartFiling}>
-        {t.nav.startAFiling}
-      </button>
     </nav>
   );
 }
