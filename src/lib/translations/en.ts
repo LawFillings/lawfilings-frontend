@@ -48,10 +48,10 @@ export const en = {
       browseActs: 'Browse Constitution & Key Statutes — free, no account',
     },
     actsSection: {
-      eyebrow: 'Free, always',
+      eyebrow: 'Curated from Primary sources',
       title: 'Constitution & Key Statutes',
       sub: 'The Constitution and the actual text of the Acts behind these case types — sourced directly from India Code, not summarised.',
-      browseAll: 'Browse Constitution & Key Statutes →',
+      browseAll: 'Browse Curated Primary Sources →',
     },
     news: {
       eyebrow: 'Law news',
@@ -89,9 +89,9 @@ export const en = {
           body: 'Estimate the ad valorem court fee for a suit in seconds, across every state and union territory we cover — sourced and dated.',
         },
         {
-          tag: 'हिन्दी + English',
-          title: 'The platform works in Hindi, not just English',
-          body: 'Wizards, Constitution & Key Statutes, and this site itself are available in both languages — not just a translated homepage.',
+          tag: '13 languages',
+          title: 'The platform works in 13 languages, not just English',
+          body: 'Wizards, Constitution & Key Statutes, and this site itself are available in all 13 — not just a translated homepage.',
         },
       ],
     },

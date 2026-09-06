@@ -1,4 +1,3 @@
-import { acts } from '../data/lawLibraryData';
 import { newsItems } from '../data/newsItems';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
@@ -215,17 +214,6 @@ export function LandingPage({
           <p className="landing-section-eyebrow">{t.landing.actsSection.eyebrow}</p>
           <h2 className="landing-section-title">{t.landing.actsSection.title}</h2>
           <p className="landing-section-sub">{t.landing.actsSection.sub}</p>
-          <div className="landing-act-grid">
-            {acts.map((act) => (
-              <button className="landing-act-card" key={act.id} onClick={onOpenLawLibrary}>
-                <span className="landing-card-media" aria-hidden="true" />
-                <span className="landing-act-tag">
-                  {act.jurisdiction.type === 'central' ? 'Central Act' : `State Act — ${act.jurisdiction.state}`}
-                </span>
-                <span className="landing-act-title">{act.shortTitle}</span>
-              </button>
-            ))}
-          </div>
           <button className="landing-cta-secondary" onClick={onOpenLawLibrary}>
             {t.landing.actsSection.browseAll}
           </button>
