@@ -6,6 +6,9 @@ import { ActReferencePanel } from '../components/ActReferencePanel';
 import { findRelevantActSections, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod, toThatClause } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, moneyRecoveryCauseOptions } from '../data/mockData';
@@ -33,6 +36,7 @@ const STEPS = [
   'Valuation & relief',
   'Filing details',
   'Documents',
+  'Judge style (optional)',
   'Preview',
 ];
 
@@ -114,6 +118,7 @@ export function SummarySuitWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const selectedState = districtCourtStates.find((s) => s.id === stateId);
   const districts = stateId ? districtCourtDistrictsByState[stateId] ?? [] : [];
@@ -186,9 +191,10 @@ export function SummarySuitWizard({
       heading: 'Nature of the written contract or instrument',
       paragraphs: [toThatClause(fillTemplate(clauseByCode('SS-02').bodyTemplate, { facts_narrative: factsNarrative }))],
       incomplete: !factsNarrative,
+      role: 'facts' as const,
     },
     ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Valuation',
@@ -525,6 +531,14 @@ export function SummarySuitWizard({
         )}
 
         {step === 8 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 9 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -555,7 +569,7 @@ export function SummarySuitWizard({
               title={selectedDistrict ? `Before the District Court, ${selectedDistrict.label}` : caseType.name}
               subtitle={`Summary Suit (Order XXXVII) — ${plaintiffName || '[Plaintiff]'} vs. ${defendantName || '[Defendant]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument title={`${caseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />

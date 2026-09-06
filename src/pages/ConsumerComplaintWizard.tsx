@@ -6,6 +6,9 @@ import { ThirdPartyNudge } from '../components/ThirdPartyNudge';
 import { PrecedentPanel } from '../components/PrecedentPanel';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import {
   buildCauseTitleHtml,
   buildVerificationSection,
@@ -43,7 +46,17 @@ function isVerifiedPrecedent(p: PrecedentRecord): boolean {
   );
 }
 
-const STEPS = ['Dispute type', 'Forum', 'Location', 'Facts', 'Relief', 'Filing details', 'Documents', 'Preview'];
+const STEPS = [
+  'Dispute type',
+  'Forum',
+  'Location',
+  'Facts',
+  'Relief',
+  'Filing details',
+  'Documents',
+  'Judge style (optional)',
+  'Preview',
+];
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-cc-complaint')!;
 const ccClauses = clauses.filter((c) => c.caseTypeId === 'ct-cc-complaint');
@@ -124,6 +137,7 @@ export function ConsumerComplaintWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const handleSaveDraft = async () => {
     if (!user || !token) return;
@@ -196,12 +210,13 @@ export function ConsumerComplaintWizard({
       paragraphs: [toThatClause(clauseByCode('CC-01').bodyTemplate)],
     },
     ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Statement of facts',
       paragraphs: [toThatClause(fillTemplate(clauseByCode('CC-02').bodyTemplate, { facts_narrative: facts }))],
       incomplete: !facts,
+      role: 'facts' as const,
     },
     ...(verifiedPrecedents.length > 0
       ? [
@@ -213,6 +228,7 @@ export function ConsumerComplaintWizard({
             paragraphs: verifiedPrecedents.map(
               (p) => `That the Hon'ble ${p.court} in ${p.caseTitle}, ${p.citation}, has held that ${p.summary}`
             ),
+            role: 'law' as const,
           },
         ]
       : []),
@@ -521,6 +537,14 @@ export function ConsumerComplaintWizard({
         )}
 
         {step === 7 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 8 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -551,7 +575,7 @@ export function ConsumerComplaintWizard({
               title={documentTitle}
               subtitle={`Complaint under Section 35, Consumer Protection Act, 2019 — ${complainantName || '[Complainant]'} vs. ${opponentName || '[Opposite Party]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument title="Complaint — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />

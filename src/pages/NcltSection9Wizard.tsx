@@ -4,6 +4,9 @@ import { EligibilityGates } from '../components/EligibilityGates';
 import { LocationSelector } from '../components/LocationSelector';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import {
   buildCauseTitleHtml,
   buildVerificationSection,
@@ -31,6 +34,7 @@ const STEPS = [
   'Documents checklist',
   'Filing details',
   'Index entries',
+  'Judge style (optional)',
   'Preview',
 ];
 
@@ -113,6 +117,7 @@ export function NcltSection9Wizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const handleSaveDraft = async () => {
     if (!user || !token) return;
@@ -187,9 +192,10 @@ export function NcltSection9Wizard({
         ),
       ],
       incomplete: !defaultAmount || !natureOfDebt,
+      role: 'facts' as const,
     },
     ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Affidavit',
@@ -468,6 +474,14 @@ export function NcltSection9Wizard({
         )}
 
         {step === 7 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 8 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -498,7 +512,7 @@ export function NcltSection9Wizard({
               title={selectedBench ? `Before the ${selectedBench.label}` : 'Before the National Company Law Tribunal'}
               subtitle={`Application under Section 9, IBC, 2016 — ${applicantName || '[Applicant]'} vs. ${companyName || '[Corporate Debtor]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument title={`${caseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />

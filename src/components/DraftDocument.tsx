@@ -47,6 +47,12 @@ export interface DraftSection {
   /** Centers just the section heading (e.g. "Verification") without affecting its body
    *  paragraphs, which stay left-aligned running prose. */
   headingAlign?: 'center';
+  /** Tags a section as reorderable by judge-style analysis (see src/lib/judgeStyle.ts) —
+   *  'facts'/'law'/'grounds' sections may be reordered relative to each other to match a judge's
+   *  observed preference. Leave unset for anything that must never move (Prayer, Undertaking,
+   *  Index, Verification, cause-title info, closing/signature blocks, etc.) — that's the default
+   *  for every section that doesn't explicitly opt in. */
+  role?: 'facts' | 'law' | 'grounds';
 }
 
 interface DraftDocumentProps {

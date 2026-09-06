@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance, forumTypeToFilingForum } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import {
   buildCauseTitleHtml,
   buildVerificationSection,
@@ -18,7 +21,14 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CaseType, UserRole } from '../types';
 
-const STEPS = ['Order details', 'Non-compliance', 'Filing details', 'Documents (Index)', 'Preview'];
+const STEPS = [
+  'Order details',
+  'Non-compliance',
+  'Filing details',
+  'Documents (Index)',
+  'Judge style (optional)',
+  'Preview',
+];
 
 interface DocEntry {
   particulars: string;
@@ -80,6 +90,7 @@ export function ExecutionWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
@@ -154,6 +165,7 @@ export function ExecutionWizard({
         ),
       ],
       incomplete: !orderDate || !reliefOrdered,
+      role: 'facts',
     },
     {
       heading: 'Non-compliance',
@@ -164,9 +176,10 @@ export function ExecutionWizard({
         ),
       ],
       incomplete: !nonComplianceDetails,
+      role: 'facts',
     },
     ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Prayer',
@@ -352,6 +365,14 @@ export function ExecutionWizard({
         )}
 
         {step === 4 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 5 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -382,7 +403,7 @@ export function ExecutionWizard({
               title={caseType.name}
               subtitle={`${caseType.governingLaw} — ${applicantName || '[Applicant]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument

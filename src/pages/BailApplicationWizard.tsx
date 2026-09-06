@@ -13,9 +13,21 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractFirFromText } from '../lib/documentExtractionClient';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const STEPS = ['Bail type', 'Court', 'Case & FIR details', 'Grounds for bail', 'Filing details', 'Documents (Index)', 'Preview'];
+const STEPS = [
+  'Bail type',
+  'Court',
+  'Case & FIR details',
+  'Grounds for bail',
+  'Filing details',
+  'Documents (Index)',
+  'Judge style (optional)',
+  'Preview',
+];
 
 interface DocEntry {
   particulars: string;
@@ -133,6 +145,7 @@ export function BailApplicationWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
   const [firExtractState, setFirExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
   const [firExtractError, setFirExtractError] = useState<string | null>(null);
   const firFileInputRef = useRef<HTMLInputElement>(null);
@@ -312,17 +325,19 @@ export function BailApplicationWizard({
       heading: 'Facts alleged in the FIR',
       paragraphs: [toThatClause(firFacts.trim() || '[Describe the facts/allegations mentioned in the FIR]')],
       incomplete: !firFacts.trim(),
+      role: 'facts',
     },
     ...(citations.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citations) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citations), role: 'law' as const }]
       : []),
     ...(caseLawCitations.length > 0
-      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawCitations) }]
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawCitations), role: 'law' as const }]
       : []),
     {
       heading: 'Grounds for bail',
       paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs.map(toThatClause) : ['[Select grounds for bail]'],
       incomplete: groundsParagraphs.length === 0,
+      role: 'grounds',
     },
     {
       heading: 'Undertaking',
@@ -696,6 +711,10 @@ export function BailApplicationWizard({
         )}
 
         {step === 6 && (
+          <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
+        )}
+
+        {step === 7 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -726,7 +745,7 @@ export function BailApplicationWizard({
               title={benchCity ? `Before the ${courtLevelOptions.find((o) => o.id === courtLevel)?.label ?? 'Court'}, ${benchCity}` : caseType.name}
               subtitle={`${applicationTitle} — ${applicantName || '[Applicant]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument

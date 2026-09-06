@@ -3,6 +3,9 @@ import { WizardShell } from '../components/WizardShell';
 import { DeadlineCalculator } from '../components/DeadlineCalculator';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance, forumTypeToFilingForum } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import {
   buildCauseTitleHtml,
   buildPrayerSection,
@@ -97,6 +100,7 @@ export function GenericCaseWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
   const updateDocumentEntry = (i: number, patch: Partial<DocEntry>) =>
@@ -153,10 +157,19 @@ export function GenericCaseWizard({
   // Every case type routed through this shared wizard is filed with a tribunal or commission
   // (DRT, NCLT, Consumer Commission) — all bundle with an Index page first and an Affidavit page
   // last, matching the convention established for OA/SA.
-  const STEPS = ['Details', ...(hasDeadline ? ['Deadline'] : []), 'What you’re asking for', 'Filing details', 'Documents', 'Preview'];
+  const STEPS = [
+    'Details',
+    ...(hasDeadline ? ['Deadline'] : []),
+    'What you’re asking for',
+    'Filing details',
+    'Documents',
+    'Judge style (optional)',
+    'Preview',
+  ];
   const contentStepIndex = hasDeadline ? 2 : 1;
   const filingDetailsStepIndex = contentStepIndex + 1;
   const documentsStepIndex = filingDetailsStepIndex + 1;
+  const judgeStyleStepIndex = documentsStepIndex + 1;
   const previewStepIndex = STEPS.length - 1;
 
   const isOrderUpload = ORDER_UPLOAD_CASE_TYPE_IDS.has(caseType.id);
@@ -205,6 +218,7 @@ export function GenericCaseWizard({
     {
       paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs.map(toThatClause) : ['Details not yet entered.'],
       incomplete: !details,
+      role: 'facts',
     },
     buildPrayerSection(reliefSought, caseType.forumType),
     ...buildVerificationSection(applicantName),
@@ -468,6 +482,14 @@ export function GenericCaseWizard({
           </div>
         )}
 
+        {step === judgeStyleStepIndex && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
         {step === previewStepIndex && (
           <div>
             <h3 className="step-heading">Preview</h3>
@@ -497,7 +519,7 @@ export function GenericCaseWizard({
               title={caseType.name}
               subtitle={`${caseType.governingLaw} — ${applicantName || '[Applicant]'} vs. ${respondentName || '[Respondent]'}${parentCaseNumber ? ` — in ${parentCaseNumber}` : ''}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument title={`${caseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />

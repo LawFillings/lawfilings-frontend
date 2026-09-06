@@ -2,6 +2,9 @@ import { useState } from 'react';
 import { WizardShell } from '../components/WizardShell';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import { buildCauseTitleHtml, buildVerificationSection, buildDocumentListParagraphs, toThatClause } from '../lib/legalDocumentFormat';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { fillTemplate } from '../lib/template';
@@ -13,7 +16,15 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 
-const STEPS = ['Cheque & debt details', 'Dishonour & notice', 'Parties', 'Filing details', 'Documents (Index)', 'Preview'];
+const STEPS = [
+  'Cheque & debt details',
+  'Dishonour & notice',
+  'Parties',
+  'Filing details',
+  'Documents (Index)',
+  'Judge style (optional)',
+  'Preview',
+];
 
 interface DocEntry {
   particulars: string;
@@ -115,6 +126,7 @@ export function NIActComplaintWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const addDocumentEntry = () => setDocumentEntries((d) => [...d, { particulars: '', pageNo: '' }]);
   const removeDocumentEntry = (i: number) => setDocumentEntries((d) => d.filter((_, idx) => idx !== i));
@@ -239,9 +251,10 @@ export function NIActComplaintWizard({
         toThatClause(clauseByCode('NC-04').bodyTemplate),
       ],
       incomplete: !debtNature || !chequeNumber || !chequeDate || !dishonourDate || !noticeDate,
+      role: 'facts' as const,
     },
     ...(citations.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citations) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citations), role: 'law' as const }]
       : []),
     {
       heading: 'Jurisdiction',
@@ -545,6 +558,14 @@ export function NIActComplaintWizard({
         )}
 
         {step === 5 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 6 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -575,7 +596,7 @@ export function NIActComplaintWizard({
               title={courtCity ? `In the Court of the Judicial Magistrate First Class, ${courtCity}` : caseType.name}
               subtitle={`${complainantName || '[Complainant]'} vs ${accusedName || '[Accused]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument

@@ -5,6 +5,9 @@ import { ActReferencePanel } from '../components/ActReferencePanel';
 import { findRelevantActSections, findCommercialCourtsActCitations, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod, toThatClause } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, moneyRecoveryCauseOptions } from '../data/mockData';
@@ -31,6 +34,7 @@ const STEPS = [
   'Valuation & relief',
   'Filing details',
   'Documents',
+  'Judge style (optional)',
   'Preview',
 ];
 
@@ -140,6 +144,7 @@ export function MoneyRecoverySuitWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const selectedState = districtCourtStates.find((s) => s.id === stateId);
   const districts = stateId ? districtCourtDistrictsByState[stateId] ?? [] : [];
@@ -235,9 +240,10 @@ export function MoneyRecoverySuitWizard({
       heading: 'Cause of action',
       paragraphs: [toThatClause(fillTemplate(clauseByCode('MRS-02').bodyTemplate, { facts_narrative: factsNarrative }))],
       incomplete: !factsNarrative,
+      role: 'facts' as const,
     },
     ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Valuation',
@@ -649,6 +655,14 @@ export function MoneyRecoverySuitWizard({
         )}
 
         {step === 7 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 8 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -687,7 +701,7 @@ export function MoneyRecoverySuitWizard({
               }
               subtitle={`${effectiveApplicationTitle} — ${plaintiffName || '[Plaintiff]'} vs. ${defendantName || '[Defendant]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument

@@ -6,6 +6,9 @@ import { ParaWiseReply } from '../components/ParaWiseReply';
 import { PrecedentPanel } from '../components/PrecedentPanel';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import {
   buildCauseTitleHtml,
   buildFiledByBlock,
@@ -37,6 +40,7 @@ const STEPS = [
   'Grounds of defence',
   'Filing details',
   'Documents',
+  'Judge style (optional)',
   'Preview',
 ];
 
@@ -125,6 +129,7 @@ export function DrtWrittenStatementWizard({
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
   const selectedBench = drtBenchLocations.find((b) => b.id === benchId);
 
@@ -241,6 +246,7 @@ export function DrtWrittenStatementWizard({
         const verb = r === 'Admit' ? 'admits' : r === 'Deny' ? 'denies' : r === 'No knowledge' ? 'has no knowledge of' : '[not yet answered]';
         return toThatClause(`In reply to the averment that ${a.text.toLowerCase()}, the Defendant ${verb} the same.`);
       }),
+      role: 'facts',
     },
     {
       heading: 'Grounds of defence',
@@ -252,6 +258,7 @@ export function DrtWrittenStatementWizard({
         ),
       ],
       incomplete: selectedGrounds.length === 0,
+      role: 'grounds',
     },
     {
       heading: 'Verification',
@@ -556,6 +563,14 @@ export function DrtWrittenStatementWizard({
         )}
 
         {step === 7 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
+        {step === 8 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {windowClosed ? (
@@ -596,7 +611,7 @@ export function DrtWrittenStatementWizard({
                   title={selectedBench ? `Before the ${selectedBench.label}` : 'Before the Debts Recovery Tribunal'}
                   subtitle={`Written Statement of the Defendant in OA No. ${oaNumber || '[OA number]'} — ${bankName || '[Applicant]'} vs. ${defendantName || '[Defendant]'}`}
                   causeTitleHtml={causeTitleHtml}
-                  sections={draftSections}
+                  sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
                 />
                 <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
                 <DraftDocument title="Written Statement — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />

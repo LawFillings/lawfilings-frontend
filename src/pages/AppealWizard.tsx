@@ -5,6 +5,9 @@ import { DeadlineCalculator } from '../components/DeadlineCalculator';
 import { DepositCalculator } from '../components/DepositCalculator';
 import { DraftDocument, type DraftSection } from '../components/DraftDocument';
 import { FilingGuidance, forumTypeToFilingForum } from '../components/FilingGuidance';
+import { JudgeStyleStep } from '../components/JudgeStyleStep';
+import { applyJudgeStyleToSections } from '../lib/judgeStyle';
+import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import {
   buildCauseTitleHtml,
   buildVerificationSection,
@@ -62,6 +65,7 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
   const [draftId, setDraftId] = useState<string | null>(null);
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [paywall, setPaywall] = useState(false);
+  const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
   const [orderExtractState, setOrderExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
   const [orderExtractError, setOrderExtractError] = useState<string | null>(null);
   const orderFileInputRef = useRef<HTMLInputElement>(null);
@@ -129,11 +133,20 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
   const hasDeposit = !!resolvedCaseType.deposit;
   // Every appeal filed through this wizard goes to a tribunal (DRT, DRAT, or NCLAT) — all bundle
   // with an Index page first and an Affidavit page last, matching the OA/SA convention.
-  const STEPS = ['Deadline', ...(hasDeposit ? ['Deposit'] : []), 'Grounds', 'Filing details', 'Documents', 'Preview'];
+  const STEPS = [
+    'Deadline',
+    ...(hasDeposit ? ['Deposit'] : []),
+    'Grounds',
+    'Filing details',
+    'Documents',
+    'Judge style (optional)',
+    'Preview',
+  ];
   const depositStepIndex = hasDeposit ? 1 : -1;
   const groundsStepIndex = hasDeposit ? 2 : 1;
   const filingDetailsStepIndex = groundsStepIndex + 1;
   const documentsStepIndex = filingDetailsStepIndex + 1;
+  const judgeStyleStepIndex = documentsStepIndex + 1;
   const previewStepIndex = STEPS.length - 1;
 
   const handleSaveDraft = async () => {
@@ -183,9 +196,10 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
         ),
       ],
       incomplete: !groundsText,
+      role: 'grounds',
     },
     ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches) }]
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     ...(prayerClause
       ? [{ heading: 'Prayer', paragraphs: [fillTemplate(prayerClause.bodyTemplate, { order_date: orderDate })] }]
@@ -440,6 +454,14 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
           </div>
         )}
 
+        {step === judgeStyleStepIndex && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
+        )}
+
         {step === previewStepIndex && (
           <div>
             <h3 className="step-heading">Preview</h3>
@@ -471,7 +493,7 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
               title={resolvedCaseType.name}
               subtitle={`${resolvedCaseType.governingLaw} — ${appellantName || '[Appellant]'}`}
               causeTitleHtml={causeTitleHtml}
-              sections={draftSections}
+              sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument title={`${resolvedCaseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
