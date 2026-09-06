@@ -97,7 +97,7 @@ export const en = {
     },
     whoItsFor: {
       eyebrow: 'Built for',
-      title: 'Anyone who actually files these cases',
+      title: 'The one who actually files court cases',
       sub: "Each card below is about a feature that exists today, not one we're planning.",
       items: [
         {
