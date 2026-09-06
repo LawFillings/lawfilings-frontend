@@ -268,7 +268,7 @@ export function LandingPage({
           title={t.landing.news.title}
           sub={t.landing.news.sub}
           columns={2}
-          background="rgba(243, 227, 197, 0.85)"
+          background="rgba(231, 237, 244, 0.85)"
           items={newsItems.map((item, i) => ({
             icon: LAW_NEWS_ICONS[i],
             title: item.title,
