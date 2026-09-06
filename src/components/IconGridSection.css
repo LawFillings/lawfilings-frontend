@@ -4,7 +4,7 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: var(--accent-tint);
+  background: var(--icon-grid-bg, var(--accent-tint));
   padding: var(--space-8) var(--space-5);
 }
 

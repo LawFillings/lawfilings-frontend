@@ -16,6 +16,9 @@ interface Props {
   /** Desktop column count — the grid still collapses to 2 then 1 at the same breakpoints
    *  HowItWorks uses, so this only changes how wide the row is before that happens. */
   columns?: number;
+  /** Overrides the section's default tinted-blue background (var(--accent-tint)) — e.g. a
+   *  design-token color to alternate the band's tone against its neighbours. */
+  background?: string;
 }
 
 /**
@@ -24,9 +27,13 @@ interface Props {
  * without duplicating that CSS. HowItWorks itself is left as its own component/stylesheet rather
  * than migrated onto this, since it already works and isn't worth the regression risk.
  */
-export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3 }: Props) {
+export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3, background }: Props) {
   return (
-    <section className="icon-grid-section" id={id}>
+    <section
+      className="icon-grid-section"
+      id={id}
+      style={background ? ({ '--icon-grid-bg': background } as CSSProperties) : undefined}
+    >
       <div className="icon-grid-section-inner">
         <p className="icon-grid-eyebrow">{eyebrow}</p>
         <h2 className="icon-grid-title">{title}</h2>

@@ -186,6 +186,7 @@ export function LandingPage({
           title={t.landing.whyChooseUs.title}
           sub={t.landing.whyChooseUs.sub}
           columns={3}
+          background="rgba(243, 227, 197, 0.85)"
           items={t.landing.whyChooseUs.items.map((item, i) => ({
             icon: WHY_LAWFILINGS_ICONS[i],
             title: item.title,
@@ -223,20 +224,22 @@ export function LandingPage({
       )}
 
       {widgets.news && (
-        <section className="landing-section" id="news">
-          <p className="landing-section-eyebrow landing-section-eyebrow-centered">{t.landing.news.eyebrow}</p>
-          <h2 className="landing-section-title landing-section-title-centered">{t.landing.news.title}</h2>
-          <p className="landing-section-sub landing-section-sub-centered">{t.landing.news.sub}</p>
-          <div className="landing-news-grid">
-            {newsItems.map((item) => (
-              <div className="landing-news-card" key={item.id}>
-                <span className="landing-card-media" aria-hidden="true" />
-                <span className="landing-news-tag">{item.tag}</span>
-                <p className="landing-news-title">{item.title}</p>
-                <p className="landing-news-summary">{item.summary}</p>
-                <p className="landing-news-date">{item.date}</p>
-              </div>
-            ))}
+        <section className="landing-fullbleed-section" id="news">
+          <div className="landing-fullbleed-section-inner">
+            <p className="landing-section-eyebrow landing-section-eyebrow-centered">{t.landing.news.eyebrow}</p>
+            <h2 className="landing-section-title landing-section-title-centered">{t.landing.news.title}</h2>
+            <p className="landing-section-sub landing-section-sub-centered">{t.landing.news.sub}</p>
+            <div className="landing-news-grid">
+              {newsItems.map((item) => (
+                <div className="landing-news-card" key={item.id}>
+                  <span className="landing-card-media" aria-hidden="true" />
+                  <span className="landing-news-tag">{item.tag}</span>
+                  <p className="landing-news-title">{item.title}</p>
+                  <p className="landing-news-summary">{item.summary}</p>
+                  <p className="landing-news-date">{item.date}</p>
+                </div>
+              ))}
+            </div>
           </div>
         </section>
       )}

@@ -184,6 +184,25 @@
   justify-content: center;
 }
 
+/* Full-bleed band, same technique as IconGridSection/HowItWorks — used for sections that should
+   read as part of that same alternating-band rhythm down the page, without needing that
+   component's icon-grid item shape (e.g. Law News' own tag/title/summary/date cards). */
+.landing-fullbleed-section {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  /* Semi-transparent (not solid var(--paper)) so the fixed brand watermark behind the page still
+     shows through, same as it does on unstyled sections. */
+  background: rgba(243, 227, 197, 0.85);
+  padding: var(--space-8) var(--space-5);
+  border-top: 1px solid var(--line-soft);
+}
+
+.landing-fullbleed-section-inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
 .landing-card-media {
   display: block;
   height: 88px;
