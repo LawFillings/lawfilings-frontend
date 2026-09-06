@@ -159,6 +159,31 @@
   margin: 0 0 var(--space-6);
 }
 
+/* Centered variants — same idea as HowItWorks' own centered eyebrow/title, reused here for
+   sections that don't have a per-item icon grid of their own. */
+.landing-section-eyebrow-centered,
+.landing-section-title-centered,
+.landing-section-sub-centered {
+  text-align: center;
+}
+
+.landing-section-title-centered {
+  max-width: 640px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-section-sub-centered {
+  max-width: 64ch;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.landing-section-cta-centered {
+  display: flex;
+  justify-content: center;
+}
+
 .landing-card-media {
   display: block;
   height: 88px;

@@ -211,20 +211,22 @@ export function LandingPage({
 
       {widgets.lawLibraryTeaser && (
         <section className="landing-section" id="law-library">
-          <p className="landing-section-eyebrow">{t.landing.actsSection.eyebrow}</p>
-          <h2 className="landing-section-title">{t.landing.actsSection.title}</h2>
-          <p className="landing-section-sub">{t.landing.actsSection.sub}</p>
-          <button className="landing-cta-secondary" onClick={onOpenLawLibrary}>
-            {t.landing.actsSection.browseAll}
-          </button>
+          <p className="landing-section-eyebrow landing-section-eyebrow-centered">{t.landing.actsSection.eyebrow}</p>
+          <h2 className="landing-section-title landing-section-title-centered">{t.landing.actsSection.title}</h2>
+          <p className="landing-section-sub landing-section-sub-centered">{t.landing.actsSection.sub}</p>
+          <div className="landing-section-cta-centered">
+            <button className="landing-cta-secondary" onClick={onOpenLawLibrary}>
+              {t.landing.actsSection.browseAll}
+            </button>
+          </div>
         </section>
       )}
 
       {widgets.news && (
         <section className="landing-section" id="news">
-          <p className="landing-section-eyebrow">{t.landing.news.eyebrow}</p>
-          <h2 className="landing-section-title">{t.landing.news.title}</h2>
-          <p className="landing-section-sub">{t.landing.news.sub}</p>
+          <p className="landing-section-eyebrow landing-section-eyebrow-centered">{t.landing.news.eyebrow}</p>
+          <h2 className="landing-section-title landing-section-title-centered">{t.landing.news.title}</h2>
+          <p className="landing-section-sub landing-section-sub-centered">{t.landing.news.sub}</p>
           <div className="landing-news-grid">
             {newsItems.map((item) => (
               <div className="landing-news-card" key={item.id}>
