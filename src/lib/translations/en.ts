@@ -34,6 +34,7 @@ export const en = {
     openMenu: 'Open menu',
     closeMenu: 'Close menu',
     more: 'More',
+    legalTools: 'Legal Tools',
     accountMenu: 'Account menu',
   },
   landing: {

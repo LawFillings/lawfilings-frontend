@@ -36,6 +36,7 @@ export const te: Translations = {
     openMenu: 'మెనూ తెరవండి',
     closeMenu: 'మెనూ మూసివేయండి',
     more: 'మరిన్ని',
+    legalTools: 'న్యాయపరమైన సాధనాలు',
     accountMenu: 'ఖాతా మెనూ',
   },
   landing: {

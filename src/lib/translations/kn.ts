@@ -36,6 +36,7 @@ export const kn: Translations = {
     openMenu: 'ಮೆನು ತೆರೆಯಿರಿ',
     closeMenu: 'ಮೆನು ಮುಚ್ಚಿ',
     more: 'ಇನ್ನಷ್ಟು',
+    legalTools: 'ಕಾನೂನು ಸಾಧನಗಳು',
     accountMenu: 'ಖಾತೆ ಮೆನು',
   },
   landing: {

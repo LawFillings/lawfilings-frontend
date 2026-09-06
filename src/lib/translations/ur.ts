@@ -36,6 +36,7 @@ export const ur: Translations = {
     openMenu: 'مینو کھولیں',
     closeMenu: 'مینو بند کریں',
     more: 'مزید',
+    legalTools: 'قانونی آلات',
     accountMenu: 'اکاؤنٹ مینو',
   },
   landing: {

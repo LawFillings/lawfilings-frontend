@@ -36,6 +36,7 @@ export const pa: Translations = {
     openMenu: 'ਮੀਨੂ ਖੋਲ੍ਹੋ',
     closeMenu: 'ਮੀਨੂ ਬੰਦ ਕਰੋ',
     more: 'ਹੋਰ',
+    legalTools: 'ਕਾਨੂੰਨੀ ਸੰਦ',
     accountMenu: 'ਖਾਤਾ ਮੀਨੂ',
   },
   landing: {

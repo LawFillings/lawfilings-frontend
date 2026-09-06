@@ -36,6 +36,7 @@ export const bn: Translations = {
     openMenu: 'মেনু খুলুন',
     closeMenu: 'মেনু বন্ধ করুন',
     more: 'আরও',
+    legalTools: 'আইনি টুল',
     accountMenu: 'অ্যাকাউন্ট মেনু',
   },
   landing: {

@@ -36,6 +36,7 @@ export const gu: Translations = {
     openMenu: 'મેનૂ ખોલો',
     closeMenu: 'મેનૂ બંધ કરો',
     more: 'વધુ',
+    legalTools: 'કાનૂની સાધનો',
     accountMenu: 'ખાતા મેનૂ',
   },
   landing: {

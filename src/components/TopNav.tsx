@@ -53,7 +53,10 @@ export function TopNav({
     ['rules', t.lawLibrary.categoryRules],
   ];
 
-  const moreKinds = ['translateDocument', 'pricing', 'about', 'contact'];
+  const legalToolsKinds = ['courtFeeCalculator', 'translateDocument'];
+  const legalToolsActive = legalToolsKinds.includes(activeKind);
+
+  const moreKinds = ['pricing', 'about', 'contact'];
   const moreActive = moreKinds.includes(activeKind);
 
   return (
@@ -67,12 +70,24 @@ export function TopNav({
           {t.nav.startAFiling}
         </button>
 
-        <button className={linkClass('courtFeeCalculator')} onClick={onOpenCourtFeeCalculator}>
-          {t.nav.courtFeeCalculator}
-        </button>
         <button className={linkClass('causeList')} onClick={onOpenCauseList}>
           {t.nav.causeList}
         </button>
+
+        <div className="top-nav-item-dropdown">
+          <button type="button" className={`top-nav-link${legalToolsActive ? ' active' : ''}`}>
+            {t.nav.legalTools}
+            <span className="top-nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div className="top-nav-dropdown-menu">
+            <button type="button" className="top-nav-dropdown-item" onClick={onOpenCourtFeeCalculator}>
+              {t.nav.courtFeeCalculator}
+            </button>
+            <button type="button" className="top-nav-dropdown-item" onClick={onOpenTranslateDocument}>
+              {t.nav.translateDocument}
+            </button>
+          </div>
+        </div>
 
         <div className="top-nav-item-dropdown">
           <button className={linkClass('lawLibrary')} onClick={onOpenLawLibrary}>
@@ -108,9 +123,6 @@ export function TopNav({
             <span className="top-nav-caret" aria-hidden="true">▾</span>
           </button>
           <div className="top-nav-dropdown-menu top-nav-dropdown-menu-right">
-            <button type="button" className="top-nav-dropdown-item" onClick={onOpenTranslateDocument}>
-              {t.nav.translateDocument}
-            </button>
             <button type="button" className="top-nav-dropdown-item" onClick={onOpenPricing}>
               {t.nav.pricing}
             </button>

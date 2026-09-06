@@ -36,6 +36,7 @@ export const or: Translations = {
     openMenu: 'ମେନୁ ଖୋଲନ୍ତୁ',
     closeMenu: 'ମେନୁ ବନ୍ଦ କରନ୍ତୁ',
     more: 'ଅଧିକ',
+    legalTools: 'ଆଇନଗତ ଉପକରଣଗୁଡ଼ିକ',
     accountMenu: 'ଖାତା ମେନୁ',
   },
   landing: {

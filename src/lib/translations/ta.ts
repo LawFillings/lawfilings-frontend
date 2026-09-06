@@ -36,6 +36,7 @@ export const ta: Translations = {
     openMenu: 'பட்டியலைத் திற',
     closeMenu: 'பட்டியலை மூடு',
     more: 'மேலும்',
+    legalTools: 'சட்டக் கருவிகள்',
     accountMenu: 'கணக்கு பட்டியல்',
   },
   landing: {

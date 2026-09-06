@@ -36,6 +36,7 @@ export const ml: Translations = {
     openMenu: 'മെനു തുറക്കുക',
     closeMenu: 'മെനു അടയ്ക്കുക',
     more: 'കൂടുതൽ',
+    legalTools: 'നിയമ ഉപകരണങ്ങൾ',
     accountMenu: 'അക്കൗണ്ട് മെനു',
   },
   landing: {

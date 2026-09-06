@@ -36,6 +36,7 @@ export const mr: Translations = {
     openMenu: 'मेनू उघडा',
     closeMenu: 'मेनू बंद करा',
     more: 'अधिक',
+    legalTools: 'कायदेशीर साधने',
     accountMenu: 'खाते मेनू',
   },
   landing: {

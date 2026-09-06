@@ -36,6 +36,7 @@ export const as: Translations = {
     openMenu: 'মেনু খোলক',
     closeMenu: 'মেনু বন্ধ কৰক',
     more: 'অধিক',
+    legalTools: 'আইনী সঁজুলি',
     accountMenu: 'একাউণ্ট মেনু',
   },
   landing: {
