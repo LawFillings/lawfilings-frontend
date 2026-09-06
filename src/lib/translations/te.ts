@@ -18,6 +18,7 @@ export const te: Translations = {
     home: 'హోమ్',
     actsAndRules: 'రాజ్యాంగం మరియు ముఖ్య చట్టాలు',
     caseLaw: 'కోర్టు తీర్పులు',
+    causeList: 'కాజ్ లిస్ట్',
     search: 'శోధన',
     courtFeeCalculator: 'కోర్టు ఫీజు కాలిక్యులేటర్',
     translateDocument: 'ఒక పత్రాన్ని అనువదించండి',

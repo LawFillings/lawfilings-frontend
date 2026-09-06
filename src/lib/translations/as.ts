@@ -18,6 +18,7 @@ export const as: Translations = {
     home: 'হ’ম',
     actsAndRules: 'সংবিধান আৰু প্ৰধান আইন',
     caseLaw: 'আদালতৰ ৰায়',
+    causeList: 'কজ লিষ্ট',
     search: 'সন্ধান',
     courtFeeCalculator: 'ক’ৰ্ট ফি কেলকুলেটৰ',
     translateDocument: 'এটা নথি অনুবাদ কৰক',

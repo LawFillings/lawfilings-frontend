@@ -18,6 +18,7 @@ export const or: Translations = {
     home: 'ମୂଳପୃଷ୍ଠା',
     actsAndRules: 'ସମ୍ବିଧାନ ଏବଂ ପ୍ରମୁଖ ଆଇନ',
     caseLaw: 'ଅଦାଲତ ନିଷ୍ପତ୍ତି',
+    causeList: 'କଜ୍ ଲିଷ୍ଟ',
     search: 'ସନ୍ଧାନ',
     courtFeeCalculator: 'କୋର୍ଟ ଫି କାଲକୁଲେଟର',
     translateDocument: 'ଏକ ଦଲିଲ ଅନୁବାଦ କରନ୍ତୁ',

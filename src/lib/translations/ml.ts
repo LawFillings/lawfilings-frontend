@@ -18,6 +18,7 @@ export const ml: Translations = {
     home: 'ഹോം',
     actsAndRules: 'ഭരണഘടനയും പ്രധാന നിയമങ്ങളും',
     caseLaw: 'കോടതി വിധികൾ',
+    causeList: 'കോസ് ലിസ്റ്റ്',
     search: 'തിരയൽ',
     courtFeeCalculator: 'കോടതി ഫീ കാൽക്കുലേറ്റർ',
     translateDocument: 'ഒരു രേഖ വിവർത്തനം ചെയ്യുക',

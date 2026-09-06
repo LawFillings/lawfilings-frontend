@@ -18,6 +18,7 @@ export const mr: Translations = {
     home: 'होम',
     actsAndRules: 'संविधान आणि प्रमुख कायदे',
     caseLaw: 'न्यायालयीन निर्णय',
+    causeList: 'कॉज लिस्ट',
     search: 'शोध',
     courtFeeCalculator: 'कोर्ट फी कॅल्क्युलेटर',
     translateDocument: 'दस्तऐवजाचे भाषांतर करा',

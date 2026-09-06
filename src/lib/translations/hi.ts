@@ -18,6 +18,7 @@ export const hi: Translations = {
     home: 'होम',
     actsAndRules: 'संविधान और प्रमुख अधिनियम',
     caseLaw: 'न्यायिक निर्णय',
+    causeList: 'कॉज़ लिस्ट',
     search: 'खोजें',
     courtFeeCalculator: 'कोर्ट फीस कैलकुलेटर',
     translateDocument: 'दस्तावेज़ का अनुवाद करें',

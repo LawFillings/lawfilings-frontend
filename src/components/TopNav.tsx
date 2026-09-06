@@ -71,7 +71,7 @@ export function TopNav({
           {t.nav.courtFeeCalculator}
         </button>
         <button className={linkClass('causeList')} onClick={onOpenCauseList}>
-          Cause List
+          {t.nav.causeList}
         </button>
 
         <div className="top-nav-item-dropdown">

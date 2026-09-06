@@ -18,6 +18,7 @@ export const pa: Translations = {
     home: 'ਹੋਮ',
     actsAndRules: 'ਸੰਵਿਧਾਨ ਅਤੇ ਮੁੱਖ ਐਕਟ',
     caseLaw: 'ਅਦਾਲਤੀ ਫੈਸਲੇ',
+    causeList: 'ਕਾਜ਼ ਲਿਸਟ',
     search: 'ਖੋਜ',
     courtFeeCalculator: 'ਕੋਰਟ ਫੀਸ ਕੈਲਕੁਲੇਟਰ',
     translateDocument: 'ਦਸਤਾਵੇਜ਼ ਦਾ ਅਨੁਵਾਦ ਕਰੋ',

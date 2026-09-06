@@ -129,7 +129,7 @@ export function AppSidebar({
             {t.nav.translateDocument}
           </button>
           <button className="app-sidebar-link" onClick={go(onOpenCauseList)}>
-            Cause List
+            {t.nav.causeList}
           </button>
           <button className="app-sidebar-link" onClick={go(onOpenPricing)}>
             {t.nav.pricing}

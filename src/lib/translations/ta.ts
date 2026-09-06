@@ -18,6 +18,7 @@ export const ta: Translations = {
     home: 'முகப்பு',
     actsAndRules: 'அரசியலமைப்பு மற்றும் முக்கிய சட்டங்கள்',
     caseLaw: 'நீதிமன்ற தீர்ப்புகள்',
+    causeList: 'வழக்கு பட்டியல்',
     search: 'தேடல்',
     courtFeeCalculator: 'நீதிமன்ற கட்டண கணிப்பான்',
     translateDocument: 'ஒரு ஆவணத்தை மொழிபெயர்க்கவும்',

@@ -18,6 +18,7 @@ export const gu: Translations = {
     home: 'હોમ',
     actsAndRules: 'બંધારણ અને મુખ્ય ઍક્ટ',
     caseLaw: 'અદાલતી ચુકાદા',
+    causeList: 'કૉઝ લિસ્ટ',
     search: 'શોધ',
     courtFeeCalculator: 'કોર્ટ ફી કેલ્ક્યુલેટર',
     translateDocument: 'દસ્તાવેજનો અનુવાદ કરો',

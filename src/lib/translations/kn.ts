@@ -18,6 +18,7 @@ export const kn: Translations = {
     home: 'ಮುಖಪುಟ',
     actsAndRules: 'ಸಂವಿಧಾನ ಮತ್ತು ಪ್ರಮುಖ ಕಾಯಿದೆಗಳು',
     caseLaw: 'ನ್ಯಾಯಾಲಯದ ತೀರ್ಪುಗಳು',
+    causeList: 'ಕಾಸ್ ಲಿಸ್ಟ್',
     search: 'ಹುಡುಕಾಟ',
     courtFeeCalculator: 'ಕೋರ್ಟ್ ಫೀ ಕ್ಯಾಲ್ಕುಲೇಟರ್',
     translateDocument: 'ಒಂದು ದಾಖಲೆಯನ್ನು ಅನುವಾದಿಸಿ',

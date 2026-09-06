@@ -16,6 +16,7 @@ export const en = {
     home: 'Home',
     actsAndRules: 'Constitution & Key Statutes',
     caseLaw: 'Case Law',
+    causeList: 'Cause List',
     search: 'Search',
     courtFeeCalculator: 'Court Fee Calculator',
     translateDocument: 'Translate a Document',

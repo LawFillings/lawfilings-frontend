@@ -18,6 +18,7 @@ export const ur: Translations = {
     home: 'ہوم',
     actsAndRules: 'آئین اور اہم قوانین',
     caseLaw: 'عدالتی فیصلے',
+    causeList: 'کاز لسٹ',
     search: 'تلاش',
     courtFeeCalculator: 'کورٹ فیس کیلکولیٹر',
     translateDocument: 'دستاویز کا ترجمہ کریں',

@@ -18,6 +18,7 @@ export const bn: Translations = {
     home: 'হোম',
     actsAndRules: 'সংবিধান ও প্রধান আইন',
     caseLaw: 'আদালতের রায়',
+    causeList: 'কজ লিস্ট',
     search: 'অনুসন্ধান',
     courtFeeCalculator: 'কোর্ট ফি ক্যালকুলেটর',
     translateDocument: 'একটি নথি অনুবাদ করুন',
