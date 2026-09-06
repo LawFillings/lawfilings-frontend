@@ -22,6 +22,10 @@ interface Props {
   /** Overrides the section's default tinted-blue background (var(--accent-tint)) — e.g. a
    *  design-token color to alternate the band's tone against its neighbours. */
   background?: string;
+  /** Optional content rendered below the item grid, inside the same band — e.g. a short line of
+   *  outbound links. Kept generic rather than a dedicated "links" prop since only one section
+   *  needs this so far. */
+  footer?: ReactNode;
 }
 
 /**
@@ -30,7 +34,7 @@ interface Props {
  * without duplicating that CSS. HowItWorks itself is left as its own component/stylesheet rather
  * than migrated onto this, since it already works and isn't worth the regression risk.
  */
-export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3, background }: Props) {
+export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3, background, footer }: Props) {
   return (
     <section
       className="icon-grid-section"
@@ -52,6 +56,8 @@ export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3, b
             </div>
           ))}
         </div>
+
+        {footer && <div className="icon-grid-footer">{footer}</div>}
       </div>
     </section>
   );

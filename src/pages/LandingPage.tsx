@@ -1,4 +1,4 @@
-import { newsItems } from '../data/newsItems';
+import { newsItems, externalLawNewsSites } from '../data/newsItems';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
 import { UspSlider } from '../components/UspSlider';
@@ -275,6 +275,24 @@ export function LandingPage({
             body: item.summary,
             meta: item.date,
           }))}
+          footer={
+            <>
+              {t.landing.news.moreSourcesLabel}
+              <span className="icon-grid-footer-links">
+                {externalLawNewsSites.map((site) => (
+                  <a
+                    key={site.name}
+                    className="icon-grid-footer-link"
+                    href={site.url}
+                    target="_blank"
+                    rel="noopener noreferrer nofollow"
+                  >
+                    {site.name} ↗
+                  </a>
+                ))}
+              </span>
+            </>
+          }
         />
       )}
 

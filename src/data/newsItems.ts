@@ -44,3 +44,17 @@ export const newsItems: NewsItem[] = [
     tag: 'Constitution & Key Statutes',
   },
 ];
+
+export interface ExternalLawNewsSite {
+  name: string;
+  url: string;
+}
+
+// Independent legal journalism outlets, not affiliated with LawFilings — linked out for readers
+// who want broader day-to-day legal news beyond the verified items curated above. Each URL was
+// checked live before adding; re-verify before changing.
+export const externalLawNewsSites: ExternalLawNewsSite[] = [
+  { name: 'LiveLaw', url: 'https://www.livelaw.in/' },
+  { name: 'Bar & Bench', url: 'https://www.barandbench.com/' },
+  { name: 'SCC Online Blog', url: 'https://www.scconline.com/blog/' },
+];

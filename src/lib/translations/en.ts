@@ -58,6 +58,7 @@ export const en = {
       eyebrow: 'Law news',
       title: "What's actually changed, verified",
       sub: 'Every item here was checked against a primary source — the Act itself, a court judgment, or an official notification — not repeated from a secondary site.',
+      moreSourcesLabel: 'More legal news:',
     },
     whyChooseUs: {
       eyebrow: 'LawFilings',
