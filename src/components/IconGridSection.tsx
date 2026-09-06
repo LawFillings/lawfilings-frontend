@@ -5,6 +5,9 @@ export interface IconGridItem {
   icon: ReactNode;
   title: string;
   body: string;
+  /** Optional small muted caption below the body — e.g. a verification date/source note that
+   *  doesn't fit naturally into the body sentence itself. */
+  meta?: string;
 }
 
 interface Props {
@@ -45,6 +48,7 @@ export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3, b
               <span className="icon-grid-icon">{item.icon}</span>
               <p className="icon-grid-item-title">{item.title}</p>
               <p className="icon-grid-item-body">{item.body}</p>
+              {item.meta && <p className="icon-grid-item-meta">{item.meta}</p>}
             </div>
           ))}
         </div>

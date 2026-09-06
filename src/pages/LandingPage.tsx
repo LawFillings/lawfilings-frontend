@@ -104,6 +104,35 @@ function GraduationCapIcon() {
   );
 }
 
+function ClockIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3.5 2" />
+    </svg>
+  );
+}
+
+function ScaleIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3v18M7 21h10" />
+      <path d="M5 7h6M13 7h6" />
+      <path d="M5 7 2 13a3 3 0 0 0 6 0Z" />
+      <path d="M19 7 16 13a3 3 0 0 0 6 0Z" />
+    </svg>
+  );
+}
+
+function ShieldIcon() {
+  return (
+    <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
+      <path d="M12 3 4 6v6c0 4.5 3.4 7.6 8 9 4.6-1.4 8-4.5 8-9V6Z" />
+      <path d="m9 12 2 2 4-4" />
+    </svg>
+  );
+}
+
 const WHY_LAWFILINGS_ICONS = [
   <VerifiedDocIcon key="verified" />,
   <StackedDocsIcon key="stacked" />,
@@ -118,6 +147,15 @@ const WHO_ITS_FOR_ICONS = [
   <PersonIcon key="person" />,
   <BuildingIcon key="building" />,
   <GraduationCapIcon key="cap" />,
+];
+
+// One icon per newsItems entry (src/data/newsItems.ts), in the same order — kept in sync by hand
+// since there are only ever a handful of these verified items at a time.
+const LAW_NEWS_ICONS = [
+  <ClockIcon key="clock" />, // DRAT appeal deadline
+  <ScaleIcon key="scale" />, // Consumer Commission jurisdiction
+  <ShieldIcon key="shield" />, // DPDP Act timeline
+  <VerifiedDocIcon key="verified-news" />, // SARFAESI Act added
 ];
 
 interface Props {
@@ -224,24 +262,20 @@ export function LandingPage({
       )}
 
       {widgets.news && (
-        <section className="landing-fullbleed-section" id="news">
-          <div className="landing-fullbleed-section-inner">
-            <p className="landing-section-eyebrow landing-section-eyebrow-centered">{t.landing.news.eyebrow}</p>
-            <h2 className="landing-section-title landing-section-title-centered">{t.landing.news.title}</h2>
-            <p className="landing-section-sub landing-section-sub-centered">{t.landing.news.sub}</p>
-            <div className="landing-news-grid">
-              {newsItems.map((item) => (
-                <div className="landing-news-card" key={item.id}>
-                  <span className="landing-card-media" aria-hidden="true" />
-                  <span className="landing-news-tag">{item.tag}</span>
-                  <p className="landing-news-title">{item.title}</p>
-                  <p className="landing-news-summary">{item.summary}</p>
-                  <p className="landing-news-date">{item.date}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
+        <IconGridSection
+          id="news"
+          eyebrow={t.landing.news.eyebrow}
+          title={t.landing.news.title}
+          sub={t.landing.news.sub}
+          columns={2}
+          background="rgba(243, 227, 197, 0.85)"
+          items={newsItems.map((item, i) => ({
+            icon: LAW_NEWS_ICONS[i],
+            title: item.title,
+            body: item.summary,
+            meta: item.date,
+          }))}
+        />
       )}
 
       <footer className="landing-footer">
