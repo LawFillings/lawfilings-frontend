@@ -5508,6 +5508,66 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-karnataka-money-lenders-1961',
+    shortTitle: 'The Karnataka Money-Lenders Act, 1961',
+    year: 1961,
+    actNumber: 'Karnataka Act 12 of 1962',
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/karnataka/1962/Act12of1962KR.pdf',
+    jurisdiction: { type: 'state', state: 'Karnataka' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Karnataka Money-lenders Act, 1961. (2) It extends to the whole of the State of Karnataka. (3) It shall come into force on such date as the State Government may, by notification, appoint. [Note: brought into force on 1 April 1965 by notification. Originally enacted as the Mysore Money-Lenders Act, 1961, and later renamed for the State of Karnataka; India Code and other repositories now file it under this current short title.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "interest", "loan" and "money-lender"',
+        text: '(6) "interest" means the return to be made over and above what was actually lent, whether the same is charged or sought to be recovered specifically by way of interest or otherwise, but does not include any sum lawfully charged by a money-lender for or on account of costs, charges or expenses in accordance with the provisions of this Act, or any other law for the time being in force. (9) "loan" means an advance at interest whether of money or in kind, and includes any transaction which the Court finds in substance to be a loan, subject to specified exceptions (including deposits with banks/co-operative societies and loans advanced by Government or specified institutions). (10) "money-lender" means an individual, an undivided Hindu family, a company, or an unincorporated body of individuals, who or which carries on the business of money-lending in the State.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Money-lenders to obtain licence',
+        text: 'No person shall carry on the business of money-lending in the State except under and in accordance with the terms and conditions of a licence and, after the commencement of the Karnataka Money Lenders (Amendment) Act, 1985, except on payment of security deposit as provided in section 7A.',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Suits by money-lenders not holding licence',
+        text: '(1) After the expiry of six months from the date on which this Act comes into force, no Court shall pass a decree in favour of a money-lender in any suit to which this Act applies, filed by a money-lender, unless the Court is satisfied that at the time when the loan or any part thereof to which the suit relates was advanced, and on the date such suit was filed, the money-lender held a valid licence. (5) Nothing in this section shall affect—(a) suits in respect of loans advanced by a money-lender before the date on which this Act comes into force; (b) the powers of an official receiver, an administrator or a Court under the provisions of the Mysore Insolvency Act, 1925, or other corresponding law in force in any area of the State, or of a liquidator under the Companies Act, 1956, to realise the property of a money-lender. [Note: sub-sections (2)-(4) have since been repealed and are not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-tamil-nadu-money-lenders-1957',
+    shortTitle: 'The Tamil Nadu Money-Lenders Act, 1957',
+    year: 1957,
+    actNumber: 'Tamil Nadu Act 26 of 1957',
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/20473/1/1957tn26.pdf',
+    jurisdiction: { type: 'state', state: 'Tamil Nadu' },
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and commencement',
+        text: '(1) This Act may be called the Tamil Nadu Money-Lenders Act, 1957. (2) It extends to the whole of the State of Tamil Nadu. (3) It shall come into force in any area on such date as the State Government may, by notification, appoint, and different dates may be appointed for different areas and different provisions of this Act. [Note: originally enacted as the Madras Money-Lenders Act, 1957, renamed on Tamil Nadu\'s own renaming; India Code and other repositories now file it under this current short title.]',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "loan" and "money-lender"',
+        text: '"Money-lender" means a person whose main or subsidiary occupation is the business of advancing and realising loans, subject to specified exceptions (banks, co-operative societies, and other classes exempted by the State Government). "Loan" means an advance whether of money or in kind, at interest, and includes any transaction which the Court finds in substance to amount to such an advance, but does not include a deposit of money or other property in a Government Post Office Savings Bank, in a bank, in a company as defined in the Companies Act, 1956, or with a co-operative society.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Money-lender to obtain licence',
+        text: '(1) No person shall, on and after the date on which the provisions of this Act are brought into force in any area, carry on, or continue to carry on, business as a money-lender at any place in such area except under and in accordance with the terms of a licence. (2) Where a money-lender has more than one shop or place of business, whether in the same town or village or in different towns or villages, he shall obtain a separate licence in respect of each such shop or place of business. [Note: unlike several other states\' money-lending Acts in this Library (e.g. Karnataka, Maharashtra, West Bengal), this Act\'s arrangement of sections does not appear to contain a standalone provision barring a court from passing a decree in a suit brought by an unlicensed money-lender — section 17 instead makes carrying on business without a licence a criminal offence (fine/imprisonment), separate from the civil suit itself. Confirm this against a current bare Act before relying on it for how an unlicensed lender\'s civil suit is actually treated.]',
+      },
+      {
+        sectionNo: '20A',
+        heading: "Power of Court to limit interest recoverable",
+        text: "Provision under which the Court may, in a suit to which this Act applies, limit the interest recoverable by a money-lender notwithstanding the terms of the loan agreement — mirroring the interest-capping provisions found in other states' money-lending Acts in this Library. [Note: full sub-section text not located this pass — confirm exact wording against a current bare Act before citing.]",
+      },
+    ],
+  },
+  {
     id: 'act-gujarat-money-lenders-2011',
     shortTitle: 'The Gujarat Money-Lenders Act, 2011',
     year: 2011,

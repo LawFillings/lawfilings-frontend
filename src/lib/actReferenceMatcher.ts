@@ -34,6 +34,11 @@ const MONEY_LENDING_SECTION_BY_ACT_ID: Record<string, string> = {
   'act-maharashtra-money-lending-2014': '13',
   'act-bengal-money-lenders-1940': '13',
   'act-madhya-pradesh-money-lenders-1934': '11-H',
+  'act-karnataka-money-lenders-1961': '11',
+  // Tamil Nadu's Act has no standalone "bar on decree/suit without licence" provision like the
+  // other states above (confirmed against its own arrangement of sections) — section 3 (the
+  // licensing requirement itself) is the closest fit to what this map is for.
+  'act-tamil-nadu-money-lenders-1957': '3',
   'act-jk-money-lenders-2010': '12',
 };
 
