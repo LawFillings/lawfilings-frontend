@@ -101,8 +101,8 @@ const STEPS = [
   'Relief sought',
   'Filing details',
   'Documents (Index)',
-  'Judge style (optional)',
   'Preview',
+  'Judge style (optional)',
 ];
 
 export function TemporaryInjunctionWizard({
@@ -614,10 +614,6 @@ export function TemporaryInjunctionWizard({
         )}
 
         {step === 9 && (
-          <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
-        )}
-
-        {step === 10 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -652,7 +648,20 @@ export function TemporaryInjunctionWizard({
             <DraftDocument title="Temporary Injunction Application — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum={forumTypeToFilingForum(caseType.forumType)} contextLabel={filingPlace || undefined} />
+
+            <div className="deadline-card" style={{ marginTop: 'var(--space-6)' }}>
+              <p className="deadline-label">Want this matched to a specific judge's style?</p>
+              <p className="deadline-body">
+                This is the standard draft. If you'd like the sections above reordered to match how a particular
+                judge or bench is used to reading one, go to the next step and upload 1–3 of their judgments —
+                that's a paid, on-demand feature, not included by default.
+              </p>
+            </div>
           </div>
+        )}
+
+        {step === 10 && (
+          <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
         )}
       </WizardShell>
     </div>

@@ -155,6 +155,15 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 1' },
     { actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 2' },
   ],
+  // Suit for Permanent Injunction — Section 38 is the whole substantive relief; Section 36/37
+  // supply the "preventive relief"/"perpetual vs. temporary" framing the plaint's Jurisdiction
+  // paragraph draws on to distinguish this suit from an Order XXXIX interim application.
+  'ct-suit-permanent-injunction': [
+    { actId: 'act-specific-relief-1963', sectionNo: '37' },
+    { actId: 'act-specific-relief-1963', sectionNo: '38' },
+  ],
+  // Suit for Declaration — the entire filing is a Section 34 declaration suit.
+  'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
 };
 
 /** Returns the fixed Act-section citation for case types where the filing itself IS the

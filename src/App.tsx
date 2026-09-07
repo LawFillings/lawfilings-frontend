@@ -14,6 +14,8 @@ import { BailApplicationWizard } from './pages/BailApplicationWizard';
 import { ContestedDivorceWizard } from './pages/ContestedDivorceWizard';
 import { MutualConsentDivorceWizard } from './pages/MutualConsentDivorceWizard';
 import { TemporaryInjunctionWizard } from './pages/TemporaryInjunctionWizard';
+import { PermanentInjunctionSuitWizard } from './pages/PermanentInjunctionSuitWizard';
+import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -377,6 +379,16 @@ function AppScreens() {
     if (ct.id === 'ct-injunction-temporary') {
       return (
         <TemporaryInjunctionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-permanent-injunction') {
+      return (
+        <PermanentInjunctionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-declaration') {
+      return (
+        <DeclarationSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 

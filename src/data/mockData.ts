@@ -434,6 +434,26 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-suit-permanent-injunction',
+    forumType: 'district_court',
+    name: 'Suit for Permanent Injunction',
+    governingLaw: 'Specific Relief Act, 1963, Sections 36–38',
+    plainLanguageSummary:
+      "File this to permanently stop someone from doing something — encroaching on your property, repeating a breach, or interfering with a right of yours — where a one-time court order at the end of the case is what you need, not just an interim order while it's pending.",
+    applicantEligibility: 'any_plaintiff',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-suit-declaration',
+    forumType: 'district_court',
+    name: 'Suit for Declaration',
+    governingLaw: 'Specific Relief Act, 1963, Section 34',
+    plainLanguageSummary:
+      "File this to ask the Court to formally declare your legal title, status, or right where someone is denying it — for example, a declaration that you are the rightful owner of a property. If you can also ask for further relief (like possession), you generally must ask for it in the same suit.",
+    applicantEligibility: 'any_plaintiff',
+    filingCategory: 'original',
+  },
+  {
     id: 'ct-dc-ia-general',
     forumType: 'district_court',
     name: 'Interlocutory Application (IA) — general',

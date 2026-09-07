@@ -189,14 +189,14 @@ export function GenericCaseWizard({
     'What you’re asking for',
     'Filing details',
     'Documents',
-    'Judge style (optional)',
     'Preview',
+    'Judge style (optional)',
   ];
   const contentStepIndex = hasDeadline ? 2 : 1;
   const filingDetailsStepIndex = contentStepIndex + 1;
   const documentsStepIndex = filingDetailsStepIndex + 1;
-  const judgeStyleStepIndex = documentsStepIndex + 1;
-  const previewStepIndex = STEPS.length - 1;
+  const previewStepIndex = documentsStepIndex + 1;
+  const judgeStyleStepIndex = STEPS.length - 1;
 
   const isOrderUpload = ORDER_UPLOAD_CASE_TYPE_IDS.has(caseType.id);
   const isComplaintUpload = caseType.id === COMPLAINT_UPLOAD_CASE_TYPE_ID;
@@ -518,14 +518,6 @@ export function GenericCaseWizard({
           </div>
         )}
 
-        {step === judgeStyleStepIndex && (
-          <JudgeStyleStep
-            profile={judgeStyleProfile}
-            onProfileReady={setJudgeStyleProfile}
-            onOpenPricing={onOpenPricing}
-          />
-        )}
-
         {step === previewStepIndex && (
           <div>
             <h3 className="step-heading">Preview</h3>
@@ -561,7 +553,24 @@ export function GenericCaseWizard({
             <DraftDocument title={`${caseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum={forumTypeToFilingForum(caseType.forumType)} />
+
+            <div className="deadline-card" style={{ marginTop: 'var(--space-6)' }}>
+              <p className="deadline-label">Want this matched to a specific judge's style?</p>
+              <p className="deadline-body">
+                This is the standard draft. If you'd like the sections above reordered to match how a particular
+                judge or bench is used to reading one, go to the next step and upload 1–3 of their judgments —
+                that's a paid, on-demand feature, not included by default.
+              </p>
+            </div>
           </div>
+        )}
+
+        {step === judgeStyleStepIndex && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
         )}
       </WizardShell>
     </div>
