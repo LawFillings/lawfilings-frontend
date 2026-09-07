@@ -137,6 +137,17 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-ni-1881', sectionNo: '138' },
     { actId: 'act-ni-1881', sectionNo: '142' },
   ],
+  // Civil Appeal (First Appeal) — Section 96 CPC is the right of appeal itself; Order XLI Rule 1
+  // is the memorandum-of-appeal form every First Appeal is actually filed as.
+  'ct-civil-appeal-first': [
+    { actId: 'act-cpc-1908', sectionNo: '96' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XLI, Rule 1' },
+  ],
+  // Mutual Consent Divorce — the entire filing is a Section 13B petition.
+  'ct-divorce-mutual-consent': [{ actId: 'act-hindu-marriage-1955', sectionNo: '13B' }],
+  // Contested Divorce — Section 13 is the whole grounds-based petition; the wizard's own selected
+  // grounds narrow which sub-clause(s) actually apply, but the section itself is always relevant.
+  'ct-divorce-contested': [{ actId: 'act-hindu-marriage-1955', sectionNo: '13' }],
 };
 
 /** Returns the fixed Act-section citation for case types where the filing itself IS the
@@ -146,6 +157,22 @@ export function findFixedCaseTypeCitation(caseTypeId?: string | null): ActRefere
   const entries = FIXED_CASE_TYPE_CITATIONS[caseTypeId];
   if (!entries) return [];
   return entries.flatMap(({ actId, sectionNo }) => lookup(actId, sectionNo));
+}
+
+/** Divorce wizards (Mutual Consent and Contested) share the same three Hindu Marriage Act, 1955
+ *  ancillary-relief provisions — maintenance pendente lite (s.24), permanent alimony (s.25), and
+ *  custody of children (s.26) — cited only for whichever the petitioner actually checked, since
+ *  an uncited section stated as relied-upon would be a wrong-but-plausible citation. */
+export function findAncillaryReliefCitations(params: {
+  maintenancePendenteLite: boolean;
+  permanentAlimony: boolean;
+  custody: boolean;
+}): ActReferenceMatch[] {
+  const sections: string[] = [];
+  if (params.maintenancePendenteLite) sections.push('24');
+  if (params.permanentAlimony) sections.push('25');
+  if (params.custody) sections.push('26');
+  return sections.flatMap((sectionNo) => lookup('act-hindu-marriage-1955', sectionNo));
 }
 
 // Which Consumer Protection Act, 2019 jurisdiction section applies depends only on which
@@ -207,7 +234,11 @@ export function findBailCitations(bailType: 'regular' | 'regular_sessions' | 'an
 export function buildCitationParagraphs(matches: ActReferenceMatch[]): string[] {
   return matches.map(({ act, section }) => {
     const heading = section.heading.replace(/\.$/, '');
-    return `That the provisions of Section ${section.sectionNo} of ${act.shortTitle}, which deal with "${heading}", are applicable to the present case.`;
+    // A sectionNo like "Order XLI, Rule 1" already reads as a complete reference on its own —
+    // prefixing it with "Section" (as every plain numeric sectionNo needs) would read as "Section
+    // Order XLI, Rule 1", which isn't how anyone actually cites a CPC Order/Rule.
+    const reference = /^order\b/i.test(section.sectionNo) ? section.sectionNo : `Section ${section.sectionNo}`;
+    return `That the provisions of ${reference} of ${act.shortTitle}, which deal with "${heading}", are applicable to the present case.`;
   });
 }
 
@@ -251,6 +282,18 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2004,
       sourceUrl: 'https://indiankanoon.org/doc/1059476/',
       note: 'the SARFAESI Act, 2002 is constitutionally valid, save for the requirement that a borrower deposit 75% of the claimed dues before a Section 17 application can be entertained, which was struck down.',
+    },
+  ],
+  // Only relevant when the petitioners request waiver of Section 13B(2)'s six-month cooling-off
+  // period — the curator's note on that section already cites this case.
+  'ct-divorce-mutual-consent': [
+    {
+      caseTitle: 'Amardeep Singh v. Harveen Kaur',
+      citation: '(2017) 8 SCC 746',
+      court: 'Supreme Court of India',
+      year: 2017,
+      sourceUrl: 'https://indiankanoon.org/doc/79830357/',
+      note: 'the six-month minimum waiting period under section 13B(2) of the Hindu Marriage Act, 1955 is directory, not mandatory, and may be waived by the court in appropriate cases — e.g. where the parties have already been separated a long time and mediation/settlement efforts have genuinely failed.',
     },
   ],
 };

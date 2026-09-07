@@ -11,6 +11,8 @@ import { SummarySuitWizard } from './pages/SummarySuitWizard';
 import { LegalNoticeWizard } from './pages/LegalNoticeWizard';
 import { ContractAgreementWizard } from './pages/ContractAgreementWizard';
 import { BailApplicationWizard } from './pages/BailApplicationWizard';
+import { ContestedDivorceWizard } from './pages/ContestedDivorceWizard';
+import { MutualConsentDivorceWizard } from './pages/MutualConsentDivorceWizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -359,6 +361,16 @@ function AppScreens() {
     if (ct.id === 'ct-ni-act-complaint') {
       return (
         <NIActComplaintWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-divorce-contested') {
+      return (
+        <ContestedDivorceWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-divorce-mutual-consent') {
+      return (
+        <MutualConsentDivorceWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 

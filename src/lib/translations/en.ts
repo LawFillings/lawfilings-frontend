@@ -816,6 +816,34 @@ export const en = {
       portalLabel: 'eCourts e-filing portal',
       note: 'Local practice directions — working hours, required annexure format, number of copies — vary by district. Confirm with the specific court’s filing section before you go.',
     },
+    highCourt: {
+      heading: 'Filing at the High Court',
+      intro: 'this appeal is filed at the High Court registry, along with a certified copy of the decree and judgment being appealed.',
+      steps: [
+        'Prepare the prescribed number of copies of the memorandum of appeal, plus a certified copy of the decree and the judgment appealed from.',
+        'Pay the ad valorem court fee applicable on the value of the appeal — use the Court Fee Calculator on this platform to estimate it.',
+        'If filing beyond the 90-day limitation period, file the condonation-of-delay application (Order XLI Rule 3A) together with the appeal, not separately afterward.',
+        'File through the High Court’s own e-filing system where it has one, or its physical filing counter — this varies by High Court, so confirm which applies before filing.',
+        'Keep the filing receipt and appeal number allotted.',
+      ],
+      portalUrl: 'https://efiling.ecourts.gov.in',
+      portalLabel: 'eCourts e-filing portal',
+      note: 'Several High Courts (e.g. Delhi, Bombay) run their own separate e-filing systems rather than the shared eCourts platform — confirm which applies to the specific High Court before filing.',
+    },
+    familyCourt: {
+      heading: 'Filing at the Family Court',
+      intro: 'this petition is filed at the Family Court registry for the district — or, where no separate Family Court has been notified there, the District Court exercising family jurisdiction instead.',
+      steps: [
+        'Prepare the prescribed number of copies of the petition, plus the supporting affidavit(s).',
+        'Confirm the applicable court fee with the registry — it\'s often a nominal/fixed fee rather than the ad valorem fee used for an ordinary civil suit, but this varies by state.',
+        'Attach a vakalatnama if an advocate is filing on your behalf — Family Courts often also allow, and for mutual consent matters even encourage, parties to appear in person.',
+        'File at the court’s filing counter, or through the eCourts e-filing platform where available for that Family Court.',
+        'Keep the filing receipt and case number allotted.',
+      ],
+      portalUrl: 'https://efiling.ecourts.gov.in',
+      portalLabel: 'eCourts e-filing portal',
+      note: 'Not every district has a separately notified Family Court under the Family Courts Act, 1984 — confirm whether family matters in your district go to a Family Court or the ordinary District Court before filing.',
+    },
     commercialCourt: {
       heading: 'Filing at the Commercial Court',
       intro:

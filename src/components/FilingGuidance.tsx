@@ -8,6 +8,8 @@ export type FilingForum =
   | 'nclat'
   | 'consumerCommission'
   | 'districtCourt'
+  | 'highCourt'
+  | 'familyCourt'
   | 'commercialCourt'
   | 'criminalCourt'
   | 'mediationAuthority'
@@ -34,6 +36,10 @@ export function forumTypeToFilingForum(forumType: string): FilingForum {
       return 'consumerCommission';
     case 'district_court':
       return 'districtCourt';
+    case 'high_court':
+      return 'highCourt';
+    case 'family_court':
+      return 'familyCourt';
     default:
       return 'districtCourt';
   }

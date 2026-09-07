@@ -6,6 +6,8 @@ export const forums: Forum[] = [
   { id: 'f-drat', name: 'DRAT', forumType: 'DRAT', advocateMandatory: false },
   { id: 'f-nclt', name: 'NCLT', forumType: 'NCLT', advocateMandatory: false },
   { id: 'f-dc', name: 'District Court', forumType: 'district_court', advocateMandatory: false },
+  { id: 'f-hc', name: 'High Court', forumType: 'high_court', advocateMandatory: false },
+  { id: 'f-family-court', name: 'Family Court', forumType: 'family_court', advocateMandatory: false },
   // Umbrella tab for filings that don't belong under any single court/tribunal — pre-litigation
   // letters, private deeds, criminal-court applications and complaints. Each wizard resolves its
   // own actual forum/court internally (from user choices), independent of this shared forumType,
@@ -391,6 +393,39 @@ export const caseTypes: CaseType[] = [
     plainLanguageSummary:
       "File a criminal complaint before the Magistrate after a cheque is dishonoured and the drawer fails to pay within 15 days of your notice.",
     applicantEligibility: 'payee_or_holder_in_due_course',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-civil-appeal-first',
+    forumType: 'high_court',
+    name: 'Civil Appeal (First Appeal from a District Court decree)',
+    governingLaw: 'Code of Civil Procedure, 1908, Section 96 and Order XLI',
+    plainLanguageSummary:
+      'Challenge a District Court\'s decree or judgment before the High Court — the standard route once a civil suit has been decided against you and there\'s no separate appellate forum (like a Tribunal) for that type of case.',
+    applicantEligibility: 'party_aggrieved_by_district_court_decree',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 90,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-divorce-mutual-consent',
+    forumType: 'family_court',
+    name: 'Mutual Consent Divorce Petition (Hindu Marriage Act, S.13B)',
+    governingLaw: 'The Hindu Marriage Act, 1955, Section 13B',
+    plainLanguageSummary:
+      "File this jointly with your spouse when you both agree to end the marriage — you've been living separately for a year or more and have agreed on terms for maintenance, custody, and property.",
+    applicantEligibility: 'married_hindu_couple_both_consent',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-divorce-contested',
+    forumType: 'family_court',
+    name: 'Contested Divorce Petition (Hindu Marriage Act, S.13)',
+    governingLaw: 'The Hindu Marriage Act, 1955, Section 13',
+    plainLanguageSummary:
+      "File this if your spouse won't agree to a divorce — you'll need to prove one of the legal grounds (cruelty, desertion, adultery, etc.).",
+    applicantEligibility: 'married_hindu_spouse',
     filingCategory: 'original',
   },
 ];
@@ -1031,4 +1066,78 @@ export const chequeDishonourReasonOptions = [
   { id: 'stop_payment', label: 'Payment stopped by drawer' },
   { id: 'signature_mismatch', label: "Signature doesn't match" },
   { id: 'other_reason', label: 'Other' },
+];
+
+// Hindu Marriage Act, 1955, Section 13(1) grounds (available to either spouse) plus the
+// wife-only grounds in Section 13(2) — id/label/sentence shape matches bailGroundsOptions above.
+// Section 13(1A)'s two grounds (no resumption after a judicial-separation/restitution decree) are
+// a narrower, less common route and are deliberately left out of this first pass rather than
+// added without a clear UI for "was there already a prior decree" — same discipline as leaving a
+// feature out entirely rather than guessing at how to represent it.
+export const divorceGroundsOptions = [
+  {
+    id: 'adultery',
+    label: 'Adultery',
+    sentence: 'The Respondent has, after the solemnization of the marriage, had voluntary sexual intercourse with a person other than the Petitioner.',
+  },
+  {
+    id: 'cruelty',
+    label: 'Cruelty',
+    sentence: 'The Respondent has, after the solemnization of the marriage, treated the Petitioner with cruelty.',
+  },
+  {
+    id: 'desertion',
+    label: 'Desertion (2+ years)',
+    sentence: 'The Respondent has deserted the Petitioner for a continuous period of not less than two years immediately preceding the presentation of this petition.',
+  },
+  {
+    id: 'conversion',
+    label: 'Conversion to another religion',
+    sentence: 'The Respondent has ceased to be a Hindu by conversion to another religion.',
+  },
+  {
+    id: 'unsound_mind',
+    label: 'Unsound mind / mental disorder',
+    sentence: 'The Respondent has been incurably of unsound mind, or has been suffering continuously or intermittently from a mental disorder of such a kind and to such an extent that the Petitioner cannot reasonably be expected to live with the Respondent.',
+  },
+  {
+    id: 'leprosy',
+    label: 'Virulent and incurable leprosy',
+    sentence: 'The Respondent has been suffering from a virulent and incurable form of leprosy.',
+  },
+  {
+    id: 'venereal_disease',
+    label: 'Communicable venereal disease',
+    sentence: 'The Respondent has been suffering from venereal disease in a communicable form.',
+  },
+  {
+    id: 'renunciation',
+    label: 'Renounced the world',
+    sentence: 'The Respondent has renounced the world by entering a religious order.',
+  },
+  {
+    id: 'presumed_dead',
+    label: 'Not heard of for 7+ years',
+    sentence: 'The Respondent has not been heard of as being alive for a period of seven years or more by those persons who would naturally have heard of it, had the Respondent been alive.',
+  },
+  {
+    id: 'wife_bigamy',
+    label: 'Wife only: husband’s prior marriage subsisting',
+    sentence: 'The husband had married again before the commencement of this Act, or another wife of the husband married before such commencement was alive at the time of the solemnization of the marriage of the Petitioner.',
+  },
+  {
+    id: 'wife_rape_sodomy',
+    label: 'Wife only: rape, sodomy or bestiality',
+    sentence: 'The husband has, since the solemnization of the marriage, been guilty of rape, sodomy or bestiality.',
+  },
+  {
+    id: 'wife_no_cohabitation_after_maintenance',
+    label: 'Wife only: no cohabitation after a maintenance order',
+    sentence: 'A decree or order awarding maintenance to the Petitioner has been passed against the husband, and cohabitation between the parties has not been resumed for one year or upwards since that decree or order.',
+  },
+  {
+    id: 'wife_repudiation_of_child_marriage',
+    label: 'Wife only: repudiation of a marriage solemnized before age 15',
+    sentence: 'The marriage of the Petitioner was solemnized before the Petitioner attained the age of fifteen years, and the Petitioner has repudiated the marriage after attaining that age but before attaining the age of eighteen years.',
+  },
 ];

@@ -18,6 +18,7 @@ import {
 } from '../lib/legalDocumentFormat';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractTribunalOrderFromText, extractConsumerComplaintFromText } from '../lib/documentExtractionClient';
+import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
@@ -30,7 +31,14 @@ import type { CaseType, UserRole } from '../types';
 // order date. IA/MA-general reference a pending case rather than a specific order, and NCLT Reply
 // reads a live application rather than an order — out of scope for this pass. See
 // ct-cc-written-version below for the one non-order source document (a Consumer Complaint).
-const ORDER_UPLOAD_CASE_TYPE_IDS = new Set(['ct-drt-review', 'ct-nclt-restoration', 'ct-nclt-12a']);
+// ct-civil-appeal-first's "order" is a District Court decree/judgment rather than a Tribunal
+// order, but the extracted fields (parties, case number, order date) are exactly the same shape.
+const ORDER_UPLOAD_CASE_TYPE_IDS = new Set([
+  'ct-drt-review',
+  'ct-nclt-restoration',
+  'ct-nclt-12a',
+  'ct-civil-appeal-first',
+]);
 const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
 
 interface Props {
@@ -214,12 +222,17 @@ export function GenericCaseWizard({
   };
 
   const groundsParagraphs = splitIntoParagraphs(details);
+  const citationMatches = findFixedCaseTypeCitation(caseType.id);
+
   const draftSections: DraftSection[] = [
     {
       paragraphs: groundsParagraphs.length > 0 ? groundsParagraphs.map(toThatClause) : ['Details not yet entered.'],
       incomplete: !details,
       role: 'facts',
     },
+    ...(citationMatches.length > 0
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
+      : []),
     buildPrayerSection(reliefSought, caseType.forumType),
     ...buildVerificationSection(applicantName),
   ];

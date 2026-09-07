@@ -38,6 +38,8 @@ export function forumDisplayName(forumType: string): string {
       return 'THE HIGH COURT';
     case 'mediation_authority':
       return 'THE PRESIDING OFFICER-CUM-CHAIRMAN, DISTRICT LEGAL SERVICES AUTHORITY';
+    case 'family_court':
+      return 'THE FAMILY COURT';
     default:
       return "THE HON'BLE TRIBUNAL";
   }
@@ -52,7 +54,8 @@ export function forumNoun(forumType: string): string {
     forumType === 'commercial_court' ||
     forumType === 'magistrate_court' ||
     forumType === 'sessions_court' ||
-    forumType === 'high_court'
+    forumType === 'high_court' ||
+    forumType === 'family_court'
   ) {
     return 'Court';
   }
@@ -63,6 +66,7 @@ export function partyLabels(forumType: string, filingCategory?: string): { appli
   if (filingCategory === 'appeal') return { applicant: 'APPELLANT', respondent: 'RESPONDENT' };
   if (forumType === 'consumer_commission') return { applicant: 'COMPLAINANT', respondent: 'OPPOSITE PARTY' };
   if (forumType === 'district_court' || forumType === 'commercial_court') return { applicant: 'PLAINTIFF', respondent: 'DEFENDANT' };
+  if (forumType === 'family_court') return { applicant: 'PETITIONER', respondent: 'RESPONDENT' };
   return { applicant: 'APPLICANT', respondent: 'RESPONDENT' };
 }
 
@@ -108,6 +112,20 @@ export interface CauseTitleInfo {
    */
   applicantLabel?: string;
   respondentLabel?: string;
+  /** Set true for a joint petition with no adversarial opposite party at all (e.g. a Hindu
+   *  Marriage Act s.13B mutual consent divorce petition, filed by both spouses together) — omits
+   *  the VERSUS line and the respondent block entirely. respondentName/respondentEntries are
+   *  ignored when this is set. */
+  noRespondent?: boolean;
+  /**
+   * Mirrors respondentEntries but for multiple CO-PETITIONERS on the same side of a joint
+   * petition (only meaningful together with noRespondent) — each renders on its own line,
+   * labelled "[applicant label] NO. 1", "NO. 2" etc. (the ordinal is part of the label, not a
+   * numeric prefix on the name, since that's how real petitions caption co-petitioners),
+   * separated by a centered "AND" line rather than stacked directly. Falls back to the single
+   * applicantName line when omitted or of length <= 1.
+   */
+  applicantEntries?: string[];
 }
 
 export function escapeHtml(text: string) {
@@ -184,15 +202,21 @@ export function buildCauseTitleHtml(info: CauseTitleInfo): string {
     .map((name, i) => partyBlock(name || '[Respondent]', labels.respondent, respondentNames.length > 1 ? `${i + 1}. ` : ''))
     .join('');
 
+  const applicantNames = info.applicantEntries && info.applicantEntries.length > 1 ? info.applicantEntries : null;
+  const applicantBlock = applicantNames
+    ? applicantNames
+        .map((name, i) => partyBlock(name || `[${labels.applicant} No. ${i + 1}]`, `${labels.applicant} NO. ${i + 1}`, ''))
+        .join(`<p style="text-align:center;">AND</p>`)
+    : partyBlock(info.applicantName || '[Applicant]', labels.applicant, '');
+
   return (
     `<p style="text-align:center;"><strong>BEFORE THE HON'BLE ${escapeHtml(forumLine)},</strong></p>` +
     (info.benchCity ? `<p style="text-align:center;"><strong>${escapeHtml(info.benchCity.toUpperCase())}</strong></p>` : '') +
     `<p style="text-align:center;">${escapeHtml(info.caseNumberLine ?? `${info.applicationTitle.toUpperCase()} NO. _____ OF ${year}`)}</p>` +
     parentBlock +
     `<p><strong>IN THE MATTER OF:</strong></p>` +
-    partyBlock(info.applicantName || '[Applicant]', labels.applicant, '') +
-    `<p style="text-align:center;">VERSUS</p>` +
-    respondentBlocks +
+    applicantBlock +
+    (info.noRespondent ? '' : `<p style="text-align:center;">VERSUS</p>` + respondentBlocks) +
     (info.bodyHeading !== undefined
       ? `<p style="text-align:center;"><strong><u>${escapeHtml(info.bodyHeading)}</u></strong></p>`
       : `<h3 style="text-align:center;">${escapeHtml(info.applicationTitle.toUpperCase())}${
