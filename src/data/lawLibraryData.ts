@@ -5225,6 +5225,11 @@ export const acts: Act[] = [
         heading: 'Power of court to limit interest to the extent of principal of loan',
         text: 'No court shall, in respect of any loan made after this Act comes into force, decree on account of arrears of interest a sum greater than the principal of the loan. [Note: section 9 imposes the equivalent cap — no more than the principal as arrears of interest — for loans made before the Act came into force.]',
       },
+      {
+        sectionNo: '11-H',
+        heading: 'Suit not to proceed without registration certificate, etc.',
+        text: 'No suit for the recovery of a loan advanced by a money-lender shall proceed in a civil court until the court is satisfied that he holds a valid registration certificate or that he is not required to have a registration certificate by reason of the fact that he does not carry on the business of money-lending in any of the districts of Madhya Pradesh: Provided that this section shall not apply to a suit instituted before the 1st October, 1940. [Note: text sourced from the same India-Code copy of this Act filed under "The Chhattisgarh Money-Lenders Act, 1934" (also in this Library) — see the note on section 1 above on why. Since 2000, Madhya Pradesh and Chhattisgarh have been free to amend their own copies independently; confirm this section still matches Madhya Pradesh\'s own current version before relying on it.]',
+      },
     ],
   },
   {

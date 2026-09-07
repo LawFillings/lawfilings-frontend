@@ -31,6 +31,9 @@ const MONEY_LENDING_SECTION_BY_ACT_ID: Record<string, string> = {
   'act-punjab-registration-money-lenders-1938-delhi': '3',
   'act-himachal-pradesh-registration-money-lenders-1976': '3',
   'act-up-regulation-money-lending-1976': '18',
+  'act-maharashtra-money-lending-2014': '13',
+  'act-bengal-money-lenders-1940': '13',
+  'act-madhya-pradesh-money-lenders-1934': '11-H',
   'act-jk-money-lenders-2010': '12',
 };
 

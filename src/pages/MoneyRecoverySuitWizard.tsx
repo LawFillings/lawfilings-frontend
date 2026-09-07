@@ -76,7 +76,10 @@ interface SavedContent {
 // Pradesh: its High Court has ordinary original civil jurisdiction like Delhi's, but unlike Delhi
 // no sourced notification could be found splitting District-Commercial-Court-level disputes from
 // ones that go straight to the High Court's own Commercial Division — offering the branch there
-// without that split would be a guess dressed up as sourced fact.
+// without that split would be a guess dressed up as sourced fact. Same reason for also excluding
+// Karnataka, Tamil Nadu, Gujarat, and Madhya Pradesh — a general framework was confirmed (state
+// government may notify Commercial Courts under section 3B) but no state-specific constitution
+// notification could be located this pass; worth a dedicated follow-up search rather than a guess.
 const COMMERCIAL_COURT_NOTES: Record<string, string> = {
   punjab:
     "Punjab's Commercial Courts are constituted district by district, and thresholds vary — Ludhiana's notification (S.O.58/C.A.4/2016/Ss.3/&3A/2019, dated 14 June 2019) sets its Commercial Court at above ₹50,00,000, well above the statutory ₹3,00,000 floor. Confirm the notified threshold for the specific district before assuming this qualifies.",
@@ -90,6 +93,10 @@ const COMMERCIAL_COURT_NOTES: Record<string, string> = {
     'In Delhi, a commercial dispute valued between ₹3,00,000 and ₹2,00,00,000 goes to a District-level Commercial Court; above ₹2,00,00,000 it goes to the Delhi High Court\'s own Commercial Division instead, not a District Court. Confirm which applies given the claim amount before filing.',
   jk:
     "Jammu & Kashmir's exclusion from this Act was removed with effect from 31 October 2019 (Act 34 of 2019) — it now applies here too. The Additional District Judge (Bank Cases) courts at Jammu and Srinagar are the designated Commercial Courts for those two districts; the principal district court is the designated Commercial Court in the remaining 18 districts — all at the statutory ₹3,00,000 floor.",
+  maharashtra:
+    "Maharashtra's Commercial Courts are concentrated in Mumbai: 16 Dedicated Commercial Courts (11 at the Bombay City Civil and Sessions Court, 5 at the City Civil and Sessions Court, Dindoshi), notified 13 September 2019, at the statutory ₹3,00,000 floor. The district-by-district notification for Commercial Courts outside Mumbai wasn't sourced this pass — confirm the designated court for a filing district outside Mumbai before assuming this qualifies.",
+  'west-bengal':
+    "West Bengal has designated Commercial Courts at Alipore (South 24 Parganas), Rajarhat (North 24 Parganas), Asansol (Paschim Bardhaman), and Siliguri, at the statutory ₹3,00,000 floor — qualifying disputes within Kolkata's own original civil jurisdiction instead go to the Calcutta High Court's Commercial Division, not a District Commercial Court. The specific notification number/date for the four district-level courts wasn't sourced this pass — confirm before filing.",
 };
 
 interface Props {

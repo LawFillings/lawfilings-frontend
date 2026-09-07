@@ -329,7 +329,14 @@ function AppScreens() {
       );
     }
     if (ct.id === 'ct-dc-summary-suit') {
-      return <SummarySuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
+      return (
+        <SummarySuitWizard
+          onBack={onBack}
+          onOpenPricing={openPricingNav}
+          onOpenLawLibrary={openLawLibraryNav}
+          {...resumeProps}
+        />
+      );
     }
     if (ct.id === 'ct-legal-notice') {
       return <LegalNoticeWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;

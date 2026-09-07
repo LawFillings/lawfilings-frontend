@@ -73,6 +73,7 @@ interface SavedContent {
 interface Props {
   onBack: () => void;
   onOpenPricing: () => void;
+  onOpenLawLibrary?: () => void;
   /** Set when resuming an existing saved draft rather than starting a new one. */
   caseId?: string;
   draftId?: string;
@@ -81,6 +82,7 @@ interface Props {
 
 export function SummarySuitWizard({
   onBack,
+  onOpenLawLibrary,
   onOpenPricing,
   caseId: initialCaseId,
   draftId: initialDraftId,
@@ -365,9 +367,11 @@ export function SummarySuitWizard({
             <h3 className="step-heading">Pecuniary jurisdiction</h3>
             {pecuniaryLimit ? (
               <div className="deadline-card status-warn" style={{ maxWidth: 480 }}>
-                <p className="deadline-label">Unverified placeholder figure</p>
+                <p className="deadline-label">Sourced from statute — confirm before filing</p>
                 <p className="deadline-body">
-                  {selectedState?.label}: minimum claim value shown as ₹{pecuniaryLimit.minAmount?.toLocaleString('en-IN')}.{' '}
+                  {pecuniaryLimit.minAmount != null
+                    ? `${selectedState?.label}: minimum claim value shown as ₹${pecuniaryLimit.minAmount.toLocaleString('en-IN')}. `
+                    : `${selectedState?.label}: `}
                   {pecuniaryLimit.note}
                 </p>
               </div>
@@ -413,7 +417,7 @@ export function SummarySuitWizard({
                 </button>
               ))}
             </div>
-            <ActReferencePanel causeType={causeType} stateLabel={selectedState?.label} />
+            <ActReferencePanel causeType={causeType} stateLabel={selectedState?.label} onOpenLawLibrary={onOpenLawLibrary} />
             <textarea
               className="facts-textarea"
               rows={5}
