@@ -15,6 +15,7 @@ import {
   splitIntoParagraphs,
   withPeriod,
   toThatClause,
+  partyLabels,
 } from '../lib/legalDocumentFormat';
 import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractTribunalOrderFromText, extractConsumerComplaintFromText } from '../lib/documentExtractionClient';
@@ -40,6 +41,15 @@ const ORDER_UPLOAD_CASE_TYPE_IDS = new Set([
   'ct-civil-appeal-first',
 ]);
 const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
+
+/** "OPPOSITE PARTY" -> "Opposite Party" — for weaving a party-label constant into a sentence. */
+function titleCase(label: string): string {
+  return label
+    .toLowerCase()
+    .split(' ')
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
+}
 
 interface Props {
   caseType: CaseType;
@@ -162,6 +172,14 @@ export function GenericCaseWizard({
   };
 
   const hasDeadline = caseType.deadlineSource !== undefined;
+  // A 'reply' case type (e.g. a Written Statement) is filed by the OPPOSITE PARTY, not the
+  // Applicant/Complainant — applicantName/respondentName still drive the cause title's party
+  // positions (the original complainant stays captioned first, matching the pending case), but
+  // whoever is actually signing the Filed By / Verification / Affidavit blocks is the respondent
+  // side. Every other filingCategory is filed by the Applicant as usual.
+  const isReply = caseType.filingCategory === 'reply';
+  const filerName = isReply ? respondentName : applicantName;
+  const filerRoleLabel = isReply ? partyLabels(caseType.forumType, caseType.filingCategory).respondent : 'APPLICANT';
   // Every case type routed through this shared wizard is filed with a tribunal or commission
   // (DRT, NCLT, Consumer Commission) — all bundle with an Index page first and an Affidavit page
   // last, matching the convention established for OA/SA.
@@ -234,7 +252,7 @@ export function GenericCaseWizard({
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
     buildPrayerSection(reliefSought, caseType.forumType),
-    ...buildVerificationSection(applicantName),
+    ...buildVerificationSection(filerName, verificationPlace),
   ];
 
   const causeTitleHtml = buildCauseTitleHtml({
@@ -250,7 +268,7 @@ export function GenericCaseWizard({
 
   // --- Index (Part I) and Affidavit (Part III) — only built/shown for DRT filings ---
   const filedByBlock = buildFiledByBlock({
-    applicantLines: [applicantName || '[Applicant]', '(APPLICANT)'],
+    applicantLines: [filerName || `[${filerRoleLabel}]`, `(${filerRoleLabel})`],
     advocateName,
     advocateAddress,
     advocatePhone,
@@ -277,13 +295,13 @@ export function GenericCaseWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(applicantName || '[Applicant]')} aged about ${applicantAge || '[age]'}, R/o ${applicantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
+        `${withPeriod(filerName || `[${filerRoleLabel}]`)} aged about ${applicantAge || '[age]'}, R/o ${applicantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {
       unnumbered: true,
       paragraphs: [
-        `1. That I am the Applicant in the present case, as such I am well conversant with the facts of the present case and competent to swear this Affidavit.`,
+        `1. That I am the ${titleCase(filerRoleLabel)} in the present case, as such I am well conversant with the facts of the present case and competent to swear this Affidavit.`,
         `2. That the accompanying ${caseType.name} has been prepared at my instructions, the contents of which have been explained to me in the vernacular language which I understand and the same may be read as part and parcel of this Affidavit as the same has not been repeated herein for the sake of brevity. I have gone through the same and it is true and correct.`,
       ],
     },
@@ -373,15 +391,20 @@ export function GenericCaseWizard({
             <div className="form-grid">
               <label className="form-field">
                 <span>
-                  {mode === 'advocate' ? 'Applicant' : 'Your name'}
-                  {mode === 'justice_seeker' && (
+                  {mode === 'advocate' ? 'Applicant' : isReply ? 'Other party' : 'Your name'}
+                  {mode === 'justice_seeker' && !isReply && (
                     <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Applicant in this case)</span>
                   )}
                 </span>
                 <input type="text" value={applicantName} onChange={(e) => setApplicantName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{mode === 'advocate' ? 'Respondent / Opposite Party' : 'Other party'}</span>
+                <span>
+                  {mode === 'advocate' ? 'Respondent / Opposite Party' : isReply ? 'Your name' : 'Other party'}
+                  {mode === 'justice_seeker' && isReply && (
+                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the {titleCase(filerRoleLabel)} in this case)</span>
+                  )}
+                </span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               {caseType.parentRequired && (
@@ -429,11 +452,11 @@ export function GenericCaseWizard({
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Applicant's age</span>
+                <span>{isReply ? `${titleCase(filerRoleLabel)}'s age` : "Applicant's age"}</span>
                 <input type="text" value={applicantAge} onChange={(e) => setApplicantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Applicant's address</span>
+                <span>{isReply ? `${titleCase(filerRoleLabel)}'s address` : "Applicant's address"}</span>
                 <input type="text" value={applicantAddress} onChange={(e) => setApplicantAddress(e.target.value)} />
               </label>
               <label className="form-field">

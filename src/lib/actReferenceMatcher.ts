@@ -148,6 +148,13 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // Contested Divorce — Section 13 is the whole grounds-based petition; the wizard's own selected
   // grounds narrow which sub-clause(s) actually apply, but the section itself is always relevant.
   'ct-divorce-contested': [{ actId: 'act-hindu-marriage-1955', sectionNo: '13' }],
+  // Temporary Injunction Application — Rule 1 (property/dispossession grounds) and Rule 2 (breach
+  // of contract/injury grounds) cover the two distinct fact patterns the wizard's Grounds step lets
+  // the applicant choose between; both are cited since either may be the one actually pleaded.
+  'ct-injunction-temporary': [
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 1' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 2' },
+  ],
 };
 
 /** Returns the fixed Act-section citation for case types where the filing itself IS the

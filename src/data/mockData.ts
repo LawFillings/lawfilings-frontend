@@ -409,6 +409,42 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-injunction-temporary',
+    forumType: 'district_court',
+    name: 'Temporary Injunction Application (Order XXXIX Rules 1 & 2, CPC)',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XXXIX, Rules 1 & 2',
+    plainLanguageSummary:
+      "File this within a pending civil suit to ask the Court to restrain the other side — from selling or damaging disputed property, or from repeating a breach — until the suit is decided.",
+    applicantEligibility: 'plaintiff_or_defendant_in_pending_suit',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
+    id: 'ct-dc-written-statement',
+    forumType: 'district_court',
+    name: 'Written Statement — reply to a Civil Suit',
+    governingLaw: 'Code of Civil Procedure, 1908, Order VIII, Rule 1',
+    plainLanguageSummary:
+      "Use this if a civil suit has been filed against you and you need to respond within the deadline — ordinarily 30 days from service, extendable by the Court up to 90 days for reasons recorded in writing (a stricter 120-day cap with no further extension applies if the suit is a commercial dispute).",
+    applicantEligibility: 'defendant_in_pending_suit',
+    filingCategory: 'reply',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 30,
+    condonableExtensionDays: 60,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-dc-ia-general',
+    forumType: 'district_court',
+    name: 'Interlocutory Application (IA) — general',
+    governingLaw: 'Code of Civil Procedure, 1908',
+    plainLanguageSummary:
+      'Use this to ask the Court for any interim order or direction — other than a temporary injunction, which has its own dedicated wizard — while your civil suit is pending.',
+    applicantEligibility: 'any_party_to_pending_suit',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
     id: 'ct-divorce-mutual-consent',
     forumType: 'family_court',
     name: 'Mutual Consent Divorce Petition (Hindu Marriage Act, S.13B)',
