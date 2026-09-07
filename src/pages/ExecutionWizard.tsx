@@ -26,7 +26,7 @@ const STEPS = [
   'Non-compliance',
   'Filing details',
   'Documents (Index)',
-  'Judge style (optional)',
+  'Match a style (optional)',
   'Preview',
 ];
 

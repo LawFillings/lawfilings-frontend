@@ -34,7 +34,7 @@ const STEPS = [
   'Documents checklist',
   'Filing details',
   'Index entries',
-  'Judge style (optional)',
+  'Match a style (optional)',
   'Preview',
 ];
 

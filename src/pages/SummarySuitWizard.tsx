@@ -36,7 +36,7 @@ const STEPS = [
   'Valuation & relief',
   'Filing details',
   'Documents',
-  'Judge style (optional)',
+  'Match a style (optional)',
   'Preview',
 ];
 

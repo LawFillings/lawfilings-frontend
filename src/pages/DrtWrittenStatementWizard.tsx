@@ -40,7 +40,7 @@ const STEPS = [
   'Grounds of defence',
   'Filing details',
   'Documents',
-  'Judge style (optional)',
+  'Match a style (optional)',
   'Preview',
 ];
 

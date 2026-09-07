@@ -139,7 +139,7 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
     'Grounds',
     'Filing details',
     'Documents',
-    'Judge style (optional)',
+    'Match a style (optional)',
     'Preview',
   ];
   const depositStepIndex = hasDeposit ? 1 : -1;

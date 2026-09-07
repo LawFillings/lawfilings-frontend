@@ -25,7 +25,7 @@ const STEPS = [
   'Grounds for bail',
   'Filing details',
   'Documents (Index)',
-  'Judge style (optional)',
+  'Match a style (optional)',
   'Preview',
 ];
 

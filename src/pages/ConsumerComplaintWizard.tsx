@@ -54,7 +54,7 @@ const STEPS = [
   'Relief',
   'Filing details',
   'Documents',
-  'Judge style (optional)',
+  'Match a style (optional)',
   'Preview',
 ];
 
