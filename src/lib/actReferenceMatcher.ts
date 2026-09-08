@@ -164,7 +164,46 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
+  // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
+  // is the "readiness and willingness" averment every specific-performance plaint must plead.
+  'ct-suit-specific-performance': [
+    { actId: 'act-specific-relief-1963', sectionNo: '10' },
+    { actId: 'act-specific-relief-1963', sectionNo: '16' },
+  ],
+  // Suit for Partition — Section 6 is the coparcenary-right basis for who may seek partition;
+  // Order XX Rule 18 CPC is the decree mechanism (preliminary decree, then final decree) every
+  // partition suit over ordinary immovable property actually proceeds through.
+  'ct-suit-partition': [
+    { actId: 'act-hindu-succession-1956', sectionNo: '6' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XX, Rule 18' },
+  ],
+  // Execution Petition (Civil Decree) — Order XXI Rule 10 is the right to apply for execution;
+  // Rule 11 is the form/contents (including the mode-of-execution choice) every application is
+  // filed under.
+  'ct-dc-execution': [
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 10' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 11' },
+  ],
 };
+
+// Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit
+// (Specific Relief Act ss.5/6), a tenant holding over after lease termination (Transfer of
+// Property Act ss.106/111), or both — a single static FIXED_CASE_TYPE_CITATIONS entry can't
+// represent that fork, so this is a dedicated function like findAncillaryReliefCitations above.
+export function findPossessionCitations(params: {
+  basedOnTitle: boolean;
+  basedOnPriorPossession: boolean;
+  tenantHoldingOver: boolean;
+}): ActReferenceMatch[] {
+  const entries: Array<{ actId: string; sectionNo: string }> = [];
+  if (params.basedOnTitle) entries.push({ actId: 'act-specific-relief-1963', sectionNo: '5' });
+  if (params.basedOnPriorPossession) entries.push({ actId: 'act-specific-relief-1963', sectionNo: '6' });
+  if (params.tenantHoldingOver) {
+    entries.push({ actId: 'act-transfer-of-property-1882', sectionNo: '106' });
+    entries.push({ actId: 'act-transfer-of-property-1882', sectionNo: '111' });
+  }
+  return entries.flatMap(({ actId, sectionNo }) => lookup(actId, sectionNo));
+}
 
 /** Returns the fixed Act-section citation for case types where the filing itself IS the
  * application under that section, if any is curated for the given case type. */

@@ -100,10 +100,9 @@ export function JudgeStyleStep({ profile, onProfileReady, onOpenPricing }: Props
     <div>
       <h3 className="step-heading">Match a style (optional)</h3>
       <p className="step-help">
-        Optional — this is the standard draft you already saw in Preview. If you'd like it reshaped to match a
-        specific judge's style, or a particular application format you prefer, choose which below and upload a
-        sample. Nothing here rewrites the drafted text itself — only the order of its sections changes. Skip this
-        step (click Continue) if you'd rather not.
+        Optional — if you'd like the draft reshaped to match a specific judge's style, or a particular application
+        format you prefer, choose which below and upload a sample. Nothing here rewrites the drafted text itself —
+        only the order of its sections changes. Skip this step (click Continue) if you'd rather not.
       </p>
 
       {!profile && (

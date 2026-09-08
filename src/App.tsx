@@ -16,6 +16,9 @@ import { MutualConsentDivorceWizard } from './pages/MutualConsentDivorceWizard';
 import { TemporaryInjunctionWizard } from './pages/TemporaryInjunctionWizard';
 import { PermanentInjunctionSuitWizard } from './pages/PermanentInjunctionSuitWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
+import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
+import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
+import { PossessionSuitWizard } from './pages/PossessionSuitWizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -389,6 +392,21 @@ function AppScreens() {
     if (ct.id === 'ct-suit-declaration') {
       return (
         <DeclarationSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-specific-performance') {
+      return (
+        <SpecificPerformanceSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-partition') {
+      return (
+        <PartitionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-possession') {
+      return (
+        <PossessionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 

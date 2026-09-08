@@ -465,6 +465,46 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-suit-specific-performance',
+    forumType: 'district_court',
+    name: 'Suit for Specific Performance of Contract',
+    governingLaw: 'Specific Relief Act, 1963, Sections 10, 14 & 16',
+    plainLanguageSummary:
+      "File this if the other side to a contract — typically a sale agreement — is refusing to complete their part of the deal, and you want the Court to order them to actually carry it out, not just pay you damages for breaking it.",
+    applicantEligibility: 'any_plaintiff',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-suit-partition',
+    forumType: 'district_court',
+    name: 'Suit for Partition',
+    governingLaw: 'Hindu Succession Act, 1956, Section 6, read with the Code of Civil Procedure, 1908, Order XX Rule 18',
+    plainLanguageSummary:
+      "File this to divide jointly-owned family property and get your own separate share — typically ancestral/coparcenary property where the other co-owners won't agree to divide it amicably.",
+    applicantEligibility: 'any_coparcener_or_co-owner',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-suit-possession',
+    forumType: 'district_court',
+    name: 'Suit for Possession / Eviction',
+    governingLaw: 'Specific Relief Act, 1963, Sections 5 & 6, and Transfer of Property Act, 1882, Sections 106 & 111',
+    plainLanguageSummary:
+      'File this to recover possession of your property — from a tenant holding over after their lease ended, or from someone occupying it without any right to. If the property is covered by a state Rent Control Act, its own eviction grounds and procedure apply instead of, or in addition to, general civil law.',
+    applicantEligibility: 'any_plaintiff',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-dc-execution',
+    forumType: 'district_court',
+    name: 'Execution Petition (Civil Decree)',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XXI',
+    plainLanguageSummary:
+      "Use this if the other side hasn't complied with a civil court decree already passed in your favour — this asks the Court to enforce it, by attachment and sale of property, delivery of possession, arrest and detention, or whichever mode fits the decree.",
+    applicantEligibility: 'decree_holder',
+    filingCategory: 'execution',
+  },
+  {
     id: 'ct-divorce-mutual-consent',
     forumType: 'family_court',
     name: 'Mutual Consent Divorce Petition (Hindu Marriage Act, S.13B)',
