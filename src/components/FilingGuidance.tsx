@@ -12,6 +12,7 @@ export type FilingForum =
   | 'highCourtOriginal'
   | 'familyCourt'
   | 'rentControlAuthority'
+  | 'supremeCourt'
   | 'commercialCourt'
   | 'criminalCourt'
   | 'mediationAuthority'

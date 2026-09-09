@@ -292,6 +292,16 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-indian-succession-1925', sectionNo: '218' },
     { actId: 'act-indian-succession-1925', sectionNo: '278' },
   ],
+  // Writ Petition — the entire filing is an Article 226 petition; Article 227 (supervisory
+  // jurisdiction) is a distinct, narrower remedy and deliberately not cited here.
+  'ct-writ-petition-226': [{ actId: 'act-constitution-india', sectionNo: 'Article 226' }],
+  // Special Leave Petition (Civil) — Article 136 is the constitutional basis for the Court's
+  // discretion to grant leave; Order XXI Rule 1 of the Supreme Court Rules, 2013 is what actually
+  // fixes the limitation period the wizard computes against.
+  'ct-slp-civil': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 136' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XXI, Rule 1' },
+  ],
 };
 
 // Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit
@@ -420,10 +430,11 @@ export function findBailCitations(bailType: 'regular' | 'regular_sessions' | 'an
 export function buildCitationParagraphs(matches: ActReferenceMatch[]): string[] {
   return matches.map(({ act, section }) => {
     const heading = section.heading.replace(/\.$/, '');
-    // A sectionNo like "Order XLI, Rule 1" already reads as a complete reference on its own —
-    // prefixing it with "Section" (as every plain numeric sectionNo needs) would read as "Section
-    // Order XLI, Rule 1", which isn't how anyone actually cites a CPC Order/Rule.
-    const reference = /^order\b/i.test(section.sectionNo) ? section.sectionNo : `Section ${section.sectionNo}`;
+    // A sectionNo like "Order XLI, Rule 1" or "Article 226" already reads as a complete reference
+    // on its own — prefixing it with "Section" (as every plain numeric sectionNo needs) would read
+    // as "Section Order XLI, Rule 1" or "Section Article 226", which isn't how anyone actually
+    // cites a CPC Order/Rule or a constitutional Article.
+    const reference = /^(order|article)\b/i.test(section.sectionNo) ? section.sectionNo : `Section ${section.sectionNo}`;
     return `That the provisions of ${reference} of ${act.shortTitle}, which deal with "${heading}", are applicable to the present case.`;
   });
 }
@@ -645,6 +656,19 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1958,
       sourceUrl: 'https://indiankanoon.org/doc/22929/',
       note: 'the onus probandi lies upon the propounder of a will to satisfy the conscience of the court that the instrument is the last will of a free and capable testator; where suspicious circumstances surround the execution of the will — such as the propounder himself taking a prominent part in its execution and thereby securing a substantial benefit under it — the propounder must additionally remove all legitimate suspicion before the will can be accepted as genuine.',
+    },
+  ],
+  // Special Leave Petition (Civil) — defines the core test the whole filing exists to satisfy:
+  // Article 136 discretion is exercised sparingly, only where exceptional circumstances or grave
+  // injustice are shown, not as a routine fourth tier of appeal.
+  'ct-slp-civil': [
+    {
+      caseTitle: 'Pritam Singh v. The State',
+      citation: 'AIR 1950 SC 169',
+      court: 'Supreme Court of India',
+      year: 1950,
+      sourceUrl: 'https://indiankanoon.org/doc/743851/',
+      note: 'the Supreme Court will not grant special leave to appeal under Article 136 of the Constitution unless it is shown that exceptional and special circumstances exist, that substantial and grave injustice has been done, and that the case in question presents features of sufficient gravity to warrant a review of the decision appealed against.',
     },
   ],
 };

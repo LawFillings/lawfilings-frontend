@@ -41,6 +41,15 @@ const ORDER_UPLOAD_CASE_TYPE_IDS = new Set([
 ]);
 const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
 
+/** The connected-case field means something different per forum — a DRT/NCLT filing is genuinely
+ *  connected to an OA/CP number, but a District Court or High Court filing (an appeal, an
+ *  interlocutory application in a suit) is connected to a suit/case number, not an OA/CP. */
+function parentCaseFieldLabel(forumType: string): string {
+  if (forumType === 'DRT' || forumType === 'NCLT') return 'Parent case / OA / CP number';
+  if (forumType === 'consumer_commission') return 'Parent case / Complaint number';
+  return 'Case/decree number of the matter this is connected to';
+}
+
 /** "OPPOSITE PARTY" -> "Opposite Party" — for weaving a party-label constant into a sentence. */
 function titleCase(label: string): string {
   return label
@@ -178,7 +187,9 @@ export function GenericCaseWizard({
   // side. Every other filingCategory is filed by the Applicant as usual.
   const isReply = caseType.filingCategory === 'reply';
   const filerName = isReply ? respondentName : applicantName;
-  const filerRoleLabel = isReply ? partyLabels(caseType.forumType, caseType.filingCategory).respondent : 'APPLICANT';
+  const filerRoleLabel = isReply
+    ? partyLabels(caseType.forumType, caseType.filingCategory).respondent
+    : partyLabels(caseType.forumType, caseType.filingCategory).applicant;
   // Every case type routed through this shared wizard is filed with a tribunal or commission
   // (DRT, NCLT, Consumer Commission) — all bundle with an Index page first and an Affidavit page
   // last, matching the convention established for OA/SA.
@@ -390,9 +401,9 @@ export function GenericCaseWizard({
             <div className="form-grid">
               <label className="form-field">
                 <span>
-                  {mode === 'advocate' ? 'Applicant' : isReply ? 'Other party' : 'Your name'}
+                  {mode === 'advocate' ? (isReply ? 'Applicant' : titleCase(filerRoleLabel)) : isReply ? 'Other party' : 'Your name'}
                   {mode === 'justice_seeker' && !isReply && (
-                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Applicant in this case)</span>
+                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the {titleCase(filerRoleLabel)} in this case)</span>
                   )}
                 </span>
                 <input type="text" value={applicantName} onChange={(e) => setApplicantName(e.target.value)} />
@@ -408,7 +419,7 @@ export function GenericCaseWizard({
               </label>
               {caseType.parentRequired && (
                 <label className="form-field">
-                  <span>{mode === 'advocate' ? 'Parent case / OA / CP number' : 'Which case is this connected to?'}</span>
+                  <span>{mode === 'advocate' ? parentCaseFieldLabel(caseType.forumType) : 'Which case is this connected to?'}</span>
                   <input type="text" value={parentCaseNumber} onChange={(e) => setParentCaseNumber(e.target.value)} />
                 </label>
               )}
@@ -451,11 +462,11 @@ export function GenericCaseWizard({
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>{isReply ? `${titleCase(filerRoleLabel)}'s age` : "Applicant's age"}</span>
+                <span>{titleCase(filerRoleLabel)}'s age</span>
                 <input type="text" value={applicantAge} onChange={(e) => setApplicantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{isReply ? `${titleCase(filerRoleLabel)}'s address` : "Applicant's address"}</span>
+                <span>{titleCase(filerRoleLabel)}'s address</span>
                 <input type="text" value={applicantAddress} onChange={(e) => setApplicantAddress(e.target.value)} />
               </label>
               <label className="form-field">

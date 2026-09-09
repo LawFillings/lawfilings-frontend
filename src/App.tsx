@@ -35,6 +35,8 @@ import { SuccessionCertificateWizard } from './pages/SuccessionCertificateWizard
 import { ProbateWizard } from './pages/ProbateWizard';
 import { LettersOfAdministrationWizard } from './pages/LettersOfAdministrationWizard';
 import { RentControlEvictionWizard } from './pages/RentControlEvictionWizard';
+import { WritPetitionWizard } from './pages/WritPetitionWizard';
+import { SlpCivilWizard } from './pages/SlpCivilWizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -508,6 +510,16 @@ function AppScreens() {
           onOpenLawLibrary={openLawLibraryNav}
           {...resumeProps}
         />
+      );
+    }
+    if (ct.id === 'ct-writ-petition-226') {
+      return (
+        <WritPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-slp-civil') {
+      return (
+        <SlpCivilWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 

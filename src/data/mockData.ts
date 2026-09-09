@@ -7,6 +7,7 @@ export const forums: Forum[] = [
   { id: 'f-nclt', name: 'NCLT', forumType: 'NCLT', advocateMandatory: false },
   { id: 'f-dc', name: 'District Court', forumType: 'district_court', advocateMandatory: false },
   { id: 'f-hc', name: 'High Court', forumType: 'high_court', advocateMandatory: false },
+  { id: 'f-sc', name: 'Supreme Court', forumType: 'supreme_court', advocateMandatory: true },
   { id: 'f-family-court', name: 'Family Court', forumType: 'family_court', advocateMandatory: false },
   // Umbrella tab for filings that don't belong under any single court/tribunal — pre-litigation
   // letters, private deeds, criminal-court applications and complaints. Each wizard resolves its
@@ -683,6 +684,28 @@ export const caseTypes: CaseType[] = [
       "File this to evict a tenant under your state's Rent Control Act — for arrears of rent, bona fide personal requirement, unlawful subletting, or another ground your state's Act recognises. Not for a plain civil suit for possession where no Rent Control Act applies — use Suit for Possession/Eviction instead.",
     applicantEligibility: 'landlord_under_a_state_rent_control_act',
     filingCategory: 'original',
+  },
+  {
+    id: 'ct-writ-petition-226',
+    forumType: 'high_court',
+    name: 'Writ Petition (Article 226)',
+    governingLaw: 'The Constitution of India, Article 226',
+    plainLanguageSummary:
+      "File this before the High Court to challenge government/authority action (or inaction) that violates your fundamental or legal rights — as a writ of mandamus, certiorari, prohibition, quo warranto, or habeas corpus, whichever fits your grievance.",
+    applicantEligibility: 'person_aggrieved_by_state_or_authority_action',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-slp-civil',
+    forumType: 'supreme_court',
+    name: 'Special Leave Petition (Civil, Article 136)',
+    governingLaw: 'The Constitution of India, Article 136',
+    plainLanguageSummary:
+      "File this before the Supreme Court to seek discretionary leave to appeal against any civil judgment, decree, or order of a High Court or tribunal — normally within 90 days of that judgment or order.",
+    applicantEligibility: 'party_aggrieved_by_a_high_court_or_tribunal_judgment',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 90,
   },
 ];
 

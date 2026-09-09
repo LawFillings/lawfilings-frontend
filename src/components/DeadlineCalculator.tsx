@@ -73,7 +73,13 @@ export function DeadlineCalculator({ caseType, mode, onDaysSinceChange, value, o
   return (
     <div>
       <label className="field-label" htmlFor="trigger-date">
-        {mode === 'advocate' ? 'Date of service of summons' : 'Date you were served the notice'}
+        {caseType.filingCategory === 'reply'
+          ? mode === 'advocate'
+            ? 'Date of service of summons'
+            : 'Date you were served the notice'
+          : mode === 'advocate'
+            ? 'Date of the order/decree you are challenging'
+            : 'Date of the order you are challenging'}
       </label>
       <input
         id="trigger-date"

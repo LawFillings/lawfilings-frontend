@@ -873,6 +873,21 @@ export const en = {
       portalLabel: 'eCourts e-filing portal',
       note: 'The adjudicating authority, its exact procedure, and local practice for service on the tenant vary significantly by state — confirm the current process with the specific registry before filing.',
     },
+    supremeCourt: {
+      heading: 'Filing at the Supreme Court',
+      intro:
+        'this petition is filed at the Supreme Court registry, through an Advocate-on-Record (AOR) — only an AOR may file and sign it on your behalf, not an ordinary advocate.',
+      steps: [
+        'Engage an Advocate-on-Record (AOR) — required for filing, even if a separate senior or arguing counsel handles the hearing itself.',
+        'Prepare the petition together with the list of dates, and a certified copy of the impugned judgment/order, as required by the Supreme Court Rules, 2013.',
+        'Pay the prescribed court fee — this varies with the nature and value of the matter; confirm the current schedule with the Registry or your AOR.',
+        'File through the Supreme Court\'s own e-filing portal — filing is now done electronically in the first instance, with physical filing limited to exceptional cases.',
+        'Keep the diary number issued on filing, and track any defects raised by the Registry before the matter is listed.',
+      ],
+      portalUrl: 'https://efiling.sci.gov.in',
+      portalLabel: 'Supreme Court e-filing portal',
+      note: 'Only an Advocate-on-Record can file and sign matters before the Supreme Court — engage one early, since the limitation period for most matters is tight.',
+    },
     commercialCourt: {
       heading: 'Filing at the Commercial Court',
       intro:

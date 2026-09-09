@@ -9354,4 +9354,19 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-supreme-court-rules-2013',
+    shortTitle: 'The Supreme Court Rules, 2013',
+    year: 2013,
+    actNumber: 'Notification dated 15 August 2013',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.aaptaxlaw.com/supreme-court-rules/order-XXI-supreme-court-rules-2013-special-leave-petitions-civil-order-xxi-supreme-court-rules-2013.html',
+    sections: [
+      {
+        sectionNo: 'Order XXI, Rule 1',
+        heading: 'Limitation for special leave petitions (civil)',
+        text: "1. Where certificate of fitness to appeal to the Court was refused in a case by the High Court, a petition for special leave to appeal to the Court shall, subject to the provisions of sections 4, 5, 12 and 14 of the Limitation Act, 1963 (36 of 1963), be lodged in the Court within sixty days from the date of the order of refusal and in any other case within ninety days from the date of the Judgment or Order sought to be appealed from: Provided that where an application for leave to appeal to the High Court from the Judgment of a single Judge of that Court has been made and refused, in computing the period of limitation in that case under this rule, the period from the making of that application and the rejection thereof shall also be excluded. Explanation.—For purposes of this rule, the expression 'order of refusal' means the order refusing to grant the certificate under article 134A of the Constitution being a certificate of the nature referred to in article 132 or article 133 of the Constitution on merits and shall not include an order rejecting the application on the ground of limitation or on the ground that such an application is not maintainable. [Note: the ninety-day period from the date of the impugned judgment or order is the one that applies to the ordinary case — a petitioner who goes straight to the Supreme Court under Article 136 without first seeking a certificate of fitness to appeal from the High Court under Article 132/133/134A. The sixty-day period is a narrower alternative that only starts running where that certificate route was tried first and refused.]",
+      },
+    ],
+  },
 ];
