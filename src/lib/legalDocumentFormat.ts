@@ -36,6 +36,8 @@ export function forumDisplayName(forumType: string): string {
       return 'THE COURT OF THE SESSIONS JUDGE';
     case 'high_court':
       return 'THE HIGH COURT';
+    case 'supreme_court':
+      return 'THE SUPREME COURT OF INDIA';
     case 'mediation_authority':
       return 'THE PRESIDING OFFICER-CUM-CHAIRMAN, DISTRICT LEGAL SERVICES AUTHORITY';
     case 'family_court':
@@ -55,7 +57,8 @@ export function forumNoun(forumType: string): string {
     forumType === 'magistrate_court' ||
     forumType === 'sessions_court' ||
     forumType === 'high_court' ||
-    forumType === 'family_court'
+    forumType === 'family_court' ||
+    forumType === 'supreme_court'
   ) {
     return 'Court';
   }

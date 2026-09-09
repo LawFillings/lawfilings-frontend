@@ -26,33 +26,55 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-quashing-petition')!;
+const caseType = caseTypes.find((ct) => ct.id === 'ct-arbitration-s34-setting-aside')!;
+
+type CourtLevel = 'district_court' | 'high_court';
+
+const COURT_LEVEL_OPTIONS: { id: CourtLevel; label: string; help: string }[] = [
+  { id: 'district_court', label: 'Principal Civil Court of the district', help: 'For arbitrations other than international commercial arbitration.' },
+  { id: 'high_court', label: 'High Court', help: 'For an international commercial arbitration.' },
+];
 
 const GROUND_OPTIONS: { id: string; label: string; prose: string }[] = [
   {
-    id: 'no_offence_disclosed',
-    label: 'The allegations, even taken at face value, do not disclose any offence',
-    prose: 'the allegations made in the impugned FIR/complaint, even if taken at their face value and accepted in their entirety, do not prima facie constitute any offence or make out a case against the Petitioner',
+    id: 'incapacity',
+    label: 'A party was under some incapacity',
+    prose: 'a party to the arbitration agreement was under some incapacity',
   },
   {
-    id: 'no_cognizable_offence',
-    label: 'The allegations do not disclose a cognizable offence justifying investigation',
-    prose: 'the allegations and materials accompanying the impugned FIR do not disclose a cognizable offence, justifying an investigation by a police officer',
+    id: 'invalid_agreement',
+    label: 'The arbitration agreement is not valid under the applicable law',
+    prose: 'the arbitration agreement is not valid under the law to which the parties have subjected it, or, failing any indication thereon, under the law for the time being in force',
   },
   {
-    id: 'no_legal_evidence',
-    label: 'The uncontroverted allegations and evidence do not make out the offence alleged',
-    prose: 'the uncontroverted allegations made and evidence collected in support of the same do not disclose the commission of any offence and make out a case against the Petitioner',
+    id: 'no_proper_notice',
+    label: 'The Applicant was not given proper notice, or was otherwise unable to present its case',
+    prose: 'the Applicant was not given proper notice of the appointment of the arbitrator or of the arbitral proceedings, or was otherwise unable to present its case',
   },
   {
-    id: 'civil_dispute',
-    label: 'This is essentially a civil/commercial or matrimonial dispute given a criminal colour',
-    prose: 'the dispute between the parties is essentially civil or commercial in nature, and has been given a cloak of criminal offence with a view to pressurise the Petitioner',
+    id: 'beyond_scope',
+    label: 'The award deals with a dispute beyond the scope of the submission to arbitration',
+    prose: 'the arbitral award deals with a dispute not contemplated by, or not falling within the terms of, the submission to arbitration, or contains decisions on matters beyond the scope of the submission to arbitration',
   },
   {
-    id: 'mala_fide',
-    label: 'The proceeding is mala fide and instituted with an ulterior motive to wreak vengeance',
-    prose: 'the criminal proceeding is manifestly attended with mala fides and has been maliciously instituted with an ulterior motive for wreaking vengeance on the Petitioner, and with a view to spite them due to private and personal grudge',
+    id: 'improper_composition',
+    label: "The composition of the tribunal or the arbitral procedure was not in accordance with the parties' agreement",
+    prose: 'the composition of the arbitral tribunal or the arbitral procedure was not in accordance with the agreement of the parties, or, failing such agreement, was not in accordance with Part I of the Act',
+  },
+  {
+    id: 'not_arbitrable',
+    label: 'The subject-matter of the dispute is not capable of settlement by arbitration',
+    prose: 'the subject-matter of the dispute is not capable of settlement by arbitration under the law for the time being in force',
+  },
+  {
+    id: 'public_policy',
+    label: 'The award is in conflict with the public policy of India',
+    prose: 'the arbitral award is in conflict with the public policy of India, in that its making was induced or affected by fraud or corruption, or it is in contravention with the fundamental policy of Indian law, or it is in conflict with the most basic notions of morality or justice',
+  },
+  {
+    id: 'patent_illegality',
+    label: 'The award is vitiated by patent illegality appearing on the face of the award',
+    prose: 'the arbitral award is vitiated by patent illegality appearing on the face of the award',
   },
 ];
 
@@ -62,15 +84,17 @@ interface DocEntry {
 }
 
 interface SavedContent {
-  petitionerName: string;
-  petitionerAge: string;
-  petitionerAddress: string;
+  courtLevel: CourtLevel | null;
+  courtName: string;
+  applicantName: string;
+  applicantAge: string;
+  applicantAddress: string;
   respondentName: string;
   respondentAddress: string;
-  firNumber: string;
-  policeStation: string;
-  firDate: string;
-  offenceSections: string;
+  arbitratorName: string;
+  awardDate: string;
+  receiptDate: string;
+  natureOfDispute: string;
   grounds: string[];
   factsNarrative: string;
   advocateName: string;
@@ -93,15 +117,15 @@ interface Props {
 }
 
 const STEPS = [
-  'Parties & impugned FIR',
-  'Grounds for quashing',
+  'Court & parties',
+  'Impugned award & grounds',
   'Filing details',
   'Documents (Index)',
   'Preview',
   'Match a style (optional)',
 ];
 
-export function QuashingPetitionWizard({
+export function ArbitrationS34Wizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -112,15 +136,17 @@ export function QuashingPetitionWizard({
   const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [petitionerName, setPetitionerName] = useState(saved?.petitionerName ?? '');
-  const [petitionerAge, setPetitionerAge] = useState(saved?.petitionerAge ?? '');
-  const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
+  const [courtLevel, setCourtLevel] = useState<CourtLevel | null>(saved?.courtLevel ?? null);
+  const [courtName, setCourtName] = useState(saved?.courtName ?? '');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [firNumber, setFirNumber] = useState(saved?.firNumber ?? '');
-  const [policeStation, setPoliceStation] = useState(saved?.policeStation ?? '');
-  const [firDate, setFirDate] = useState(saved?.firDate ?? '');
-  const [offenceSections, setOffenceSections] = useState(saved?.offenceSections ?? '');
+  const [arbitratorName, setArbitratorName] = useState(saved?.arbitratorName ?? '');
+  const [awardDate, setAwardDate] = useState(saved?.awardDate ?? '');
+  const [receiptDate, setReceiptDate] = useState(saved?.receiptDate ?? '');
+  const [natureOfDispute, setNatureOfDispute] = useState(saved?.natureOfDispute ?? '');
   const [grounds, setGrounds] = useState<string[]>(saved?.grounds ?? []);
   const toggleGround = (id: string) => setGrounds((cur) => (cur.includes(id) ? cur.filter((g) => g !== id) : [...cur, id]));
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
@@ -147,15 +173,17 @@ export function QuashingPetitionWizard({
     setSaveState('saving');
     setPaywall(false);
     const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
-      petitionerName,
-      petitionerAge,
-      petitionerAddress,
+      courtLevel,
+      courtName,
+      applicantName,
+      applicantAge,
+      applicantAddress,
       respondentName,
       respondentAddress,
-      firNumber,
-      policeStation,
-      firDate,
-      offenceSections,
+      arbitratorName,
+      awardDate,
+      receiptDate,
+      natureOfDispute,
       grounds,
       factsNarrative,
       advocateName,
@@ -166,7 +194,7 @@ export function QuashingPetitionWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-quashing-petition',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-arbitration-s34-setting-aside',
     };
     try {
       if (caseId && draftId) {
@@ -174,7 +202,7 @@ export function QuashingPetitionWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'State'} — Quashing Petition`,
+            title: `${applicantName || 'Applicant'} vs. ${respondentName || 'Respondent'} — Arbitration S.34 Application`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -194,11 +222,11 @@ export function QuashingPetitionWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-quashing-petition');
-  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-quashing-petition');
+  const citationMatches = findFixedCaseTypeCitation('ct-arbitration-s34-setting-aside');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-arbitration-s34-setting-aside');
 
   const filedByBlock = buildFiledByBlock({
-    applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
+    applicantLines: [applicantName || '[Applicant]', '(APPLICANT)'],
     advocateName,
     advocateAddress,
     advocatePhone,
@@ -212,37 +240,41 @@ export function QuashingPetitionWizard({
     .filter((g): g is (typeof GROUND_OPTIONS)[number] => !!g)
     .map((g) => toThatClause(g.prose + '.'));
 
+  const courtNoun = courtLevel === 'high_court' ? 'High Court' : 'Court';
+
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the impugned FIR/complaint',
+      heading: 'Particulars of the impugned award',
       paragraphs: [
         toThatClause(
-          `FIR/Complaint No. ${firNumber || '[FIR/Complaint No.]'}, registered at ${
-            policeStation || '[Police Station/Court]'
-          } on ${firDate || '[date]'}, alleging offence(s) under ${
-            offenceSections.trim() || '[cite the specific penal law section(s)]'
-          }, has been registered/filed against the Petitioner ${petitionerName || '[Petitioner]'}, and is sought to be quashed by this petition.`
+          `the arbitral award dated ${awardDate || '[date]'}, passed by ${
+            arbitratorName || '[name of the sole/presiding arbitrator or tribunal]'
+          } in the arbitration between the Applicant ${applicantName || '[Applicant]'} and the Respondent ${
+            respondentName || '[Respondent]'
+          } concerning ${natureOfDispute.trim() || '[describe the nature of the dispute]'}, was received by the Applicant on ${
+            receiptDate || '[date]'
+          }, and is sought to be set aside by this application, which is filed within the period of limitation prescribed by section 34(3) of the Arbitration and Conciliation Act, 1996.`
         ),
       ],
-      incomplete: !firNumber || !policeStation,
+      incomplete: !awardDate || !receiptDate,
     },
     {
       heading: 'Facts',
       paragraphs: [
         toThatClause(
           factsNarrative.trim() ||
-            '[Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained]'
+            '[Describe the background facts of the arbitration and the proceedings leading up to the impugned award]'
         ),
       ],
       incomplete: !factsNarrative.trim(),
       role: 'facts',
     },
     {
-      heading: 'Grounds for quashing',
+      heading: 'Grounds for setting aside',
       paragraphs:
         groundParagraphs.length > 0
           ? groundParagraphs
-          : [toThatClause('the continuation of the impugned proceeding would be an abuse of the process of the Court.')],
+          : [toThatClause('the impugned award is liable to be set aside under section 34 of the Arbitration and Conciliation Act, 1996.')],
       incomplete: grounds.length === 0,
       role: 'grounds',
     },
@@ -255,25 +287,25 @@ export function QuashingPetitionWizard({
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to quash the FIR/Complaint No. ${
-          firNumber || '[FIR/Complaint No.]'
-        } registered at ${policeStation || '[Police Station/Court]'}, and all proceedings arising therefrom, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
+        `It is therefore most respectfully prayed that this Hon'ble ${courtNoun} may be pleased to set aside the arbitral award dated ${
+          awardDate || '[date]'
+        }, and pass any other order(s) as this Hon'ble ${courtNoun} may deem fit and proper in the interest of justice.`,
       ],
     },
-    ...buildVerificationSection(petitionerName, verificationPlace),
+    ...buildVerificationSection(applicantName, verificationPlace),
     ...filedByBlock,
   ];
 
   const causeTitleInfo = {
-    forumType: 'high_court',
+    forumType: courtLevel ?? 'district_court',
     applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
-    applicantName: petitionerName,
-    applicantLabel: 'PETITIONER',
+    applicantName,
+    applicantLabel: 'APPLICANT',
     respondentName,
     respondentLabel: 'RESPONDENT',
-    caseNumberLine: `CRL.M.C. No. _____ of ${new Date().getFullYear()}`,
-    benchCity: filingPlace || undefined,
+    caseNumberLine: `Arb. Case No. _____ of ${new Date().getFullYear()}`,
+    benchCity: courtName || filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
   const indexCauseTitleHtml = buildCauseTitleHtml({ ...causeTitleInfo, bodyHeading: 'INDEX' });
@@ -288,16 +320,16 @@ export function QuashingPetitionWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${petitionerName || '[Petitioner]'} aged about ${petitionerAge || '[age]'}, R/o ${
-          petitionerAddress || '[Address]'
+        `${applicantName || '[Applicant]'} aged about ${applicantAge || '[age]'}, R/o ${
+          applicantAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {
       unnumbered: true,
       paragraphs: [
-        '1. That I am the Petitioner in the present case, and I am well conversant with the facts and circumstances of the case.',
-        '2. That the accompanying petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
+        '1. That I am the Applicant in the present case, and I am well conversant with the facts and circumstances of the case.',
+        '2. That the accompanying application has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
       ],
     },
     { unnumbered: true, align: 'right', paragraphs: ['Deponent'] },
@@ -328,48 +360,60 @@ export function QuashingPetitionWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">Parties and the impugned FIR/complaint</h3>
+            <h3 className="step-heading">Court and parties</h3>
+            <p className="step-help">
+              Which "Court" has jurisdiction depends on whether this is an international commercial arbitration.
+            </p>
+            <div style={{ marginBottom: 'var(--space-4)' }}>
+              {COURT_LEVEL_OPTIONS.map((opt) => (
+                <label
+                  key={opt.id}
+                  style={{ display: 'flex', alignItems: 'flex-start', gap: 'var(--space-2)', marginBottom: 'var(--space-3)' }}
+                >
+                  <input
+                    type="radio"
+                    name="courtLevel"
+                    checked={courtLevel === opt.id}
+                    onChange={() => setCourtLevel(opt.id)}
+                    style={{ marginTop: '4px' }}
+                  />
+                  <span>
+                    <strong>{opt.label}</strong>
+                    <br />
+                    <span style={{ color: 'var(--text-muted)' }}>{opt.help}</span>
+                  </span>
+                </label>
+              ))}
+            </div>
             <div className="form-grid">
               <label className="form-field">
+                <span>City/place where the Court is located</span>
+                <input type="text" value={courtName} onChange={(e) => setCourtName(e.target.value)} />
+              </label>
+              <label className="form-field">
                 <span>
-                  {mode === 'advocate' ? 'Petitioner' : 'Your name'}
+                  {mode === 'advocate' ? 'Applicant' : 'Your name'}
                   {mode === 'justice_seeker' && (
-                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Petitioner in this case)</span>
+                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Applicant in this case)</span>
                   )}
                 </span>
-                <input type="text" value={petitionerName} onChange={(e) => setPetitionerName(e.target.value)} />
+                <input type="text" value={applicantName} onChange={(e) => setApplicantName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Petitioner's age</span>
-                <input type="text" value={petitionerAge} onChange={(e) => setPetitionerAge(e.target.value)} />
+                <span>Applicant's age</span>
+                <input type="text" value={applicantAge} onChange={(e) => setApplicantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Petitioner's address</span>
-                <input type="text" value={petitionerAddress} onChange={(e) => setPetitionerAddress(e.target.value)} />
+                <span>Applicant's address</span>
+                <input type="text" value={applicantAddress} onChange={(e) => setApplicantAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Respondent (e.g. "State of ___" and/or the original complainant)</span>
+                <span>Respondent</span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               <label className="form-field">
                 <span>Respondent's address</span>
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>FIR/Complaint No.</span>
-                <input type="text" value={firNumber} onChange={(e) => setFirNumber(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Police Station/Court where registered</span>
-                <input type="text" value={policeStation} onChange={(e) => setPoliceStation(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Date of FIR/complaint</span>
-                <input type="date" value={firDate} onChange={(e) => setFirDate(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Offence(s) alleged</span>
-                <input type="text" value={offenceSections} onChange={(e) => setOffenceSections(e.target.value)} />
               </label>
             </div>
           </div>
@@ -377,10 +421,28 @@ export function QuashingPetitionWizard({
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">Grounds for quashing</h3>
-            <p className="step-help">
-              Tick every ground that applies — these track the categories the Supreme Court laid down in{' '}
-              <em>State of Haryana v. Bhajan Lal</em> for when the inherent power to quash may be exercised.
+            <h3 className="step-heading">Impugned award and grounds</h3>
+            <div className="form-grid">
+              <label className="form-field">
+                <span>Name of the arbitrator(s)/tribunal</span>
+                <input type="text" value={arbitratorName} onChange={(e) => setArbitratorName(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Date of the award</span>
+                <input type="date" value={awardDate} onChange={(e) => setAwardDate(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Date the Applicant received the award</span>
+                <input type="date" value={receiptDate} onChange={(e) => setReceiptDate(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Nature of the dispute</span>
+                <input type="text" value={natureOfDispute} onChange={(e) => setNatureOfDispute(e.target.value)} />
+              </label>
+            </div>
+            <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
+              Tick every ground that applies — an award can only be set aside on one or more of these grounds under
+              section 34(2)/(2A).
             </p>
             <div>
               {GROUND_OPTIONS.map((opt) => (
@@ -400,7 +462,7 @@ export function QuashingPetitionWizard({
                 rows={6}
                 value={factsNarrative}
                 onChange={(e) => setFactsNarrative(e.target.value)}
-                placeholder="Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained"
+                placeholder="Describe the background facts of the arbitration and the proceedings leading up to the impugned award"
               />
             </label>
             {user ? (
@@ -469,7 +531,7 @@ export function QuashingPetitionWizard({
             <h3 className="step-heading">Documents (Index)</h3>
             <p className="step-help">
               Add each document you're annexing, in the order it will be paginated — including a certified copy of
-              the impugned FIR/complaint, and the chargesheet if one has been filed.
+              the arbitral award, and the notice to the Respondent required under section 34(5).
             </p>
             {documentEntries.map((d, i) => (
               <div key={i} style={{ marginBottom: 'var(--space-4)' }}>
@@ -519,20 +581,35 @@ export function QuashingPetitionWizard({
                 Log in to save this draft and come back to it later.
               </p>
             )}
-            <p className="step-help">A filed petition is a bundle of separate documents — each below downloads as its own PDF.</p>
+            <p className="step-help">A filed application is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Quashing Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
+            <DraftDocument title="Arbitration S.34 Application — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Application</h4>
             <DraftDocument
-              title="Quashing Petition"
-              subtitle={`Petition under Section 528, Bharatiya Nagarik Suraksha Sanhita, 2023 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Application to Set Aside Arbitral Award"
+              subtitle={`Application under Section 34, Arbitration and Conciliation Act, 1996 — ${applicantName || '[Applicant]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Quashing Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Arbitration S.34 Application — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
-            <FilingGuidance forum="highCourtOriginal" contextLabel={filingPlace || undefined} />
+            <FilingGuidance forum={courtLevel === 'high_court' ? 'highCourtOriginal' : 'districtCourt'} contextLabel={filingPlace || undefined} />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Prior notice and limitation
+              </p>
+              <p className="deadline-body">
+                Section 34(5) requires this application to be preceded by a notice to the Respondent, accompanied by
+                an affidavit endorsing compliance — annex both as documents above. Section 34(3) bars this
+                application after three months from receipt of the award (extendable by a further thirty days only
+                on sufficient cause) — confirm you are within time before filing.
+              </p>
+            </div>
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p

@@ -26,6 +26,11 @@ import { DomesticViolenceApplicationWizard } from './pages/DomesticViolenceAppli
 import { GuardianshipCustodyPetitionWizard } from './pages/GuardianshipCustodyPetitionWizard';
 import { PrivateCriminalComplaintWizard } from './pages/PrivateCriminalComplaintWizard';
 import { QuashingPetitionWizard } from './pages/QuashingPetitionWizard';
+import { CriminalRevisionPetitionWizard } from './pages/CriminalRevisionPetitionWizard';
+import { CriminalAppealWizard } from './pages/CriminalAppealWizard';
+import { ArbitrationS9Wizard } from './pages/ArbitrationS9Wizard';
+import { ArbitrationS11Wizard } from './pages/ArbitrationS11Wizard';
+import { ArbitrationS34Wizard } from './pages/ArbitrationS34Wizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -449,6 +454,31 @@ function AppScreens() {
     if (ct.id === 'ct-quashing-petition') {
       return (
         <QuashingPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-criminal-revision-petition') {
+      return (
+        <CriminalRevisionPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-criminal-appeal') {
+      return (
+        <CriminalAppealWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-arbitration-s9-interim-relief') {
+      return (
+        <ArbitrationS9Wizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-arbitration-s11-appointment') {
+      return (
+        <ArbitrationS11Wizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-arbitration-s34-setting-aside') {
+      return (
+        <ArbitrationS34Wizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 

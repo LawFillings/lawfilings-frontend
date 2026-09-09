@@ -594,6 +594,56 @@ export const caseTypes: CaseType[] = [
     applicantEligibility: 'accused_or_person_facing_criminal_proceedings',
     filingCategory: 'original',
   },
+  {
+    id: 'ct-criminal-revision-petition',
+    forumType: 'misc_drafts',
+    name: 'Criminal Revision Petition (BNSS, S.438)',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 438',
+    plainLanguageSummary:
+      "File this before the Sessions Court or High Court to have an inferior criminal court's finding, sentence, or order examined for correctness, legality, or propriety — narrower than an appeal, and not a routine rehearing of the facts.",
+    applicantEligibility: 'aggrieved_party_challenging_a_criminal_courts_order',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-criminal-appeal',
+    forumType: 'misc_drafts',
+    name: 'Criminal Appeal Against Conviction (BNSS, S.415)',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 415',
+    plainLanguageSummary:
+      "File this to appeal a criminal conviction — to the Court of Session, the High Court, or the Supreme Court, depending on which court convicted you and the sentence passed.",
+    applicantEligibility: 'person_convicted_in_a_criminal_trial',
+    filingCategory: 'appeal',
+  },
+  {
+    id: 'ct-arbitration-s9-interim-relief',
+    forumType: 'misc_drafts',
+    name: 'Arbitration Interim Relief Application (S.9)',
+    governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 9',
+    plainLanguageSummary:
+      "File this before or during arbitral proceedings — or after the award but before enforcement — to ask the Court for interim protection, such as securing the amount in dispute, preserving property, or an interim injunction.",
+    applicantEligibility: 'party_to_an_arbitration_agreement',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-arbitration-s11-appointment',
+    forumType: 'misc_drafts',
+    name: 'Application for Appointment of Arbitrator (S.11)',
+    governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 11',
+    plainLanguageSummary:
+      "File this before the High Court when the other party has failed to appoint an arbitrator, or the appointed arbitrators can't agree on a presiding arbitrator, within the time the Act allows.",
+    applicantEligibility: 'party_to_an_arbitration_agreement',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-arbitration-s34-setting-aside',
+    forumType: 'misc_drafts',
+    name: 'Application to Set Aside Arbitral Award (S.34)',
+    governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 34',
+    plainLanguageSummary:
+      "File this within three months of receiving an arbitral award to have it set aside — because of incapacity, an invalid arbitration agreement, want of proper notice, an award beyond the scope of reference, or conflict with the public policy of India.",
+    applicantEligibility: 'party_aggrieved_by_an_arbitral_award',
+    filingCategory: 'original',
+  },
 ];
 
 export const appealGroups: AppealGroup[] = [

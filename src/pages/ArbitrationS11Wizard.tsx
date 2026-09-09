@@ -26,33 +26,23 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-quashing-petition')!;
+const caseType = caseTypes.find((ct) => ct.id === 'ct-arbitration-s11-appointment')!;
 
-const GROUND_OPTIONS: { id: string; label: string; prose: string }[] = [
+const FAILURE_OPTIONS: { id: string; label: string; prose: string }[] = [
   {
-    id: 'no_offence_disclosed',
-    label: 'The allegations, even taken at face value, do not disclose any offence',
-    prose: 'the allegations made in the impugned FIR/complaint, even if taken at their face value and accepted in their entirety, do not prima facie constitute any offence or make out a case against the Petitioner',
+    id: 'failed_to_appoint',
+    label: 'The Respondent failed to appoint its arbitrator within thirty days of the Applicant\'s request',
+    prose: "the Respondent has failed to appoint an arbitrator within thirty days from the receipt of the Applicant's request to do so",
   },
   {
-    id: 'no_cognizable_offence',
-    label: 'The allegations do not disclose a cognizable offence justifying investigation',
-    prose: 'the allegations and materials accompanying the impugned FIR do not disclose a cognizable offence, justifying an investigation by a police officer',
+    id: 'two_arbitrators_failed',
+    label: 'The two party-appointed arbitrators failed to agree on a presiding arbitrator within thirty days',
+    prose: 'the two arbitrators appointed by the parties have failed to agree on the third, presiding arbitrator within thirty days of their appointment',
   },
   {
-    id: 'no_legal_evidence',
-    label: 'The uncontroverted allegations and evidence do not make out the offence alleged',
-    prose: 'the uncontroverted allegations made and evidence collected in support of the same do not disclose the commission of any offence and make out a case against the Petitioner',
-  },
-  {
-    id: 'civil_dispute',
-    label: 'This is essentially a civil/commercial or matrimonial dispute given a criminal colour',
-    prose: 'the dispute between the parties is essentially civil or commercial in nature, and has been given a cloak of criminal offence with a view to pressurise the Petitioner',
-  },
-  {
-    id: 'mala_fide',
-    label: 'The proceeding is mala fide and instituted with an ulterior motive to wreak vengeance',
-    prose: 'the criminal proceeding is manifestly attended with mala fides and has been maliciously instituted with an ulterior motive for wreaking vengeance on the Petitioner, and with a view to spite them due to private and personal grudge',
+    id: 'sole_arbitrator_disagreement',
+    label: 'The parties failed to agree on a sole arbitrator within thirty days',
+    prose: 'the parties have failed to agree on a sole arbitrator within thirty days of the Applicant\'s request to the Respondent to so agree',
   },
 ];
 
@@ -62,16 +52,17 @@ interface DocEntry {
 }
 
 interface SavedContent {
-  petitionerName: string;
-  petitionerAge: string;
-  petitionerAddress: string;
+  applicantName: string;
+  applicantAge: string;
+  applicantAddress: string;
   respondentName: string;
   respondentAddress: string;
-  firNumber: string;
-  policeStation: string;
-  firDate: string;
-  offenceSections: string;
-  grounds: string[];
+  agreementDate: string;
+  natureOfDispute: string;
+  numberOfArbitrators: string;
+  failures: string[];
+  requestDate: string;
+  proposedArbitrator: string;
   factsNarrative: string;
   advocateName: string;
   advocateAddress: string;
@@ -93,15 +84,15 @@ interface Props {
 }
 
 const STEPS = [
-  'Parties & impugned FIR',
-  'Grounds for quashing',
+  'Parties',
+  'Arbitration & appointment',
   'Filing details',
   'Documents (Index)',
   'Preview',
   'Match a style (optional)',
 ];
 
-export function QuashingPetitionWizard({
+export function ArbitrationS11Wizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -112,17 +103,18 @@ export function QuashingPetitionWizard({
   const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [petitionerName, setPetitionerName] = useState(saved?.petitionerName ?? '');
-  const [petitionerAge, setPetitionerAge] = useState(saved?.petitionerAge ?? '');
-  const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [firNumber, setFirNumber] = useState(saved?.firNumber ?? '');
-  const [policeStation, setPoliceStation] = useState(saved?.policeStation ?? '');
-  const [firDate, setFirDate] = useState(saved?.firDate ?? '');
-  const [offenceSections, setOffenceSections] = useState(saved?.offenceSections ?? '');
-  const [grounds, setGrounds] = useState<string[]>(saved?.grounds ?? []);
-  const toggleGround = (id: string) => setGrounds((cur) => (cur.includes(id) ? cur.filter((g) => g !== id) : [...cur, id]));
+  const [agreementDate, setAgreementDate] = useState(saved?.agreementDate ?? '');
+  const [natureOfDispute, setNatureOfDispute] = useState(saved?.natureOfDispute ?? '');
+  const [numberOfArbitrators, setNumberOfArbitrators] = useState(saved?.numberOfArbitrators ?? '');
+  const [failures, setFailures] = useState<string[]>(saved?.failures ?? []);
+  const toggleFailure = (id: string) => setFailures((cur) => (cur.includes(id) ? cur.filter((f) => f !== id) : [...cur, id]));
+  const [requestDate, setRequestDate] = useState(saved?.requestDate ?? '');
+  const [proposedArbitrator, setProposedArbitrator] = useState(saved?.proposedArbitrator ?? '');
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
   const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
   const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
@@ -147,16 +139,17 @@ export function QuashingPetitionWizard({
     setSaveState('saving');
     setPaywall(false);
     const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
-      petitionerName,
-      petitionerAge,
-      petitionerAddress,
+      applicantName,
+      applicantAge,
+      applicantAddress,
       respondentName,
       respondentAddress,
-      firNumber,
-      policeStation,
-      firDate,
-      offenceSections,
-      grounds,
+      agreementDate,
+      natureOfDispute,
+      numberOfArbitrators,
+      failures,
+      requestDate,
+      proposedArbitrator,
       factsNarrative,
       advocateName,
       advocateAddress,
@@ -166,7 +159,7 @@ export function QuashingPetitionWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-quashing-petition',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-arbitration-s11-appointment',
     };
     try {
       if (caseId && draftId) {
@@ -174,7 +167,7 @@ export function QuashingPetitionWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'State'} — Quashing Petition`,
+            title: `${applicantName || 'Applicant'} vs. ${respondentName || 'Respondent'} — Arbitration S.11 Application`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -194,11 +187,11 @@ export function QuashingPetitionWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-quashing-petition');
-  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-quashing-petition');
+  const citationMatches = findFixedCaseTypeCitation('ct-arbitration-s11-appointment');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-arbitration-s11-appointment');
 
   const filedByBlock = buildFiledByBlock({
-    applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
+    applicantLines: [applicantName || '[Applicant]', '(APPLICANT)'],
     advocateName,
     advocateAddress,
     advocatePhone,
@@ -207,44 +200,47 @@ export function QuashingPetitionWizard({
     date: filingDate,
   });
 
-  const groundParagraphs = grounds
-    .map((id) => GROUND_OPTIONS.find((g) => g.id === id))
-    .filter((g): g is (typeof GROUND_OPTIONS)[number] => !!g)
-    .map((g) => toThatClause(g.prose + '.'));
+  const failureSentences = failures.map((id) => FAILURE_OPTIONS.find((f) => f.id === id)?.prose).filter((p): p is string => !!p);
+  const failureProse =
+    failureSentences.length > 0
+      ? failureSentences.length === 1
+        ? failureSentences[0]
+        : `${failureSentences.slice(0, -1).join('; ')}; and ${failureSentences[failureSentences.length - 1]}`
+      : '[select what has failed under the agreed appointment procedure]';
 
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the impugned FIR/complaint',
+      heading: 'Particulars of the arbitration agreement and the dispute',
       paragraphs: [
         toThatClause(
-          `FIR/Complaint No. ${firNumber || '[FIR/Complaint No.]'}, registered at ${
-            policeStation || '[Police Station/Court]'
-          } on ${firDate || '[date]'}, alleging offence(s) under ${
-            offenceSections.trim() || '[cite the specific penal law section(s)]'
-          }, has been registered/filed against the Petitioner ${petitionerName || '[Petitioner]'}, and is sought to be quashed by this petition.`
+          `disputes have arisen between the Applicant ${applicantName || '[Applicant]'} and the Respondent ${
+            respondentName || '[Respondent]'
+          } arising out of the arbitration agreement dated ${agreementDate || '[date]'}, concerning ${
+            natureOfDispute.trim() || '[describe the nature of the dispute]'
+          }, requiring reference to arbitration by ${numberOfArbitrators.trim() || '[a sole arbitrator/three arbitrators, as agreed]'}.`
         ),
       ],
-      incomplete: !firNumber || !policeStation,
+      incomplete: !agreementDate || !natureOfDispute.trim(),
+    },
+    {
+      heading: 'Failure of the agreed appointment procedure',
+      paragraphs: [
+        toThatClause(
+          `by request dated ${requestDate || '[date]'}, the Applicant called upon the Respondent to co-operate in the appointment of the arbitrator(s), but ${failureProse}.`
+        ),
+      ],
+      incomplete: failures.length === 0 || !requestDate,
     },
     {
       heading: 'Facts',
       paragraphs: [
         toThatClause(
           factsNarrative.trim() ||
-            '[Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained]'
+            '[Describe the background facts and the correspondence exchanged between the parties concerning appointment]'
         ),
       ],
       incomplete: !factsNarrative.trim(),
       role: 'facts',
-    },
-    {
-      heading: 'Grounds for quashing',
-      paragraphs:
-        groundParagraphs.length > 0
-          ? groundParagraphs
-          : [toThatClause('the continuation of the impugned proceeding would be an abuse of the process of the Court.')],
-      incomplete: grounds.length === 0,
-      role: 'grounds',
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
@@ -255,12 +251,16 @@ export function QuashingPetitionWizard({
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to quash the FIR/Complaint No. ${
-          firNumber || '[FIR/Complaint No.]'
-        } registered at ${policeStation || '[Police Station/Court]'}, and all proceedings arising therefrom, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
+        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to appoint ${
+          numberOfArbitrators.trim() || '[a sole arbitrator/the presiding arbitrator, as applicable]'
+        }${
+          proposedArbitrator.trim() ? `, and in this connection the Applicant proposes ${proposedArbitrator.trim()}` : ''
+        } to adjudicate the disputes between the parties in accordance with the arbitration agreement dated ${
+          agreementDate || '[date]'
+        }, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
       ],
     },
-    ...buildVerificationSection(petitionerName, verificationPlace),
+    ...buildVerificationSection(applicantName, verificationPlace),
     ...filedByBlock,
   ];
 
@@ -268,11 +268,11 @@ export function QuashingPetitionWizard({
     forumType: 'high_court',
     applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
-    applicantName: petitionerName,
-    applicantLabel: 'PETITIONER',
+    applicantName,
+    applicantLabel: 'APPLICANT',
     respondentName,
     respondentLabel: 'RESPONDENT',
-    caseNumberLine: `CRL.M.C. No. _____ of ${new Date().getFullYear()}`,
+    caseNumberLine: `Arb. Application No. _____ of ${new Date().getFullYear()}`,
     benchCity: filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
@@ -288,16 +288,16 @@ export function QuashingPetitionWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${petitionerName || '[Petitioner]'} aged about ${petitionerAge || '[age]'}, R/o ${
-          petitionerAddress || '[Address]'
+        `${applicantName || '[Applicant]'} aged about ${applicantAge || '[age]'}, R/o ${
+          applicantAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {
       unnumbered: true,
       paragraphs: [
-        '1. That I am the Petitioner in the present case, and I am well conversant with the facts and circumstances of the case.',
-        '2. That the accompanying petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
+        '1. That I am the Applicant in the present case, and I am well conversant with the facts and circumstances of the case.',
+        '2. That the accompanying application has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
       ],
     },
     { unnumbered: true, align: 'right', paragraphs: ['Deponent'] },
@@ -328,48 +328,32 @@ export function QuashingPetitionWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">Parties and the impugned FIR/complaint</h3>
+            <h3 className="step-heading">Parties</h3>
             <div className="form-grid">
               <label className="form-field">
                 <span>
-                  {mode === 'advocate' ? 'Petitioner' : 'Your name'}
+                  {mode === 'advocate' ? 'Applicant' : 'Your name'}
                   {mode === 'justice_seeker' && (
-                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Petitioner in this case)</span>
+                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Applicant in this case)</span>
                   )}
                 </span>
-                <input type="text" value={petitionerName} onChange={(e) => setPetitionerName(e.target.value)} />
+                <input type="text" value={applicantName} onChange={(e) => setApplicantName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Petitioner's age</span>
-                <input type="text" value={petitionerAge} onChange={(e) => setPetitionerAge(e.target.value)} />
+                <span>Applicant's age</span>
+                <input type="text" value={applicantAge} onChange={(e) => setApplicantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Petitioner's address</span>
-                <input type="text" value={petitionerAddress} onChange={(e) => setPetitionerAddress(e.target.value)} />
+                <span>Applicant's address</span>
+                <input type="text" value={applicantAddress} onChange={(e) => setApplicantAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Respondent (e.g. "State of ___" and/or the original complainant)</span>
+                <span>Respondent</span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               <label className="form-field">
                 <span>Respondent's address</span>
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>FIR/Complaint No.</span>
-                <input type="text" value={firNumber} onChange={(e) => setFirNumber(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Police Station/Court where registered</span>
-                <input type="text" value={policeStation} onChange={(e) => setPoliceStation(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Date of FIR/complaint</span>
-                <input type="date" value={firDate} onChange={(e) => setFirDate(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Offence(s) alleged</span>
-                <input type="text" value={offenceSections} onChange={(e) => setOffenceSections(e.target.value)} />
               </label>
             </div>
           </div>
@@ -377,18 +361,39 @@ export function QuashingPetitionWizard({
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">Grounds for quashing</h3>
-            <p className="step-help">
-              Tick every ground that applies — these track the categories the Supreme Court laid down in{' '}
-              <em>State of Haryana v. Bhajan Lal</em> for when the inherent power to quash may be exercised.
+            <h3 className="step-heading">Arbitration and appointment</h3>
+            <div className="form-grid">
+              <label className="form-field">
+                <span>Date of the arbitration agreement</span>
+                <input type="date" value={agreementDate} onChange={(e) => setAgreementDate(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Nature of the dispute</span>
+                <input type="text" value={natureOfDispute} onChange={(e) => setNatureOfDispute(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Number of arbitrators agreed (e.g. a sole arbitrator, or three arbitrators)</span>
+                <input type="text" value={numberOfArbitrators} onChange={(e) => setNumberOfArbitrators(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Date of the Applicant's request to the Respondent to appoint/agree</span>
+                <input type="date" value={requestDate} onChange={(e) => setRequestDate(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Proposed arbitrator, if any (optional)</span>
+                <input type="text" value={proposedArbitrator} onChange={(e) => setProposedArbitrator(e.target.value)} />
+              </label>
+            </div>
+            <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
+              Tick what has failed under the agreed appointment procedure.
             </p>
             <div>
-              {GROUND_OPTIONS.map((opt) => (
+              {FAILURE_OPTIONS.map((opt) => (
                 <label
                   key={opt.id}
                   style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
                 >
-                  <input type="checkbox" checked={grounds.includes(opt.id)} onChange={() => toggleGround(opt.id)} />
+                  <input type="checkbox" checked={failures.includes(opt.id)} onChange={() => toggleFailure(opt.id)} />
                   <span>{opt.label}</span>
                 </label>
               ))}
@@ -400,7 +405,7 @@ export function QuashingPetitionWizard({
                 rows={6}
                 value={factsNarrative}
                 onChange={(e) => setFactsNarrative(e.target.value)}
-                placeholder="Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained"
+                placeholder="Describe the background facts and the correspondence exchanged between the parties concerning appointment"
               />
             </label>
             {user ? (
@@ -468,8 +473,8 @@ export function QuashingPetitionWizard({
           <div>
             <h3 className="step-heading">Documents (Index)</h3>
             <p className="step-help">
-              Add each document you're annexing, in the order it will be paginated — including a certified copy of
-              the impugned FIR/complaint, and the chargesheet if one has been filed.
+              Add each document you're annexing, in the order it will be paginated — including a copy of the
+              arbitration agreement and the correspondence exchanged on appointment.
             </p>
             {documentEntries.map((d, i) => (
               <div key={i} style={{ marginBottom: 'var(--space-4)' }}>
@@ -519,18 +524,18 @@ export function QuashingPetitionWizard({
                 Log in to save this draft and come back to it later.
               </p>
             )}
-            <p className="step-help">A filed petition is a bundle of separate documents — each below downloads as its own PDF.</p>
+            <p className="step-help">A filed application is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Quashing Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
+            <DraftDocument title="Arbitration S.11 Application — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Application</h4>
             <DraftDocument
-              title="Quashing Petition"
-              subtitle={`Petition under Section 528, Bharatiya Nagarik Suraksha Sanhita, 2023 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Application for Appointment of Arbitrator"
+              subtitle={`Application under Section 11, Arbitration and Conciliation Act, 1996 — ${applicantName || '[Applicant]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Quashing Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Arbitration S.11 Application — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum="highCourtOriginal" contextLabel={filingPlace || undefined} />
 

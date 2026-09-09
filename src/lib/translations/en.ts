@@ -830,6 +830,20 @@ export const en = {
       portalLabel: 'eCourts e-filing portal',
       note: 'Several High Courts (e.g. Delhi, Bombay) run their own separate e-filing systems rather than the shared eCourts platform — confirm which applies to the specific High Court before filing.',
     },
+    highCourtOriginal: {
+      heading: 'Filing at the High Court',
+      intro: 'this application is filed directly at the High Court registry, on its original/miscellaneous side — not as an appeal from a lower court.',
+      steps: [
+        'Prepare the prescribed number of copies of the application, plus a copy for service on the respondent(s).',
+        'Confirm the applicable court fee with the registry — original and miscellaneous applications often carry a fixed or nominal fee rather than the ad valorem fee used for suits and appeals, but this varies by High Court and application type.',
+        'Attach a vakalatnama if an advocate is filing on your behalf.',
+        'File through the High Court’s own e-filing system where it has one, or its physical filing counter — this varies by High Court, so confirm which applies before filing.',
+        'Keep the filing receipt and case number allotted.',
+      ],
+      portalUrl: 'https://efiling.ecourts.gov.in',
+      portalLabel: 'eCourts e-filing portal',
+      note: 'Several High Courts (e.g. Delhi, Bombay) run their own separate e-filing systems rather than the shared eCourts platform — confirm which applies to the specific High Court before filing.',
+    },
     familyCourt: {
       heading: 'Filing at the Family Court',
       intro: 'this petition is filed at the Family Court registry for the district — or, where no separate Family Court has been notified there, the District Court exercising family jurisdiction instead.',

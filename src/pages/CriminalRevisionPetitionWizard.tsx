@@ -26,33 +26,40 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-quashing-petition')!;
+const caseType = caseTypes.find((ct) => ct.id === 'ct-criminal-revision-petition')!;
+
+type CourtLevel = 'sessions_court' | 'high_court';
+
+const COURT_LEVEL_OPTIONS: { id: CourtLevel; label: string }[] = [
+  { id: 'sessions_court', label: 'Sessions Court' },
+  { id: 'high_court', label: 'High Court' },
+];
 
 const GROUND_OPTIONS: { id: string; label: string; prose: string }[] = [
   {
-    id: 'no_offence_disclosed',
-    label: 'The allegations, even taken at face value, do not disclose any offence',
-    prose: 'the allegations made in the impugned FIR/complaint, even if taken at their face value and accepted in their entirety, do not prima facie constitute any offence or make out a case against the Petitioner',
+    id: 'grossly_erroneous',
+    label: 'The finding, sentence, or order under challenge is grossly erroneous',
+    prose: 'the finding, sentence, or order under challenge is grossly erroneous',
   },
   {
-    id: 'no_cognizable_offence',
-    label: 'The allegations do not disclose a cognizable offence justifying investigation',
-    prose: 'the allegations and materials accompanying the impugned FIR do not disclose a cognizable offence, justifying an investigation by a police officer',
+    id: 'non_compliance',
+    label: 'There has been no compliance with the provisions of law',
+    prose: 'there has been no compliance with the provisions of law applicable to the proceeding',
   },
   {
-    id: 'no_legal_evidence',
-    label: 'The uncontroverted allegations and evidence do not make out the offence alleged',
-    prose: 'the uncontroverted allegations made and evidence collected in support of the same do not disclose the commission of any offence and make out a case against the Petitioner',
+    id: 'no_evidence',
+    label: 'The finding recorded is based on no evidence',
+    prose: 'the finding recorded by the court below is based on no evidence',
   },
   {
-    id: 'civil_dispute',
-    label: 'This is essentially a civil/commercial or matrimonial dispute given a criminal colour',
-    prose: 'the dispute between the parties is essentially civil or commercial in nature, and has been given a cloak of criminal offence with a view to pressurise the Petitioner',
+    id: 'evidence_ignored',
+    label: 'Material evidence has been ignored',
+    prose: 'material evidence on record has been ignored by the court below',
   },
   {
-    id: 'mala_fide',
-    label: 'The proceeding is mala fide and instituted with an ulterior motive to wreak vengeance',
-    prose: 'the criminal proceeding is manifestly attended with mala fides and has been maliciously instituted with an ulterior motive for wreaking vengeance on the Petitioner, and with a view to spite them due to private and personal grudge',
+    id: 'arbitrary_discretion',
+    label: 'Judicial discretion has been exercised arbitrarily or perversely',
+    prose: 'the judicial discretion of the court below has been exercised arbitrarily or perversely',
   },
 ];
 
@@ -62,15 +69,16 @@ interface DocEntry {
 }
 
 interface SavedContent {
+  courtLevel: CourtLevel | null;
   petitionerName: string;
   petitionerAge: string;
   petitionerAddress: string;
   respondentName: string;
   respondentAddress: string;
-  firNumber: string;
-  policeStation: string;
-  firDate: string;
-  offenceSections: string;
+  impugningCourt: string;
+  caseNumber: string;
+  orderDate: string;
+  orderNature: string;
   grounds: string[];
   factsNarrative: string;
   advocateName: string;
@@ -93,15 +101,15 @@ interface Props {
 }
 
 const STEPS = [
-  'Parties & impugned FIR',
-  'Grounds for quashing',
+  'Court & parties',
+  'Impugned order & grounds',
   'Filing details',
   'Documents (Index)',
   'Preview',
   'Match a style (optional)',
 ];
 
-export function QuashingPetitionWizard({
+export function CriminalRevisionPetitionWizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -112,15 +120,16 @@ export function QuashingPetitionWizard({
   const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
+  const [courtLevel, setCourtLevel] = useState<CourtLevel | null>(saved?.courtLevel ?? null);
   const [petitionerName, setPetitionerName] = useState(saved?.petitionerName ?? '');
   const [petitionerAge, setPetitionerAge] = useState(saved?.petitionerAge ?? '');
   const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [firNumber, setFirNumber] = useState(saved?.firNumber ?? '');
-  const [policeStation, setPoliceStation] = useState(saved?.policeStation ?? '');
-  const [firDate, setFirDate] = useState(saved?.firDate ?? '');
-  const [offenceSections, setOffenceSections] = useState(saved?.offenceSections ?? '');
+  const [impugningCourt, setImpugningCourt] = useState(saved?.impugningCourt ?? '');
+  const [caseNumber, setCaseNumber] = useState(saved?.caseNumber ?? '');
+  const [orderDate, setOrderDate] = useState(saved?.orderDate ?? '');
+  const [orderNature, setOrderNature] = useState(saved?.orderNature ?? '');
   const [grounds, setGrounds] = useState<string[]>(saved?.grounds ?? []);
   const toggleGround = (id: string) => setGrounds((cur) => (cur.includes(id) ? cur.filter((g) => g !== id) : [...cur, id]));
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
@@ -147,15 +156,16 @@ export function QuashingPetitionWizard({
     setSaveState('saving');
     setPaywall(false);
     const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
+      courtLevel,
       petitionerName,
       petitionerAge,
       petitionerAddress,
       respondentName,
       respondentAddress,
-      firNumber,
-      policeStation,
-      firDate,
-      offenceSections,
+      impugningCourt,
+      caseNumber,
+      orderDate,
+      orderNature,
       grounds,
       factsNarrative,
       advocateName,
@@ -166,7 +176,7 @@ export function QuashingPetitionWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-quashing-petition',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-criminal-revision-petition',
     };
     try {
       if (caseId && draftId) {
@@ -174,7 +184,7 @@ export function QuashingPetitionWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'State'} — Quashing Petition`,
+            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Criminal Revision Petition`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -194,8 +204,8 @@ export function QuashingPetitionWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-quashing-petition');
-  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-quashing-petition');
+  const citationMatches = findFixedCaseTypeCitation('ct-criminal-revision-petition');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-criminal-revision-petition');
 
   const filedByBlock = buildFiledByBlock({
     applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
@@ -212,37 +222,39 @@ export function QuashingPetitionWizard({
     .filter((g): g is (typeof GROUND_OPTIONS)[number] => !!g)
     .map((g) => toThatClause(g.prose + '.'));
 
+  const revisionalCourtNoun = courtLevel === 'high_court' ? 'High Court' : 'Sessions Court';
+
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the impugned FIR/complaint',
+      heading: 'Particulars of the impugned order',
       paragraphs: [
         toThatClause(
-          `FIR/Complaint No. ${firNumber || '[FIR/Complaint No.]'}, registered at ${
-            policeStation || '[Police Station/Court]'
-          } on ${firDate || '[date]'}, alleging offence(s) under ${
-            offenceSections.trim() || '[cite the specific penal law section(s)]'
-          }, has been registered/filed against the Petitioner ${petitionerName || '[Petitioner]'}, and is sought to be quashed by this petition.`
+          `the order dated ${orderDate || '[date]'}, being ${
+            orderNature.trim() || '[describe the nature of the order, e.g. order framing charge / order rejecting discharge application]'
+          }, passed by ${impugningCourt || '[court which passed the order]'} in Case No. ${
+            caseNumber || '[Case/Complaint No.]'
+          }, is illegal, incorrect, and improper, and is sought to be revised by this petition.`
         ),
       ],
-      incomplete: !firNumber || !policeStation,
+      incomplete: !orderDate || !impugningCourt || !caseNumber,
     },
     {
       heading: 'Facts',
       paragraphs: [
         toThatClause(
           factsNarrative.trim() ||
-            '[Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained]'
+            '[Describe the background facts and the proceedings before the court below leading up to the impugned order]'
         ),
       ],
       incomplete: !factsNarrative.trim(),
       role: 'facts',
     },
     {
-      heading: 'Grounds for quashing',
+      heading: 'Grounds for revision',
       paragraphs:
         groundParagraphs.length > 0
           ? groundParagraphs
-          : [toThatClause('the continuation of the impugned proceeding would be an abuse of the process of the Court.')],
+          : [toThatClause('the impugned order suffers from illegality, incorrectness, and impropriety, warranting interference in revision.')],
       incomplete: grounds.length === 0,
       role: 'grounds',
     },
@@ -255,9 +267,11 @@ export function QuashingPetitionWizard({
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to quash the FIR/Complaint No. ${
-          firNumber || '[FIR/Complaint No.]'
-        } registered at ${policeStation || '[Police Station/Court]'}, and all proceedings arising therefrom, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
+        `It is therefore most respectfully prayed that this Hon'ble ${revisionalCourtNoun} may be pleased to call for the records of Case No. ${
+          caseNumber || '[Case/Complaint No.]'
+        } from ${impugningCourt || '[court which passed the order]'}, examine the correctness, legality, and propriety of the order dated ${
+          orderDate || '[date]'
+        }, set aside/modify the same, and pass any other order(s) as this Hon'ble ${revisionalCourtNoun} may deem fit and proper in the interest of justice.`,
       ],
     },
     ...buildVerificationSection(petitionerName, verificationPlace),
@@ -265,14 +279,14 @@ export function QuashingPetitionWizard({
   ];
 
   const causeTitleInfo = {
-    forumType: 'high_court',
+    forumType: courtLevel ?? 'sessions_court',
     applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
     applicantName: petitionerName,
     applicantLabel: 'PETITIONER',
     respondentName,
     respondentLabel: 'RESPONDENT',
-    caseNumberLine: `CRL.M.C. No. _____ of ${new Date().getFullYear()}`,
+    caseNumberLine: `Crl. Rev. P. No. _____ of ${new Date().getFullYear()}`,
     benchCity: filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
@@ -328,7 +342,27 @@ export function QuashingPetitionWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">Parties and the impugned FIR/complaint</h3>
+            <h3 className="step-heading">Court and parties</h3>
+            <p className="step-help">
+              Section 438 gives concurrent revisional jurisdiction to the Sessions Court and the High Court — pick
+              whichever you're filing before.
+            </p>
+            <div style={{ marginBottom: 'var(--space-4)' }}>
+              {COURT_LEVEL_OPTIONS.map((opt) => (
+                <label
+                  key={opt.id}
+                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
+                >
+                  <input
+                    type="radio"
+                    name="courtLevel"
+                    checked={courtLevel === opt.id}
+                    onChange={() => setCourtLevel(opt.id)}
+                  />
+                  <span>{opt.label}</span>
+                </label>
+              ))}
+            </div>
             <div className="form-grid">
               <label className="form-field">
                 <span>
@@ -355,32 +389,34 @@ export function QuashingPetitionWizard({
                 <span>Respondent's address</span>
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
               </label>
-              <label className="form-field">
-                <span>FIR/Complaint No.</span>
-                <input type="text" value={firNumber} onChange={(e) => setFirNumber(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Police Station/Court where registered</span>
-                <input type="text" value={policeStation} onChange={(e) => setPoliceStation(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Date of FIR/complaint</span>
-                <input type="date" value={firDate} onChange={(e) => setFirDate(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Offence(s) alleged</span>
-                <input type="text" value={offenceSections} onChange={(e) => setOffenceSections(e.target.value)} />
-              </label>
             </div>
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">Grounds for quashing</h3>
-            <p className="step-help">
+            <h3 className="step-heading">Impugned order and grounds</h3>
+            <div className="form-grid">
+              <label className="form-field">
+                <span>Court which passed the impugned order</span>
+                <input type="text" value={impugningCourt} onChange={(e) => setImpugningCourt(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Case/Complaint No.</span>
+                <input type="text" value={caseNumber} onChange={(e) => setCaseNumber(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Date of the impugned order</span>
+                <input type="date" value={orderDate} onChange={(e) => setOrderDate(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Nature of the order (e.g. order framing charge, order rejecting discharge application)</span>
+                <input type="text" value={orderNature} onChange={(e) => setOrderNature(e.target.value)} />
+              </label>
+            </div>
+            <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
               Tick every ground that applies — these track the categories the Supreme Court laid down in{' '}
-              <em>State of Haryana v. Bhajan Lal</em> for when the inherent power to quash may be exercised.
+              <em>Amit Kapoor v. Ramesh Chander</em> for when revisional jurisdiction may actually be invoked.
             </p>
             <div>
               {GROUND_OPTIONS.map((opt) => (
@@ -400,7 +436,7 @@ export function QuashingPetitionWizard({
                 rows={6}
                 value={factsNarrative}
                 onChange={(e) => setFactsNarrative(e.target.value)}
-                placeholder="Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained"
+                placeholder="Describe the background facts and the proceedings before the court below leading up to the impugned order"
               />
             </label>
             {user ? (
@@ -469,7 +505,7 @@ export function QuashingPetitionWizard({
             <h3 className="step-heading">Documents (Index)</h3>
             <p className="step-help">
               Add each document you're annexing, in the order it will be paginated — including a certified copy of
-              the impugned FIR/complaint, and the chargesheet if one has been filed.
+              the impugned order.
             </p>
             {documentEntries.map((d, i) => (
               <div key={i} style={{ marginBottom: 'var(--space-4)' }}>
@@ -521,18 +557,18 @@ export function QuashingPetitionWizard({
             )}
             <p className="step-help">A filed petition is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Quashing Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <DraftDocument title="Criminal Revision Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
             <DraftDocument
-              title="Quashing Petition"
-              subtitle={`Petition under Section 528, Bharatiya Nagarik Suraksha Sanhita, 2023 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Criminal Revision Petition"
+              subtitle={`Petition under Section 438, Bharatiya Nagarik Suraksha Sanhita, 2023 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Quashing Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Criminal Revision Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
-            <FilingGuidance forum="highCourtOriginal" contextLabel={filingPlace || undefined} />
+            <FilingGuidance forum="criminalCourt" contextLabel={filingPlace || undefined} />
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p

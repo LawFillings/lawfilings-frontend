@@ -216,6 +216,34 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // Quashing Petition — the entire filing is a Section 528 petition invoking the High Court's
   // inherent powers.
   'ct-quashing-petition': [{ actId: 'act-bnss-2023', sectionNo: '528' }],
+  // Criminal Revision Petition — Section 438 is the power being invoked; Section 442 governs how
+  // the High Court (as opposed to the Sessions Judge) actually exercises it once records are called
+  // for, so it's cited alongside 438 regardless of which court level the user picks, since the
+  // Sessions Judge's own parallel powers under Section 439 aren't separately curated here.
+  'ct-criminal-revision-petition': [
+    { actId: 'act-bnss-2023', sectionNo: '438' },
+    { actId: 'act-bnss-2023', sectionNo: '442' },
+  ],
+  // Criminal Appeal — Section 415 is the right of appeal being exercised (which forum depends on
+  // which court convicted the Appellant and the sentence passed, decided by the wizard's own court-
+  // level step); Section 423 is the form the appeal petition itself must take; Section 427 is what
+  // the Appellate Court may actually do with it.
+  'ct-criminal-appeal': [
+    { actId: 'act-bnss-2023', sectionNo: '415' },
+    { actId: 'act-bnss-2023', sectionNo: '423' },
+    { actId: 'act-bnss-2023', sectionNo: '427' },
+  ],
+  // Arbitration Interim Relief Application — the entire filing is a Section 9 application; the
+  // "Court" definition is cited alongside it since which court has jurisdiction genuinely turns on
+  // whether the arbitration is an international commercial arbitration.
+  'ct-arbitration-s9-interim-relief': [
+    { actId: 'act-arbitration-1996', sectionNo: '2(1)(e)' },
+    { actId: 'act-arbitration-1996', sectionNo: '9' },
+  ],
+  // Application for Appointment of Arbitrator — the entire filing is a Section 11 application.
+  'ct-arbitration-s11-appointment': [{ actId: 'act-arbitration-1996', sectionNo: '11' }],
+  // Application to Set Aside Arbitral Award — the entire filing is a Section 34 application.
+  'ct-arbitration-s34-setting-aside': [{ actId: 'act-arbitration-1996', sectionNo: '34' }],
 };
 
 // Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit
@@ -505,6 +533,58 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1990,
       sourceUrl: 'https://indiankanoon.org/doc/1033637/',
       note: 'the inherent power to quash an FIR or criminal proceeding may be exercised, illustratively and not exhaustively, where the allegations, even if taken at face value, do not disclose the commission of any offence; where they do not disclose a cognizable offence justifying investigation; where they are so absurd or inherently improbable that no prudent person could ever reach a just conclusion of guilt; or where the proceeding is manifestly attended with mala fides or has been instituted with an ulterior motive for wreaking vengeance, and is such power to be exercised sparingly and with great caution.',
+    },
+  ],
+  // Criminal Revision Petition — revisional jurisdiction is narrower than an appeal and is not a
+  // routine rehearing of the facts; this case defines when it may actually be invoked.
+  'ct-criminal-revision-petition': [
+    {
+      caseTitle: 'Amit Kapoor v. Ramesh Chander',
+      citation: '(2012) 9 SCC 460',
+      court: 'Supreme Court of India',
+      year: 2012,
+      sourceUrl: 'https://indiankanoon.org/doc/166329624/',
+      note: 'revisional jurisdiction is not to be exercised routinely or as a matter of course, but only where the finding, sentence, or order under challenge is grossly erroneous, there is no compliance with the provisions of law, the finding recorded is based on no evidence, material evidence has been ignored, or judicial discretion has been exercised arbitrarily or perversely.',
+    },
+  ],
+  // Arbitration Interim Relief Application — a Section 9 court is not bound by the technical
+  // requirements of the CPC (e.g. Order XXXVIII's grounds for attachment before judgment) and
+  // should not withhold interim relief on that account if a strong prima facie case and balance of
+  // convenience favour the applicant.
+  'ct-arbitration-s9-interim-relief': [
+    {
+      caseTitle: 'Essar House Private Limited v. ArcelorMittal Nippon Steel India Limited',
+      citation: '2022 SCC OnLine SC 1219',
+      court: 'Supreme Court of India',
+      year: 2022,
+      sourceUrl: 'https://indiankanoon.org/doc/66769063/',
+      note: "a Court exercising jurisdiction under section 9 of the Arbitration and Conciliation Act, 1996 is not strictly bound by all the provisions of the Code of Civil Procedure, 1908, and should not withhold interim relief on the mere technicality that the conditions of Order XXXVIII or Order XXXIX of the said Code are not fully satisfied, where the applicant has a good prima facie case and the balance of convenience is in favour of the interim protection sought.",
+    },
+  ],
+  // Application for Appointment of Arbitrator — the Court's own examination on such an application
+  // is meant to be a limited, prima facie one, leaving contested arbitrability questions to the
+  // arbitral tribunal itself.
+  'ct-arbitration-s11-appointment': [
+    {
+      caseTitle: 'Vidya Drolia v. Durga Trading Corporation',
+      citation: '(2021) 2 SCC 1',
+      court: 'Supreme Court of India',
+      year: 2020,
+      sourceUrl: 'https://indiankanoon.org/doc/121987320/',
+      note: 'on an application for appointment of an arbitrator, the Court should ordinarily confine its examination to the prima facie existence and validity of the arbitration agreement, leaving contested questions of arbitrability and the merits of the dispute to be decided by the arbitral tribunal itself, and should refer parties to arbitration except in very limited circumstances where the claim is manifestly and ex facie non-arbitrable.',
+    },
+  ],
+  // Application to Set Aside Arbitral Award — defines the narrow scope of the "public policy of
+  // India" and "patent illegality" grounds; a court does not sit in appeal over the arbitral award
+  // and cannot reappreciate evidence.
+  'ct-arbitration-s34-setting-aside': [
+    {
+      caseTitle: 'Associate Builders v. Delhi Development Authority',
+      citation: '(2015) 3 SCC 49',
+      court: 'Supreme Court of India',
+      year: 2014,
+      sourceUrl: 'https://indiankanoon.org/doc/31621011/',
+      note: 'a court hearing a section 34 application does not sit in appeal over the findings of the arbitral tribunal and cannot reappreciate the evidence on record; interference on the ground of public policy is permissible only where the award is contrary to the fundamental policy of Indian law, is in conflict with the most basic notions of morality or justice, or is so perverse or irrational that no reasonable person could have arrived at it.',
     },
   ],
 };

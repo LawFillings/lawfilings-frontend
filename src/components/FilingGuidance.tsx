@@ -9,6 +9,7 @@ export type FilingForum =
   | 'consumerCommission'
   | 'districtCourt'
   | 'highCourt'
+  | 'highCourtOriginal'
   | 'familyCourt'
   | 'commercialCourt'
   | 'criminalCourt'
