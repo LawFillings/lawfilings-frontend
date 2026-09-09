@@ -858,6 +858,21 @@ export const en = {
       portalLabel: 'eCourts e-filing portal',
       note: 'Not every district has a separately notified Family Court under the Family Courts Act, 1984 — confirm whether family matters in your district go to a Family Court or the ordinary District Court before filing.',
     },
+    rentControlAuthority: {
+      heading: 'Filing this eviction petition',
+      intro:
+        'this petition is filed with the authority having jurisdiction over the premises under your state\'s Rent Control Act — the exact authority (Rent Controller, Rent Tribunal, Rent Control Court, prescribed authority, or an ordinary civil court, depending on the state) is shown in this draft\'s own cause title.',
+      steps: [
+        'Prepare the prescribed number of copies of the petition, plus a copy for service on the tenant.',
+        'Confirm the applicable fee with the registry — rent control proceedings typically carry a modest fixed fee rather than the ad valorem fee used for an ordinary civil suit, but this varies by state.',
+        'Attach a vakalatnama if an advocate is filing on your behalf.',
+        'File at the physical registry for the adjudicating authority in your area — few Rent Control authorities support e-filing; check the eCourts Services platform or the local Bar for whether yours does.',
+        'Keep the filing receipt and case number allotted.',
+      ],
+      portalUrl: 'https://efiling.ecourts.gov.in',
+      portalLabel: 'eCourts e-filing portal',
+      note: 'The adjudicating authority, its exact procedure, and local practice for service on the tenant vary significantly by state — confirm the current process with the specific registry before filing.',
+    },
     commercialCourt: {
       heading: 'Filing at the Commercial Court',
       intro:

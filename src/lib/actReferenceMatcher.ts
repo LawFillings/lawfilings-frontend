@@ -42,6 +42,26 @@ const MONEY_LENDING_SECTION_BY_ACT_ID: Record<string, string> = {
   'act-jk-money-lenders-2010': '12',
 };
 
+// For each state's Rent Control/Rent Restriction Act, the section setting out the grounds on
+// which a tenant may be evicted — picked by hand from each Act's curated sections in
+// lawLibraryData.ts. Only states where this Library has actually sourced the eviction-grounds
+// section (not just the extent/commencement clause) are listed here.
+const RENT_EVICTION_SECTION_BY_ACT_ID: Record<string, string> = {
+  'act-delhi-rent-control-1958': '14',
+  'act-maharashtra-rent-control-1999': '16',
+  'act-karnataka-rent-1999': '27',
+  'act-west-bengal-tenancy-1997': '6',
+  'act-rajasthan-rent-control-2001': '9',
+  'act-madhya-pradesh-accommodation-control-1961': '12',
+  'act-up-urban-buildings-1972': '21',
+  'act-andhra-pradesh-buildings-1960': '10',
+  'act-telangana-buildings-1960': '10',
+  'act-kerala-buildings-1965': '11',
+  'act-punjab-urban-rent-restriction-1949': '13',
+  'act-bihar-buildings-1982': '11',
+  'act-jk-houses-shops-rent-1966': '11',
+};
+
 interface MatchContext {
   causeType?: string | null;
   stateLabel?: string;
@@ -66,12 +86,19 @@ function normalizeStateLabel(label: string): string {
 
 /** Returns curated Act-section references relevant to the given wizard context, if any. */
 export function findRelevantActSections({ causeType, stateLabel }: MatchContext): ActReferenceMatch[] {
-  if (causeType !== 'unpaid_loan' || !stateLabel) return [];
+  if (!stateLabel) return [];
+  const sectionByActId =
+    causeType === 'unpaid_loan'
+      ? MONEY_LENDING_SECTION_BY_ACT_ID
+      : causeType === 'rent_eviction'
+        ? RENT_EVICTION_SECTION_BY_ACT_ID
+        : null;
+  if (!sectionByActId) return [];
   const normalizedTarget = normalizeStateLabel(stateLabel);
 
   const matches: ActReferenceMatch[] = [];
   for (const act of acts) {
-    const sectionNo = MONEY_LENDING_SECTION_BY_ACT_ID[act.id];
+    const sectionNo = sectionByActId[act.id];
     if (!sectionNo) continue;
     if (act.jurisdiction.type !== 'state' || normalizeStateLabel(act.jurisdiction.state) !== normalizedTarget) continue;
     const section = findSection(act, sectionNo);
@@ -244,6 +271,27 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   'ct-arbitration-s11-appointment': [{ actId: 'act-arbitration-1996', sectionNo: '11' }],
   // Application to Set Aside Arbitral Award — the entire filing is a Section 34 application.
   'ct-arbitration-s34-setting-aside': [{ actId: 'act-arbitration-1996', sectionNo: '34' }],
+  // Succession Certificate — S.372 governs the petition's contents, S.373 the procedure the
+  // Judge follows on it, and S.381 the certificate's legal effect once granted (relevant to the
+  // Prayer, which asks for a certificate carrying that effect).
+  'ct-succession-certificate': [
+    { actId: 'act-indian-succession-1925', sectionNo: '372' },
+    { actId: 'act-indian-succession-1925', sectionNo: '373' },
+    { actId: 'act-indian-succession-1925', sectionNo: '381' },
+  ],
+  // Probate — S.222 is why only the named executor may petition, S.276 governs the petition's
+  // contents, S.227 its effect once granted.
+  'ct-probate': [
+    { actId: 'act-indian-succession-1925', sectionNo: '222' },
+    { actId: 'act-indian-succession-1925', sectionNo: '276' },
+    { actId: 'act-indian-succession-1925', sectionNo: '227' },
+  ],
+  // Letters of Administration — S.218 is who is entitled to apply when the deceased died
+  // intestate, S.278 governs the petition's contents.
+  'ct-letters-of-administration': [
+    { actId: 'act-indian-succession-1925', sectionNo: '218' },
+    { actId: 'act-indian-succession-1925', sectionNo: '278' },
+  ],
 };
 
 // Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit
@@ -585,6 +633,18 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2014,
       sourceUrl: 'https://indiankanoon.org/doc/31621011/',
       note: 'a court hearing a section 34 application does not sit in appeal over the findings of the arbitral tribunal and cannot reappreciate the evidence on record; interference on the ground of public policy is permissible only where the award is contrary to the fundamental policy of Indian law, is in conflict with the most basic notions of morality or justice, or is so perverse or irrational that no reasonable person could have arrived at it.',
+    },
+  ],
+  // Probate — defines the propounder's burden: prove due execution, and affirmatively remove any
+  // suspicious circumstances surrounding the will, before probate can be granted.
+  'ct-probate': [
+    {
+      caseTitle: 'H. Venkatachala Iyengar v. B.N. Thimmajamma',
+      citation: 'AIR 1959 SC 443',
+      court: 'Supreme Court of India',
+      year: 1958,
+      sourceUrl: 'https://indiankanoon.org/doc/22929/',
+      note: 'the onus probandi lies upon the propounder of a will to satisfy the conscience of the court that the instrument is the last will of a free and capable testator; where suspicious circumstances surround the execution of the will — such as the propounder himself taking a prominent part in its execution and thereby securing a substantial benefit under it — the propounder must additionally remove all legitimate suspicion before the will can be accepted as genuine.',
     },
   ],
 };

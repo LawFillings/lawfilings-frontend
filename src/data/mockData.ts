@@ -644,6 +644,46 @@ export const caseTypes: CaseType[] = [
     applicantEligibility: 'party_aggrieved_by_an_arbitral_award',
     filingCategory: 'original',
   },
+  {
+    id: 'ct-succession-certificate',
+    forumType: 'misc_drafts',
+    name: 'Succession Certificate Petition',
+    governingLaw: 'The Indian Succession Act, 1925, Section 372',
+    plainLanguageSummary:
+      "File this to establish your right to collect debts and securities (bank balances, shares, insurance proceeds, and the like) owed to someone who has died — this doesn't cover immovable property or a will's other assets, only debts and securities.",
+    applicantEligibility: 'legal_heir_or_claimant_of_a_deceased_persons_debts_and_securities',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-probate',
+    forumType: 'misc_drafts',
+    name: 'Probate Petition',
+    governingLaw: 'The Indian Succession Act, 1925, Section 276',
+    plainLanguageSummary:
+      "File this if you're the executor named in a will and need the Court to certify the will's genuineness and confirm your authority to administer the estate.",
+    applicantEligibility: 'executor_named_in_the_will',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-letters-of-administration',
+    forumType: 'misc_drafts',
+    name: 'Letters of Administration Petition',
+    governingLaw: 'The Indian Succession Act, 1925, Section 278',
+    plainLanguageSummary:
+      "File this to be authorised to administer the estate of someone who died without a will (or without a surviving executor) — the Court appoints you as administrator so you can collect and distribute the assets.",
+    applicantEligibility: 'legal_heir_entitled_to_administer_an_intestate_estate',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-rent-control-eviction',
+    forumType: 'misc_drafts',
+    name: 'Rent Control Eviction Petition',
+    governingLaw: 'State Rent Control Act',
+    plainLanguageSummary:
+      "File this to evict a tenant under your state's Rent Control Act — for arrears of rent, bona fide personal requirement, unlawful subletting, or another ground your state's Act recognises. Not for a plain civil suit for possession where no Rent Control Act applies — use Suit for Possession/Eviction instead.",
+    applicantEligibility: 'landlord_under_a_state_rent_control_act',
+    filingCategory: 'original',
+  },
 ];
 
 export const appealGroups: AppealGroup[] = [

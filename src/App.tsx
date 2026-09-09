@@ -31,6 +31,10 @@ import { CriminalAppealWizard } from './pages/CriminalAppealWizard';
 import { ArbitrationS9Wizard } from './pages/ArbitrationS9Wizard';
 import { ArbitrationS11Wizard } from './pages/ArbitrationS11Wizard';
 import { ArbitrationS34Wizard } from './pages/ArbitrationS34Wizard';
+import { SuccessionCertificateWizard } from './pages/SuccessionCertificateWizard';
+import { ProbateWizard } from './pages/ProbateWizard';
+import { LettersOfAdministrationWizard } from './pages/LettersOfAdministrationWizard';
+import { RentControlEvictionWizard } from './pages/RentControlEvictionWizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -479,6 +483,31 @@ function AppScreens() {
     if (ct.id === 'ct-arbitration-s34-setting-aside') {
       return (
         <ArbitrationS34Wizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-succession-certificate') {
+      return (
+        <SuccessionCertificateWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-probate') {
+      return (
+        <ProbateWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-letters-of-administration') {
+      return (
+        <LettersOfAdministrationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-rent-control-eviction') {
+      return (
+        <RentControlEvictionWizard
+          onBack={onBack}
+          onOpenPricing={openPricingNav}
+          onOpenLawLibrary={openLawLibraryNav}
+          {...resumeProps}
+        />
       );
     }
 

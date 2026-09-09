@@ -42,6 +42,18 @@ export function forumDisplayName(forumType: string): string {
       return 'THE PRESIDING OFFICER-CUM-CHAIRMAN, DISTRICT LEGAL SERVICES AUTHORITY';
     case 'family_court':
       return 'THE FAMILY COURT';
+    case 'rent_controller':
+      return 'THE COURT OF THE RENT CONTROLLER';
+    case 'rent_tribunal':
+      return 'THE RENT TRIBUNAL';
+    case 'rent_control_court':
+      return 'THE RENT CONTROL COURT';
+    case 'civil_judge':
+      return 'THE COURT OF THE CIVIL JUDGE';
+    case 'prescribed_authority':
+      return 'THE PRESCRIBED AUTHORITY';
+    case 'civil_court':
+      return 'THE CIVIL COURT';
     default:
       return "THE HON'BLE TRIBUNAL";
   }
