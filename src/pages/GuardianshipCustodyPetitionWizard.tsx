@@ -12,9 +12,10 @@ import {
 import {
   findFixedCaseTypeCitation,
   buildCitationParagraphs,
-  findAncillaryReliefCitations,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
 } from '../lib/actReferenceMatcher';
-import { caseTypes, divorceGroundsOptions } from '../data/mockData';
+import { caseTypes } from '../data/mockData';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
@@ -25,16 +26,29 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const STEPS = [
-  'Parties & marriage',
-  'Facts',
-  'Grounds',
-  'Ancillary reliefs',
-  'Filing details',
-  'Documents (Index)',
-  'Preview',
-  'Match a style (optional)',
+const caseType = caseTypes.find((ct) => ct.id === 'ct-guardianship-custody-petition')!;
+
+type GuardianshipType = 'person' | 'property' | 'both' | null;
+
+const GUARDIANSHIP_TYPE_OPTIONS: { id: GuardianshipType; label: string }[] = [
+  { id: 'person', label: "Guardian of the minor's person (custody, care, upbringing)" },
+  { id: 'property', label: "Guardian of the minor's property only" },
+  { id: 'both', label: "Guardian of both the minor's person and property" },
 ];
+
+function guardianshipPrayerText(type: GuardianshipType, minorName: string): string {
+  const name = minorName || '[Minor]';
+  switch (type) {
+    case 'person':
+      return `appoint/declare the Petitioner as guardian of the person of the minor ${name}`;
+    case 'property':
+      return `appoint/declare the Petitioner as guardian of the property of the minor ${name}`;
+    case 'both':
+      return `appoint/declare the Petitioner as guardian of the person and property of the minor ${name}`;
+    default:
+      return `appoint/declare the Petitioner as guardian of the minor ${name}`;
+  }
+}
 
 interface DocEntry {
   particulars: string;
@@ -45,16 +59,16 @@ interface SavedContent {
   petitionerName: string;
   petitionerAge: string;
   petitionerAddress: string;
+  petitionerRelation: string;
+  minorName: string;
+  minorSex: string;
+  minorDob: string;
+  minorResidence: string;
   respondentName: string;
   respondentAddress: string;
-  marriageDate: string;
-  marriagePlace: string;
-  childrenDetails: string;
+  guardianshipType: GuardianshipType;
   factsNarrative: string;
-  selectedGrounds: string[];
-  wantMaintenancePendenteLite: boolean;
-  wantPermanentAlimony: boolean;
-  wantCustody: boolean;
+  propertyNarrative: string;
   advocateName: string;
   advocateAddress: string;
   advocatePhone: string;
@@ -65,8 +79,6 @@ interface SavedContent {
   documentEntries: DocEntry[];
 }
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-divorce-contested')!;
-
 interface Props {
   onBack: () => void;
   onOpenPricing: () => void;
@@ -76,7 +88,17 @@ interface Props {
   initialContent?: unknown;
 }
 
-export function ContestedDivorceWizard({
+const STEPS = [
+  'Parties & minor',
+  'Grounds & welfare factors',
+  "Minor's property",
+  'Filing details',
+  'Documents (Index)',
+  'Preview',
+  'Match a style (optional)',
+];
+
+export function GuardianshipCustodyPetitionWizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -90,16 +112,16 @@ export function ContestedDivorceWizard({
   const [petitionerName, setPetitionerName] = useState(saved?.petitionerName ?? '');
   const [petitionerAge, setPetitionerAge] = useState(saved?.petitionerAge ?? '');
   const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
+  const [petitionerRelation, setPetitionerRelation] = useState(saved?.petitionerRelation ?? '');
+  const [minorName, setMinorName] = useState(saved?.minorName ?? '');
+  const [minorSex, setMinorSex] = useState(saved?.minorSex ?? '');
+  const [minorDob, setMinorDob] = useState(saved?.minorDob ?? '');
+  const [minorResidence, setMinorResidence] = useState(saved?.minorResidence ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [marriageDate, setMarriageDate] = useState(saved?.marriageDate ?? '');
-  const [marriagePlace, setMarriagePlace] = useState(saved?.marriagePlace ?? '');
-  const [childrenDetails, setChildrenDetails] = useState(saved?.childrenDetails ?? '');
+  const [guardianshipType, setGuardianshipType] = useState<GuardianshipType>(saved?.guardianshipType ?? null);
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
-  const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
-  const [wantMaintenancePendenteLite, setWantMaintenancePendenteLite] = useState(saved?.wantMaintenancePendenteLite ?? false);
-  const [wantPermanentAlimony, setWantPermanentAlimony] = useState(saved?.wantPermanentAlimony ?? false);
-  const [wantCustody, setWantCustody] = useState(saved?.wantCustody ?? false);
+  const [propertyNarrative, setPropertyNarrative] = useState(saved?.propertyNarrative ?? '');
   const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
   const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
   const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
@@ -118,9 +140,6 @@ export function ContestedDivorceWizard({
   const [paywall, setPaywall] = useState(false);
   const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
-  const toggleGround = (id: string) =>
-    setSelectedGrounds((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
-
   const handleSaveDraft = async () => {
     if (!user || !token) return;
     setSaveState('saving');
@@ -129,16 +148,16 @@ export function ContestedDivorceWizard({
       petitionerName,
       petitionerAge,
       petitionerAddress,
+      petitionerRelation,
+      minorName,
+      minorSex,
+      minorDob,
+      minorResidence,
       respondentName,
       respondentAddress,
-      marriageDate,
-      marriagePlace,
-      childrenDetails,
+      guardianshipType,
       factsNarrative,
-      selectedGrounds,
-      wantMaintenancePendenteLite,
-      wantPermanentAlimony,
-      wantCustody,
+      propertyNarrative,
       advocateName,
       advocateAddress,
       advocatePhone,
@@ -147,7 +166,7 @@ export function ContestedDivorceWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-divorce-contested',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-guardianship-custody-petition',
     };
     try {
       if (caseId && draftId) {
@@ -155,7 +174,7 @@ export function ContestedDivorceWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Contested Divorce`,
+            title: `${petitionerName || 'Petitioner'} — Guardianship/Custody of ${minorName || 'Minor'}`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -175,108 +194,84 @@ export function ContestedDivorceWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-divorce-contested');
-  const ancillaryCitationMatches = findAncillaryReliefCitations({
-    maintenancePendenteLite: wantMaintenancePendenteLite,
-    permanentAlimony: wantPermanentAlimony,
-    custody: wantCustody,
+  const citationMatches = findFixedCaseTypeCitation('ct-guardianship-custody-petition');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-guardianship-custody-petition');
+
+  const filedByBlock = buildFiledByBlock({
+    applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
+    advocateName,
+    advocateAddress,
+    advocatePhone,
+    advocateEmail,
+    place: filingPlace,
+    date: filingDate,
   });
-
-  const selectedGroundSentences = divorceGroundsOptions
-    .filter((g) => selectedGrounds.includes(g.id))
-    .map((g) => g.sentence);
-
-  const ancillaryReliefPhrases = [
-    wantMaintenancePendenteLite ? 'maintenance pendente lite and expenses of the proceedings under section 24 of the Act' : null,
-    wantPermanentAlimony ? 'permanent alimony and maintenance under section 25 of the Act' : null,
-    wantCustody ? 'custody of the minor child(ren) of the marriage under section 26 of the Act' : null,
-  ].filter((p): p is string => p !== null);
-
-  const closingSections: DraftSection[] =
-    mode === 'advocate'
-      ? buildFiledByBlock({
-          applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
-          advocateName,
-          advocateAddress,
-          advocatePhone,
-          advocateEmail,
-          place: filingPlace,
-          date: filingDate,
-        })
-      : [
-          {
-            unnumbered: true,
-            align: 'right' as const,
-            paragraphs: [
-              petitionerName || '[Petitioner]',
-              '(PETITIONER — IN PERSON)',
-              `Place: ${filingPlace || '[Place]'}`,
-              `Date: ${filingDate || '[Date]'}`,
-            ],
-          },
-        ];
 
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the parties and the marriage',
+      heading: 'Particulars of the minor and the parties',
       paragraphs: [
         toThatClause(
-          `The Petitioner ${petitionerName || '[Petitioner]'} and the Respondent ${
-            respondentName || '[Respondent]'
-          } were married at ${marriagePlace || '[place]'} on ${marriageDate || '[date]'}, according to Hindu rites and ceremonies.`
+          `the minor ${minorName || '[Minor]'}, ${minorSex || '[sex]'}, born on ${
+            minorDob || '[date of birth]'
+          }, ordinarily resides at ${minorResidence || '[ordinary residence]'}, and the Petitioner ${
+            petitionerName || '[Petitioner]'
+          } is the ${petitionerRelation || '[relationship to the minor]'} of the minor and is desirous of being appointed/declared the guardian of the minor.`
         ),
-        ...(childrenDetails.trim() ? [toThatClause(`Of the said marriage, ${childrenDetails.trim()}`)] : []),
       ],
-      incomplete: !marriageDate || !marriagePlace,
+      incomplete: !petitionerRelation || !minorName,
     },
     {
-      heading: 'Facts constituting the cause of action',
-      paragraphs: [toThatClause(factsNarrative.trim() || '[Describe the facts leading to this petition]')],
+      heading: 'Facts and grounds',
+      paragraphs: [
+        toThatClause(
+          factsNarrative.trim() ||
+            "[Describe the causes leading to this application, the Petitioner's qualifications and existing relationship with the minor, and why the Petitioner's appointment serves the minor's welfare]"
+        ),
+      ],
       incomplete: !factsNarrative.trim(),
       role: 'facts',
     },
-    {
-      heading: 'Grounds for divorce',
-      paragraphs:
-        selectedGroundSentences.length > 0
-          ? selectedGroundSentences.map(toThatClause)
-          : ['[Select the grounds relied upon]'],
-      incomplete: selectedGroundSentences.length === 0,
-      role: 'grounds',
-    },
-    ...(citationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
-      : []),
-    ...(ancillaryReliefPhrases.length > 0
+    ...(guardianshipType === 'property' || guardianshipType === 'both'
       ? [
           {
-            heading: 'Ancillary reliefs sought',
-            paragraphs: [toThatClause(`The Petitioner further seeks ${ancillaryReliefPhrases.join(', ')}.`)],
+            heading: "Particulars of the minor's property",
+            paragraphs: [
+              toThatClause(
+                propertyNarrative.trim() ||
+                  '[State the nature, situation, and approximate value of the property of the minor]'
+              ),
+            ],
+            incomplete: !propertyNarrative.trim(),
           },
         ]
       : []),
-    ...(ancillaryCitationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon (ancillary reliefs)', paragraphs: buildCitationParagraphs(ancillaryCitationMatches), role: 'law' as const }]
+    ...(citationMatches.length > 0
+      ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
+      : []),
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to dissolve the marriage between the Petitioner and the Respondent by a decree of divorce under section 13 of the Hindu Marriage Act, 1955${
-          ancillaryReliefPhrases.length > 0 ? `, grant the Petitioner ${ancillaryReliefPhrases.join(', ')}` : ''
-        }, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
+        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to ${guardianshipPrayerText(
+          guardianshipType,
+          minorName
+        )}, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of the welfare of the minor.`,
       ],
     },
     ...buildVerificationSection(petitionerName, verificationPlace),
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const causeTitleInfo = {
     forumType: 'family_court',
-    applicationTitle: 'Contested Divorce Petition',
+    applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
     applicantName: petitionerName,
     respondentName,
-    caseNumberLine: `HMA No. _____ of ${new Date().getFullYear()}`,
+    caseNumberLine: `G. & W. Case No. _____ of ${new Date().getFullYear()}`,
     benchCity: filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
@@ -285,7 +280,7 @@ export function ContestedDivorceWizard({
 
   const indexSections: DraftSection[] = [
     { heading: 'Index', unnumbered: true, paragraphs: buildDocumentListParagraphs(documentEntries) },
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const affidavitSections: DraftSection[] = [
@@ -301,7 +296,7 @@ export function ContestedDivorceWizard({
       unnumbered: true,
       paragraphs: [
         '1. That I am the Petitioner in the present case, and I am well conversant with the facts and circumstances of the case.',
-        '2. That the accompanying Petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
+        '2. That the accompanying petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
       ],
     },
     { unnumbered: true, align: 'right', paragraphs: ['Deponent'] },
@@ -332,7 +327,7 @@ export function ContestedDivorceWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Parties and marriage' : 'You, your spouse, and your marriage'}</h3>
+            <h3 className="step-heading">Parties and the minor</h3>
             <div className="form-grid">
               <label className="form-field">
                 <span>
@@ -352,68 +347,74 @@ export function ContestedDivorceWizard({
                 <input type="text" value={petitionerAddress} onChange={(e) => setPetitionerAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{mode === 'advocate' ? 'Respondent' : 'Your spouse'}</span>
+                <span>Petitioner's relationship to the minor (e.g. mother, grandfather, uncle)</span>
+                <input type="text" value={petitionerRelation} onChange={(e) => setPetitionerRelation(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Minor's name</span>
+                <input type="text" value={minorName} onChange={(e) => setMinorName(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Minor's sex</span>
+                <input type="text" value={minorSex} onChange={(e) => setMinorSex(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Minor's date of birth</span>
+                <input type="date" value={minorDob} onChange={(e) => setMinorDob(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Minor's ordinary residence</span>
+                <input type="text" value={minorResidence} onChange={(e) => setMinorResidence(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Respondent, if any (e.g. other parent objecting)</span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               <label className="form-field">
                 <span>Respondent's address</span>
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
               </label>
-              <label className="form-field">
-                <span>Date of marriage</span>
-                <input type="date" value={marriageDate} onChange={(e) => setMarriageDate(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Place of marriage</span>
-                <input type="text" value={marriagePlace} onChange={(e) => setMarriagePlace(e.target.value)} />
-              </label>
             </div>
-            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
-              <span>Children of the marriage (if any)</span>
-              <textarea
-                className="facts-textarea"
-                rows={2}
-                value={childrenDetails}
-                onChange={(e) => setChildrenDetails(e.target.value)}
-                placeholder="e.g. two children were born — a son aged 8 and a daughter aged 5, both currently residing with the Petitioner"
-              />
-            </label>
+            <div style={{ marginTop: 'var(--space-4)' }}>
+              <p className="step-help">What kind of guardianship are you seeking?</p>
+              {GUARDIANSHIP_TYPE_OPTIONS.map((opt) => (
+                <label
+                  key={opt.id}
+                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
+                >
+                  <input
+                    type="radio"
+                    name="guardianshipType"
+                    checked={guardianshipType === opt.id}
+                    onChange={() => setGuardianshipType(opt.id)}
+                  />
+                  <span>{opt.label}</span>
+                </label>
+              ))}
+            </div>
+            <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
+              Section 19 of the Act bars the Court from appointing a guardian of the person of a minor whose father
+              or mother is living and fit — if the Respondent is such a parent, your facts must address their
+              fitness, or this will need to proceed as a custody matter incidental to a matrimonial case instead.
+            </p>
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Facts constituting the cause of action' : 'What happened?'}</h3>
+            <h3 className="step-heading">Grounds and welfare factors</h3>
             <p className="step-help">
-              {mode === 'advocate'
-                ? 'Chronological statement of the facts supporting the grounds you will select next.'
-                : 'Write it in your own words — this gets turned into the formal statement of facts automatically.'}
+              Section 17 directs the Court to weigh the minor's age, sex and religion, the character and capacity
+              of the proposed guardian, nearness of kin, the wishes of a deceased parent (if any), and the minor's
+              own preference if old enough to form one — cover what applies.
             </p>
             <textarea
               className="facts-textarea"
-              rows={6}
+              rows={7}
               value={factsNarrative}
               onChange={(e) => setFactsNarrative(e.target.value)}
-              placeholder="Describe the marital history and events supporting the grounds for divorce"
+              placeholder="Describe the causes leading to this application, the Petitioner's qualifications and existing relationship with the minor, and why the Petitioner's appointment serves the minor's welfare"
             />
-          </div>
-        )}
-
-        {step === 2 && (
-          <div>
-            <h3 className="step-heading">Grounds for divorce</h3>
-            <p className="step-help">Tick every ground that applies — each becomes a pleaded averment.</p>
-            <div>
-              {divorceGroundsOptions.map((g) => (
-                <label
-                  key={g.id}
-                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
-                >
-                  <input type="checkbox" checked={selectedGrounds.includes(g.id)} onChange={() => toggleGround(g.id)} />
-                  <span>{g.label}</span>
-                </label>
-              ))}
-            </div>
             {user ? (
               <div style={{ marginTop: 'var(--space-4)' }}>
                 <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
@@ -435,30 +436,32 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 3 && (
+        {step === 2 && (
           <div>
-            <h3 className="step-heading">Ancillary reliefs</h3>
-            <p className="step-help">Optional — any of these can be sought alongside the decree of divorce itself.</p>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input
-                type="checkbox"
-                checked={wantMaintenancePendenteLite}
-                onChange={(e) => setWantMaintenancePendenteLite(e.target.checked)}
-              />
-              <span>Maintenance pendente lite (during the proceedings)</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantPermanentAlimony} onChange={(e) => setWantPermanentAlimony(e.target.checked)} />
-              <span>Permanent alimony and maintenance</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantCustody} onChange={(e) => setWantCustody(e.target.checked)} />
-              <span>Custody of the minor child(ren)</span>
-            </label>
+            <h3 className="step-heading">Minor's property</h3>
+            {guardianshipType === 'property' || guardianshipType === 'both' ? (
+              <>
+                <p className="step-help">
+                  Section 10 requires the nature, situation, and approximate value of the minor's property.
+                </p>
+                <textarea
+                  className="facts-textarea"
+                  rows={5}
+                  value={propertyNarrative}
+                  onChange={(e) => setPropertyNarrative(e.target.value)}
+                  placeholder="State the nature, situation, and approximate value of the property of the minor"
+                />
+              </>
+            ) : (
+              <p className="step-help">
+                You selected guardianship of the person only, so this step doesn't apply — click Continue. If you
+                also need guardianship of the minor's property, go back and change your answer on step 1.
+              </p>
+            )}
           </div>
         )}
 
-        {step === 4 && (
+        {step === 3 && (
           <div>
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
@@ -498,7 +501,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 5 && (
+        {step === 4 && (
           <div>
             <h3 className="step-heading">Documents (Index)</h3>
             <p className="step-help">Add each document you're annexing, in the order it will be paginated.</p>
@@ -529,7 +532,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 6 && (
+        {step === 5 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -550,20 +553,34 @@ export function ContestedDivorceWizard({
                 Log in to save this draft and come back to it later.
               </p>
             )}
-            <p className="step-help">A filed Petition is a bundle of separate documents — each below downloads as its own PDF.</p>
+            <p className="step-help">A filed petition is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Contested Divorce Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <DraftDocument title="Guardianship/Custody Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
             <DraftDocument
-              title="Contested Divorce Petition"
-              subtitle={`Petition under Section 13, Hindu Marriage Act, 1955 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Guardianship/Custody Petition"
+              subtitle={`Petition under Section 7, Guardians and Wards Act, 1890 — ${petitionerName || '[Petitioner]'} re: ${minorName || '[Minor]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Contested Divorce Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Guardianship/Custody Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum="familyCourt" contextLabel={filingPlace || undefined} />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Declaration of willingness to act
+              </p>
+              <p className="deadline-body">
+                Section 10(3) requires the application to be accompanied by a declaration of the proposed guardian's
+                willingness to act, signed by them and attested by at least two witnesses — annex it as one of your
+                documents above; it isn't drafted automatically here.
+              </p>
+            </div>
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p
@@ -581,7 +598,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 7 && (
+        {step === 6 && (
           <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
         )}
       </WizardShell>

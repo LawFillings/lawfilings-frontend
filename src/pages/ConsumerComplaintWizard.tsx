@@ -14,7 +14,6 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
@@ -282,7 +281,7 @@ export function ConsumerComplaintWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(complainantName || '[Complainant]')} aged about ${complainantAge || '[age]'}, R/o ${
+        `${complainantName || '[Complainant]'} aged about ${complainantAge || '[age]'}, R/o ${
           complainantAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

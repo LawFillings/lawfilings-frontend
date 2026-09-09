@@ -19,6 +19,13 @@ import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
 import { PossessionSuitWizard } from './pages/PossessionSuitWizard';
+import { RestitutionConjugalRightsWizard } from './pages/RestitutionConjugalRightsWizard';
+import { JudicialSeparationWizard } from './pages/JudicialSeparationWizard';
+import { MaintenanceApplicationWizard } from './pages/MaintenanceApplicationWizard';
+import { DomesticViolenceApplicationWizard } from './pages/DomesticViolenceApplicationWizard';
+import { GuardianshipCustodyPetitionWizard } from './pages/GuardianshipCustodyPetitionWizard';
+import { PrivateCriminalComplaintWizard } from './pages/PrivateCriminalComplaintWizard';
+import { QuashingPetitionWizard } from './pages/QuashingPetitionWizard';
 import { MediationApplicationWizard } from './pages/MediationApplicationWizard';
 import { NIActComplaintWizard } from './pages/NIActComplaintWizard';
 import { AppealWizard } from './pages/AppealWizard';
@@ -407,6 +414,41 @@ function AppScreens() {
     if (ct.id === 'ct-suit-possession') {
       return (
         <PossessionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-restitution-conjugal-rights') {
+      return (
+        <RestitutionConjugalRightsWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-judicial-separation') {
+      return (
+        <JudicialSeparationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-maintenance-application') {
+      return (
+        <MaintenanceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-domestic-violence-application') {
+      return (
+        <DomesticViolenceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-guardianship-custody-petition') {
+      return (
+        <GuardianshipCustodyPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-private-criminal-complaint') {
+      return (
+        <PrivateCriminalComplaintWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-quashing-petition') {
+      return (
+        <QuashingPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
 

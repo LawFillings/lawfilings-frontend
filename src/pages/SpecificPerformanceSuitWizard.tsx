@@ -8,7 +8,6 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
@@ -201,9 +200,9 @@ export function SpecificPerformanceSuitWizard({
       heading: 'Particulars of the parties and the contract',
       paragraphs: [
         toThatClause(
-          `the Plaintiff, ${withPeriod(plaintiffName || '[Plaintiff]')}, and the Defendant, ${withPeriod(
+          `the Plaintiff, ${plaintiffName || '[Plaintiff]'}, and the Defendant, ${
             defendantName || '[Defendant]'
-          )}, entered into an agreement whereby ${
+          }, entered into an agreement whereby ${
             contractDescription.trim() || '[describe the contract, its date, and its terms]'
           }.`
         ),
@@ -280,7 +279,7 @@ export function SpecificPerformanceSuitWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

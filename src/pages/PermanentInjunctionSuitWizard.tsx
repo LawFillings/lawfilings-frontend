@@ -8,10 +8,14 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
-import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
+import {
+  findFixedCaseTypeCitation,
+  buildCitationParagraphs,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
+} from '../lib/actReferenceMatcher';
 import { caseTypes } from '../data/mockData';
 import { districtCourtStates, districtCourtDistrictsByState } from '../data/districtCourtLocations';
 import { useAuth } from '../lib/auth';
@@ -210,6 +214,7 @@ export function PermanentInjunctionSuitWizard({
   };
 
   const citationMatches = findFixedCaseTypeCitation('ct-suit-permanent-injunction');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-suit-permanent-injunction');
   const selectedGroundSentences = GROUND_OPTIONS.filter((g) => selectedGrounds.includes(g.id)).map((g) => g.sentence);
 
   const filedByBlock = buildFiledByBlock({
@@ -227,9 +232,9 @@ export function PermanentInjunctionSuitWizard({
       heading: 'Particulars of the parties and the property/right in dispute',
       paragraphs: [
         toThatClause(
-          `the Plaintiff, ${withPeriod(plaintiffName || '[Plaintiff]')}, is entitled to ${
+          `the Plaintiff, ${plaintiffName || '[Plaintiff]'}, is entitled to ${
             propertyDescription.trim() || '[describe the property or right the Plaintiff seeks to protect]'
-          }, which the Defendant, ${withPeriod(defendantName || '[Defendant]')}, has invaded or threatens to invade.`
+          }, which the Defendant, ${defendantName || '[Defendant]'}, has invaded or threatens to invade.`
         ),
       ],
       incomplete: !propertyDescription.trim(),
@@ -251,6 +256,9 @@ export function PermanentInjunctionSuitWizard({
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
+      : []),
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Valuation',
@@ -297,7 +305,7 @@ export function PermanentInjunctionSuitWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

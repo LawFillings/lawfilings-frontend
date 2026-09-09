@@ -8,10 +8,14 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
-import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
+import {
+  findFixedCaseTypeCitation,
+  buildCitationParagraphs,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
+} from '../lib/actReferenceMatcher';
 import { caseTypes } from '../data/mockData';
 import { districtCourtStates, districtCourtDistrictsByState } from '../data/districtCourtLocations';
 import { useAuth } from '../lib/auth';
@@ -182,6 +186,7 @@ export function PartitionSuitWizard({
   };
 
   const citationMatches = findFixedCaseTypeCitation('ct-suit-partition');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-suit-partition');
   const defendantListProse =
     filledDefendants.length > 1
       ? `${filledDefendants.slice(0, -1).join(', ')} and ${filledDefendants[filledDefendants.length - 1]}`
@@ -202,7 +207,7 @@ export function PartitionSuitWizard({
       heading: 'Particulars of the parties and the property',
       paragraphs: [
         toThatClause(
-          `the Plaintiff, ${withPeriod(plaintiffName || '[Plaintiff]')}, is ${
+          `the Plaintiff, ${plaintiffName || '[Plaintiff]'}, is ${
             relationshipToProperty.trim() || '[describe the Plaintiff\'s relationship to the family/property — e.g. son of late X]'
           }, and is entitled to a ${shareClaimed.trim() || '[share, e.g. one-fourth]'} share in the property described as ${
             propertyDescription.trim() || '[describe the property to be partitioned]'
@@ -232,6 +237,9 @@ export function PartitionSuitWizard({
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
+      : []),
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Valuation',
@@ -279,7 +287,7 @@ export function PartitionSuitWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

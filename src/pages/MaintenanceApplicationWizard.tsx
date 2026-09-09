@@ -12,9 +12,10 @@ import {
 import {
   findFixedCaseTypeCitation,
   buildCitationParagraphs,
-  findAncillaryReliefCitations,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
 } from '../lib/actReferenceMatcher';
-import { caseTypes, divorceGroundsOptions } from '../data/mockData';
+import { caseTypes } from '../data/mockData';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
@@ -25,16 +26,34 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const STEPS = [
-  'Parties & marriage',
-  'Facts',
-  'Grounds',
-  'Ancillary reliefs',
-  'Filing details',
-  'Documents (Index)',
-  'Preview',
-  'Match a style (optional)',
+const caseType = caseTypes.find((ct) => ct.id === 'ct-maintenance-application')!;
+
+type ClaimantCategory = 'wife' | 'minor_child' | 'major_disabled_child' | 'parent' | null;
+
+const CLAIMANT_OPTIONS: { id: ClaimantCategory; label: string }[] = [
+  { id: 'wife', label: 'Wife, unable to maintain herself' },
+  { id: 'minor_child', label: 'Minor child (legitimate or illegitimate), unable to maintain itself' },
+  {
+    id: 'major_disabled_child',
+    label: 'Major child (not a married daughter), unable to maintain itself due to physical or mental abnormality/injury',
+  },
+  { id: 'parent', label: 'Father or mother, unable to maintain himself/herself' },
 ];
+
+function relationshipClause(category: ClaimantCategory, respondentLabel: string): string {
+  switch (category) {
+    case 'wife':
+      return `his wife, the Petitioner herein, who is unable to maintain herself`;
+    case 'minor_child':
+      return `his child, the Petitioner herein, who is unable to maintain itself`;
+    case 'major_disabled_child':
+      return `his child, the Petitioner herein, who has attained majority and, by reason of physical/mental abnormality or injury, is unable to maintain itself`;
+    case 'parent':
+      return `his father/mother, the Petitioner herein, who is unable to maintain himself/herself`;
+    default:
+      return `${respondentLabel} who is unable to maintain himself/herself`;
+  }
+}
 
 interface DocEntry {
   particulars: string;
@@ -47,14 +66,11 @@ interface SavedContent {
   petitionerAddress: string;
   respondentName: string;
   respondentAddress: string;
-  marriageDate: string;
-  marriagePlace: string;
-  childrenDetails: string;
+  respondentRelation: string;
+  claimantCategory: ClaimantCategory;
+  meansNarrative: string;
   factsNarrative: string;
-  selectedGrounds: string[];
-  wantMaintenancePendenteLite: boolean;
-  wantPermanentAlimony: boolean;
-  wantCustody: boolean;
+  interimMaintenance: boolean;
   advocateName: string;
   advocateAddress: string;
   advocatePhone: string;
@@ -65,8 +81,6 @@ interface SavedContent {
   documentEntries: DocEntry[];
 }
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-divorce-contested')!;
-
 interface Props {
   onBack: () => void;
   onOpenPricing: () => void;
@@ -76,7 +90,16 @@ interface Props {
   initialContent?: unknown;
 }
 
-export function ContestedDivorceWizard({
+const STEPS = [
+  'Parties & relationship',
+  'Facts',
+  'Filing details',
+  'Documents (Index)',
+  'Preview',
+  'Match a style (optional)',
+];
+
+export function MaintenanceApplicationWizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -92,14 +115,11 @@ export function ContestedDivorceWizard({
   const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [marriageDate, setMarriageDate] = useState(saved?.marriageDate ?? '');
-  const [marriagePlace, setMarriagePlace] = useState(saved?.marriagePlace ?? '');
-  const [childrenDetails, setChildrenDetails] = useState(saved?.childrenDetails ?? '');
+  const [respondentRelation, setRespondentRelation] = useState(saved?.respondentRelation ?? '');
+  const [claimantCategory, setClaimantCategory] = useState<ClaimantCategory>(saved?.claimantCategory ?? null);
+  const [meansNarrative, setMeansNarrative] = useState(saved?.meansNarrative ?? '');
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
-  const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
-  const [wantMaintenancePendenteLite, setWantMaintenancePendenteLite] = useState(saved?.wantMaintenancePendenteLite ?? false);
-  const [wantPermanentAlimony, setWantPermanentAlimony] = useState(saved?.wantPermanentAlimony ?? false);
-  const [wantCustody, setWantCustody] = useState(saved?.wantCustody ?? false);
+  const [interimMaintenance, setInterimMaintenance] = useState(saved?.interimMaintenance ?? false);
   const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
   const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
   const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
@@ -118,9 +138,6 @@ export function ContestedDivorceWizard({
   const [paywall, setPaywall] = useState(false);
   const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
-  const toggleGround = (id: string) =>
-    setSelectedGrounds((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
-
   const handleSaveDraft = async () => {
     if (!user || !token) return;
     setSaveState('saving');
@@ -131,14 +148,11 @@ export function ContestedDivorceWizard({
       petitionerAddress,
       respondentName,
       respondentAddress,
-      marriageDate,
-      marriagePlace,
-      childrenDetails,
+      respondentRelation,
+      claimantCategory,
+      meansNarrative,
       factsNarrative,
-      selectedGrounds,
-      wantMaintenancePendenteLite,
-      wantPermanentAlimony,
-      wantCustody,
+      interimMaintenance,
       advocateName,
       advocateAddress,
       advocatePhone,
@@ -147,7 +161,7 @@ export function ContestedDivorceWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-divorce-contested',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-maintenance-application',
     };
     try {
       if (caseId && draftId) {
@@ -155,7 +169,7 @@ export function ContestedDivorceWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Contested Divorce`,
+            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Maintenance Application`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -175,108 +189,83 @@ export function ContestedDivorceWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-divorce-contested');
-  const ancillaryCitationMatches = findAncillaryReliefCitations({
-    maintenancePendenteLite: wantMaintenancePendenteLite,
-    permanentAlimony: wantPermanentAlimony,
-    custody: wantCustody,
+  const citationMatches = findFixedCaseTypeCitation('ct-maintenance-application');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-maintenance-application');
+
+  const filedByBlock = buildFiledByBlock({
+    applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
+    advocateName,
+    advocateAddress,
+    advocatePhone,
+    advocateEmail,
+    place: filingPlace,
+    date: filingDate,
   });
 
-  const selectedGroundSentences = divorceGroundsOptions
-    .filter((g) => selectedGrounds.includes(g.id))
-    .map((g) => g.sentence);
-
-  const ancillaryReliefPhrases = [
-    wantMaintenancePendenteLite ? 'maintenance pendente lite and expenses of the proceedings under section 24 of the Act' : null,
-    wantPermanentAlimony ? 'permanent alimony and maintenance under section 25 of the Act' : null,
-    wantCustody ? 'custody of the minor child(ren) of the marriage under section 26 of the Act' : null,
-  ].filter((p): p is string => p !== null);
-
-  const closingSections: DraftSection[] =
-    mode === 'advocate'
-      ? buildFiledByBlock({
-          applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
-          advocateName,
-          advocateAddress,
-          advocatePhone,
-          advocateEmail,
-          place: filingPlace,
-          date: filingDate,
-        })
-      : [
-          {
-            unnumbered: true,
-            align: 'right' as const,
-            paragraphs: [
-              petitionerName || '[Petitioner]',
-              '(PETITIONER — IN PERSON)',
-              `Place: ${filingPlace || '[Place]'}`,
-              `Date: ${filingDate || '[Date]'}`,
-            ],
-          },
-        ];
+  const relationClause = relationshipClause(claimantCategory, respondentRelation || '[relationship]');
 
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the parties and the marriage',
+      heading: 'Particulars of the parties',
       paragraphs: [
         toThatClause(
-          `The Petitioner ${petitionerName || '[Petitioner]'} and the Respondent ${
+          `the Respondent ${
             respondentName || '[Respondent]'
-          } were married at ${marriagePlace || '[place]'} on ${marriageDate || '[date]'}, according to Hindu rites and ceremonies.`
+          } is the ${respondentRelation || '[relationship, e.g. husband/father/son]'} of the Petitioner ${
+            petitionerName || '[Petitioner]'
+          } and, having sufficient means, has neglected and refused to maintain ${relationClause}.`
         ),
-        ...(childrenDetails.trim() ? [toThatClause(`Of the said marriage, ${childrenDetails.trim()}`)] : []),
       ],
-      incomplete: !marriageDate || !marriagePlace,
+      incomplete: !claimantCategory || !respondentRelation,
     },
     {
-      heading: 'Facts constituting the cause of action',
-      paragraphs: [toThatClause(factsNarrative.trim() || '[Describe the facts leading to this petition]')],
+      heading: "Means of the parties",
+      paragraphs: [
+        toThatClause(
+          meansNarrative.trim() ||
+            '[State the Respondent\'s income/sources of means, and the Petitioner\'s own lack of sufficient independent income]'
+        ),
+      ],
+      incomplete: !meansNarrative.trim(),
+    },
+    {
+      heading: 'Facts constituting neglect or refusal to maintain',
+      paragraphs: [
+        toThatClause(
+          factsNarrative.trim() ||
+            '[Describe the neglect or refusal to maintain, and any prior demand made on the Respondent]'
+        ),
+      ],
       incomplete: !factsNarrative.trim(),
       role: 'facts',
-    },
-    {
-      heading: 'Grounds for divorce',
-      paragraphs:
-        selectedGroundSentences.length > 0
-          ? selectedGroundSentences.map(toThatClause)
-          : ['[Select the grounds relied upon]'],
-      incomplete: selectedGroundSentences.length === 0,
-      role: 'grounds',
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
-    ...(ancillaryReliefPhrases.length > 0
-      ? [
-          {
-            heading: 'Ancillary reliefs sought',
-            paragraphs: [toThatClause(`The Petitioner further seeks ${ancillaryReliefPhrases.join(', ')}.`)],
-          },
-        ]
-      : []),
-    ...(ancillaryCitationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon (ancillary reliefs)', paragraphs: buildCitationParagraphs(ancillaryCitationMatches), role: 'law' as const }]
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to dissolve the marriage between the Petitioner and the Respondent by a decree of divorce under section 13 of the Hindu Marriage Act, 1955${
-          ancillaryReliefPhrases.length > 0 ? `, grant the Petitioner ${ancillaryReliefPhrases.join(', ')}` : ''
-        }, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
+        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to direct the Respondent to pay a monthly allowance for the maintenance of the Petitioner at such rate as this Hon'ble Court may deem fit,${
+          interimMaintenance
+            ? ' order the Respondent to pay a monthly allowance for interim maintenance and the expenses of this proceeding during its pendency,'
+            : ''
+        } and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
       ],
     },
     ...buildVerificationSection(petitionerName, verificationPlace),
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const causeTitleInfo = {
     forumType: 'family_court',
-    applicationTitle: 'Contested Divorce Petition',
+    applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
     applicantName: petitionerName,
     respondentName,
-    caseNumberLine: `HMA No. _____ of ${new Date().getFullYear()}`,
+    caseNumberLine: `M.C. No. _____ of ${new Date().getFullYear()}`,
     benchCity: filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
@@ -285,7 +274,7 @@ export function ContestedDivorceWizard({
 
   const indexSections: DraftSection[] = [
     { heading: 'Index', unnumbered: true, paragraphs: buildDocumentListParagraphs(documentEntries) },
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const affidavitSections: DraftSection[] = [
@@ -301,7 +290,7 @@ export function ContestedDivorceWizard({
       unnumbered: true,
       paragraphs: [
         '1. That I am the Petitioner in the present case, and I am well conversant with the facts and circumstances of the case.',
-        '2. That the accompanying Petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
+        '2. That the accompanying application has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
       ],
     },
     { unnumbered: true, align: 'right', paragraphs: ['Deponent'] },
@@ -332,7 +321,7 @@ export function ContestedDivorceWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Parties and marriage' : 'You, your spouse, and your marriage'}</h3>
+            <h3 className="step-heading">Parties and relationship</h3>
             <div className="form-grid">
               <label className="form-field">
                 <span>
@@ -352,7 +341,7 @@ export function ContestedDivorceWizard({
                 <input type="text" value={petitionerAddress} onChange={(e) => setPetitionerAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{mode === 'advocate' ? 'Respondent' : 'Your spouse'}</span>
+                <span>Respondent</span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               <label className="form-field">
@@ -360,60 +349,63 @@ export function ContestedDivorceWizard({
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Date of marriage</span>
-                <input type="date" value={marriageDate} onChange={(e) => setMarriageDate(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Place of marriage</span>
-                <input type="text" value={marriagePlace} onChange={(e) => setMarriagePlace(e.target.value)} />
+                <span>Respondent's relationship to Petitioner (e.g. husband, father, son)</span>
+                <input type="text" value={respondentRelation} onChange={(e) => setRespondentRelation(e.target.value)} />
               </label>
             </div>
-            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
-              <span>Children of the marriage (if any)</span>
-              <textarea
-                className="facts-textarea"
-                rows={2}
-                value={childrenDetails}
-                onChange={(e) => setChildrenDetails(e.target.value)}
-                placeholder="e.g. two children were born — a son aged 8 and a daughter aged 5, both currently residing with the Petitioner"
-              />
-            </label>
+            <div style={{ marginTop: 'var(--space-4)' }}>
+              <p className="step-help">Which of these best describes the Petitioner's claim?</p>
+              {CLAIMANT_OPTIONS.map((opt) => (
+                <label
+                  key={opt.id}
+                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
+                >
+                  <input
+                    type="radio"
+                    name="claimantCategory"
+                    checked={claimantCategory === opt.id}
+                    onChange={() => setClaimantCategory(opt.id)}
+                  />
+                  <span>{opt.label}</span>
+                </label>
+              ))}
+            </div>
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Facts constituting the cause of action' : 'What happened?'}</h3>
+            <h3 className="step-heading">Means of the parties and facts</h3>
             <p className="step-help">
-              {mode === 'advocate'
-                ? 'Chronological statement of the facts supporting the grounds you will select next.'
-                : 'Write it in your own words — this gets turned into the formal statement of facts automatically.'}
+              Section 144 requires the Respondent to have "sufficient means" and to have neglected or refused to
+              maintain the Petitioner — describe both.
             </p>
-            <textarea
-              className="facts-textarea"
-              rows={6}
-              value={factsNarrative}
-              onChange={(e) => setFactsNarrative(e.target.value)}
-              placeholder="Describe the marital history and events supporting the grounds for divorce"
-            />
-          </div>
-        )}
-
-        {step === 2 && (
-          <div>
-            <h3 className="step-heading">Grounds for divorce</h3>
-            <p className="step-help">Tick every ground that applies — each becomes a pleaded averment.</p>
-            <div>
-              {divorceGroundsOptions.map((g) => (
-                <label
-                  key={g.id}
-                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
-                >
-                  <input type="checkbox" checked={selectedGrounds.includes(g.id)} onChange={() => toggleGround(g.id)} />
-                  <span>{g.label}</span>
-                </label>
-              ))}
-            </div>
+            <label className="form-field">
+              <span>Means of the parties</span>
+              <textarea
+                className="facts-textarea"
+                rows={3}
+                value={meansNarrative}
+                onChange={(e) => setMeansNarrative(e.target.value)}
+                placeholder="Describe the Respondent's income/sources of means, and the Petitioner's own lack of sufficient independent income"
+              />
+            </label>
+            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
+              <span>Facts constituting neglect or refusal to maintain</span>
+              <textarea
+                className="facts-textarea"
+                rows={6}
+                value={factsNarrative}
+                onChange={(e) => setFactsNarrative(e.target.value)}
+                placeholder="Describe the neglect or refusal to maintain, and any prior demand made on the Respondent"
+              />
+            </label>
+            <label
+              style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginTop: 'var(--space-4)' }}
+            >
+              <input type="checkbox" checked={interimMaintenance} onChange={(e) => setInterimMaintenance(e.target.checked)} />
+              <span>Also request interim maintenance and expenses of proceeding during the pendency of this application</span>
+            </label>
             {user ? (
               <div style={{ marginTop: 'var(--space-4)' }}>
                 <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
@@ -435,30 +427,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 3 && (
-          <div>
-            <h3 className="step-heading">Ancillary reliefs</h3>
-            <p className="step-help">Optional — any of these can be sought alongside the decree of divorce itself.</p>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input
-                type="checkbox"
-                checked={wantMaintenancePendenteLite}
-                onChange={(e) => setWantMaintenancePendenteLite(e.target.checked)}
-              />
-              <span>Maintenance pendente lite (during the proceedings)</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantPermanentAlimony} onChange={(e) => setWantPermanentAlimony(e.target.checked)} />
-              <span>Permanent alimony and maintenance</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantCustody} onChange={(e) => setWantCustody(e.target.checked)} />
-              <span>Custody of the minor child(ren)</span>
-            </label>
-          </div>
-        )}
-
-        {step === 4 && (
+        {step === 2 && (
           <div>
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
@@ -498,10 +467,13 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 5 && (
+        {step === 3 && (
           <div>
             <h3 className="step-heading">Documents (Index)</h3>
-            <p className="step-help">Add each document you're annexing, in the order it will be paginated.</p>
+            <p className="step-help">
+              Add each document you're annexing, in the order it will be paginated — including your Affidavit of
+              Disclosure of Assets and Liabilities (see the case-law note in Preview).
+            </p>
             {documentEntries.map((d, i) => (
               <div key={i} style={{ marginBottom: 'var(--space-4)' }}>
                 <div className="form-grid">
@@ -529,7 +501,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 6 && (
+        {step === 4 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -550,20 +522,35 @@ export function ContestedDivorceWizard({
                 Log in to save this draft and come back to it later.
               </p>
             )}
-            <p className="step-help">A filed Petition is a bundle of separate documents — each below downloads as its own PDF.</p>
+            <p className="step-help">A filed application is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Contested Divorce Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
+            <DraftDocument title="Maintenance Application — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Application</h4>
             <DraftDocument
-              title="Contested Divorce Petition"
-              subtitle={`Petition under Section 13, Hindu Marriage Act, 1955 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Maintenance Application"
+              subtitle={`Application under Section 144, Bharatiya Nagarik Suraksha Sanhita, 2023 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Contested Divorce Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Maintenance Application — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum="familyCourt" contextLabel={filingPlace || undefined} />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Affidavit of Disclosure of Assets and Liabilities
+              </p>
+              <p className="deadline-body">
+                The Supreme Court's guidelines in <em>Rajnesh v. Neha</em>, (2021) 2 SCC 324, require every applicant
+                (and, once served, the respondent) in a maintenance proceeding to file a separate Affidavit of
+                Disclosure of Assets and Liabilities in the prescribed format — annex it as one of your documents
+                above; it isn't drafted automatically here.
+              </p>
+            </div>
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p
@@ -581,7 +568,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 7 && (
+        {step === 5 && (
           <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
         )}
       </WizardShell>

@@ -7,10 +7,14 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
-import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
+import {
+  findFixedCaseTypeCitation,
+  buildCitationParagraphs,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
+} from '../lib/actReferenceMatcher';
 import { caseTypes } from '../data/mockData';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
@@ -209,6 +213,7 @@ export function TemporaryInjunctionWizard({
   };
 
   const citationMatches = findFixedCaseTypeCitation('ct-injunction-temporary');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-injunction-temporary');
   const selectedGroundSentences = GROUND_OPTIONS.filter((g) => selectedGrounds.includes(g.id)).map((g) => g.sentence);
 
   const filedByBlock = buildFiledByBlock({
@@ -226,9 +231,9 @@ export function TemporaryInjunctionWizard({
       heading: 'Particulars of the suit and the parties',
       paragraphs: [
         toThatClause(
-          `the Plaintiff, ${withPeriod(plaintiffName || '[Plaintiff]')} has instituted the above-numbered suit against the Defendant, ${withPeriod(
+          `the Plaintiff, ${plaintiffName || '[Plaintiff]'} has instituted the above-numbered suit against the Defendant, ${
             defendantName || '[Defendant]'
-          )}, before this Hon'ble Court${courtName ? ` at ${courtName}` : ''}, which is pending disposal.`
+          }, before this Hon'ble Court${courtName ? ` at ${courtName}` : ''}, which is pending disposal.`
         ),
         ...(propertyDescription.trim()
           ? [toThatClause(`the subject matter of the suit, in respect of which this application is filed, is ${propertyDescription.trim()}`)]
@@ -248,6 +253,9 @@ export function TemporaryInjunctionWizard({
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
+      : []),
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Prima facie case',
@@ -322,7 +330,7 @@ export function TemporaryInjunctionWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

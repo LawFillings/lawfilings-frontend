@@ -13,7 +13,6 @@ import {
   buildCauseTitleHtml,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
@@ -309,7 +308,7 @@ export function DrtWrittenStatementWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(defendantName || '[Defendant]')} aged about ${defendantAge || '[age]'}, R/o ${defendantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
+        `${defendantName || '[Defendant]'} aged about ${defendantAge || '[age]'}, R/o ${defendantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {

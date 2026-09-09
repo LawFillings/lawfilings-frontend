@@ -13,7 +13,6 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
@@ -243,7 +242,7 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(appellantName || '[Appellant]')} aged about ${appellantAge || '[age]'}, R/o ${appellantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
+        `${appellantName || '[Appellant]'} aged about ${appellantAge || '[age]'}, R/o ${appellantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {

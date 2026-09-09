@@ -8,7 +8,6 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { findPossessionCitations, buildCitationParagraphs } from '../lib/actReferenceMatcher';
@@ -244,9 +243,9 @@ export function PossessionSuitWizard({
       heading: 'Particulars of the parties and the property',
       paragraphs: [
         toThatClause(
-          `the Plaintiff, ${withPeriod(plaintiffName || '[Plaintiff]')}, seeks recovery of possession of ${
+          `the Plaintiff, ${plaintiffName || '[Plaintiff]'}, seeks recovery of possession of ${
             propertyDescription.trim() || '[describe the property]'
-          }, presently in the occupation of the Defendant, ${withPeriod(defendantName || '[Defendant]')}.`
+          }, presently in the occupation of the Defendant, ${defendantName || '[Defendant]'}.`
         ),
       ],
       incomplete: !propertyDescription.trim(),
@@ -310,7 +309,7 @@ export function PossessionSuitWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

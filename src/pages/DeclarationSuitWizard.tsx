@@ -8,7 +8,6 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { findFixedCaseTypeCitation, buildCitationParagraphs } from '../lib/actReferenceMatcher';
@@ -199,9 +198,9 @@ export function DeclarationSuitWizard({
       heading: 'Particulars of the parties and the right claimed',
       paragraphs: [
         toThatClause(
-          `the Plaintiff, ${withPeriod(plaintiffName || '[Plaintiff]')}, is ${
+          `the Plaintiff, ${plaintiffName || '[Plaintiff]'}, is ${
             legalCharacterOrRight.trim() || '[describe the legal character or right claimed]'
-          }, which title/right the Defendant, ${withPeriod(defendantName || '[Defendant]')}, denies, or is interested to deny.`
+          }, which title/right the Defendant, ${defendantName || '[Defendant]'}, denies, or is interested to deny.`
         ),
       ],
       incomplete: !legalCharacterOrRight.trim(),
@@ -275,7 +274,7 @@ export function DeclarationSuitWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

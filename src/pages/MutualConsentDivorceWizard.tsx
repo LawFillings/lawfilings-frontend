@@ -6,7 +6,6 @@ import {
   buildCauseTitleHtml,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import {
@@ -212,9 +211,9 @@ export function MutualConsentDivorceWizard({
       heading: 'Particulars of the parties and the marriage',
       paragraphs: [
         toThatClause(
-          `Petitioner No. 1, ${withPeriod(petitioner1Name || '[Petitioner No. 1]')} and Petitioner No. 2, ${withPeriod(
+          `Petitioner No. 1, ${petitioner1Name || '[Petitioner No. 1]'} and Petitioner No. 2, ${
             petitioner2Name || '[Petitioner No. 2]'
-          )} were married at ${marriagePlace || '[place]'} on ${marriageDate || '[date]'}, according to Hindu rites and ceremonies.`
+          } were married at ${marriagePlace || '[place]'} on ${marriageDate || '[date]'}, according to Hindu rites and ceremonies.`
         ),
         ...(childrenDetails.trim() ? [toThatClause(`Of the said marriage, ${childrenDetails.trim()}`)] : []),
       ],
@@ -286,9 +285,9 @@ export function MutualConsentDivorceWizard({
       headingAlign: 'center',
       unnumbered: true,
       paragraphs: [
-        `We, ${withPeriod(petitioner1Name || '[Petitioner No. 1]')} (Petitioner No. 1) and ${withPeriod(
+        `We, ${petitioner1Name || '[Petitioner No. 1]'} (Petitioner No. 1) and ${
           petitioner2Name || '[Petitioner No. 2]'
-        )} (Petitioner No. 2), do hereby verify that the contents of the foregoing petition are true and correct to the best of our respective knowledge and belief, and that nothing material has been concealed therefrom.`,
+        } (Petitioner No. 2), do hereby verify that the contents of the foregoing petition are true and correct to the best of our respective knowledge and belief, and that nothing material has been concealed therefrom.`,
         `Verified at ${verificationPlace || '[Place]'} on this _____ day of _____, ${new Date().getFullYear()}.`,
       ],
     },
@@ -326,9 +325,9 @@ export function MutualConsentDivorceWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `We, ${withPeriod(petitioner1Name || '[Petitioner No. 1]')} aged about ${petitioner1Age || '[age]'}, R/o ${
+        `We, ${petitioner1Name || '[Petitioner No. 1]'} aged about ${petitioner1Age || '[age]'}, R/o ${
           petitioner1Address || '[Address]'
-        } (Petitioner No. 1), and ${withPeriod(petitioner2Name || '[Petitioner No. 2]')} aged about ${
+        } (Petitioner No. 1), and ${petitioner2Name || '[Petitioner No. 2]'} aged about ${
           petitioner2Age || '[age]'
         }, R/o ${petitioner2Address || '[Address]'} (Petitioner No. 2), the above-named deponents, do hereby solemnly affirm and declare as under:`,
       ],

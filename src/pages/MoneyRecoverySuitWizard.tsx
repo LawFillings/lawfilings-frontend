@@ -8,7 +8,7 @@ import { FilingGuidance } from '../components/FilingGuidance';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
-import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, withPeriod, toThatClause } from '../lib/legalDocumentFormat';
+import { buildCauseTitleHtml, buildFiledByBlock, buildDocumentListParagraphs, toThatClause } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
 import { caseTypes, clauses, moneyRecoveryCauseOptions } from '../data/mockData';
 import {
@@ -323,7 +323,7 @@ export function MoneyRecoverySuitWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(plaintiffName || '[Plaintiff]')} aged about ${plaintiffAge || '[age]'}, R/o ${
+        `${plaintiffName || '[Plaintiff]'} aged about ${plaintiffAge || '[age]'}, R/o ${
           plaintiffAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

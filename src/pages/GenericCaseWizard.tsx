@@ -13,7 +13,6 @@ import {
   buildFiledByBlock,
   buildDocumentListParagraphs,
   splitIntoParagraphs,
-  withPeriod,
   toThatClause,
   partyLabels,
 } from '../lib/legalDocumentFormat';
@@ -295,7 +294,7 @@ export function GenericCaseWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(filerName || `[${filerRoleLabel}]`)} aged about ${applicantAge || '[age]'}, R/o ${applicantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
+        `${filerName || `[${filerRoleLabel}]`} aged about ${applicantAge || '[age]'}, R/o ${applicantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {

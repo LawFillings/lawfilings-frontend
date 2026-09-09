@@ -524,6 +524,76 @@ export const caseTypes: CaseType[] = [
     applicantEligibility: 'married_hindu_spouse',
     filingCategory: 'original',
   },
+  {
+    id: 'ct-restitution-conjugal-rights',
+    forumType: 'family_court',
+    name: 'Restitution of Conjugal Rights (Hindu Marriage Act, S.9)',
+    governingLaw: 'The Hindu Marriage Act, 1955, Section 9',
+    plainLanguageSummary:
+      "File this if your spouse has withdrawn from your company without a reasonable excuse, and you want the Court to direct them to resume living together with you.",
+    applicantEligibility: 'married_hindu_spouse',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-judicial-separation',
+    forumType: 'family_court',
+    name: 'Judicial Separation (Hindu Marriage Act, S.10)',
+    governingLaw: 'The Hindu Marriage Act, 1955, Section 10',
+    plainLanguageSummary:
+      "File this if you want to live separately from your spouse without ending the marriage — on the same grounds as a divorce (cruelty, desertion, etc.), but without dissolving the marriage itself.",
+    applicantEligibility: 'married_hindu_spouse',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-maintenance-application',
+    forumType: 'family_court',
+    name: 'Maintenance Application (BNSS, S.144)',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 144',
+    plainLanguageSummary:
+      "File this if you're a wife, child, or parent unable to maintain yourself, and a person who is legally bound to maintain you — with sufficient means — has neglected or refused to do so.",
+    applicantEligibility: 'wife_child_or_parent_seeking_maintenance',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-domestic-violence-application',
+    forumType: 'family_court',
+    name: 'Domestic Violence Act Application (PWDVA, S.12)',
+    governingLaw: 'The Protection of Women from Domestic Violence Act, 2005, Section 12',
+    plainLanguageSummary:
+      "File this if you've faced physical, sexual, verbal, emotional, or economic abuse from someone you live or lived with, and want protection, residence, monetary, custody, or compensation orders against them.",
+    applicantEligibility: 'woman_in_domestic_relationship_facing_abuse',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-guardianship-custody-petition',
+    forumType: 'family_court',
+    name: 'Guardianship/Custody Petition (Guardians and Wards Act, S.7)',
+    governingLaw: 'The Guardians and Wards Act, 1890, Section 7',
+    plainLanguageSummary:
+      "File this to be appointed or declared the guardian of a minor's person, property, or both — including for custody of a child — with the Court deciding based on what serves the minor's welfare.",
+    applicantEligibility: 'relative_or_friend_seeking_guardianship_of_a_minor',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-private-criminal-complaint',
+    forumType: 'misc_drafts',
+    name: 'Private Criminal Complaint (BNSS, S.223)',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 223',
+    plainLanguageSummary:
+      "File this to directly ask a Magistrate to take cognizance of an offence and summon the accused — without going through the police — when you have personal knowledge of the offence.",
+    applicantEligibility: 'person_with_knowledge_of_an_offence',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-quashing-petition',
+    forumType: 'high_court',
+    name: 'Quashing Petition (BNSS, S.528)',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 528',
+    plainLanguageSummary:
+      "File this before the High Court to quash an FIR, criminal complaint, or proceeding against you — because it discloses no offence, is an abuse of process, or the dispute is genuinely civil in nature.",
+    applicantEligibility: 'accused_or_person_facing_criminal_proceedings',
+    filingCategory: 'original',
+  },
 ];
 
 export const appealGroups: AppealGroup[] = [

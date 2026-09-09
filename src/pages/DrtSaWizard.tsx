@@ -292,7 +292,7 @@ export function DrtSaWizard({
   const respondentDetailSections: DraftSection[] = respondents.flatMap((r, i) => {
     const nameLine =
       r.type === 'institution' && r.throughSignatory
-        ? `${withPeriod(r.name || '[Respondent]')} through its authorised signatory ${r.throughSignatory}`
+        ? `${r.name || '[Respondent]'} through its authorised signatory ${r.throughSignatory}`
         : withPeriod(r.name || '[Respondent]');
     return [
       {
@@ -322,7 +322,9 @@ export function DrtSaWizard({
       heading: '1. Particulars of the Applicant',
       unnumbered: true,
       paragraphs: [
-        `(I) Name of the Applicant: ${withPeriod(applicantName || '[Applicant]')}${applicantRelationLine ? ` ${applicantRelationLine}` : ''}`,
+        `(I) Name of the Applicant: ${
+          applicantRelationLine ? `${applicantName || '[Applicant]'} ${applicantRelationLine}` : withPeriod(applicantName || '[Applicant]')
+        }`,
         `(II) Address of the Applicant: ${applicantAddress || '[Address]'}`,
         `(III) Address for service of all notices: ${applicantServiceAddress || applicantAddress || '[Address]'}`,
       ],
@@ -469,7 +471,7 @@ export function DrtSaWizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(applicantName || '[Applicant]')} ${applicantRelationLine}, aged about ${applicantAge || '[age]'}, R/o ${applicantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
+        `${applicantName || '[Applicant]'}${applicantRelationLine ? ` ${applicantRelationLine}` : ''}, aged about ${applicantAge || '[age]'}, R/o ${applicantAddress || '[Address]'}, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {

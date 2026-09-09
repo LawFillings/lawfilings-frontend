@@ -184,6 +184,38 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 10' },
     { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 11' },
   ],
+  // Restitution of Conjugal Rights — the entire filing is a Section 9 petition.
+  'ct-restitution-conjugal-rights': [{ actId: 'act-hindu-marriage-1955', sectionNo: '9' }],
+  // Judicial Separation — Section 10 is the whole petition; it expressly incorporates Section 13's
+  // grounds by cross-reference, so both are cited (the wizard's own selected grounds narrow which
+  // sub-clause of Section 13 actually applies, same as Contested Divorce).
+  'ct-judicial-separation': [
+    { actId: 'act-hindu-marriage-1955', sectionNo: '10' },
+    { actId: 'act-hindu-marriage-1955', sectionNo: '13' },
+  ],
+  // Maintenance Application — the entire filing is a Section 144 application.
+  'ct-maintenance-application': [{ actId: 'act-bnss-2023', sectionNo: '144' }],
+  // Guardianship/Custody Petition — Section 7 is the power to make the order sought; Section 8
+  // establishes the Petitioner's standing to apply; Section 17 is the welfare-of-the-minor test the
+  // Court must apply; Section 19 is cited because it is the provision that can defeat the petition
+  // outright (a living, fit parent) and so is always worth pleading around.
+  'ct-guardianship-custody-petition': [
+    { actId: 'act-guardians-and-wards-1890', sectionNo: '7' },
+    { actId: 'act-guardians-and-wards-1890', sectionNo: '8' },
+    { actId: 'act-guardians-and-wards-1890', sectionNo: '17' },
+    { actId: 'act-guardians-and-wards-1890', sectionNo: '19' },
+  ],
+  // Private Criminal Complaint — Section 210 is the cognizance power being invoked, Section 223 is
+  // the examination-on-oath every private complaint must go through, and Section 227 is the
+  // issue-of-process order actually being sought.
+  'ct-private-criminal-complaint': [
+    { actId: 'act-bnss-2023', sectionNo: '210' },
+    { actId: 'act-bnss-2023', sectionNo: '223' },
+    { actId: 'act-bnss-2023', sectionNo: '227' },
+  ],
+  // Quashing Petition — the entire filing is a Section 528 petition invoking the High Court's
+  // inherent powers.
+  'ct-quashing-petition': [{ actId: 'act-bnss-2023', sectionNo: '528' }],
 };
 
 // Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit
@@ -202,6 +234,29 @@ export function findPossessionCitations(params: {
     entries.push({ actId: 'act-transfer-of-property-1882', sectionNo: '106' });
     entries.push({ actId: 'act-transfer-of-property-1882', sectionNo: '111' });
   }
+  return entries.flatMap(({ actId, sectionNo }) => lookup(actId, sectionNo));
+}
+
+/** Domestic Violence Act Application wizard: sections 3 (definition of domestic violence) and 12
+ * (application to Magistrate) are always cited — the entire filing is a Section 12 application —
+ * and each further section is added only when the corresponding relief is actually sought, since
+ * sections 18-22 each stand on their own as the source of that specific relief. */
+export function findDomesticViolenceCitations(params: {
+  protectionOrder: boolean;
+  residenceOrder: boolean;
+  monetaryRelief: boolean;
+  custodyOrder: boolean;
+  compensationOrder: boolean;
+}): ActReferenceMatch[] {
+  const entries: Array<{ actId: string; sectionNo: string }> = [
+    { actId: 'act-pwdva-2005', sectionNo: '3' },
+    { actId: 'act-pwdva-2005', sectionNo: '12' },
+  ];
+  if (params.protectionOrder) entries.push({ actId: 'act-pwdva-2005', sectionNo: '18' });
+  if (params.residenceOrder) entries.push({ actId: 'act-pwdva-2005', sectionNo: '19' });
+  if (params.monetaryRelief) entries.push({ actId: 'act-pwdva-2005', sectionNo: '20' });
+  if (params.custodyOrder) entries.push({ actId: 'act-pwdva-2005', sectionNo: '21' });
+  if (params.compensationOrder) entries.push({ actId: 'act-pwdva-2005', sectionNo: '22' });
   return entries.flatMap(({ actId, sectionNo }) => lookup(actId, sectionNo));
 }
 
@@ -349,6 +404,107 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2017,
       sourceUrl: 'https://indiankanoon.org/doc/79830357/',
       note: 'the six-month minimum waiting period under section 13B(2) of the Hindu Marriage Act, 1955 is directory, not mandatory, and may be waived by the court in appropriate cases — e.g. where the parties have already been separated a long time and mediation/settlement efforts have genuinely failed.',
+    },
+  ],
+  // Temporary Injunction and Permanent Injunction — the three-pronged test (prima facie case,
+  // balance of convenience, irreparable injury) governing every injunction, temporary or
+  // perpetual, comes from case law, not the bare text of Order XXXIX or Section 38 itself.
+  'ct-injunction-temporary': [
+    {
+      caseTitle: 'Dalpat Kumar v. Prahlad Singh',
+      citation: '(1992) 1 SCC 719',
+      court: 'Supreme Court of India',
+      year: 1992,
+      sourceUrl: 'https://indiankanoon.org/doc/49480/',
+      note: 'the grant of a temporary injunction is governed by three settled principles — a prima facie case, the balance of convenience in favour of the applicant, and irreparable injury that cannot adequately be compensated in damages — all three of which must be established, not merely one.',
+    },
+  ],
+  'ct-suit-permanent-injunction': [
+    {
+      caseTitle: 'Dalpat Kumar v. Prahlad Singh',
+      citation: '(1992) 1 SCC 719',
+      court: 'Supreme Court of India',
+      year: 1992,
+      sourceUrl: 'https://indiankanoon.org/doc/49480/',
+      note: "a court granting injunctive relief must weigh the substantial mischief or injury likely to be caused to the plaintiff if the injunction is refused against that likely to be caused to the defendant if it is granted, guided by the prima facie case, balance of convenience, and irreparable injury test.",
+    },
+  ],
+  // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession
+  // Act, 1956 is by birth and applies regardless of whether her father was alive on the date the
+  // 2005 Amendment came into force, settling a conflict between earlier Supreme Court benches.
+  'ct-suit-partition': [
+    {
+      caseTitle: 'Vineeta Sharma v. Rakesh Sharma',
+      citation: '(2020) 9 SCC 1',
+      court: 'Supreme Court of India',
+      year: 2020,
+      sourceUrl: 'https://indiankanoon.org/doc/67965481/',
+      note: 'a daughter becomes a coparcener by birth in the same manner as a son under section 6 of the Hindu Succession Act, 1956, and this right is unaffected by whether her father was alive on 9 September 2005, the date the Hindu Succession (Amendment) Act, 2005 came into force.',
+    },
+  ],
+  // Maintenance Application — the Supreme Court's binding guidelines on how maintenance claims
+  // and interim maintenance must be pleaded and proved, including the mandatory Affidavit of
+  // Disclosure of Assets and Liabilities every applicant and respondent must now file.
+  'ct-maintenance-application': [
+    {
+      caseTitle: 'Rajnesh v. Neha',
+      citation: '(2021) 2 SCC 324',
+      court: 'Supreme Court of India',
+      year: 2020,
+      sourceUrl: 'https://indiankanoon.org/doc/117541087/',
+      note: 'every applicant and respondent in a maintenance proceeding must file an Affidavit of Disclosure of Assets and Liabilities in the prescribed format, and laid down comprehensive guidelines governing the payment of interim and permanent maintenance across all maintenance laws.',
+    },
+  ],
+  // Domestic Violence Act Application — the words "adult male" in section 2(q)'s definition of
+  // "respondent" were struck down as unconstitutional, so a complaint may be filed against a
+  // female relative, or one who is not yet an adult, not only against an adult male.
+  'ct-domestic-violence-application': [
+    {
+      caseTitle: 'Hiral P. Harsora v. Kusum Narottamdas Harsora',
+      citation: '(2016) 10 SCC 165',
+      court: 'Supreme Court of India',
+      year: 2016,
+      sourceUrl: 'https://indiankanoon.org/doc/114237665/',
+      note: 'the words "adult male" in section 2(q) of the Protection of Women from Domestic Violence Act, 2005, which defines "respondent", are unconstitutional and struck down — an application under this Act may therefore be filed against a female relative, or a relative who has not yet attained majority, in a domestic relationship with the aggrieved person, and is not confined to an adult male.',
+    },
+  ],
+  // Guardianship/Custody Petition — the welfare of the minor is the paramount and overriding
+  // consideration in every custody/guardianship decision, even displacing a parent's otherwise
+  // preferential legal right under section 19 of the Act.
+  'ct-guardianship-custody-petition': [
+    {
+      caseTitle: 'Gaurav Nagpal v. Sumedha Nagpal',
+      citation: '(2009) 1 SCC 42',
+      court: 'Supreme Court of India',
+      year: 2008,
+      sourceUrl: 'https://indiankanoon.org/doc/929793/',
+      note: "the welfare of the minor is the paramount consideration in a custody or guardianship matter, and this overrides any statutory preferential right — including a natural parent's — where the facts so require.",
+    },
+  ],
+  // Private Criminal Complaint — issuing process is a serious matter; the Magistrate must apply
+  // their mind to the complaint and evidence to find sufficient grounds, and cannot act mechanically
+  // — a caution the complaint itself should be drafted to withstand.
+  'ct-private-criminal-complaint': [
+    {
+      caseTitle: 'Pepsi Foods Ltd. v. Special Judicial Magistrate',
+      citation: '(1998) 5 SCC 749',
+      court: 'Supreme Court of India',
+      year: 1997,
+      sourceUrl: 'https://indiankanoon.org/doc/574884/',
+      note: 'summoning an accused in a criminal case is a serious matter, and the Magistrate must apply their mind to the facts and the evidence on record to find sufficient ground for proceeding before issuing process — not act mechanically or as a matter of course.',
+    },
+  ],
+  // Quashing Petition — the seven-category test governing when the inherent power to quash may be
+  // exercised; the entire petition should be drafted to bring the facts within one or more of
+  // these categories.
+  'ct-quashing-petition': [
+    {
+      caseTitle: 'State of Haryana v. Bhajan Lal',
+      citation: '1992 Supp (1) SCC 335',
+      court: 'Supreme Court of India',
+      year: 1990,
+      sourceUrl: 'https://indiankanoon.org/doc/1033637/',
+      note: 'the inherent power to quash an FIR or criminal proceeding may be exercised, illustratively and not exhaustively, where the allegations, even if taken at face value, do not disclose the commission of any offence; where they do not disclose a cognizable offence justifying investigation; where they are so absurd or inherently improbable that no prudent person could ever reach a just conclusion of guilt; or where the proceeding is manifestly attended with mala fides or has been instituted with an ulterior motive for wreaking vengeance, and is such power to be exercised sparingly and with great caution.',
     },
   ],
 };

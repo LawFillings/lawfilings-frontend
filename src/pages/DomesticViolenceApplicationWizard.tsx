@@ -10,11 +10,12 @@ import {
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import {
-  findFixedCaseTypeCitation,
+  findDomesticViolenceCitations,
   buildCitationParagraphs,
-  findAncillaryReliefCitations,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
 } from '../lib/actReferenceMatcher';
-import { caseTypes, divorceGroundsOptions } from '../data/mockData';
+import { caseTypes } from '../data/mockData';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
@@ -25,15 +26,21 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const STEPS = [
-  'Parties & marriage',
-  'Facts',
-  'Grounds',
-  'Ancillary reliefs',
-  'Filing details',
-  'Documents (Index)',
-  'Preview',
-  'Match a style (optional)',
+const caseType = caseTypes.find((ct) => ct.id === 'ct-domestic-violence-application')!;
+
+const ABUSE_TYPE_OPTIONS: { id: string; label: string }[] = [
+  { id: 'physical', label: 'Physical abuse (bodily pain, harm, assault, criminal force)' },
+  { id: 'sexual', label: 'Sexual abuse' },
+  { id: 'verbal_emotional', label: 'Verbal and emotional abuse (insults, humiliation, threats)' },
+  { id: 'economic', label: 'Economic abuse (deprivation of resources, disposal of assets, denial of access)' },
+];
+
+const RELIEF_OPTIONS: { id: string; label: string }[] = [
+  { id: 'protectionOrder', label: 'Protection order — restrain further acts of domestic violence (S.18)' },
+  { id: 'residenceOrder', label: "Residence order — protect the Applicant's right to reside in the shared household (S.19)" },
+  { id: 'monetaryRelief', label: 'Monetary relief — loss of earnings, medical expenses, maintenance, etc. (S.20)' },
+  { id: 'custodyOrder', label: 'Custody order — temporary custody of a child/children (S.21)' },
+  { id: 'compensationOrder', label: 'Compensation order — damages for mental torture and emotional distress (S.22)' },
 ];
 
 interface DocEntry {
@@ -42,19 +49,15 @@ interface DocEntry {
 }
 
 interface SavedContent {
-  petitionerName: string;
-  petitionerAge: string;
-  petitionerAddress: string;
+  applicantName: string;
+  applicantAge: string;
+  applicantAddress: string;
   respondentName: string;
   respondentAddress: string;
-  marriageDate: string;
-  marriagePlace: string;
-  childrenDetails: string;
+  domesticRelationship: string;
+  abuseTypes: string[];
   factsNarrative: string;
-  selectedGrounds: string[];
-  wantMaintenancePendenteLite: boolean;
-  wantPermanentAlimony: boolean;
-  wantCustody: boolean;
+  reliefs: string[];
   advocateName: string;
   advocateAddress: string;
   advocatePhone: string;
@@ -65,8 +68,6 @@ interface SavedContent {
   documentEntries: DocEntry[];
 }
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-divorce-contested')!;
-
 interface Props {
   onBack: () => void;
   onOpenPricing: () => void;
@@ -76,7 +77,37 @@ interface Props {
   initialContent?: unknown;
 }
 
-export function ContestedDivorceWizard({
+const STEPS = [
+  'Parties & relationship',
+  'Facts of domestic violence',
+  'Reliefs sought',
+  'Filing details',
+  'Documents (Index)',
+  'Preview',
+  'Match a style (optional)',
+];
+
+const RELIEF_PRAYER_TEXT: Record<string, string> = {
+  protectionOrder: 'pass a protection order under section 18 restraining the Respondent from committing any further act of domestic violence',
+  residenceOrder: "pass a residence order under section 19 protecting the Applicant's right to reside in the shared household",
+  monetaryRelief: 'direct the Respondent to pay monetary relief under section 20 to meet the expenses and losses suffered by the Applicant',
+  custodyOrder: 'grant temporary custody of the minor child/children to the Applicant under section 21',
+  compensationOrder: 'direct the Respondent to pay compensation and damages under section 22 for the injuries, mental torture, and emotional distress caused',
+};
+
+/** Noun-phrase form of each relief, for the "Reliefs sought" section's "the Applicant seeks ..."
+ * sentences — kept separate from RELIEF_PRAYER_TEXT's verb-phrase form (for "...may be pleased to
+ * ...") rather than derived from it by stripping a leading verb, since that broke down for reliefs
+ * whose prayer sentence doesn't start with a bare "pass "/"grant ". */
+const RELIEF_SOUGHT_TEXT: Record<string, string> = {
+  protectionOrder: 'a protection order under section 18 restraining the Respondent from committing any further act of domestic violence',
+  residenceOrder: "a residence order under section 19 protecting her right to reside in the shared household",
+  monetaryRelief: 'monetary relief under section 20 to meet the expenses and losses suffered as a result of the domestic violence',
+  custodyOrder: 'temporary custody of the minor child/children under section 21',
+  compensationOrder: 'compensation and damages under section 22 for the injuries, mental torture, and emotional distress caused',
+};
+
+export function DomesticViolenceApplicationWizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -87,19 +118,18 @@ export function ContestedDivorceWizard({
   const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
-  const [petitionerName, setPetitionerName] = useState(saved?.petitionerName ?? '');
-  const [petitionerAge, setPetitionerAge] = useState(saved?.petitionerAge ?? '');
-  const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
+  const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
+  const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
+  const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [marriageDate, setMarriageDate] = useState(saved?.marriageDate ?? '');
-  const [marriagePlace, setMarriagePlace] = useState(saved?.marriagePlace ?? '');
-  const [childrenDetails, setChildrenDetails] = useState(saved?.childrenDetails ?? '');
+  const [domesticRelationship, setDomesticRelationship] = useState(saved?.domesticRelationship ?? '');
+  const [abuseTypes, setAbuseTypes] = useState<string[]>(saved?.abuseTypes ?? []);
+  const toggleAbuseType = (id: string) =>
+    setAbuseTypes((cur) => (cur.includes(id) ? cur.filter((a) => a !== id) : [...cur, id]));
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
-  const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
-  const [wantMaintenancePendenteLite, setWantMaintenancePendenteLite] = useState(saved?.wantMaintenancePendenteLite ?? false);
-  const [wantPermanentAlimony, setWantPermanentAlimony] = useState(saved?.wantPermanentAlimony ?? false);
-  const [wantCustody, setWantCustody] = useState(saved?.wantCustody ?? false);
+  const [reliefs, setReliefs] = useState<string[]>(saved?.reliefs ?? []);
+  const toggleRelief = (id: string) => setReliefs((cur) => (cur.includes(id) ? cur.filter((r) => r !== id) : [...cur, id]));
   const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
   const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
   const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
@@ -118,27 +148,20 @@ export function ContestedDivorceWizard({
   const [paywall, setPaywall] = useState(false);
   const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
-  const toggleGround = (id: string) =>
-    setSelectedGrounds((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
-
   const handleSaveDraft = async () => {
     if (!user || !token) return;
     setSaveState('saving');
     setPaywall(false);
     const content: SavedContent & { [WIZARD_CASE_TYPE_KEY]: string } = {
-      petitionerName,
-      petitionerAge,
-      petitionerAddress,
+      applicantName,
+      applicantAge,
+      applicantAddress,
       respondentName,
       respondentAddress,
-      marriageDate,
-      marriagePlace,
-      childrenDetails,
+      domesticRelationship,
+      abuseTypes,
       factsNarrative,
-      selectedGrounds,
-      wantMaintenancePendenteLite,
-      wantPermanentAlimony,
-      wantCustody,
+      reliefs,
       advocateName,
       advocateAddress,
       advocatePhone,
@@ -147,7 +170,7 @@ export function ContestedDivorceWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-divorce-contested',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-domestic-violence-application',
     };
     try {
       if (caseId && draftId) {
@@ -155,7 +178,7 @@ export function ContestedDivorceWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Contested Divorce`,
+            title: `${applicantName || 'Applicant'} vs. ${respondentName || 'Respondent'} — Domestic Violence Act Application`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -175,108 +198,97 @@ export function ContestedDivorceWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-divorce-contested');
-  const ancillaryCitationMatches = findAncillaryReliefCitations({
-    maintenancePendenteLite: wantMaintenancePendenteLite,
-    permanentAlimony: wantPermanentAlimony,
-    custody: wantCustody,
+  const citationMatches = findDomesticViolenceCitations({
+    protectionOrder: reliefs.includes('protectionOrder'),
+    residenceOrder: reliefs.includes('residenceOrder'),
+    monetaryRelief: reliefs.includes('monetaryRelief'),
+    custodyOrder: reliefs.includes('custodyOrder'),
+    compensationOrder: reliefs.includes('compensationOrder'),
+  });
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-domestic-violence-application');
+
+  const filedByBlock = buildFiledByBlock({
+    applicantLines: [applicantName || '[Applicant]', '(APPLICANT)'],
+    advocateName,
+    advocateAddress,
+    advocatePhone,
+    advocateEmail,
+    place: filingPlace,
+    date: filingDate,
   });
 
-  const selectedGroundSentences = divorceGroundsOptions
-    .filter((g) => selectedGrounds.includes(g.id))
-    .map((g) => g.sentence);
+  const abuseTypeLabels = ABUSE_TYPE_OPTIONS.filter((o) => abuseTypes.includes(o.id)).map((o) => o.label.split(' (')[0].toLowerCase());
+  const abuseTypeProse =
+    abuseTypeLabels.length > 0
+      ? abuseTypeLabels.length === 1
+        ? abuseTypeLabels[0]
+        : `${abuseTypeLabels.slice(0, -1).join(', ')} and ${abuseTypeLabels[abuseTypeLabels.length - 1]}`
+      : '[type(s) of abuse]';
 
-  const ancillaryReliefPhrases = [
-    wantMaintenancePendenteLite ? 'maintenance pendente lite and expenses of the proceedings under section 24 of the Act' : null,
-    wantPermanentAlimony ? 'permanent alimony and maintenance under section 25 of the Act' : null,
-    wantCustody ? 'custody of the minor child(ren) of the marriage under section 26 of the Act' : null,
-  ].filter((p): p is string => p !== null);
-
-  const closingSections: DraftSection[] =
-    mode === 'advocate'
-      ? buildFiledByBlock({
-          applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
-          advocateName,
-          advocateAddress,
-          advocatePhone,
-          advocateEmail,
-          place: filingPlace,
-          date: filingDate,
-        })
-      : [
-          {
-            unnumbered: true,
-            align: 'right' as const,
-            paragraphs: [
-              petitionerName || '[Petitioner]',
-              '(PETITIONER — IN PERSON)',
-              `Place: ${filingPlace || '[Place]'}`,
-              `Date: ${filingDate || '[Date]'}`,
-            ],
-          },
-        ];
+  const reliefSentences = reliefs.map((r) => RELIEF_PRAYER_TEXT[r]).filter(Boolean);
+  const prayerText =
+    reliefSentences.length > 0
+      ? `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to ${reliefSentences.join(
+          ', '
+        )}, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`
+      : `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to grant such relief(s) under the Protection of Women from Domestic Violence Act, 2005 as this Hon'ble Court may deem fit and proper in the interest of justice.`;
 
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the parties and the marriage',
+      heading: 'Particulars of the parties and the domestic relationship',
       paragraphs: [
         toThatClause(
-          `The Petitioner ${petitionerName || '[Petitioner]'} and the Respondent ${
+          `the Applicant ${applicantName || '[Applicant]'} is, or has been, in a domestic relationship with the Respondent ${
             respondentName || '[Respondent]'
-          } were married at ${marriagePlace || '[place]'} on ${marriageDate || '[date]'}, according to Hindu rites and ceremonies.`
+          }, the Respondent being the Applicant's ${domesticRelationship || '[relationship]'}, and the parties have lived together in a shared household.`
         ),
-        ...(childrenDetails.trim() ? [toThatClause(`Of the said marriage, ${childrenDetails.trim()}`)] : []),
       ],
-      incomplete: !marriageDate || !marriagePlace,
+      incomplete: !domesticRelationship,
     },
     {
-      heading: 'Facts constituting the cause of action',
-      paragraphs: [toThatClause(factsNarrative.trim() || '[Describe the facts leading to this petition]')],
-      incomplete: !factsNarrative.trim(),
+      heading: 'Facts constituting domestic violence',
+      paragraphs: [
+        toThatClause(
+          `the Respondent has subjected the Applicant to ${abuseTypeProse} within the meaning of section 3 of the Protection of Women from Domestic Violence Act, 2005.`
+        ),
+        toThatClause(
+          factsNarrative.trim() ||
+            '[Describe the specific incidents of domestic violence, with dates, so far as they can be recalled]'
+        ),
+      ],
+      incomplete: abuseTypes.length === 0 || !factsNarrative.trim(),
       role: 'facts',
     },
     {
-      heading: 'Grounds for divorce',
+      heading: 'Reliefs sought',
       paragraphs:
-        selectedGroundSentences.length > 0
-          ? selectedGroundSentences.map(toThatClause)
-          : ['[Select the grounds relied upon]'],
-      incomplete: selectedGroundSentences.length === 0,
-      role: 'grounds',
+        reliefs.length > 0
+          ? reliefs.map((r) => toThatClause(`the Applicant seeks ${RELIEF_SOUGHT_TEXT[r]}.`))
+          : [toThatClause('the Applicant seeks such relief(s) under the Act as this Hon\'ble Court may deem fit.')],
+      incomplete: reliefs.length === 0,
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
-    ...(ancillaryReliefPhrases.length > 0
-      ? [
-          {
-            heading: 'Ancillary reliefs sought',
-            paragraphs: [toThatClause(`The Petitioner further seeks ${ancillaryReliefPhrases.join(', ')}.`)],
-          },
-        ]
-      : []),
-    ...(ancillaryCitationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon (ancillary reliefs)', paragraphs: buildCitationParagraphs(ancillaryCitationMatches), role: 'law' as const }]
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Prayer',
-      paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to dissolve the marriage between the Petitioner and the Respondent by a decree of divorce under section 13 of the Hindu Marriage Act, 1955${
-          ancillaryReliefPhrases.length > 0 ? `, grant the Petitioner ${ancillaryReliefPhrases.join(', ')}` : ''
-        }, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
-      ],
+      paragraphs: [prayerText],
     },
-    ...buildVerificationSection(petitionerName, verificationPlace),
-    ...closingSections,
+    ...buildVerificationSection(applicantName, verificationPlace),
+    ...filedByBlock,
   ];
 
   const causeTitleInfo = {
     forumType: 'family_court',
-    applicationTitle: 'Contested Divorce Petition',
+    applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
-    applicantName: petitionerName,
+    applicantName,
+    applicantLabel: 'APPLICANT',
     respondentName,
-    caseNumberLine: `HMA No. _____ of ${new Date().getFullYear()}`,
+    caseNumberLine: `D.V.C. No. _____ of ${new Date().getFullYear()}`,
     benchCity: filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
@@ -285,23 +297,23 @@ export function ContestedDivorceWizard({
 
   const indexSections: DraftSection[] = [
     { heading: 'Index', unnumbered: true, paragraphs: buildDocumentListParagraphs(documentEntries) },
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const affidavitSections: DraftSection[] = [
     {
       unnumbered: true,
       paragraphs: [
-        `${petitionerName || '[Petitioner]'} aged about ${petitionerAge || '[age]'}, R/o ${
-          petitionerAddress || '[Address]'
+        `${applicantName || '[Applicant]'} aged about ${applicantAge || '[age]'}, R/o ${
+          applicantAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],
     },
     {
       unnumbered: true,
       paragraphs: [
-        '1. That I am the Petitioner in the present case, and I am well conversant with the facts and circumstances of the case.',
-        '2. That the accompanying Petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
+        '1. That I am the Applicant in the present case, and I am well conversant with the facts and circumstances of the case.',
+        '2. That the accompanying application has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
       ],
     },
     { unnumbered: true, align: 'right', paragraphs: ['Deponent'] },
@@ -332,27 +344,27 @@ export function ContestedDivorceWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Parties and marriage' : 'You, your spouse, and your marriage'}</h3>
+            <h3 className="step-heading">Parties and domestic relationship</h3>
             <div className="form-grid">
               <label className="form-field">
                 <span>
-                  {mode === 'advocate' ? 'Petitioner' : 'Your name'}
+                  {mode === 'advocate' ? 'Applicant' : 'Your name'}
                   {mode === 'justice_seeker' && (
-                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Petitioner in this case)</span>
+                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Applicant in this case)</span>
                   )}
                 </span>
-                <input type="text" value={petitionerName} onChange={(e) => setPetitionerName(e.target.value)} />
+                <input type="text" value={applicantName} onChange={(e) => setApplicantName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Petitioner's age</span>
-                <input type="text" value={petitionerAge} onChange={(e) => setPetitionerAge(e.target.value)} />
+                <span>Applicant's age</span>
+                <input type="text" value={applicantAge} onChange={(e) => setApplicantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Petitioner's address</span>
-                <input type="text" value={petitionerAddress} onChange={(e) => setPetitionerAddress(e.target.value)} />
+                <span>Applicant's address</span>
+                <input type="text" value={applicantAddress} onChange={(e) => setApplicantAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{mode === 'advocate' ? 'Respondent' : 'Your spouse'}</span>
+                <span>Respondent</span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               <label className="form-field">
@@ -360,60 +372,42 @@ export function ContestedDivorceWizard({
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Date of marriage</span>
-                <input type="date" value={marriageDate} onChange={(e) => setMarriageDate(e.target.value)} />
-              </label>
-              <label className="form-field">
-                <span>Place of marriage</span>
-                <input type="text" value={marriagePlace} onChange={(e) => setMarriagePlace(e.target.value)} />
+                <span>Respondent's relationship to Applicant (e.g. husband, mother-in-law, brother)</span>
+                <input type="text" value={domesticRelationship} onChange={(e) => setDomesticRelationship(e.target.value)} />
               </label>
             </div>
-            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
-              <span>Children of the marriage (if any)</span>
-              <textarea
-                className="facts-textarea"
-                rows={2}
-                value={childrenDetails}
-                onChange={(e) => setChildrenDetails(e.target.value)}
-                placeholder="e.g. two children were born — a son aged 8 and a daughter aged 5, both currently residing with the Petitioner"
-              />
-            </label>
+            <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
+              The Respondent need not be an adult male — following <em>Hiral P. Harsora v. Kusum Narottamdas Harsora</em>,
+              a female relative, or one who has not yet attained majority, may also be named.
+            </p>
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Facts constituting the cause of action' : 'What happened?'}</h3>
-            <p className="step-help">
-              {mode === 'advocate'
-                ? 'Chronological statement of the facts supporting the grounds you will select next.'
-                : 'Write it in your own words — this gets turned into the formal statement of facts automatically.'}
-            </p>
-            <textarea
-              className="facts-textarea"
-              rows={6}
-              value={factsNarrative}
-              onChange={(e) => setFactsNarrative(e.target.value)}
-              placeholder="Describe the marital history and events supporting the grounds for divorce"
-            />
-          </div>
-        )}
-
-        {step === 2 && (
-          <div>
-            <h3 className="step-heading">Grounds for divorce</h3>
-            <p className="step-help">Tick every ground that applies — each becomes a pleaded averment.</p>
+            <h3 className="step-heading">Facts of domestic violence</h3>
+            <p className="step-help">Tick every type of abuse that applies — each becomes a pleaded averment under section 3.</p>
             <div>
-              {divorceGroundsOptions.map((g) => (
+              {ABUSE_TYPE_OPTIONS.map((opt) => (
                 <label
-                  key={g.id}
+                  key={opt.id}
                   style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
                 >
-                  <input type="checkbox" checked={selectedGrounds.includes(g.id)} onChange={() => toggleGround(g.id)} />
-                  <span>{g.label}</span>
+                  <input type="checkbox" checked={abuseTypes.includes(opt.id)} onChange={() => toggleAbuseType(opt.id)} />
+                  <span>{opt.label}</span>
                 </label>
               ))}
             </div>
+            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
+              <span>Facts constituting domestic violence</span>
+              <textarea
+                className="facts-textarea"
+                rows={6}
+                value={factsNarrative}
+                onChange={(e) => setFactsNarrative(e.target.value)}
+                placeholder="Describe the specific incidents of domestic violence, with dates, so far as they can be recalled"
+              />
+            </label>
             {user ? (
               <div style={{ marginTop: 'var(--space-4)' }}>
                 <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
@@ -435,30 +429,25 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 3 && (
+        {step === 2 && (
           <div>
-            <h3 className="step-heading">Ancillary reliefs</h3>
-            <p className="step-help">Optional — any of these can be sought alongside the decree of divorce itself.</p>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input
-                type="checkbox"
-                checked={wantMaintenancePendenteLite}
-                onChange={(e) => setWantMaintenancePendenteLite(e.target.checked)}
-              />
-              <span>Maintenance pendente lite (during the proceedings)</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantPermanentAlimony} onChange={(e) => setWantPermanentAlimony(e.target.checked)} />
-              <span>Permanent alimony and maintenance</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantCustody} onChange={(e) => setWantCustody(e.target.checked)} />
-              <span>Custody of the minor child(ren)</span>
-            </label>
+            <h3 className="step-heading">Reliefs sought</h3>
+            <p className="step-help">Tick every relief you want — you can request more than one at the same time.</p>
+            <div>
+              {RELIEF_OPTIONS.map((opt) => (
+                <label
+                  key={opt.id}
+                  style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
+                >
+                  <input type="checkbox" checked={reliefs.includes(opt.id)} onChange={() => toggleRelief(opt.id)} />
+                  <span>{opt.label}</span>
+                </label>
+              ))}
+            </div>
           </div>
         )}
 
-        {step === 4 && (
+        {step === 3 && (
           <div>
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
@@ -498,7 +487,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 5 && (
+        {step === 4 && (
           <div>
             <h3 className="step-heading">Documents (Index)</h3>
             <p className="step-help">Add each document you're annexing, in the order it will be paginated.</p>
@@ -529,7 +518,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 6 && (
+        {step === 5 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -550,20 +539,36 @@ export function ContestedDivorceWizard({
                 Log in to save this draft and come back to it later.
               </p>
             )}
-            <p className="step-help">A filed Petition is a bundle of separate documents — each below downloads as its own PDF.</p>
+            <p className="step-help">A filed application is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Contested Divorce Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
+            <DraftDocument title="Domestic Violence Act Application — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Application</h4>
             <DraftDocument
-              title="Contested Divorce Petition"
-              subtitle={`Petition under Section 13, Hindu Marriage Act, 1955 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Domestic Violence Act Application"
+              subtitle={`Application under Section 12, Protection of Women from Domestic Violence Act, 2005 — ${applicantName || '[Applicant]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Contested Divorce Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Domestic Violence Act Application — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum="familyCourt" contextLabel={filingPlace || undefined} />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Filed before a Magistrate, often via a Protection Officer
+              </p>
+              <p className="deadline-body">
+                An application under this Act is filed before a Judicial Magistrate of the First Class or Metropolitan
+                Magistrate (in practice, often heard by the Family Court where one is constituted for the area) — and
+                you, or a Protection Officer on your behalf, may present it. Consider contacting your district's
+                Protection Officer first; they can help prepare a Domestic Incident Report, which the Magistrate must
+                consider before passing any order.
+              </p>
+            </div>
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p
@@ -581,7 +586,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 7 && (
+        {step === 6 && (
           <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
         )}
       </WizardShell>

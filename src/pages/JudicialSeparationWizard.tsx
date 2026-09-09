@@ -65,7 +65,7 @@ interface SavedContent {
   documentEntries: DocEntry[];
 }
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-divorce-contested')!;
+const caseType = caseTypes.find((ct) => ct.id === 'ct-judicial-separation')!;
 
 interface Props {
   onBack: () => void;
@@ -76,7 +76,7 @@ interface Props {
   initialContent?: unknown;
 }
 
-export function ContestedDivorceWizard({
+export function JudicialSeparationWizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -147,7 +147,7 @@ export function ContestedDivorceWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-divorce-contested',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-judicial-separation',
     };
     try {
       if (caseId && draftId) {
@@ -155,7 +155,7 @@ export function ContestedDivorceWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Contested Divorce`,
+            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Judicial Separation`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -175,7 +175,7 @@ export function ContestedDivorceWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-divorce-contested');
+  const citationMatches = findFixedCaseTypeCitation('ct-judicial-separation');
   const ancillaryCitationMatches = findAncillaryReliefCitations({
     maintenancePendenteLite: wantMaintenancePendenteLite,
     permanentAlimony: wantPermanentAlimony,
@@ -192,29 +192,15 @@ export function ContestedDivorceWizard({
     wantCustody ? 'custody of the minor child(ren) of the marriage under section 26 of the Act' : null,
   ].filter((p): p is string => p !== null);
 
-  const closingSections: DraftSection[] =
-    mode === 'advocate'
-      ? buildFiledByBlock({
-          applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
-          advocateName,
-          advocateAddress,
-          advocatePhone,
-          advocateEmail,
-          place: filingPlace,
-          date: filingDate,
-        })
-      : [
-          {
-            unnumbered: true,
-            align: 'right' as const,
-            paragraphs: [
-              petitionerName || '[Petitioner]',
-              '(PETITIONER — IN PERSON)',
-              `Place: ${filingPlace || '[Place]'}`,
-              `Date: ${filingDate || '[Date]'}`,
-            ],
-          },
-        ];
+  const filedByBlock = buildFiledByBlock({
+    applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
+    advocateName,
+    advocateAddress,
+    advocatePhone,
+    advocateEmail,
+    place: filingPlace,
+    date: filingDate,
+  });
 
   const draftSections: DraftSection[] = [
     {
@@ -236,7 +222,7 @@ export function ContestedDivorceWizard({
       role: 'facts',
     },
     {
-      heading: 'Grounds for divorce',
+      heading: 'Grounds for judicial separation',
       paragraphs:
         selectedGroundSentences.length > 0
           ? selectedGroundSentences.map(toThatClause)
@@ -261,18 +247,18 @@ export function ContestedDivorceWizard({
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to dissolve the marriage between the Petitioner and the Respondent by a decree of divorce under section 13 of the Hindu Marriage Act, 1955${
+        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to pass a decree of judicial separation between the Petitioner and the Respondent under section 10 of the Hindu Marriage Act, 1955${
           ancillaryReliefPhrases.length > 0 ? `, grant the Petitioner ${ancillaryReliefPhrases.join(', ')}` : ''
         }, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
       ],
     },
     ...buildVerificationSection(petitionerName, verificationPlace),
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const causeTitleInfo = {
     forumType: 'family_court',
-    applicationTitle: 'Contested Divorce Petition',
+    applicationTitle: 'Judicial Separation Petition',
     governingLaw: caseType.governingLaw,
     applicantName: petitionerName,
     respondentName,
@@ -285,7 +271,7 @@ export function ContestedDivorceWizard({
 
   const indexSections: DraftSection[] = [
     { heading: 'Index', unnumbered: true, paragraphs: buildDocumentListParagraphs(documentEntries) },
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const affidavitSections: DraftSection[] = [
@@ -394,15 +380,17 @@ export function ContestedDivorceWizard({
               rows={6}
               value={factsNarrative}
               onChange={(e) => setFactsNarrative(e.target.value)}
-              placeholder="Describe the marital history and events supporting the grounds for divorce"
+              placeholder="Describe the marital history and events supporting the grounds for judicial separation"
             />
           </div>
         )}
 
         {step === 2 && (
           <div>
-            <h3 className="step-heading">Grounds for divorce</h3>
-            <p className="step-help">Tick every ground that applies — each becomes a pleaded averment.</p>
+            <h3 className="step-heading">Grounds for judicial separation</h3>
+            <p className="step-help">
+              Section 10 lets you rely on the same grounds as a divorce petition — tick every ground that applies.
+            </p>
             <div>
               {divorceGroundsOptions.map((g) => (
                 <label
@@ -438,7 +426,7 @@ export function ContestedDivorceWizard({
         {step === 3 && (
           <div>
             <h3 className="step-heading">Ancillary reliefs</h3>
-            <p className="step-help">Optional — any of these can be sought alongside the decree of divorce itself.</p>
+            <p className="step-help">Optional — any of these can be sought alongside the decree of judicial separation itself.</p>
             <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
               <input
                 type="checkbox"
@@ -552,16 +540,16 @@ export function ContestedDivorceWizard({
             )}
             <p className="step-help">A filed Petition is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Contested Divorce Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <DraftDocument title="Judicial Separation Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
             <DraftDocument
-              title="Contested Divorce Petition"
-              subtitle={`Petition under Section 13, Hindu Marriage Act, 1955 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Judicial Separation Petition"
+              subtitle={`Petition under Section 10, Hindu Marriage Act, 1955 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Contested Divorce Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Judicial Separation Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum="familyCourt" contextLabel={filingPlace || undefined} />
 

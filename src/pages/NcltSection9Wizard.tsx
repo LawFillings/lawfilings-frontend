@@ -12,7 +12,6 @@ import {
   buildVerificationSection,
   buildFiledByBlock,
   buildDocumentListParagraphs,
-  withPeriod,
   toThatClause,
 } from '../lib/legalDocumentFormat';
 import { fillTemplate } from '../lib/template';
@@ -247,7 +246,7 @@ export function NcltSection9Wizard({
     {
       unnumbered: true,
       paragraphs: [
-        `${withPeriod(applicantName || '[Applicant]')} aged about ${applicantAge || '[age]'}, R/o ${
+        `${applicantName || '[Applicant]'} aged about ${applicantAge || '[age]'}, R/o ${
           applicantAddress || '[Address]'
         }, I, the above-named deponent, do hereby solemnly affirm and declare as under:`,
       ],

@@ -12,9 +12,10 @@ import {
 import {
   findFixedCaseTypeCitation,
   buildCitationParagraphs,
-  findAncillaryReliefCitations,
+  findFixedCaseTypeCaseLaw,
+  buildCaseLawParagraphs,
 } from '../lib/actReferenceMatcher';
-import { caseTypes, divorceGroundsOptions } from '../data/mockData';
+import { caseTypes } from '../data/mockData';
 import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
@@ -25,15 +26,34 @@ import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
 
-const STEPS = [
-  'Parties & marriage',
-  'Facts',
-  'Grounds',
-  'Ancillary reliefs',
-  'Filing details',
-  'Documents (Index)',
-  'Preview',
-  'Match a style (optional)',
+const caseType = caseTypes.find((ct) => ct.id === 'ct-quashing-petition')!;
+
+const GROUND_OPTIONS: { id: string; label: string; prose: string }[] = [
+  {
+    id: 'no_offence_disclosed',
+    label: 'The allegations, even taken at face value, do not disclose any offence',
+    prose: 'the allegations made in the impugned FIR/complaint, even if taken at their face value and accepted in their entirety, do not prima facie constitute any offence or make out a case against the Petitioner',
+  },
+  {
+    id: 'no_cognizable_offence',
+    label: 'The allegations do not disclose a cognizable offence justifying investigation',
+    prose: 'the allegations and materials accompanying the impugned FIR do not disclose a cognizable offence, justifying an investigation by a police officer',
+  },
+  {
+    id: 'no_legal_evidence',
+    label: 'The uncontroverted allegations and evidence do not make out the offence alleged',
+    prose: 'the uncontroverted allegations made and evidence collected in support of the same do not disclose the commission of any offence and make out a case against the Petitioner',
+  },
+  {
+    id: 'civil_dispute',
+    label: 'This is essentially a civil/commercial or matrimonial dispute given a criminal colour',
+    prose: 'the dispute between the parties is essentially civil or commercial in nature, and has been given a cloak of criminal offence with a view to pressurise the Petitioner',
+  },
+  {
+    id: 'mala_fide',
+    label: 'The proceeding is mala fide and instituted with an ulterior motive to wreak vengeance',
+    prose: 'the criminal proceeding is manifestly attended with mala fides and has been maliciously instituted with an ulterior motive for wreaking vengeance on the Petitioner, and with a view to spite them due to private and personal grudge',
+  },
 ];
 
 interface DocEntry {
@@ -47,14 +67,12 @@ interface SavedContent {
   petitionerAddress: string;
   respondentName: string;
   respondentAddress: string;
-  marriageDate: string;
-  marriagePlace: string;
-  childrenDetails: string;
+  firNumber: string;
+  policeStation: string;
+  firDate: string;
+  offenceSections: string;
+  grounds: string[];
   factsNarrative: string;
-  selectedGrounds: string[];
-  wantMaintenancePendenteLite: boolean;
-  wantPermanentAlimony: boolean;
-  wantCustody: boolean;
   advocateName: string;
   advocateAddress: string;
   advocatePhone: string;
@@ -65,8 +83,6 @@ interface SavedContent {
   documentEntries: DocEntry[];
 }
 
-const caseType = caseTypes.find((ct) => ct.id === 'ct-divorce-contested')!;
-
 interface Props {
   onBack: () => void;
   onOpenPricing: () => void;
@@ -76,7 +92,16 @@ interface Props {
   initialContent?: unknown;
 }
 
-export function ContestedDivorceWizard({
+const STEPS = [
+  'Parties & impugned FIR',
+  'Grounds for quashing',
+  'Filing details',
+  'Documents (Index)',
+  'Preview',
+  'Match a style (optional)',
+];
+
+export function QuashingPetitionWizard({
   onBack,
   onOpenPricing,
   caseId: initialCaseId,
@@ -92,14 +117,13 @@ export function ContestedDivorceWizard({
   const [petitionerAddress, setPetitionerAddress] = useState(saved?.petitionerAddress ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
   const [respondentAddress, setRespondentAddress] = useState(saved?.respondentAddress ?? '');
-  const [marriageDate, setMarriageDate] = useState(saved?.marriageDate ?? '');
-  const [marriagePlace, setMarriagePlace] = useState(saved?.marriagePlace ?? '');
-  const [childrenDetails, setChildrenDetails] = useState(saved?.childrenDetails ?? '');
+  const [firNumber, setFirNumber] = useState(saved?.firNumber ?? '');
+  const [policeStation, setPoliceStation] = useState(saved?.policeStation ?? '');
+  const [firDate, setFirDate] = useState(saved?.firDate ?? '');
+  const [offenceSections, setOffenceSections] = useState(saved?.offenceSections ?? '');
+  const [grounds, setGrounds] = useState<string[]>(saved?.grounds ?? []);
+  const toggleGround = (id: string) => setGrounds((cur) => (cur.includes(id) ? cur.filter((g) => g !== id) : [...cur, id]));
   const [factsNarrative, setFactsNarrative] = useState(saved?.factsNarrative ?? '');
-  const [selectedGrounds, setSelectedGrounds] = useState<string[]>(saved?.selectedGrounds ?? []);
-  const [wantMaintenancePendenteLite, setWantMaintenancePendenteLite] = useState(saved?.wantMaintenancePendenteLite ?? false);
-  const [wantPermanentAlimony, setWantPermanentAlimony] = useState(saved?.wantPermanentAlimony ?? false);
-  const [wantCustody, setWantCustody] = useState(saved?.wantCustody ?? false);
   const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
   const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
   const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
@@ -118,9 +142,6 @@ export function ContestedDivorceWizard({
   const [paywall, setPaywall] = useState(false);
   const [judgeStyleProfile, setJudgeStyleProfile] = useState<JudgeStyleProfile | null>(null);
 
-  const toggleGround = (id: string) =>
-    setSelectedGrounds((g) => (g.includes(id) ? g.filter((x) => x !== id) : [...g, id]));
-
   const handleSaveDraft = async () => {
     if (!user || !token) return;
     setSaveState('saving');
@@ -131,14 +152,12 @@ export function ContestedDivorceWizard({
       petitionerAddress,
       respondentName,
       respondentAddress,
-      marriageDate,
-      marriagePlace,
-      childrenDetails,
+      firNumber,
+      policeStation,
+      firDate,
+      offenceSections,
+      grounds,
       factsNarrative,
-      selectedGrounds,
-      wantMaintenancePendenteLite,
-      wantPermanentAlimony,
-      wantCustody,
       advocateName,
       advocateAddress,
       advocatePhone,
@@ -147,7 +166,7 @@ export function ContestedDivorceWizard({
       filingDate,
       verificationPlace,
       documentEntries,
-      [WIZARD_CASE_TYPE_KEY]: 'ct-divorce-contested',
+      [WIZARD_CASE_TYPE_KEY]: 'ct-quashing-petition',
     };
     try {
       if (caseId && draftId) {
@@ -155,7 +174,7 @@ export function ContestedDivorceWizard({
       } else {
         const created = await casesClient.createCase(
           {
-            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'Respondent'} — Contested Divorce`,
+            title: `${petitionerName || 'Petitioner'} vs. ${respondentName || 'State'} — Quashing Petition`,
             ownerRole: user.role === 'advocate' ? 'advocate' : 'justice_seeker',
           },
           token
@@ -175,108 +194,85 @@ export function ContestedDivorceWizard({
     }
   };
 
-  const citationMatches = findFixedCaseTypeCitation('ct-divorce-contested');
-  const ancillaryCitationMatches = findAncillaryReliefCitations({
-    maintenancePendenteLite: wantMaintenancePendenteLite,
-    permanentAlimony: wantPermanentAlimony,
-    custody: wantCustody,
+  const citationMatches = findFixedCaseTypeCitation('ct-quashing-petition');
+  const caseLawMatches = findFixedCaseTypeCaseLaw('ct-quashing-petition');
+
+  const filedByBlock = buildFiledByBlock({
+    applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
+    advocateName,
+    advocateAddress,
+    advocatePhone,
+    advocateEmail,
+    place: filingPlace,
+    date: filingDate,
   });
 
-  const selectedGroundSentences = divorceGroundsOptions
-    .filter((g) => selectedGrounds.includes(g.id))
-    .map((g) => g.sentence);
-
-  const ancillaryReliefPhrases = [
-    wantMaintenancePendenteLite ? 'maintenance pendente lite and expenses of the proceedings under section 24 of the Act' : null,
-    wantPermanentAlimony ? 'permanent alimony and maintenance under section 25 of the Act' : null,
-    wantCustody ? 'custody of the minor child(ren) of the marriage under section 26 of the Act' : null,
-  ].filter((p): p is string => p !== null);
-
-  const closingSections: DraftSection[] =
-    mode === 'advocate'
-      ? buildFiledByBlock({
-          applicantLines: [petitionerName || '[Petitioner]', '(PETITIONER)'],
-          advocateName,
-          advocateAddress,
-          advocatePhone,
-          advocateEmail,
-          place: filingPlace,
-          date: filingDate,
-        })
-      : [
-          {
-            unnumbered: true,
-            align: 'right' as const,
-            paragraphs: [
-              petitionerName || '[Petitioner]',
-              '(PETITIONER — IN PERSON)',
-              `Place: ${filingPlace || '[Place]'}`,
-              `Date: ${filingDate || '[Date]'}`,
-            ],
-          },
-        ];
+  const groundParagraphs = grounds
+    .map((id) => GROUND_OPTIONS.find((g) => g.id === id))
+    .filter((g): g is (typeof GROUND_OPTIONS)[number] => !!g)
+    .map((g) => toThatClause(g.prose + '.'));
 
   const draftSections: DraftSection[] = [
     {
-      heading: 'Particulars of the parties and the marriage',
+      heading: 'Particulars of the impugned FIR/complaint',
       paragraphs: [
         toThatClause(
-          `The Petitioner ${petitionerName || '[Petitioner]'} and the Respondent ${
-            respondentName || '[Respondent]'
-          } were married at ${marriagePlace || '[place]'} on ${marriageDate || '[date]'}, according to Hindu rites and ceremonies.`
+          `FIR/Complaint No. ${firNumber || '[FIR/Complaint No.]'}, registered at ${
+            policeStation || '[Police Station/Court]'
+          } on ${firDate || '[date]'}, alleging offence(s) under ${
+            offenceSections.trim() || '[cite the specific penal law section(s)]'
+          }, has been registered/filed against the Petitioner ${petitionerName || '[Petitioner]'}, and is sought to be quashed by this petition.`
         ),
-        ...(childrenDetails.trim() ? [toThatClause(`Of the said marriage, ${childrenDetails.trim()}`)] : []),
       ],
-      incomplete: !marriageDate || !marriagePlace,
+      incomplete: !firNumber || !policeStation,
     },
     {
-      heading: 'Facts constituting the cause of action',
-      paragraphs: [toThatClause(factsNarrative.trim() || '[Describe the facts leading to this petition]')],
+      heading: 'Facts',
+      paragraphs: [
+        toThatClause(
+          factsNarrative.trim() ||
+            '[Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained]'
+        ),
+      ],
       incomplete: !factsNarrative.trim(),
       role: 'facts',
     },
     {
-      heading: 'Grounds for divorce',
+      heading: 'Grounds for quashing',
       paragraphs:
-        selectedGroundSentences.length > 0
-          ? selectedGroundSentences.map(toThatClause)
-          : ['[Select the grounds relied upon]'],
-      incomplete: selectedGroundSentences.length === 0,
+        groundParagraphs.length > 0
+          ? groundParagraphs
+          : [toThatClause('the continuation of the impugned proceeding would be an abuse of the process of the Court.')],
+      incomplete: grounds.length === 0,
       role: 'grounds',
     },
     ...(citationMatches.length > 0
       ? [{ heading: 'Statutory provisions relied upon', paragraphs: buildCitationParagraphs(citationMatches), role: 'law' as const }]
       : []),
-    ...(ancillaryReliefPhrases.length > 0
-      ? [
-          {
-            heading: 'Ancillary reliefs sought',
-            paragraphs: [toThatClause(`The Petitioner further seeks ${ancillaryReliefPhrases.join(', ')}.`)],
-          },
-        ]
-      : []),
-    ...(ancillaryCitationMatches.length > 0
-      ? [{ heading: 'Statutory provisions relied upon (ancillary reliefs)', paragraphs: buildCitationParagraphs(ancillaryCitationMatches), role: 'law' as const }]
+    ...(caseLawMatches.length > 0
+      ? [{ heading: 'Case law relied upon', paragraphs: buildCaseLawParagraphs(caseLawMatches), role: 'law' as const }]
       : []),
     {
       heading: 'Prayer',
       paragraphs: [
-        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to dissolve the marriage between the Petitioner and the Respondent by a decree of divorce under section 13 of the Hindu Marriage Act, 1955${
-          ancillaryReliefPhrases.length > 0 ? `, grant the Petitioner ${ancillaryReliefPhrases.join(', ')}` : ''
-        }, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
+        `It is therefore most respectfully prayed that this Hon'ble Court may be pleased to quash the FIR/Complaint No. ${
+          firNumber || '[FIR/Complaint No.]'
+        } registered at ${policeStation || '[Police Station/Court]'}, and all proceedings arising therefrom, and pass any other order(s) as this Hon'ble Court may deem fit and proper in the interest of justice.`,
       ],
     },
     ...buildVerificationSection(petitionerName, verificationPlace),
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const causeTitleInfo = {
-    forumType: 'family_court',
-    applicationTitle: 'Contested Divorce Petition',
+    forumType: 'high_court',
+    applicationTitle: caseType.name,
     governingLaw: caseType.governingLaw,
     applicantName: petitionerName,
+    applicantLabel: 'PETITIONER',
     respondentName,
-    caseNumberLine: `HMA No. _____ of ${new Date().getFullYear()}`,
+    respondentLabel: 'RESPONDENT',
+    caseNumberLine: `CRL.M.C. No. _____ of ${new Date().getFullYear()}`,
     benchCity: filingPlace || undefined,
   };
   const causeTitleHtml = buildCauseTitleHtml(causeTitleInfo);
@@ -285,7 +281,7 @@ export function ContestedDivorceWizard({
 
   const indexSections: DraftSection[] = [
     { heading: 'Index', unnumbered: true, paragraphs: buildDocumentListParagraphs(documentEntries) },
-    ...closingSections,
+    ...filedByBlock,
   ];
 
   const affidavitSections: DraftSection[] = [
@@ -301,7 +297,7 @@ export function ContestedDivorceWizard({
       unnumbered: true,
       paragraphs: [
         '1. That I am the Petitioner in the present case, and I am well conversant with the facts and circumstances of the case.',
-        '2. That the accompanying Petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
+        '2. That the accompanying petition has been prepared at my instructions, and the contents thereof are true and correct to my knowledge and belief.',
       ],
     },
     { unnumbered: true, align: 'right', paragraphs: ['Deponent'] },
@@ -332,7 +328,7 @@ export function ContestedDivorceWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Parties and marriage' : 'You, your spouse, and your marriage'}</h3>
+            <h3 className="step-heading">Parties and the impugned FIR/complaint</h3>
             <div className="form-grid">
               <label className="form-field">
                 <span>
@@ -352,7 +348,7 @@ export function ContestedDivorceWizard({
                 <input type="text" value={petitionerAddress} onChange={(e) => setPetitionerAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{mode === 'advocate' ? 'Respondent' : 'Your spouse'}</span>
+                <span>Respondent (e.g. "State of ___" and/or the original complainant)</span>
                 <input type="text" value={respondentName} onChange={(e) => setRespondentName(e.target.value)} />
               </label>
               <label className="form-field">
@@ -360,60 +356,53 @@ export function ContestedDivorceWizard({
                 <input type="text" value={respondentAddress} onChange={(e) => setRespondentAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Date of marriage</span>
-                <input type="date" value={marriageDate} onChange={(e) => setMarriageDate(e.target.value)} />
+                <span>FIR/Complaint No.</span>
+                <input type="text" value={firNumber} onChange={(e) => setFirNumber(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Place of marriage</span>
-                <input type="text" value={marriagePlace} onChange={(e) => setMarriagePlace(e.target.value)} />
+                <span>Police Station/Court where registered</span>
+                <input type="text" value={policeStation} onChange={(e) => setPoliceStation(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Date of FIR/complaint</span>
+                <input type="date" value={firDate} onChange={(e) => setFirDate(e.target.value)} />
+              </label>
+              <label className="form-field">
+                <span>Offence(s) alleged</span>
+                <input type="text" value={offenceSections} onChange={(e) => setOffenceSections(e.target.value)} />
               </label>
             </div>
-            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
-              <span>Children of the marriage (if any)</span>
-              <textarea
-                className="facts-textarea"
-                rows={2}
-                value={childrenDetails}
-                onChange={(e) => setChildrenDetails(e.target.value)}
-                placeholder="e.g. two children were born — a son aged 8 and a daughter aged 5, both currently residing with the Petitioner"
-              />
-            </label>
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Facts constituting the cause of action' : 'What happened?'}</h3>
+            <h3 className="step-heading">Grounds for quashing</h3>
             <p className="step-help">
-              {mode === 'advocate'
-                ? 'Chronological statement of the facts supporting the grounds you will select next.'
-                : 'Write it in your own words — this gets turned into the formal statement of facts automatically.'}
+              Tick every ground that applies — these track the categories the Supreme Court laid down in{' '}
+              <em>State of Haryana v. Bhajan Lal</em> for when the inherent power to quash may be exercised.
             </p>
-            <textarea
-              className="facts-textarea"
-              rows={6}
-              value={factsNarrative}
-              onChange={(e) => setFactsNarrative(e.target.value)}
-              placeholder="Describe the marital history and events supporting the grounds for divorce"
-            />
-          </div>
-        )}
-
-        {step === 2 && (
-          <div>
-            <h3 className="step-heading">Grounds for divorce</h3>
-            <p className="step-help">Tick every ground that applies — each becomes a pleaded averment.</p>
             <div>
-              {divorceGroundsOptions.map((g) => (
+              {GROUND_OPTIONS.map((opt) => (
                 <label
-                  key={g.id}
+                  key={opt.id}
                   style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}
                 >
-                  <input type="checkbox" checked={selectedGrounds.includes(g.id)} onChange={() => toggleGround(g.id)} />
-                  <span>{g.label}</span>
+                  <input type="checkbox" checked={grounds.includes(opt.id)} onChange={() => toggleGround(opt.id)} />
+                  <span>{opt.label}</span>
                 </label>
               ))}
             </div>
+            <label className="form-field" style={{ marginTop: 'var(--space-4)' }}>
+              <span>Facts</span>
+              <textarea
+                className="facts-textarea"
+                rows={6}
+                value={factsNarrative}
+                onChange={(e) => setFactsNarrative(e.target.value)}
+                placeholder="Describe the background facts, the true nature of the dispute, and why the impugned FIR/complaint should not have been registered/entertained"
+              />
+            </label>
             {user ? (
               <div style={{ marginTop: 'var(--space-4)' }}>
                 <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
@@ -435,30 +424,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 3 && (
-          <div>
-            <h3 className="step-heading">Ancillary reliefs</h3>
-            <p className="step-help">Optional — any of these can be sought alongside the decree of divorce itself.</p>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input
-                type="checkbox"
-                checked={wantMaintenancePendenteLite}
-                onChange={(e) => setWantMaintenancePendenteLite(e.target.checked)}
-              />
-              <span>Maintenance pendente lite (during the proceedings)</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', marginBottom: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantPermanentAlimony} onChange={(e) => setWantPermanentAlimony(e.target.checked)} />
-              <span>Permanent alimony and maintenance</span>
-            </label>
-            <label style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
-              <input type="checkbox" checked={wantCustody} onChange={(e) => setWantCustody(e.target.checked)} />
-              <span>Custody of the minor child(ren)</span>
-            </label>
-          </div>
-        )}
-
-        {step === 4 && (
+        {step === 2 && (
           <div>
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
@@ -498,10 +464,13 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 5 && (
+        {step === 3 && (
           <div>
             <h3 className="step-heading">Documents (Index)</h3>
-            <p className="step-help">Add each document you're annexing, in the order it will be paginated.</p>
+            <p className="step-help">
+              Add each document you're annexing, in the order it will be paginated — including a certified copy of
+              the impugned FIR/complaint, and the chargesheet if one has been filed.
+            </p>
             {documentEntries.map((d, i) => (
               <div key={i} style={{ marginBottom: 'var(--space-4)' }}>
                 <div className="form-grid">
@@ -529,7 +498,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 6 && (
+        {step === 4 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -550,20 +519,20 @@ export function ContestedDivorceWizard({
                 Log in to save this draft and come back to it later.
               </p>
             )}
-            <p className="step-help">A filed Petition is a bundle of separate documents — each below downloads as its own PDF.</p>
+            <p className="step-help">A filed petition is a bundle of separate documents — each below downloads as its own PDF.</p>
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
-            <DraftDocument title="Contested Divorce Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
+            <DraftDocument title="Quashing Petition — Index" causeTitleHtml={indexCauseTitleHtml} sections={indexSections} />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — Petition</h4>
             <DraftDocument
-              title="Contested Divorce Petition"
-              subtitle={`Petition under Section 13, Hindu Marriage Act, 1955 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
+              title="Quashing Petition"
+              subtitle={`Petition under Section 528, Bharatiya Nagarik Suraksha Sanhita, 2023 — ${petitionerName || '[Petitioner]'} vs. ${respondentName || '[Respondent]'}`}
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
-            <DraftDocument title="Contested Divorce Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
+            <DraftDocument title="Quashing Petition — Affidavit" causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
-            <FilingGuidance forum="familyCourt" contextLabel={filingPlace || undefined} />
+            <FilingGuidance forum="highCourt" contextLabel={filingPlace || undefined} />
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p
@@ -581,7 +550,7 @@ export function ContestedDivorceWizard({
           </div>
         )}
 
-        {step === 7 && (
+        {step === 5 && (
           <JudgeStyleStep profile={judgeStyleProfile} onProfileReady={setJudgeStyleProfile} onOpenPricing={onOpenPricing} />
         )}
       </WizardShell>
