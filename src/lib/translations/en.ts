@@ -137,8 +137,8 @@ export const en = {
           body: 'Deadline calculators, jurisdiction checks, and eligibility gates run before you draft, not after you’ve wasted time on the wrong form.',
         },
         {
-          title: 'Now covering District Courts in 13 states',
-          body: 'Money recovery and summary suits across 13 states so far — Delhi, Maharashtra, Karnataka, Tamil Nadu, West Bengal, Gujarat, Madhya Pradesh, Punjab, Haryana, Himachal Pradesh, Uttar Pradesh, Rajasthan, and Jammu & Kashmir — with every other state next.',
+          title: 'District Courts, now in every state and UT',
+          body: 'Money recovery and summary suits across all 28 states and 8 union territories — nowhere left out.',
         },
         {
           title: 'Track your case yourself',
