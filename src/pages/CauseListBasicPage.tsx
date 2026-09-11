@@ -16,9 +16,15 @@ interface Props {
 export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
   const { user } = useAuth();
 
-  const grouped = useMemo(() => {
+  // Supreme Court is a single court, listed directly rather than behind a dropdown — every other
+  // category (High Court, NCLT, NCLAT, District Court, DRT) collapses into its own <details>
+  // menu instead of dumping 100+ links in one long flat list.
+  const supremeCourt = useMemo(() => causeListCourts.filter((c) => c.category === 'Supreme Court'), []);
+
+  const groupedOthers = useMemo(() => {
     const byCategory = new Map<CauseListCourt['category'], CauseListCourt[]>();
     for (const c of causeListCourts) {
+      if (c.category === 'Supreme Court') continue;
       if (!byCategory.has(c.category)) byCategory.set(c.category, []);
       byCategory.get(c.category)!.push(c);
     }
@@ -57,9 +63,24 @@ export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props
             label="Want this done automatically?"
             body="Upgrade to Pro to have LawFilings fetch a court's list, search it for your name, and tabulate it — instead of browsing and searching it yourself below."
           />
-          {Array.from(grouped.entries()).map(([category, courts]) => (
-            <div key={category} className="cl-directory-group">
-              <h2 className="cl-directory-heading">{category}</h2>
+          <div className="cl-directory-group">
+            <h2 className="cl-directory-heading">Supreme Court</h2>
+            <ul className="cl-directory-list">
+              {supremeCourt.map((c) => (
+                <li key={c.id} className="cl-directory-item">
+                  <a href={c.portalUrl} target="_blank" rel="noopener noreferrer" className="cl-portal-link">
+                    {c.name} ↗
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {Array.from(groupedOthers.entries()).map(([category, courts]) => (
+            <details key={category} className="cl-directory-dropdown">
+              <summary className="cl-directory-dropdown-summary">
+                {category} <span className="cl-directory-dropdown-count">({courts.length})</span>
+              </summary>
               <ul className="cl-directory-list">
                 {courts.map((c) => (
                   <li key={c.id} className="cl-directory-item">
@@ -69,7 +90,7 @@ export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props
                   </li>
                 ))}
               </ul>
-            </div>
+            </details>
           ))}
         </div>
       )}
