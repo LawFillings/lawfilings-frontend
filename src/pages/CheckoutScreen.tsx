@@ -1,13 +1,14 @@
 import { useEffect, useState } from 'react';
 import { useAuth } from '../lib/auth';
 import * as billingClient from '../lib/billingClient';
-import type { PlanId } from '../lib/billingClient';
+import type { PlanId, TierId } from '../lib/billingClient';
 import { ApiError } from '../lib/apiError';
 import './AuthForm.css';
 
 export interface CheckoutIntent {
   type: 'subscription';
   plan: PlanId;
+  tier: TierId;
 }
 
 interface Props {
@@ -51,13 +52,13 @@ export function CheckoutScreen({ intent, onBack, onSuccess }: Props) {
         if (!scriptLoaded) throw new Error('Could not load the payment provider — check your connection and try again.');
         if (cancelled) return;
 
-        const subscription = await billingClient.createSubscription(intent.plan, token);
+        const subscription = await billingClient.createSubscription(intent.plan, intent.tier, token);
         if (cancelled) return;
         const rzp = new (window as any).Razorpay({
           key: subscription.keyId,
           subscription_id: subscription.subscriptionId,
           name: 'LawFilings',
-          description: `${intent.plan} subscription`,
+          description: `${intent.tier} ${intent.plan} subscription`,
           prefill: { email: user.email, name: user.fullName },
           handler: async (response: any) => {
             try {

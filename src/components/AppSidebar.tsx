@@ -20,7 +20,8 @@ interface Props {
   onOpenCaseLawSearch: () => void;
   onOpenCourtFeeCalculator: () => void;
   onOpenTranslateDocument: () => void;
-  onOpenCauseList: () => void;
+  onOpenCauseListBasic: () => void;
+  onOpenCauseListPro: () => void;
   onOpenAbout: () => void;
   onOpenContact: () => void;
   onOpenSettings: () => void;
@@ -48,7 +49,8 @@ export function AppSidebar({
   onOpenCaseLawSearch,
   onOpenCourtFeeCalculator,
   onOpenTranslateDocument,
-  onOpenCauseList,
+  onOpenCauseListBasic,
+  onOpenCauseListPro,
   onOpenAbout,
   onOpenContact,
   onOpenSettings,
@@ -128,8 +130,11 @@ export function AppSidebar({
           <button className="app-sidebar-link" onClick={go(onOpenTranslateDocument)}>
             {t.nav.translateDocument}
           </button>
-          <button className="app-sidebar-link" onClick={go(onOpenCauseList)}>
-            {t.nav.causeList}
+          <button className="app-sidebar-link" onClick={go(onOpenCauseListBasic)}>
+            {t.nav.causeList} (Basic)
+          </button>
+          <button className="app-sidebar-link" onClick={go(onOpenCauseListPro)}>
+            {t.nav.causeList} (Pro)
           </button>
           <button className="app-sidebar-link" onClick={go(onOpenPricing)}>
             {t.nav.pricing}

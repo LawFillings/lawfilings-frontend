@@ -3,11 +3,13 @@ import { ApiError } from './apiError';
 const API_BASE = import.meta.env.VITE_API_BASE_URL ?? 'http://localhost:3001';
 
 export type PlanId = 'monthly' | 'quarterly' | 'half_yearly' | 'yearly';
+export type TierId = 'base' | 'pro';
 export type SubscriptionStatus = 'none' | 'active' | 'past_due' | 'cancelled' | 'halted';
 
 export interface BillingStatus {
   subscriptionStatus: SubscriptionStatus;
   subscriptionPlan: PlanId | null;
+  subscriptionTier: TierId | null;
   subscriptionCurrentPeriodEnd: string | null;
   freeDraftsRemaining: number;
 }
@@ -19,6 +21,7 @@ export interface PaymentRecord {
   amountPaise: number;
   currency: string;
   plan: PlanId | null;
+  tier: TierId | null;
   createdAt: string;
 }
 
@@ -26,6 +29,7 @@ function mapStatus(raw: any): BillingStatus {
   return {
     subscriptionStatus: raw.subscriptionStatus,
     subscriptionPlan: raw.subscriptionPlan,
+    subscriptionTier: raw.subscriptionTier,
     subscriptionCurrentPeriodEnd: raw.subscriptionCurrentPeriodEnd,
     freeDraftsRemaining: raw.freeDraftsRemaining,
   };
@@ -39,6 +43,7 @@ function mapPayment(raw: any): PaymentRecord {
     amountPaise: raw.amount_paise,
     currency: raw.currency,
     plan: raw.plan,
+    tier: raw.tier,
     createdAt: raw.created_at,
   };
 }
@@ -74,8 +79,8 @@ export interface SubscriptionOrder {
   keyId: string;
 }
 
-export async function createSubscription(plan: PlanId, token: string): Promise<SubscriptionOrder> {
-  return request('/subscription', token, { method: 'POST', body: JSON.stringify({ plan }) });
+export async function createSubscription(plan: PlanId, tier: TierId, token: string): Promise<SubscriptionOrder> {
+  return request('/subscription', token, { method: 'POST', body: JSON.stringify({ plan, tier }) });
 }
 
 export async function verifySubscription(

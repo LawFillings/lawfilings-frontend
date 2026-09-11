@@ -6,17 +6,19 @@ import { translateDocumentText } from '../lib/documentTranslationClient';
 import { ApiError } from '../lib/apiError';
 import { acts } from '../data/lawLibraryData';
 import type { Act } from '../data/lawLibraryData';
+import { PaywallBlock } from '../components/PaywallBlock';
 import './TranslateDocumentPage.css';
 
 interface Props {
   onBack: () => void;
   onOpenLogin: () => void;
+  onOpenPricing: () => void;
 }
 
 type Status = 'idle' | 'reading' | 'translating' | 'done' | 'error';
 type SourceMode = 'upload' | 'search';
 
-export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
+export function TranslateDocumentPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
   const { user, token } = useAuth();
   const { t, language } = useLanguage();
   const copy = t.translateDocument;
@@ -32,6 +34,7 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
   const [translatedText, setTranslatedText] = useState('');
   const [truncated, setTruncated] = useState(false);
   const [copied, setCopied] = useState(false);
+  const [paywall, setPaywall] = useState<'pro_required' | 'usage_cap_reached' | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
   // Sorted once, up front — every render either filters or reuses this same array.
@@ -98,6 +101,7 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
     if (!token || !sourceText) return;
     setStatus('translating');
     setError(null);
+    setPaywall(null);
     setCopied(false);
     setTranslatedText('');
     try {
@@ -107,7 +111,11 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
       setTruncated(result.truncated);
       setStatus('done');
     } catch (err) {
-      setError(err instanceof ApiError ? err.message : copy.translationFailedError);
+      if (err instanceof ApiError && err.status === 402) {
+        setPaywall(err.body?.reason === 'usage_cap_reached' ? 'usage_cap_reached' : 'pro_required');
+      } else {
+        setError(err instanceof ApiError ? err.message : copy.translationFailedError);
+      }
       setStatus('error');
     }
   };
@@ -236,6 +244,19 @@ export function TranslateDocumentPage({ onBack, onOpenLogin }: Props) {
           )}
 
           {error && <p className="td-error">{error}</p>}
+          {paywall && (
+            <div style={{ marginTop: 'var(--space-3)' }}>
+              <PaywallBlock
+                onChoosePlan={onOpenPricing}
+                label={paywall === 'usage_cap_reached' ? 'Pro usage limit reached for this month' : 'Document translation needs the Pro plan'}
+                body={
+                  paywall === 'usage_cap_reached'
+                    ? 'Your Pro plan’s fair-use limit for cause-list + translation resets at the start of next month.'
+                    : 'Translation is a Pro-plan feature, alongside cause-list lookups — subscribe to Pro to use it.'
+                }
+              />
+            </div>
+          )}
 
           {sourceText && (
             <>

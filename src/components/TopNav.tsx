@@ -12,7 +12,8 @@ interface Props {
   onOpenCaseLawSearch: () => void;
   onOpenCourtFeeCalculator: () => void;
   onOpenTranslateDocument: () => void;
-  onOpenCauseList: () => void;
+  onOpenCauseListBasic: () => void;
+  onOpenCauseListPro: () => void;
   onOpenPricing: () => void;
   onOpenAbout: () => void;
   onOpenContact: () => void;
@@ -34,7 +35,8 @@ export function TopNav({
   onOpenCaseLawSearch,
   onOpenCourtFeeCalculator,
   onOpenTranslateDocument,
-  onOpenCauseList,
+  onOpenCauseListBasic,
+  onOpenCauseListPro,
   onOpenPricing,
   onOpenAbout,
   onOpenContact,
@@ -56,6 +58,9 @@ export function TopNav({
   const legalToolsKinds = ['courtFeeCalculator', 'translateDocument'];
   const legalToolsActive = legalToolsKinds.includes(activeKind);
 
+  const causeListKinds = ['causeListBasic', 'causeListPro'];
+  const causeListActive = causeListKinds.includes(activeKind);
+
   const moreKinds = ['pricing', 'about', 'contact'];
   const moreActive = moreKinds.includes(activeKind);
 
@@ -70,9 +75,20 @@ export function TopNav({
           {t.nav.startAFiling}
         </button>
 
-        <button className={linkClass('causeList')} onClick={onOpenCauseList}>
-          {t.nav.causeList}
-        </button>
+        <div className="top-nav-item-dropdown">
+          <button type="button" className={`top-nav-link${causeListActive ? ' active' : ''}`}>
+            {t.nav.causeList}
+            <span className="top-nav-caret" aria-hidden="true">▾</span>
+          </button>
+          <div className="top-nav-dropdown-menu">
+            <button type="button" className="top-nav-dropdown-item" onClick={onOpenCauseListBasic}>
+              {t.nav.causeList} (Basic)
+            </button>
+            <button type="button" className="top-nav-dropdown-item" onClick={onOpenCauseListPro}>
+              {t.nav.causeList} (Pro)
+            </button>
+          </div>
+        </div>
 
         <div className="top-nav-item-dropdown">
           <button type="button" className={`top-nav-link${legalToolsActive ? ' active' : ''}`}>

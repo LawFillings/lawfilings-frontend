@@ -20,7 +20,12 @@ function todayIso(): string {
   return new Date().toISOString().slice(0, 10);
 }
 
-export function CauseListPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
+/** Automatic fetch/upload + Claude extraction + name-search, for every court in the catalog —
+ *  Pro-only, enforced server-side (requireProTier/checkProBudget in the backend's causeList.ts).
+ *  A non-Pro account reaching this page still sees the full form; submitting is what surfaces the
+ *  402 paywall below, same pattern as judge-style analysis elsewhere on the platform. The free,
+ *  no-extraction alternative is CauseListBasicPage (a plain directory of each court's own page). */
+export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
   const { user, token } = useAuth();
 
   const [courtId, setCourtId] = useState(causeListCourts[0]?.id ?? '');
@@ -35,7 +40,7 @@ export function CauseListPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
   const [scope, setScope] = useState('');
   const [status, setStatus] = useState<Status>('idle');
   const [error, setError] = useState<string | null>(null);
-  const [paywall, setPaywall] = useState(false);
+  const [paywall, setPaywall] = useState<'pro_required' | 'usage_cap_reached' | null>(null);
   const [entries, setEntries] = useState<CauseListEntry[] | null>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
 
@@ -64,7 +69,7 @@ export function CauseListPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
     if (!token || !court) return;
     setStatus('loading');
     setError(null);
-    setPaywall(false);
+    setPaywall(null);
     setEntries(null);
     try {
       const result = await fetchCauseList({ courtId: court.id, date, ...source }, token);
@@ -72,7 +77,7 @@ export function CauseListPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
       setStatus('done');
     } catch (err) {
       if (err instanceof ApiError && err.status === 402) {
-        setPaywall(true);
+        setPaywall(err.body?.reason === 'usage_cap_reached' ? 'usage_cap_reached' : 'pro_required');
         setStatus('error');
       } else if (err instanceof ApiError) {
         setError(err.message);
@@ -109,7 +114,7 @@ export function CauseListPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
       </button>
 
       <header className="cl-hero">
-        <p className="cl-eyebrow">Daily cause list</p>
+        <p className="cl-eyebrow">Daily cause list — Pro</p>
         <h1 className="cl-title">Find your matters on today's cause list</h1>
         <p className="cl-sub">
           Pick a court and date. For most courts you'll download the list yourself (the source sites gate this
@@ -245,7 +250,15 @@ export function CauseListPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
           {error && <p className="cl-error">{error}</p>}
           {paywall && (
             <div style={{ marginTop: 'var(--space-3)' }}>
-              <PaywallBlock onChoosePlan={onOpenPricing} />
+              <PaywallBlock
+                onChoosePlan={onOpenPricing}
+                label={paywall === 'usage_cap_reached' ? 'Pro usage limit reached for this month' : 'Cause-list lookup needs the Pro plan'}
+                body={
+                  paywall === 'usage_cap_reached'
+                    ? 'Your Pro plan’s fair-use limit for cause-list + translation resets at the start of next month.'
+                    : 'Cause-list lookups are a Pro-plan feature, alongside document translation — subscribe to Pro to use it.'
+                }
+              />
             </div>
           )}
 

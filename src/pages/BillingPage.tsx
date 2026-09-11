@@ -89,7 +89,12 @@ export function BillingPage({ onBack, onOpenPricing, onOpenLogin }: Props) {
             <span className={`my-cases-status-badge tone-${STATUS_TONE[status.subscriptionStatus]}`}>
               {STATUS_LABELS[status.subscriptionStatus]}
             </span>
-            {status.subscriptionPlan && <p className="step-help">Plan: {status.subscriptionPlan}</p>}
+            {status.subscriptionPlan && (
+              <p className="step-help">
+                Plan: {status.subscriptionPlan}
+                {status.subscriptionTier === 'pro' ? ' (Pro)' : ''}
+              </p>
+            )}
             {status.subscriptionCurrentPeriodEnd && (
               <p className="step-help">Renews {new Date(status.subscriptionCurrentPeriodEnd).toLocaleDateString()}</p>
             )}
@@ -114,7 +119,10 @@ export function BillingPage({ onBack, onOpenPricing, onOpenLogin }: Props) {
             <div className="my-cases-list">
               {history.map((p) => (
                 <div className="my-cases-row" key={p.id} style={{ cursor: 'default' }}>
-                  <span className="my-cases-row-title">Subscription ({p.plan})</span>
+                  <span className="my-cases-row-title">
+                    Subscription ({p.plan}
+                    {p.tier === 'pro' ? ', Pro' : ''})
+                  </span>
                   <span className="my-cases-row-meta">
                     <span
                       className={`my-cases-status-badge tone-${

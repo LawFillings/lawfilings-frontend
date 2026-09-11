@@ -34,3 +34,25 @@
   color: var(--text-secondary);
   margin: 0 0 var(--space-3);
 }
+
+.pricing-tier-heading {
+  font-family: var(--font-display);
+  font-size: 20px;
+  font-weight: 600;
+  color: var(--ink);
+  margin: var(--space-7) 0 var(--space-1);
+}
+
+.pricing-tier-heading:first-of-type {
+  margin-top: var(--space-6);
+}
+
+.pricing-tier-sub {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+.pricing-card-pro {
+  border-color: var(--accent-gold);
+}

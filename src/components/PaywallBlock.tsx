@@ -15,7 +15,7 @@ export function PaywallBlock({ onChoosePlan, label, body }: Props) {
   return (
     <div className="deadline-card status-danger">
       <p className="deadline-label">{label ?? 'Your 2 free drafts are used'}</p>
-      <p className="deadline-body">{body ?? 'Subscribe to keep drafting — plans start at ₹299/month.'}</p>
+      <p className="deadline-body">{body ?? 'Subscribe to keep drafting — plans start at ₹499/month.'}</p>
       <button className="para-btn" style={{ marginTop: 'var(--space-3)' }} onClick={onChoosePlan}>
         Choose a plan →
       </button>

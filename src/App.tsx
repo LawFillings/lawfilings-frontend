@@ -46,7 +46,8 @@ import { LawLibrary, type ActCategory } from './pages/LawLibrary';
 import { CaseLawSearch } from './pages/CaseLawSearch';
 import { CourtFeeCalculatorPage } from './pages/CourtFeeCalculatorPage';
 import { TranslateDocumentPage } from './pages/TranslateDocumentPage';
-import { CauseListPage } from './pages/CauseListPage';
+import { CauseListBasicPage } from './pages/CauseListBasicPage';
+import { CauseListProPage } from './pages/CauseListProPage';
 import { AboutPage } from './pages/AboutPage';
 import { ContactPage } from './pages/ContactPage';
 import { PrivacyPolicyPage } from './pages/PrivacyPolicyPage';
@@ -90,7 +91,8 @@ type Screen =
   | { kind: 'caseLawSearch' }
   | { kind: 'courtFeeCalculator' }
   | { kind: 'translateDocument' }
-  | { kind: 'causeList' }
+  | { kind: 'causeListBasic' }
+  | { kind: 'causeListPro' }
   | { kind: 'about' }
   | { kind: 'contact' }
   | { kind: 'privacyPolicy' }
@@ -149,7 +151,8 @@ function AppScreens() {
   const openCaseLawSearchNav = () => navigate({ kind: 'caseLawSearch' });
   const openCourtFeeCalculatorNav = () => navigate({ kind: 'courtFeeCalculator' });
   const openTranslateDocumentNav = () => navigate({ kind: 'translateDocument' });
-  const openCauseListNav = () => navigate({ kind: 'causeList' });
+  const openCauseListBasicNav = () => navigate({ kind: 'causeListBasic' });
+  const openCauseListProNav = () => navigate({ kind: 'causeListPro' });
   const openAboutNav = () => navigate({ kind: 'about' });
   const openContactNav = () => navigate({ kind: 'contact' });
   const openPrivacyPolicyNav = () => navigate({ kind: 'privacyPolicy' });
@@ -211,10 +214,13 @@ function AppScreens() {
       return <CourtFeeCalculatorPage onBack={onBack} />;
     }
     if (screen.kind === 'translateDocument') {
-      return <TranslateDocumentPage onBack={onBack} onOpenLogin={openLoginNav} />;
+      return <TranslateDocumentPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
     }
-    if (screen.kind === 'causeList') {
-      return <CauseListPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
+    if (screen.kind === 'causeListBasic') {
+      return <CauseListBasicPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
+    }
+    if (screen.kind === 'causeListPro') {
+      return <CauseListProPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
     }
     if (screen.kind === 'about') return <AboutPage onBack={onBack} onStartFiling={startFilingNav} />;
     if (screen.kind === 'contact') return <ContactPage onBack={onBack} />;
@@ -288,7 +294,7 @@ function AppScreens() {
       return (
         <PricingPage
           onBack={onBack}
-          onSelectPlan={(plan) => navigate({ kind: 'checkout', intent: { type: 'subscription', plan } })}
+          onSelectPlan={(plan, tier) => navigate({ kind: 'checkout', intent: { type: 'subscription', plan, tier } })}
           onOpenLogin={openLoginNav}
         />
       );
@@ -577,7 +583,8 @@ function AppScreens() {
         onOpenCaseLawSearch={openCaseLawSearchNav}
         onOpenCourtFeeCalculator={openCourtFeeCalculatorNav}
         onOpenTranslateDocument={openTranslateDocumentNav}
-        onOpenCauseList={openCauseListNav}
+        onOpenCauseListBasic={openCauseListBasicNav}
+        onOpenCauseListPro={openCauseListProNav}
         onOpenPricing={openPricingNav}
         onOpenAbout={openAboutNav}
         onOpenContact={openContactNav}
@@ -596,7 +603,8 @@ function AppScreens() {
           onOpenCaseLawSearch={openCaseLawSearchNav}
           onOpenCourtFeeCalculator={openCourtFeeCalculatorNav}
           onOpenTranslateDocument={openTranslateDocumentNav}
-          onOpenCauseList={openCauseListNav}
+          onOpenCauseListBasic={openCauseListBasicNav}
+          onOpenCauseListPro={openCauseListProNav}
           onOpenAbout={openAboutNav}
           onOpenContact={openContactNav}
           onOpenSettings={openSettingsNav}
