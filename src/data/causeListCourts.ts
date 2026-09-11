@@ -115,13 +115,50 @@ export const causeListCourts: CauseListCourt[] = [
   { id: 'nclat-court-4', name: 'NCLAT Principal Bench — Court-IV', category: 'NCLAT', tier: 'auto', portalUrl: 'https://nclat.nic.in/daily-cause-list' },
   { id: 'nclat-chennai', name: 'NCLAT Chennai Bench', category: 'NCLAT', tier: 'auto', portalUrl: 'https://nclat.nic.in/daily-cause-list' },
 
-  // District Courts (700+ nationally, its own project for real auto-fetch coverage — deferred) all
-  // share one centralized national portal, the same way DRT does below. Confirmed captcha-gated at
-  // the search step ("Enter the Captcha (the 5 alphanumeric characters shown on the screen)") —
-  // the advocate selects their own state/district/court complex/court name/date there, solves the
-  // captcha, and uploads the result here. One entry covers every district court in the country;
-  // no per-court research needed for this tier.
-  { id: 'district-courts', name: 'District Courts (all states)', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  // District Courts (700+ nationally, real per-district auto-fetch still its own deferred project)
+  // all share one centralized national portal, the same way DRT does below — confirmed
+  // captcha-gated at the search step ("Enter the Captcha (the 5 alphanumeric characters shown on
+  // the screen)"). One state/UT per entry rather than one bare "all states" entry, matching the
+  // 36-state/UT list eCourts' own "Select State" dropdown offers (confirmed live — the identical
+  // list this platform's own District Court wizards now cover), so an advocate can find their
+  // state directly in this catalog; the advocate still selects district/court complex/court
+  // name/date and solves the captcha on eCourts itself, then uploads the result here.
+  { id: 'district-court-delhi', name: 'District Courts — Delhi', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-jk', name: 'District Courts — Jammu & Kashmir', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-punjab', name: 'District Courts — Punjab', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-haryana', name: 'District Courts — Haryana', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-himachal-pradesh', name: 'District Courts — Himachal Pradesh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-up', name: 'District Courts — Uttar Pradesh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-rajasthan', name: 'District Courts — Rajasthan', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-maharashtra', name: 'District Courts — Maharashtra', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-karnataka', name: 'District Courts — Karnataka', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-tamil-nadu', name: 'District Courts — Tamil Nadu', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-west-bengal', name: 'District Courts — West Bengal', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-gujarat', name: 'District Courts — Gujarat', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-madhya-pradesh', name: 'District Courts — Madhya Pradesh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-andhra-pradesh', name: 'District Courts — Andhra Pradesh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-telangana', name: 'District Courts — Telangana', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-kerala', name: 'District Courts — Kerala', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-odisha', name: 'District Courts — Odisha', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-jharkhand', name: 'District Courts — Jharkhand', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-bihar', name: 'District Courts — Bihar', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-assam', name: 'District Courts — Assam', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-manipur', name: 'District Courts — Manipur', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-meghalaya', name: 'District Courts — Meghalaya', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-mizoram', name: 'District Courts — Mizoram', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-nagaland', name: 'District Courts — Nagaland', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-tripura', name: 'District Courts — Tripura', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-arunachal-pradesh', name: 'District Courts — Arunachal Pradesh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-chhattisgarh', name: 'District Courts — Chhattisgarh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-goa', name: 'District Courts — Goa', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-sikkim', name: 'District Courts — Sikkim', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-uttarakhand', name: 'District Courts — Uttarakhand', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-andaman-nicobar', name: 'District Courts — Andaman & Nicobar Islands', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-chandigarh', name: 'District Courts — Chandigarh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-dnh-dd', name: 'District Courts — Dadra & Nagar Haveli and Daman & Diu', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-ladakh', name: 'District Courts — Ladakh', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-lakshadweep', name: 'District Courts — Lakshadweep', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
+  { id: 'district-court-puducherry', name: 'District Courts — Puducherry', category: 'District Court', tier: 'manual', portalUrl: 'https://services.ecourts.gov.in/ecourtindia_v6/?p=cause_list/index' },
 
   // ---- All 39 DRT benches share one centralized portal (drt.gov.in — captcha-gated at the
   // search step, confirming tier 2), grouped here under their parent DRAT the way the portal
