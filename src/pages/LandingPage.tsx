@@ -1,4 +1,4 @@
-import { newsItems, externalLawNewsSites } from '../data/newsItems';
+import { externalLawNewsSites } from '../data/newsItems';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
 import { UspSlider } from '../components/UspSlider';
@@ -149,8 +149,8 @@ const WHO_ITS_FOR_ICONS = [
   <GraduationCapIcon key="cap" />,
 ];
 
-// One icon per newsItems entry (src/data/newsItems.ts), in the same order — kept in sync by hand
-// since there are only ever a handful of these verified items at a time.
+// One icon per t.landing.news.items entry (src/lib/translations/en.ts), in the same order — kept
+// in sync by hand since there are only ever a handful of these verified items at a time.
 const LAW_NEWS_ICONS = [
   <ClockIcon key="clock" />, // DRAT appeal deadline
   <ScaleIcon key="scale" />, // Consumer Commission jurisdiction
@@ -269,7 +269,7 @@ export function LandingPage({
           sub={t.landing.news.sub}
           columns={2}
           background="rgba(231, 237, 244, 0.85)"
-          items={newsItems.map((item, i) => ({
+          items={t.landing.news.items.map((item, i) => ({
             icon: LAW_NEWS_ICONS[i],
             title: item.title,
             body: item.summary,
