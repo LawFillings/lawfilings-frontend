@@ -40,14 +40,14 @@ export const en = {
   landing: {
     logo: 'LawFilings',
     hero: {
-      eyebrow: 'Constitution & Key Statutes, legal drafting and filing tailor made for you',
+      eyebrow: 'Legal drafting, filing and law referencing tailor made for you',
       titleLine1: 'Understand the law.',
       titleLine2: 'Know your deadline.',
       titleLine3: 'Draft your filing.',
       titleLine4: 'Monitor your matters.',
       sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, DRTs/DRATs and NCLT/NCLAT.',
       startFiling: 'Start a filing →',
-      browseActs: 'Browse Constitution & Key Statutes — free, no account',
+      browseActs: 'Browse Constitution & Key Statutes — curated for you',
     },
     actsSection: {
       eyebrow: 'Curated from Primary sources',
@@ -129,16 +129,16 @@ export const en = {
       ariaLabel: 'Why this platform',
       slides: [
         {
-          title: 'Constitution & Key Statutes, always free',
-          body: 'The Constitution of India, and the actual text of the Consumer Protection Act, RDDBFI Act, SARFAESI Act, and IBC — sourced directly from India Code.',
+          title: 'The Constitution and 200+ Acts, always free',
+          body: 'The Constitution of India, plus 200+ Central and State Acts covering every state and union territory — sourced directly from primary legislative text, not summarised.',
         },
         {
           title: 'Wizards built on real procedure',
           body: 'Deadline calculators, jurisdiction checks, and eligibility gates run before you draft, not after you’ve wasted time on the wrong form.',
         },
         {
-          title: 'Now covering District Courts',
-          body: 'Money recovery and summary suits for Delhi, Jammu & Kashmir, Punjab, Haryana, Himachal Pradesh, Uttar Pradesh, and Rajasthan.',
+          title: 'Now covering District Courts in 13 states',
+          body: 'Money recovery and summary suits across 13 states so far — Delhi, Maharashtra, Karnataka, Tamil Nadu, West Bengal, Gujarat, Madhya Pradesh, Punjab, Haryana, Himachal Pradesh, Uttar Pradesh, Rajasthan, and Jammu & Kashmir — with every other state next.',
         },
         {
           title: 'Track your case yourself',
@@ -211,7 +211,7 @@ export const en = {
     eyebrow: 'A drafting platform for Indian tribunals and courts',
     settingsLink: '⚙ Settings',
     title: 'Where do you need to file?',
-    browseActs: 'Browse Constitution & Key Statutes — free, no account needed →',
+    browseActs: 'Browse Constitution & Key Statutes — curated for you →',
     categoryLabels: {
       original: 'Start a case',
       reply: 'Respond to something filed against you',
