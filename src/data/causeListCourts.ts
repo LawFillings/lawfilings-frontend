@@ -1,7 +1,7 @@
 export interface CauseListCourt {
   id: string;
   name: string;
-  category: 'Supreme Court' | 'High Court' | 'District Court' | 'DRT' | 'NCLT' | 'NCLAT';
+  category: 'Supreme Court' | 'High Court' | 'District Court' | 'DRT' | 'DRAT' | 'NCLT' | 'NCLAT';
   /** 'auto': backend fetches the PDF directly, no advocate action needed.
    *  'auto-scoped': backend fetches automatically, but only a specific judge/court-hall slice of
    *  the day's list, named by the advocate — the full combined list is too large or too costly to
@@ -169,4 +169,14 @@ export const causeListCourts: CauseListCourt[] = [
   { id: 'drt-aurangabad', name: 'DRT Aurangabad', category: 'DRT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
   { id: 'drt-nagpur', name: 'DRT Nagpur', category: 'DRT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
   { id: 'drt-pune', name: 'DRT Pune', category: 'DRT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
+
+  // All 5 DRATs nationwide (confirmed via drt.gov.in's own "Select DRAT" filter, which lists
+  // exactly these 5 and already carries live cause-list notices for at least one of them —
+  // confirmed live 2026-09-11) share this one portal, same as every DRT entry above; there's no
+  // per-bench site the way a few High Courts have.
+  { id: 'drat-delhi', name: 'DRAT Delhi', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-mumbai', name: 'DRAT Mumbai', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-kolkata', name: 'DRAT Kolkata', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-chennai', name: 'DRAT Chennai', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-allahabad', name: 'DRAT Allahabad', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
 ];
