@@ -1,3 +1,4 @@
+import { useLanguage } from '../lib/language';
 import '../components/DeadlineCalculator.css';
 
 interface Props {
@@ -12,12 +13,13 @@ interface Props {
  *  2 free drafts are used" case (see PricingPage) — pass `label`/`body` to describe a different
  *  reason the same paid-plan prompt is showing. */
 export function PaywallBlock({ onChoosePlan, label, body }: Props) {
+  const { t } = useLanguage();
   return (
     <div className="deadline-card status-danger">
-      <p className="deadline-label">{label ?? 'Your 2 free drafts are used'}</p>
-      <p className="deadline-body">{body ?? 'Subscribe to keep drafting — plans start at ₹499/month.'}</p>
+      <p className="deadline-label">{label ?? t.wizardShared.paywallDefaultLabel}</p>
+      <p className="deadline-body">{body ?? t.wizardShared.paywallDefaultBody}</p>
       <button className="para-btn" style={{ marginTop: 'var(--space-3)' }} onClick={onChoosePlan}>
-        Choose a plan →
+        {t.wizardShared.paywallChoosePlan}
       </button>
     </div>
   );

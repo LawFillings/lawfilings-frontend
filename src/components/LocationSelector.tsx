@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import type { ForumLocation } from '../data/forumLocations';
 import type { UserRole } from '../types';
+import { useLanguage } from '../lib/language';
 import './LocationSelector.css';
 
 interface LocationSelectorProps {
@@ -23,8 +24,9 @@ export function LocationSelector({
   helpText,
   verifyNote,
   verifyUrl,
-  searchPlaceholder = 'Type to search…',
+  searchPlaceholder,
 }: LocationSelectorProps) {
+  const { t } = useLanguage();
   const [query, setQuery] = useState('');
   const filtered = locations.filter((l) => l.label.toLowerCase().includes(query.toLowerCase()));
   const selected = locations.find((l) => l.id === value);
@@ -39,7 +41,7 @@ export function LocationSelector({
         id="location-search"
         type="text"
         className="date-input"
-        placeholder={searchPlaceholder}
+        placeholder={searchPlaceholder ?? t.wizardShared.locationSearchPlaceholder}
         value={query}
         onChange={(e) => setQuery(e.target.value)}
       />
@@ -54,11 +56,11 @@ export function LocationSelector({
             {l.meta && <span className="bench-drat">{l.meta}</span>}
           </button>
         ))}
-        {filtered.length === 0 && <p className="bench-empty">No match — try a different search term.</p>}
+        {filtered.length === 0 && <p className="bench-empty">{t.wizardShared.locationNoMatch}</p>}
       </div>
       {selected && (
         <div className="deadline-card status-safe" style={{ maxWidth: 420 }}>
-          <p className="deadline-label">Selected</p>
+          <p className="deadline-label">{t.wizardShared.locationSelected}</p>
           <p className="deadline-body">
             {selected.label}
             {selected.meta ? ` — ${selected.meta}` : ''}
@@ -70,7 +72,7 @@ export function LocationSelector({
         <a href={verifyUrl} target="_blank" rel="noreferrer">
           {verifyUrl.replace('https://', '')}
         </a>{' '}
-        before filing.
+        {t.wizardShared.locationVerifyBeforeFiling}
       </p>
     </div>
   );

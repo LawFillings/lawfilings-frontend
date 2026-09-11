@@ -1,6 +1,7 @@
 import { useMemo, useState } from 'react';
 import { findRelevantActSections } from '../lib/actReferenceMatcher';
 import { useSettings } from '../lib/settings';
+import { useLanguage } from '../lib/language';
 import './ActReferencePanel.css';
 
 interface ActReferencePanelProps {
@@ -18,6 +19,7 @@ interface ActReferencePanelProps {
  */
 export function ActReferencePanel({ causeType, stateLabel, onOpenLawLibrary }: ActReferencePanelProps) {
   const { settings } = useSettings();
+  const { t } = useLanguage();
   const enabled = settings.wizard.widgets.actReferences;
   const [dismissed, setDismissed] = useState(false);
 
@@ -28,8 +30,8 @@ export function ActReferencePanel({ causeType, stateLabel, onOpenLawLibrary }: A
   return (
     <div className="arp-card">
       <div className="arp-header">
-        <p className="arp-title">Relevant Act provisions</p>
-        <button className="arp-dismiss" onClick={() => setDismissed(true)} aria-label="Dismiss">
+        <p className="arp-title">{t.wizardShared.actReferenceTitle}</p>
+        <button className="arp-dismiss" onClick={() => setDismissed(true)} aria-label={t.wizardShared.actReferenceDismiss}>
           ×
         </button>
       </div>
@@ -46,7 +48,7 @@ export function ActReferencePanel({ causeType, stateLabel, onOpenLawLibrary }: A
       </ul>
       {onOpenLawLibrary && (
         <button className="arp-library-link" onClick={onOpenLawLibrary}>
-          Read the full Act in Constitution & Key Statutes →
+          {t.wizardShared.actReferenceLibraryLink}
         </button>
       )}
     </div>

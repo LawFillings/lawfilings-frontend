@@ -983,6 +983,169 @@ export const en = {
       note: 'Stamp duty and registration requirements vary by state and by the type of agreement — confirm the current requirement before you print and sign.',
     },
   },
+  // UI/guidance chrome shared by every drafting wizard (WizardShell, LocationSelector,
+  // PaywallBlock, ActReferencePanel, JudgeStyleStep). Generated draft/filing text itself is
+  // deliberately NOT translated — see project_wizard_translation_gap memory for the scope call.
+  wizardShared: {
+    modeGroupLabel: 'Choose who you are',
+    modeAdvocate: "I'm an advocate",
+    modeJusticeSeeker: "I'm filing for myself",
+    stepsNavLabel: 'Wizard steps',
+    continueButton: 'Continue →',
+    locationSearchPlaceholder: 'Type to search…',
+    locationNoMatch: 'No match — try a different search term.',
+    locationSelected: 'Selected',
+    locationVerifyBeforeFiling: 'before filing.',
+    savingEllipsis: 'Saving…',
+    updateSavedDraft: 'Update saved draft',
+    savedToMyCases: 'Saved to My Cases.',
+    saveError: "Couldn't save — check your connection and try again.",
+    paywallDefaultLabel: 'Your 2 free drafts are used',
+    paywallDefaultBody: 'Subscribe to keep drafting — plans start at ₹499/month.',
+    paywallChoosePlan: 'Choose a plan →',
+    actReferenceTitle: 'Relevant Act provisions',
+    actReferenceDismiss: 'Dismiss',
+    actReferenceLibraryLink: 'Read the full Act in Constitution & Key Statutes →',
+    judgeStyle: {
+      heading: 'Match a style (optional)',
+      help:
+        "Optional — if you'd like the draft reshaped to match a specific judge's style, or a particular application " +
+        "format you prefer, choose which below and upload a sample. Nothing here rewrites the drafted text itself — " +
+        'only the order of its sections changes. Skip this step (click Continue) if you\'d rather not.',
+      matchJudge: "Match a judge's style",
+      followApplication: "Follow a sample application's format",
+      citationDensityHigh: 'Cites precedent/statute heavily',
+      citationDensityLow: 'Cites precedent/statute sparingly',
+      citationDensityNeutral: 'No strong pattern found',
+      judgmentHelpText:
+        "Upload 1 to 3 judgments by the judge or bench this matter is likely to come before, and the draft's sections " +
+        'below will be reordered to match how that judge is used to reading one (facts before law, or law before facts).',
+      judgmentChooseFileLabel: 'Choose judgment PDF(s)',
+      judgmentScannedErrorNoun: 'judgment',
+      judgmentAnalyzeLabel: 'Analyze judge style',
+      judgmentProfileLabel: 'Judge style profile applied',
+      applicationHelpText:
+        "Upload a sample application you'd like this draft's structure to follow — your own past filing, or one in a " +
+        "format you prefer — and the draft's sections below will be reordered to match it (facts before law, or law " +
+        'before facts).',
+      applicationChooseFileLabel: 'Choose sample application PDF(s)',
+      applicationScannedErrorNoun: 'sample application',
+      applicationAnalyzeLabel: 'Analyze application format',
+      applicationProfileLabel: 'Application format applied',
+      noStylePattern: 'No strong stylistic pattern found in the text provided.',
+      removeReupload: 'Remove and re-upload',
+      filesSelected: (n: number) => `${n} file(s) selected — choose again`,
+      analyzing: 'Analyzing…',
+      scannedError: (noun: string) =>
+        `One of these looks like a scanned ${noun} — text extraction only works with text-based PDFs for now. Try a text-based copy instead.`,
+      genericFileError: "Couldn't read one of those files — please make sure they're PDFs and try again.",
+      paywallLabel: 'This analysis needs a paid plan',
+      paywallBody:
+        'This is a paid-only feature, with no free allowance — subscribe to use it, or skip this step and continue with the standard draft.',
+    },
+  },
+  moneyRecoverySuitWizard: {
+    steps: [
+      'State',
+      'District court',
+      'Pecuniary jurisdiction',
+      'Parties & claim',
+      'Valuation & relief',
+      'Filing details',
+      'Documents',
+      'Match a style (optional)',
+      'Preview',
+    ],
+    step0: {
+      heading: 'Which state is the suit in?',
+      label: 'State',
+      helpText: 'Pecuniary jurisdiction and the district list depend on the state you pick.',
+      verifyNote: 'State list is stable and complete. District-level detail for the chosen state is shown next —',
+      searchPlaceholder: 'Type a state…',
+    },
+    step1: {
+      heading: 'Which district court?',
+      label: 'District',
+      helpText: (stateLabel: string) =>
+        `Districts of ${stateLabel}. Territorial jurisdiction follows where the defendant resides/carries on business, or where the cause of action arose.`,
+      verifyNote:
+        'District list sourced from current public records — district boundaries are occasionally revised by state notification; confirm the correct court at',
+      searchPlaceholder: 'Type a district…',
+      goBackPickState: 'Go back and pick a state first.',
+    },
+    step2: {
+      heading: 'Pecuniary jurisdiction',
+      sourcedLabel: 'Sourced from statute — confirm before filing',
+      minAmountPrefix: (stateLabel: string, amount: string) =>
+        `${stateLabel}: District Court money recovery suits generally start above ₹${amount}. `,
+      statePrefix: (stateLabel: string) => `${stateLabel}: `,
+      goBackPickState: 'Go back and pick a state first.',
+    },
+    step3: {
+      headingAdvocate: 'Parties and cause of action',
+      headingJusticeSeeker: 'Who is this against, and why?',
+      plaintiffLabel: 'Plaintiff',
+      yourNameLabel: 'Your name',
+      plaintiffNote: " (you're the Plaintiff in this case)",
+      defendantLabel: 'Defendant',
+      defendantAddressLabel: 'Defendant address',
+      debtKindHeading: 'What kind of debt is this?',
+      commercialQuestionHeading: 'Does this debt arise from a commercial or trade relationship?',
+      commercialHelpText: (stateLabel: string) =>
+        `E.g. a loan from a bank/NBFC/financier, or an unpaid trade invoice between businesses — rather than a personal transaction between individuals. ${stateLabel} suits above ₹3,00,000 arising from a commercial relationship are increasingly filed as Commercial Suits under the Commercial Courts Act, 2015, not as ordinary civil suits.`,
+      commercialYes: 'Yes — commercial/trade relationship',
+      commercialNo: 'No — personal transaction',
+      factsPlaceholder: "Describe what happened — when the debt arose, what was agreed, and why it's unpaid",
+      saveThisCase: 'Save this case',
+      loginToSaveCase: 'Log in to save this case and update its status later — drafting still works without an account.',
+    },
+    step4: {
+      heading: 'Valuation and relief',
+      amountClaimedLabel: 'Amount claimed',
+      commercialSuitWarningLabel: 'This may need to be filed as a Commercial Suit',
+      commercialSuitWarningBody: (note: string) =>
+        `At ₹3,00,000 or more and arising from a commercial relationship, this meets the Commercial Courts Act, 2015's statutory floor for a "commercial dispute." ${note}`,
+      mediationHeading: 'Pre-institution mediation (Section 12A)',
+      mediationHelpText:
+        'A Commercial Suit not seeking urgent interim relief cannot be filed until pre-institution mediation under Section 12A of the Commercial Courts Act, 2015 has been attempted.',
+      mediationUrgent: 'Urgent interim relief sought — mediation not required',
+      mediationCompleted: 'Mediation completed / certificate obtained',
+      mediationNotYet: 'Not yet completed',
+      mediationNotYetWarning:
+        'This suit cannot be validly instituted yet — complete pre-institution mediation first, unless urgent interim relief is genuinely being sought.',
+      belowFloorNote:
+        "Below ₹3,00,000, this doesn't meet the Commercial Courts Act's Specified Value floor — proceeding as an ordinary civil suit.",
+    },
+    step5: {
+      heading: 'Filing details',
+      yourAge: 'Your age',
+      yourAddress: 'Your address',
+      advocateName: 'Advocate name',
+      advocateAddress: 'Advocate address',
+      advocatePhone: 'Advocate phone',
+      advocateEmail: 'Advocate email',
+      placeOfFiling: 'Place of filing',
+      dateOfFiling: 'Date of filing',
+      placeOfVerification: 'Place of verification',
+    },
+    step6: {
+      heading: 'Documents (Index)',
+      helpText: "Add each document you're annexing, in the order it will be paginated.",
+      particulars: 'Particulars',
+      pageNo: 'Page No.',
+      remove: 'Remove',
+      addDocument: '+ Add document',
+    },
+    step8: {
+      heading: 'Preview',
+      saveDraft: 'Save draft',
+      loginToSaveDraft: 'Log in to save this draft and come back to it later.',
+      bundleNote: 'A filed suit is a bundle of separate documents — each below downloads as its own PDF.',
+      partIIndex: 'Part I — Index',
+      partII: (title: string) => `Part II — ${title}`,
+      partIIIAffidavit: 'Part III — Affidavit',
+    },
+  },
 };
 
 export type Translations = typeof en;

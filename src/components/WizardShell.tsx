@@ -1,6 +1,7 @@
 import type { ReactNode } from 'react';
 import type { UserRole } from '../types';
 import { useSettings } from '../lib/settings';
+import { useLanguage } from '../lib/language';
 import './WizardShell.css';
 
 interface WizardShellProps {
@@ -25,6 +26,7 @@ export function WizardShell({
   children,
 }: WizardShellProps) {
   const { settings } = useSettings();
+  const { t } = useLanguage();
 
   return (
     <div className="wizard" data-color-theme={settings.wizard.color}>
@@ -33,24 +35,24 @@ export function WizardShell({
           <p className="wizard-eyebrow">{governingLaw}</p>
           <h1 className="wizard-title">{title}</h1>
         </div>
-        <div className="mode-toggle" role="group" aria-label="Choose who you are">
+        <div className="mode-toggle" role="group" aria-label={t.wizardShared.modeGroupLabel}>
           <button
             className={mode === 'advocate' ? 'mode-btn active' : 'mode-btn'}
             onClick={() => onModeChange('advocate')}
           >
-            I'm an advocate
+            {t.wizardShared.modeAdvocate}
           </button>
           <button
             className={mode === 'justice_seeker' ? 'mode-btn active' : 'mode-btn'}
             onClick={() => onModeChange('justice_seeker')}
           >
-            I'm filing for myself
+            {t.wizardShared.modeJusticeSeeker}
           </button>
         </div>
       </header>
 
       <div className="wizard-body">
-        <nav className="step-rail" aria-label="Wizard steps">
+        <nav className="step-rail" aria-label={t.wizardShared.stepsNavLabel}>
           {steps.map((s, i) => (
             <button
               key={s}
@@ -69,12 +71,12 @@ export function WizardShell({
           <div className="step-nav">
             {currentStep > 0 && (
               <button className="step-nav-btn" onClick={() => onStepChange(currentStep - 1)}>
-                ← Back
+                {t.common.back}
               </button>
             )}
             {currentStep < steps.length - 1 && (
               <button className="step-nav-btn primary" onClick={() => onStepChange(currentStep + 1)}>
-                Continue →
+                {t.wizardShared.continueButton}
               </button>
             )}
           </div>

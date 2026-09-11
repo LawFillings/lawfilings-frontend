@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import { useLanguage } from '../lib/language';
 import { WizardShell } from '../components/WizardShell';
 import { LocationSelector } from '../components/LocationSelector';
 import { ActReferencePanel } from '../components/ActReferencePanel';
@@ -25,18 +26,6 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
-
-const STEPS = [
-  'State',
-  'District court',
-  'Pecuniary jurisdiction',
-  'Parties & claim',
-  'Valuation & relief',
-  'Filing details',
-  'Documents',
-  'Match a style (optional)',
-  'Preview',
-];
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-dc-money-recovery')!;
 const mrsClauses = clauses.filter((c) => c.caseTypeId === 'ct-dc-money-recovery');
@@ -118,6 +107,9 @@ export function MoneyRecoverySuitWizard({
   initialContent,
 }: Props) {
   const { user, token } = useAuth();
+  const { t } = useLanguage();
+  const mrw = t.moneyRecoverySuitWizard;
+  const STEPS = mrw.steps;
   const saved = initialContent as Partial<SavedContent> | undefined;
   const [mode, setMode] = useState<UserRole>('advocate');
   const [step, setStep] = useState(0);
@@ -358,7 +350,7 @@ export function MoneyRecoverySuitWizard({
   return (
     <div>
       <button className="back-link" onClick={onBack}>
-        ← Back to all filings
+        {t.common.backToAllFilings}
       </button>
       <WizardShell
         title={caseType.name}
@@ -371,7 +363,7 @@ export function MoneyRecoverySuitWizard({
       >
         {step === 0 && (
           <div>
-            <h3 className="step-heading">Which state is the suit in?</h3>
+            <h3 className="step-heading">{mrw.step0.heading}</h3>
             <LocationSelector
               mode={mode}
               locations={districtCourtStates}
@@ -380,79 +372,79 @@ export function MoneyRecoverySuitWizard({
                 setStateId(id);
                 setDistrictId('');
               }}
-              label="State"
-              helpText="Pecuniary jurisdiction and the district list depend on the state you pick."
-              verifyNote="State list is stable and complete. District-level detail for the chosen state is shown next —"
+              label={mrw.step0.label}
+              helpText={mrw.step0.helpText}
+              verifyNote={mrw.step0.verifyNote}
               verifyUrl="https://ecourts.gov.in"
-              searchPlaceholder="Type a state…"
+              searchPlaceholder={mrw.step0.searchPlaceholder}
             />
           </div>
         )}
 
         {step === 1 && (
           <div>
-            <h3 className="step-heading">Which district court?</h3>
+            <h3 className="step-heading">{mrw.step1.heading}</h3>
             {selectedState ? (
               <LocationSelector
                 mode={mode}
                 locations={districts}
                 value={districtId}
                 onSelect={setDistrictId}
-                label="District"
-                helpText={`Districts of ${selectedState.label}. Territorial jurisdiction follows where the defendant resides/carries on business, or where the cause of action arose.`}
-                verifyNote="District list sourced from current public records — district boundaries are occasionally revised by state notification; confirm the correct court at"
+                label={mrw.step1.label}
+                helpText={mrw.step1.helpText(selectedState.label)}
+                verifyNote={mrw.step1.verifyNote}
                 verifyUrl="https://ecourts.gov.in"
-                searchPlaceholder="Type a district…"
+                searchPlaceholder={mrw.step1.searchPlaceholder}
               />
             ) : (
-              <p className="step-help">Go back and pick a state first.</p>
+              <p className="step-help">{mrw.step1.goBackPickState}</p>
             )}
           </div>
         )}
 
         {step === 2 && (
           <div>
-            <h3 className="step-heading">Pecuniary jurisdiction</h3>
+            <h3 className="step-heading">{mrw.step2.heading}</h3>
             {pecuniaryLimit ? (
               <div className="deadline-card status-warn" style={{ maxWidth: 480 }}>
-                <p className="deadline-label">Sourced from statute — confirm before filing</p>
+                <p className="deadline-label">{mrw.step2.sourcedLabel}</p>
                 <p className="deadline-body">
                   {pecuniaryLimit.minAmount != null
-                    ? `${selectedState?.label}: District Court money recovery suits generally start above ₹${pecuniaryLimit.minAmount.toLocaleString('en-IN')}. `
-                    : `${selectedState?.label}: `}
+                    ? mrw.step2.minAmountPrefix(selectedState?.label ?? '', pecuniaryLimit.minAmount.toLocaleString('en-IN'))
+                    : mrw.step2.statePrefix(selectedState?.label ?? '')}
                   {pecuniaryLimit.note}
                 </p>
               </div>
             ) : (
-              <p className="step-help">Go back and pick a state first.</p>
+              <p className="step-help">{mrw.step2.goBackPickState}</p>
             )}
           </div>
         )}
 
         {step === 3 && (
           <div>
-            <h3 className="step-heading">{mode === 'advocate' ? 'Parties and cause of action' : 'Who is this against, and why?'}</h3>
+            <h3 className="step-heading">{mode === 'advocate' ? mrw.step3.headingAdvocate : mrw.step3.headingJusticeSeeker}</h3>
             <div className="form-grid">
               <label className="form-field">
                 <span>
-                  {mode === 'advocate' ? 'Plaintiff' : 'Your name'}
+                  {mode === 'advocate' ? mrw.step3.plaintiffLabel : mrw.step3.yourNameLabel}
                   {mode === 'justice_seeker' && (
-                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> (you're the Plaintiff in this case)</span>
+                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}>{mrw.step3.plaintiffNote}</span>
                   )}
                 </span>
                 <input type="text" value={plaintiffName} onChange={(e) => setPlaintiffName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Defendant</span>
+                <span>{mrw.step3.defendantLabel}</span>
                 <input type="text" value={defendantName} onChange={(e) => setDefendantName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Defendant address</span>
+                <span>{mrw.step3.defendantAddressLabel}</span>
                 <input type="text" value={defendantAddress} onChange={(e) => setDefendantAddress(e.target.value)} />
               </label>
             </div>
             <h3 className="step-heading" style={{ marginTop: 'var(--space-5)' }}>
-              What kind of debt is this?
+              {mrw.step3.debtKindHeading}
             </h3>
             <div className="grounds-grid">
               {moneyRecoveryCauseOptions.map((opt) => (
@@ -469,26 +461,21 @@ export function MoneyRecoverySuitWizard({
             {showCommercialDisputeQuestion && (
               <>
                 <h3 className="step-heading" style={{ marginTop: 'var(--space-5)' }}>
-                  Does this debt arise from a commercial or trade relationship?
+                  {mrw.step3.commercialQuestionHeading}
                 </h3>
-                <p className="step-help">
-                  E.g. a loan from a bank/NBFC/financier, or an unpaid trade invoice between businesses — rather than a
-                  personal transaction between individuals. {selectedState?.label} suits above ₹3,00,000 arising from a
-                  commercial relationship are increasingly filed as Commercial Suits under the Commercial Courts Act,
-                  2015, not as ordinary civil suits.
-                </p>
+                <p className="step-help">{mrw.step3.commercialHelpText(selectedState?.label ?? '')}</p>
                 <div className="grounds-grid">
                   <button
                     className={isCommercialDispute === 'yes' ? 'ground-card active' : 'ground-card'}
                     onClick={() => setIsCommercialDispute('yes')}
                   >
-                    Yes — commercial/trade relationship
+                    {mrw.step3.commercialYes}
                   </button>
                   <button
                     className={isCommercialDispute === 'no' ? 'ground-card active' : 'ground-card'}
                     onClick={() => setIsCommercialDispute('no')}
                   >
-                    No — personal transaction
+                    {mrw.step3.commercialNo}
                   </button>
                 </div>
               </>
@@ -499,15 +486,15 @@ export function MoneyRecoverySuitWizard({
               style={{ marginTop: 'var(--space-4)' }}
               value={factsNarrative}
               onChange={(e) => setFactsNarrative(e.target.value)}
-              placeholder="Describe what happened — when the debt arose, what was agreed, and why it's unpaid"
+              placeholder={mrw.step3.factsPlaceholder}
             />
             {user ? (
               <div style={{ marginTop: 'var(--space-4)' }}>
                 <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
-                  {saveState === 'saving' ? 'Saving…' : caseId ? 'Update saved draft' : 'Save this case'}
+                  {saveState === 'saving' ? t.wizardShared.savingEllipsis : caseId ? t.wizardShared.updateSavedDraft : mrw.step3.saveThisCase}
                 </button>
-                {saveState === 'saved' && <p className="step-help">Saved to My Cases.</p>}
-                {saveState === 'error' && <p className="step-help">Couldn't save — check your connection and try again.</p>}
+                {saveState === 'saved' && <p className="step-help">{t.wizardShared.savedToMyCases}</p>}
+                {saveState === 'error' && <p className="step-help">{t.wizardShared.saveError}</p>}
                 {paywall && (
                   <div style={{ marginTop: 'var(--space-3)' }}>
                     <PaywallBlock
@@ -518,7 +505,7 @@ export function MoneyRecoverySuitWizard({
               </div>
             ) : (
               <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
-                Log in to save this case and update its status later — drafting still works without an account.
+                {mrw.step3.loginToSaveCase}
               </p>
             )}
           </div>
@@ -526,10 +513,10 @@ export function MoneyRecoverySuitWizard({
 
         {step === 4 && (
           <div>
-            <h3 className="step-heading">Valuation and relief</h3>
+            <h3 className="step-heading">{mrw.step4.heading}</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Amount claimed</span>
+                <span>{mrw.step4.amountClaimedLabel}</span>
                 <input type="text" value={claimAmount} onChange={(e) => setClaimAmount(e.target.value)} placeholder="₹" />
               </label>
             </div>
@@ -538,50 +525,42 @@ export function MoneyRecoverySuitWizard({
               meetsSpecifiedValueFloor ? (
                 <>
                   <div className="deadline-card status-warn" style={{ maxWidth: 560, marginTop: 'var(--space-4)' }}>
-                    <p className="deadline-label">This may need to be filed as a Commercial Suit</p>
-                    <p className="deadline-body">
-                      At ₹3,00,000 or more and arising from a commercial relationship, this meets the Commercial Courts
-                      Act, 2015's statutory floor for a "commercial dispute." {COMMERCIAL_COURT_NOTES[stateId]}
-                    </p>
+                    <p className="deadline-label">{mrw.step4.commercialSuitWarningLabel}</p>
+                    <p className="deadline-body">{mrw.step4.commercialSuitWarningBody(COMMERCIAL_COURT_NOTES[stateId])}</p>
                   </div>
                   <h3 className="step-heading" style={{ marginTop: 'var(--space-5)' }}>
-                    Pre-institution mediation (Section 12A)
+                    {mrw.step4.mediationHeading}
                   </h3>
-                  <p className="step-help">
-                    A Commercial Suit not seeking urgent interim relief cannot be filed until pre-institution mediation
-                    under Section 12A of the Commercial Courts Act, 2015 has been attempted.
-                  </p>
+                  <p className="step-help">{mrw.step4.mediationHelpText}</p>
                   <div className="grounds-grid">
                     <button
                       className={mediationStatus === 'urgent_relief' ? 'ground-card active' : 'ground-card'}
                       onClick={() => setMediationStatus('urgent_relief')}
                     >
-                      Urgent interim relief sought — mediation not required
+                      {mrw.step4.mediationUrgent}
                     </button>
                     <button
                       className={mediationStatus === 'completed' ? 'ground-card active' : 'ground-card'}
                       onClick={() => setMediationStatus('completed')}
                     >
-                      Mediation completed / certificate obtained
+                      {mrw.step4.mediationCompleted}
                     </button>
                     <button
                       className={mediationStatus === 'not_yet' ? 'ground-card active' : 'ground-card'}
                       onClick={() => setMediationStatus('not_yet')}
                     >
-                      Not yet completed
+                      {mrw.step4.mediationNotYet}
                     </button>
                   </div>
                   {mediationStatus === 'not_yet' && (
                     <p className="step-help" style={{ color: 'var(--status-warn-text, #b45309)' }}>
-                      This suit cannot be validly instituted yet — complete pre-institution mediation first, unless
-                      urgent interim relief is genuinely being sought.
+                      {mrw.step4.mediationNotYetWarning}
                     </p>
                   )}
                 </>
               ) : (
                 <p className="step-help" style={{ marginTop: 'var(--space-4)' }}>
-                  Below ₹3,00,000, this doesn't meet the Commercial Courts Act's Specified Value floor — proceeding as
-                  an ordinary civil suit.
+                  {mrw.step4.belowFloorNote}
                 </p>
               )
             )}
@@ -590,42 +569,42 @@ export function MoneyRecoverySuitWizard({
 
         {step === 5 && (
           <div>
-            <h3 className="step-heading">Filing details</h3>
+            <h3 className="step-heading">{mrw.step5.heading}</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Your age</span>
+                <span>{mrw.step5.yourAge}</span>
                 <input type="text" value={plaintiffAge} onChange={(e) => setPlaintiffAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Your address</span>
+                <span>{mrw.step5.yourAddress}</span>
                 <input type="text" value={plaintiffAddress} onChange={(e) => setPlaintiffAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Advocate name</span>
+                <span>{mrw.step5.advocateName}</span>
                 <input type="text" value={advocateName} onChange={(e) => setAdvocateName(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Advocate address</span>
+                <span>{mrw.step5.advocateAddress}</span>
                 <input type="text" value={advocateAddress} onChange={(e) => setAdvocateAddress(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Advocate phone</span>
+                <span>{mrw.step5.advocatePhone}</span>
                 <input type="text" value={advocatePhone} onChange={(e) => setAdvocatePhone(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Advocate email</span>
+                <span>{mrw.step5.advocateEmail}</span>
                 <input type="text" value={advocateEmail} onChange={(e) => setAdvocateEmail(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Place of filing</span>
+                <span>{mrw.step5.placeOfFiling}</span>
                 <input type="text" value={filingPlace} onChange={(e) => setFilingPlace(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Date of filing</span>
+                <span>{mrw.step5.dateOfFiling}</span>
                 <input type="date" value={filingDate} onChange={(e) => setFilingDate(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Place of verification</span>
+                <span>{mrw.step5.placeOfVerification}</span>
                 <input type="text" value={verificationPlace} onChange={(e) => setVerificationPlace(e.target.value)} />
               </label>
             </div>
@@ -634,12 +613,12 @@ export function MoneyRecoverySuitWizard({
 
         {step === 6 && (
           <div>
-            <h3 className="step-heading">Documents (Index)</h3>
-            <p className="step-help">Add each document you're annexing, in the order it will be paginated.</p>
+            <h3 className="step-heading">{mrw.step6.heading}</h3>
+            <p className="step-help">{mrw.step6.helpText}</p>
             {documentEntries.map((d, i) => (
               <div key={i} className="form-grid" style={{ marginBottom: 'var(--space-3)' }}>
                 <label className="form-field">
-                  <span>Particulars</span>
+                  <span>{mrw.step6.particulars}</span>
                   <input
                     type="text"
                     value={d.particulars}
@@ -647,16 +626,16 @@ export function MoneyRecoverySuitWizard({
                   />
                 </label>
                 <label className="form-field">
-                  <span>Page No.</span>
+                  <span>{mrw.step6.pageNo}</span>
                   <input type="text" value={d.pageNo} onChange={(e) => updateDocumentEntry(i, { pageNo: e.target.value })} />
                 </label>
                 <button className="para-btn" onClick={() => removeDocumentEntry(i)}>
-                  Remove
+                  {mrw.step6.remove}
                 </button>
               </div>
             ))}
             <button className="para-btn" onClick={addDocumentEntry}>
-              + Add document
+              {mrw.step6.addDocument}
             </button>
           </div>
         )}
@@ -671,14 +650,14 @@ export function MoneyRecoverySuitWizard({
 
         {step === 8 && (
           <div>
-            <h3 className="step-heading">Preview</h3>
+            <h3 className="step-heading">{mrw.step8.heading}</h3>
             {user ? (
               <div style={{ marginBottom: 'var(--space-4)' }}>
                 <button className="para-btn" onClick={handleSaveDraft} disabled={saveState === 'saving'}>
-                  {saveState === 'saving' ? 'Saving…' : caseId ? 'Update saved draft' : 'Save draft'}
+                  {saveState === 'saving' ? t.wizardShared.savingEllipsis : caseId ? t.wizardShared.updateSavedDraft : mrw.step8.saveDraft}
                 </button>
-                {saveState === 'saved' && <p className="step-help">Saved to My Cases.</p>}
-                {saveState === 'error' && <p className="step-help">Couldn't save — check your connection and try again.</p>}
+                {saveState === 'saved' && <p className="step-help">{t.wizardShared.savedToMyCases}</p>}
+                {saveState === 'error' && <p className="step-help">{t.wizardShared.saveError}</p>}
                 {paywall && (
                   <div style={{ marginTop: 'var(--space-3)' }}>
                     <PaywallBlock
@@ -689,17 +668,17 @@ export function MoneyRecoverySuitWizard({
               </div>
             ) : (
               <p className="step-help" style={{ marginBottom: 'var(--space-4)' }}>
-                Log in to save this draft and come back to it later.
+                {mrw.step8.loginToSaveDraft}
               </p>
             )}
-            <p className="step-help">A filed suit is a bundle of separate documents — each below downloads as its own PDF.</p>
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part I — Index</h4>
+            <p className="step-help">{mrw.step8.bundleNote}</p>
+            <h4 style={{ marginTop: 'var(--space-6)' }}>{mrw.step8.partIIndex}</h4>
             <DraftDocument
               title={`${effectiveApplicationTitle} — Index`}
               causeTitleHtml={indexCauseTitleHtml}
               sections={indexSections}
             />
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part II — {effectiveApplicationTitle}</h4>
+            <h4 style={{ marginTop: 'var(--space-6)' }}>{mrw.step8.partII(effectiveApplicationTitle)}</h4>
             <DraftDocument
               title={
                 selectedDistrict
@@ -710,7 +689,7 @@ export function MoneyRecoverySuitWizard({
               causeTitleHtml={causeTitleHtml}
               sections={applyJudgeStyleToSections(draftSections, judgeStyleProfile)}
             />
-            <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
+            <h4 style={{ marginTop: 'var(--space-6)' }}>{mrw.step8.partIIIAffidavit}</h4>
             <DraftDocument
               title={`${effectiveApplicationTitle} — Affidavit`}
               causeTitleHtml={affidavitCauseTitleHtml}
