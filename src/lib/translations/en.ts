@@ -137,8 +137,8 @@ export const en = {
           body: 'Deadline calculators, jurisdiction checks, and eligibility gates run before you draft, not after you’ve wasted time on the wrong form.',
         },
         {
-          title: 'Full coverage — every state, DRTs and DRATs kept distinct',
-          body: 'Money recovery and summary suits now span all 28 states and 8 union territories. Cause-list lookups also treat every DRT and its own DRAT as separate courts, never mixed together.',
+          title: 'Full coverage — District courts of all States/UTs',
+          body: 'Money recovery and summary suits now span all 28 states and 8 union territories. Cause-list lookups also treat all courts distinct, never mixed together.',
         },
         {
           title: 'Track your case yourself',
