@@ -170,13 +170,13 @@ export const causeListCourts: CauseListCourt[] = [
   { id: 'drt-nagpur', name: 'DRT Nagpur', category: 'DRT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
   { id: 'drt-pune', name: 'DRT Pune', category: 'DRT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
 
-  // All 5 DRATs nationwide (confirmed via drt.gov.in's own "Select DRAT" filter, which lists
-  // exactly these 5 and already carries live cause-list notices for at least one of them —
-  // confirmed live 2026-09-11) share this one portal, same as every DRT entry above; there's no
-  // per-bench site the way a few High Courts have.
-  { id: 'drat-delhi', name: 'DRAT Delhi', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
-  { id: 'drat-mumbai', name: 'DRAT Mumbai', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
-  { id: 'drat-kolkata', name: 'DRAT Kolkata', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
-  { id: 'drat-chennai', name: 'DRAT Chennai', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
-  { id: 'drat-allahabad', name: 'DRAT Allahabad', category: 'DRAT', tier: 'manual', portalUrl: 'https://drt.gov.in' },
+  // All 5 DRATs nationwide, auto-fetched via drt.gov.in's own captcha-free public-notice JSON API
+  // (confirmed live 2026-09-11 — see DRAT_SCHEME_IDS in the backend's causeList.ts for the fetch
+  // mechanism). portalUrl still points advocates at the same site directly for the Basic-tier
+  // directory link.
+  { id: 'drat-delhi', name: 'DRAT Delhi', category: 'DRAT', tier: 'auto', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-mumbai', name: 'DRAT Mumbai', category: 'DRAT', tier: 'auto', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-kolkata', name: 'DRAT Kolkata', category: 'DRAT', tier: 'auto', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-chennai', name: 'DRAT Chennai', category: 'DRAT', tier: 'auto', portalUrl: 'https://drt.gov.in' },
+  { id: 'drat-allahabad', name: 'DRAT Allahabad', category: 'DRAT', tier: 'auto', portalUrl: 'https://drt.gov.in' },
 ];
