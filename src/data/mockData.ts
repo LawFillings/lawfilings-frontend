@@ -513,6 +513,16 @@ export const caseTypes: CaseType[] = [
     condonableExtensionDays: 0,
   },
   {
+    id: 'ct-land-acquisition-reference',
+    forumType: 'district_court',
+    name: 'Land Acquisition Reference',
+    governingLaw: 'Land Acquisition Act, 1894, Section 18',
+    plainLanguageSummary:
+      "File this if you disagree with the Collector's award for your acquired land — whether it's the compensation amount, how the land was measured, who it's payable to, or how it's split among interested parties. This is a written application to the Collector asking that the matter be referred to the District Court, which independently decides the correct answer.",
+    applicantEligibility: 'person_interested_in_acquired_land',
+    filingCategory: 'original',
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

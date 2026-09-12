@@ -9424,4 +9424,29 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-land-acquisition-1894',
+    shortTitle: 'The Land Acquisition Act, 1894',
+    year: 1894,
+    actNumber: '1 of 1894',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://revenue.tripura.gov.in/sites/default/files/2023-09/land_acquisition_act_1894.pdf',
+    sections: [
+      {
+        sectionNo: '18',
+        heading: 'Reference to Court',
+        text: "(1) Any person interested who has not accepted the award may, by written application to the Collector, require that the matter be referred by the Collector for the determination of the Court, whether his objection be to the measurement of the land, the amount of the compensation, the persons to whom it is payable, or the apportionment of the compensation among the persons interested. (2) The application shall state the grounds on which objection to the award is taken: Provided that every such application shall be made,— (a) if the person making it was present or represented before the Collector at the time when he made his award, within six weeks from the date of the Collector's award; (b) in other cases, within six weeks of the receipt of the notice from the Collector under section 12, sub-section (2), or within six months from the date of the Collector's award, whichever period shall first expire. [Note: this written application to the Collector — not a plaint filed directly in court — is what actually starts a Land Acquisition Reference; the Collector then refers it to the principal civil court of original jurisdiction (in practice, the District Judge) under section 19, and the matter is thereafter heard and decided by that court under sections 20-28. This is why the Reference is registered and argued as a court proceeding even though nothing is directly filed in court at the section 18 stage itself. The Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013 repealed this Act with effect from 1 January 2014, but its section 24 saving clause keeps this Act — including this section 18 reference mechanism — in force for acquisitions where a section 11 award had already been made before that date; a fresh acquisition begun under the 2013 Act instead routes a compensation dispute to the Land Acquisition, Rehabilitation and Resettlement Authority under section 64 of that Act, not to a section 18 reference. Confirm which regime actually governs a given acquisition before relying on this section.]",
+      },
+      {
+        sectionNo: '25',
+        heading: 'Amount of compensation awarded by Court not to be lower than the amount awarded by the Collector',
+        text: '(1) When the applicant has made a claim to compensation, pursuant to any notice given under section 9, the amount awarded to him by the Court shall not exceed the amount so claimed or be less than the amount awarded by the Collector under section 11. (2) When the applicant has refused to make such claim or has omitted without sufficient reason (to be allowed by the Judge) to make such claim, the amount awarded by the Court shall in no case exceed the amount awarded by the Collector. (3) When the applicant has omitted for a sufficient reason (to be allowed by the Judge) to make such claim, the amount awarded to him by the Court shall not be less than, and may exceed, the amount awarded by the Collector. [Note: sub-section (1) is the reason a Reference petition should always state a specific, clearly quantified compensation figure — the Reference Court cannot award more than what is actually claimed under section 9, however strong the case for a higher value, provided a claim was validly made at that stage; the floor is always at least the Collector\'s own award under section 11, so a Reference carries no real downside risk on quantum.]',
+      },
+      {
+        sectionNo: '26',
+        heading: 'Form of awards',
+        text: '(1) Every award under this Part shall be in writing signed by the Judge, and shall specify the amount awarded under clause first of sub-section (1) of section 23, and also the amounts (if any) respectively awarded under each of the other clauses of the same sub-section, together with the grounds of awarding each of the said amounts. (2) Every such award shall be deemed to be a decree and the statement of the grounds of every such award a judgment within the meaning of section 2, clause (2), and section 2, clause (9), respectively, of the Code of Civil Procedure, 1908 (5 of 1908). [Note: because the Reference Court\'s award is itself "deemed to be a decree," a party aggrieved by it appeals under the ordinary Code of Civil Procedure appellate provisions (section 96, also in this Library), not under a special appeal provision of this Act.]',
+      },
+    ],
+  },
 ];

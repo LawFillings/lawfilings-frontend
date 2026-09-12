@@ -216,6 +216,12 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-motor-vehicles-1988', sectionNo: '165' },
     { actId: 'act-motor-vehicles-1988', sectionNo: '166' },
   ],
+  // Land Acquisition Reference — section 18 is the reference mechanism itself; section 25 is why
+  // the application should always state a specific, clearly quantified compensation figure.
+  'ct-land-acquisition-reference': [
+    { actId: 'act-land-acquisition-1894', sectionNo: '18' },
+    { actId: 'act-land-acquisition-1894', sectionNo: '25' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16

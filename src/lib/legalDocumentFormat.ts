@@ -345,6 +345,14 @@ export interface NoticeLetterInfo {
    *  self-represented notice, which speaks in the claimant's own voice instead. */
   clientName?: string;
   clientAddress?: string;
+  /**
+   * Overrides the default "I do hereby serve upon you the following legal notice:" closing of the
+   * opening line — e.g. "I do hereby submit the following application:" for a letter that isn't a
+   * legal notice at all (a Section 18 Land Acquisition Act application to a Collector, say). Pass
+   * just that closing clause; the "Under instructions from..." client preamble (when clientName is
+   * set) is still prepended automatically. Omit for the default legal-notice phrasing.
+   */
+  openingLineEnding?: string;
 }
 
 /** Renders a legal notice's letter header as an HTML fragment — sender block, date, addressee,
@@ -364,11 +372,12 @@ export function buildNoticeLetterHtml(info: NoticeLetterInfo): string {
     .map((line) => `<p style="text-align:right;">${line}</p>`)
     .join('');
 
+  const endingClause = info.openingLineEnding ?? 'I do hereby serve upon you the following legal notice:';
   const openingLine = info.clientName
     ? `Under instructions from and on behalf of my client, ${escapeHtml(info.clientName)}${
         info.clientAddress ? `, ${escapeHtml(info.clientAddress)}` : ''
-      } (hereinafter referred to as "my Client"), I do hereby serve upon you the following legal notice:`
-    : `I do hereby serve upon you the following legal notice:`;
+      } (hereinafter referred to as "my Client"), ${endingClause}`
+    : endingClause;
 
   return (
     senderLines +
