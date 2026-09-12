@@ -588,6 +588,28 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-application-injunction-disobedience',
+    forumType: 'district_court',
+    name: 'Application for Attachment/Detention for Disobedience of Injunction',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XXXIX, Rule 2A',
+    plainLanguageSummary:
+      "File this if the other side has disobeyed or breached a temporary injunction (or another order) already granted in your favour in a pending suit — this asks the Court to attach the disobedient party's property, or detain them in civil prison for up to three months, or both, to compel compliance and punish the breach.",
+    applicantEligibility: 'party_in_whose_favour_injunction_granted',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
+    id: 'ct-application-appointment-receiver',
+    forumType: 'district_court',
+    name: 'Application for Appointment of Receiver',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XL, Rule 1',
+    plainLanguageSummary:
+      "File this within a pending civil suit if property in dispute is in real, immediate danger of being wasted, damaged, or mismanaged, and no other remedy will protect it — this asks the Court to appoint a neutral receiver to take over its possession, management, and collection of rents/profits until the suit is decided. Courts treat this as one of the harshest interim remedies, granted only in genuinely exceptional circumstances.",
+    applicantEligibility: 'party_to_pending_suit',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

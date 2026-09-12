@@ -261,6 +261,11 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-cpc-1908', sectionNo: 'Order IX, Rule 9' },
     { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 122' },
   ],
+  // Application for Attachment/Detention for Disobedience of Injunction — the entire filing is a
+  // Rule 2A application.
+  'ct-application-injunction-disobedience': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 2A' }],
+  // Application for Appointment of Receiver — the entire filing is a Rule 1 application.
+  'ct-application-appointment-receiver': [{ actId: 'act-cpc-1908', sectionNo: 'Order XL, Rule 1' }],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -678,6 +683,36 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1998,
       sourceUrl: 'https://indiankanoon.org/doc/311833/',
       note: 'the adjudication contemplated under Order XXI, Rule 97 read with Rule 101 of the Code of Civil Procedure, 1908 need not involve a detailed enquiry or collection of evidence — the executing court can decide the application on admitted facts, or even on the averments made by the resistor alone, confining itself to whether the resistor is a person bound by the decree or has an independent title, and — where the resistance comes from a transferee pendente lite — to whether that transfer was in fact made during the pendency of the very suit in which the decree was passed.',
+    },
+  ],
+  // Application for Attachment/Detention for Disobedience of Injunction — confirms attachment and
+  // detention are independent remedies under rule 2A, not one conditional on the other, and that
+  // disobedience committed while an injunction stood is not erased even if it is later set aside.
+  'ct-application-injunction-disobedience': [
+    {
+      caseTitle: 'Samee Khan v. Bindu Khan',
+      citation: 'AIR 1998 SC 2765',
+      court: 'Supreme Court of India',
+      year: 1998,
+      sourceUrl: 'https://indiankanoon.org/doc/772419/',
+      note: 'attachment of property under Order XXXIX, Rule 2A is a mode of compelling the disobedient party to obey the injunction, while detention in civil prison is a mode of punishment for the disobedience already committed — the words "and may also" do not make one remedy conditional on the other, so either or both may be sought and granted together, and the disobedience remains punishable even if the underlying injunction is subsequently set aside.',
+    },
+  ],
+  // Application for Appointment of Receiver — this is the classic, universally-cited authority
+  // laying down the five settled principles (the "panch sadachar") governing when a receiver may
+  // be appointed under Order XL, Rule 1: a strong prima facie case; real, imminent and not merely
+  // possible danger to the property if a receiver is not appointed; that no other adequate remedy
+  // is available to the applicant; that the appointment will not cause irreparable harm or
+  // injustice to the party in possession; and the applicant's own good conduct, with no
+  // unexplained delay or acquiescence in approaching the Court.
+  'ct-application-appointment-receiver': [
+    {
+      caseTitle: 'T. Krishnaswamy Chetty v. C. Thangavelu Chetty',
+      citation: 'AIR 1955 Madras 430',
+      court: 'Madras High Court',
+      year: 1955,
+      sourceUrl: 'https://indiankanoon.org/doc/1319942/',
+      note: 'appointment of a receiver is one of the harshest remedies the Court can grant, and will be made only where the applicant satisfies all five settled principles: a strong prima facie case; a real, imminent (not merely possible) danger of the property being wasted, damaged, or misappropriated unless a receiver is appointed; that no other adequate remedy is available to protect it; that the appointment will not cause more injustice than it prevents, including to a party already in actual possession; and that the applicant has approached the Court without unexplained delay or acquiescence.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession

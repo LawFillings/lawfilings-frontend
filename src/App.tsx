@@ -28,6 +28,8 @@ import { CancellationOfDocumentSuitWizard } from './pages/CancellationOfDocument
 import { PossessionResistanceApplicationWizard } from './pages/PossessionResistanceApplicationWizard';
 import { ForeclosureMortgageSuitWizard } from './pages/ForeclosureMortgageSuitWizard';
 import { RestorationSuitDefaultWizard } from './pages/RestorationSuitDefaultWizard';
+import { InjunctionDisobedienceApplicationWizard } from './pages/InjunctionDisobedienceApplicationWizard';
+import { AppointmentOfReceiverWizard } from './pages/AppointmentOfReceiverWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -489,6 +491,16 @@ function AppScreens() {
     if (ct.id === 'ct-application-restoration-suit-default') {
       return (
         <RestorationSuitDefaultWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-injunction-disobedience') {
+      return (
+        <InjunctionDisobedienceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-appointment-receiver') {
+      return (
+        <AppointmentOfReceiverWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {
