@@ -500,6 +500,19 @@ export const caseTypes: CaseType[] = [
     filingCategory: 'original',
   },
   {
+    id: 'ct-mact-claim-petition',
+    forumType: 'district_court',
+    name: 'Motor Accident Claims Petition',
+    governingLaw: 'Motor Vehicles Act, 1988, Section 166',
+    plainLanguageSummary:
+      'File this to claim compensation for death or injury caused by a road accident involving a motor vehicle, from the vehicle\'s driver, owner, and insurer — before the Motor Accident Claims Tribunal, which is usually the District Judge of that district sitting in that separate capacity.',
+    applicantEligibility: 'accident_victim_or_legal_representative',
+    filingCategory: 'original',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 180,
+    condonableExtensionDays: 0,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

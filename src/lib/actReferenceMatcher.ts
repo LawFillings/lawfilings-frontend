@@ -210,6 +210,12 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-cpc-1908', sectionNo: '88' },
     { actId: 'act-cpc-1908', sectionNo: 'Order XXXV, Rule 1' },
   ],
+  // Motor Accident Claims Petition — section 165 fixes the tribunal's jurisdiction, section 166 the
+  // application itself (who may apply, where, and — since the 2019 amendment — the strict 6-month bar).
+  'ct-mact-claim-petition': [
+    { actId: 'act-motor-vehicles-1988', sectionNo: '165' },
+    { actId: 'act-motor-vehicles-1988', sectionNo: '166' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -561,6 +567,19 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1987,
       sourceUrl: 'https://indiankanoon.org/doc/1117226/',
       note: 'the expression "sufficient cause" under section 5 must receive a liberal construction so as to advance substantial justice — ordinarily a litigant does not stand to benefit by lodging a filing late, there is no presumption that delay is deliberate or due to culpable negligence, and every day\'s delay need not be explained in a pedantic manner, since when substantial justice and technical considerations are pitted against each other, the cause of substantial justice deserves to be preferred.',
+    },
+  ],
+  // Motor Accident Claims Petition — the Constitution Bench authority on computing "just
+  // compensation": the multiplier method, standardised future-prospects addition, and fixed
+  // amounts under the conventional heads (loss of estate, consortium, funeral expenses).
+  'ct-mact-claim-petition': [
+    {
+      caseTitle: 'National Insurance Co. Ltd. v. Pranay Sethi',
+      citation: '(2017) 16 SCC 680',
+      court: 'Supreme Court of India',
+      year: 2017,
+      sourceUrl: 'https://indiankanoon.org/doc/139996215/',
+      note: "compensation must be computed by the multiplier method, with future prospects added to the deceased/injured's income on a standardised percentage that tapers by age band and is higher for permanent employment than for self-employed or fixed-wage earners — the exact percentage for each bracket should be confirmed against the current bare judgment or a subsequent Supreme Court ruling before being applied to a specific claim — and, in a death case, conventional heads of loss of estate, loss of consortium, and funeral expenses awarded at fixed, periodically-updatable amounts rather than left to individual assessment.",
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession

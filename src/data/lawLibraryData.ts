@@ -9399,4 +9399,29 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-motor-vehicles-1988',
+    shortTitle: 'The Motor Vehicles Act, 1988',
+    year: 1988,
+    actNumber: '59 of 1988',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1798/1/A1988-59.pdf',
+    sections: [
+      {
+        sectionNo: '165',
+        heading: 'Claims Tribunals',
+        text: "(1) A State Government may, by notification in the Official Gazette, constitute one or more Motor Accidents Claims Tribunals (in this Chapter referred to as Claims Tribunal) for such area as may be specified in the notification, for the purpose of adjudicating upon claims for compensation in respect of accidents involving the death of, or bodily injury to, persons arising out of the use of motor vehicles, or damages to any property of a third party so arising, or both. (2) A Claims Tribunal shall consist of such number of members as the State Government may think fit to appoint, and where it consists of two or more members, one of them shall be appointed as the Chairman thereof. [Note: this is the tribunal every Motor Accident Claims Petition is filed before, rather than a District Court's ordinary civil jurisdiction — in most States the local District Judge (or an Additional District Judge) is notified to also function as the Claims Tribunal for that district, which is why this filing still sits under the \"District Court\" heading on this platform even though it is technically a specialised tribunal, not the ordinary civil court.]",
+      },
+      {
+        sectionNo: '166',
+        heading: 'Application for compensation',
+        text: "(1) An application for compensation arising out of an accident of the nature specified in sub-section (1) of section 165 may be made— (a) by the person who has sustained the injury; or (b) by the owner of the property; or (c) where death has resulted from the accident, by all or any of the legal representatives of the deceased; or (d) by any agent duly authorised by the person injured or all or any of the legal representatives of the deceased, as the case may be: Provided that where all the legal representatives of the deceased have not joined in any such application for compensation, the application shall be made on behalf of, or for the benefit of, all the legal representatives of the deceased and the legal representatives who have not so joined, shall be impleaded as respondents to the application. (2) Every application under sub-section (1) shall be made, at the option of the claimant, either to the Claims Tribunal having jurisdiction over the area in which the accident occurred or to the Claims Tribunal within the local limits of whose jurisdiction the claimant resides or carries on business or within the local limits of whose jurisdiction the defendant resides, and shall be in such form and contain such particulars as may be prescribed. (3) No application for compensation shall be entertained unless it is made within six months of the occurrence of the accident. (4) The Claims Tribunal shall treat any report of accidents forwarded to it under sub-section (6) of section 158 as an application for compensation under this Act. (5) Notwithstanding anything in this Act or any other law for the time being in force, the right of a person to claim compensation for injury in an accident shall, upon the death of the person injured, survive to his legal representatives, irrespective of whether the cause of death is relatable to, or had any nexus with, the injury or not. [Note: sub-section (3)'s strict six-month bar was inserted by the Motor Vehicles (Amendment) Act, 2019, and only brought into force with effect from 1 April 2022 — unlike the position under the 1988 Act as it originally stood (and unlike Section 5 of the Limitation Act, 1963), the Claims Tribunal now has NO discretion to condone a delay beyond six months, however genuine the reason. Several High Courts have held this amendment applies only prospectively, to accidents occurring on or after 1 April 2022, and its constitutional validity is itself under challenge before the Supreme Court — if the accident predates 1 April 2022, do not assume the six-month bar strictly applies without checking the latest position. File within six months of the accident wherever at all possible.]",
+      },
+      {
+        sectionNo: '173',
+        heading: 'Appeals',
+        text: 'Subject to the provisions of sub-section (2), any person aggrieved by an award of a Claims Tribunal may, within ninety days from the date of the award, prefer an appeal to the High Court: Provided that no appeal by the person who is required to pay any amount in terms of such award shall be entertained by the High Court unless he has deposited with it twenty-five thousand rupees or fifty per cent. of the amount so awarded, whichever is less, in the manner directed by the High Court: Provided further that the High Court may entertain the appeal after the expiry of the said period of ninety days, if it is satisfied that the appellant was prevented by sufficient cause from preferring the appeal in time. (2) No appeal shall lie against any award of a Claims Tribunal if the amount in dispute in the appeal is less than ten thousand rupees. [Note: unlike section 166(3)\'s hard six-month bar on the original claims petition, an appeal against the Tribunal\'s award keeps the ordinary "sufficient cause" condonation safety valve — the 90-day period can be extended on genuine grounds. The deposit precondition in the first proviso applies only to an appeal by the party liable to pay (typically the insurer/owner), not to a claimant appealing for enhancement of an inadequate award.]',
+      },
+    ],
+  },
 ];

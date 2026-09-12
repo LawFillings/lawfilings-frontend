@@ -20,6 +20,7 @@ import { SetAsideExParteDecreeWizard } from './pages/SetAsideExParteDecreeWizard
 import { CondonationOfDelayWizard } from './pages/CondonationOfDelayWizard';
 import { ClaimObjectionExecutionWizard } from './pages/ClaimObjectionExecutionWizard';
 import { InterpleaderSuitWizard } from './pages/InterpleaderSuitWizard';
+import { MactClaimPetitionWizard } from './pages/MactClaimPetitionWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -441,6 +442,11 @@ function AppScreens() {
     if (ct.id === 'ct-interpleader-suit') {
       return (
         <InterpleaderSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-mact-claim-petition') {
+      return (
+        <MactClaimPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {
