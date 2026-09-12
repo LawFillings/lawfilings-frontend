@@ -247,7 +247,7 @@ export const gu: Translations = {
     categoryLabels: {
       original: 'કેસ શરૂ કરો',
       reply: 'તમારી વિરુદ્ધ દાખલ કરેલી કોઈ વસ્તુનો જવાબ આપો',
-      interlocutory: 'કોઈ કેસની અંદર ટ્રિબ્યુનલ પાસેથી કંઈક માંગો',
+      interlocutory: 'કોઈ કેસની અંદર કંઈક માંગો',
       appeal: 'કોઈ નિર્ણયને પડકારો',
       execution: 'કોઈ હુકમનો અમલ કરાવો',
     },

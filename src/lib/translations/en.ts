@@ -245,7 +245,7 @@ export const en = {
     categoryLabels: {
       original: 'Start a case',
       reply: 'Respond to something filed against you',
-      interlocutory: 'Ask the tribunal for something, within a case',
+      interlocutory: 'Ask for something within a case',
       appeal: 'Challenge a decision',
       execution: 'Enforce an order',
     },
@@ -1191,6 +1191,7 @@ export const en = {
     'ct-land-acquisition-reference': "File this if you disagree with the Collector's award for your acquired land — whether it's the compensation amount, how the land was measured, who it's payable to, or how it's split among interested parties. This is a written application to the Collector asking that the matter be referred to the District Court, which independently decides the correct answer.",
     'ct-suit-redemption-mortgage': "File this if you mortgaged your property to secure a loan, and you've paid off (or are ready and willing to pay off) the mortgage debt, but the mortgagee won't return your property, your title documents, or give you a clear release — this asks the Court to let you redeem the mortgage: pay what's genuinely due, and get everything back free of the mortgage.",
     'ct-attachment-before-judgment': "File this alongside a civil suit you've already filed, if you have specific, credible reason to believe the defendant is about to sell, transfer, or move their property out of the Court's reach in order to defeat the decree you're likely to win — this asks the Court to attach that property now, before judgment, so it stays available to satisfy the decree later.",
+    'ct-suit-cancellation-of-document': 'File this if a document — a sale deed, gift deed, power of attorney, or similar — affecting you or your property is void or voidable (say, obtained by fraud, forgery, or undue influence), and leaving it outstanding threatens you with serious injury. This asks the Court to adjudge the document void or voidable and order it delivered up and cancelled.',
     'ct-suit-declaration': 'File this to ask the Court to formally declare your legal title, status, or right where someone is denying it — for example, a declaration that you are the rightful owner of a property. If you can also ask for further relief (like possession), you generally must ask for it in the same suit.',
     'ct-dc-ia-general': 'Use this to ask the Court for any interim order or direction — other than a temporary injunction, which has its own dedicated wizard — while your civil suit is pending.',
     'ct-suit-specific-performance': 'File this if the other side to a contract — typically a sale agreement — is refusing to complete their part of the deal, and you want the Court to order them to actually carry it out, not just pay you damages for breaking it.',

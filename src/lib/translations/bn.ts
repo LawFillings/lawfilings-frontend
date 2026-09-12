@@ -247,7 +247,7 @@ export const bn: Translations = {
     categoryLabels: {
       original: 'মামলা শুরু করুন',
       reply: 'আপনার বিরুদ্ধে দাখিল করা কিছুর জবাব দিন',
-      interlocutory: 'কোনো মামলার মধ্যে ট্রাইব্যুনালের কাছে কিছু চান',
+      interlocutory: 'কোনো মামলার মধ্যে কিছু চান',
       appeal: 'কোনো সিদ্ধান্তকে চ্যালেঞ্জ করুন',
       execution: 'কোনো আদেশ কার্যকর করান',
     },

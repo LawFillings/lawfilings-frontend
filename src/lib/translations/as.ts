@@ -247,7 +247,7 @@ export const as: Translations = {
     categoryLabels: {
       original: 'গোচৰ আৰম্ভ কৰক',
       reply: 'আপোনাৰ বিৰুদ্ধে দাখিল কৰা কিবাৰ উত্তৰ দিয়ক',
-      interlocutory: 'কোনো গোচৰৰ ভিতৰত ট্ৰাইব্যুনেলৰ পৰা কিবা বিচাৰক',
+      interlocutory: 'কোনো গোচৰৰ ভিতৰত কিবা বিচাৰক',
       appeal: 'কোনো সিদ্ধান্তক প্ৰত্যাহ্বান কৰক',
       execution: 'কোনো আদেশ কাৰ্যকৰী কৰাওক',
     },

@@ -231,6 +231,12 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   ],
   // Application for Attachment Before Judgment — the entire filing is a Rule 5 application.
   'ct-attachment-before-judgment': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXXVIII, Rule 5' }],
+  // Suit for Cancellation of Document — section 31 is the substantive remedy; Article 59
+  // (Limitation Act) fixes the 3-year period running from knowledge, not the instrument's date.
+  'ct-suit-cancellation-of-document': [
+    { actId: 'act-specific-relief-1963', sectionNo: '31' },
+    { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 59' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -622,6 +628,19 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2008,
       sourceUrl: 'https://indiankanoon.org/doc/9447/',
       note: 'the power under Order XXXVIII, Rule 5 of the Code of Civil Procedure, 1908 is a drastic and extraordinary power that should not be exercised mechanically or merely for the asking — the plaintiff must show both a bona fide, prima facie case and specific, credible material that the defendant is about to dispose of or remove property with the actual intent of obstructing or delaying the execution of a decree that may be passed, not merely that the defendant is dealing with their own assets in the ordinary course.',
+    },
+  ],
+  // Suit for Cancellation of Document — the leading authority distinguishing a void instrument
+  // (a nullity needing no cancellation, a mere declaration will do) from a voidable one (valid
+  // until avoided, so it must actually be cancelled under section 31 or it stays outstanding).
+  'ct-suit-cancellation-of-document': [
+    {
+      caseTitle: 'Prem Singh v. Birbal',
+      citation: '(2006) 5 SCC 353',
+      court: 'Supreme Court of India',
+      year: 2006,
+      sourceUrl: 'https://indiankanoon.org/doc/1944891/',
+      note: 'where a document is void ab initio, it is a nullity in the eyes of law and no decree for setting it aside is strictly necessary; section 31 of the Specific Relief Act, 1963 and the three-year period under Article 59 of the Limitation Act, 1963 are what actually govern a voidable instrument instead — one that remains valid and effective unless and until a court adjudges it otherwise, and so must be affirmatively sued upon and cancelled if it is not to keep causing injury while left outstanding.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession

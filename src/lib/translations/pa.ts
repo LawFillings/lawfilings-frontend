@@ -247,7 +247,7 @@ export const pa: Translations = {
     categoryLabels: {
       original: 'ਮਾਮਲਾ ਸ਼ੁਰੂ ਕਰੋ',
       reply: 'ਤੁਹਾਡੇ ਵਿਰੁੱਧ ਦਾਖਲ ਕੀਤੀ ਕਿਸੇ ਚੀਜ਼ ਦਾ ਜਵਾਬ ਦਿਓ',
-      interlocutory: 'ਕਿਸੇ ਮਾਮਲੇ ਦੇ ਅੰਦਰ ਟ੍ਰਿਬਿਊਨਲ ਤੋਂ ਕੁਝ ਮੰਗੋ',
+      interlocutory: 'ਕਿਸੇ ਮਾਮਲੇ ਦੇ ਅੰਦਰ ਕੁਝ ਮੰਗੋ',
       appeal: 'ਕਿਸੇ ਫੈਸਲੇ ਨੂੰ ਚੁਣੌਤੀ ਦਿਓ',
       execution: 'ਕਿਸੇ ਹੁਕਮ ਨੂੰ ਲਾਗੂ ਕਰਵਾਓ',
     },

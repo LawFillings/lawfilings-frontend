@@ -247,7 +247,7 @@ export const ur: Translations = {
     categoryLabels: {
       original: 'مقدمہ شروع کریں',
       reply: 'آپ کے خلاف دائر کسی چیز کا جواب دیں',
-      interlocutory: 'کسی مقدمے کے اندر ٹریبونل سے کچھ مانگیں',
+      interlocutory: 'کسی مقدمے کے اندر کچھ مانگیں',
       appeal: 'کسی فیصلے کو چیلنج کریں',
       execution: 'کسی حکم کو نافذ کروائیں',
     },

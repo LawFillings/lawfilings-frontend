@@ -544,6 +544,16 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-suit-cancellation-of-document',
+    forumType: 'district_court',
+    name: 'Suit for Cancellation of Document',
+    governingLaw: 'Specific Relief Act, 1963, Section 31',
+    plainLanguageSummary:
+      'File this if a document — a sale deed, gift deed, power of attorney, or similar — affecting you or your property is void or voidable (say, obtained by fraud, forgery, or undue influence), and leaving it outstanding threatens you with serious injury. This asks the Court to adjudge the document void or voidable and order it delivered up and cancelled.',
+    applicantEligibility: 'person_against_whom_instrument_is_void_or_voidable',
+    filingCategory: 'original',
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',
