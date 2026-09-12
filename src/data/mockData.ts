@@ -523,6 +523,27 @@ export const caseTypes: CaseType[] = [
     filingCategory: 'original',
   },
   {
+    id: 'ct-suit-redemption-mortgage',
+    forumType: 'district_court',
+    name: 'Suit for Redemption of Mortgage',
+    governingLaw: 'Transfer of Property Act, 1882, Section 60',
+    plainLanguageSummary:
+      "File this if you mortgaged your property to secure a loan, and you've paid off (or are ready and willing to pay off) the mortgage debt, but the mortgagee won't return your property, your title documents, or give you a clear release — this asks the Court to let you redeem the mortgage: pay what's genuinely due, and get everything back free of the mortgage.",
+    applicantEligibility: 'mortgagor_or_person_interested_in_redeeming',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-attachment-before-judgment',
+    forumType: 'district_court',
+    name: 'Application for Attachment Before Judgment',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XXXVIII, Rule 5',
+    plainLanguageSummary:
+      "File this alongside a civil suit you've already filed, if you have specific, credible reason to believe the defendant is about to sell, transfer, or move their property out of the Court's reach in order to defeat the decree you're likely to win — this asks the Court to attach that property now, before judgment, so it stays available to satisfy the decree later.",
+    applicantEligibility: 'plaintiff_in_pending_suit',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

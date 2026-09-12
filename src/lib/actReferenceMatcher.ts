@@ -222,6 +222,15 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-land-acquisition-1894', sectionNo: '18' },
     { actId: 'act-land-acquisition-1894', sectionNo: '25' },
   ],
+  // Suit for Redemption of Mortgage — section 60 is the substantive right to redeem; Article 61
+  // (Limitation Act) fixes the (very long) outer time limit, worth citing since its expiry is one
+  // of the rare instances where limitation extinguishes the underlying right, not just the remedy.
+  'ct-suit-redemption-mortgage': [
+    { actId: 'act-transfer-of-property-1882', sectionNo: '60' },
+    { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 61' },
+  ],
+  // Application for Attachment Before Judgment — the entire filing is a Rule 5 application.
+  'ct-attachment-before-judgment': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXXVIII, Rule 5' }],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -586,6 +595,33 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2017,
       sourceUrl: 'https://indiankanoon.org/doc/139996215/',
       note: "compensation must be computed by the multiplier method, with future prospects added to the deceased/injured's income on a standardised percentage that tapers by age band and is higher for permanent employment than for self-employed or fixed-wage earners — the exact percentage for each bracket should be confirmed against the current bare judgment or a subsequent Supreme Court ruling before being applied to a specific claim — and, in a death case, conventional heads of loss of estate, loss of consortium, and funeral expenses awarded at fixed, periodically-updatable amounts rather than left to individual assessment.",
+    },
+  ],
+  // Suit for Redemption of Mortgage — the leading authority on the "clog on redemption" doctrine:
+  // a contractual term restricting or postponing the mortgagor's right to redeem is void, however
+  // freely it was agreed to, which is directly relevant wherever the mortgage deed itself tries to
+  // narrow the redemption window pleaded against in this suit.
+  'ct-suit-redemption-mortgage': [
+    {
+      caseTitle: 'Ganga Dhar v. Shankar Lal',
+      citation: 'AIR 1958 SC 770',
+      court: 'Supreme Court of India',
+      year: 1958,
+      sourceUrl: 'https://indiankanoon.org/doc/739122/',
+      note: 'the rule against clogs on the equity of redemption means a mortgage must always remain redeemable, and the mortgagor\'s right to redeem can neither be taken away nor unreasonably restricted by any term of the mortgage contract, however freely agreed — a provision purporting to limit redemption to a narrow window, or to postpone it indefinitely, is void and must be ignored by the Court.',
+    },
+  ],
+  // Application for Attachment Before Judgment — the leading authority cautioning that this is a
+  // drastic power not to be exercised mechanically, setting the two-part test the applicant must
+  // actually satisfy (prima facie case, plus specific material showing intent to defeat execution).
+  'ct-attachment-before-judgment': [
+    {
+      caseTitle: 'Raman Tech. & Process Engg. Co. v. Solanki Traders',
+      citation: '(2008) 2 SCC 302',
+      court: 'Supreme Court of India',
+      year: 2008,
+      sourceUrl: 'https://indiankanoon.org/doc/9447/',
+      note: 'the power under Order XXXVIII, Rule 5 of the Code of Civil Procedure, 1908 is a drastic and extraordinary power that should not be exercised mechanically or merely for the asking — the plaintiff must show both a bona fide, prima facie case and specific, credible material that the defendant is about to dispose of or remove property with the actual intent of obstructing or delaying the execution of a decree that may be passed, not merely that the defendant is dealing with their own assets in the ordinary course.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession
