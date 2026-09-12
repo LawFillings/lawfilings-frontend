@@ -237,6 +237,17 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-specific-relief-1963', sectionNo: '31' },
     { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 59' },
   ],
+  // Application for Possession — Resistance or Dispossession — Rule 97 (resistance to a
+  // decree-holder/purchaser) and Rule 99 (dispossession of a stranger) are the two alternative
+  // triggers; Rules 98/100 give the mirrored orders-after-adjudication structure for each, and
+  // Rule 101 is why the executing court itself decides even a genuine title dispute raised here.
+  'ct-application-possession-resistance': [
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 97' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 98' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 99' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 100' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 101' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -641,6 +652,19 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2006,
       sourceUrl: 'https://indiankanoon.org/doc/1944891/',
       note: 'where a document is void ab initio, it is a nullity in the eyes of law and no decree for setting it aside is strictly necessary; section 31 of the Specific Relief Act, 1963 and the three-year period under Article 59 of the Limitation Act, 1963 are what actually govern a voidable instrument instead — one that remains valid and effective unless and until a court adjudges it otherwise, and so must be affirmatively sued upon and cancelled if it is not to keep causing injury while left outstanding.',
+    },
+  ],
+  // Application for Possession — Resistance or Dispossession — the leading authority on how
+  // narrow and summary the executing court's adjudication under rule 97/101 actually is: it need
+  // not become a full trial, and can turn on admitted facts or the resistor's own averments alone.
+  'ct-application-possession-resistance': [
+    {
+      caseTitle: 'Silverline Forum Pvt. Ltd. v. Rajiv Trust',
+      citation: '(1998) 3 SCC 723',
+      court: 'Supreme Court of India',
+      year: 1998,
+      sourceUrl: 'https://indiankanoon.org/doc/311833/',
+      note: 'the adjudication contemplated under Order XXI, Rule 97 read with Rule 101 of the Code of Civil Procedure, 1908 need not involve a detailed enquiry or collection of evidence — the executing court can decide the application on admitted facts, or even on the averments made by the resistor alone, confining itself to whether the resistor is a person bound by the decree or has an independent title, and — where the resistance comes from a transferee pendente lite — to whether that transfer was in fact made during the pendency of the very suit in which the decree was passed.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession

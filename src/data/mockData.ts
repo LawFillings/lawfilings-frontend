@@ -554,6 +554,17 @@ export const caseTypes: CaseType[] = [
     filingCategory: 'original',
   },
   {
+    id: 'ct-application-possession-resistance',
+    forumType: 'district_court',
+    name: 'Application for Possession — Resistance or Dispossession',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XXI, Rules 97–101',
+    plainLanguageSummary:
+      "File this during execution of a decree for possession of immovable property if you're either (a) the decree-holder or auction-purchaser being resisted or obstructed from actually taking possession, or (b) someone who was never the judgment-debtor but was thrown out of the property after the decree-holder or purchaser took possession. This asks the executing court to decide the dispute itself — including any title claim raised — and put you into possession.",
+    applicantEligibility: 'decree_holder_purchaser_or_dispossessed_third_party',
+    filingCategory: 'execution',
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

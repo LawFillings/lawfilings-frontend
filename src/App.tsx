@@ -25,6 +25,7 @@ import { LandAcquisitionReferenceWizard } from './pages/LandAcquisitionReference
 import { RedemptionOfMortgageSuitWizard } from './pages/RedemptionOfMortgageSuitWizard';
 import { AttachmentBeforeJudgmentWizard } from './pages/AttachmentBeforeJudgmentWizard';
 import { CancellationOfDocumentSuitWizard } from './pages/CancellationOfDocumentSuitWizard';
+import { PossessionResistanceApplicationWizard } from './pages/PossessionResistanceApplicationWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -471,6 +472,11 @@ function AppScreens() {
     if (ct.id === 'ct-suit-cancellation-of-document') {
       return (
         <CancellationOfDocumentSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-possession-resistance') {
+      return (
+        <PossessionResistanceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {
