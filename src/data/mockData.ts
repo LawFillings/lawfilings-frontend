@@ -490,6 +490,16 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-interpleader-suit',
+    forumType: 'district_court',
+    name: 'Interpleader Suit',
+    governingLaw: 'Code of Civil Procedure, 1908, Section 88 and Order XXXV',
+    plainLanguageSummary:
+      "File this if you're holding money or property that two or more other people are each separately claiming from you, and you have no personal stake in it yourself — instead of picking a side or risking being sued twice over, this asks the Court to decide who is actually entitled to it, so you can safely hand it over to whoever the Court names.",
+    applicantEligibility: 'stakeholder_with_no_personal_interest',
+    filingCategory: 'original',
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

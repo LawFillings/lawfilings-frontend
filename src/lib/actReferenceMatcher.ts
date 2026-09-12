@@ -204,6 +204,12 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // case-law entry is added here, since post-1976 Rule 58 finality is settled by the bare text of
   // sub-rule (4) itself rather than turning on one particular Supreme Court decision.
   'ct-claim-objection-execution': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 58' }],
+  // Interpleader Suit — section 88 is the substantive right to sue; Order XXXV, Rule 1 fixes what
+  // the plaint itself must specifically state (no interest, the claims severally, no collusion).
+  'ct-interpleader-suit': [
+    { actId: 'act-cpc-1908', sectionNo: '88' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXXV, Rule 1' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
