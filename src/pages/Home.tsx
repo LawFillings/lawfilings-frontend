@@ -101,7 +101,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
                 <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
                 <span className="case-type-name">{ct.name}</span>
                 {widgets.caseDescriptions && ct.plainLanguageSummary && (
-                  <span className="case-type-desc">{t.caseTypeSummaries[ct.id]}</span>
+                  <span className="case-type-desc">{t.caseTypeSummaries[ct.id] ?? ct.plainLanguageSummary}</span>
                 )}
               </button>
             ))}

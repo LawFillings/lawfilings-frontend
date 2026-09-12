@@ -15,6 +15,8 @@ import { ContestedDivorceWizard } from './pages/ContestedDivorceWizard';
 import { MutualConsentDivorceWizard } from './pages/MutualConsentDivorceWizard';
 import { TemporaryInjunctionWizard } from './pages/TemporaryInjunctionWizard';
 import { PermanentInjunctionSuitWizard } from './pages/PermanentInjunctionSuitWizard';
+import { MandatoryInjunctionSuitWizard } from './pages/MandatoryInjunctionSuitWizard';
+import { SetAsideExParteDecreeWizard } from './pages/SetAsideExParteDecreeWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -411,6 +413,16 @@ function AppScreens() {
     if (ct.id === 'ct-suit-permanent-injunction') {
       return (
         <PermanentInjunctionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-mandatory-injunction') {
+      return (
+        <MandatoryInjunctionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-set-aside-exparte-decree') {
+      return (
+        <SetAsideExParteDecreeWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {

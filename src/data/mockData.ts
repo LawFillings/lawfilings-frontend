@@ -445,6 +445,29 @@ export const caseTypes: CaseType[] = [
     filingCategory: 'original',
   },
   {
+    id: 'ct-suit-mandatory-injunction',
+    forumType: 'district_court',
+    name: 'Suit for Mandatory Injunction',
+    governingLaw: 'Specific Relief Act, 1963, Section 39',
+    plainLanguageSummary:
+      "File this to make someone actually do something they were obligated to do — restore a right of way they blocked, remove an encroaching structure, or reconnect a water/electricity connection they wrongfully cut off — rather than simply stop them from continuing an act.",
+    applicantEligibility: 'any_plaintiff',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-application-set-aside-exparte-decree',
+    forumType: 'district_court',
+    name: 'Application to Set Aside Ex-Parte Decree',
+    governingLaw: 'Code of Civil Procedure, 1908, Order IX, Rule 13',
+    plainLanguageSummary:
+      "File this if a court decided a case against you without hearing you, because you missed the hearing date — you can ask for the decree to be set aside and the case reopened if you show either that you were never properly served with the summons, or that you had a genuine, sufficient reason for not appearing.",
+    applicantEligibility: 'defendant_against_whom_exparte_decree_passed',
+    filingCategory: 'interlocutory',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 30,
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

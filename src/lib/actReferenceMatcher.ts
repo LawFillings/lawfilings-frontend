@@ -189,6 +189,15 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-specific-relief-1963', sectionNo: '37' },
     { actId: 'act-specific-relief-1963', sectionNo: '38' },
   ],
+  // Suit for Mandatory Injunction — the entire filing is a Section 39 application; there is no
+  // separate "grounds" section like Section 38(3)'s sub-clauses since Section 39 is a single test.
+  'ct-suit-mandatory-injunction': [{ actId: 'act-specific-relief-1963', sectionNo: '39' }],
+  // Application to Set Aside Ex-Parte Decree — Order IX Rule 13 is the substantive ground; Article
+  // 123 (Limitation Act) fixes the 30-day period within which this application itself must be filed.
+  'ct-application-set-aside-exparte-decree': [
+    { actId: 'act-cpc-1908', sectionNo: 'Order IX, Rule 13' },
+    { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 123' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -430,11 +439,12 @@ export function findBailCitations(bailType: 'regular' | 'regular_sessions' | 'an
 export function buildCitationParagraphs(matches: ActReferenceMatch[]): string[] {
   return matches.map(({ act, section }) => {
     const heading = section.heading.replace(/\.$/, '');
-    // A sectionNo like "Order XLI, Rule 1" or "Article 226" already reads as a complete reference
-    // on its own — prefixing it with "Section" (as every plain numeric sectionNo needs) would read
-    // as "Section Order XLI, Rule 1" or "Section Article 226", which isn't how anyone actually
-    // cites a CPC Order/Rule or a constitutional Article.
-    const reference = /^(order|article)\b/i.test(section.sectionNo) ? section.sectionNo : `Section ${section.sectionNo}`;
+    // A sectionNo like "Order XLI, Rule 1", "Article 226", or "Schedule, Article 123" (the
+    // Limitation Act's schedule entries) already reads as a complete reference on its own —
+    // prefixing it with "Section" (as every plain numeric sectionNo needs) would read as "Section
+    // Order XLI, Rule 1" or "Section Schedule, Article 123", which isn't how anyone actually cites
+    // a CPC Order/Rule, a constitutional Article, or a Limitation Act schedule entry.
+    const reference = /^(order|article|schedule)\b/i.test(section.sectionNo) ? section.sectionNo : `Section ${section.sectionNo}`;
     return `That the provisions of ${reference} of ${act.shortTitle}, which deal with "${heading}", are applicable to the present case.`;
   });
 }
@@ -514,6 +524,19 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1992,
       sourceUrl: 'https://indiankanoon.org/doc/49480/',
       note: "a court granting injunctive relief must weigh the substantial mischief or injury likely to be caused to the plaintiff if the injunction is refused against that likely to be caused to the defendant if it is granted, guided by the prima facie case, balance of convenience, and irreparable injury test.",
+    },
+  ],
+  // Application to Set Aside Ex-Parte Decree — this is the leading authority on what "sufficient
+  // cause" under Order IX Rule 13 actually requires, which is the core test the application must
+  // satisfy whenever the applicant relies on non-appearance rather than defective service alone.
+  'ct-application-set-aside-exparte-decree': [
+    {
+      caseTitle: 'Parimal v. Veena @ Bharti',
+      citation: '(2011) 3 SCC 545',
+      court: 'Supreme Court of India',
+      year: 2011,
+      sourceUrl: 'https://indiankanoon.org/doc/602824/',
+      note: '"sufficient cause" under Order IX Rule 13 means the defendant honestly and sincerely intended to remain present when the suit was called on for hearing and did his best to do so, and was not negligent or acting in bad faith — a question of fact to be judged by the standard of a reasonable, cautious person, construed liberally to advance substantial justice rather than defeated on technicalities.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession
