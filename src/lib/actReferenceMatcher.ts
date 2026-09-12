@@ -200,6 +200,10 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   ],
   // Application for Condonation of Delay — the entire filing is a Section 5 application.
   'ct-application-condonation-of-delay': [{ actId: 'act-limitation-1963', sectionNo: '5' }],
+  // Claim/Objection Petition in Execution — the entire filing is a Rule 58 claim petition; no
+  // case-law entry is added here, since post-1976 Rule 58 finality is settled by the bare text of
+  // sub-rule (4) itself rather than turning on one particular Supreme Court decision.
+  'ct-claim-objection-execution': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 58' }],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16

@@ -479,6 +479,17 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-claim-objection-execution',
+    forumType: 'district_court',
+    name: 'Claim/Objection Petition in Execution',
+    governingLaw: 'Code of Civil Procedure, 1908, Order XXI, Rule 58',
+    plainLanguageSummary:
+      "File this if property belonging to you has been wrongly attached in someone else's execution case — you were never a party to that suit, but the decree-holder is trying to sell your property to recover what the judgment-debtor owes them. This asks the executing court to release your property from attachment.",
+    applicantEligibility: 'third_party_claimant_or_objector',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

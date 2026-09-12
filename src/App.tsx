@@ -18,6 +18,7 @@ import { PermanentInjunctionSuitWizard } from './pages/PermanentInjunctionSuitWi
 import { MandatoryInjunctionSuitWizard } from './pages/MandatoryInjunctionSuitWizard';
 import { SetAsideExParteDecreeWizard } from './pages/SetAsideExParteDecreeWizard';
 import { CondonationOfDelayWizard } from './pages/CondonationOfDelayWizard';
+import { ClaimObjectionExecutionWizard } from './pages/ClaimObjectionExecutionWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -429,6 +430,11 @@ function AppScreens() {
     if (ct.id === 'ct-application-condonation-of-delay') {
       return (
         <CondonationOfDelayWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-claim-objection-execution') {
+      return (
+        <ClaimObjectionExecutionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {
