@@ -93,7 +93,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
               <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
                 <span className="case-type-kind">{categoryLabel.appeal}</span>
                 <span className="case-type-name">{t.home.appeal}</span>
-                <span className="case-type-desc">{g.question}</span>
+                <span className="case-type-desc">{t.appealRouteGroups[g.id].question}</span>
               </button>
             ))}
             {selectedItems.map((ct) => (
@@ -101,7 +101,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
                 <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
                 <span className="case-type-name">{ct.name}</span>
                 {widgets.caseDescriptions && ct.plainLanguageSummary && (
-                  <span className="case-type-desc">{ct.plainLanguageSummary}</span>
+                  <span className="case-type-desc">{t.caseTypeSummaries[ct.id]}</span>
                 )}
               </button>
             ))}
