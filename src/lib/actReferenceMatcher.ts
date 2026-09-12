@@ -248,6 +248,19 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 100' },
     { actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 101' },
   ],
+  // Suit for Foreclosure or Sale of Mortgaged Property — section 67 is the entire substantive
+  // provision for both alternative reliefs; which of Article 62/63 (Limitation Act) applies
+  // depends on which relief the plaintiff is actually entitled to, so the wizard states the
+  // correct one inline in its own Limitation paragraph rather than citing both here as fixed.
+  'ct-suit-foreclosure-mortgage': [{ actId: 'act-transfer-of-property-1882', sectionNo: '67' }],
+  // Application for Restoration of Suit Dismissed for Default — rule 8 is the dismissal itself
+  // (context for why the application is even necessary); rule 9 and Article 122 govern the
+  // restoration application and its single, knowledge-independent 30-day clock.
+  'ct-application-restoration-suit-default': [
+    { actId: 'act-cpc-1908', sectionNo: 'Order IX, Rule 8' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order IX, Rule 9' },
+    { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 122' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16

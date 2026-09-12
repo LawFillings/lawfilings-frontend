@@ -26,6 +26,8 @@ import { RedemptionOfMortgageSuitWizard } from './pages/RedemptionOfMortgageSuit
 import { AttachmentBeforeJudgmentWizard } from './pages/AttachmentBeforeJudgmentWizard';
 import { CancellationOfDocumentSuitWizard } from './pages/CancellationOfDocumentSuitWizard';
 import { PossessionResistanceApplicationWizard } from './pages/PossessionResistanceApplicationWizard';
+import { ForeclosureMortgageSuitWizard } from './pages/ForeclosureMortgageSuitWizard';
+import { RestorationSuitDefaultWizard } from './pages/RestorationSuitDefaultWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -477,6 +479,16 @@ function AppScreens() {
     if (ct.id === 'ct-application-possession-resistance') {
       return (
         <PossessionResistanceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-foreclosure-mortgage') {
+      return (
+        <ForeclosureMortgageSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-restoration-suit-default') {
+      return (
+        <RestorationSuitDefaultWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {

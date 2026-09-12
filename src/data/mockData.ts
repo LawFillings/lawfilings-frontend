@@ -565,6 +565,29 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-suit-foreclosure-mortgage',
+    forumType: 'district_court',
+    name: 'Suit for Foreclosure or Sale of Mortgaged Property',
+    governingLaw: 'Transfer of Property Act, 1882, Section 67',
+    plainLanguageSummary:
+      "File this if a mortgagor has failed to repay a mortgage debt after it fell due — this asks the Court to either sell the mortgaged property to recover what's owed, or (only if the mortgage is a conditional-sale or foreclosure-entitled anomalous mortgage) permanently debar the mortgagor's right to redeem it. Which relief you're entitled to depends on the type of mortgage — this wizard asks you first.",
+    applicantEligibility: 'mortgagee',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-application-restoration-suit-default',
+    forumType: 'district_court',
+    name: 'Application for Restoration of Suit Dismissed for Default',
+    governingLaw: 'Code of Civil Procedure, 1908, Order IX, Rule 9',
+    plainLanguageSummary:
+      "File this if your own civil suit was dismissed because you (the plaintiff) failed to appear when it was called for hearing, even though the defendant was present — this asks the Court to set aside that dismissal and restore your suit, if you can show a genuine, sufficient reason for your absence. You cannot file a fresh suit on the same claim instead — this is the only way back in.",
+    applicantEligibility: 'plaintiff_whose_suit_dismissed_for_default',
+    filingCategory: 'interlocutory',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 30,
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',
