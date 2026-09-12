@@ -198,6 +198,8 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-cpc-1908', sectionNo: 'Order IX, Rule 13' },
     { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 123' },
   ],
+  // Application for Condonation of Delay — the entire filing is a Section 5 application.
+  'ct-application-condonation-of-delay': [{ actId: 'act-limitation-1963', sectionNo: '5' }],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -537,6 +539,18 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2011,
       sourceUrl: 'https://indiankanoon.org/doc/602824/',
       note: '"sufficient cause" under Order IX Rule 13 means the defendant honestly and sincerely intended to remain present when the suit was called on for hearing and did his best to do so, and was not negligent or acting in bad faith — a question of fact to be judged by the standard of a reasonable, cautious person, construed liberally to advance substantial justice rather than defeated on technicalities.',
+    },
+  ],
+  // Application for Condonation of Delay — the seminal authority on Section 5's liberal, justice-
+  // oriented construction, cited in virtually every condonation application filed in India.
+  'ct-application-condonation-of-delay': [
+    {
+      caseTitle: 'Collector, Land Acquisition, Anantnag v. Mst. Katiji',
+      citation: '(1987) 2 SCC 107',
+      court: 'Supreme Court of India',
+      year: 1987,
+      sourceUrl: 'https://indiankanoon.org/doc/1117226/',
+      note: 'the expression "sufficient cause" under section 5 must receive a liberal construction so as to advance substantial justice — ordinarily a litigant does not stand to benefit by lodging a filing late, there is no presumption that delay is deliberate or due to culpable negligence, and every day\'s delay need not be explained in a pedantic manner, since when substantial justice and technical considerations are pitted against each other, the cause of substantial justice deserves to be preferred.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession

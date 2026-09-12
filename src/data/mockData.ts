@@ -468,6 +468,17 @@ export const caseTypes: CaseType[] = [
     parentRequired: true,
   },
   {
+    id: 'ct-application-condonation-of-delay',
+    forumType: 'district_court',
+    name: 'Application for Condonation of Delay',
+    governingLaw: 'Limitation Act, 1963, Section 5',
+    plainLanguageSummary:
+      "File this alongside an appeal or application you're filing after its normal deadline has passed — it asks the Court to excuse the delay and accept the accompanying filing anyway, provided you can show a genuine, sufficient reason you couldn't file on time.",
+    applicantEligibility: 'any_appellant_or_applicant',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
     name: 'Suit for Declaration',

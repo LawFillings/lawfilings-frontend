@@ -17,6 +17,7 @@ import { TemporaryInjunctionWizard } from './pages/TemporaryInjunctionWizard';
 import { PermanentInjunctionSuitWizard } from './pages/PermanentInjunctionSuitWizard';
 import { MandatoryInjunctionSuitWizard } from './pages/MandatoryInjunctionSuitWizard';
 import { SetAsideExParteDecreeWizard } from './pages/SetAsideExParteDecreeWizard';
+import { CondonationOfDelayWizard } from './pages/CondonationOfDelayWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -423,6 +424,11 @@ function AppScreens() {
     if (ct.id === 'ct-application-set-aside-exparte-decree') {
       return (
         <SetAsideExParteDecreeWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-condonation-of-delay') {
+      return (
+        <CondonationOfDelayWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {
