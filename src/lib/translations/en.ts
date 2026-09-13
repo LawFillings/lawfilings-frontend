@@ -250,6 +250,15 @@ export const en = {
       execution: 'Enforce an order',
     },
     appeal: 'Appeal',
+    caseTypeSubcategories: {
+      'money-contract-commercial': 'Money, Contract & Commercial Suits',
+      'property-mortgage-land': 'Property, Mortgage & Land Suits',
+      'injunctions-interim-relief': 'Injunctions & Interim Relief',
+      'responding-suit-management': 'Responding & Suit Management',
+      'execution-enforcement': 'Execution & Enforcement',
+      'special-estate-proceedings': 'Special & Estate Proceedings',
+    },
+    pickACategory: 'Pick a category above to see its filings.',
   },
   settings: {
     eyebrow: 'Admin only',
@@ -1198,6 +1207,10 @@ export const en = {
     'ct-application-injunction-disobedience': "File this if the other side has disobeyed or breached a temporary injunction (or another order) already granted in your favour in a pending suit — this asks the Court to attach the disobedient party's property, or detain them in civil prison for up to three months, or both, to compel compliance and punish the breach.",
     'ct-application-appointment-receiver':
       "File this within a pending civil suit if property in dispute is in real, immediate danger of being wasted, damaged, or mismanaged, and no other remedy will protect it — this asks the Court to appoint a neutral receiver to take over its possession, management, and collection of rents/profits until the suit is decided. Courts treat this as one of the harshest interim remedies, granted only in genuinely exceptional circumstances.",
+    'ct-suit-easementary-rights':
+      "File this if a neighbouring landowner is obstructing (or has threatened to obstruct) a right you genuinely hold over their land for the benefit of your own — a right of way, light, air, drainage, or similar — whether that right was granted to you, arises because your land was carved out of theirs, or has been openly and continuously exercised for 20+ years. This asks the Court to declare the easement and either award compensation for the disturbance, injunct it, or both.",
+    'ct-suit-partnership-dissolution-accounts':
+      "File this if you're a partner in a firm and want the Court to dissolve it — because a partner is incapacitated, is harming the business, is in persistent breach of the partnership agreement, has transferred away their share, the business can only run at a loss, or any other ground that makes dissolution just and equitable — and to have the firm's accounts settled and its assets and liabilities wound up between the partners.",
     'ct-suit-declaration': 'File this to ask the Court to formally declare your legal title, status, or right where someone is denying it — for example, a declaration that you are the rightful owner of a property. If you can also ask for further relief (like possession), you generally must ask for it in the same suit.',
     'ct-dc-ia-general': 'Use this to ask the Court for any interim order or direction — other than a temporary injunction, which has its own dedicated wizard — while your civil suit is pending.',
     'ct-suit-specific-performance': 'File this if the other side to a contract — typically a sale agreement — is refusing to complete their part of the deal, and you want the Court to order them to actually carry it out, not just pay you damages for breaking it.',

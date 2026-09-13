@@ -115,6 +115,52 @@
   gap: var(--space-3);
 }
 
+.subcategory-tabs {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-3);
+  margin-bottom: var(--space-6);
+}
+
+.subcategory-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-2);
+  text-align: center;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--text);
+  font-size: 16px;
+  font-weight: 500;
+  padding: 11px 20px;
+  border-radius: 999px;
+  transition: border-color 0.15s ease, background 0.15s ease, color 0.15s ease;
+}
+
+.subcategory-tab:hover {
+  border-color: var(--accent);
+}
+
+.subcategory-tab.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.subcategory-tab-count {
+  font-size: 12px;
+  font-weight: 600;
+  opacity: 0.7;
+}
+
+.subcategory-prompt {
+  color: var(--text-secondary);
+  font-size: 15px;
+  text-align: center;
+  padding: var(--space-6) 0;
+}
+
 .case-type-card {
   text-align: left;
   background: var(--paper-raised);

@@ -9,7 +9,8 @@ interface AppealRouteSelectorProps {
 
 export function AppealRouteSelector({ group, onSelect }: AppealRouteSelectorProps) {
   const { t } = useLanguage();
-  const copy = t.appealRouteGroups[group.id];
+  const appealRouteGroups: Record<string, { question: string; optionHelp: Record<string, string> }> = t.appealRouteGroups;
+  const copy = appealRouteGroups[group.id];
   return (
     <div>
       <p className="route-question">{copy.question}</p>

@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { forums, caseTypes, appealGroups } from '../data/mockData';
+import { forums, caseTypes, appealGroups, caseTypeSubcategories } from '../data/mockData';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
@@ -24,8 +24,17 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
   const { color, widgets } = settings.home;
   const { t } = useLanguage();
   const [selectedForumType, setSelectedForumType] = useState<string | null>(null);
+  const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
+
+  const selectForum = (forumType: string) => {
+    setSelectedForumType((current) => (forumType === current ? null : forumType));
+    setSelectedSubcategoryKey(null);
+  };
 
   const categoryLabel: Record<string, string> = t.home.categoryLabels;
+  const subcategoryLabel: Record<string, string> = t.home.caseTypeSubcategories;
+  const appealGroupQuestion: Record<string, { question: string }> = t.appealRouteGroups;
+  const caseTypeSummary: Record<string, string> = t.caseTypeSummaries;
 
   const visibleForums = forums.filter((forum) => {
     const items = caseTypes.filter(
@@ -44,6 +53,15 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
   const selectedGroups = selectedForum
     ? appealGroups.filter((g) => g.forumType === selectedForum.forumType)
     : [];
+
+  // Render under headed subject-matter sections instead of one flat grid once every visible card
+  // for this forum has been assigned a subcategory (currently only district_court).
+  const subcategorySections =
+    selectedItems.length > 0 && selectedItems.every((ct) => ct.subcategory)
+      ? caseTypeSubcategories
+          .map((sc) => ({ ...sc, items: selectedItems.filter((ct) => ct.subcategory === sc.key) }))
+          .filter((sc) => sc.items.length > 0)
+      : null;
 
   return (
     <div className="home" data-color-theme={color}>
@@ -77,7 +95,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
               <button
                 key={forum.id}
                 className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
-                onClick={() => setSelectedForumType(forum.forumType === selectedForumType ? null : forum.forumType)}
+                onClick={() => selectForum(forum.forumType)}
               >
                 {forum.name}
               </button>
@@ -88,24 +106,70 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
 
       {selectedForum && (
         <section className="forum-group">
-          <div className="case-type-grid">
-            {selectedGroups.map((g) => (
-              <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
-                <span className="case-type-kind">{categoryLabel.appeal}</span>
-                <span className="case-type-name">{t.home.appeal}</span>
-                <span className="case-type-desc">{t.appealRouteGroups[g.id].question}</span>
-              </button>
-            ))}
-            {selectedItems.map((ct) => (
-              <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
-                <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
-                <span className="case-type-name">{ct.name}</span>
-                {widgets.caseDescriptions && ct.plainLanguageSummary && (
-                  <span className="case-type-desc">{t.caseTypeSummaries[ct.id] ?? ct.plainLanguageSummary}</span>
-                )}
-              </button>
-            ))}
-          </div>
+          {subcategorySections ? (
+            <>
+              {selectedGroups.length > 0 && (
+                <div className="case-type-grid" style={{ marginBottom: 'var(--space-6)' }}>
+                  {selectedGroups.map((g) => (
+                    <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
+                      <span className="case-type-kind">{categoryLabel.appeal}</span>
+                      <span className="case-type-name">{t.home.appeal}</span>
+                      <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
+                    </button>
+                  ))}
+                </div>
+              )}
+              <div className="subcategory-tabs">
+                {subcategorySections.map((sc) => (
+                  <button
+                    key={sc.key}
+                    className={sc.key === selectedSubcategoryKey ? 'subcategory-tab active' : 'subcategory-tab'}
+                    onClick={() => setSelectedSubcategoryKey(sc.key === selectedSubcategoryKey ? null : sc.key)}
+                  >
+                    {subcategoryLabel[sc.key] ?? sc.label}
+                    <span className="subcategory-tab-count">{sc.items.length}</span>
+                  </button>
+                ))}
+              </div>
+              {(() => {
+                const activeSection = subcategorySections.find((sc) => sc.key === selectedSubcategoryKey);
+                return activeSection ? (
+                  <div className="case-type-grid">
+                    {activeSection.items.map((ct) => (
+                      <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
+                        <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
+                        <span className="case-type-name">{ct.name}</span>
+                        {widgets.caseDescriptions && ct.plainLanguageSummary && (
+                          <span className="case-type-desc">{caseTypeSummary[ct.id] ?? ct.plainLanguageSummary}</span>
+                        )}
+                      </button>
+                    ))}
+                  </div>
+                ) : (
+                  <p className="subcategory-prompt">{t.home.pickACategory}</p>
+                );
+              })()}
+            </>
+          ) : (
+            <div className="case-type-grid">
+              {selectedGroups.map((g) => (
+                <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
+                  <span className="case-type-kind">{categoryLabel.appeal}</span>
+                  <span className="case-type-name">{t.home.appeal}</span>
+                  <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
+                </button>
+              ))}
+              {selectedItems.map((ct) => (
+                <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
+                  <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
+                  <span className="case-type-name">{ct.name}</span>
+                  {widgets.caseDescriptions && ct.plainLanguageSummary && (
+                    <span className="case-type-desc">{caseTypeSummary[ct.id] ?? ct.plainLanguageSummary}</span>
+                  )}
+                </button>
+              ))}
+            </div>
+          )}
         </section>
       )}
     </div>

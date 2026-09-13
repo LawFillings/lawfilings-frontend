@@ -325,6 +325,7 @@ export const caseTypes: CaseType[] = [
       'Use this if someone owes you money — an unpaid loan, an unpaid invoice, or a bounced cheque — and you want to sue them for it in a District Court.',
     applicantEligibility: 'any_plaintiff',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-dc-summary-suit',
@@ -335,6 +336,7 @@ export const caseTypes: CaseType[] = [
       'Use this if you’re owed money under a written contract, a cheque, or a promissory note — a faster procedure where the other side must get the court’s permission to contest.',
     applicantEligibility: 'plaintiff_with_written_contract_or_negotiable_instrument',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
     eligibilityGates: [
       {
         id: 'gate-written-instrument',
@@ -418,6 +420,7 @@ export const caseTypes: CaseType[] = [
       "File this within a pending civil suit to ask the Court to restrain the other side — from selling or damaging disputed property, or from repeating a breach — until the suit is decided.",
     applicantEligibility: 'plaintiff_or_defendant_in_pending_suit',
     filingCategory: 'interlocutory',
+    subcategory: 'injunctions-interim-relief',
     parentRequired: true,
   },
   {
@@ -429,6 +432,7 @@ export const caseTypes: CaseType[] = [
       "Use this if a civil suit has been filed against you and you need to respond within the deadline — ordinarily 30 days from service, extendable by the Court up to 90 days for reasons recorded in writing (a stricter 120-day cap with no further extension applies if the suit is a commercial dispute).",
     applicantEligibility: 'defendant_in_pending_suit',
     filingCategory: 'reply',
+    subcategory: 'responding-suit-management',
     deadlineSource: 'statutory_fixed',
     limitationDays: 30,
     condonableExtensionDays: 60,
@@ -443,6 +447,7 @@ export const caseTypes: CaseType[] = [
       "File this to permanently stop someone from doing something — encroaching on your property, repeating a breach, or interfering with a right of yours — where a one-time court order at the end of the case is what you need, not just an interim order while it's pending.",
     applicantEligibility: 'any_plaintiff',
     filingCategory: 'original',
+    subcategory: 'injunctions-interim-relief',
   },
   {
     id: 'ct-suit-mandatory-injunction',
@@ -453,6 +458,7 @@ export const caseTypes: CaseType[] = [
       "File this to make someone actually do something they were obligated to do — restore a right of way they blocked, remove an encroaching structure, or reconnect a water/electricity connection they wrongfully cut off — rather than simply stop them from continuing an act.",
     applicantEligibility: 'any_plaintiff',
     filingCategory: 'original',
+    subcategory: 'injunctions-interim-relief',
   },
   {
     id: 'ct-application-set-aside-exparte-decree',
@@ -463,6 +469,7 @@ export const caseTypes: CaseType[] = [
       "File this if a court decided a case against you without hearing you, because you missed the hearing date — you can ask for the decree to be set aside and the case reopened if you show either that you were never properly served with the summons, or that you had a genuine, sufficient reason for not appearing.",
     applicantEligibility: 'defendant_against_whom_exparte_decree_passed',
     filingCategory: 'interlocutory',
+    subcategory: 'responding-suit-management',
     deadlineSource: 'statutory_fixed',
     limitationDays: 30,
     parentRequired: true,
@@ -476,6 +483,7 @@ export const caseTypes: CaseType[] = [
       "File this alongside an appeal or application you're filing after its normal deadline has passed — it asks the Court to excuse the delay and accept the accompanying filing anyway, provided you can show a genuine, sufficient reason you couldn't file on time.",
     applicantEligibility: 'any_appellant_or_applicant',
     filingCategory: 'interlocutory',
+    subcategory: 'responding-suit-management',
     parentRequired: true,
   },
   {
@@ -487,6 +495,7 @@ export const caseTypes: CaseType[] = [
       "File this if property belonging to you has been wrongly attached in someone else's execution case — you were never a party to that suit, but the decree-holder is trying to sell your property to recover what the judgment-debtor owes them. This asks the executing court to release your property from attachment.",
     applicantEligibility: 'third_party_claimant_or_objector',
     filingCategory: 'interlocutory',
+    subcategory: 'execution-enforcement',
     parentRequired: true,
   },
   {
@@ -498,6 +507,7 @@ export const caseTypes: CaseType[] = [
       "File this if you're holding money or property that two or more other people are each separately claiming from you, and you have no personal stake in it yourself — instead of picking a side or risking being sued twice over, this asks the Court to decide who is actually entitled to it, so you can safely hand it over to whoever the Court names.",
     applicantEligibility: 'stakeholder_with_no_personal_interest',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-mact-claim-petition',
@@ -508,6 +518,7 @@ export const caseTypes: CaseType[] = [
       'File this to claim compensation for death or injury caused by a road accident involving a motor vehicle, from the vehicle\'s driver, owner, and insurer — before the Motor Accident Claims Tribunal, which is usually the District Judge of that district sitting in that separate capacity.',
     applicantEligibility: 'accident_victim_or_legal_representative',
     filingCategory: 'original',
+    subcategory: 'special-estate-proceedings',
     deadlineSource: 'statutory_fixed',
     limitationDays: 180,
     condonableExtensionDays: 0,
@@ -521,6 +532,7 @@ export const caseTypes: CaseType[] = [
       "File this if you disagree with the Collector's award for your acquired land — whether it's the compensation amount, how the land was measured, who it's payable to, or how it's split among interested parties. This is a written application to the Collector asking that the matter be referred to the District Court, which independently decides the correct answer.",
     applicantEligibility: 'person_interested_in_acquired_land',
     filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
   },
   {
     id: 'ct-suit-redemption-mortgage',
@@ -531,6 +543,7 @@ export const caseTypes: CaseType[] = [
       "File this if you mortgaged your property to secure a loan, and you've paid off (or are ready and willing to pay off) the mortgage debt, but the mortgagee won't return your property, your title documents, or give you a clear release — this asks the Court to let you redeem the mortgage: pay what's genuinely due, and get everything back free of the mortgage.",
     applicantEligibility: 'mortgagor_or_person_interested_in_redeeming',
     filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
   },
   {
     id: 'ct-attachment-before-judgment',
@@ -541,6 +554,7 @@ export const caseTypes: CaseType[] = [
       "File this alongside a civil suit you've already filed, if you have specific, credible reason to believe the defendant is about to sell, transfer, or move their property out of the Court's reach in order to defeat the decree you're likely to win — this asks the Court to attach that property now, before judgment, so it stays available to satisfy the decree later.",
     applicantEligibility: 'plaintiff_in_pending_suit',
     filingCategory: 'interlocutory',
+    subcategory: 'injunctions-interim-relief',
     parentRequired: true,
   },
   {
@@ -552,6 +566,7 @@ export const caseTypes: CaseType[] = [
       'File this if a document — a sale deed, gift deed, power of attorney, or similar — affecting you or your property is void or voidable (say, obtained by fraud, forgery, or undue influence), and leaving it outstanding threatens you with serious injury. This asks the Court to adjudge the document void or voidable and order it delivered up and cancelled.',
     applicantEligibility: 'person_against_whom_instrument_is_void_or_voidable',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-application-possession-resistance',
@@ -562,6 +577,7 @@ export const caseTypes: CaseType[] = [
       "File this during execution of a decree for possession of immovable property if you're either (a) the decree-holder or auction-purchaser being resisted or obstructed from actually taking possession, or (b) someone who was never the judgment-debtor but was thrown out of the property after the decree-holder or purchaser took possession. This asks the executing court to decide the dispute itself — including any title claim raised — and put you into possession.",
     applicantEligibility: 'decree_holder_purchaser_or_dispossessed_third_party',
     filingCategory: 'execution',
+    subcategory: 'execution-enforcement',
     parentRequired: true,
   },
   {
@@ -573,6 +589,7 @@ export const caseTypes: CaseType[] = [
       "File this if a mortgagor has failed to repay a mortgage debt after it fell due — this asks the Court to either sell the mortgaged property to recover what's owed, or (only if the mortgage is a conditional-sale or foreclosure-entitled anomalous mortgage) permanently debar the mortgagor's right to redeem it. Which relief you're entitled to depends on the type of mortgage — this wizard asks you first.",
     applicantEligibility: 'mortgagee',
     filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
   },
   {
     id: 'ct-application-restoration-suit-default',
@@ -583,6 +600,7 @@ export const caseTypes: CaseType[] = [
       "File this if your own civil suit was dismissed because you (the plaintiff) failed to appear when it was called for hearing, even though the defendant was present — this asks the Court to set aside that dismissal and restore your suit, if you can show a genuine, sufficient reason for your absence. You cannot file a fresh suit on the same claim instead — this is the only way back in.",
     applicantEligibility: 'plaintiff_whose_suit_dismissed_for_default',
     filingCategory: 'interlocutory',
+    subcategory: 'responding-suit-management',
     deadlineSource: 'statutory_fixed',
     limitationDays: 30,
     parentRequired: true,
@@ -596,6 +614,7 @@ export const caseTypes: CaseType[] = [
       "File this if the other side has disobeyed or breached a temporary injunction (or another order) already granted in your favour in a pending suit — this asks the Court to attach the disobedient party's property, or detain them in civil prison for up to three months, or both, to compel compliance and punish the breach.",
     applicantEligibility: 'party_in_whose_favour_injunction_granted',
     filingCategory: 'interlocutory',
+    subcategory: 'injunctions-interim-relief',
     parentRequired: true,
   },
   {
@@ -607,7 +626,30 @@ export const caseTypes: CaseType[] = [
       "File this within a pending civil suit if property in dispute is in real, immediate danger of being wasted, damaged, or mismanaged, and no other remedy will protect it — this asks the Court to appoint a neutral receiver to take over its possession, management, and collection of rents/profits until the suit is decided. Courts treat this as one of the harshest interim remedies, granted only in genuinely exceptional circumstances.",
     applicantEligibility: 'party_to_pending_suit',
     filingCategory: 'interlocutory',
+    subcategory: 'injunctions-interim-relief',
     parentRequired: true,
+  },
+  {
+    id: 'ct-suit-easementary-rights',
+    forumType: 'district_court',
+    name: 'Suit for Easementary Rights',
+    governingLaw: 'Indian Easements Act, 1882, Sections 33 & 35',
+    plainLanguageSummary:
+      "File this if a neighbouring landowner is obstructing (or has threatened to obstruct) a right you genuinely hold over their land for the benefit of your own — a right of way, light, air, drainage, or similar — whether that right was granted to you, arises because your land was carved out of theirs, or has been openly and continuously exercised for 20+ years. This asks the Court to declare the easement and either award compensation for the disturbance, injunct it, or both.",
+    applicantEligibility: 'owner_or_occupier_of_land_with_an_easement_over_neighbouring_land',
+    filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
+  },
+  {
+    id: 'ct-suit-partnership-dissolution-accounts',
+    forumType: 'district_court',
+    name: 'Suit for Dissolution of Partnership and Rendition of Accounts',
+    governingLaw: 'The Indian Partnership Act, 1932, Section 44',
+    plainLanguageSummary:
+      "File this if you're a partner in a firm and want the Court to dissolve it — because a partner is incapacitated, is harming the business, is in persistent breach of the partnership agreement, has transferred away their share, the business can only run at a loss, or any other ground that makes dissolution just and equitable — and to have the firm's accounts settled and its assets and liabilities wound up between the partners.",
+    applicantEligibility: 'partner_in_a_firm',
+    filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-suit-declaration',
@@ -618,6 +660,7 @@ export const caseTypes: CaseType[] = [
       "File this to ask the Court to formally declare your legal title, status, or right where someone is denying it — for example, a declaration that you are the rightful owner of a property. If you can also ask for further relief (like possession), you generally must ask for it in the same suit.",
     applicantEligibility: 'any_plaintiff',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-dc-ia-general',
@@ -628,6 +671,7 @@ export const caseTypes: CaseType[] = [
       'Use this to ask the Court for any interim order or direction — other than a temporary injunction, which has its own dedicated wizard — while your civil suit is pending.',
     applicantEligibility: 'any_party_to_pending_suit',
     filingCategory: 'interlocutory',
+    subcategory: 'injunctions-interim-relief',
     parentRequired: true,
   },
   {
@@ -639,6 +683,7 @@ export const caseTypes: CaseType[] = [
       "File this if the other side to a contract — typically a sale agreement — is refusing to complete their part of the deal, and you want the Court to order them to actually carry it out, not just pay you damages for breaking it.",
     applicantEligibility: 'any_plaintiff',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-suit-partition',
@@ -649,6 +694,7 @@ export const caseTypes: CaseType[] = [
       "File this to divide jointly-owned family property and get your own separate share — typically ancestral/coparcenary property where the other co-owners won't agree to divide it amicably.",
     applicantEligibility: 'any_coparcener_or_co-owner',
     filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
   },
   {
     id: 'ct-suit-possession',
@@ -659,6 +705,7 @@ export const caseTypes: CaseType[] = [
       'File this to recover possession of your property — from a tenant holding over after their lease ended, or from someone occupying it without any right to. If the property is covered by a state Rent Control Act, its own eviction grounds and procedure apply instead of, or in addition to, general civil law.',
     applicantEligibility: 'any_plaintiff',
     filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
   },
   {
     id: 'ct-dc-execution',
@@ -669,6 +716,7 @@ export const caseTypes: CaseType[] = [
       "Use this if the other side hasn't complied with a civil court decree already passed in your favour — this asks the Court to enforce it, by attachment and sale of property, delivery of possession, arrest and detention, or whichever mode fits the decree.",
     applicantEligibility: 'decree_holder',
     filingCategory: 'execution',
+    subcategory: 'execution-enforcement',
   },
   {
     id: 'ct-divorce-mutual-consent',
@@ -782,13 +830,14 @@ export const caseTypes: CaseType[] = [
   },
   {
     id: 'ct-arbitration-s9-interim-relief',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
     name: 'Arbitration Interim Relief Application (S.9)',
     governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 9',
     plainLanguageSummary:
       "File this before or during arbitral proceedings — or after the award but before enforcement — to ask the Court for interim protection, such as securing the amount in dispute, preserving property, or an interim injunction.",
     applicantEligibility: 'party_to_an_arbitration_agreement',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-arbitration-s11-appointment',
@@ -802,53 +851,58 @@ export const caseTypes: CaseType[] = [
   },
   {
     id: 'ct-arbitration-s34-setting-aside',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
     name: 'Application to Set Aside Arbitral Award (S.34)',
     governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 34',
     plainLanguageSummary:
       "File this within three months of receiving an arbitral award to have it set aside — because of incapacity, an invalid arbitration agreement, want of proper notice, an award beyond the scope of reference, or conflict with the public policy of India.",
     applicantEligibility: 'party_aggrieved_by_an_arbitral_award',
     filingCategory: 'original',
+    subcategory: 'money-contract-commercial',
   },
   {
     id: 'ct-succession-certificate',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
     name: 'Succession Certificate Petition',
     governingLaw: 'The Indian Succession Act, 1925, Section 372',
     plainLanguageSummary:
       "File this to establish your right to collect debts and securities (bank balances, shares, insurance proceeds, and the like) owed to someone who has died — this doesn't cover immovable property or a will's other assets, only debts and securities.",
     applicantEligibility: 'legal_heir_or_claimant_of_a_deceased_persons_debts_and_securities',
     filingCategory: 'original',
+    subcategory: 'special-estate-proceedings',
   },
   {
     id: 'ct-probate',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
     name: 'Probate Petition',
     governingLaw: 'The Indian Succession Act, 1925, Section 276',
     plainLanguageSummary:
       "File this if you're the executor named in a will and need the Court to certify the will's genuineness and confirm your authority to administer the estate.",
     applicantEligibility: 'executor_named_in_the_will',
     filingCategory: 'original',
+    subcategory: 'special-estate-proceedings',
   },
   {
     id: 'ct-letters-of-administration',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
     name: 'Letters of Administration Petition',
     governingLaw: 'The Indian Succession Act, 1925, Section 278',
     plainLanguageSummary:
       "File this to be authorised to administer the estate of someone who died without a will (or without a surviving executor) — the Court appoints you as administrator so you can collect and distribute the assets.",
     applicantEligibility: 'legal_heir_entitled_to_administer_an_intestate_estate',
     filingCategory: 'original',
+    subcategory: 'special-estate-proceedings',
   },
   {
     id: 'ct-rent-control-eviction',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
     name: 'Rent Control Eviction Petition',
     governingLaw: 'State Rent Control Act',
     plainLanguageSummary:
       "File this to evict a tenant under your state's Rent Control Act — for arrears of rent, bona fide personal requirement, unlawful subletting, or another ground your state's Act recognises. Not for a plain civil suit for possession where no Rent Control Act applies — use Suit for Possession/Eviction instead.",
     applicantEligibility: 'landlord_under_a_state_rent_control_act',
     filingCategory: 'original',
+    subcategory: 'property-mortgage-land',
   },
   {
     id: 'ct-writ-petition-226',
@@ -872,6 +926,18 @@ export const caseTypes: CaseType[] = [
     deadlineSource: 'statutory_fixed',
     limitationDays: 90,
   },
+];
+
+// Subject-matter groupings for forums whose case-type list has grown too long for one flat grid.
+// Home.tsx renders a forum's cards under headed sections, in this order, when every visible case
+// type for that forum carries a `subcategory` key found here — currently only district_court.
+export const caseTypeSubcategories: { key: string; label: string }[] = [
+  { key: 'money-contract-commercial', label: 'Money, Contract & Commercial Suits' },
+  { key: 'property-mortgage-land', label: 'Property, Mortgage & Land Suits' },
+  { key: 'injunctions-interim-relief', label: 'Injunctions & Interim Relief' },
+  { key: 'responding-suit-management', label: 'Responding & Suit Management' },
+  { key: 'execution-enforcement', label: 'Execution & Enforcement' },
+  { key: 'special-estate-proceedings', label: 'Special & Estate Proceedings' },
 ];
 
 export const appealGroups: AppealGroup[] = [

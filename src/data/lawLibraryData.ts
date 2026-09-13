@@ -3295,6 +3295,11 @@ export const acts: Act[] = [
         text: 'Where any special or local law prescribes for any suit, appeal or application a period of limitation different from the period prescribed by the Schedule, the provisions of section 3 shall apply as if such period were the period prescribed by the Schedule and for the purpose of determining any period of limitation prescribed for any suit, appeal or application by any special or local law, the provisions contained in sections 4 to 24 (inclusive) shall apply only in so far as, and to the extent to which, they are not expressly excluded by such special or local law. [Note: this is why a special Act\'s own limitation clause (e.g. the Recovery of Debts and Bankruptcy Act, 1993, section 24, or the Consumer Protection Act, 2019, section 69) displaces the Schedule below, while general provisions like Section 5 (condonation) and Section 14 (bona fide wrong forum) still apply on top of that special Act\'s own period unless that Act expressly excludes them.]',
       },
       {
+        sectionNo: 'Schedule, Article 5',
+        heading: 'For an account and a share of the profits of a dissolved partnership',
+        text: 'For an account and a share of the profits of a dissolved partnership: period of limitation three years, running from the date of the dissolution. [Note: this is the limitation period once a firm has ALREADY been dissolved — by agreement (section 40), notice (section 43), or the happening of a contingency (section 42) of the Indian Partnership Act, 1932 (also in this Library) — and a partner is only seeking accounts and their share of the resulting profits. A suit asking the Court itself to DISSOLVE the firm under section 44 of that Act is a different cause of action, not yet governed by this article, since the firm is not dissolved until the Court\'s decree — that suit instead falls under the residuary Article 113 (also in this Library), three years running from when the right to sue accrues.]',
+      },
+      {
         sectionNo: 'Schedule, Article 1',
         heading: 'Balance due on a mutual, open and current account',
         text: 'For the balance due on a mutual, open and current account, where there have been reciprocal demands between the parties: period of limitation three years, running from the close of the year in which the last item admitted or proved is entered in the account, that year to be computed as in the account.',
@@ -3323,6 +3328,11 @@ export const acts: Act[] = [
         sectionNo: 'Schedule, Article 63',
         heading: 'By a mortgagee for foreclosure',
         text: 'By a mortgagee, for foreclosure: period of limitation thirty years, running from when the money secured by the mortgage becomes due. [Note: this is the limitation period for a suit for FORECLOSURE under section 67 of the Transfer of Property Act, 1882 (also in this Library) — available only to a mortgagee by conditional sale, or an anomalous mortgagee whose deed itself confers a right to foreclose; an ordinary mortgagee\'s suit for sale is instead governed by Article 62\'s much shorter 12-year period.]',
+      },
+      {
+        sectionNo: 'Schedule, Article 85',
+        heading: 'For compensation for obstructing a way or a water-course',
+        text: 'For compensation for obstructing a way or a water-course: period of limitation three years, running from the date of the obstruction. [Note: this is the limitation period for a suit under section 33 of the Indian Easements Act, 1882 (also in this Library) for compensation for the disturbance of an easement of way or watercourse — but section 33 itself requires the disturbance to have caused "substantial damage," and section 35 of that Act separately allows an injunction (not merely compensation) to restrain a disturbance that is either actual or only threatened.]',
       },
       {
         sectionNo: 'Schedule, Article 113',
@@ -9541,6 +9551,71 @@ export const acts: Act[] = [
         sectionNo: '26',
         heading: 'Form of awards',
         text: '(1) Every award under this Part shall be in writing signed by the Judge, and shall specify the amount awarded under clause first of sub-section (1) of section 23, and also the amounts (if any) respectively awarded under each of the other clauses of the same sub-section, together with the grounds of awarding each of the said amounts. (2) Every such award shall be deemed to be a decree and the statement of the grounds of every such award a judgment within the meaning of section 2, clause (2), and section 2, clause (9), respectively, of the Code of Civil Procedure, 1908 (5 of 1908). [Note: because the Reference Court\'s award is itself "deemed to be a decree," a party aggrieved by it appeals under the ordinary Code of Civil Procedure appellate provisions (section 96, also in this Library), not under a special appeal provision of this Act.]',
+      },
+    ],
+  },
+  {
+    id: 'act-indian-easements-1882',
+    shortTitle: 'The Indian Easements Act, 1882',
+    year: 1882,
+    actNumber: '5 of 1882',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://indiankanoon.org/doc/171374423/',
+    sections: [
+      {
+        sectionNo: '4',
+        heading: '"Easement" defined',
+        text: 'An easement is a right which the owner or occupier of certain land possesses, as such, for the beneficial enjoyment of that land, to do and continue to do something, or to prevent and continue to prevent something being done, in or upon, or in respect of, certain other land not his own. The land for the beneficial enjoyment of which the right exists is called the dominant heritage, and the owner or occupier thereof the dominant owner; the land on which the liability is imposed is called the servient heritage, and the owner or occupier thereof the servient owner. Explanation.— In the first and second clauses of this section, the expression "land" includes also things permanently attached to the earth; the expression "beneficial enjoyment" includes also possible convenience, remote advantage, and even a mere amenity; and the expression "to do something" includes removal and appropriation by the dominant owner, for the beneficial enjoyment of the dominant heritage, of any part of the soil of the servient heritage, or anything growing or subsisting thereon. [Note: "dominant heritage"/"dominant owner" and "servient heritage"/"servient owner" are the standard pair of terms used throughout this Act and in easement pleadings — a suit to enforce or protect an easement must identify both heritages and state precisely what right is claimed over the servient land for the benefit of the dominant land.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Easements of necessity and quasi-easements',
+        text: '(a) Where one person transfers or bequeaths immovable property to another, if an easement in other immovable property of the transferor or testator is necessary for enjoying the subject of the transfer or bequest, the transferee or legatee shall be entitled to such easement. (b) Where such property is partitioned, if such an easement is necessary for enjoying any of the parts so transferred, the person to whom that part is transferred shall be entitled to the easement. (c) Where a partition is made among several co-owners, and it is necessary for the enjoyment by one of them of any of the property allotted to him that he should continue to enjoy a right analogous to an easement over property allotted to another, the first-mentioned person shall be entitled to such right. [Note: the Supreme Court has held that an easement of necessity is defeated the moment any alternative means of access to the dominant heritage exists — even a longer or less convenient one — because the right only arises where the easement is genuinely "necessary" for enjoying the dominant heritage, not merely convenient (Manisha Mahendra Gala v. Shalini Bhagwan Avatramani, 2024 INSC 293, also cited under this case type). This is a materially harder ground to establish than acquisition by prescription under section 15 (also in this Library).]',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Acquisition by prescription',
+        text: 'Where the access and use of light or air to and for any building have been peaceably enjoyed therewith, as an easement, without interruption, and for twenty years; and where support from one person\'s land, or things affixed thereto, has been peaceably received by another person\'s land subjected to artificial pressure, or by things affixed thereto, as an easement, without interruption, and for twenty years; and where a right of way, or any other easement (not being a right of necessity) has been peaceably and openly enjoyed by any person claiming title thereto, as an easement, and as of right, without interruption, and for twenty years, the right to such access and use of light or air, support, or other easement shall be absolute. Each of the said periods of twenty years shall be taken to be a period ending within two years next before the institution of the suit wherein the claim to which such period relates is contested. Where the property over which a right is claimed under this section belongs to Government, this section shall be read as if, for the words "twenty years," the words "thirty years" were substituted. [Note: none of the following can be so acquired — (a) a right which would tend to the total destruction of the subject of the right, or of the property on which liability would be imposed; (b) a right to the free passage of light or air to an open space of ground; (c) a right to surface-water not flowing in a stream and not permanently collected in a pool, tank, or otherwise; (d) a right to underground water not passing in a defined channel. Easements acquired under this section are called prescriptive easements. The Supreme Court has applied this section to uphold an easement based on over 40 years of open, uninterrupted, as-of-right use (Raruha Singh v. Achal Singh, AIR 1961 SC 1097, also cited under this case type).]',
+      },
+      {
+        sectionNo: '33',
+        heading: 'Suit for disturbance of easement',
+        text: 'The owner of any interest in the dominant heritage, or the occupier of such heritage, may institute a suit for compensation for the disturbance of the easement or of any right accessory thereto: provided that the disturbance has actually caused substantial damage to the plaintiff. Explanation I.— The doing of any act likely to injure the plaintiff by affecting the evidence of the easement, or by materially diminishing the value of the dominant heritage, is substantial damage within the meaning of this section. Explanation II.— Where the easement disturbed is a right to the free passage of light passing to the openings in a house, no damage is substantial within the meaning of this section unless it falls within the first Explanation, or interferes materially with the physical comfort of the plaintiff, or prevents him from carrying on his accustomed business in the dominant heritage as beneficially as he had done previous to the institution of the suit. Explanation III.— Where the easement disturbed is a right to the free passage of air to the openings in a house, damage is substantial within the meaning of this section if it interferes materially with the physical comfort of the plaintiff, although it is not injurious to his health. [Note: a suit for compensation under this section is filed within three years of the obstruction under Schedule, Article 85 of the Limitation Act, 1963 (also in this Library).]',
+      },
+      {
+        sectionNo: '35',
+        heading: 'Injunction to restrain disturbance',
+        text: 'Subject to the provisions of the Specific Relief Act, 1963, sections 36 to 42 (also in this Library), an injunction may be granted to restrain the disturbance of an easement,— (a) if the easement is actually disturbed — when compensation for such disturbance might be recovered under this Chapter; (b) if the disturbance is only threatened or intended — when the act threatened or intended must necessarily, if performed, disturb the easement. [Note: this Act as originally enacted in 1882 refers to "the Specific Relief Act, 1877, sections 52 to 57" — the Specific Relief Act, 1877 has since been repealed and replaced by the Specific Relief Act, 1963, whose corresponding injunction provisions are sections 36-42; this reference is read as updated to the current Act. Clause (b) means an easement holder need not wait for actual disturbance and resulting substantial damage before suing — a genuinely threatened or intended act that would necessarily disturb the easement is independently actionable by way of injunction alone.]',
+      },
+    ],
+  },
+  {
+    id: 'act-indian-partnership-1932',
+    shortTitle: 'The Indian Partnership Act, 1932',
+    year: 1932,
+    actNumber: '9 of 1932',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://indiankanoon.org/doc/107341/',
+    sections: [
+      {
+        sectionNo: '39',
+        heading: 'Dissolution of a firm',
+        text: 'The dissolution of partnership between all the partners of a firm is called the "dissolution of the firm."',
+      },
+      {
+        sectionNo: '44',
+        heading: 'Dissolution by the Court',
+        text: 'At the suit of a partner, the Court may dissolve a firm on any of the following grounds, namely:— (a) that a partner has become of unsound mind, in which case the suit may be brought as well by the next friend of the partner who has become of unsound mind as by any other partner; (b) that a partner, other than the partner suing, has become in any way permanently incapable of performing his duties as partner; (c) that a partner, other than the partner suing, is guilty of conduct which is likely to affect prejudicially the carrying on of the business, regard being had to the nature of the business; (d) that a partner, other than the partner suing, wilfully or persistently commits breach of agreements relating to the management of the affairs of the firm or the conduct of its business, or otherwise so conducts himself in matters relating to the business that it is not reasonably practicable for the other partners to carry on the business in partnership with him; (e) that a partner, other than the partner suing, has in any way transferred the whole of his interest in the firm to a third party, or has allowed his share to be charged under the provisions of rule 49 of Order XXI of the First Schedule to the Code of Civil Procedure, 1908, or has allowed it to be sold in the recovery of arrears of land revenue or of any dues recoverable as arrears of land revenue due by the partner; (f) that the business of the firm cannot be carried on save at a loss; or (g) on any other ground which renders it just and equitable that the firm should be dissolved. [Note: ground (g) is a deliberately open-ended, discretionary ground — Indian courts have drawn on company-law "just and equitable" winding-up jurisprudence by analogy, applying it where there is a complete deadlock in management or the mutual trust and confidence that is the substratum of every partnership has broken down, even without any single partner\'s specific misconduct. A suit under this section is filed within three years of when the right to sue accrues, under the residuary Schedule, Article 113 of the Limitation Act, 1963 (also in this Library) — this Act does not prescribe any special period of its own for a section 44 suit.]',
+      },
+      {
+        sectionNo: '46',
+        heading: 'Right of partners to have business wound up after dissolution',
+        text: 'On the dissolution of a firm every partner or his representative is entitled, as against all the other partners or their representatives, to have the property of the firm applied in payment of the debts and liabilities of the firm, and to have the surplus distributed among the partners or their representatives according to their rights.',
+      },
+      {
+        sectionNo: '48',
+        heading: 'Mode of settlement of accounts between partners',
+        text: 'In settling the accounts of a firm after dissolution, the following rules shall, subject to agreement by the partners, be observed:— (a) Losses, including deficiencies of capital, shall be paid first out of profits, next out of capital, and, lastly, if necessary, by the partners individually in the proportions in which they were entitled to share profits; (b) the assets of the firm, including any sums contributed by the partners to make up deficiencies of capital, shall be applied in the following manner and order:— (i) in paying the debts of the firm to third parties; (ii) in paying to each partner rateably what is due to him from the firm for advances as distinguished from capital; (iii) in paying to each partner rateably what is due to him on account of capital; and (iv) the residue, if any, shall be divided among the partners in the proportions in which they were entitled to share profits.',
       },
     ],
   },

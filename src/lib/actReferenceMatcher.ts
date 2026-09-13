@@ -266,6 +266,22 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   'ct-application-injunction-disobedience': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 2A' }],
   // Application for Appointment of Receiver — the entire filing is a Rule 1 application.
   'ct-application-appointment-receiver': [{ actId: 'act-cpc-1908', sectionNo: 'Order XL, Rule 1' }],
+  // Suit for Easementary Rights — Sections 33/35 are the easement-specific cause of action and
+  // injunctive relief; Sections 34/38 of the Specific Relief Act back the declaration and perpetual
+  // injunction reliefs the wizard's prayer also draws on.
+  'ct-suit-easementary-rights': [
+    { actId: 'act-indian-easements-1882', sectionNo: '33' },
+    { actId: 'act-indian-easements-1882', sectionNo: '35' },
+    { actId: 'act-specific-relief-1963', sectionNo: '34' },
+    { actId: 'act-specific-relief-1963', sectionNo: '38' },
+  ],
+  // Suit for Dissolution of Partnership and Rendition of Accounts — Section 44 is the cause of
+  // action for court-ordered dissolution; Section 46 is the accompanying right to have the firm's
+  // property applied and the surplus distributed.
+  'ct-suit-partnership-dissolution-accounts': [
+    { actId: 'act-indian-partnership-1932', sectionNo: '44' },
+    { actId: 'act-indian-partnership-1932', sectionNo: '46' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -713,6 +729,41 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1955,
       sourceUrl: 'https://indiankanoon.org/doc/1319942/',
       note: 'appointment of a receiver is one of the harshest remedies the Court can grant, and will be made only where the applicant satisfies all five settled principles: a strong prima facie case; a real, imminent (not merely possible) danger of the property being wasted, damaged, or misappropriated unless a receiver is appointed; that no other adequate remedy is available to protect it; that the appointment will not cause more injustice than it prevents, including to a party already in actual possession; and that the applicant has approached the Court without unexplained delay or acquiescence.',
+    },
+  ],
+  // Suit for Easementary Rights — two Supreme Court authorities covering the two most litigated
+  // grounds of acquisition: prescription (20+ years' open, uninterrupted, as-of-right use) and
+  // necessity (defeated the moment any alternative access exists, however inconvenient).
+  'ct-suit-easementary-rights': [
+    {
+      caseTitle: 'Raruha Singh v. Achal Singh',
+      citation: 'AIR 1961 SC 1097',
+      court: 'Supreme Court of India',
+      year: 1961,
+      sourceUrl: 'https://www.casemine.com/commentary/in/establishing-easement-rights-through-prolonged-use:-comprehensive-analysis-of-raruha-singh-v.-achal-singh/view',
+      note: 'upheld a prescriptive easement (there, to the flow of water for irrigation) based on over 40 years of open, uninterrupted, as-of-right enjoyment — well beyond section 15\'s 20-year minimum — illustrating what a prescriptive-easement claim under that section must actually establish.',
+    },
+    {
+      caseTitle: 'Manisha Mahendra Gala v. Shalini Bhagwan Avatramani',
+      citation: '2024 INSC 293',
+      court: 'Supreme Court of India',
+      year: 2024,
+      sourceUrl: 'https://indiankanoon.org/doc/35537101/',
+      note: 'an easement of necessity under section 13 cannot be claimed once any alternative means of accessing the dominant heritage exists, even if that alternative route is longer or less convenient than the one claimed — necessity means genuinely no other way, not merely the most convenient way.',
+    },
+  ],
+  // Suit for Dissolution of Partnership and Rendition of Accounts — this Supreme Court decision
+  // arose from exactly this suit, and clarifies that where the partnership deed itself lets a
+  // partner retire or dissociate by notice, that is the route to take rather than suing to dissolve
+  // the whole firm under section 44.
+  'ct-suit-partnership-dissolution-accounts': [
+    {
+      caseTitle: 'Vishnu Chandra v. Chandrika Prasad Agarwal',
+      citation: 'AIR 1983 SC 523',
+      court: 'Supreme Court of India',
+      year: 1983,
+      sourceUrl: 'https://indiankanoon.org/doc/224168/',
+      note: 'in a suit for dissolution of partnership and rendition of accounts, the Court held that where the partnership agreement itself permits a partner to dissociate on notice under section 32 without ending the firm, a partner should invoke that contractual retirement route rather than seeking to dissolve the entire firm — full dissolution under section 44 is warranted only where no such contractual exit exists or one of section 44\'s own grounds is independently made out.',
     },
   ],
   // Suit for Partition — the daughter's coparcenary right under section 6 of the Hindu Succession

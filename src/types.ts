@@ -77,6 +77,10 @@ export interface CaseType {
   jurisdictionRule?: JurisdictionRule;
   eligibilityGates?: EligibilityGate[];
   parentRequired?: boolean;
+  /** Optional subject-matter grouping key, used to render a forum's case types under headed
+   *  sections (e.g. district_court) instead of one flat grid. Must match a key in
+   *  `caseTypeSubcategories` (mockData.ts) when set. */
+  subcategory?: string;
 }
 
 export interface ClauseDef {
