@@ -1,11 +1,15 @@
 .landing-howitworks {
-  /* Full-bleed band, same technique as .landing-hero/.usp-slider, in a light warm tone so the
-     three bold sections (amber hero, dark USP band, warm how-it-works band) read as a
-     deliberate alternating rhythm down the page. */
+  /* Full-bleed band, same technique as .landing-hero/.usp-slider — a light grey band so this and
+     its blue/cream neighbours (hero, USP, Why LawFilings) read as a deliberate alternating rhythm
+     down the page. Semi-transparent, not solid, so the page-wide fixed brand watermark behind the
+     page still shows through, the same way it does over a plain, backgroundless section — the grey
+     is deliberately more saturated than the site's usual pale --accent-tint blue-grey, since a tint
+     that pale gets washed out to near-invisible against the page's own warm --paper background at
+     an alpha low enough to let the watermark through. */
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: var(--accent-tint);
+  background: rgba(150, 175, 205, 0.4);
   padding: var(--space-8) var(--space-5);
 }
 

@@ -224,7 +224,7 @@ export function LandingPage({
           title={t.landing.whyChooseUs.title}
           sub={t.landing.whyChooseUs.sub}
           columns={3}
-          background="rgba(243, 227, 197, 0.85)"
+          background="rgba(243, 227, 197, 0.35)"
           items={t.landing.whyChooseUs.items.map((item, i) => ({
             icon: WHY_LAWFILINGS_ICONS[i],
             title: item.title,
@@ -240,6 +240,7 @@ export function LandingPage({
           title={t.landing.whoItsFor.title}
           sub={t.landing.whoItsFor.sub}
           columns={4}
+          background="rgba(150, 175, 205, 0.4)"
           items={t.landing.whoItsFor.items.map((item, i) => ({
             icon: WHO_ITS_FOR_ICONS[i],
             title: item.title,
@@ -268,7 +269,7 @@ export function LandingPage({
           title={t.landing.news.title}
           sub={t.landing.news.sub}
           columns={2}
-          background="rgba(231, 237, 244, 0.85)"
+          background="rgba(150, 175, 205, 0.4)"
           items={t.landing.news.items.map((item, i) => ({
             icon: LAW_NEWS_ICONS[i],
             title: item.title,

@@ -33,6 +33,10 @@ interface Props {
  * centered eyebrow/title, circular navy icon badges) generalized so other sections can reuse it
  * without duplicating that CSS. HowItWorks itself is left as its own component/stylesheet rather
  * than migrated onto this, since it already works and isn't worth the regression risk.
+ *
+ * `background` should always be a semi-transparent rgba, not a solid colour — the page-wide fixed
+ * brand watermark (mounted once in App.tsx) sits behind everything, and only shows through here
+ * because this section doesn't paint a fully opaque background over it.
  */
 export function IconGridSection({ id, eyebrow, title, sub, items, columns = 3, background, footer }: Props) {
   return (

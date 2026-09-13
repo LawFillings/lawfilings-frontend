@@ -1,5 +1,7 @@
 /* Full-bleed band, same technique as HowItWorks — a light, greyish-tinted background so this
-   reads as the same family of section rather than a plain white card list. */
+   reads as the same family of section rather than a plain white card list. Always semi-transparent
+   (see the `background` prop's doc comment) so the page-wide fixed brand watermark behind the page
+   still shows through, exactly as it does over a plain, backgroundless section. */
 .icon-grid-section {
   width: 100vw;
   margin-left: calc(50% - 50vw);
