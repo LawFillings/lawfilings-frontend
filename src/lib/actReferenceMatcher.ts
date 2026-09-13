@@ -282,6 +282,30 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-indian-partnership-1932', sectionNo: '44' },
     { actId: 'act-indian-partnership-1932', sectionNo: '46' },
   ],
+  // Application for Rejection of Plaint — the entire filing is an Order VII, Rule 11 application.
+  'ct-application-rejection-plaint': [{ actId: 'act-cpc-1908', sectionNo: 'Order VII, Rule 11' }],
+  // Application to Vacate/Discharge an Injunction — the entire filing is a Rule 4 application.
+  'ct-application-vacate-injunction': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXXIX, Rule 4' }],
+  // Caveat Petition — the entire filing is a Section 148A caveat.
+  'ct-caveat-petition': [{ actId: 'act-cpc-1908', sectionNo: '148A' }],
+  // Suit for Rectification of Instrument — the entire filing is a Section 26 rectification suit.
+  'ct-suit-rectification-instrument': [{ actId: 'act-specific-relief-1963', sectionNo: '26' }],
+  // Suit for Recovery of Specific Movable Property — Section 7 is the general possession-based
+  // remedy; Section 8 is the specific-delivery remedy against a non-owner holder.
+  'ct-suit-recovery-movable-property': [
+    { actId: 'act-specific-relief-1963', sectionNo: '7' },
+    { actId: 'act-specific-relief-1963', sectionNo: '8' },
+  ],
+  // Application to Set Aside Execution Sale — the entire filing is an Order XXI, Rule 90 application.
+  'ct-application-set-aside-execution-sale': [{ actId: 'act-cpc-1908', sectionNo: 'Order XXI, Rule 90' }],
+  // Application for Substitution of Legal Representatives — Rule 3 covers a deceased plaintiff,
+  // Rule 4 a deceased defendant; both are cited since the wizard covers either scenario.
+  'ct-application-substitution-legal-representatives': [
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXII, Rule 3' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XXII, Rule 4' },
+  ],
+  // Miscellaneous Application (MA) — general — the entire filing invokes the Court's inherent powers.
+  'ct-dc-ma-general': [{ actId: 'act-cpc-1908', sectionNo: '151' }],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16
@@ -729,6 +753,18 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 1955,
       sourceUrl: 'https://indiankanoon.org/doc/1319942/',
       note: 'appointment of a receiver is one of the harshest remedies the Court can grant, and will be made only where the applicant satisfies all five settled principles: a strong prima facie case; a real, imminent (not merely possible) danger of the property being wasted, damaged, or misappropriated unless a receiver is appointed; that no other adequate remedy is available to protect it; that the appointment will not cause more injustice than it prevents, including to a party already in actual possession; and that the applicant has approached the Court without unexplained delay or acquiescence.',
+    },
+  ],
+  // Application to Set Aside Execution Sale — settles that the 60-day limitation under Article 127
+  // cannot be condoned under section 5 of the Limitation Act, however brief the delay.
+  'ct-application-set-aside-execution-sale': [
+    {
+      caseTitle: 'Aarifaben Yunusbhai Patel v. Mukul Thakorebhai Amin',
+      citation: '(2020) 5 SCC 449',
+      court: 'Supreme Court of India',
+      year: 2020,
+      sourceUrl: 'https://caselaw.in/supreme-court/aarifaben-yunusbhai-patel-v-mukul-thakorebhai-amin/10277/',
+      note: 'section 5 of the Limitation Act, 1963 (condonation of delay) is expressly excluded from applications under Order XXI of the Code of Civil Procedure, 1908 — so an application under Rule 90 to set aside an execution sale must be filed within the sixty-day period under Article 127, with no discretion to condone even a delay of a few days, absent a genuine Section 14 case of bona fide prior proceedings before the wrong forum.',
     },
   ],
   // Suit for Easementary Rights — two Supreme Court authorities covering the two most litigated

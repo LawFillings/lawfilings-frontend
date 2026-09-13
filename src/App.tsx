@@ -32,6 +32,13 @@ import { InjunctionDisobedienceApplicationWizard } from './pages/InjunctionDisob
 import { AppointmentOfReceiverWizard } from './pages/AppointmentOfReceiverWizard';
 import { EasementaryRightsSuitWizard } from './pages/EasementaryRightsSuitWizard';
 import { PartnershipDissolutionSuitWizard } from './pages/PartnershipDissolutionSuitWizard';
+import { RejectionOfPlaintApplicationWizard } from './pages/RejectionOfPlaintApplicationWizard';
+import { VacateInjunctionApplicationWizard } from './pages/VacateInjunctionApplicationWizard';
+import { CaveatPetitionWizard } from './pages/CaveatPetitionWizard';
+import { RectificationOfInstrumentSuitWizard } from './pages/RectificationOfInstrumentSuitWizard';
+import { RecoveryOfMovablePropertySuitWizard } from './pages/RecoveryOfMovablePropertySuitWizard';
+import { SetAsideExecutionSaleApplicationWizard } from './pages/SetAsideExecutionSaleApplicationWizard';
+import { SubstitutionLegalRepresentativesApplicationWizard } from './pages/SubstitutionLegalRepresentativesApplicationWizard';
 import { DeclarationSuitWizard } from './pages/DeclarationSuitWizard';
 import { SpecificPerformanceSuitWizard } from './pages/SpecificPerformanceSuitWizard';
 import { PartitionSuitWizard } from './pages/PartitionSuitWizard';
@@ -513,6 +520,39 @@ function AppScreens() {
     if (ct.id === 'ct-suit-partnership-dissolution-accounts') {
       return (
         <PartnershipDissolutionSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-rejection-plaint') {
+      return (
+        <RejectionOfPlaintApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-vacate-injunction') {
+      return (
+        <VacateInjunctionApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-caveat-petition') {
+      return <CaveatPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
+    }
+    if (ct.id === 'ct-suit-rectification-instrument') {
+      return (
+        <RectificationOfInstrumentSuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-suit-recovery-movable-property') {
+      return (
+        <RecoveryOfMovablePropertySuitWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-set-aside-execution-sale') {
+      return (
+        <SetAsideExecutionSaleApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-substitution-legal-representatives') {
+      return (
+        <SubstitutionLegalRepresentativesApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-suit-declaration') {
