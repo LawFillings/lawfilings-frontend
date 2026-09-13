@@ -62,7 +62,10 @@ export function AppSidebar({
 }: Props) {
   const { user, logout } = useAuth();
   const { t } = useLanguage();
+  const [isCauseListExpanded, setIsCauseListExpanded] = useState(false);
+  const [isLegalToolsExpanded, setIsLegalToolsExpanded] = useState(false);
   const [isLawLibraryExpanded, setIsLawLibraryExpanded] = useState(false);
+  const [isMoreExpanded, setIsMoreExpanded] = useState(false);
 
   const close = onCloseMobileMenu;
   const go = (fn: () => void) => () => {
@@ -95,10 +98,60 @@ export function AppSidebar({
           </button>
         </div>
 
+        {/* Order and grouping mirror TopNav's horizontal bar (see TopNav.tsx) so the two feel like
+            the same menu at different widths: Home, Start a Filing, Cause List, Legal Tools,
+            Acts & Rules, Case Law, My Cases, More. */}
         <nav className="app-sidebar-links">
           <button className="app-sidebar-link" onClick={go(onGoHome)}>
             {t.nav.home}
           </button>
+
+          <button className="app-sidebar-link app-sidebar-cta" onClick={go(onStartFiling)}>
+            {t.nav.startAFiling}
+          </button>
+
+          <button
+            className="app-sidebar-link app-sidebar-expand-btn"
+            aria-expanded={isCauseListExpanded}
+            onClick={() => setIsCauseListExpanded((open) => !open)}
+          >
+            {t.nav.causeList}
+            <span className="app-sidebar-expand-caret" aria-hidden="true">
+              {isCauseListExpanded ? '▾' : '▸'}
+            </span>
+          </button>
+          {isCauseListExpanded && (
+            <div className="app-sidebar-submenu">
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenCauseListBasic)}>
+                {t.nav.causeList} (Basic)
+              </button>
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenCauseListPro)}>
+                {t.nav.causeList} (Pro)
+              </button>
+            </div>
+          )}
+
+          <button
+            className="app-sidebar-link app-sidebar-expand-btn"
+            aria-expanded={isLegalToolsExpanded}
+            onClick={() => setIsLegalToolsExpanded((open) => !open)}
+          >
+            {t.nav.legalTools}
+            <span className="app-sidebar-expand-caret" aria-hidden="true">
+              {isLegalToolsExpanded ? '▾' : '▸'}
+            </span>
+          </button>
+          {isLegalToolsExpanded && (
+            <div className="app-sidebar-submenu">
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenCourtFeeCalculator)}>
+                {t.nav.courtFeeCalculator}
+              </button>
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenTranslateDocument)}>
+                {t.nav.translateDocument}
+              </button>
+            </div>
+          )}
+
           <button
             className="app-sidebar-link app-sidebar-expand-btn"
             aria-expanded={isLawLibraryExpanded}
@@ -121,30 +174,41 @@ export function AppSidebar({
               ))}
             </div>
           )}
+
           <button className="app-sidebar-link" onClick={go(onOpenCaseLawSearch)}>
             {t.nav.caseLaw}
           </button>
-          <button className="app-sidebar-link" onClick={go(onOpenCourtFeeCalculator)}>
-            {t.nav.courtFeeCalculator}
+
+          {user && (
+            <button className="app-sidebar-link" onClick={go(onOpenMyCases)}>
+              {t.nav.myCases}
+            </button>
+          )}
+
+          <button
+            className="app-sidebar-link app-sidebar-expand-btn"
+            aria-expanded={isMoreExpanded}
+            onClick={() => setIsMoreExpanded((open) => !open)}
+          >
+            {t.nav.more}
+            <span className="app-sidebar-expand-caret" aria-hidden="true">
+              {isMoreExpanded ? '▾' : '▸'}
+            </span>
           </button>
-          <button className="app-sidebar-link" onClick={go(onOpenTranslateDocument)}>
-            {t.nav.translateDocument}
-          </button>
-          <button className="app-sidebar-link" onClick={go(onOpenCauseListBasic)}>
-            {t.nav.causeList} (Basic)
-          </button>
-          <button className="app-sidebar-link" onClick={go(onOpenCauseListPro)}>
-            {t.nav.causeList} (Pro)
-          </button>
-          <button className="app-sidebar-link" onClick={go(onOpenPricing)}>
-            {t.nav.pricing}
-          </button>
-          <button className="app-sidebar-link" onClick={go(onOpenAbout)}>
-            {t.nav.about}
-          </button>
-          <button className="app-sidebar-link" onClick={go(onOpenContact)}>
-            {t.nav.contact}
-          </button>
+          {isMoreExpanded && (
+            <div className="app-sidebar-submenu">
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenPricing)}>
+                {t.nav.pricing}
+              </button>
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenAbout)}>
+                {t.nav.about}
+              </button>
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenContact)}>
+                {t.nav.contact}
+              </button>
+            </div>
+          )}
+
           {isLandingPage && (
             <>
               <a className="app-sidebar-link" href="#how-it-works" onClick={close}>
@@ -159,12 +223,10 @@ export function AppSidebar({
 
         <div className="app-sidebar-divider" />
 
+        {/* Account-only items TopNav doesn't carry (see TopNav.tsx's doc comment). */}
         <nav className="app-sidebar-links">
           {user ? (
             <>
-              <button className="app-sidebar-link" onClick={go(onOpenMyCases)}>
-                {t.nav.myCases}
-              </button>
               <button className="app-sidebar-link" onClick={go(onOpenBilling)}>
                 {t.nav.billing}
               </button>
@@ -178,10 +240,6 @@ export function AppSidebar({
             </button>
           )}
         </nav>
-
-        <button className="app-sidebar-cta" onClick={go(onStartFiling)}>
-          {t.nav.startAFiling}
-        </button>
 
         <div className="app-sidebar-footer">
           <LanguageSwitcher compact className="app-sidebar-link" />
