@@ -15,6 +15,15 @@ export const forums: Forum[] = [
   { id: 'f-dc', name: 'District Court', forumType: 'district_court', advocateMandatory: false },
   { id: 'f-hc', name: 'High Court', forumType: 'high_court', advocateMandatory: false },
   { id: 'f-sc', name: 'Supreme Court', forumType: 'supreme_court', advocateMandatory: true },
+  // Tax Matters — a fourth pillar alongside DRT/DRAT and NCLT/NCLAT above, covering Income Tax,
+  // GST, and Customs/Excise/Service Tax. Unlike DRT/DRAT (kept as separate tabs), each of these
+  // three tax regimes has its own two-tier appellate structure (a first appeal to a departmental
+  // appellate authority, then a second appeal to a dedicated Tribunal) that's specific to that one
+  // regime — so rather than six-plus separate tabs, they're grouped under this single forum, with
+  // Home.tsx rendering Income Tax/GST/Customs & Excise as a top-category tier (each item's
+  // `topCategory`), mirroring the pattern already used for district_court's Civil/Criminal/Family
+  // split above.
+  { id: 'f-tax', name: 'Tax Matters', forumType: 'tax_matters', advocateMandatory: false },
   // Umbrella tab for filings that don't belong under any single court/tribunal — pre-litigation
   // letters, private deeds, criminal-court applications and complaints. Each wizard resolves its
   // own actual forum/court internally (from user choices), independent of this shared forumType,
@@ -1383,16 +1392,159 @@ export const caseTypes: CaseType[] = [
     limitationDays: 365,
     subcategory: 'sc-special-jurisdiction',
   },
+  {
+    id: 'ct-cit-appeal',
+    forumType: 'tax_matters',
+    topCategory: 'income_tax',
+    name: 'Appeal Against Assessment/Demand Order',
+    governingLaw: 'The Income-tax Act, 2025, Sections 357 & 358',
+    plainLanguageSummary:
+      "File this before the Commissioner (Appeals) — or Joint Commissioner (Appeals) — to challenge an assessment, reassessment, or penalty order, or to dispute a demand raised against you, within 30 days of the notice of demand or the order being served on you.",
+    applicantEligibility: 'assessee_aggrieved_by_an_assessment_reassessment_or_penalty_order',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 30,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-cit-stay-application',
+    forumType: 'tax_matters',
+    topCategory: 'income_tax',
+    name: 'Stay of Demand Application',
+    governingLaw: 'The Income-tax Act, 2025, Section 411(12)',
+    plainLanguageSummary:
+      "File this with the Assessing Officer alongside — or soon after — your appeal to the Commissioner (Appeals), asking to be treated as not in default on the disputed demand, and recovery held back, until the appeal is decided.",
+    applicantEligibility: 'assessee_who_has_filed_or_intends_to_file_a_cit_appeals_appeal',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
+    id: 'ct-itat-appeal',
+    forumType: 'tax_matters',
+    topCategory: 'income_tax',
+    name: 'Appeal Against CIT(Appeals) Order',
+    governingLaw: 'The Income-tax Act, 2025, Section 362',
+    plainLanguageSummary:
+      "File this before the Income Tax Appellate Tribunal to challenge an order passed by the Commissioner (Appeals) or Joint Commissioner (Appeals) — within two months from the end of the month in which that order was communicated to you.",
+    applicantEligibility: 'assessee_aggrieved_by_a_cit_appeals_order',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 60,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-itat-stay-application',
+    forumType: 'tax_matters',
+    topCategory: 'income_tax',
+    name: 'Stay Application (ITAT)',
+    governingLaw: 'The Income-tax Act, 2025, Section 362(8)',
+    plainLanguageSummary:
+      "File this alongside — or soon after — your appeal to the Tribunal, asking it to stay recovery of the disputed demand while the appeal is pending. The Tribunal may grant a stay for up to 180 days at a time, subject to depositing part of the disputed amount or furnishing security, up to an overall cap of 365 days.",
+    applicantEligibility: 'assessee_who_has_filed_or_intends_to_file_an_itat_appeal',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
+    id: 'ct-itat-rectification',
+    forumType: 'tax_matters',
+    topCategory: 'income_tax',
+    name: 'Rectification Application (ITAT)',
+    governingLaw: 'The Income-tax Act, 2025, Section 363',
+    plainLanguageSummary:
+      "File this to have the Tribunal correct a mistake apparent from the record in its own order — not to reargue the merits or reappreciate evidence — within six months from the end of the month the order was passed.",
+    applicantEligibility: 'assessee_or_assessing_officer_pointing_out_a_mistake_in_an_itat_order',
+    filingCategory: 'interlocutory',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 180,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-gst-appeal-first',
+    forumType: 'tax_matters',
+    topCategory: 'gst',
+    name: 'Appeal Against Adjudication Order',
+    governingLaw: 'The Central Goods and Services Tax Act, 2017, Section 107',
+    plainLanguageSummary:
+      "File this before the Appellate Authority to challenge a demand, adjudication, or other order passed against you under the GST Act — within three months of the order being communicated (a further one month is condonable for sufficient cause). Requires paying the admitted amount in full, plus 10% of the disputed tax (capped at ₹20 crore), before the appeal can be filed.",
+    applicantEligibility: 'person_aggrieved_by_a_gst_adjudication_order',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 90,
+    condonableExtensionDays: 30,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-gstat-appeal',
+    forumType: 'tax_matters',
+    topCategory: 'gst',
+    name: 'Appeal Against Appellate Authority Order',
+    governingLaw: 'The Central Goods and Services Tax Act, 2017, Section 112',
+    plainLanguageSummary:
+      "File this before the GST Appellate Tribunal to challenge an order passed by the Appellate Authority — within three months of the order being communicated (a further three months is condonable for sufficient cause). Requires paying the admitted amount in full, plus a further 10% of the disputed tax over and above what was already deposited for the first appeal, capped at ₹20 crore.",
+    applicantEligibility: 'person_aggrieved_by_a_gst_appellate_authority_order',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 90,
+    condonableExtensionDays: 90,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-gstat-rectification',
+    forumType: 'tax_matters',
+    topCategory: 'gst',
+    name: 'Rectification Application (GSTAT)',
+    governingLaw: 'The Central Goods and Services Tax Act, 2017, Section 161',
+    plainLanguageSummary:
+      "File this to have an error apparent on the face of the record in a GST order corrected — including an order of the Appellate Authority or the Appellate Tribunal — within three months of the order being issued. A purely clerical or arithmetical slip can be corrected beyond that window; anything else cannot be rectified after six months.",
+    applicantEligibility: 'affected_person_pointing_out_an_error_in_a_gst_order',
+    filingCategory: 'interlocutory',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 90,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-cestat-appeal',
+    forumType: 'tax_matters',
+    topCategory: 'customs_excise',
+    name: 'Appeal to CESTAT',
+    governingLaw: 'Customs Act, 1962, Section 129A / Central Excise Act, 1944, Section 35B / Finance Act, 1994, Section 86 (Service Tax)',
+    plainLanguageSummary:
+      "File this before CESTAT to challenge an order passed by a Commissioner (as adjudicating authority) or a Commissioner (Appeals) — in a Customs, Central Excise, or (legacy) Service Tax matter — within three months of the order being communicated or received. A pre-deposit (commonly 7.5%-10% of the duty/penalty in dispute) is required before the appeal will be entertained — confirm the exact rate and cap for your matter.",
+    applicantEligibility: 'person_aggrieved_by_a_customs_excise_or_service_tax_order',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 90,
+    parentRequired: true,
+  },
+  {
+    id: 'ct-cestat-rectification',
+    forumType: 'tax_matters',
+    topCategory: 'customs_excise',
+    name: 'Rectification of Mistake Application (CESTAT)',
+    governingLaw: 'Customs Act, 1962, Section 129B(2) / Central Excise Act, 1944, Section 35C(2) / Finance Act, 1994, Section 83 read with Section 35C(2) (Service Tax)',
+    plainLanguageSummary:
+      "File this to have CESTAT correct a mistake apparent from the record in its own order — not to reargue the merits — within six months from the date of the order.",
+    applicantEligibility: 'party_or_commissioner_pointing_out_a_mistake_in_a_cestat_order',
+    filingCategory: 'interlocutory',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 180,
+    parentRequired: true,
+  },
 ];
 
-// Top-level groups within district_court, one per genuinely distinct jurisdiction heard by that
-// same subordinate judiciary (see the `forums` array's comment on 'f-dc'). Home.tsx shows these as
-// a tab tier above the subcategory tabs below, when a forum's visible case types all carry a
-// `topCategory`.
-export const topCategories: { key: 'civil' | 'criminal' | 'family'; label: string }[] = [
+// Top-level groups within a single forum, one per genuinely distinct jurisdiction/regime grouped
+// under that forum's tab for navigation (see the `forums` array's comments on 'f-dc' and 'f-tax').
+// Home.tsx shows these as a tab tier above the subcategory tabs below, when a forum's visible
+// case types all carry a `topCategory`. A single shared flat namespace across forums, same as
+// `caseTypeSubcategories` below — Home.tsx filters it down to keys actually present in the
+// current forum's case types.
+export const topCategories: { key: string; label: string }[] = [
   { key: 'civil', label: 'Civil Matters' },
   { key: 'criminal', label: 'Criminal Matters' },
   { key: 'family', label: 'Family Matters' },
+  { key: 'income_tax', label: 'Income Tax' },
+  { key: 'gst', label: 'GST' },
+  { key: 'customs_excise', label: 'Customs & Excise' },
 ];
 
 // Subject-matter groupings for forums (or, within district_court, top-categories) whose case-type

@@ -24,7 +24,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
   const { color, widgets } = settings.home;
   const { t } = useLanguage();
   const [selectedForumType, setSelectedForumType] = useState<string | null>(null);
-  const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<'civil' | 'criminal' | 'family' | null>(null);
+  const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<string | null>(null);
   const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
 
   const selectForum = (forumType: string) => {
@@ -33,7 +33,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
     setSelectedSubcategoryKey(null);
   };
 
-  const selectTopCategory = (key: 'civil' | 'criminal' | 'family') => {
+  const selectTopCategory = (key: string) => {
     setSelectedTopCategoryKey((current) => (key === current ? null : key));
     setSelectedSubcategoryKey(null);
   };
@@ -62,10 +62,11 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
     ? appealGroups.filter((g) => g.forumType === selectedForum.forumType)
     : [];
 
-  // Render under headed Civil/Criminal/Family tabs instead of one flat grid once every visible
-  // card for this forum has been assigned a topCategory (currently only district_court, since its
-  // case types span jurisdictions genuinely distinct from each other, unlike a single-purpose
-  // forum like DRT or NCLT).
+  // Render under headed top-category tabs instead of one flat grid once every visible card for
+  // this forum has been assigned a topCategory (currently district_court's Civil/Criminal/Family
+  // and tax_matters' Income Tax/GST/Customs & Excise, since each forum's case types span
+  // jurisdictions/regimes genuinely distinct from each other, unlike a single-purpose forum like
+  // DRT or NCLT).
   const topCategorySections =
     selectedItems.length > 0 && selectedItems.every((ct) => ct.topCategory)
       ? topCategories

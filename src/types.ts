@@ -82,12 +82,13 @@ export interface CaseType {
    *  `caseTypeSubcategories` (mockData.ts) when set. */
   subcategory?: string;
   /** Optional top-level grouping within a single forum whose case types span genuinely distinct
-   *  jurisdictions heard by the same subordinate judiciary (district_court: civil suits, criminal
-   *  matters heard by Magistrates/Sessions Court, and family matters heard by the Family Court —
-   *  all part of the same district-level court system, unlike DRT/NCLT/Consumer Commission, which
-   *  are separate tribunals). Home.tsx renders this as a tab tier above the subcategory tabs when
-   *  every visible item for a forum carries one. */
-  topCategory?: 'civil' | 'criminal' | 'family';
+   *  jurisdictions/regimes grouped under one forum tab for navigation (district_court: civil
+   *  suits, criminal matters heard by Magistrates/Sessions Court, and family matters heard by the
+   *  Family Court — all part of the same district-level court system; tax_matters: Income Tax,
+   *  GST, and Customs & Excise, each with its own two-tier appellate structure). Home.tsx renders
+   *  this as a tab tier above the subcategory tabs when every visible item for a forum carries
+   *  one. Must match a key in `topCategories` (mockData.ts) when set. */
+  topCategory?: string;
 }
 
 export interface ClauseDef {

@@ -538,6 +538,46 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // deliberately distinct from ct-criminal-transfer-petition (BNSS ss.446/447) at district_court,
   // which covers the criminal-case transfer power instead.
   'ct-transfer-petition-civil-sc': [{ actId: 'act-cpc-1908', sectionNo: '25' }],
+  // Appeal Against Assessment/Demand Order (CIT-Appeals) — section 357 is the appealable-orders
+  // list, section 358 the limitation/form provision the wizard's own deadline computation uses.
+  'ct-cit-appeal': [
+    { actId: 'act-income-tax-2025', sectionNo: '357' },
+    { actId: 'act-income-tax-2025', sectionNo: '358' },
+  ],
+  // Stay of Demand Application — the entire filing is a section 411(12) application to the
+  // Assessing Officer.
+  'ct-cit-stay-application': [{ actId: 'act-income-tax-2025', sectionNo: '411' }],
+  // Appeal Against CIT(Appeals) Order (ITAT) — the entire filing is a section 362 appeal.
+  'ct-itat-appeal': [{ actId: 'act-income-tax-2025', sectionNo: '362' }],
+  // Stay Application (ITAT) — subsection (8) of the same section covers the stay-application fee;
+  // cited alongside the main appeal section since a Tribunal stay is inseparable from it.
+  'ct-itat-stay-application': [{ actId: 'act-income-tax-2025', sectionNo: '362' }],
+  // Rectification Application (ITAT) — the entire filing is a section 363 rectification application.
+  'ct-itat-rectification': [{ actId: 'act-income-tax-2025', sectionNo: '363' }],
+  // Appeal Against Adjudication Order (GST first appeal) — the entire filing is a section 107
+  // appeal.
+  'ct-gst-appeal-first': [{ actId: 'act-cgst-2017', sectionNo: '107' }],
+  // Appeal Against Appellate Authority Order (GSTAT) — the entire filing is a section 112 appeal.
+  'ct-gstat-appeal': [{ actId: 'act-cgst-2017', sectionNo: '112' }],
+  // Rectification Application (GSTAT) — the entire filing is a section 161 rectification
+  // application (the CGST Act's only rectification route, covering both appellate stages).
+  'ct-gstat-rectification': [{ actId: 'act-cgst-2017', sectionNo: '161' }],
+  // Appeal to CESTAT — cites all three parent Acts' appeal provisions together, since one CESTAT
+  // wizard covers Customs, Central Excise, and (legacy) Service Tax matters without a dedicated
+  // nature-selection step; the drafter picks whichever actually applies to their matter.
+  'ct-cestat-appeal': [
+    { actId: 'act-customs-1962', sectionNo: '129A' },
+    { actId: 'act-central-excise-1944', sectionNo: '35B' },
+    { actId: 'act-finance-1994', sectionNo: '86' },
+  ],
+  // Rectification of Mistake Application (CESTAT) — same three-Acts-at-once reasoning as the
+  // appeal above; the Finance Act's own bridge (section 83) is cited alongside the Central Excise
+  // rectification provision it imports for service tax matters.
+  'ct-cestat-rectification': [
+    { actId: 'act-customs-1962', sectionNo: '129B' },
+    { actId: 'act-central-excise-1944', sectionNo: '35C' },
+    { actId: 'act-finance-1994', sectionNo: '83' },
+  ],
 };
 
 // Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit

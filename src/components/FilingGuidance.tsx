@@ -16,8 +16,29 @@ export type FilingForum =
   | 'commercialCourt'
   | 'criminalCourt'
   | 'mediationAuthority'
+  | 'citAppeals'
+  | 'itat'
+  | 'gstAppeals'
+  | 'gstat'
+  | 'cestat'
   | 'notFiledNotice'
   | 'notFiledAgreement';
+
+// tax_matters groups five genuinely separate filing destinations (each with its own portal and
+// procedure) under one forum tab — forumType alone can't disambiguate them, so this maps the
+// specific CaseType id instead. See the `forums` array's comment on 'f-tax' in mockData.ts.
+const TAX_CASE_TYPE_TO_FILING_FORUM: Record<string, FilingForum> = {
+  'ct-cit-appeal': 'citAppeals',
+  'ct-cit-stay-application': 'citAppeals',
+  'ct-itat-appeal': 'itat',
+  'ct-itat-stay-application': 'itat',
+  'ct-itat-rectification': 'itat',
+  'ct-gst-appeal-first': 'gstAppeals',
+  'ct-gstat-appeal': 'gstat',
+  'ct-gstat-rectification': 'gstat',
+  'ct-cestat-appeal': 'cestat',
+  'ct-cestat-rectification': 'cestat',
+};
 
 /** Maps a `CaseType`/`Forum`'s raw `forumType` string (e.g. 'DRT', 'NCLAT', 'district_court') to
  *  the FilingGuidance content key — for wizards (Execution, Generic, Appeal) that resolve their
@@ -31,8 +52,11 @@ export type FilingForum =
  *  miscellaneous side, not as an appeal from a lower court) gets 'highCourtOriginal' instead.
  *  Omit it only when the caller's own case types are always one or the other regardless (e.g. a
  *  wizard used exclusively for appeals) — every new call site should pass it.
+ *
+ *  `caseTypeId`, when given, disambiguates 'tax_matters' via TAX_CASE_TYPE_TO_FILING_FORUM above —
+ *  required for that forumType, since forumType alone is the same for all five tax destinations.
  */
-export function forumTypeToFilingForum(forumType: string, filingCategory?: string): FilingForum {
+export function forumTypeToFilingForum(forumType: string, filingCategory?: string, caseTypeId?: string): FilingForum {
   switch (forumType) {
     case 'DRT':
       return 'drt';
@@ -52,6 +76,8 @@ export function forumTypeToFilingForum(forumType: string, filingCategory?: strin
       return 'supremeCourt';
     case 'family_court':
       return 'familyCourt';
+    case 'tax_matters':
+      return (caseTypeId && TAX_CASE_TYPE_TO_FILING_FORUM[caseTypeId]) || 'districtCourt';
     default:
       return 'districtCourt';
   }
