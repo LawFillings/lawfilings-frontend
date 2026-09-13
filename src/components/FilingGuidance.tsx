@@ -24,8 +24,15 @@ export type FilingForum =
  *  forum dynamically from a selected CaseType rather than having a single fixed forum of their
  *  own. Falls back to 'districtCourt' for an unrecognised value, since that's the most generic
  *  "goes to a physical court registry" guidance rather than something DRT/NCLT-specific.
+ *
+ *  `filingCategory`, when given, disambiguates 'high_court': an 'appeal' (memorandum of appeal,
+ *  certified copy of the decree, ad valorem fee) gets 'highCourt', while anything else (a writ,
+ *  habeas corpus, contempt, election petition, and the like — filed directly on the original/
+ *  miscellaneous side, not as an appeal from a lower court) gets 'highCourtOriginal' instead.
+ *  Omit it only when the caller's own case types are always one or the other regardless (e.g. a
+ *  wizard used exclusively for appeals) — every new call site should pass it.
  */
-export function forumTypeToFilingForum(forumType: string): FilingForum {
+export function forumTypeToFilingForum(forumType: string, filingCategory?: string): FilingForum {
   switch (forumType) {
     case 'DRT':
       return 'drt';
@@ -40,7 +47,9 @@ export function forumTypeToFilingForum(forumType: string): FilingForum {
     case 'district_court':
       return 'districtCourt';
     case 'high_court':
-      return 'highCourt';
+      return filingCategory && filingCategory !== 'appeal' ? 'highCourtOriginal' : 'highCourt';
+    case 'supreme_court':
+      return 'supremeCourt';
     case 'family_court':
       return 'familyCourt';
     default:

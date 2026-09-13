@@ -562,7 +562,7 @@ export function GenericCaseWizard({
             <h4 style={{ marginTop: 'var(--space-6)' }}>Part III — Affidavit</h4>
             <DraftDocument title={`${caseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
-            <FilingGuidance forum={forumTypeToFilingForum(caseType.forumType)} />
+            <FilingGuidance forum={forumTypeToFilingForum(caseType.forumType, caseType.filingCategory)} />
 
             <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
               <p

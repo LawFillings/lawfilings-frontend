@@ -461,6 +461,83 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-constitution-india', sectionNo: 'Article 136' },
     { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XXI, Rule 1' },
   ],
+  // Special Leave Petition (Criminal) — same Article 136 discretion and same Order XXI Rule 1
+  // limitation period as the civil SLP above; the wizard's own nature (civil/criminal) only
+  // changes which cause of action the petition recites, not the citation.
+  'ct-slp-criminal': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 136' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XXI, Rule 1' },
+  ],
+  // Writ Petition (Article 227) — the entire filing is an Article 227 petition invoking the High
+  // Court's supervisory (not writ) jurisdiction; deliberately not merged with Article 226 above.
+  'ct-writ-petition-227': [{ actId: 'act-constitution-india', sectionNo: 'Article 227' }],
+  // Habeas Corpus Petition — Article 226 is the High Court's own writ jurisdiction; Article 21
+  // (personal liberty) is the underlying right the writ enforces.
+  'ct-habeas-corpus-hc': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 226' },
+    { actId: 'act-constitution-india', sectionNo: 'Article 21' },
+  ],
+  // Second Appeal — the entire filing is a Section 100 appeal; Article 116 (Limitation Act) fixes
+  // the 90-day period the wizard computes against.
+  'ct-second-appeal': [
+    { actId: 'act-cpc-1908', sectionNo: '100' },
+    { actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 116' },
+  ],
+  // Letters Patent Appeal — deliberately no citation here: the Letters Patent itself is a Presidency-
+  // era Charter document, not an Act sourced into this Library (see the case type's own governingLaw
+  // field for the caveat that the exact clause varies by High Court). Article 117 (Limitation Act)
+  // is still cited, since that part is a uniform central-Act provision regardless of which Letters
+  // Patent clause applies.
+  'ct-letters-patent-appeal': [{ actId: 'act-limitation-1963', sectionNo: 'Schedule, Article 117' }],
+  // Contempt Petition (High Court and Supreme Court) — Section 2 supplies the civil/criminal
+  // contempt definitions, Section 12 the punishment, Section 15 the cognizance gateway for criminal
+  // contempt moved by someone other than the court itself; Section 20's one-year bar is the
+  // limitation the wizard computes against. Same citations for both courts since the Act applies
+  // identically to each; the constitutional source of the power differs (Article 215 for the High
+  // Court, Article 129 for the Supreme Court) and is added only for the Supreme Court entry below.
+  'ct-contempt-petition-hc': [
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '2' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '12' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '15' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '20' },
+  ],
+  'ct-contempt-petition-sc': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 129' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '2' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '12' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '15' },
+    { actId: 'act-contempt-of-courts-1971', sectionNo: '20' },
+  ],
+  // Election Petition — Section 80 bars any other route to challenge an election; Section 81 fixes
+  // who may petition, and the 45-day limitation the wizard computes against.
+  'ct-election-petition': [
+    { actId: 'act-representation-of-the-people-1951', sectionNo: '80' },
+    { actId: 'act-representation-of-the-people-1951', sectionNo: '81' },
+  ],
+  // Writ Petition (Article 32) — the entire filing is an Article 32 petition, the Supreme Court's
+  // own (not supervisory) jurisdiction to enforce a fundamental right directly.
+  'ct-writ-petition-32': [{ actId: 'act-constitution-india', sectionNo: 'Article 32' }],
+  // Review Petition (Supreme Court) — Article 137 is the constitutional power; Order XLVII Rule 1
+  // fixes the grounds and the Advocate-on-Record certificate, Rule 2 the 30-day limitation the
+  // wizard computes against.
+  'ct-review-petition-sc': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 137' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XLVII, Rule 1' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XLVII, Rule 2' },
+  ],
+  // Curative Petition — Article 142 is the constitutional "complete justice" power the remedy is
+  // grounded in; Order XLVIII Rules 1-3 fix the procedure (governing judgment, certificates, and
+  // the "within reasonable time" limitation) laid down in Rupa Ashok Hurra v. Ashok Hurra.
+  'ct-curative-petition-sc': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 142' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XLVIII, Rule 1' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XLVIII, Rule 2' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XLVIII, Rule 3' },
+  ],
+  // Transfer Petition (Civil, Supreme Court) — the entire filing is a Section 25 CPC application;
+  // deliberately distinct from ct-criminal-transfer-petition (BNSS ss.446/447) at district_court,
+  // which covers the criminal-case transfer power instead.
+  'ct-transfer-petition-civil-sc': [{ actId: 'act-cpc-1908', sectionNo: '25' }],
 };
 
 // Suit for Possession/Eviction forks on the wizard's own "basis" step between a title-based suit

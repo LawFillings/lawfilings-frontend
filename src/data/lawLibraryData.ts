@@ -3045,6 +3045,11 @@ export const acts: Act[] = [
         text: 'Subject to the limitations aforesaid, every suit shall be instituted in a Court within the local limits of whose jurisdiction— (a) the defendant, or each of the defendants where there are more than one, at the time of the commencement of the suit, actually and voluntarily resides, or carries on business, or personally works for gain; or (b) any of the defendants, where there are more than one, at the time of the commencement of the suit, actually and voluntarily resides, or carries on business, or personally works for gain, provided that in such case either the leave of the Court is given, or the defendants who do not reside, or carry on business, or personally work for gain, as aforesaid, acquiesce in such institution; or (c) the cause of action, wholly or in part, arises. Explanation.—A corporation shall be deemed to carry on business at its sole or principal office in India or, in respect of any cause of action arising at any place where it has also a subordinate office, at such place.',
       },
       {
+        sectionNo: '25',
+        heading: 'Power of Supreme Court to transfer suits, etc.',
+        text: '(1) On the application of a party, and after notice to the parties, and after hearing such of them as desire to be heard, the Supreme Court may, at any stage, if satisfied that an order under this section is expedient for the ends of justice, direct that any suit, appeal or other proceeding be transferred from a High Court or other Civil Court in one State to a High Court or other Civil Court in any other State. (2) Every application under this section shall be made by a motion which shall be supported by an affidavit. (3) The Court to which such suit, appeal or other proceeding is transferred shall, subject to any special directions in the order of transfer, either retry it or proceed from the stage at which it was transferred to it. (4) In dismissing any application under this section, the Supreme Court may, if it is of opinion that the application was frivolous or vexatious, order the applicant to pay by way of compensation to any person who has opposed the application such sum, not exceeding two thousand rupees, as it considers appropriate in the circumstances of the case. (5) The law applicable to any suit, appeal or other proceeding transferred under this section shall be the law which the Court in which the suit, appeal or other proceeding was originally instituted ought to have applied to such suit, appeal or proceeding. [Note: this section applies only to an inter-State transfer — between a High Court/civil court in one State and one in another State under Article 214 of the Constitution — not where both courts fall under one common High Court exercising jurisdiction over more than one State (Article 231); a transfer petition between courts within the same State\'s jurisdiction instead goes to that State\'s own High Court under section 24 of this Code, not to the Supreme Court.]',
+      },
+      {
         sectionNo: '34',
         heading: 'Interest',
         text: 'Where and in so far as a decree is for the payment of money, the Court may, in the decree, order interest at such rate as the Court deems reasonable to be paid on the principal sum adjudged, from the date of the suit to the date of the decree, in addition to any interest adjudged on such principal sum for any period prior to the institution of the suit, with further interest at such rate not exceeding six per cent per annum as the Court deems reasonable on such principal sum, from the date of the decree to the date of payment, or to such earlier date as the Court thinks fit: Provided that where the liability in relation to the sum so adjudged had arisen out of a commercial transaction, the rate of such further interest may exceed six per cent per annum, but shall not exceed the contractual rate of interest or, where there is no contractual rate, the rate at which moneys are lent or advanced by nationalised banks in relation to commercial transactions. [Note: this is the provision behind every money-recovery wizard\'s interest claim — a plaint should plead whether the claim is a "commercial transaction" within this section\'s meaning, since that alone unlocks a post-decree rate above 6% p.a.]',
@@ -3063,6 +3068,11 @@ export const acts: Act[] = [
         sectionNo: '96',
         heading: 'Appeal from original decree',
         text: '(1) Save where otherwise expressly provided in the body of this Code or by any other law for the time being in force, an appeal shall lie from every decree passed by any Court exercising original jurisdiction to the Court authorized to hear appeals from the decisions of such Court. (2) An appeal may lie from an original decree passed ex parte. (3) No appeal shall lie from a decree passed by the Court with the consent of parties. (4) No appeal shall lie, except on a question of law, from a decree in any suit of the nature cognizable by Courts of Small Causes, when the amount or value of the subject-matter of the original suit does not exceed three thousand rupees. [Note: this is the foundational "right to appeal" provision behind a First Appeal from a District Court decree to the High Court — the appeal itself is filed as a memorandum of appeal under Order XLI, and its limitation period is governed by Article 116 of the Limitation Act, 1963 (also in this Library) — 90 days to a High Court, 30 days to any other appellate court.]',
+      },
+      {
+        sectionNo: '100',
+        heading: 'Second appeal',
+        text: '(1) Save as otherwise expressly provided in the body of this Code or by any other law for the time being in force, an appeal shall lie to the High Court from every decree passed in appeal by any Court subordinate to the High Court, if the High Court is satisfied that the case involves a substantial question of law. (2) An appeal may lie under this section from an appellate decree passed ex parte. (3) In an appeal under this section, the memorandum of appeal shall precisely state the substantial question of law involved in the appeal. (4) Where the High Court is satisfied that a substantial question of law is involved in any case, it shall formulate that question. (5) The appeal shall be heard on the question so formulated and the respondent shall, at the hearing of the appeal, be allowed to argue that the case does not involve such question: Provided that nothing in this sub-section shall be deemed to take away or abridge the power of the Court to hear, for reasons to be recorded, the appeal on any other substantial question of law, not formulated by it, if it is satisfied that the case involves such question. [Note: a second appeal lies only on a substantial question of law — the High Court cannot reappreciate evidence or disturb concurrent findings of fact, however erroneous, unless they are shown to be perverse or based on no evidence. The limitation period is 90 days from the date of the decree or order appealed from (Article 116, Limitation Act, 1963, also in this Library — the same provision governing a First Appeal under section 96).]',
       },
       {
         sectionNo: 'Order XXXIX, Rule 1',
@@ -3392,7 +3402,12 @@ export const acts: Act[] = [
       {
         sectionNo: 'Schedule, Article 116',
         heading: 'Appeal under the Code of Civil Procedure, 1908',
-        text: '(a) To a High Court from any decree or order: period of limitation ninety days, running from the date of the decree or order. (b) To any other Court from any decree or order: period of limitation thirty days, running from the date of the decree or order. [Note: this is the governing period for a First Appeal from a District Court decree to the High Court under section 96 of the Code of Civil Procedure, 1908 (also in this Library) — 90 days, not the 30-day period that applies to an appeal to any other (non-High Court) appellate court. Article 117 separately fixes 30 days for an appeal from a decree or order of a High Court to the same High Court (e.g. a Letters Patent Appeal), not reproduced here.]',
+        text: '(a) To a High Court from any decree or order: period of limitation ninety days, running from the date of the decree or order. (b) To any other Court from any decree or order: period of limitation thirty days, running from the date of the decree or order. [Note: this is the governing period for a First Appeal from a District Court decree to the High Court under section 96 of the Code of Civil Procedure, 1908 (also in this Library) — 90 days, not the 30-day period that applies to an appeal to any other (non-High Court) appellate court. Article 117 separately fixes 30 days for an appeal from a decree or order of a High Court to the same High Court (e.g. a Letters Patent Appeal).]',
+      },
+      {
+        sectionNo: 'Schedule, Article 117',
+        heading: 'Appeal from a decree or order of a High Court to the same Court',
+        text: 'From a decree or order of any High Court to the same Court: period of limitation thirty days, running from the date of the decree or order. [Note: this is the governing period for a Letters Patent Appeal (or other intra-High-Court appeal, e.g. from a Single Judge to a Division Bench) — a much shorter window than the 90 days Article 116 allows for an ordinary appeal from a subordinate court to the High Court, since both sides already litigated the matter within the same High Court.]',
       },
       {
         sectionNo: 'Schedule, Article 123',
@@ -9621,6 +9636,101 @@ export const acts: Act[] = [
         sectionNo: 'Order XXI, Rule 1',
         heading: 'Limitation for special leave petitions (civil)',
         text: "1. Where certificate of fitness to appeal to the Court was refused in a case by the High Court, a petition for special leave to appeal to the Court shall, subject to the provisions of sections 4, 5, 12 and 14 of the Limitation Act, 1963 (36 of 1963), be lodged in the Court within sixty days from the date of the order of refusal and in any other case within ninety days from the date of the Judgment or Order sought to be appealed from: Provided that where an application for leave to appeal to the High Court from the Judgment of a single Judge of that Court has been made and refused, in computing the period of limitation in that case under this rule, the period from the making of that application and the rejection thereof shall also be excluded. Explanation.—For purposes of this rule, the expression 'order of refusal' means the order refusing to grant the certificate under article 134A of the Constitution being a certificate of the nature referred to in article 132 or article 133 of the Constitution on merits and shall not include an order rejecting the application on the ground of limitation or on the ground that such an application is not maintainable. [Note: the ninety-day period from the date of the impugned judgment or order is the one that applies to the ordinary case — a petitioner who goes straight to the Supreme Court under Article 136 without first seeking a certificate of fitness to appeal from the High Court under Article 132/133/134A. The sixty-day period is a narrower alternative that only starts running where that certificate route was tried first and refused.]",
+      },
+      {
+        sectionNo: 'Order XLVII, Rule 1',
+        heading: 'Review — grounds',
+        text: 'The Court may review its judgment or order, but no application for review will be entertained in a civil proceeding except on the ground mentioned in Order XLVII, rule 1 of the Code, and in a criminal proceeding except on the ground of an error apparent on the face of the record. The application for review shall be accompanied by a certificate of the Advocate-on-Record certifying that it is the first application for review and is based on the grounds admissible under the Rules. [Note: "the ground mentioned in Order XLVII, rule 1 of the Code" refers to Order XLVII, Rule 1 of the Code of Civil Procedure, 1908 (also in this Library) — discovery of new and important matter or evidence not within the applicant\'s knowledge or which could not be produced earlier despite due diligence, a mistake or error apparent on the face of the record, or any other sufficient reason.]',
+      },
+      {
+        sectionNo: 'Order XLVII, Rule 2',
+        heading: 'Review — form and limitation',
+        text: 'Every application for review shall be by a petition, and shall be filed within thirty days from the date of the judgment or order sought to be reviewed. It shall set out clearly the grounds for review.',
+      },
+      {
+        sectionNo: 'Order XLVII, Rule 3',
+        heading: 'Review — disposal by circulation',
+        text: 'Every application for review shall as far as practicable be circulated, without oral arguments, to the same Judge or Bench of Judges that delivered the Judgment or order sought to be reviewed, unless otherwise ordered by the Court, and shall be disposed of by circulation without any oral arguments, but the petitioner may supplement his petition by additional written arguments. The Court may either dismiss the petition or allow it and order that the case be re-heard.',
+      },
+      {
+        sectionNo: 'Order XLVII, Rule 5',
+        heading: 'Review — no further application',
+        text: 'Where an application for review has been disposed of, no further application for review shall be entertained in the same matter.',
+      },
+      {
+        sectionNo: 'Order XLVIII, Rule 1',
+        heading: 'Curative petition — governing judgment',
+        text: 'Curative Petitions shall be governed by Judgment of the Court dated 10th April, 2002 delivered in the case of Rupa Ashok Hurra v. Ashok Hurra and Ors.',
+      },
+      {
+        sectionNo: 'Order XLVIII, Rule 2',
+        heading: 'Curative petition — averment and certificates',
+        text: 'The petitioner, in the curative petition, shall aver specifically that the grounds mentioned therein had been taken in the Review Petition and that it was dismissed by circulation. A Curative Petition shall be accompanied by a certificate of the Senior Advocate that the petition meets the requirements delineated in Rupa Ashok Hurra v. Ashok Hurra and Ors. A curative petition shall be accompanied by a certificate of the Advocate-on-Record to the effect that it is the first curative petition in the impugned matter.',
+      },
+      {
+        sectionNo: 'Order XLVIII, Rule 3',
+        heading: 'Curative petition — limitation',
+        text: 'The Curative Petition shall be filed within reasonable time from the date of Judgment or Order passed in the Review Petition.',
+      },
+      {
+        sectionNo: 'Order XLVIII, Rule 4',
+        heading: 'Curative petition — circulation and disposal',
+        text: 'The curative petition shall be first circulated to a Bench of the three senior-most Judges and the Judges who passed the judgment complained of, if available. Unless otherwise ordered by the Court, a curative petition shall be disposed of by circulation without any oral arguments, but the petitioner may supplement his petition by additional written arguments. If the Bench before which a curative petition was circulated concludes by a majority that the matter needs hearing then it shall be listed before the same Bench, as far as possible. If the Court, at any stage, comes to the conclusion that the petition is without any merit and vexatious, it may impose exemplary costs on the petitioner. [Note: a curative petition is the remedy of last resort after a review petition has been dismissed, grounded in Article 142 of the Constitution (also in this Library) rather than any statute — the Supreme Court fashioned it in Rupa Ashok Hurra v. Ashok Hurra, (2002) 4 SCC 388, to prevent abuse of process and cure a gross miscarriage of justice in the rarest of cases.]',
+      },
+    ],
+  },
+  {
+    id: 'act-contempt-of-courts-1971',
+    shortTitle: 'The Contempt of Courts Act, 1971',
+    year: 1971,
+    actNumber: '70 of 1971',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1595/1/A1971-70.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions',
+        text: 'In this Act, unless the context otherwise requires,— (a) "contempt of court" means civil contempt or criminal contempt; (b) "civil contempt" means wilful disobedience to any judgment, decree, direction, order, writ or other process of a court or wilful breach of an undertaking given to a court; (c) "criminal contempt" means the publication (whether by words, spoken or written, or by signs, or by visible representation, or otherwise) of any matter or the doing of any other act whatsoever which— (i) scandalises or tends to scandalise, or lowers or tends to lower the authority of, any court; or (ii) prejudices, or interferes or tends to interfere with, the due course of any judicial proceeding; or (iii) interferes or tends to interfere with, or obstructs or tends to obstruct, the administration of justice in any other manner; (d) "High Court" means the High Court for a State or a Union territory, and includes the court of the Judicial Commissioner in any Union territory.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Punishment for contempt of court',
+        text: '(1) Save as otherwise expressly provided in this Act or in any other law, a contempt of court may be punished with simple imprisonment for a term which may extend to six months, or with fine which may extend to two thousand rupees, or with both: Provided that the accused may be discharged or the punishment awarded may be remitted on apology being made to the satisfaction of the court. Explanation.—An apology shall not be rejected merely on the ground that it is qualified or conditional if the accused makes it bona fide. (2) Notwithstanding anything contained in any other law for the time being in force, no court shall impose a sentence in excess of that specified in sub-section (1) for any contempt either in respect of itself or of a court subordinate to it. (3) Notwithstanding anything contained in this section, where a person is found guilty of a civil contempt, the court, if it considers that a fine will not meet the ends of justice and that a sentence of imprisonment is necessary shall, instead of sentencing him to simple imprisonment, direct that he be detained in a civil prison for such period not exceeding six months as it may think fit. (4) Where the person found guilty of contempt of court in respect of any undertaking given to a court is a company, every person who, at the time the contempt was committed, was in charge of, and was responsible to, the company for the conduct of business of the company, as well as the company, shall be deemed to be guilty of the contempt and the punishment may be enforced, with the leave of the court, by the detention in civil prison of each such person: Provided that nothing contained in this sub-section shall render any such person liable to such punishment if he proves that the contempt was committed without his knowledge or that he exercised all due diligence to prevent its commission.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Procedure where contempt is in the face of the Supreme Court or a High Court',
+        text: '(1) When it is alleged, or appears to the Supreme Court or the High Court upon its own view, that a person has been guilty of contempt committed in its presence or hearing, the court may cause such person to be detained in custody, and, at any time before the rising of the court, on the same day, or as early as possible thereafter, shall— (a) cause him to be informed in writing of the contempt with which he is charged; (b) afford him an opportunity to make his defence to the charge; (c) after taking such evidence as may be necessary or as may be offered by such person and after hearing him, proceed, either forthwith or after adjournment, to determine the matter of the charge; and (d) make such order for the punishment or discharge of such person as may be just. (2) Notwithstanding anything contained in sub-section (1), where a person charged with contempt under that sub-section applies, whether orally or in writing, to have the charge against him tried by some Judge other than the Judge or Judges in whose presence or hearing the contempt is alleged to have been committed and the Court is of the opinion that it is practicable to do so and that in the interests of proper administration of justice the application should be allowed, it shall cause the matter to be placed, together with a statement of the facts of the case, before the Chief Justice for such directions as he may think fit to give respecting the trial thereof. (3) In every such case as is referred to in sub-section (2), the trial shall be by a Bench of at least two Judges. (4) Pending the determination of the charge, the Court may direct that a person charged with contempt under this section shall be detained in such custody as it may specify: Provided that he shall be released on bail, if a bond for such sum of money as the Court thinks sufficient is executed with or without sureties conditioned that the person charged shall attend at the time and place mentioned in the bond and shall continue to so attend until otherwise directed by the Court: Provided further that the Court may, if it thinks fit, instead of taking bail from such person, discharge him on his own bond. (5) Nothing in this section shall be construed as empowering the Court to impose a sentence in excess of that specified in section 12. [Note: this is the summary in-presence contempt power — the High Court and Supreme Court\'s power to punish criminal contempt of any subordinate court, including one committed outside its own presence, is separately conferred by sections 10 and 15 of this Act, and the Supreme Court\'s own contempt jurisdiction is additionally rooted in Article 129 of the Constitution (also in this Library), the High Court\'s in Article 215.]',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Cognizance of criminal contempt in other cases',
+        text: '(1) In the case of a criminal contempt, other than a contempt referred to in section 14, the Supreme Court or the High Court may take action on its own motion or on a motion made by— (a) the Advocate-General, or (b) any other person, with the consent in writing of the Advocate-General, or (c) in relation to the High Court for the Union territory of Delhi, such Law Officer as the Central Government may, by notification in the Official Gazette, specify in this behalf, or any other person, with the consent in writing of such Law Officer. (2) In the case of any criminal contempt of a subordinate court, the High Court may take action on a reference made to it by the subordinate court or on a motion made by the Advocate-General or, in relation to a Union territory, by such Law Officer as the Central Government may, by notification in the Official Gazette, specify in this behalf. (3) Every motion or reference made under this section shall specify the contempt of which the person charged is alleged to be guilty. Explanation.—In this section, the expression "Advocate-General" means— (a) in relation to the Supreme Court, the Attorney-General or the Solicitor-General; (b) in relation to the High Court, the Advocate-General of the State or any of the States for which the High Court has been established; (c) in relation to the court of a Judicial Commissioner, such Law Officer as the Central Government may, by notification in the Official Gazette, specify in this behalf. [Note: this is the procedural gateway for a civil-contempt-style application too — while civil contempt (wilful disobedience of a court\'s own order, Section 2(b)) is ordinarily moved directly before the court that passed the order without needing Advocate-General consent, an application alleging criminal contempt (Section 2(c)) — scandalising the court, or interfering with the administration of justice — filed by someone other than the court acting suo motu, needs the Advocate-General\'s written consent under this section before the Court can take cognizance.]',
+      },
+      {
+        sectionNo: '20',
+        heading: 'Limitation for actions for contempt',
+        text: 'No court shall initiate any proceedings of contempt, either on its own motion or otherwise, after the expiry of a period of one year from the date on which the contempt is alleged to have been committed. [Note: this one-year bar applies to both civil and criminal contempt, and the Supreme Court has held it is not got around by treating a continuing disobedience as a fresh "continuing wrong" each day it persists — a contempt petition filed more than a year after the act complained of is ordinarily not maintainable.]',
+      },
+    ],
+  },
+  {
+    id: 'act-representation-of-the-people-1951',
+    shortTitle: 'The Representation of the People Act, 1951',
+    year: 1951,
+    actNumber: '43 of 1951',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2096/9/A1951-43.pdf',
+    sections: [
+      {
+        sectionNo: '80',
+        heading: 'Election petitions',
+        text: 'No election shall be called in question except by an election petition presented in accordance with the provisions of this Part.',
+      },
+      {
+        sectionNo: '81',
+        heading: 'Presentation of petitions',
+        text: '(1) An election petition calling in question any election may be presented on one or more of the grounds specified in sub-section (1) of section 100 and section 101 to the High Court by any candidate at such election or any elector within forty-five days from, but not earlier than, the date of election of the returned candidate or, if there are more than one returned candidate at the election and the dates of their election are different, the later of those two dates. Explanation.—In this sub-section, "elector" means a person who was entitled to vote at the election to which the election petition relates, whether he has voted at such election or not. (3) Every election petition shall be accompanied by as many copies thereof as there are respondents mentioned in the petition and every such copy shall be attested by the petitioner under his own signature to be a true copy of the petition. [Note: this Library omits sub-section (2), a since-omitted proviso on security for costs, superseded by the separate deposit-of-security requirement in section 117 of this Act. The forty-five-day period under sub-section (1) is a strict limitation the Representation of the People Act is a complete and self-contained code for — the Limitation Act, 1963 does not apply to extend it.]',
       },
     ],
   },
