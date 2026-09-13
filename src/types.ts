@@ -81,6 +81,13 @@ export interface CaseType {
    *  sections (e.g. district_court) instead of one flat grid. Must match a key in
    *  `caseTypeSubcategories` (mockData.ts) when set. */
   subcategory?: string;
+  /** Optional top-level grouping within a single forum whose case types span genuinely distinct
+   *  jurisdictions heard by the same subordinate judiciary (district_court: civil suits, criminal
+   *  matters heard by Magistrates/Sessions Court, and family matters heard by the Family Court —
+   *  all part of the same district-level court system, unlike DRT/NCLT/Consumer Commission, which
+   *  are separate tribunals). Home.tsx renders this as a tab tier above the subcategory tabs when
+   *  every visible item for a forum carries one. */
+  topCategory?: 'civil' | 'criminal' | 'family';
 }
 
 export interface ClauseDef {

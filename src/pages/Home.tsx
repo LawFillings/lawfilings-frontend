@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { forums, caseTypes, appealGroups, caseTypeSubcategories } from '../data/mockData';
+import { forums, caseTypes, appealGroups, caseTypeSubcategories, topCategories } from '../data/mockData';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
 import { LanguageSwitcher } from '../components/LanguageSwitcher';
@@ -24,14 +24,22 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
   const { color, widgets } = settings.home;
   const { t } = useLanguage();
   const [selectedForumType, setSelectedForumType] = useState<string | null>(null);
+  const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<'civil' | 'criminal' | 'family' | null>(null);
   const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
 
   const selectForum = (forumType: string) => {
     setSelectedForumType((current) => (forumType === current ? null : forumType));
+    setSelectedTopCategoryKey(null);
+    setSelectedSubcategoryKey(null);
+  };
+
+  const selectTopCategory = (key: 'civil' | 'criminal' | 'family') => {
+    setSelectedTopCategoryKey((current) => (key === current ? null : key));
     setSelectedSubcategoryKey(null);
   };
 
   const categoryLabel: Record<string, string> = t.home.categoryLabels;
+  const topCategoryLabel: Record<string, string> = t.home.topCategories;
   const subcategoryLabel: Record<string, string> = t.home.caseTypeSubcategories;
   const appealGroupQuestion: Record<string, { question: string }> = t.appealRouteGroups;
   const caseTypeSummary: Record<string, string> = t.caseTypeSummaries;
@@ -54,12 +62,27 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
     ? appealGroups.filter((g) => g.forumType === selectedForum.forumType)
     : [];
 
+  // Render under headed Civil/Criminal/Family tabs instead of one flat grid once every visible
+  // card for this forum has been assigned a topCategory (currently only district_court, since its
+  // case types span jurisdictions genuinely distinct from each other, unlike a single-purpose
+  // forum like DRT or NCLT).
+  const topCategorySections =
+    selectedItems.length > 0 && selectedItems.every((ct) => ct.topCategory)
+      ? topCategories
+          .map((tc) => ({ ...tc, items: selectedItems.filter((ct) => ct.topCategory === tc.key) }))
+          .filter((tc) => tc.items.length > 0)
+      : null;
+  const activeTopSection = topCategorySections?.find((tc) => tc.key === selectedTopCategoryKey) ?? null;
+  // The set subcategory grouping actually operates on — the chosen top-category's items when this
+  // forum has that tier, otherwise every item for the forum directly (the pre-existing behaviour).
+  const workingItems = topCategorySections ? activeTopSection?.items ?? [] : selectedItems;
+
   // Render under headed subject-matter sections instead of one flat grid once every visible card
-  // for this forum has been assigned a subcategory (currently only district_court).
+  // in the working set has been assigned a subcategory.
   const subcategorySections =
-    selectedItems.length > 0 && selectedItems.every((ct) => ct.subcategory)
+    workingItems.length > 0 && workingItems.every((ct) => ct.subcategory)
       ? caseTypeSubcategories
-          .map((sc) => ({ ...sc, items: selectedItems.filter((ct) => ct.subcategory === sc.key) }))
+          .map((sc) => ({ ...sc, items: workingItems.filter((ct) => ct.subcategory === sc.key) }))
           .filter((sc) => sc.items.length > 0)
       : null;
 
@@ -106,7 +129,23 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
 
       {selectedForum && (
         <section className="forum-group">
-          {subcategorySections ? (
+          {topCategorySections && (
+            <div className="top-category-tabs">
+              {topCategorySections.map((tc) => (
+                <button
+                  key={tc.key}
+                  className={tc.key === selectedTopCategoryKey ? 'top-category-tab active' : 'top-category-tab'}
+                  onClick={() => selectTopCategory(tc.key)}
+                >
+                  {topCategoryLabel[tc.key] ?? tc.label}
+                  <span className="top-category-tab-count">{tc.items.length}</span>
+                </button>
+              ))}
+            </div>
+          )}
+          {topCategorySections && !activeTopSection ? (
+            <p className="subcategory-prompt">{t.home.pickACategory}</p>
+          ) : subcategorySections ? (
             <>
               {selectedGroups.length > 0 && (
                 <div className="case-type-grid" style={{ marginBottom: 'var(--space-6)' }}>
@@ -159,7 +198,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
                   <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
                 </button>
               ))}
-              {selectedItems.map((ct) => (
+              {workingItems.map((ct) => (
                 <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
                   <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
                   <span className="case-type-name">{ct.name}</span>

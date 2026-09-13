@@ -377,6 +377,48 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-bnss-2023', sectionNo: '423' },
     { actId: 'act-bnss-2023', sectionNo: '427' },
   ],
+  // Application for Direction to Register FIR/Investigate — the entire filing is a Section 175(3)
+  // application; Section 210 is cited alongside since the same Magistrate's cognizance power is
+  // what's ultimately engaged once an investigation this way leads to a police report.
+  'ct-application-fir-direction': [
+    { actId: 'act-bnss-2023', sectionNo: '175' },
+    { actId: 'act-bnss-2023', sectionNo: '210' },
+  ],
+  // Default Bail — the entire filing is a Section 187(3) application.
+  'ct-application-default-bail': [{ actId: 'act-bnss-2023', sectionNo: '187' }],
+  // Protest Petition — Section 193 is the final-report procedure being objected to; there's no
+  // separate numbered "protest petition" section, so this is the closest operative provision.
+  'ct-protest-petition': [{ actId: 'act-bnss-2023', sectionNo: '193' }],
+  // Application for Release of Seized Property — Section 497 applies once the property has been
+  // produced before the trial court itself, Section 503 while it's still with the police.
+  'ct-application-seized-property': [
+    { actId: 'act-bnss-2023', sectionNo: '497' },
+    { actId: 'act-bnss-2023', sectionNo: '503' },
+  ],
+  // Application for Cancellation of Bail — the entire filing invokes Section 483(3).
+  'ct-application-cancellation-bail': [{ actId: 'act-bnss-2023', sectionNo: '483' }],
+  // Discharge Application — Section 250 governs a Sessions-triable case (post-commitment),
+  // Section 262 a warrant-case on a police report before a Magistrate; the wizard's own
+  // trial-route step decides which applies, so both are cited together.
+  'ct-discharge-application': [
+    { actId: 'act-bnss-2023', sectionNo: '250' },
+    { actId: 'act-bnss-2023', sectionNo: '262' },
+  ],
+  // Application for Exemption from Personal Appearance — the entire filing is a Section 355
+  // application.
+  'ct-application-exemption-personal-appearance': [{ actId: 'act-bnss-2023', sectionNo: '355' }],
+  // Application for Compounding of Offence — the entire filing invokes Section 359.
+  'ct-application-compounding-offence': [{ actId: 'act-bnss-2023', sectionNo: '359' }],
+  // Application for Suspension of Sentence Pending Appeal — the entire filing invokes Section 430.
+  'ct-application-suspension-sentence': [{ actId: 'act-bnss-2023', sectionNo: '430' }],
+  // Victim Compensation Application — the entire filing invokes Section 396.
+  'ct-victim-compensation-application': [{ actId: 'act-bnss-2023', sectionNo: '396' }],
+  // Transfer Petition (Criminal Case) — Section 446 is the Supreme Court's transfer power, Section
+  // 447 the High Court's; the wizard's own court-level step decides which applies.
+  'ct-criminal-transfer-petition': [
+    { actId: 'act-bnss-2023', sectionNo: '446' },
+    { actId: 'act-bnss-2023', sectionNo: '447' },
+  ],
   // Arbitration Interim Relief Application — the entire filing is a Section 9 application; the
   // "Court" definition is cited alongside it since which court has jurisdiction genuinely turns on
   // whether the arbitration is an international commercial arbitration.
@@ -890,6 +932,32 @@ const FIXED_CASE_TYPE_CASE_LAW: Record<string, CaseLawCitation[]> = {
       year: 2012,
       sourceUrl: 'https://indiankanoon.org/doc/166329624/',
       note: 'revisional jurisdiction is not to be exercised routinely or as a matter of course, but only where the finding, sentence, or order under challenge is grossly erroneous, there is no compliance with the provisions of law, the finding recorded is based on no evidence, material evidence has been ignored, or judicial discretion has been exercised arbitrarily or perversely.',
+    },
+  ],
+  // Application for Direction to Register FIR/Investigate — clarifies that section 175(3)
+  // (unlike the old section 156(3) CrPC it replaced) requires the Magistrate to actually consider
+  // the police officer's own submissions, and to record reasons, before ordering an investigation.
+  'ct-application-fir-direction': [
+    {
+      caseTitle: 'Om Prakash Ambadkar v. State of Maharashtra',
+      citation: '2025 INSC 139',
+      court: 'Supreme Court of India',
+      year: 2025,
+      sourceUrl: 'https://www.verdictum.in/court-updates/supreme-court/section-175-3-bnss-magistrate-investigation-2025-insc-139-om-prakash-ambadkar-v-state-of-maharashtra-1566698',
+      note: 'unlike former section 156(3) of the Code of Criminal Procedure, 1973, section 175(3) of the Bharatiya Nagarik Suraksha Sanhita, 2023 requires the Magistrate to consider the submissions of the police officer concerned, and to pass a reasoned order, before directing an investigation — the Magistrate cannot mechanically forward the application without applying an independent judicial mind to whether the allegations genuinely warrant invoking police machinery.',
+    },
+  ],
+  // Protest Petition — this remains the governing authority for the informant's right to be heard
+  // before a Magistrate accepts a closure report and drops proceedings, even though the BNSS (like
+  // the CrPC before it) has no section actually named "protest petition".
+  'ct-protest-petition': [
+    {
+      caseTitle: 'Bhagwant Singh v. Commissioner of Police, Delhi',
+      citation: '(1985) 2 SCC 537',
+      court: 'Supreme Court of India',
+      year: 1985,
+      sourceUrl: 'https://indiankanoon.org/doc/1303576/',
+      note: 'where a Magistrate receives a police report under what is now section 193 of the Bharatiya Nagarik Suraksha Sanhita, 2023 stating that no offence has been committed and proposes to accept it and drop the proceedings, the Magistrate must give notice to the informant and afford an opportunity of being heard at the time such report is considered — this is the settled basis for the informant\'s right to file a protest petition, a term the Sanhita itself does not use.',
     },
   ],
   // Arbitration Interim Relief Application — a Section 9 court is not bound by the technical

@@ -5,10 +5,16 @@ export const forums: Forum[] = [
   { id: 'f-drt', name: 'DRT', forumType: 'DRT', advocateMandatory: false },
   { id: 'f-drat', name: 'DRAT', forumType: 'DRAT', advocateMandatory: false },
   { id: 'f-nclt', name: 'NCLT', forumType: 'NCLT', advocateMandatory: false },
+  // Covers civil, criminal, and family matters — all heard by the same subordinate judiciary at
+  // the district level (a District Judge, Sessions Judge, and Family Court judge are typically
+  // the same cadre, often the same court complex), unlike DRT/NCLT/Consumer Commission, which are
+  // genuinely separate tribunals. Home.tsx groups this forum's case types under a Civil/Criminal/
+  // Family top-category tier (each item's `topCategory`) before its usual subcategory tabs. Many
+  // of these resolve their own real forum internally as Magistrate/Sessions/Family/High Court,
+  // independent of this catalog-level forumType, same as f-misc's own items.
   { id: 'f-dc', name: 'District Court', forumType: 'district_court', advocateMandatory: false },
   { id: 'f-hc', name: 'High Court', forumType: 'high_court', advocateMandatory: false },
   { id: 'f-sc', name: 'Supreme Court', forumType: 'supreme_court', advocateMandatory: true },
-  { id: 'f-family-court', name: 'Family Court', forumType: 'family_court', advocateMandatory: false },
   // Umbrella tab for filings that don't belong under any single court/tribunal — pre-litigation
   // letters, private deeds, criminal-court applications and complaints. Each wizard resolves its
   // own actual forum/court internally (from user choices), independent of this shared forumType,
@@ -319,6 +325,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-dc-money-recovery',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Money Recovery Suit',
     governingLaw: 'Code of Civil Procedure, 1908',
     plainLanguageSummary:
@@ -330,6 +337,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-dc-summary-suit',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Summary Suit (Order XXXVII)',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXXVII',
     plainLanguageSummary:
@@ -370,13 +378,15 @@ export const caseTypes: CaseType[] = [
   },
   {
     id: 'ct-bail-application',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
+    topCategory: 'criminal',
     name: 'Bail Application',
     governingLaw: 'Bharatiya Nagarik Suraksha Sanhita, 2023',
     plainLanguageSummary:
       'Apply for bail in a criminal case — either regular bail after arrest, or anticipatory bail in advance of an expected arrest.',
     applicantEligibility: 'accused_or_apprehending_arrest',
     filingCategory: 'original',
+    subcategory: 'pre-trial-investigation',
   },
   {
     id: 'ct-mediation-application',
@@ -390,13 +400,15 @@ export const caseTypes: CaseType[] = [
   },
   {
     id: 'ct-ni-act-complaint',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
+    topCategory: 'criminal',
     name: 'Cheque Dishonour Complaint (Sections 138 & 142, NI Act)',
     governingLaw: 'Negotiable Instruments Act, 1881, Sections 138 & 142',
     plainLanguageSummary:
       "File a criminal complaint before the Magistrate after a cheque is dishonoured and the drawer fails to pay within 15 days of your notice.",
     applicantEligibility: 'payee_or_holder_in_due_course',
     filingCategory: 'original',
+    subcategory: 'trial-stage-applications',
   },
   {
     id: 'ct-civil-appeal-first',
@@ -414,6 +426,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-injunction-temporary',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Temporary Injunction Application (Order XXXIX Rules 1 & 2, CPC)',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXXIX, Rules 1 & 2',
     plainLanguageSummary:
@@ -426,6 +439,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-dc-written-statement',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Written Statement — reply to a Civil Suit',
     governingLaw: 'Code of Civil Procedure, 1908, Order VIII, Rule 1',
     plainLanguageSummary:
@@ -441,6 +455,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-permanent-injunction',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Permanent Injunction',
     governingLaw: 'Specific Relief Act, 1963, Sections 36–38',
     plainLanguageSummary:
@@ -452,6 +467,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-mandatory-injunction',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Mandatory Injunction',
     governingLaw: 'Specific Relief Act, 1963, Section 39',
     plainLanguageSummary:
@@ -463,6 +479,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-set-aside-exparte-decree',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application to Set Aside Ex-Parte Decree',
     governingLaw: 'Code of Civil Procedure, 1908, Order IX, Rule 13',
     plainLanguageSummary:
@@ -477,6 +494,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-condonation-of-delay',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Condonation of Delay',
     governingLaw: 'Limitation Act, 1963, Section 5',
     plainLanguageSummary:
@@ -489,6 +507,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-claim-objection-execution',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Claim/Objection Petition in Execution',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXI, Rule 58',
     plainLanguageSummary:
@@ -501,6 +520,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-interpleader-suit',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Interpleader Suit',
     governingLaw: 'Code of Civil Procedure, 1908, Section 88 and Order XXXV',
     plainLanguageSummary:
@@ -512,6 +532,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-mact-claim-petition',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Motor Accident Claims Petition',
     governingLaw: 'Motor Vehicles Act, 1988, Section 166',
     plainLanguageSummary:
@@ -526,6 +547,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-land-acquisition-reference',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Land Acquisition Reference',
     governingLaw: 'Land Acquisition Act, 1894, Section 18',
     plainLanguageSummary:
@@ -537,6 +559,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-redemption-mortgage',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Redemption of Mortgage',
     governingLaw: 'Transfer of Property Act, 1882, Section 60',
     plainLanguageSummary:
@@ -548,6 +571,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-attachment-before-judgment',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Attachment Before Judgment',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXXVIII, Rule 5',
     plainLanguageSummary:
@@ -560,6 +584,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-cancellation-of-document',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Cancellation of Document',
     governingLaw: 'Specific Relief Act, 1963, Section 31',
     plainLanguageSummary:
@@ -571,6 +596,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-possession-resistance',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Possession — Resistance or Dispossession',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXI, Rules 97–101',
     plainLanguageSummary:
@@ -583,6 +609,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-foreclosure-mortgage',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Foreclosure or Sale of Mortgaged Property',
     governingLaw: 'Transfer of Property Act, 1882, Section 67',
     plainLanguageSummary:
@@ -594,6 +621,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-restoration-suit-default',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Restoration of Suit Dismissed for Default',
     governingLaw: 'Code of Civil Procedure, 1908, Order IX, Rule 9',
     plainLanguageSummary:
@@ -608,6 +636,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-injunction-disobedience',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Attachment/Detention for Disobedience of Injunction',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXXIX, Rule 2A',
     plainLanguageSummary:
@@ -620,6 +649,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-appointment-receiver',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Appointment of Receiver',
     governingLaw: 'Code of Civil Procedure, 1908, Order XL, Rule 1',
     plainLanguageSummary:
@@ -632,6 +662,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-easementary-rights',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Easementary Rights',
     governingLaw: 'Indian Easements Act, 1882, Sections 33 & 35',
     plainLanguageSummary:
@@ -643,6 +674,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-partnership-dissolution-accounts',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Dissolution of Partnership and Rendition of Accounts',
     governingLaw: 'The Indian Partnership Act, 1932, Section 44',
     plainLanguageSummary:
@@ -654,6 +686,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-declaration',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Declaration',
     governingLaw: 'Specific Relief Act, 1963, Section 34',
     plainLanguageSummary:
@@ -665,6 +698,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-dc-ia-general',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Interlocutory Application (IA) — general',
     governingLaw: 'Code of Civil Procedure, 1908',
     plainLanguageSummary:
@@ -677,6 +711,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-specific-performance',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Specific Performance of Contract',
     governingLaw: 'Specific Relief Act, 1963, Sections 10, 14 & 16',
     plainLanguageSummary:
@@ -688,6 +723,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-partition',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Partition',
     governingLaw: 'Hindu Succession Act, 1956, Section 6, read with the Code of Civil Procedure, 1908, Order XX Rule 18',
     plainLanguageSummary:
@@ -699,6 +735,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-possession',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Possession / Eviction',
     governingLaw: 'Specific Relief Act, 1963, Sections 5 & 6, and Transfer of Property Act, 1882, Sections 106 & 111',
     plainLanguageSummary:
@@ -710,6 +747,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-dc-execution',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Execution Petition (Civil Decree)',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXI',
     plainLanguageSummary:
@@ -720,117 +758,282 @@ export const caseTypes: CaseType[] = [
   },
   {
     id: 'ct-divorce-mutual-consent',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Mutual Consent Divorce Petition (Hindu Marriage Act, S.13B)',
     governingLaw: 'The Hindu Marriage Act, 1955, Section 13B',
     plainLanguageSummary:
       "File this jointly with your spouse when you both agree to end the marriage — you've been living separately for a year or more and have agreed on terms for maintenance, custody, and property.",
     applicantEligibility: 'married_hindu_couple_both_consent',
     filingCategory: 'original',
+    subcategory: 'divorce-marital-status',
   },
   {
     id: 'ct-divorce-contested',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Contested Divorce Petition (Hindu Marriage Act, S.13)',
     governingLaw: 'The Hindu Marriage Act, 1955, Section 13',
     plainLanguageSummary:
       "File this if your spouse won't agree to a divorce — you'll need to prove one of the legal grounds (cruelty, desertion, adultery, etc.).",
     applicantEligibility: 'married_hindu_spouse',
     filingCategory: 'original',
+    subcategory: 'divorce-marital-status',
   },
   {
     id: 'ct-restitution-conjugal-rights',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Restitution of Conjugal Rights (Hindu Marriage Act, S.9)',
     governingLaw: 'The Hindu Marriage Act, 1955, Section 9',
     plainLanguageSummary:
       "File this if your spouse has withdrawn from your company without a reasonable excuse, and you want the Court to direct them to resume living together with you.",
     applicantEligibility: 'married_hindu_spouse',
     filingCategory: 'original',
+    subcategory: 'divorce-marital-status',
   },
   {
     id: 'ct-judicial-separation',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Judicial Separation (Hindu Marriage Act, S.10)',
     governingLaw: 'The Hindu Marriage Act, 1955, Section 10',
     plainLanguageSummary:
       "File this if you want to live separately from your spouse without ending the marriage — on the same grounds as a divorce (cruelty, desertion, etc.), but without dissolving the marriage itself.",
     applicantEligibility: 'married_hindu_spouse',
     filingCategory: 'original',
+    subcategory: 'divorce-marital-status',
   },
   {
     id: 'ct-maintenance-application',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Maintenance Application (BNSS, S.144)',
     governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 144',
     plainLanguageSummary:
       "File this if you're a wife, child, or parent unable to maintain yourself, and a person who is legally bound to maintain you — with sufficient means — has neglected or refused to do so.",
     applicantEligibility: 'wife_child_or_parent_seeking_maintenance',
     filingCategory: 'original',
+    subcategory: 'maintenance-protection',
   },
   {
     id: 'ct-domestic-violence-application',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Domestic Violence Act Application (PWDVA, S.12)',
     governingLaw: 'The Protection of Women from Domestic Violence Act, 2005, Section 12',
     plainLanguageSummary:
       "File this if you've faced physical, sexual, verbal, emotional, or economic abuse from someone you live or lived with, and want protection, residence, monetary, custody, or compensation orders against them.",
     applicantEligibility: 'woman_in_domestic_relationship_facing_abuse',
     filingCategory: 'original',
+    subcategory: 'maintenance-protection',
   },
   {
     id: 'ct-guardianship-custody-petition',
-    forumType: 'family_court',
+    forumType: 'district_court',
+    topCategory: 'family',
     name: 'Guardianship/Custody Petition (Guardians and Wards Act, S.7)',
     governingLaw: 'The Guardians and Wards Act, 1890, Section 7',
     plainLanguageSummary:
       "File this to be appointed or declared the guardian of a minor's person, property, or both — including for custody of a child — with the Court deciding based on what serves the minor's welfare.",
     applicantEligibility: 'relative_or_friend_seeking_guardianship_of_a_minor',
     filingCategory: 'original',
+    subcategory: 'guardianship-custody',
   },
   {
     id: 'ct-private-criminal-complaint',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
+    topCategory: 'criminal',
     name: 'Private Criminal Complaint (BNSS, S.223)',
     governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 223',
     plainLanguageSummary:
       "File this to directly ask a Magistrate to take cognizance of an offence and summon the accused — without going through the police — when you have personal knowledge of the offence.",
     applicantEligibility: 'person_with_knowledge_of_an_offence',
     filingCategory: 'original',
+    subcategory: 'trial-stage-applications',
   },
   {
     id: 'ct-quashing-petition',
-    forumType: 'high_court',
+    forumType: 'district_court',
+    topCategory: 'criminal',
     name: 'Quashing Petition (BNSS, S.528)',
     governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 528',
     plainLanguageSummary:
       "File this before the High Court to quash an FIR, criminal complaint, or proceeding against you — because it discloses no offence, is an abuse of process, or the dispute is genuinely civil in nature.",
     applicantEligibility: 'accused_or_person_facing_criminal_proceedings',
     filingCategory: 'original',
+    subcategory: 'appeals-revisions',
   },
   {
     id: 'ct-criminal-revision-petition',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
+    topCategory: 'criminal',
     name: 'Criminal Revision Petition (BNSS, S.438)',
     governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 438',
     plainLanguageSummary:
       "File this before the Sessions Court or High Court to have an inferior criminal court's finding, sentence, or order examined for correctness, legality, or propriety — narrower than an appeal, and not a routine rehearing of the facts.",
     applicantEligibility: 'aggrieved_party_challenging_a_criminal_courts_order',
     filingCategory: 'original',
+    subcategory: 'appeals-revisions',
   },
   {
     id: 'ct-criminal-appeal',
-    forumType: 'misc_drafts',
+    forumType: 'district_court',
+    topCategory: 'criminal',
     name: 'Criminal Appeal Against Conviction (BNSS, S.415)',
     governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 415',
     plainLanguageSummary:
       "File this to appeal a criminal conviction — to the Court of Session, the High Court, or the Supreme Court, depending on which court convicted you and the sentence passed.",
     applicantEligibility: 'person_convicted_in_a_criminal_trial',
     filingCategory: 'appeal',
+    subcategory: 'appeals-revisions',
+  },
+  {
+    id: 'ct-application-fir-direction',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Direction to Register FIR/Investigate (BNSS, S.175(3))',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 175(3)',
+    plainLanguageSummary:
+      "File this before a Magistrate if the police have refused to register your FIR or investigate a cognizable offence — but only after you've first complained in writing to the Superintendent of Police and been refused or ignored. The Magistrate can then direct the police to investigate, but must first hear the police officer's own side and requires your application to be supported by an affidavit.",
+    applicantEligibility: 'person_whose_fir_registration_was_refused_by_police',
+    filingCategory: 'original',
+    subcategory: 'pre-trial-investigation',
+  },
+  {
+    id: 'ct-application-default-bail',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Default Bail (BNSS, S.187(3))',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 187(3)',
+    plainLanguageSummary:
+      "File this if you're in custody and the police haven't filed a chargesheet within the statutory limit — 60 days for offences punishable with less than 10 years, 90 days for offences punishable with death, life imprisonment, or 10 years or more. This is a bail entitlement as of right, regardless of the case's merits — but it lapses the moment a chargesheet is actually filed.",
+    applicantEligibility: 'accused_in_custody_pending_investigation',
+    filingCategory: 'original',
+    subcategory: 'pre-trial-investigation',
+  },
+  {
+    id: 'ct-protest-petition',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Protest Petition',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 193',
+    plainLanguageSummary:
+      "File this if the police have submitted a closure report — saying no case is made out — in a matter you reported, and you disagree. The Magistrate cannot accept the closure report and drop the case without first giving you, as the informant, notice and a genuine opportunity to be heard.",
+    applicantEligibility: 'informant_or_complainant_aggrieved_by_a_police_closure_report',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'pre-trial-investigation',
+  },
+  {
+    id: 'ct-application-seized-property',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Release of Seized Property',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Sections 497 & 503',
+    plainLanguageSummary:
+      "File this to get back property the police seized during an investigation — a vehicle, documents, or other items — once it's no longer needed for the investigation or trial. Use this before the Magistrate if the police haven't yet produced the property before any Court; the trial court itself decides once it has been produced there.",
+    applicantEligibility: 'person_entitled_to_possession_of_seized_property',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'pre-trial-investigation',
+  },
+  {
+    id: 'ct-application-cancellation-bail',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Cancellation of Bail',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 483(3)',
+    plainLanguageSummary:
+      "File this before the Court of Session or High Court if someone already out on bail in a criminal case has violated their bail conditions, tampered with evidence or witnesses, or if new circumstances now make their continued release unsafe — this asks the Court to cancel the bail and take them back into custody.",
+    applicantEligibility: 'complainant_or_prosecution_seeking_cancellation_of_bail',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'pre-trial-investigation',
+  },
+  {
+    id: 'ct-discharge-application',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Discharge Application',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Sections 250 & 262',
+    plainLanguageSummary:
+      "File this within a pending criminal case if you're the accused and the material on record doesn't even make out a prima facie case against you — this asks the Court to discharge you before charges are formally framed, without a full trial. File within 60 days of receiving the case documents (a warrant-case on a police report) or of your commitment to the Sessions Court, as applicable.",
+    applicantEligibility: 'accused_in_a_pending_criminal_case',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 60,
+    subcategory: 'trial-stage-applications',
+  },
+  {
+    id: 'ct-application-exemption-personal-appearance',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Exemption from Personal Appearance',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 355',
+    plainLanguageSummary:
+      "File this within a pending inquiry or trial if you're the accused and want the Court to excuse your personal attendance at a hearing — you must be represented by an advocate, and the Court can still direct you to appear in person at any later stage if it decides your presence has become necessary.",
+    applicantEligibility: 'accused_in_a_pending_inquiry_or_trial',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'trial-stage-applications',
+  },
+  {
+    id: 'ct-application-compounding-offence',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Compounding of Offence',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 359',
+    plainLanguageSummary:
+      "File this jointly with the complainant or victim if the offence you're accused of is one the law allows to be compounded — some offences can be settled directly between the parties, others need the Court's permission first. Compounding has the same effect as an acquittal.",
+    applicantEligibility: 'accused_or_complainant_in_a_compoundable_offence',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'trial-stage-applications',
+  },
+  {
+    id: 'ct-application-suspension-sentence',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Application for Suspension of Sentence Pending Appeal',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 430',
+    plainLanguageSummary:
+      "File this alongside — or soon after — a Criminal Appeal against your conviction, asking the Appellate Court to suspend your sentence and release you on bail while the appeal is pending, rather than serving the sentence before the appeal is even decided.",
+    applicantEligibility: 'convicted_person_who_has_filed_or_intends_to_file_an_appeal',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'appeals-revisions',
+  },
+  {
+    id: 'ct-victim-compensation-application',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Victim Compensation Application',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Section 396',
+    plainLanguageSummary:
+      "File this if you're a victim of crime — or your dependents, if you didn't survive it — and need financial support for rehabilitation, whether or not a trial ever happens. Apply directly to the District or State Legal Services Authority if the offender was never traced or identified; where a trial did take place, the trial court can itself recommend compensation instead.",
+    applicantEligibility: 'victim_of_crime_or_their_dependents',
+    filingCategory: 'original',
+    subcategory: 'victim-remedies',
+  },
+  {
+    id: 'ct-criminal-transfer-petition',
+    forumType: 'district_court',
+    topCategory: 'criminal',
+    name: 'Transfer Petition (Criminal Case)',
+    governingLaw: 'The Bharatiya Nagarik Suraksha Sanhita, 2023, Sections 446 & 447',
+    plainLanguageSummary:
+      "File this to move a pending criminal case or appeal out of the court currently handling it — to the High Court, from one subordinate criminal court to another (or to itself), if a fair trial isn't possible there or it's otherwise expedient for justice; or to the Supreme Court, from one High Court's jurisdiction to another's, for the same reasons.",
+    applicantEligibility: 'party_to_a_pending_criminal_case_or_appeal',
+    filingCategory: 'original',
+    parentRequired: true,
+    subcategory: 'transfer-general-applications',
   },
   {
     id: 'ct-arbitration-s9-interim-relief',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Arbitration Interim Relief Application (S.9)',
     governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 9',
     plainLanguageSummary:
@@ -852,6 +1055,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-arbitration-s34-setting-aside',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application to Set Aside Arbitral Award (S.34)',
     governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 34',
     plainLanguageSummary:
@@ -863,6 +1067,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-succession-certificate',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Succession Certificate Petition',
     governingLaw: 'The Indian Succession Act, 1925, Section 372',
     plainLanguageSummary:
@@ -874,6 +1079,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-probate',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Probate Petition',
     governingLaw: 'The Indian Succession Act, 1925, Section 276',
     plainLanguageSummary:
@@ -885,6 +1091,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-letters-of-administration',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Letters of Administration Petition',
     governingLaw: 'The Indian Succession Act, 1925, Section 278',
     plainLanguageSummary:
@@ -896,6 +1103,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-rent-control-eviction',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Rent Control Eviction Petition',
     governingLaw: 'State Rent Control Act',
     plainLanguageSummary:
@@ -907,6 +1115,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-rejection-plaint',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application for Rejection of Plaint',
     governingLaw: 'Code of Civil Procedure, 1908, Order VII, Rule 11',
     plainLanguageSummary:
@@ -919,6 +1128,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-vacate-injunction',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application to Vacate/Discharge an Injunction',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXXIX, Rule 4',
     plainLanguageSummary:
@@ -941,6 +1151,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-rectification-instrument',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Rectification of Instrument',
     governingLaw: 'Specific Relief Act, 1963, Section 26',
     plainLanguageSummary:
@@ -952,6 +1163,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-suit-recovery-movable-property',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Suit for Recovery of Specific Movable Property',
     governingLaw: 'Specific Relief Act, 1963, Sections 7 & 8',
     plainLanguageSummary:
@@ -963,6 +1175,7 @@ export const caseTypes: CaseType[] = [
   {
     id: 'ct-application-set-aside-execution-sale',
     forumType: 'district_court',
+    topCategory: 'civil',
     name: 'Application to Set Aside Execution Sale',
     governingLaw: 'Code of Civil Procedure, 1908, Order XXI, Rule 90',
     plainLanguageSummary:
@@ -1023,9 +1236,19 @@ export const caseTypes: CaseType[] = [
   },
 ];
 
-// Subject-matter groupings for forums whose case-type list has grown too long for one flat grid.
-// Home.tsx renders a forum's cards under headed sections, in this order, when every visible case
-// type for that forum carries a `subcategory` key found here — currently only district_court.
+// Top-level groups within district_court, one per genuinely distinct jurisdiction heard by that
+// same subordinate judiciary (see the `forums` array's comment on 'f-dc'). Home.tsx shows these as
+// a tab tier above the subcategory tabs below, when a forum's visible case types all carry a
+// `topCategory`.
+export const topCategories: { key: 'civil' | 'criminal' | 'family'; label: string }[] = [
+  { key: 'civil', label: 'Civil Matters' },
+  { key: 'criminal', label: 'Criminal Matters' },
+  { key: 'family', label: 'Family Matters' },
+];
+
+// Subject-matter groupings for forums (or, within district_court, top-categories) whose case-type
+// list has grown too long for one flat grid. Home.tsx renders cards under headed sections, in this
+// order, when every visible case type carries a `subcategory` key found here.
 export const caseTypeSubcategories: { key: string; label: string }[] = [
   { key: 'money-contract-commercial', label: 'Money, Contract & Commercial Suits' },
   { key: 'property-mortgage-land', label: 'Property, Mortgage & Land Suits' },
@@ -1033,6 +1256,14 @@ export const caseTypeSubcategories: { key: string; label: string }[] = [
   { key: 'responding-suit-management', label: 'Responding & Suit Management' },
   { key: 'execution-enforcement', label: 'Execution & Enforcement' },
   { key: 'special-estate-proceedings', label: 'Special & Estate Proceedings' },
+  { key: 'pre-trial-investigation', label: 'Pre-Trial & Investigation' },
+  { key: 'trial-stage-applications', label: 'Trial Stage Applications' },
+  { key: 'appeals-revisions', label: 'Appeals & Revisions' },
+  { key: 'victim-remedies', label: 'Victim Remedies' },
+  { key: 'transfer-general-applications', label: 'Transfer & General Applications' },
+  { key: 'divorce-marital-status', label: 'Divorce & Marital Status' },
+  { key: 'maintenance-protection', label: 'Maintenance & Protection' },
+  { key: 'guardianship-custody', label: 'Guardianship & Custody' },
 ];
 
 export const appealGroups: AppealGroup[] = [

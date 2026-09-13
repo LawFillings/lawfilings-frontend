@@ -52,6 +52,17 @@ import { PrivateCriminalComplaintWizard } from './pages/PrivateCriminalComplaint
 import { QuashingPetitionWizard } from './pages/QuashingPetitionWizard';
 import { CriminalRevisionPetitionWizard } from './pages/CriminalRevisionPetitionWizard';
 import { CriminalAppealWizard } from './pages/CriminalAppealWizard';
+import { FirDirectionApplicationWizard } from './pages/FirDirectionApplicationWizard';
+import { DefaultBailApplicationWizard } from './pages/DefaultBailApplicationWizard';
+import { ProtestPetitionWizard } from './pages/ProtestPetitionWizard';
+import { SeizedPropertyApplicationWizard } from './pages/SeizedPropertyApplicationWizard';
+import { CancellationOfBailApplicationWizard } from './pages/CancellationOfBailApplicationWizard';
+import { DischargeApplicationWizard } from './pages/DischargeApplicationWizard';
+import { ExemptionPersonalAppearanceApplicationWizard } from './pages/ExemptionPersonalAppearanceApplicationWizard';
+import { CompoundingOffenceApplicationWizard } from './pages/CompoundingOffenceApplicationWizard';
+import { SuspensionOfSentenceApplicationWizard } from './pages/SuspensionOfSentenceApplicationWizard';
+import { VictimCompensationApplicationWizard } from './pages/VictimCompensationApplicationWizard';
+import { CriminalTransferPetitionWizard } from './pages/CriminalTransferPetitionWizard';
 import { ArbitrationS9Wizard } from './pages/ArbitrationS9Wizard';
 import { ArbitrationS11Wizard } from './pages/ArbitrationS11Wizard';
 import { ArbitrationS34Wizard } from './pages/ArbitrationS34Wizard';
@@ -618,6 +629,61 @@ function AppScreens() {
     if (ct.id === 'ct-criminal-appeal') {
       return (
         <CriminalAppealWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-fir-direction') {
+      return (
+        <FirDirectionApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-default-bail') {
+      return (
+        <DefaultBailApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-protest-petition') {
+      return (
+        <ProtestPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-seized-property') {
+      return (
+        <SeizedPropertyApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-cancellation-bail') {
+      return (
+        <CancellationOfBailApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-discharge-application') {
+      return (
+        <DischargeApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-exemption-personal-appearance') {
+      return (
+        <ExemptionPersonalAppearanceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-compounding-offence') {
+      return (
+        <CompoundingOffenceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-application-suspension-sentence') {
+      return (
+        <SuspensionOfSentenceApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-victim-compensation-application') {
+      return (
+        <VictimCompensationApplicationWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-criminal-transfer-petition') {
+      return (
+        <CriminalTransferPetitionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-arbitration-s9-interim-relief') {

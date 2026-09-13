@@ -250,6 +250,11 @@ export const en = {
       execution: 'Enforce an order',
     },
     appeal: 'Appeal',
+    topCategories: {
+      civil: 'Civil Matters',
+      criminal: 'Criminal Matters',
+      family: 'Family Matters',
+    },
     caseTypeSubcategories: {
       'money-contract-commercial': 'Money, Contract & Commercial Suits',
       'property-mortgage-land': 'Property, Mortgage & Land Suits',
@@ -257,6 +262,14 @@ export const en = {
       'responding-suit-management': 'Responding & Suit Management',
       'execution-enforcement': 'Execution & Enforcement',
       'special-estate-proceedings': 'Special & Estate Proceedings',
+      'pre-trial-investigation': 'Pre-Trial & Investigation',
+      'trial-stage-applications': 'Trial Stage Applications',
+      'appeals-revisions': 'Appeals & Revisions',
+      'victim-remedies': 'Victim Remedies',
+      'transfer-general-applications': 'Transfer & General Applications',
+      'divorce-marital-status': 'Divorce & Marital Status',
+      'maintenance-protection': 'Maintenance & Protection',
+      'guardianship-custody': 'Guardianship & Custody',
     },
     pickACategory: 'Pick a category above to see its filings.',
   },
@@ -1244,6 +1257,28 @@ export const en = {
     'ct-quashing-petition': 'File this before the High Court to quash an FIR, criminal complaint, or proceeding against you — because it discloses no offence, is an abuse of process, or the dispute is genuinely civil in nature.',
     'ct-criminal-revision-petition': 'File this before the Sessions Court or High Court to have an inferior criminal court\'s finding, sentence, or order examined for correctness, legality, or propriety — narrower than an appeal, and not a routine rehearing of the facts.',
     'ct-criminal-appeal': 'File this to appeal a criminal conviction — to the Court of Session, the High Court, or the Supreme Court, depending on which court convicted you and the sentence passed.',
+    'ct-application-fir-direction':
+      "File this before a Magistrate if the police have refused to register your FIR or investigate a cognizable offence — but only after you've first complained in writing to the Superintendent of Police and been refused or ignored. The Magistrate can then direct the police to investigate, but must first hear the police officer's own side and requires your application to be supported by an affidavit.",
+    'ct-application-default-bail':
+      "File this if you're in custody and the police haven't filed a chargesheet within the statutory limit — 60 days for offences punishable with less than 10 years, 90 days for offences punishable with death, life imprisonment, or 10 years or more. This is a bail entitlement as of right, regardless of the case's merits — but it lapses the moment a chargesheet is actually filed.",
+    'ct-protest-petition':
+      'File this if the police have submitted a closure report — saying no case is made out — in a matter you reported, and you disagree. The Magistrate cannot accept the closure report and drop the case without first giving you, as the informant, notice and a genuine opportunity to be heard.',
+    'ct-application-seized-property':
+      "File this to get back property the police seized during an investigation — a vehicle, documents, or other items — once it's no longer needed for the investigation or trial. Use this before the Magistrate if the police haven't yet produced the property before any Court; the trial court itself decides once it has been produced there.",
+    'ct-application-cancellation-bail':
+      'File this before the Court of Session or High Court if someone already out on bail in a criminal case has violated their bail conditions, tampered with evidence or witnesses, or if new circumstances now make their continued release unsafe — this asks the Court to cancel the bail and take them back into custody.',
+    'ct-discharge-application':
+      "File this within a pending criminal case if you're the accused and the material on record doesn't even make out a prima facie case against you — this asks the Court to discharge you before charges are formally framed, without a full trial. File within 60 days of receiving the case documents (a warrant-case on a police report) or of your commitment to the Sessions Court, as applicable.",
+    'ct-application-exemption-personal-appearance':
+      "File this within a pending inquiry or trial if you're the accused and want the Court to excuse your personal attendance at a hearing — you must be represented by an advocate, and the Court can still direct you to appear in person at any later stage if it decides your presence has become necessary.",
+    'ct-application-compounding-offence':
+      "File this jointly with the complainant or victim if the offence you're accused of is one the law allows to be compounded — some offences can be settled directly between the parties, others need the Court's permission first. Compounding has the same effect as an acquittal.",
+    'ct-application-suspension-sentence':
+      'File this alongside — or soon after — a Criminal Appeal against your conviction, asking the Appellate Court to suspend your sentence and release you on bail while the appeal is pending, rather than serving the sentence before the appeal is even decided.',
+    'ct-victim-compensation-application':
+      "File this if you're a victim of crime — or your dependents, if you didn't survive it — and need financial support for rehabilitation, whether or not a trial ever happens. Apply directly to the District or State Legal Services Authority if the offender was never traced or identified; where a trial did take place, the trial court can itself recommend compensation instead.",
+    'ct-criminal-transfer-petition':
+      "File this to move a pending criminal case or appeal out of the court currently handling it — to the High Court, from one subordinate criminal court to another (or to itself), if a fair trial isn't possible there or it's otherwise expedient for justice; or to the Supreme Court, from one High Court's jurisdiction to another's, for the same reasons.",
     'ct-arbitration-s9-interim-relief': 'File this before or during arbitral proceedings — or after the award but before enforcement — to ask the Court for interim protection, such as securing the amount in dispute, preserving property, or an interim injunction.',
     'ct-arbitration-s11-appointment': 'File this before the High Court when the other party has failed to appoint an arbitrator, or the appointed arbitrators can\'t agree on a presiding arbitrator, within the time the Act allows.',
     'ct-arbitration-s34-setting-aside': 'File this within three months of receiving an arbitral award to have it set aside — because of incapacity, an invalid arbitration agreement, want of proper notice, an award beyond the scope of reference, or conflict with the public policy of India.',
