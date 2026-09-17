@@ -11078,4 +11078,99 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-kerala-abkari-1077',
+    shortTitle: 'The Abkari Act, 1 of 1077',
+    year: 1902,
+    actNumber: '1 of 1077 (Malayalam Era)',
+    jurisdiction: { type: 'state', state: 'Kerala' },
+    sourceUrl: 'https://keralaexcise.gov.in/wp-content/uploads/2020/07/Abkari_BareAct.pdf',
+    sections: [
+      {
+        sectionNo: '3(8), 3(10)',
+        heading: 'Definitions — "toddy" and "liquor"',
+        text: '(8) "Toddy" means fermented or unfermented juice drawn from a coconut, palmyra, date or any other kind of palm tree. (10) "Liquor" includes spirits of wine, arrack, spirits, wine, toddy, beer and all liquid consisting of or containing alcohol.',
+      },
+      {
+        sectionNo: '18A',
+        heading: 'Grant of exclusive or other privilege of manufacture, etc., on payment of rentals',
+        text: 'Notwithstanding anything to the contrary contained in this Act, the State Government may grant to any person or persons, on such conditions and for such period as they may deem fit, the exclusive or other privilege of manufacturing or supplying by wholesale, or of manufacturing and supplying by wholesale, or of selling by wholesale or by retail, any liquor or intoxicating drug within any local area, on his or their payment to the Government of an amount as rental in consideration of the grant of such privilege.',
+      },
+      {
+        sectionNo: '55',
+        heading: 'Penalty for illegal import, etc.',
+        text: 'Whoever, in contravention of this Act or of any rule or order made under this Act,— (a) imports, exports, transports, transits or possesses liquor or any intoxicating drug; or (b) manufactures liquor or any intoxicating drug; or (c) taps any toddy producing tree or draws toddy therefrom; or (f) constructs or works any distillery, brewery, winery or other place for manufacture of liquor; or (g) possesses materials, still, utensil, implement or apparatus for manufacture of liquor (other than toddy) or intoxicating drug; or (h) bottles liquor for purposes of sale; or (i) sells or stores for sale, liquor or intoxicating drug, shall be punishable, for offences under clauses other than (c), with imprisonment for a term which may extend to ten years and with fine which shall not be less than one lakh rupees, and for an offence under clause (c), with imprisonment for a term which may extend to one year, or with fine which may extend to ten thousand rupees, or with both.',
+      },
+    ],
+  },
+  {
+    id: 'act-tamil-nadu-prohibition-1937',
+    shortTitle: 'The Tamil Nadu Prohibition Act, 1937',
+    year: 1937,
+    actNumber: 'X of 1937',
+    jurisdiction: { type: 'state', state: 'Tamil Nadu' },
+    sourceUrl: 'https://www.tasmac.co.in/forms/TN_Prohibition_Act_1937_English.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Definitions — "liquor" and "intoxicating drug"',
+        text: '"liquor" includes toddy, arrack, spirits of wine, denatured spirits, spirits, wine, beer and all liquid consisting of or containing alcohol. "intoxicating drug" means— (a) the leaves, small stalks and flowering or fruiting tops of the Indian hemp plant (Cannabis sativa L.), including all forms known as bhang, siddhi or ganja; (b) charas, that is, the resin obtained from the Indian hemp plant, which has not been submitted to any manipulations other than those necessary for packing and transport; and (c) any other intoxicating or narcotic substance which the Government may, by notification, declare to be an intoxicating drug, such substance not being opium, coca leaf or a manufactured drug as defined in section 2 of the Dangerous Drugs Act, 1930.',
+      },
+      {
+        sectionNo: '4(1)',
+        heading: 'Punishment for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Any person who, in contravention of the provisions of this Act or of any rule, notification or order made or issued under this Act,— (a) imports, exports, transports or possesses liquor or any intoxicating drug; (aa) manufactures liquor or any intoxicating drug; (b) cultivates the hemp plant, or collects any portion of the hemp plant from which an intoxicating drug can be manufactured, without lawful authority; taps any toddy-producing tree, or draws toddy from any such tree; constructs or works any distillery or brewery; possesses materials, still, utensil, implement or apparatus whatsoever for the purpose of manufacturing liquor or any intoxicating drug; bottles liquor for purposes of sale; sells or buys liquor or any intoxicating drug; consumes liquor or any intoxicating drug; or (h) expends money in furtherance of any of the said acts; or (i) suffers to be done any of the acts aforesaid in or upon any premises which he owns or over which he has any control, shall be punishable— (in the case of manufacture, possession with intent to sell, and connected offences) with imprisonment for a term which may extend to five years and with fine which may extend to seven thousand rupees; (in the case of consumption) with imprisonment for a term which may extend to three years and with fine which may extend to three thousand rupees.',
+      },
+      {
+        sectionNo: '4(1-A)',
+        heading: 'Enhanced punishment where liquor or intoxicating drug contains noxious ingredients',
+        text: 'Where the liquor or intoxicating drug in respect of which an offence under clauses (a), (aa), (aaa), (b), (h) or (i) of sub-section (1) of section 4 is committed contains any noxious substance or any substance which is likely to cause death or grievous hurt, the offender shall be punishable, if death has been caused, with rigorous imprisonment for life and with fine which shall not be less than five thousand rupees, and, if grievous hurt has been caused or death has not resulted, with imprisonment for a term which may extend to ten years and with fine which may extend to seven thousand rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-excise-1914',
+    shortTitle: 'The Punjab Excise Act, 1914',
+    year: 1914,
+    actNumber: '1 of 1914',
+    jurisdiction: { type: 'state', state: 'Punjab' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/13097/1/excise-act-1914(bare).pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Definitions — "excisable article"',
+        text: '"Excisable article" means— (a) any alcoholic liquor for human consumption; or (b) any intoxicating drug. [Note: this Act, as in force in Punjab, also applies in materially the same form as the Haryana Excise Act, 1914 and the Himachal Pradesh Excise Act, 1914 following the reorganisation of the former composite State of Punjab, and each state has separately amended its own copy since.]',
+      },
+      {
+        sectionNo: '61',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule or order made, or of any licence, permit or pass granted, under this Act,— imports, exports, transports, manufactures, collects or possesses any intoxicant; constructs or works any distillery or brewery; or possesses any materials, still, utensil, implement or apparatus whatsoever for the purpose of manufacturing any intoxicant, shall be punishable with imprisonment for a term which may extend to three years and with fine which may extend to ten lakh rupees: Provided that— in the case of working a still, the imprisonment shall not be less than two years and the fine shall not be less than two lakh rupees; in the case of unlawful possession of lahan, the imprisonment shall not be less than one year and the fine shall not be less than one lakh rupees; in the case of unlawful possession of country liquor not exceeding twelve bottles, the imprisonment shall not be less than six months and the fine shall not be less than five thousand rupees; and in the case of foreign liquor unlawfully imported without payment of duty leviable thereon, the imprisonment shall not be less than two years and the fine shall not be less than two lakh rupees. [Note: sub-section (3), which separately penalises selling intoxicants, cultivating hemp, unlawfully removing intoxicants from a licensed establishment, bottling liquor for sale, or tapping tari trees, with imprisonment of not less than one year extending to two years and fine of not less than two lakh rupees, is not reproduced in full. This section was substituted by Punjab Act No. 26 of 2013.]',
+      },
+    ],
+  },
+  {
+    id: 'act-up-excise-1910',
+    shortTitle: 'The United Provinces Excise Act, 1910',
+    year: 1910,
+    actNumber: 'IV of 1910',
+    jurisdiction: { type: 'state', state: 'Uttar Pradesh' },
+    sourceUrl: 'https://upload.indiacode.nic.in/showfile?actid=AC_UP_88_459_00001_00001_1597737627591&type=actfile&filename=1910.pdf',
+    sections: [
+      {
+        sectionNo: '3(11), 3(13)',
+        heading: 'Definitions — "liquor" and "intoxicant"',
+        text: '(11) "Liquor" means intoxicating liquor and includes spirits of wine, spirit, wine, tari, pachwai, beer, and all liquid consisting of or containing alcohol, and also any substance which the State Government may, by notification, declare to be liquor for the purposes of this Act. (13) "Intoxicant" means any liquor or intoxicating drug as defined by this Act.',
+      },
+      {
+        sectionNo: '24',
+        heading: 'Grant of exclusive privilege of manufacture, etc.',
+        text: 'Subject to the provisions of section 31, the Excise Commissioner may grant to any person a licence for the exclusive privilege— (1) of manufacturing or of supplying by wholesale, or of both, or (2) of selling by wholesale or by retail, or (3) of manufacturing or of supplying by wholesale, or of both, and of selling by retail, any intoxicant within any specified local area, on such conditions and for such period as he may deem fit, in consideration of payment of such amount as rental as the State Government may direct.',
+      },
+      {
+        sectionNo: '60',
+        heading: 'Penalty for unlawful import, transport, manufacture, possession, sale and consumption',
+        text: '(1) Whoever, in contravention of this Act or of any rule or order made thereunder, exports, transports, or possesses any intoxicant not covered by section 63, collects any portion of the hemp plant from which an intoxicating drug can be manufactured, constructs or works any distillery or brewery, possesses materials/apparatus for manufacture, unlawfully removes intoxicants from a licensed establishment, bottles liquor for sale, sells any intoxicant otherwise than as permitted under section 61, or taps a tari-producing tree in a notified area, shall be punishable, in the case of tari-related offences, with imprisonment which may extend to two years, and, in the case of other offences under this sub-section, with imprisonment which may extend to three years, and with fine. (2) Whoever, in contravention of this Act or of any rule or order made thereunder or of any licence, permit or pass obtained under this Act, manufactures any intoxicant, shall be punished with imprisonment which shall not be less than six months and which may extend to three years and also with fine which shall not be less than five thousand rupees and which may extend to ten thousand rupees. (3) Whoever, in contravention of this Act or any rule or order made thereunder, consumes any intoxicant, shall be punished with fine which shall not be less than one thousand rupees and which may extend to two thousand rupees. [Note: this section, as it now stands, was substituted by U.P. Act No. 4 of 2018.]',
+      },
+    ],
+  },
 ];
