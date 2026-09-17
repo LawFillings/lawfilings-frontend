@@ -26,18 +26,48 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CaseType, UserRole } from '../types';
 
-// The case types that reference an existing Tribunal ORDER, where uploading it can prefill the
-// applicant/respondent names, the connected case number, and (where a deadline step exists) the
-// order date. IA/MA-general reference a pending case rather than a specific order, and NCLT Reply
-// reads a live application rather than an order — out of scope for this pass. See
-// ct-cc-written-version below for the one non-order source document (a Consumer Complaint).
-// ct-civil-appeal-first's "order" is a District Court decree/judgment rather than a Tribunal
-// order, but the extracted fields (parties, case number, order date) are exactly the same shape.
+// The case types that reference an existing ORDER/DECREE (a Tribunal order, a court decree, or an
+// IA/MA-general's most recent order in the pending case it belongs to), where uploading it can
+// prefill the applicant/respondent names, the connected case number, and (where a deadline step
+// exists) the order date — extractTribunalOrderFromText's shape fits all of these identically,
+// regardless of which court/tribunal/Act actually issued the order. See ct-cc-written-version
+// below for the one non-order source document (a Consumer Complaint) and ct-nclt-reply9 /
+// ct-dc-written-statement, deliberately left out — both reply to a live application/plaint rather
+// than an order, a different extraction shape not yet built.
 const ORDER_UPLOAD_CASE_TYPE_IDS = new Set([
+  // Reviews/restorations/settlements against the tribunal's own order
   'ct-drt-review',
   'ct-nclt-restoration',
   'ct-nclt-12a',
+  // Appeals — every one of these is, by definition, against a specific order/decree/judgment
   'ct-civil-appeal-first',
+  'ct-drat-appeal',
+  'ct-drt-appeal-ro',
+  'ct-drt-appeal-chamber',
+  'ct-nclat-appeal-ibc',
+  'ct-nclat-appeal-companies',
+  'ct-second-appeal',
+  'ct-letters-patent-appeal',
+  'ct-slp-criminal',
+  'ct-cit-appeal',
+  'ct-itat-appeal',
+  'ct-gst-appeal-first',
+  'ct-gstat-appeal',
+  'ct-cestat-appeal',
+  // Interlocutory applications within a pending case — IA/MA-general's "order" is whichever
+  // recent order in that case carries the case number and party names, not one specific decision
+  'ct-drt-ia-general',
+  'ct-drt-ma-general',
+  'ct-nclt-ia-general',
+  'ct-cc-ia-general',
+  'ct-dc-ia-general',
+  'ct-dc-ma-general',
+  // Stay/rectification applications, each against a specific tribunal order
+  'ct-cit-stay-application',
+  'ct-itat-stay-application',
+  'ct-itat-rectification',
+  'ct-gstat-rectification',
+  'ct-cestat-rectification',
 ]);
 const COMPLAINT_UPLOAD_CASE_TYPE_ID = 'ct-cc-written-version';
 
