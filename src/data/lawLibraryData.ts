@@ -11538,4 +11538,84 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-jk-excise-1901',
+    shortTitle: 'The Jammu and Kashmir Excise Act, Samvat 1958 (1901 A.D.)',
+    year: 1901,
+    actNumber: '9 of 1901 (Samvat)',
+    jurisdiction: { type: 'state', state: 'Jammu and Kashmir' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/16415/1/excise_act.pdf',
+    sections: [
+      {
+        sectionNo: '3(3)',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" means intoxicating liquor and includes spirits of wine, methylated spirits, spirits, wine, beer and all liquids consisting of or containing alcohol; also any substance which the Government may, by notification in the Government Gazette, declare to be liquor for the purposes of this Act. [Note: this Act continues in force, unrenamed, as the excise law of the Union Territories of Jammu and Kashmir and Ladakh following the 2019 reorganisation.]',
+      },
+      {
+        sectionNo: '50',
+        heading: 'For possession of illicit liquor',
+        text: '(1) Whoever, without lawful authority, is found to be in possession of any quantity of liquor or any intoxicating drug which has been imported and/or transported and/or manufactured without authorisation and/or without the payment of the prescribed duty therefor, shall on conviction before a Judicial Magistrate be punished with imprisonment for a term which may extend to seven years but shall not be less than three years and with fine which may extend to ten times the duty involved but shall not be less than five times the said duty. (2) In such circumstances as may be prescribed, possession of unlawfully manufactured liquor is presumed to carry knowledge of its unlawful manufacture.',
+      },
+    ],
+  },
+  {
+    id: 'act-chandigarh-excise-1914',
+    shortTitle: 'The Punjab Excise Act, 1914 (as applicable to the Union Territory of Chandigarh)',
+    year: 1914,
+    actNumber: '1 of 1914',
+    jurisdiction: { type: 'state', state: 'Chandigarh' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/15259/1/6_the_punjab_excise_act_1914.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Definitions — "excisable article"',
+        text: '"Excisable article" means— (a) any alcoholic liquor for human consumption; or (b) any intoxicating drug. [Note: this Act, as applicable to the Union Territory of Chandigarh, is the same Punjab Act 1 of 1914 that also applies in Punjab, and which Haryana and Himachal Pradesh inherited as their own copies following the 1966 reorganisation of the composite State of Punjab (see the corresponding entries for those states in this Library); the Chandigarh Administration exercises the powers of the State Government under this Act, including under section 58 (power to make rules), for the Union Territory.]',
+      },
+      {
+        sectionNo: '61',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule or order made, or of any licence, permit or pass granted, under this Act, imports, exports, transports, manufactures, collects or possesses any intoxicant, shall be punishable with imprisonment for a term which may extend to three years and with fine which may extend to ten lakh rupees: Provided that— in the case of working a still, the imprisonment shall not be less than two years and the fine shall not be less than two lakh rupees; in the case of unlawful possession of lahan, the imprisonment shall not be less than one year and the fine shall not be less than one lakh rupees; in the case of unlawful possession of country liquor not exceeding twelve bottles, the imprisonment shall not be less than six months and the fine shall not be less than five thousand rupees; and in the case of foreign liquor unlawfully imported without payment of duty leviable thereon, the imprisonment shall not be less than two years and the fine shall not be less than two lakh rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-nagaland-liquor-prohibition-1989',
+    shortTitle: 'The Nagaland Liquor Total Prohibition Act, 1989',
+    year: 1989,
+    actNumber: '4 of 1990',
+    jurisdiction: { type: 'state', state: 'Nagaland' },
+    sourceUrl: 'https://ebiz.nagaland.gov.in/wp-content/uploads/2020/11/NLTP-Act-1989.pdf',
+    sections: [
+      {
+        sectionNo: '4',
+        heading: 'Prohibition',
+        text: 'No person shall— (1) transport, import or possess liquor; (2) sell or buy liquor; (3) consume liquor; (4) manufacture liquor; and (5) use or keep any material, utensil, implement or apparatus whatsoever for manufacture of liquor. [Note: the punishment for contravention of this section is separately prescribed in section 5; this is the core statutory basis for Nagaland\'s state-wide prohibition of liquor.]',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Alteration of denatured spirit',
+        text: 'Whoever, in contravention of section 6, alters or attempts to alter any denatured spirit, or has in his possession any spirit in respect of which he knows or has reason to believe that any such alteration or attempt has been made, shall, on conviction, be punished with imprisonment for a term which may extend to one year and fine which may extend to one thousand rupees: Provided that, in the absence of special and adequate reasons to the contrary to be mentioned in the judgment of the Court, such imprisonment shall not be less than three months and fine shall not be less than one hundred rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-mizoram-liquor-prohibition-2019',
+    shortTitle: 'The Mizoram Liquor (Prohibition) Act, 2019',
+    year: 2019,
+    actNumber: '8 of 2019',
+    jurisdiction: { type: 'state', state: 'Mizoram' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/mizoram/2019/Act8of2019Mizoram.pdf',
+    sections: [
+      {
+        sectionNo: '5',
+        heading: 'Prohibition of manufacture, possession, transport and consumption of liquor',
+        text: '(1) No person, without a licence or permit issued under the provisions of this Act or the rules made thereunder, shall manufacture, possess, transport, sell, buy or otherwise deal in liquor. (2) No person shall consume liquor except as may be permitted under this Act. [Note: this Act re-imposed statewide prohibition in Mizoram, replacing the earlier Mizoram Liquor Total Prohibition Act, 1995 (itself subsequently modified by later amendments, including the Mizoram Liquor (Prohibition) Amendment Act, 2025, which relaxed the regime for wine made from local fruit).]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Punishment for contravention',
+        text: 'Whoever contravenes the provisions of sub-section (1) of section 5 shall, on conviction, be punished with imprisonment for a term which may extend to five years, with fine. Whoever consumes liquor in contravention of sub-section (2) of section 5 shall, on conviction, be punished with imprisonment for a term which may extend to six months, or with fine which may extend to five thousand rupees, or with both.',
+      },
+    ],
+  },
 ];
