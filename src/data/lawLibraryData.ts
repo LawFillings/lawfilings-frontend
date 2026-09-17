@@ -10933,4 +10933,149 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-wealth-tax-1957',
+    shortTitle: 'The Wealth-tax Act, 1957',
+    year: 1957,
+    actNumber: '27 of 1957',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/3123/1/a1957-27.pdf',
+    sections: [
+      {
+        sectionNo: '2(m)',
+        heading: 'Definitions — "net wealth"',
+        text: '"net wealth" means the amount by which the aggregate value computed in accordance with the provisions of this Act of all the assets, wherever located, belonging to the assessee on the valuation date, including assets required to be included in his net wealth as on that date under this Act, is in excess of the aggregate value of all the debts owed by the assessee on the valuation date other than certain excepted debts specified in this Act.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Charge of wealth-tax',
+        text: 'Subject to the other provisions contained in this Act, there shall be charged for every assessment year commencing on and from the 1st day of April, 1957, wealth-tax in respect of the net wealth on the corresponding valuation date of every individual, Hindu undivided family and company, at the rate of one per cent of the amount by which the net wealth exceeds fifteen lakh rupees (subsequently raised to thirty lakh rupees with effect from the assessment year 2010-11). [Note: the charge under this section, and the Act as a whole, ceased to apply from the assessment year 2016-17 onward — the Finance Act, 2015 abolished wealth-tax with effect from 1 April 2015, folding an equivalent revenue measure into a surcharge on high-income taxpayers under the Income-tax Act, 1961 instead. This Act remains relevant to assessments and appeals for years up to and including 2015-16 that are still pending before authorities or courts.]',
+      },
+    ],
+  },
+  {
+    id: 'act-gift-tax-1958',
+    shortTitle: 'The Gift-tax Act, 1958',
+    year: 1958,
+    actNumber: '18 of 1958',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2483/1/a1958-18.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Charge of gift-tax',
+        text: '(2) Subject to the other provisions (including provisions for the levy of additional gift-tax) contained in this Act, there shall be charged for every assessment year commencing on and from the 1st day of April, 1987, gift-tax in respect of the gifts, if any, made by a person during the previous year, at the rate of thirty per cent on the value of all taxable gifts. (3) Notwithstanding anything contained in sub-section (2), the provisions of this Act shall cease to apply and shall have no effect whatsoever in respect of any gift made on or after the 1st day of October, 1998. [Note: gift-tax was abolished for gifts made on or after that date; certain gifts received without consideration have instead been brought within the scope of "income from other sources" under section 56(2) of the Income-tax Act, 1961. This Act remains relevant only to gifts made before 1 October 1998 that are the subject of pending assessment or appeal.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Gifts to include certain transfers',
+        text: 'For the purposes of this Act,— (a) where property is transferred otherwise than for adequate consideration, the amount by which the market value of the property at the date of the transfer exceeds the value of the consideration shall be deemed to be a gift made by the transferor; ... (c) where a person releases, discharges, surrenders, forfeits or abandons any debt, contract or other actionable claim or any interest in property, the value of the release, discharge, surrender, forfeiture or abandonment to the extent to which it has not been found to the satisfaction of the Assessing Officer to have been made bona fide, shall be deemed to be a gift made by the person responsible for the release, discharge, surrender, forfeiture or abandonment. [Note: further clauses covering transfers of property to minors, and vesting of property in joint names without consideration, are not reproduced.]',
+      },
+    ],
+  },
+  {
+    id: 'act-admiralty-2017',
+    shortTitle: 'The Admiralty (Jurisdiction and Settlement of Maritime Claims) Act, 2017',
+    year: 2017,
+    actNumber: '22 of 2017',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2256/5/A2017-22.pdf',
+    sections: [
+      {
+        sectionNo: '4',
+        heading: 'Maritime claim',
+        text: '(1) The following are maritime claims, namely:— (a) dispute regarding the possession or ownership of a vessel or the ownership of any share therein; (b) dispute between the co-owners of a vessel as to the employment or earnings of the vessel; (c) mortgage or a charge of the same nature on a vessel; ... (i) claim for loss of life or personal injury occurring, whether on land or on water, in direct connection with the operation of a vessel; (j) claim for loss of or damage to goods carried on board a vessel. [Note: this is an exhaustive list running to clauses (a)-(w), covering construction, repair, salvage, general average, pilotage, towage, insurance premiums, agency commissions, and similar matters; only a representative subset is reproduced.]',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Arrest of vessel',
+        text: '(1) The High Court may order arrest of any vessel which is within its jurisdiction for the purpose of providing security against a maritime claim which is the subject of an admiralty proceeding, where the Court has reason to believe that— (a) the person who owned the vessel at the time when the maritime claim arose is liable for the claim and is the owner of the vessel when the arrest is effected; or (b) the demise charterer of the vessel at the time when the maritime claim arose is liable for the claim and is the demise charterer or the owner of the vessel when the arrest is effected; or (c) the claim is based on a mortgage or a charge of the similar nature on the vessel; or (d) the claim relates to the possession, ownership, or the earnings of the vessel between co-owners. (2) The High Court may also order arrest of any other vessel for the purpose of providing security against a maritime claim, in lieu of the vessel against which a maritime claim has been made under this Act: Provided that no vessel shall be arrested under this sub-section in respect of a maritime claim under clause (a) of sub-section (1) of section 4.',
+      },
+    ],
+  },
+  {
+    id: 'act-trai-1997',
+    shortTitle: 'The Telecom Regulatory Authority of India Act, 1997',
+    year: 1997,
+    actNumber: '24 of 1997',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://trai.gov.in/sites/default/files/2024-10/The_TRAI_Act_1997.pdf',
+    sections: [
+      {
+        sectionNo: '11',
+        heading: 'Functions of Authority',
+        text: '(1) Notwithstanding anything contained in the Indian Telegraph Act, 1885, the functions of the Authority shall be to— (a) make recommendations, either suo motu or on request from the licensor, on matters specified in the proviso to this clause, including need and timing for introduction of new service provider, terms and conditions of licence to a service provider, revocation of licence for non-compliance, measures to facilitate competition and promote efficiency, technological improvements, and efficient management of available spectrum: Provided that the recommendations of the Authority under this clause shall not be binding upon the Central Government; (b) discharge the following functions, namely— (i) ensure compliance of terms and conditions of licence; (ii) fix the terms and conditions of inter-connectivity between service providers; (iii) ensure technical compatibility and effective inter-connection between different service providers; (iv) regulate arrangement amongst service providers of sharing their revenue derived from providing telecommunication services; (v) lay down the standards of quality of service to be provided by service providers; (vi) ensure the quality of service and conduct periodical survey; (vii) maintain register of interconnect agreements; (viii) ensure effective compliance of universal service obligations. [Note: clauses (c) and (d), on levying fees and other charges and performing such other functions as the Central Government may entrust, are not reproduced.]',
+      },
+    ],
+  },
+  {
+    id: 'act-telecommunications-2023',
+    shortTitle: 'The Telecommunications Act, 2023',
+    year: 2023,
+    actNumber: '44 of 2023',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/20101/1/A2023-44.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Authorisation for telecommunication services, telecommunication network, etc.',
+        text: '(1) Any person intending to— (a) provide telecommunication services; (b) establish, operate, maintain or expand telecommunication network; or (c) possess radio equipment, shall obtain an authorisation from the Central Government, subject to such terms and conditions, including fees or charges, as may be prescribed. [Note: sub-section (6) makes such authorisation neither transferable nor assignable except with the prior written permission of the Central Government.]',
+      },
+      {
+        sectionNo: '20',
+        heading: 'Power to take temporary possession of telecommunication services or telecommunication network, and for interception',
+        text: '(1) On the occurrence of any public emergency, including disaster management, or in the interest of public safety, the Central Government or a State Government, or any officer specially authorised in this behalf, if satisfied that it is necessary or expedient to do so, may take temporary possession of any telecommunication service or telecommunication network from a provider of telecommunication services, and may take such actions, for as long as necessary, to prevent disruption or manipulation of telecommunication, or to provide telecommunication services or network on payment of compensation. (2) On the occurrence of any public emergency or in the interest of public safety, the Central Government or a State Government or any officer specially authorised in this behalf, if satisfied that it is necessary or expedient so to do in the interest of the sovereignty and integrity of India, security of the State, friendly relations with foreign States, public order, or for preventing incitement to an offence, may direct that any message or class of messages, to or from any person or class of persons, relating to any particular subject, brought for transmission by, transmitted, received or stored in any telecommunication service or telecommunication network, shall not be transmitted, or shall be intercepted or detained, or disclosed to an authorised officer of the Central Government or a State Government, subject to the procedure and safeguards as may be prescribed. [Note: the Telecommunications Act, 2023 repeals and replaces the Indian Telegraph Act, 1885 and the Indian Wireless Telegraph Act, 1933, whose corresponding interception power was section 5(2) of the 1885 Act. The Telecommunications (Procedures and Safeguards for Lawful Interception of Messages) Rules, 2024 prescribe the review-committee and time-limit safeguards referred to in sub-section (2).]',
+      },
+    ],
+  },
+  {
+    id: 'act-inter-state-river-water-disputes-1956',
+    shortTitle: 'The Inter-State River Water Disputes Act, 1956',
+    year: 1956,
+    actNumber: '33 of 1956',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1664/3/A1956-33.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Complaints by State Governments as to water disputes',
+        text: 'If it appears to the Government of any State that a water dispute with the Government of another State has arisen or is likely to arise by reason of the fact that the interests of the State, or of any of the inhabitants thereof, in the waters of an inter-State river or river valley have been, or are likely to be, affected prejudicially by— (a) any executive action or legislation taken or passed, or proposed to be taken or passed, by the other State; or (b) the failure of the other State or any authority therein to exercise any of their powers with respect to the use, distribution or control of such waters; or (c) the failure of the other State to implement the terms of any agreement relating to the use, distribution or control of such waters, that State Government may, in such form and manner as may be prescribed, request the Central Government to refer the water dispute to a Tribunal for adjudication.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Constitution of Tribunal',
+        text: '(1) When any request under section 3 is received from any State Government in respect of any water dispute and the Central Government is of opinion that the water dispute cannot be settled by negotiations, the Central Government shall, within a period not exceeding one year from the date of receipt of such request, by notification in the Official Gazette, constitute a Water Disputes Tribunal for the adjudication of the water dispute: Provided that any dispute settled by a Tribunal before the commencement of the Inter-State River Water Disputes (Amendment) Act, 2002 shall not be re-opened. (2) The Tribunal shall consist of a Chairman and two other members nominated in this behalf by the Chief Justice of India from among persons who at the time of such nomination are Judges of the Supreme Court or of a High Court.',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Decision of Tribunal',
+        text: '(1) The Central Government shall publish the decision of the Tribunal in the Official Gazette and the decision shall be final and binding on the parties to the dispute and shall be given effect to by them, and, notwithstanding anything contained in any other provision of this Act, the decision of the Tribunal shall be, deemed to be final and binding, published as aforesaid. (2) The decision of the Tribunal, after its publication in the Official Gazette by the Central Government under sub-section (1), shall have the same force as an order or decree of the Supreme Court.',
+      },
+    ],
+  },
+  {
+    id: 'act-umeed-1995',
+    shortTitle: 'The Unified Waqf Management, Empowerment, Efficiency and Development Act, 1995',
+    year: 1995,
+    actNumber: '43 of 1995',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/handle/123456789/1984',
+    sections: [
+      {
+        sectionNo: '3(r)',
+        heading: 'Definitions — "waqf"',
+        text: '"waqf" means the permanent dedication by any person, of any movable or immovable property for any purpose recognised by the Muslim law as pious, religious or charitable and includes— (i) a waqf by user but such waqf shall not cease to be a waqf by reason only of the user having ceased irrespective of the period of such cesser; (ii) a Shamlat Patti, Shamlat Deh, Jumla Malkkan or by any other name entered in a revenue record; (iii) "grants", including mashrat-ul-khidmat for any purpose recognised by the Muslim law as pious, religious or charitable; and (iv) a waqf-alal-aulad to the extent to which the property is dedicated for any purpose recognised by Muslim law as pious, religious or charitable, provided when the line of succession fails, the income of the waqf shall be spent for education, development, welfare and such other purposes as recognised by Muslim law; and "waqif" means any person making such dedication.',
+      },
+      {
+        sectionNo: '3C',
+        heading: 'Government property not to be deemed waqf property',
+        text: '(1) Any Government property identified or declared as waqf property, before or after the commencement of the Waqf (Amendment) Act, 2025, shall not be deemed to be waqf property. (2) If any question arises whether any such property is a Government property or not, the State Government may designate an officer, above the rank of Collector, who shall conduct an inquiry as per the applicable law and determine whether the said property is a Government property or not, and submit his report to the State Government in this regard. [Note: the proviso to sub-section (2), and sub-sections (3) and (4) — which would have made the property remain non-waqf until the officer\'s report and directed corresponding correction of revenue records — were stayed by the Supreme Court in its interim order of 15 September 2025 in In re: Waqf (Amendment) Act, 2025, on the ground that a unilateral executive determination of title, without adjudication by a Tribunal or court, was constitutionally impermissible; sub-sections (1) and (2) themselves remain in force.]',
+      },
+      {
+        sectionNo: '85',
+        heading: 'Bar of jurisdiction of civil courts',
+        text: 'No suit or other legal proceeding shall lie in any civil court, revenue court and any other authority in respect of any dispute, question or other matter relating to any waqf, waqf property or other matter which is required by or under this Act to be determined by a Tribunal.',
+      },
+    ],
+  },
 ];
