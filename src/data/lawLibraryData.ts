@@ -11428,4 +11428,114 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-assam-excise-2000',
+    shortTitle: 'The Assam Excise Act, 2000',
+    year: 2000,
+    actNumber: 'XIV of 2000',
+    jurisdiction: { type: 'state', state: 'Assam' },
+    sourceUrl: 'https://excise.assam.gov.in/sites/default/files/swf_utility_folder/departments/excise_medhassu_in_oid_3/menu/document/Assam-Excise-Act-2000.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "export" and "import"',
+        text: '"export" means to take out of the territory to which this Act applies, otherwise than across a customs frontier as defined by the Central Government; and "import" (except in the phrase "import into India") means to bring into the territories to which this Act applies otherwise than across a customs frontier as defined by the Central Government. [Note: this Act replaced the Assam Excise Act, 1910 as the current excise law of Assam.]',
+      },
+      {
+        sectionNo: '53(1)(a)',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule or order made, or of any licence, permit or pass granted, under this Act, unlawfully imports, exports, transports, manufactures, possesses or sells any intoxicant other than tari and pachwai, shall be punished with imprisonment for a term which shall not be less than six months but which may extend to three years and with fine which shall not be less than five thousand rupees but which may extend to one lakh rupees. [Note: this reflects the text as amended by the Assam Excise (Amendment) Act, 2018.]',
+      },
+    ],
+  },
+  {
+    id: 'act-chhattisgarh-excise-1915',
+    shortTitle: 'The Chhattisgarh Excise Act, 1915',
+    year: 1915,
+    actNumber: 'II of 1915',
+    jurisdiction: { type: 'state', state: 'Chhattisgarh' },
+    sourceUrl: 'https://lawtrend.in/wp-content/uploads/bsk-pdf-manager/2022/07/Chhattisgarh-Excise-Act-1915.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" means intoxicating liquor, and includes spirits of wine, spirit, wine, tari, beer, all liquid consisting of or containing alcohol, and any substance which the State Government may, by notification, declare to be liquor for the purposes of this Act. [Note: this Act, common to the composite State of Madhya Pradesh until the 2000 reorganisation, became the Chhattisgarh Excise Act for the successor State of Chhattisgarh; Madhya Pradesh\'s own copy of the same 1915 Act, the M.P. Excise Act, 1915 (also in this Library), has since been independently amended by that State.]',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Penalty for unlawful manufacture, transport, possession, sale, etc.',
+        text: 'Whoever, in contravention of any provision of this Act, or of any rule, notification or order made or issued thereunder, or of any condition of a licence, permit or pass granted under this Act, manufactures, transports, imports, exports, collects or possesses any intoxicant, or, save as otherwise provided, sells any intoxicant, is punishable for the offence, with enhanced punishment on a second or subsequent conviction, and with a further enhanced minimum term of imprisonment where the quantity of liquor found exceeds a prescribed bulk-litre threshold. [Note: Chhattisgarh has independently amended the specific terms of imprisonment and fine under this section since the 2000 reorganisation, and its current penalty scale under this section differs in its numerical thresholds from the corresponding Section 34 of the Madhya Pradesh Excise Act, 1915 (also in this Library); this entry does not reproduce the current Chhattisgarh-specific figures pending further verification.]',
+      },
+    ],
+  },
+  {
+    id: 'act-jharkhand-excise-1915',
+    shortTitle: 'The Bihar and Orissa Excise Act, 1915 (as applicable to Jharkhand)',
+    year: 1915,
+    actNumber: '2 of 1915',
+    jurisdiction: { type: 'state', state: 'Jharkhand' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/6054/1/excise_act_1915.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" includes any liquid intoxicant for human consumption, whether containing alcohol or not, such as spirits of wine, spirit, wine, fermented tari, pachwai and beer, and also unfermented tari, and also any other substance which the State Government may, by notification, declare to be liquor for the purposes of this Act. [Note: this Act was, and remains, common to Bihar, Jharkhand and Odisha as successor states of the former Province of Bihar and Orissa. Bihar has since substantially superseded it for liquor-related matters with its own Bihar Prohibition and Excise Act, 2016 (also in this Library); Jharkhand has instead amended its own copy of this 1915 Act, most recently by the Jharkhand Excise (Amendment) Act, 2015, without wholly replacing it.]',
+      },
+      {
+        sectionNo: '47',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule, order, licence, permit or pass made or granted thereunder,— imports, exports, transports, manufactures, possesses or sells any intoxicant; cultivates the hemp plant; taps any tari-producing tree or draws tari therefrom without lawful authority; bottles liquor for purposes of sale; constructs or works any distillery, brewery or warehouse; possesses materials or apparatus for manufacturing any intoxicant; or removes any intoxicant from a warehouse or other place of storage without lawful authority, shall be punishable, for offences other than unlawful tapping of tari-producing trees, with imprisonment for a term which shall not be less than three years but may extend to seven years and also with fine which shall not be less than twenty thousand rupees but may extend to fifty thousand rupees: Provided that a reduced punishment applies where the offence concerns possession or sale of mohua flower, tari or pachwai, or of outstill liquor not exceeding ten litres, from an authorised source. For the offence of unlawful tapping of tari-producing trees, the punishment is imprisonment for a term which may extend to one year, or fine which may extend to ten thousand rupees, or both.',
+      },
+    ],
+  },
+  {
+    id: 'act-goa-excise-duty-1964',
+    shortTitle: 'The Goa Excise Duty Act, 1964',
+    year: 1964,
+    actNumber: '5 of 1964',
+    jurisdiction: { type: 'state', state: 'Goa' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/goa/1964/1964GOA5.pdf',
+    sections: [
+      {
+        sectionNo: '2(ff)',
+        heading: 'Definitions — "excisable article"',
+        text: '"excisable article" means— (i) liquor, other than foreign liquor; (ii) intoxicating drug; or (iii) opium; (iv) foreign liquor; but does not include any medicinal and toilet preparations containing alcohol, opium, Indian hemp and other narcotic drugs and narcotics.',
+      },
+      {
+        sectionNo: '2(l)',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" includes— (a) spirits of wine, methylated or denatured spirits, spirits, wines, toddy, beer, feny and all liquids consisting of or containing alcohol, wash, other than medicinal and toilet preparations; (b) any other intoxicating substance which the Government may, by notification, declare to be liquor for the purpose of this Act.',
+      },
+      {
+        sectionNo: '30',
+        heading: 'Penalty for contravention of provision',
+        text: 'Whoever, in contravention of this Act, or of any rules or orders made thereunder, or of the conditions in any licence or permit obtained under this Act,— (a) imports, exports, transports or possesses any excisable article; or (b) manufactures or produces any excisable article or bottles liquor; or (c) constructs or works any distillery, brewery or pot still; or (d) uses, keeps, or has in his possession any materials, still, utensils, implements or apparatus whatsoever for the purpose of manufacturing any excisable article; or (e) sells any excisable article or foreign liquor; or (f) draws toddy from any tree, shall, on conviction before a Magistrate, be punished for each such offence with— (i) rigorous imprisonment which may extend to seven years, with or without fine, if the offence relates to intoxicating drug or opium, subject to a minimum punishment of not less than six months; (ii) a fine which may extend to ten thousand rupees or imprisonment for a term which may extend to six months, or with both, if the offence relates to any other matter. [Note: clause (ii)\'s maximum imprisonment term was reduced from two years to six months by the Goa Excise Duty (Amendment) Act, 2022 (Goa Act 6 of 2022), which also removed the erstwhile second proviso to this section and clause (e) of section 31.]',
+      },
+      {
+        sectionNo: '33',
+        heading: 'Penalty for possession of contraband excisable article',
+        text: 'Whoever, without lawful authority, has in his possession any quantity of excisable article knowing the same to have been unlawfully imported, transported or manufactured or knowing that the prescribed duty has not been paid thereon, shall, without prejudice to the provisions of section 30, on conviction before a Magistrate, be punished with fine which may extend to ten thousand rupees or with imprisonment which may extend to one year, or with both.',
+      },
+    ],
+  },
+  {
+    id: 'act-telangana-excise-1968',
+    shortTitle: 'The Telangana Excise Act, 1968',
+    year: 1968,
+    actNumber: '17 of 1968',
+    jurisdiction: { type: 'state', state: 'Telangana' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/8683/1/act_17_of_1968.pdf',
+    sections: [
+      {
+        sectionNo: '2(9)',
+        heading: 'Definitions — "excisable article"',
+        text: '"excisable article" means— (a) any alcoholic liquor for human consumption; or (b) any intoxicating drug. [Note: this Act was the Andhra Pradesh Excise Act, 1968 (also in this Library) until the 2014 bifurcation of the composite State of Andhra Pradesh, when it was renamed for the successor State of Telangana and has since been amended independently, including by the Telangana Excise (Amendment) Act, 2017.]',
+      },
+      {
+        sectionNo: '34(1)',
+        heading: 'Penalties for illegal import, etc.',
+        text: 'Whoever, in contravention of this Act or of any rule, notification or order made, issued or passed thereunder, or of any licence or permit granted or issued under this Act, imports, exports, transports, manufactures, collects, possesses or sells any intoxicant, shall be punishable— for offences under clause (a) involving smaller quantities, with imprisonment for a term which shall not be less than six months but which may extend upto three years and with fine which shall not be less than rupees five thousand but which may extend upto rupees twenty thousand; and for offences under clause (a) involving notified larger quantities, with imprisonment for a term which shall not be less than three years and which may extend upto five years and with fine which shall not be less than rupees ten thousand but which may extend upto rupees one lakh.',
+      },
+    ],
+  },
 ];
