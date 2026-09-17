@@ -11173,4 +11173,139 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-haryana-excise-1914',
+    shortTitle: 'The Punjab Excise Act, 1914 (as applicable to the State of Haryana)',
+    year: 1914,
+    actNumber: '1 of 1914',
+    jurisdiction: { type: 'state', state: 'Haryana' },
+    sourceUrl: 'https://haryanatax.gov.in/HEX/DownloadPDF?formName=%2FActs%2FExcise%2FThePunjabExciseAct_1914.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Definitions — "excisable article"',
+        text: '"Excisable article" means— (a) any alcoholic liquor for human consumption; or (b) any intoxicating drug. [Note: this Act was inherited by Haryana as the same Punjab Act 1 of 1914 following the 1966 reorganisation of the composite State of Punjab, and has since been amended independently by the Haryana legislature, most recently by Haryana Act 8 of 2022.]',
+      },
+      {
+        sectionNo: '61',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, etc. (as amended for Haryana)',
+        text: 'Whoever, in contravention of this Act, or of any rule or order made, or of any licence, permit or pass granted, under this Act, imports, exports, transports, manufactures, collects or possesses any intoxicant, shall be punishable with imprisonment and fine as prescribed, including— in the case of possession of country liquor manufactured in a licensed distillery in Haryana beyond the prescribed limit for private possession, imprisonment which shall not be less than six months and fine which shall not be less than fifty thousand rupees; and in the case of foreign liquor in a quantity exceeding ten cases (ninety bulk litres) on which excise duty or any other leviable duty under this Act has not been paid, imprisonment which shall not be less than two years and fine which shall not be less than two lakh rupees. [Note: a further proviso, applicable to offences under this section generally, requires the fine imposed to be not less than ten times the amount of excise duty or consideration fee that would have been leviable had the intoxicant been dealt with in accordance with the Act and rules, or the minimum fine specified for the relevant offence, whichever is greater — this diverges from the Punjab and Himachal Pradesh versions of the same section, each independently amended by their own legislatures after the 1966 reorganisation.]',
+      },
+    ],
+  },
+  {
+    id: 'act-himachal-pradesh-excise-1914',
+    shortTitle: 'The Punjab Excise Act, 1914 (as applicable to the State of Himachal Pradesh)',
+    year: 1914,
+    actNumber: '1 of 1914',
+    jurisdiction: { type: 'state', state: 'Himachal Pradesh' },
+    sourceUrl: 'https://www.hptax.gov.in/ckfinder/userfiles/files/PunjabExciseAct1914.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Definitions — "excisable article"',
+        text: '"Excisable article" means— (a) any alcoholic liquor for human consumption; or (b) any intoxicating drug. [Note: like Haryana, Himachal Pradesh inherited this Act as the same Punjab Act 1 of 1914 following the 1966 reorganisation of the composite State of Punjab, and has since amended it independently.]',
+      },
+      {
+        sectionNo: '61',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, etc.; compounding for small quantities',
+        text: 'Whoever, in contravention of this Act, or of any rule or order made, or of any licence, permit or pass granted, under this Act, imports, exports, transports, manufactures, collects or possesses any intoxicant, is punishable with imprisonment for a term which may extend to three years and with fine, subject to enhanced minimum sentences for specific categories of offence (working a still, unlawful possession of lahan, or of country or foreign liquor) as separately prescribed. [Note: the Punjab Excise (Himachal Pradesh Amendment) Act, 2001 inserted a proviso permitting offences under this section involving small quantities — import, export, transport or possession of up to sixty litres of lahan, or up to eighteen bulk litres of liquor — to be compounded by a Judicial Magistrate of the First Class, on payment of an amount between one thousand and twenty-five thousand rupees, in lieu of prosecution. This compounding proviso is a distinctly Himachal Pradesh feature, absent from the Punjab and Haryana versions of the Act.]',
+      },
+    ],
+  },
+  {
+    id: 'act-maharashtra-prohibition-1949',
+    shortTitle: 'The Maharashtra Prohibition Act, 1949',
+    year: 1949,
+    actNumber: 'XXV of 1949',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/16375/1/the_maharashtra_prohibition_act.pdf',
+    sections: [
+      {
+        sectionNo: '12',
+        heading: 'Bar against manufacture, possession, etc., of liquor',
+        text: 'No person shall— (a) manufacture liquor; (b) construct or work any distillery or brewery; (c) import, export, transport or possess liquor; or (d) sell or buy liquor. [Note: this Act was originally the Bombay Prohibition Act, 1949, common to the composite State of Bombay, and was renamed the Maharashtra Prohibition Act after the 1960 bifurcation into Maharashtra and Gujarat; each state has since amended its own copy independently under its own name — Gujarat\'s copy, the Gujarat Prohibition Act, 1949, is covered separately in a later batch of this Library expansion.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Bar against consumption, possession of apparatus, etc.',
+        text: 'No person shall— (a) bottle any liquor for sale; (b) consume or use liquor; or (c) use, keep or have in his possession any materials, still, utensils, implement or apparatus whatsoever for the manufacture of any liquor.',
+      },
+      {
+        sectionNo: '65',
+        heading: 'Penalty for illegal import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act, imports, exports, transports, manufactures any intoxicant (other than opium), constructs or works any distillery or brewery, bottles liquor, sells, buys or possesses any intoxicant or hemp, or uses, keeps or has in his possession any materials, still, utensils, implement or apparatus whatsoever for the purpose of manufacturing any intoxicant, shall, on conviction, be punished for each such offence with imprisonment for a term which shall not be less than three years but which may extend to five years, or with fine which shall not be less than twenty-five thousand rupees but which may extend to fifty thousand rupees, or with both.',
+      },
+    ],
+  },
+  {
+    id: 'act-karnataka-excise-1965',
+    shortTitle: 'The Karnataka Excise Act, 1965',
+    year: 1965,
+    actNumber: '21 of 1966',
+    jurisdiction: { type: 'state', state: 'Karnataka' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/6860/1/21_of_1966_(e).pdf',
+    sections: [
+      {
+        sectionNo: '2(18)',
+        heading: 'Definitions — "liquor"',
+        text: '"Liquor" means— (a) spirits of wine, denatured spirits, wine, beer, toddy and all liquids consisting of or containing alcohol; and (b) any other intoxicating substance which the State Government may, by notification, declare to be liquor for the purposes of this Act.',
+      },
+      {
+        sectionNo: '2(16)',
+        heading: 'Definitions — "intoxicant"',
+        text: '"Intoxicant" means any liquor as defined in clause (18), or any intoxicating drug as defined in clause (17).',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Penalty for unlawful possession',
+        text: 'Whoever, without lawful authority, has in his possession any quantity of any intoxicant knowing the same to have been unlawfully imported, transported, manufactured, cultivated or collected, or knowing the prescribed duty not to have been paid thereon, shall, on conviction, be punished with imprisonment for a term which may extend to four years and with fine which may extend to fifty thousand rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-delhi-excise-2009',
+    shortTitle: 'The Delhi Excise Act, 2009',
+    year: 2009,
+    actNumber: '10 of 2010',
+    jurisdiction: { type: 'state', state: 'Delhi' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/13622/1/delhi_excise_act.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "country or traditional liquor" and "denatured spirit"',
+        text: '"country or traditional liquor" means plain or spiced spirit which has been manufactured in India from material recognised as base for country or traditional spirit, namely mahua, rice, gur, molasses, etc., and notified as such liquor by the Government; "denaturant" means any substance completely miscible in spirit and of such a character that its addition renders the material, or any aqueous dilution of it, non-potable; "denatured spirit" means spirit with added denaturant to render it effectively and permanently unfit for human consumption.',
+      },
+      {
+        sectionNo: '33',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of provision of this Act or of any rule or order made or notification issued or of any licence, permit or pass, granted under this Act— (a) manufactures, imports, exports, transports or removes any intoxicant; (b) constructs or works any manufactory or warehouse; (c) bottles any liquor for purposes of sale; (d) uses, keeps or has in his possession any material, still, utensil, implement or apparatus, whatsoever, for the purpose of manufacturing any intoxicant other than toddy or tari; (e) possesses any material or film either with or without the Government logo or logo of any State or wrapper or any other thing in which liquor can be packed or any apparatus or implement or machine for the purpose of packing any liquor; (f) sells any intoxicant, collects, possesses or buys any intoxicant beyond the prescribed quantity, shall be punishable with imprisonment for a term which shall not be less than six months but which may extend to three years and with fine which shall not be less than fifty thousand rupees but which may extend to one lakh rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-bihar-prohibition-excise-2016',
+    shortTitle: 'The Bihar Prohibition and Excise Act, 2016',
+    year: 2016,
+    actNumber: '20 of 2016',
+    jurisdiction: { type: 'state', state: 'Bihar' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/bihar/2016/2016%20Bihar%2020.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "illicit liquor" and "Indian made foreign liquor"',
+        text: '"illicit liquor" means any liquor manufactured or stored or distributed or sold, in contravention of the provisions of this Act or the rules framed thereunder, or liquor on which appropriate duty or fee leviable under this Act or the rules framed thereunder has not been paid, and includes foreign liquor on which appropriate duty or customs has not been paid; "Indian made foreign liquor" means liquor manufactured in India by process of distillation or using alcohol obtained by distillation, such as whisky, brandy, rum, gin and vodka.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Prohibition',
+        text: 'No person shall manufacture, bottle, distribute, transport, collect, store, possess, purchase, sell or consume any liquor or any other intoxicating material, except as authorised under this Act or the rules made thereunder. [Note: this is the core statutory basis for Bihar\'s state-wide liquor prohibition, in force since 2016.]',
+      },
+      {
+        sectionNo: '37',
+        heading: 'Punishment for consumption etc.',
+        text: 'Whoever, in contravention of this Act or the rules, notification or order made thereunder— (a) consumes liquor or intoxicant in any place; or (b) is found drunk or in a state of drunkenness at any place; or (c) drinks and creates nuisance or violence at any place including in his own house or premises; or (d) permits or facilitates drunkenness or allows assembly of drunken elements in his own house or premises, shall be punishable, for a first offence under clause (a) or (b), with fine which shall not be less than fifty thousand rupees or, in lieu thereof, imprisonment for a period of three months, but for a subsequent offence under clause (a) or (b), with imprisonment for a term which shall not be less than one year but may extend to five years and with fine which may extend to one lakh rupees. [Note: this reflects the text as amended by the Bihar Prohibition and Excise (Amendment) Act, 2018, which relaxed the original 2016 Act\'s substantially more stringent first-offence penalty.]',
+      },
+    ],
+  },
 ];
