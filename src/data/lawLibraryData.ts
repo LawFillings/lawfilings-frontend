@@ -10528,4 +10528,409 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-rera-2016',
+    shortTitle: 'The Real Estate (Regulation and Development) Act, 2016',
+    year: 2016,
+    actNumber: '16 of 2016',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2158/1/A2016-16.pdf',
+    sections: [
+      {
+        sectionNo: '2(d)',
+        heading: 'Definitions — "allottee"',
+        text: '"allottee" in relation to a real estate project, means the person to whom a plot, apartment or building, as the case may be, has been allotted, sold (whether as freehold or leasehold) or otherwise transferred by the promoter, and includes the person who subsequently acquires the said allotment through sale, transfer or otherwise but does not include a person to whom such plot, apartment or building, as the case may be, is given on rent.',
+      },
+      {
+        sectionNo: '2(zk)',
+        heading: 'Definitions — "promoter"',
+        text: '"promoter" means,— (i) a person who constructs or causes to be constructed an independent building or a building consisting of apartments, or converts an existing building or a part thereof into apartments, for the purpose of selling all or some of the apartments to other persons and includes his assignees; or (ii) a person who develops land into a project, whether or not the person also constructs structures on any of the plots, for the purpose of selling to other persons all or some of the plots in the said project, whether with or without structures thereon; or (iii) any development authority or any other public body in respect of allottees of buildings or apartments, as the case may be, constructed by such authority or body on lands owned by them or placed at their disposal by the Government, or plots owned by such authority or body or placed at their disposal by the Government, for the purpose of selling all or some of the apartments or plots; or (iv) an apex State level co-operative housing finance society and a primary co-operative housing society which constructs apartments or buildings for its Members or in respect of the allottees of such apartments or buildings; or (v) any other person who acts himself as a builder, coloniser, contractor, developer, estate developer or by any other name or claims to be acting as the holder of a power of attorney from the owner of the land on which the building or apartment is constructed or plot is developed for sale; or (vi) such other person who constructs any building or apartment for sale to the general public.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Prior registration of real estate project with Real Estate Regulatory Authority',
+        text: '(1) No promoter shall advertise, market, book, sell or offer for sale, or invite persons to purchase in any manner any plot, apartment or building, as the case may be, in any real estate project or part of it, in any planning area, without registering the real estate project with the Real Estate Regulatory Authority established under this Act: Provided that projects that are ongoing on the date of commencement of this Act and for which the completion certificate has not been issued, the promoter shall make an application to the Authority for registration of the said project within a period of three months from the date of commencement of this Act. [Note: sub-section (2) exempts projects where the land area does not exceed 500 square metres or the number of proposed apartments (across all phases) does not exceed eight, projects that have received a completion certificate before commencement of the Act, and renovation/repair/re-development work not involving new marketing, advertising, or allotment; the Explanation clarifies that a project developed in phases requires registration of each phase as a separate real estate project.]',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Return of amount and compensation',
+        text: '(1) If the promoter fails to complete or is unable to give possession of an apartment, plot or building,— (a) in accordance with the terms of the agreement for sale or, as the case may be, duly completed by the date specified therein; or (b) due to discontinuance of his business as a developer on account of suspension or revocation of the registration under this Act or for any other reason, he shall be liable on demand to the allottees, in case the allottee wishes to withdraw from the project, without prejudice to any other remedy available, to return the amount received by him in respect of that apartment, plot, building, as the case may be, with interest at such rate as may be prescribed in this behalf including compensation in the manner as provided under this Act: Provided that where an allottee does not intend to withdraw from the project, he shall be paid, by the promoter, interest for every month of delay, till the handing over of the possession, at such rate as may be prescribed. [Note: sub-section (2) makes the promoter liable to compensate allottees for loss caused by defective title of the land, without a limitation-period bar; sub-section (3) makes the promoter liable to compensate for failure to discharge any other obligation under this Act, the rules or regulations, or the terms of the agreement for sale.]',
+      },
+      {
+        sectionNo: '59',
+        heading: 'Punishment for non-registration under section 3',
+        text: '(1) If any promoter contravenes the provisions of section 3, he shall be liable to a penalty which may extend up to ten per cent. of the estimated cost of the real estate project as determined by the Authority. (2) If any promoter does not comply with the orders, decisions or directions issued under sub-section (1) or continues to violate the provisions of section 3, he shall be punishable with imprisonment for a term which may extend up to three years or with fine which may extend up to a further ten per cent. of the estimated cost of the real estate project, or with both.',
+      },
+    ],
+  },
+  {
+    id: 'act-sebi-1992',
+    shortTitle: 'The Securities and Exchange Board of India Act, 1992',
+    year: 1992,
+    actNumber: '15 of 1992',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1890/1/A1992-15.pdf',
+    sections: [
+      {
+        sectionNo: '2(1)(i)',
+        heading: 'Definitions — "securities"',
+        text: '"securities" has the meaning assigned to it in section 2 of the Securities Contracts (Regulation) Act, 1956 (42 of 1956). [Note: sub-section (2) further provides that words and expressions used and not defined in this Act but defined in the Securities Contracts (Regulation) Act, 1956, or the Depositories Act, 1996, shall have the meanings respectively assigned to them in that Act.]',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Functions of the Board',
+        text: '(1) Subject to the provisions of this Act, it shall be the duty of the Board to protect the interests of investors in securities and to promote the development of, and to regulate the securities market, by such measures as it thinks fit. (2) Without prejudice to the generality of the foregoing provisions, the measures referred to therein may provide for— (a) regulating the business in stock exchanges and any other securities markets; (b) registering and regulating the working of stock brokers, sub-brokers, share transfer agents, bankers to an issue, trustees of trust deeds, registrars to an issue, merchant bankers, underwriters, portfolio managers, investment advisers and such other intermediaries who may be associated with securities markets in any manner; (c) registering and regulating the working of venture capital funds and collective investment schemes including mutual funds; (d) promoting and regulating self-regulatory organisations; (e) prohibiting fraudulent and unfair trade practices relating to securities markets; (f) promoting investors\' education and training of intermediaries of securities markets; (g) prohibiting insider trading in securities; (h) regulating substantial acquisition of shares and take-over of companies; (i) calling for information from, undertaking inspection, conducting inquiries and audits of the stock exchanges, mutual funds and other persons associated with the securities market and intermediaries and self-regulatory organisations in the securities market; ... (m) performing such other functions as may be prescribed. [Note: this is the operative core of sub-section (2); several further clauses (ba, ia, la) added by later amendments, and sub-sections (2A)-(4) on cease-and-desist and interim measures, are not reproduced.]',
+      },
+      {
+        sectionNo: '12A',
+        heading: 'Prohibition of manipulative and deceptive devices, insider trading and substantial acquisition of securities and control',
+        text: 'No person shall directly or indirectly— (a) use or employ, in connection with the issue, purchase or sale of any securities listed or proposed to be listed on a recognized stock exchange, any manipulative or deceptive device or contrivance in contravention of the provisions of this Act or the rules or the regulations made thereunder; (b) employ any device, scheme or artifice to defraud in connection with issue or dealing in securities which are listed or proposed to be listed on a recognized stock exchange; (c) engage in any act, practice, course of business which operates or would operate as fraud or deceit upon any person, in connection with the issue, dealing in securities which are listed or proposed to be listed on a recognized stock exchange, in contravention of the provisions of this Act or the rules or the regulations made thereunder; (d) engage in insider trading; (e) deal in securities while in possession of material or non-public information or communicate such material or non-public information to any other person, in a manner which is in contravention of the provisions of this Act or the rules or the regulations made thereunder; (f) acquire control of any company or securities more than the percentage of equity share capital of a company whose securities are listed or proposed to be listed on a recognized stock exchange in contravention of the regulations made under this Act.',
+      },
+      {
+        sectionNo: '15HA',
+        heading: 'Penalty for fraudulent and unfair trade practices',
+        text: 'If any person indulges in fraudulent and unfair trade practices relating to securities, he shall be liable to a penalty of twenty-five crore rupees or three times the amount of profits made out of such practices, whichever is higher.',
+      },
+    ],
+  },
+  {
+    id: 'act-scra-1956',
+    shortTitle: 'The Securities Contracts (Regulation) Act, 1956',
+    year: 1956,
+    actNumber: '42 of 1956',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1644/1/A1956-42.pdf',
+    sections: [
+      {
+        sectionNo: '2(h)',
+        heading: 'Definitions — "securities"',
+        text: '"securities" include— (i) shares, scrips, stocks, bonds, debentures, debenture stock or other marketable securities of a like nature in or of any incorporated company or other body corporate; (ia) derivative; (ib) units or any other instrument issued by any collective investment scheme to the investors in such schemes; ... (ii) Government securities; (iia) such other instruments as may be declared by the Central Government to be securities; and (iii) rights or interest in securities. [Note: several further sub-clauses added by later amendments (security receipts, mutual fund units, securitised debt instruments, and the unit-linked-insurance-policy exclusion) are not reproduced.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Contracts in notified areas illegal in certain circumstances',
+        text: 'If the Central Government is satisfied, having regard to the nature or the volume of transactions in securities in any State or area, that it is necessary so to do, it may, by notification in the Official Gazette, declare this section to apply to such State or area, and thereupon, every contract in such State or area which is entered into after the date of the notification otherwise than between members of a recognised stock exchange or recognised stock exchanges in such State or area or through or with such member shall be illegal.',
+      },
+      {
+        sectionNo: '23',
+        heading: 'Penalties',
+        text: '(1) Any person who— (a) without reasonable excuse (the burden of proving which shall lie on him) fails to comply with any requisition made under sub-section (4) of section 6; or (b) enters into any contract in contravention of any of the provisions contained in section 13 or section 16; or (c) contravenes the provisions contained in section 17 or section 17A or section 19; or (d) enters into any contract in derivative in contravention of section 18A or the rules made under section 30; or (e) owns or keeps a place other than that of a recognised stock exchange which is used for the purposes of entering into or performing any contracts in contravention of any of the provisions of this Act and in respect of which contracts he receives or agrees to receive any consideration; or (f) not being a member of a recognised stock exchange or his agent authorised as such under the rules or regulations or bye-laws of such stock exchange, wilfully represents or gives out that he is a member of such stock exchange or acts on behalf of a member or his agent in entering into or performing any contract in contravention of any of the provisions of this Act; or (g) canvasses for, or takes part in, or attempts to take part in, the organisation of, any unauthorised contracts, shall, on conviction, be punishable with imprisonment for a term which may extend to ten years, or with fine which may extend to twenty-five crore rupees, or with both. [Note: sub-section (2) separately penalises violations of Section 15 and default in complying with Central Government orders under Sections 21-22.]',
+      },
+    ],
+  },
+  {
+    id: 'act-rbi-1934',
+    shortTitle: 'The Reserve Bank of India Act, 1934',
+    year: 1934,
+    actNumber: '2 of 1934',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2398/1/a1934-2.pdf',
+    sections: [
+      {
+        sectionNo: '3',
+        heading: 'Establishment and incorporation of Reserve Bank',
+        text: '(1) A Bank to be called the Reserve Bank of India shall be constituted for the purposes of taking over the management of the currency from the Central Government and of carrying on the business of banking in accordance with the provisions of this Act. (2) The Bank shall be a body corporate by the name of the Reserve Bank of India, having perpetual succession and a common seal, and shall by the said name sue and be sued.',
+      },
+      {
+        sectionNo: '22',
+        heading: 'Right to issue bank notes',
+        text: '(1) The Bank shall have the sole right to issue bank notes in India, and may, for a period which shall be fixed by the Central Government on the recommendation of the Central Board, issue currency notes of the Government of India supplied to it by the Central Government, and the provisions of this Act applicable to bank notes shall, unless a contrary intention appears, apply to all currency notes of the Government of India issued either by the Central Government or by the Bank in like manner as if such currency notes were bank notes. (2) On and from the date on which this Chapter comes into force the Central Government shall not issue any currency notes.',
+      },
+      {
+        sectionNo: '45-I',
+        heading: 'Definitions relating to non-banking institutions',
+        text: 'In this Chapter, unless the context otherwise requires,— ... (f) "non-banking financial company" means— (i) a financial institution which is a company; (ii) a non-banking institution which is a company and which has as its principal business the receiving of deposits, under any scheme or arrangement or in any other manner, or lending in any manner; or (iii) such other non-banking institution or class of such institutions, as the Bank may, with the previous approval of the Central Government and by notification in the Official Gazette, specify.',
+      },
+      {
+        sectionNo: '45-IA',
+        heading: 'Requirement of registration and net owned fund',
+        text: '(1) Notwithstanding anything contained in this Chapter or any other law for the time being in force, no non-banking financial company shall commence or carry on the business of a non-banking financial institution without— (a) obtaining a certificate of registration issued under this Chapter; and (b) having the net owned fund of twenty-five lakh rupees or such other amount, not exceeding two hundred lakh rupees, as the Bank may, by notification in the Official Gazette, specify. (2) Every non-banking financial company shall make an application for registration to the Bank in such form as the Bank may specify.',
+      },
+    ],
+  },
+  {
+    id: 'act-banking-regulation-1949',
+    shortTitle: 'The Banking Regulation Act, 1949',
+    year: 1949,
+    actNumber: '10 of 1949',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1885/1/aa1949-10.pdf',
+    sections: [
+      {
+        sectionNo: '5(b)',
+        heading: 'Definitions — "banking"',
+        text: '"banking" means the accepting, for the purpose of lending or investment, of deposits of money from the public, repayable on demand or otherwise, and withdrawable by cheque, draft, order or otherwise.',
+      },
+      {
+        sectionNo: '5(c)',
+        heading: 'Definitions — "banking company"',
+        text: '"banking company" means any company which transacts the business of banking in India. Explanation.—Any company which is engaged in the manufacture of goods or carries on any trade and which accepts deposits of money from the public merely for the purpose of financing its business as such manufacturer or trader shall not be deemed to transact the business of banking within the meaning of this clause.',
+      },
+      {
+        sectionNo: '22',
+        heading: 'Licensing of banking companies',
+        text: '(1) Save as hereinafter provided, no company shall carry on banking business in India unless it holds a licence issued in that behalf by the Reserve Bank and any such licence may be issued subject to such conditions as the Reserve Bank may think fit to impose. (2) Every banking company in existence on the commencement of this Act, before the expiry of six months from such commencement, and every other company before commencing banking business in India, shall apply in writing to the Reserve Bank for a licence under this section: Provided that in the case of a banking company in existence on the commencement of this Act, nothing in sub-section (1) shall be deemed to prohibit the company from carrying on banking business until it is granted such a licence or is, by notice in writing, informed by the Reserve Bank that the licence cannot be granted to it.',
+      },
+      {
+        sectionNo: '35A',
+        heading: 'Power of the Reserve Bank to give directions',
+        text: '(1) Where the Reserve Bank is satisfied that— (a) in the public interest; or (aa) in the interest of banking policy; or (b) to prevent the affairs of any banking company being conducted in a manner detrimental to the interests of the depositors or in a manner prejudicial to the interests of the banking company; or (c) to secure the proper management of any banking company generally, it is necessary to issue directions to banking companies generally or to any banking company in particular, it may, from time to time, issue such directions as it deems fit, and the banking companies or the banking company, as the case may be, shall be bound to comply with such directions. (2) The Reserve Bank may, on representation made to it or on its own motion, modify or cancel any direction issued under sub-section (1), and in so modifying or cancelling any direction may impose such conditions as it thinks fit, subject to which the modification or cancellation shall have effect.',
+      },
+    ],
+  },
+  {
+    id: 'act-benami-1988',
+    shortTitle: 'The Prohibition of Benami Property Transactions Act, 1988',
+    year: 1988,
+    actNumber: '45 of 1988',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/15415/1/the_prohibition_of_benami_property_transactions_act,_1988.pdf',
+    sections: [
+      {
+        sectionNo: '2(9)',
+        heading: 'Definitions — "benami transaction"',
+        text: '"benami transaction" means,— (A) a transaction or an arrangement— (a) where a property is transferred to, or is held by, a person, and the consideration for such property has been provided, or paid by, another person; and (b) the property is held for the immediate or future benefit, direct or indirect, of the person who has provided the consideration, except when the property is held by— (i) a Karta, or a member of a Hindu undivided family, as the case may be, and the property is held for his benefit or benefit of other members in the family and the consideration for such property has been provided or paid out of the known sources of the Hindu undivided family; (ii) a person standing in a fiduciary capacity for the benefit of another person towards whom he stands in such capacity and includes a trustee, executor, partner, director of a company, a depository or a participant as an agent of a depository under the Depositories Act, 1996, and any other person as may be notified by the Central Government for this purpose; (iii) any person being an individual in the name of his spouse or in the name of any child of such individual and the consideration for such property has been provided or paid out of the known sources of the individual; (iv) any person in the name of his brother or sister or lineal ascendant or descendant, where the names of such brother or sister or lineal ascendant or descendant and the individual appear as joint-owners in any document, and the consideration for such property has been provided or paid out of the known sources of the individual; or (B) a transaction or an arrangement in respect of a property carried out or made in a fictitious name; or (C) a transaction or an arrangement in respect of a property where the owner of the property is not aware of, or, denies knowledge of, such ownership; or (D) a transaction or an arrangement in respect of a property where the person providing the consideration is not traceable or is fictitious.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Prohibition of benami transactions',
+        text: 'No person shall enter into any benami transaction. [Note: sub-section (2), which criminalised entering into a benami transaction directly under this section with retrospective effect, was held unconstitutional and struck down as applied to transactions entered into before the 2016 Amendment came into force, by the Supreme Court in Union of India v. Ganpati Dealcom Pvt. Ltd. (2022); the operative penal provision for benami transactions entered into on or after 1 November 2016 is section 53.]',
+      },
+      {
+        sectionNo: '53',
+        heading: 'Penalty for benami transaction',
+        text: '(1) Where any person enters into a benami transaction in order to defeat the provisions of any law, or to avoid payment of statutory dues, or to avoid payment to creditors, the beneficial owner, benamidar and any other person who abets or induces any person to enter into the benami transaction, shall be guilty of the offence of benami transaction. (2) Whoever is found guilty of the offence of benami transaction referred to in sub-section (1) shall be punishable with rigorous imprisonment for a term which shall not be less than one year, but which may extend to seven years and shall also be liable to fine which may extend to twenty-five per cent. of the fair market value of the property.',
+      },
+    ],
+  },
+  {
+    id: 'act-rpwd-2016',
+    shortTitle: 'The Rights of Persons with Disabilities Act, 2016',
+    year: 2016,
+    actNumber: '49 of 2016',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/9320/1/disabilitiesacta2016-49.pdf',
+    sections: [
+      {
+        sectionNo: '2(s)',
+        heading: 'Definitions — "person with disability"',
+        text: '"person with disability" means a person with long term physical, mental, intellectual or sensory impairment which, in interaction with barriers, hinders his full and effective participation in society equally with others.',
+      },
+      {
+        sectionNo: '2(zc)',
+        heading: 'Definitions — "specified disability"',
+        text: '"specified disability" means the disabilities as specified in the Schedule.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Equality and non-discrimination',
+        text: '(1) The appropriate Government shall ensure that the persons with disabilities enjoy the right to equality, life with dignity and respect for his or her integrity equally with others. (2) The appropriate Government shall take steps to utilise the capacity of persons with disabilities by providing appropriate environment. (3) No person with disability shall be discriminated on the ground of disability, unless it is shown that the impugned act or omission is a proportionate means of achieving a legitimate aim. [Note: sub-sections (4) and (5), on reasonable accommodation and access to public facilities, are not reproduced.]',
+      },
+      {
+        sectionNo: '92',
+        heading: 'Punishment for offences of atrocities',
+        text: 'Whoever, other than a person with disability, who— (a) intentionally insults or intimidates with intent to humiliate a person with disability in any place within public view; (b) assaults or uses force to any person with disability with intent to dishonour him or outrage the modesty of a woman with disability; (c) having the actual charge or control over a person with disability voluntarily or knowingly denies food or fluids to him or her; shall be punishable with imprisonment for a term which shall not be less than six months but which may extend to five years and with fine. [Note: further clauses (d)-(f) of this section, penalising sexual exploitation, causing injury or disability, and performing medical procedures on a woman with disability without her free consent, are not reproduced.]',
+      },
+    ],
+  },
+  {
+    id: 'act-mental-healthcare-2017',
+    shortTitle: 'The Mental Healthcare Act, 2017',
+    year: 2017,
+    actNumber: '10 of 2017',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2249/1/A2017-10.pdf',
+    sections: [
+      {
+        sectionNo: '2(s)',
+        heading: 'Definitions — "mental illness"',
+        text: '"mental illness" means a substantial disorder of thinking, mood, perception, orientation or memory that grossly impairs judgment, behaviour, capacity to recognise reality or ability to meet the ordinary demands of life, mental conditions associated with the abuse of alcohol and drugs, but does not include mental retardation which is a condition of arrested or incomplete development of mind of a person, specially characterised by sub-normality of intelligence.',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Determination of mental illness',
+        text: '(1) Mental illness shall be determined in accordance with such nationally or internationally accepted medical standards (including the latest edition of the International Classification of Disease of the World Health Organisation) as may be notified by the Central Government. (2) No person or authority shall classify a person as a person with mental illness, except for purposes directly relating to the treatment of the mental illness or in other matters as covered under this Act or any other law for the time being in force. (3) Mental illness of a person shall not be determined on the basis of— (a) political, economic or social status or membership of a cultural, racial or religious group, or for any other reason not directly relevant to mental health status of the person; (b) non-conformity with moral, social, cultural, work or political values or religious beliefs prevailing in a person\'s community. (4) Past treatment or hospitalisation in a mental health establishment though relevant, shall not by itself justify any present or future determination of the person\'s mental illness. (5) The determination of a person\'s mental illness shall alone not imply or be taken to mean that the person is of unsound mind, unless he has been declared as such by a competent court.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Advance directive',
+        text: '(1) Every person, who is not a minor, shall have a right to make an advance directive in writing, specifying any or all of the following, namely:— (a) the way the person wishes to be cared for and treated for a mental illness; (b) the way the person wishes not to be cared for and treated for a mental illness; (c) the individual or individuals, in order of precedence, he wants to appoint as his nominated representative as provided under section 14. (2) An advance directive under sub-section (1) may be made by a person irrespective of his past mental illness or treatment for the same. (3) An advance directive made under sub-section (1) shall be invoked only when such person ceases to have capacity to make mental healthcare or treatment decisions and shall remain effective until such person regains capacity to make mental healthcare or treatment decisions. [Note: sub-section (4) provides that any decision made by a person while he has capacity overrides any previously written advance directive, and sub-section (5) voids an advance directive made contrary to any law for the time being in force.]',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Right to equality and non-discrimination',
+        text: '(1) Every person with mental illness shall be treated as equal to persons with physical illness in the provision of all healthcare which shall include the following, namely:— (a) there shall be no discrimination on any basis including gender, sex, sexual orientation, religion, culture, caste, social or political beliefs, class or disability; (b) every insurer shall make provision for medical insurance for treatment of mental illness on the same basis as is available for treatment of physical illness. [Note: this section overrides any pre-existing exclusion of mental illness treatment from insurance coverage.]',
+      },
+      {
+        sectionNo: '115',
+        heading: 'Presumption of severe stress in case of attempt to commit suicide',
+        text: 'Notwithstanding anything contained in section 309 of the Indian Penal Code, any person who attempts to commit suicide shall be presumed, unless proved otherwise, to have severe stress and shall not be tried and punished under the said Code. [Note: the Indian Penal Code, 1860, referenced in this section, has since been replaced by the Bharatiya Nyaya Sanhita, 2023, whose section 226 corresponds to the repealed section 309 IPC; the effect of this section — that an attempt to commit suicide is decriminalised absent rebuttal of the presumption of severe stress — is unaffected by that recodification.]',
+      },
+    ],
+  },
+  {
+    id: 'act-senior-citizens-2007',
+    shortTitle: 'The Maintenance and Welfare of Parents and Senior Citizens Act, 2007',
+    year: 2007,
+    actNumber: '56 of 2007',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/8865/1/200756senior_citizenact.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "senior citizen", "maintenance", "welfare"',
+        text: '(h) "senior citizen" means any person being a citizen of India, who has attained the age of sixty years or above; (b) "maintenance" includes provision for food, clothing, residence and medical attendance and treatment; (k) "welfare" means provision for food, health care, recreation centres and other amenities necessary for the senior citizens.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Maintenance of parents and senior citizens',
+        text: '(1) A senior citizen including parent who is unable to maintain himself from his own earning or out of the property owned by him, shall be entitled to make an application under section 5 against one or more of his children or relatives, as the case may be, who is not a minor. (2) The obligation of the children or relative, as the case may be, to maintain a senior citizen extends to the needs of such citizen so that senior citizen may lead a normal life. (3) The obligation of the children to maintain his or her parent extends to the needs of such parent either father or mother or both, as the case may be, so that such parent may lead a normal life. (4) Any parent being aggrieved by an act of his son or daughter is entitled to apply under section 5.',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Order for maintenance',
+        text: 'The maximum maintenance allowance which may be ordered by such Tribunal shall be such as may be prescribed by the State Government which shall not exceed ten thousand rupees per month. [Note: the operative provisions on who may be directed to pay maintenance, and the procedure before the Tribunal, are in sections 5 and 7-8; several High Courts, including the Karnataka High Court, have recommended revising this decade-plus-old ceiling upward.]',
+      },
+      {
+        sectionNo: '23',
+        heading: 'Transfer of property to be void in certain circumstances',
+        text: '(1) Where any senior citizen who, after the commencement of this Act, has transferred by way of gift or otherwise, his property, subject to the condition that the transferee shall provide the basic amenities and basic physical needs to the transferor and such transferee refuses or fails to provide such amenities and physical needs, the said transfer of property shall be deemed to have been made by fraud or coercion or under undue influence and shall at the option of the transferor be declared void by the Tribunal. (2) Where any senior citizen has a right to receive maintenance out of an estate and such estate or part thereof is transferred, the right to receive maintenance may be enforced against the transferee if the transferee has notice of the right, or if the transfer is gratuitous; but not against the transferee for consideration and without notice of right.',
+      },
+    ],
+  },
+  {
+    id: 'act-armed-forces-tribunal-2007',
+    shortTitle: 'The Armed Forces Tribunal Act, 2007',
+    year: 2007,
+    actNumber: '55 of 2007',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2077/1/A2007-55.pdf',
+    sections: [
+      {
+        sectionNo: '3(o)',
+        heading: 'Definitions — "service matters"',
+        text: '"service matters", in relation to the persons subject to the Army Act, 1950, the Navy Act, 1957 and the Air Force Act, 1950, means all matters relating to the conditions of their service and shall include— (i) remuneration (including allowances), pension and other retirement benefits; (ii) tenure, including commission, appointment, enrolment, probation, confirmation, seniority, training, promotion, reversion, premature retirement, superannuation, termination of service and penal deductions; (iii) summary disposal and trials where the punishment inflicted is of the nature mentioned in the Army Act, 1950, the Navy Act, 1957 and the Air Force Act, 1950; (iv) any other matter, whatsoever. [Note: the definition excludes, by proviso, orders issued under section 18 of the Army Act, 1950 and corresponding provisions of the Navy Act and Air Force Act relating to matters of discipline and appointment of officers, which do not amount to "service matters" for this purpose.]',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Jurisdiction, powers and authority in service matters',
+        text: '(1) Save as otherwise expressly provided in this Act, the Tribunal shall exercise, on and from the appointed day, all the jurisdiction, powers and authority, exercisable immediately before that day by all courts (except the Supreme Court or a High Court exercising jurisdiction under articles 226 and 227 of the Constitution) in relation to all service matters.',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Jurisdiction, powers and authority in matters of appeal against court martial',
+        text: '(1) Save as otherwise expressly provided in this Act, the Tribunal shall exercise, on and from the appointed day, all the jurisdiction, powers and authority exercisable under this Act in relation to appeal against any order, decision, finding or sentence passed by a court martial or any matter connected therewith or incidental thereto. [Note: sub-sections (2) onward empower the Tribunal, on such an appeal, to grant bail, suspend a sentence pending appeal, and confirm, enhance, reduce, alter, or annul a finding or sentence passed by the court martial.]',
+      },
+      {
+        sectionNo: '30',
+        heading: 'Appeal to Supreme Court',
+        text: '(1) Subject to the provisions of section 31, an appeal shall lie to the Supreme Court against the final decision or order of the Tribunal (other than an order passed under section 19): Provided that such appeal is preferred within a period of ninety days of the said decision or order: Provided further that there shall be no appeal against an interlocutory order of the Tribunal. (2) An appeal shall lie to the Supreme Court as of right from any order or decision of the Tribunal in the exercise of its jurisdiction to punish for contempt: Provided that an appeal under this sub-section shall be filed in the Supreme Court within sixty days from the date of the order appealed against.',
+      },
+    ],
+  },
+  {
+    id: 'act-mmdr-1957',
+    shortTitle: 'The Mines and Minerals (Development and Regulation) Act, 1957',
+    year: 1957,
+    actNumber: '67 of 1957',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/14984/1/a1957-67.pdf',
+    sections: [
+      {
+        sectionNo: '4',
+        heading: 'Prospecting or mining operations to be under licence or lease',
+        text: '(1) No person shall undertake any reconnaissance, prospecting or mining operations in any area, except under and in accordance with the terms and conditions of a reconnaissance permit or of a prospecting licence or, as the case may be, of a mining lease, granted under this Act and the rules made thereunder: Provided that nothing in this sub-section shall apply to any short-term permit granted under section 5 or to any mining operations carried on by any person in accordance with the terms and conditions of a short-term permit.',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Penalties',
+        text: '(1) Whoever contravenes the provisions of sub-section (1) of section 4 shall be punishable with imprisonment for a term which may extend to five years or with fine which may extend to five lakh rupees per hectare for the area mined, or with both, and in the case of a continuing contravention, with an additional fine which may extend to fifty thousand rupees for every day during which such contravention continues after conviction for the first such contravention. (4) Whenever any person raises, transports or causes to be raised or transported, without any lawful authority, any mineral from any land, and, for that purpose, uses any tool, equipment, vehicle or any other thing, such mineral, tool, equipment, vehicle or any other thing shall be liable to be seized by an officer or authority specially empowered in this behalf. (5) Whenever any person raises, without any lawful authority, any mineral from any land, the State Government may recover from such person the mineral so raised, or, where such mineral has already been disposed of, the price thereof, and may also recover from such person, rent, royalty or tax, as the case may be, for the period during which the land was occupied by such person without any lawful authority. (6) Notwithstanding anything contained in the Code of Criminal Procedure, 1973, an offence under sub-section (1) shall be cognizable.',
+      },
+    ],
+  },
+  {
+    id: 'act-public-premises-1971',
+    shortTitle: 'The Public Premises (Eviction of Unauthorised Occupants) Act, 1971',
+    year: 1971,
+    actNumber: '40 of 1971',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1609/1/A1971-40.pdf',
+    sections: [
+      {
+        sectionNo: '2(e)',
+        heading: 'Definitions — "public premises"',
+        text: '"public premises" means— (1) any premises belonging to, or taken on lease or requisitioned by, or on behalf of, the Central Government, and includes any such premises which have been placed, by that Government, whether before or after the commencement of the Public Premises (Eviction of Unauthorised Occupants) Amendment Act, 1980, under the control of the Secretariat of either House of Parliament for providing residential accommodation to any member of the staff of that Secretariat; (2) any premises belonging to any statutory corporation, company or other body owned or controlled by the Central Government, or belonging to any institution which is administered by the Government or in respect of which the management or control has been assumed by the Government, being a corporation, company, body or institution as the Central Government may specify. [Note: several further sub-clauses extending the definition to premises of Government companies, port trusts, and university/institution hostels, added by later amendments, are not reproduced.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Issue of notice to show cause against order of eviction',
+        text: '(1) If the estate officer is of the opinion that any persons are in unauthorised occupation of any public premises and that they should be evicted, the estate officer shall issue, in the manner hereinafter provided, a notice in writing calling upon all persons concerned to show cause why an order of eviction should not be made. (2) The notice shall— (a) specify the grounds on which the order of eviction is proposed to be made; and (b) require all persons concerned, that is to say, all persons who are, or may be, in occupation of the public premises— (i) to show cause, if any, against the proposed order on or before such date as is specified in the notice, being a date not earlier than seven days from the date of issue thereof; and (ii) to appear before the estate officer on the date so specified along with the evidence which they intend to produce in support of the cause shown, and also for personal hearing, if such hearing is desired.',
+      },
+      {
+        sectionNo: '5',
+        heading: 'Eviction of unauthorised occupants',
+        text: '(1) If, after considering the cause, if any, shown by any person in pursuance of a notice under section 4 and any evidence produced by him in support of the same and after personal hearing, if any, given under clause (b) of sub-section (2) of section 4, the estate officer is satisfied that the public premises are in unauthorised occupation, the estate officer may make an order of eviction, for reasons to be recorded therein, directing that the public premises shall be vacated, on such date as may be specified in the order, by all persons who may be in occupation thereof or any part thereof, and cause a copy of the order to be affixed on the outer door or some other conspicuous part of the public premises.',
+      },
+    ],
+  },
+  {
+    id: 'act-rti-2005',
+    shortTitle: 'The Right to Information Act, 2005',
+    year: 2005,
+    actNumber: '22 of 2005',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2065/1/A2005-22.pdf',
+    sections: [
+      {
+        sectionNo: '2(f)',
+        heading: 'Definitions — "information"',
+        text: '"information" means any material in any form, including records, documents, memos, e-mails, opinions, advices, press releases, circulars, orders, logbooks, contracts, reports, papers, samples, models, data material held in any electronic form and information relating to any private body which can be accessed by a public authority under any other law for the time being in force.',
+      },
+      {
+        sectionNo: '2(j)',
+        heading: 'Definitions — "right to information"',
+        text: '"right to information" means the right to information accessible under this Act which is held by or under the control of any public authority and includes the right to— (i) inspection of work, documents, records; (ii) taking notes, extracts or certified copies of documents or records; (iii) taking certified samples of material; (iv) obtaining information in the form of diskettes, floppies, tapes, video cassettes or in any other electronic mode or through printouts where such information is stored in a computer or in any other device.',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Request for obtaining information',
+        text: '(1) A person, who desires to obtain any information under this Act, shall make a request in writing or through electronic means in English or Hindi or in the official language of the area in which the application is being made, accompanying such fee as may be prescribed, to— (a) the Central Public Information Officer or State Public Information Officer, as the case may be, of the concerned public authority; (b) the Central Assistant Public Information Officer or State Assistant Public Information Officer, as the case may be, specifying the particulars of the information sought by him. (2) An applicant making request for information shall not be required to give any reason for requesting the information or any other personal details except those that may be necessary for contacting him.',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Exemption from disclosure of information',
+        text: '(1) Notwithstanding anything contained in this Act, there shall be no obligation to give any citizen— (a) information, disclosure of which would prejudicially affect the sovereignty and integrity of India, the security, strategic, scientific or economic interests of the State, relation with foreign State or lead to incitement of an offence; ... (g) information, the disclosure of which would endanger the life or physical safety of any person or identify the source of information or assistance given in confidence for law enforcement or security purposes; ... (j) information which relates to personal information the disclosure of which has no relationship to any public activity or interest, or which would cause unwarranted invasion of the privacy of the individual unless the Central Public Information Officer or the State Public Information Officer or the appellate authority, as the case may be, is satisfied that the larger public interest justifies the disclosure of such information: Provided that the information, which cannot be denied to the Parliament or a State Legislature shall not be denied to any person. [Note: clauses (b)-(f), (h), (i) — covering matters sub judice, breach of legislative privilege, commercial confidence and trade secrets, fiduciary relationships, information from a foreign Government, and investigation/prosecution processes — and the proviso to sub-section (1) on Cabinet papers, are not reproduced.]',
+      },
+    ],
+  },
+  {
+    id: 'act-msmed-2006',
+    shortTitle: 'The Micro, Small and Medium Enterprises Development Act, 2006',
+    year: 2006,
+    actNumber: '27 of 2006',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/7769/1/micro7.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "appointed day" and "supplier"',
+        text: '(b) "appointed day" means the day following immediately after the expiry of the period of fifteen days from the day of acceptance or the day of deemed acceptance of any goods or any services by a buyer from a supplier; (c) "buyer" means whoever buys any goods or receives any services from a supplier for consideration; ... "the day of deemed acceptance" means, where no objection is made in writing by the buyer regarding acceptance of goods or services within fifteen days from the day of the delivery of goods or the rendering of services, the day of the actual delivery of goods or the rendering of services; (n) "supplier" means a micro or small enterprise, which has filed a memorandum with the authority referred to in sub-section (1) of section 8, and includes— (i) the National Small Industries Corporation; (ii) the Small Industries Development Corporation of a State or a Union territory; and (iii) any company, co-operative society, trust or a body, by whatever name called, registered or constituted under any law for the time being in force and engaged in selling goods produced by micro or small enterprises and rendering services which are provided by such enterprises.',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Classification of enterprises',
+        text: 'In the case of enterprises engaged in the manufacture or production of goods, an enterprise shall be classified as— (i) a micro enterprise, where the investment in plant and machinery does not exceed twenty-five lakh rupees; (ii) a small enterprise, where the investment in plant and machinery is more than twenty-five lakh rupees but does not exceed five crore rupees; (iii) a medium enterprise, where the investment in plant and machinery is more than five crore rupees but does not exceed ten crore rupees. [Note: sub-section (1)(b) sets a separate, higher investment-in-equipment threshold for enterprises engaged in providing or rendering services; both thresholds have since been substantially revised, and a turnover criterion added, by government notification under the Atmanirbhar Bharat package (2020), without a corresponding amendment to the text of this section.]',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Liability of buyer to make payment',
+        text: 'Where any supplier supplies any goods or renders any services to any buyer, the buyer shall make payment therefor on or before the date agreed upon between him and the supplier in writing, or, where there is no agreement in this behalf, before the appointed day: Provided that in no case the period agreed upon between the supplier and the buyer in writing shall exceed forty-five days from the day of acceptance or the day of deemed acceptance.',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Date from which and rate at which interest is payable',
+        text: 'Where any buyer fails to make payment of the amount to the supplier, as required under section 15, the buyer shall, notwithstanding anything contained in any agreement between the buyer and the supplier or in any law for the time being in force, be liable to pay compound interest with monthly rests to the supplier on that amount from the appointed day or, as the case may be, from the date immediately following the date agreed upon, at three times of the bank rate notified by the Reserve Bank.',
+      },
+    ],
+  },
 ];
