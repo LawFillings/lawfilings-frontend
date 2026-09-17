@@ -11308,4 +11308,124 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-gujarat-prohibition-1949',
+    shortTitle: 'The Gujarat Prohibition Act, 1949',
+    year: 1949,
+    actNumber: 'XXV of 1949',
+    jurisdiction: { type: 'state', state: 'Gujarat' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/6165/1/h-2065_the_guj_prohibition_act_1949.pdf',
+    sections: [
+      {
+        sectionNo: '65',
+        heading: 'Penalty for illegal import, etc., of intoxicant or hemp',
+        text: 'Whoever, in contravention of the provisions of this Act, or of any rule, regulation or order made, or of any licence, pass, permit or authorisation granted, thereunder,— imports or exports any intoxicant (other than opium) or hemp; manufactures any intoxicant (other than opium); constructs or works any distillery or brewery; bottles any liquor; possesses, transports, sells or buys any intoxicant or hemp; possesses any materials, still, utensil, implement or apparatus whatsoever for the purpose of manufacturing any intoxicant; or cultivates or collects hemp, shall, on conviction, be punished for the first offence with imprisonment for a term which shall not be less than two years but which may extend to ten years, and with fine which shall not be less than two lakh rupees but which may extend to five lakh rupees, and for a second or subsequent offence, with enhanced imprisonment and fine as separately prescribed. [Note: this Act, common to the composite State of Bombay until 1960, became the Gujarat Prohibition Act for the successor State of Gujarat; Maharashtra\'s copy of the same 1949 Act, independently amended by that State, is the Maharashtra Prohibition Act, 1949 (also in this Library).]',
+      },
+      {
+        sectionNo: '66',
+        heading: 'Punishment for consumption etc.',
+        text: 'Whoever, in contravention of the provisions of this Act, consumes or uses any intoxicant (other than opium), shall, on conviction, be punished, for a first offence, with imprisonment for a term which may extend to six months and with fine which may extend to one thousand rupees, and, for a second or subsequent offence, with imprisonment for a term which shall not be less than six months but which may extend to two years and with fine which may extend to two thousand rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-bengal-excise-1909',
+    shortTitle: 'The Bengal Excise Act, 1909',
+    year: 1909,
+    actNumber: 'V of 1909',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sourceUrl: 'https://www.wbja.nic.in/wbja_adm/files/The%20Bengal%20Excise%20Act,%201909.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "intoxicant"',
+        text: '"intoxicant" means— (i) any liquor, or (ii) any substance from which liquor may be manufactured and which is declared by the State Government, by notification, to be an intoxicant for the purposes of this Act, or (iii) any intoxicating drug. [Note: the term "intoxicant" was substituted for the original 1909 term "alcoholic liquor and intoxicating drugs" by the Bengal Excise (Amendment) Act, 1965; the original 1909 term "intoxicating liquor" had itself already been replaced by "alcoholic liquor" by the Bengal Excise (Amendment) Act, 1914.]',
+      },
+      {
+        sectionNo: '46',
+        heading: 'Penalty for unlawful import, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule, notification or order made, or of any licence, permit or pass granted, under this Act,— manufactures any intoxicant; imports, exports, transports, possesses or sells any intoxicant (including bakhar but excluding spirit or other intoxicating drugs); bottles liquor for the purpose of sale; or removes any intoxicant from a warehouse or other place of storage established or licensed under this Act, shall be punishable with imprisonment for a term which may extend to three years and with fine which may extend to ten thousand rupees. [Note: this section was substantially amended by the Bengal Excise (Amendment) Act, 1979.]',
+      },
+    ],
+  },
+  {
+    id: 'act-rajasthan-excise-1950',
+    shortTitle: 'The Rajasthan Excise Act, 1950',
+    year: 1950,
+    actNumber: '2 of 1950',
+    jurisdiction: { type: 'state', state: 'Rajasthan' },
+    sourceUrl: 'https://excise.rajasthan.gov.in/Downloads/RSED/PDF/RajasthanExciseAct1950-Amended.pdf',
+    sections: [
+      {
+        sectionNo: '54',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule, order, licence, permit or pass made or granted thereunder,— imports, exports, transports, manufactures, collects, sells or possesses any excisable article; cultivates any hemp plant (Cannabis sativa); constructs or works any distillery, pot-still or brewery; or uses, keeps or has in possession any materials, stills, utensil, implements or apparatus for manufacturing any excisable article other than tari, shall be punishable, for unlawful possession of an excisable article knowingly and unlawfully imported, with imprisonment for a term which shall not be less than six months but which may extend to three years and with fine of twenty thousand rupees or five times the loss of excise duty, whichever is higher. [Note: this Act\'s original Section 3 (definitions) was omitted by the Rajasthan Excise (Amendment) Act, 2007, and its defined terms redistributed elsewhere in the Act.]',
+      },
+      {
+        sectionNo: '54B',
+        heading: 'Penalty for mixing noxious substances with liquor or intoxicating drugs',
+        text: '(1) Whoever mixes, or causes to be mixed, or permits to be mixed, with any liquor or intoxicating drug, any noxious substance or any substance which is likely to cause disability or grievous hurt or death to human beings, shall, on conviction, be punished— if death is caused thereby, with imprisonment for a term which shall not be less than two years but which may extend to imprisonment for life, and with fine which shall not be less than one lakh rupees but which may extend to ten lakh rupees; and if disability or grievous hurt (but not death) is caused thereby, with imprisonment for a term which shall not be less than two years but which may extend to imprisonment for life, and with fine which shall not be less than fifty thousand rupees but which may extend to five lakh rupees. (2) Whoever possesses any liquor or intoxicating drug in which any such noxious or harmful substance is mixed, knowing that such substance is so mixed, shall, on conviction, be punished with imprisonment for a term which shall not be less than one year but which may extend to ten years, and with fine which may extend to one lakh rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-mp-excise-1915',
+    shortTitle: 'The M.P. Excise Act, 1915',
+    year: 1915,
+    actNumber: 'II of 1915',
+    jurisdiction: { type: 'state', state: 'Madhya Pradesh' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/7450/1/mp-excise-1915english.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" means intoxicating liquor, and includes spirits of wine, spirit, wine, tari, beer, all liquid consisting of or containing alcohol, and any substance which the State Government may, by notification, declare to be liquor for the purposes of this Act.',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Penalty for unlawful manufacture, transport, possession, sale, etc.',
+        text: '(1) Whoever, in contravention of any provision of this Act, or of any rule, notification or order made or issued thereunder, or of any condition of a licence, permit or pass granted under this Act,— (a) manufactures, transports, imports, exports, collects or possesses any intoxicant; or (b) save in the cases provided for in section 38, sells any intoxicant, shall be punishable for every such offence with imprisonment for a term which may extend to one year and fine which shall not be less than five hundred rupees but which may extend to five thousand rupees: Provided that when any person is convicted under this section of any offence for a second or subsequent time, he shall be punishable for every such offence with imprisonment for a term which shall not be less than two months but which may extend to twenty-four months and fine which shall not be less than two thousand rupees but which may extend to ten thousand rupees. (2) If a person is convicted for an offence covered by clause (a) or clause (b) of sub-section (1) and the quantity of the intoxicant, being liquor, found at the time or in the course of detection of the offence exceeds fifty bulk litres, he shall be punishable with imprisonment for a term which shall not be less than one year but which may extend to three years and with fine which shall not be less than twenty-five thousand rupees but which may extend to one lakh rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-bihar-orissa-excise-1915',
+    shortTitle: 'The Bihar and Orissa Excise Act, 1915',
+    year: 1915,
+    actNumber: '2 of 1915',
+    jurisdiction: { type: 'state', state: 'Odisha' },
+    sourceUrl: 'https://excise.odisha.gov.in/sites/default/files/2020-03/OrissaBiharExciseAct_1915.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" includes any liquid intoxicant for human consumption, whether containing alcohol or not, such as spirits of wine, spirit, wine, fermented tari, pachwai and beer, and also unfermented tari, and also any other substance which the State Government may, by notification, declare to be liquor for the purposes of this Act. [Note: this Act was, and remains, common to Bihar and Odisha as successor states of the former Province of Bihar and Orissa; Bihar has since substantially superseded it for liquor-related matters with its own Bihar Prohibition and Excise Act, 2016 (also in this Library), while this 1915 Act remains the operative excise statute in Odisha.]',
+      },
+      {
+        sectionNo: '47',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act, or of any rule, order, licence, permit or pass made or granted thereunder,— imports, exports, transports, manufactures, possesses or sells any intoxicant; cultivates the hemp plant; taps any tari-producing tree or draws tari therefrom without lawful authority; bottles liquor for purposes of sale; constructs or works any distillery, brewery or warehouse; possesses materials or apparatus for manufacturing any intoxicant; or removes any intoxicant from a warehouse or other place of storage without lawful authority, shall be punishable, for offences other than unlawful tapping of tari-producing trees, with imprisonment for a term which shall not be less than three years but may extend to seven years and also with fine which shall not be less than twenty thousand rupees but may extend to fifty thousand rupees: Provided that a reduced punishment applies where the offence concerns possession or sale of mohua flower, tari or pachwai, or of outstill liquor not exceeding ten litres, from an authorised source. For the offence of unlawful tapping of tari-producing trees, the punishment is imprisonment for a term which may extend to one year, or fine which may extend to ten thousand rupees, or both.',
+      },
+    ],
+  },
+  {
+    id: 'act-andhra-pradesh-excise-1968',
+    shortTitle: 'The Andhra Pradesh Excise Act, 1968',
+    year: 1968,
+    actNumber: '17 of 1968',
+    jurisdiction: { type: 'state', state: 'Andhra Pradesh' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/16990/1/17_of_1968_ap_excise_act.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "excisable article"',
+        text: '"excisable article" means— (a) any alcoholic liquor for human consumption; or (b) any intoxicating drug. [Note: this Act continued in force in Telangana after the 2014 bifurcation of Andhra Pradesh, and each successor state has since amended its own copy independently.]',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Penalties for illegal import, etc.',
+        text: 'Whoever, in contravention of this Act or of any rule, notification or order made, issued or passed thereunder, or of any licence or permit granted or issued under this Act,— imports, exports, transports, manufactures, collects, possesses or sells any intoxicant; taps any excise tree; draws toddy; constructs or works any distillery or brewery; possesses any manufacturing apparatus; bottles liquor; buys any intoxicant; or possesses packing material or equipment, shall be punishable— for offences under clause (a) involving smaller quantities, with imprisonment for a term which shall not be less than six months but which may extend to three years and with fine which shall not be less than five thousand rupees but which may extend to twenty thousand rupees; for offences under clause (a) involving notified larger quantities, with imprisonment for a term of three to five years and fine of ten thousand to one lakh rupees; and for other clauses, with imprisonment which shall not be less than six months but which may extend to one year and with fine which may extend to ten thousand rupees.',
+      },
+    ],
+  },
 ];
