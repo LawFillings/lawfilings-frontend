@@ -9929,4 +9929,603 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-industrial-disputes-1947',
+    shortTitle: 'The Industrial Disputes Act, 1947',
+    year: 1947,
+    actNumber: '14 of 1947',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1416/1/a1947-14.pdf',
+    sections: [
+      {
+        sectionNo: '2(s)',
+        heading: 'Definitions — "workman"',
+        text: '"workman" means any person (including an apprentice) employed in any industry to do any manual, unskilled, skilled, technical, operational, clerical or supervisory work for hire or reward, whether the terms of employment be express or implied, and for the purposes of any proceeding under this Act in relation to an industrial dispute, includes any such person who has been dismissed, discharged or retrenched in connection with, or as a consequence of, that dispute, or whose dismissal, discharge or retrenchment has led to that dispute, but does not include any such person— (i) who is subject to the Air Force Act, 1950, the Army Act, 1950, or the Navy Act, 1957; or (ii) who is employed in the police service or as an officer or other employee of a prison; or (iii) who is employed mainly in a managerial or administrative capacity; or (iv) who, being employed in a supervisory capacity, draws wages exceeding ten thousand rupees per mensem or exercises, either by the nature of the duties attached to the office or by reason of the powers vested in him, functions mainly of a managerial nature. [Note: the wage ceiling in clause (iv) is periodically revised — the figure quoted here is the one currently in force; confirm the applicable figure at the time of drafting, since a supervisor drawn just above or below this line changes whether this Act applies to them at all.]',
+      },
+      {
+        sectionNo: '2(oo)',
+        heading: 'Definitions — "retrenchment"',
+        text: '"retrenchment" means the termination by the employer of the service of a workman for any reason whatsoever, otherwise than as a punishment inflicted by way of disciplinary action, but does not include— (a) voluntary retirement of the workman; or (b) retirement of the workman on reaching the age of superannuation if the contract of employment between the employer and the workman concerned contains a stipulation in that behalf; or (bb) termination of the service of the workman as a result of the non-renewal of the contract of employment between the employer and the workman concerned on its expiry, or of such contract being terminated under a stipulation in that behalf contained therein; or (c) termination of the service of a workman on the ground of continued ill-health.',
+      },
+      {
+        sectionNo: '17',
+        heading: 'Publication of reports and awards',
+        text: '(1) Every report of a Board or Court together with any minute of dissent recorded therewith, every arbitration award, and every award of a Labour Court, Tribunal or National Tribunal shall, within a period of thirty days from the date of its receipt by the appropriate Government, be published in such manner as the appropriate Government thinks fit. (2) Subject to the provisions of section 17A, the award published under sub-section (1) shall be final and shall not be called in question by any court in any manner whatsoever. [Note: section 17A, fixing when an award becomes enforceable (ordinarily thirty days from publication under this section, subject to the appropriate Government\'s power to postpone enforcement or a National Tribunal\'s rejection/modification), is not reproduced here.]',
+      },
+      {
+        sectionNo: '25-O',
+        heading: 'Procedure for closing down an undertaking',
+        text: '(1) An employer who intends to close down an undertaking of an industrial establishment to which this Chapter applies shall, in the prescribed manner, apply, for prior permission at least ninety days before the date on which the intended closure is to become effective, to the appropriate Government, stating clearly the reasons for the intended closure of the undertaking, and a copy of such application shall also be served simultaneously on the representatives of the workmen in the prescribed manner: Provided that nothing in this sub-section shall apply to an undertaking set up for the construction of buildings, bridges, roads, canals, dams or other construction work. (8) Where an undertaking is closed down in contravention of the provisions of this section, the workmen shall be entitled to all the benefits under any law for the time being in force as if the undertaking had not been closed down. [Note: sub-sections (2)-(7), fixing the procedure and time limits within which the appropriate Government must grant or refuse permission, and the exceptional-circumstances exemption power, are not reproduced here. This Chapter (VB) applies only to industrial establishments employing not less than the number of workmen notified by the appropriate Government (currently 100 or more in most States) — a closure below that threshold is instead governed by section 25FFA.]',
+      },
+
+      {
+        sectionNo: '2(k)',
+        heading: 'Definitions — "industrial dispute"',
+        text: '"industrial dispute" means any dispute or difference between employers and employers, or between employers and workmen, or between workmen and workmen, which is connected with the employment or non-employment or the terms of employment or with the conditions of labour, of any person. [Note: every forum under this Act — Conciliation Officer, Board, Labour Court, Industrial Tribunal, National Tribunal — only acquires jurisdiction once a dispute qualifies as an "industrial dispute" within this definition; a purely individual grievance not sponsored by a union or a substantial number of workmen may not qualify, per settled case law interpreting this clause.]',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Reference of disputes to Boards, Courts or Tribunals',
+        text: '(1) Where the appropriate Government is of opinion that any industrial dispute exists or is apprehended, it may at any time, by order in writing,— (a) refer the dispute to a Board for promoting a settlement thereof; or (b) refer any matter appearing to be connected with, or relevant to, the dispute to a Court for inquiry; or (c) refer the dispute or any matter appearing to be connected with, or relevant to, the dispute, if it relates to any matter specified in the Second Schedule, to a Labour Court for adjudication; or (d) refer the dispute or any matter appearing to be connected with, or relevant to, the dispute, whether it relates to any matter specified in the Second Schedule or the Third Schedule, to a Tribunal for adjudication: Provided that where the dispute relates to any matter specified in the Third Schedule and is not likely to affect more than one hundred workmen, the appropriate Government may, if it so thinks fit, make the reference to a Labour Court under clause (c). [Note: sub-sections (1A)-(6), dealing with National Tribunals, the prohibition of strikes/lock-outs once a matter is referred, and the effect of a National Tribunal reference on a pending Labour Court/Tribunal reference over the same matter, are not reproduced here.]',
+      },
+      {
+        sectionNo: '25F',
+        heading: 'Conditions precedent to retrenchment of workmen',
+        text: 'No workman employed in any industry who has been in continuous service for not less than one year under an employer shall be retrenched by that employer until— (a) the workman has been given one month\'s notice in writing indicating the reasons for retrenchment and the period of notice has expired, or the workman has been paid in lieu of such notice, wages for the period of the notice; (b) the workman has been paid, at the time of retrenchment, compensation which shall be equivalent to fifteen days\' average pay for every completed year of continuous service or any part thereof in excess of six months; and (c) notice in the prescribed manner is served on the appropriate Government or such authority as may be specified by the appropriate Government by notification in the Official Gazette. [Note: these three conditions are mandatory and must be strictly complied with — non-compliance renders the retrenchment void, entitling the workman to reinstatement with back wages, regardless of how compelling the employer\'s underlying reason for retrenchment might otherwise be.]',
+      },
+      {
+        sectionNo: '33C',
+        heading: 'Recovery of money due from an employer',
+        text: '(1) Where any money is due to a workman from an employer under a settlement or an award or under the provisions of Chapter VA or Chapter VB, the workman himself or any other person authorised by him in writing in this behalf, or, in the case of the death of the workman, his assignee or heirs may, without prejudice to any other mode of recovery, make an application to the appropriate Government for the recovery of the money due to him, and if the appropriate Government is satisfied that any money is so due, it shall issue a certificate for that amount to the Collector who shall proceed to recover the same in the same manner as an arrear of land revenue: Provided that every such application shall be made within one year from the date on which the money became due to the workman from the employer: Provided further that any such application may be entertained after the expiry of the said period of one year, if the appropriate Government is satisfied that the applicant had sufficient cause for not making the application within the stipulated period. (5) Where workmen employed under the same employer are entitled to receive from him any money or any benefit capable of being computed in terms of money, then, subject to such rules as may be made in this behalf, a single application for the recovery of the amount due may be made on behalf of or in respect of any number of such workmen. Explanation.—In this section "Labour Court" includes any court constituted under any law relating to investigation and settlement of industrial disputes in force in any State. [Note: sub-sections (2)-(4), which give the Labour Court a parallel power to compute in terms of money a benefit which is capable of being so computed, and to decide questions arising in that computation, are not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-insurance-1938',
+    shortTitle: 'The Insurance Act, 1938',
+    year: 1938,
+    actNumber: '4 of 1938',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2299/1/A1938-04.pdf',
+    sections: [
+      {
+        sectionNo: '2(9)',
+        heading: 'Definitions — "insurer"',
+        text: '"insurer" means— (a) an Indian Insurance Company, or (b) a statutory body established by an Act of Parliament to carry on insurance business, or (c) an insurance co-operative society, or (d) a foreign company engaged in re-insurance business through a branch established in India. Explanation.—For the purposes of this sub-clause, the expression "foreign company" shall mean a company or body established or incorporated under a law of any country outside India and includes Lloyd\'s established under the Lloyd\'s Act, 1871 (United Kingdom) or any of its Members.',
+      },
+      {
+        sectionNo: '64VB',
+        heading: 'No risk to be assumed unless premium is received in advance',
+        text: '(1) No insurer shall assume any risk in India in respect of any insurance business on which premium is not ordinarily payable outside India unless and until the premium payable is received by him or is guaranteed to be paid by such person in such manner and within such time as may be prescribed or unless and until deposit of such amount as may be prescribed, is made in advance in the prescribed manner. (2) For the purposes of this section, in the case of risks for which premium can be ascertained in advance, the risk may be assumed not earlier than the date on which the premium has been paid in cash or by cheque to the insurer. Explanation.—Where the premium is tendered by postal money order or cheque sent by post, the risk may be assumed on the date on which the money order is booked or the cheque is posted, as the case may be. (3) Any refund of premium which may become due to an insured on account of the cancellation of a policy or alteration in its terms and conditions or otherwise shall be paid by the insurer directly to the insured by a crossed or order cheque or by postal money order and a proper receipt shall be obtained by the insurer from the insured, and such refund shall in no case be credited to the account of the agent. [Note: this is the statutory basis for the well-known rule that an insurance policy\'s cover legally begins only when the premium is actually received, not merely proposed or agreed.]',
+      },
+
+      {
+        sectionNo: '45',
+        heading: 'Policy not to be called in question on ground of mis-statement after three years',
+        text: '(1) No policy of life insurance shall be called in question on any ground whatsoever after the expiry of three years from the date of the policy, i.e., from the date of issuance of the policy or the date of commencement of risk or the date of revival of the policy or the date of the rider to the policy, whichever is later. (2) A policy of life insurance may be called in question at any time within three years from the date of issuance of the policy or the date of commencement of risk or the date of revival of the policy or the date of the rider to the policy, whichever is later, on the ground of fraud: Provided that the insurer shall have to communicate in writing to the insured or the legal representatives or nominees or assignees of the insured, as applicable, mentioning the ground and materials on which such decision to repudiate the policy of life insurance is based. (3) Notwithstanding anything contained in sub-section (2), no insurer shall repudiate a life insurance policy on the ground of fraud, if the insured can prove that the mis-statement of or suppression of a material fact was true to the best of his knowledge and belief or that there was no deliberate intention to suppress the fact or that such mis-statement of or suppression of a material fact are within the knowledge of the insurer. (4) A policy of life insurance may be called in question within three years on the ground that any statement of or suppression of a fact material to the expectancy of the life of the insured was incorrectly made in the proposal or other document on the basis of which the policy was issued or revived or rider issued: Provided that in case of repudiation of the policy on the ground of mis-statement or suppression of a material fact, and not on the ground of fraud, the premiums collected on the policy till the date of repudiation shall be paid to the insured or the legal representatives or nominees or assignees of the insured within a period of ninety days from the date of such repudiation. [Note: sub-section (5) (age never called in question) and the provisos to sub-sections (1)-(4) are not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-electricity-2003',
+    shortTitle: 'The Electricity Act, 2003',
+    year: 2003,
+    actNumber: '36 of 2003',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2065/1/a2003-36.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "consumer" and "distribution licensee"',
+        text: '"consumer" means any person who is supplied with electricity for his own use by a licensee or the Government or by any other person engaged in the business of supplying electricity to the public under this Act or any other law for the time being in force and includes any person whose premises are for the time being connected for the purpose of receiving electricity with the works of a licensee, the Government or such other person, as the case may be; "distribution licensee" means a licensee authorised to operate and maintain a distribution system for supplying electricity to the consumers in his area of supply.',
+      },
+      {
+        sectionNo: '111',
+        heading: 'Appeal to Appellate Tribunal',
+        text: '(1) Any person aggrieved by an order made by an adjudicating officer under this Act (except under section 127) or an order made by the Appropriate Commission under this Act may prefer an appeal to the Appellate Tribunal for Electricity. (2) Any person appealing against the order of the adjudicating officer levying any penalty shall, while filing the appeal, deposit the amount of such penalty with such authority as may be prescribed. (3) Every appeal shall be filed within a period of forty-five days from the date on which a copy of the order made by the adjudicating officer or the Appropriate Commission is received by the aggrieved person and it shall be in such form, verified in such manner and be accompanied by such fee as may be prescribed: Provided that the Appellate Tribunal may entertain an appeal after the expiry of the said period of forty-five days if it is satisfied that there was sufficient cause for not filing it within that period. (5) The Appellate Tribunal shall deal with the appeal as expeditiously as possible and endeavour shall be made by it to dispose of the appeal finally within one hundred and eighty days from the date of receipt of the appeal.',
+      },
+      {
+        sectionNo: '135',
+        heading: 'Theft of electricity',
+        text: '(1) Whoever, dishonestly,— (a) taps, makes or causes to be made any connection with overhead, underground or underwater lines or cables, or service wires, or service facilities of a licensee or supplier, as the case may be, used for carrying electricity; or (b) tampers a meter, installs or uses a tampered meter, current reversing transformer, loop connection or any other device or method which interferes with accurate or proper registration, calibration or metering of electric current or otherwise results in a manner whereby electricity is stolen or wasted; or (c) damages or destroys an electric meter, apparatus, equipment, or wire or causes or allows any of them to be so damaged or destroyed as to interfere with the proper or accurate metering of electricity; or (d) uses electricity through a tampered meter; shall be punishable with imprisonment for a term which may extend to three years or with fine or with both. [Note: sub-section (1A) fixes enhanced minimum fines linked to the financial gain from the theft, escalating for a second or subsequent conviction (imprisonment of not less than six months extending to five years, with fine not less than six times the financial gain), and sub-section (2) permits compounding of the offence for certain load thresholds — neither is reproduced here.]',
+      },
+
+      {
+        sectionNo: '126',
+        heading: 'Assessment',
+        text: '(1) If on an inspection of any place or premises or after inspection of the equipments, gadgets, machines, devices found connected or used, or after inspection of records maintained by any person, the assessing officer comes to the conclusion that such person is indulging in unauthorised use of electricity, he shall provisionally assess to the best of his judgment the electricity charges payable by such person or by any other person benefited by such use. (2) The order of provisional assessment under sub-section (1) shall be served upon the person in occupation or possession or in charge of the place or premises in such manner as may be prescribed. (3) The person, on whom an order has been served under sub-section (2), shall be entitled to file objections, if any, against the provisional assessment before the assessing officer, who shall, after affording a reasonable opportunity of hearing to such person, pass a final order of assessment within thirty days from the date of service of such order of provisional assessment, of the electricity charges payable by such person. (4) If the assessment under sub-section (3) results in a demand for extra electricity charges, the same shall be recovered by the licensee or the Government, as the case may be, in accordance with the provisions of this Act from the person to whom the electricity was supplied. (5) If the assessing officer reaches to the conclusion that unauthorised use of electricity has taken place, the assessment shall be made for the entire period during which such unauthorised use of electricity has taken place and if, however, the period during which such unauthorised use of electricity has taken place cannot be ascertained, such period shall be limited to a period of twelve months immediately preceding the date of inspection. [Note: the Explanation to this section defines "assessing officer" and "unauthorised use of electricity" (using electricity for a purpose, or at premises, other than that for which the supply was authorised) — not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-competition-2002',
+    shortTitle: 'The Competition Act, 2002',
+    year: 2002,
+    actNumber: '12 of 2003',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1585/1/A2003-12.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "relevant market", "relevant product market", "relevant geographic market"',
+        text: '(r) "relevant market" means the market which may be determined by the Commission with reference to the relevant product market or the relevant geographic market or with reference to both the markets; (s) "relevant geographic market" means a market comprising the area in which the conditions of competition for supply of goods or provision of services or demand of goods or services are distinctly homogenous and can be distinguished from the conditions prevailing in the neighbouring areas; (t) "relevant product market" means a market comprising all those products or services which are regarded as interchangeable or substitutable by the consumer, by reason of characteristics of the products or services, their prices and intended use.',
+      },
+
+      {
+        sectionNo: '3',
+        heading: 'Anti-competitive agreements',
+        text: '(1) No enterprise or association of enterprises or person or association of persons shall enter into any agreement in respect of production, supply, distribution, storage, acquisition or control of goods or provision of services, which causes or is likely to cause an appreciable adverse effect on competition within India. (2) Any agreement entered into in contravention of the provisions contained in sub-section (1) shall be void. [Note: sub-section (3) — the presumption of appreciable adverse effect for horizontal agreements between competitors that fix prices, limit production/supply, share markets, or result in bid-rigging/collusive bidding (subject to a joint-venture efficiency exception) — and sub-section (4) — vertical agreements such as tie-in arrangements, exclusive supply/distribution, refusal to deal, and resale price maintenance — are not reproduced here, nor is sub-section (5)\'s carve-out for reasonable conditions protecting intellectual property rights and for export-only agreements.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Abuse of dominant position',
+        text: '(1) No enterprise or group shall abuse its dominant position. (2) There shall be an abuse of dominant position under sub-section (1), if an enterprise or a group,— (a) directly or indirectly, imposes unfair or discriminatory— (i) condition in purchase or sale of goods or service; or (ii) price in purchase or sale (including predatory price) of goods or service, except where such discriminatory condition or price is adopted to meet the competition; or (b) limits or restricts— (i) production of goods or provision of services or market therefor; or (ii) technical or scientific development relating to goods or services to the prejudice of consumers; or (c) indulges in practice or practices resulting in denial of market access in any manner; or (d) makes conclusion of contracts subject to acceptance by other parties of supplementary obligations which, by their nature or according to commercial usage, have no connection with the subject of such contracts; or (e) uses its dominant position in one relevant market to enter into, or protect, other relevant market. Explanation.—For the purposes of this section, the expression "dominant position" means a position of strength, enjoyed by an enterprise, in the relevant market, in India, which enables it to— (i) operate independently of competitive forces prevailing in the relevant market; or (ii) affect its competitors or consumers or the relevant market in its favour; and "predatory price" means the sale of goods or provision of services, at a price which is below the cost, as may be determined by regulations, of production of the goods or provision of services, with a view to reduce competition or eliminate the competitors.',
+      },
+    ],
+  },
+  {
+    id: 'act-it-2000',
+    shortTitle: 'The Information Technology Act, 2000',
+    year: 2000,
+    actNumber: '21 of 2000',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1999/3/A2000-21.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "computer" and "electronic record"',
+        text: '(i) "computer" means any electronic, magnetic, optical or other high-speed data processing device or system which performs logical, arithmetic, and memory functions by manipulations of electronic, magnetic or optical impulses, and includes all input, output, processing, storage, computer software, or communication facilities which are connected or related to the computer in a computer system or computer network; (t) "electronic record" means data, record or data generated, image or sound stored, received or sent in an electronic form or micro film or computer generated micro fiche.',
+      },
+      {
+        sectionNo: '65',
+        heading: 'Tampering with computer source documents',
+        text: 'Whoever knowingly or intentionally conceals, destroys or alters or intentionally or knowingly causes another to conceal, destroy, or alter any computer source code used for a computer, computer programme, computer system or computer network, when the computer source code is required to be kept or maintained by law for the time being in force, shall be punishable with imprisonment up to three years, or with fine which may extend up to two lakh rupees, or with both. Explanation.—For the purposes of this section, "computer source code" means the listing of programmes, computer commands, design and layout and programme analysis of computer resource in any form.',
+      },
+      {
+        sectionNo: '66C',
+        heading: 'Punishment for identity theft',
+        text: 'Whoever, fraudulently or dishonestly make use of the electronic signature, password or any other unique identification feature of any other person, shall be punished with imprisonment of either description for a term which may extend to three years and shall also be liable to fine which may extend to rupees one lakh.',
+      },
+
+      {
+        sectionNo: '43',
+        heading: 'Penalty and compensation for damage to computer, computer system, etc.',
+        text: 'If any person without permission of the owner or any other person who is in charge of a computer, computer system or computer network— (a) accesses or secures access to such computer, computer system or computer network or computer resource; (b) downloads, copies or extracts any data, computer database or information from such computer, computer system or computer network including information or data held or stored in any removable storage medium; (c) introduces or causes to be introduced any computer contaminant or computer virus into any computer, computer system or computer network; (d) damages or causes to be damaged any computer, computer system or computer network, data, computer database or any other programmes residing in such computer, computer system or computer network; (e) disrupts or causes disruption of any computer, computer system or computer network; (f) denies or causes the denial of access to any person authorised to access any computer, computer system or computer network by any means; (g) provides any assistance to any person to facilitate access to a computer, computer system or computer network in contravention of the provisions of this Act, rules or regulations made thereunder; (h) charges the services availed of by a person to the account of another person by tampering with or manipulating any computer, computer system, or computer network, he shall be liable to pay damages by way of compensation to the person so affected. [Note: clauses (i) and (j) — destroying, deleting or altering information/programme residing in a computer resource, and stealing/concealing/destroying or causing another to steal/conceal/destroy a computer source code with an intent to cause damage — are not reproduced here. Under the amended Act, compensation for the whole of Section 43 is now determined by an adjudicating officer under Section 46 without any express monetary ceiling, replacing the earlier one-crore-rupee cap.]',
+      },
+      {
+        sectionNo: '66',
+        heading: 'Computer related offences',
+        text: 'If any person, dishonestly or fraudulently, does any act referred to in section 43, he shall be punishable with imprisonment for a term which may extend to three years or with fine which may extend to five lakh rupees or with both. Explanation.—For the purposes of this section,— (a) the word "dishonestly" shall have the meaning assigned to it in section 24 of the Indian Penal Code (45 of 1860); (b) the word "fraudulently" shall have the meaning assigned to it in section 25 of the Indian Penal Code (45 of 1860). [Note: this is the criminal counterpart to the civil compensation remedy in section 43 (also in this Library) — the same underlying act (unauthorised access, introducing a virus, damaging data, etc.) becomes an offence under this section only where done dishonestly or fraudulently, rather than merely without permission.]',
+      },
+    ],
+  },
+  {
+    id: 'act-copyright-1957',
+    shortTitle: 'The Copyright Act, 1957',
+    year: 1957,
+    actNumber: '14 of 1957',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1367/1/copyright_act%2C_1957.pdf',
+    sections: [
+      {
+        sectionNo: '13',
+        heading: 'Works in which copyright subsists',
+        text: '(1) Subject to the provisions of this section and the other provisions of this Act, copyright shall subsist throughout India in the following classes of works, that is to say,— (a) original literary, dramatic, musical and artistic works; (b) cinematograph films; and (c) sound recordings. (2) Copyright shall not subsist in any work specified in sub-section (1), other than a work to which the provisions of section 40 or section 41 apply, unless,— (i) in the case of a published work, the work is first published in India, or where the work is first published outside India, the author is at the date of such publication, or in a case where the author was dead at that date, was at the time of his death, a citizen of India; (ii) in the case of an unpublished work other than a work of architecture, the author is at the date of the making of the work a citizen of India or domiciled in India; and (iii) in the case of a work of architecture, the work is located in India. [Note: sub-sections (3)-(5), dealing with when copyright subsists in a cinematograph film/sound recording notwithstanding infringement in its making, and confining copyright in a work of architecture to its artistic character and design rather than its methods of construction, are not reproduced here.]',
+      },
+      {
+        sectionNo: '52',
+        heading: 'Certain acts not to be infringement of copyright',
+        text: '(1) The following acts shall not constitute an infringement of copyright, namely— (a) a fair dealing with any work, not being a computer programme, for the purposes of— (i) private or personal use, including research; (ii) criticism or review, whether of that work or of any other work; (iii) the reporting of current events and current affairs, including the reporting of a lecture delivered in public. Explanation.—The storing of any work in any electronic medium for the purposes mentioned in this clause, including the incidental storage of any computer programme which is not itself an infringing copy for the said purposes, shall not constitute infringement of copyright. [Note: clause (a) is the general "fair dealing" exception; clauses (aa)-(zc) — a very long list running to dozens of specific, narrower exceptions covering reproduction for judicial proceedings, reporting, examinations, libraries, translation, and use by persons with disabilities, among others — are not reproduced here.]',
+      },
+      {
+        sectionNo: '63',
+        heading: 'Offence of infringement of copyright or other rights conferred by this Act',
+        text: 'Any person who knowingly infringes or abets the infringement of— (a) the copyright in a work, or (b) any other right conferred by this Act, shall be punishable with imprisonment for a term which shall not be less than six months but which may extend to three years and with fine which shall not be less than fifty thousand rupees but which may extend to two lakh rupees: Provided that where the infringement has not been made for gain in the course of trade or business, the court may, for reasons to be recorded in writing, impose a sentence of imprisonment for a term of less than six months or a fine of less than fifty thousand rupees. Explanation.—Construction of a building or other structure which infringes or which, if completed, would infringe the copyright in some other work shall not be an offence under this section. [Note: this provision is quoted before its Explanation and proviso are reproduced above out of order for clarity of reading; the fine/imprisonment enhancement for a repeat offence under section 63A is not reproduced here.]',
+      },
+
+      {
+        sectionNo: '14',
+        heading: 'Meaning of copyright',
+        text: 'For the purposes of this Act, "copyright" means the exclusive right subject to the provisions of this Act, to do or authorise the doing of any of the following acts in respect of a work or any substantial part thereof, namely,— (a) in the case of a literary, dramatic or musical work, not being a computer programme,— (i) to reproduce the work in any material form including the storing of it in any medium by electronic means; (ii) to issue copies of the work to the public not being copies already in circulation; (iii) to perform the work in public, or communicate it to the public; (iv) to make any cinematograph film or sound recording in respect of the work; (v) to make any translation of the work; (vi) to make any adaptation of the work; (vii) to do, in relation to a translation or an adaptation of the work, any of the acts specified in relation to the work in sub-clauses (i) to (vi); (b) in the case of a computer programme,— (i) to do any of the acts specified in clause (a); (ii) to sell or give on commercial rental or offer for sale or for commercial rental any copy of the computer programme: Provided that such commercial rental does not apply in respect of computer programmes where the programme itself is not the essential object of the rental. [Note: clauses (c) (artistic work), (d) (cinematograph film), and (e) (sound recording), each with their own sub-clauses, are not reproduced here. Explanation.—For the purposes of this section, a copy which has been sold once shall be deemed to be a copy already in circulation.]',
+      },
+      {
+        sectionNo: '51',
+        heading: 'When copyright infringed',
+        text: 'Copyright in a work shall be deemed to be infringed— (a) when any person, without a licence granted by the owner of the copyright or the Registrar of Copyrights under this Act or in contravention of the conditions of a licence so granted or of any condition imposed by a competent authority under this Act— (i) does anything, the exclusive right to do which is by this Act conferred upon the owner of the copyright, or (ii) permits for profit any place to be used for the communication of the work to the public where such communication constitutes an infringement of the copyright in the work, unless he was not aware and had no reasonable ground for believing that such communication to the public would be an infringement of copyright; or (b) when any person— (i) makes for sale or hire, or sells or lets for hire, or by way of trade displays or offers for sale or hire, or (ii) distributes either for the purpose of trade or to such an extent as to affect prejudicially the owner of the copyright, or (iii) by way of trade exhibits in public, or (iv) imports into India, any infringing copies of the work: Provided that nothing in sub-clause (iv) shall apply to the import of one copy of any work for the private and domestic use of the importer. Explanation.—For the purposes of this section, the reproduction of a literary, dramatic, musical or artistic work in the form of a cinematograph film shall be deemed to be an "infringing copy".',
+      },
+    ],
+  },
+  {
+    id: 'act-patents-1970',
+    shortTitle: 'The Patents Act, 1970',
+    year: 1970,
+    actNumber: '39 of 1970',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1979/1/A1970-39.pdf',
+    sections: [
+      {
+        sectionNo: '2(1)(j)',
+        heading: 'Definitions — "invention"',
+        text: '"invention" means a new product or process involving an inventive step and capable of industrial application. [Note: clause (ja) separately defines "inventive step" as a feature of an invention that involves technical advance as compared to the existing knowledge or having economic significance or both and that makes the invention not obvious to a person skilled in the art; clause (ac) defines "capable of industrial application", in relation to an invention, as meaning that the invention is capable of being made or used in an industry — neither is reproduced verbatim here.]',
+      },
+      {
+        sectionNo: '64',
+        heading: 'Revocation of patents',
+        text: '(1) Subject to the provisions contained in this Act, a patent, whether granted before or after the commencement of this Act, may, be revoked on a petition of any person interested or of the Central Government, by the High Court or on a counter-claim in a suit for infringement of the patent by the High Court on any of the following grounds, that is to say— (a) that the invention, so far as claimed in any claim of the complete specification, was claimed in a valid claim of earlier priority date contained in the complete specification of another patent granted in India; (b) that the patent was granted on the application of a person not entitled under the provisions of this Act to apply therefor; (c) that the patent was obtained wrongfully in contravention of the rights of the petitioner or any person under or through whom he claims; (e) that the invention so far as claimed in any claim of the complete specification is not new, having regard to what was publicly known or publicly used in India before the priority date of the claim or to what was published in India or elsewhere in any of the documents referred to in section 13; (f) that the invention so far as claimed in any claim of the complete specification is obvious or does not involve any inventive step, having regard to what was publicly known or publicly used in India or what was published in India or elsewhere before the priority date of the claim; (h) that the complete specification does not sufficiently and fairly describe the invention and the method by which it is to be performed. [Note: this is one of the most litigated sections of the Act — only a representative subset of the full list of grounds, clauses (a) through (r), is quoted above; sub-sections (2)-(6), on procedure and the interplay with a pending infringement suit, are not reproduced here.]',
+      },
+
+      {
+        sectionNo: '48',
+        heading: 'Rights of patentees',
+        text: 'Subject to the other provisions contained in this Act and the conditions specified in section 47, a patent granted under this Act shall confer upon the patentee— (a) where the subject matter of the patent is a product, the exclusive right to prevent third parties, who do not have his consent, from the act of making, using, offering for sale, selling or importing for those purposes that product in India; (b) where the subject matter of the patent is a process, the exclusive right to prevent third parties, who do not have his consent, from the act of using that process, and from the act of using, offering for sale, selling or importing for those purposes the product obtained directly by that process in India. [Note: section 47 — the four conditions to which every patent is subject, including Government use and importation for research — is not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-trade-marks-1999',
+    shortTitle: 'The Trade Marks Act, 1999',
+    year: 1999,
+    actNumber: '47 of 1999',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1993/1/A1999-47.pdf',
+    sections: [
+      {
+        sectionNo: '2(1)(zb)',
+        heading: 'Definitions — "trade mark"',
+        text: '"trade mark" means a mark capable of being represented graphically and which is capable of distinguishing the goods or services of one person from those of others and may include shape of goods, their packaging and combination of colours; and— (i) in relation to Chapter XII (other than section 107), a registered trade mark or a mark used in relation to goods or services for the purpose of indicating or so as to indicate a connection in the course of trade between the goods or services, as the case may be, and some person having the right as proprietor to use the mark; and (ii) in relation to other provisions of this Act, a mark used or proposed to be used in relation to goods or services for the purpose of indicating or so to indicate a connection in the course of trade between the goods or services, as the case may be, and some person having the right, either as proprietor or by way of permitted user, to use the mark whether with or without any indication of the identity of that person.',
+      },
+      {
+        sectionNo: '28',
+        heading: 'Rights conferred by registration',
+        text: '(1) Subject to the other provisions of this Act, the registration of a trade mark shall, if valid, give to the registered proprietor of the trade mark the exclusive right to the use of the trade mark in relation to the goods or services in respect of which the trade mark is registered and to obtain relief in respect of infringement of the trade mark in the manner provided by this Act. (2) The exclusive right to the use of a trade mark given under sub-section (1) shall be subject to any conditions and limitations to which the registration is subject. (3) Where two or more persons are registered proprietors of trade marks, which are identical with or nearly resemble each other, the exclusive right to the use of any of those trade marks shall not (except so far as their respective rights are subject to any conditions or limitations entered on the register) be deemed to have been acquired by any one of those persons as against any other of those persons merely by registration of the trade marks; but each of those persons has otherwise the same rights as against other persons (not being registered users using by way of permitted use) as he would have if he were the sole registered proprietor.',
+      },
+
+      {
+        sectionNo: '29',
+        heading: 'Infringement of registered trade marks',
+        text: '(1) A registered trade mark is infringed by a person who, not being a registered proprietor or a person using by way of permitted use, uses in the course of trade, a mark which is identical with, or deceptively similar to, the trade mark in relation to goods or services in respect of which the trade mark is registered and in such manner as to render the use of the mark likely to be taken as being used as a trade mark. (2) A registered trade mark is infringed by a person who, not being a registered proprietor or a person using by way of permitted use, uses in the course of trade, a mark which because of— (a) its identity with the registered trade mark and the similarity of the goods or services covered by such registered trade mark; or (b) its similarity to the registered trade mark and the identity or similarity of the goods or services covered by such registered trade mark; or (c) its identity with the registered trade mark and the identity of the goods or services covered by such registered trade mark, is likely to cause confusion on the part of the public, or which is likely to have an association with the registered trade mark. [Note: sub-section (3) — a presumption of likelihood of confusion where the mark and the goods/services are both identical — and sub-sections (4)-(9), covering infringement by using a mark with a reputation in India for dissimilar goods/services, comparative advertising, and applying a registered mark as a trade name or on packaging/labelling, are not reproduced here.]',
+      },
+      {
+        sectionNo: '134',
+        heading: 'Suit for infringement, etc., to be instituted before District Court',
+        text: '(1) No suit— (a) for the infringement of a registered trade mark; or (b) relating to any right in a registered trade mark; or (c) for passing off arising out of the use by the defendant of any trade mark which is identical with or deceptively similar to the plaintiff\'s trade mark, whether registered or unregistered, shall be instituted in any court inferior to a District Court having jurisdiction to try the suit. (2) For the purpose of clauses (a) and (b) of sub-section (1), a "District Court having jurisdiction" shall, notwithstanding anything contained in the Code of Civil Procedure, 1908 (5 of 1908) or any other law for the time being in force, include a District Court within the local limits of whose jurisdiction, at the time of the institution of the suit or other proceeding, the person instituting the suit or proceeding, or, where there are more than one such persons, any of them, actually and voluntarily resides or carries on business or personally works for gain. Explanation.—For the purposes of sub-section (2), "person" includes the registered proprietor and the registered user. [Note: this "plaintiff\'s convenience" forum — filing where the plaintiff resides/carries on business, not only where the defendant does, as ordinary Section 20 CPC would require — applies only to statutory infringement suits under clauses (a)-(b); a pure passing-off action under clause (c), having no registration to found this special jurisdiction on, is filed under the ordinary CPC rules instead.]',
+      },
+    ],
+  },
+  {
+    id: 'act-rfctlarr-2013',
+    shortTitle: 'The Right to Fair Compensation and Transparency in Land Acquisition, Rehabilitation and Resettlement Act, 2013',
+    year: 2013,
+    actNumber: '30 of 2013',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/19895/1/the_right_to_fair_compensation_and_transparency_in_land_acquisition,_rehabilitation_and_resettlement_act,_2013..pdf',
+    sections: [
+      {
+        sectionNo: '26',
+        heading: 'Determination of market value of land by Collector',
+        text: '(1) The Collector shall adopt the following criteria in assessing and determining the market value of the land, namely:— (a) the market value, if any, specified in the Indian Stamp Act, 1899 for the registration of sale deeds or agreements to sell, as the case may be, in the area, where the land is situated; or (b) the average sale price for similar type of land situated in the nearest village or nearest vicinity area, ascertained from the highest fifty per cent of the sale deeds registered during the preceding three years, where higher price has been paid; or (c) consented amount of compensation as agreed upon under sub-section (2) of section 2 in case of acquisition of lands for private companies or for public private partnership projects, whichever is higher: Provided that the date for determination of market value shall be the date on which the notification has been issued under section 11. Explanation 1.—The average sale price referred to in clause (b) shall be calculated by taking into account the total value of the highest fifty per cent of the sale deeds. Explanation 2.—While determining the market value under this section and the average sale price referred to in Explanation 1, any price paid as compensation for land acquired under the provisions of this Act on an earlier occasion in the district shall not be taken into consideration. [Note: sub-section (2), empowering the appropriate Government to specify a floor price or minimum price per unit area if no sale deed data is available, is not reproduced here.]',
+      },
+      {
+        sectionNo: '69',
+        heading: 'Determination of award by Authority',
+        text: '(1) In determining the amount of compensation to be awarded for land acquired under this Act, the Authority shall take into consideration whether the Collector has followed the parameters set out under sections 26 to 30 to determine the market value of the land, and other conditions listed therein, in order to determine the adequacy of the compensation. (2) The Authority may confirm the award of the Collector or may make such modification in the award as is deemed appropriate under the circumstances of the case. (3) The Authority shall in every case award an amount calculated at the rate of twelve per cent per annum on such market value for the period commencing on and from the date of the publication of the preliminary notification under section 11 in respect of such land to the date of the award of the Collector or the date of taking possession of the land, whichever is earlier. (4) In addition to the market value of the land as provided under section 26, the Authority shall in every case award a solatium of one hundred per cent over the total compensation amount, and such amount shall be in addition to the amount payable to the affected families for damages under section 30. [Note: the Authority\'s order on this reference from the Collector\'s award is itself appealable to the High Court under section 74 of this Act (also in this Library).]',
+      },
+
+      {
+        sectionNo: '24',
+        heading: 'Land acquisition process under Act No. 1 of 1894 shall be deemed to have lapsed in certain cases',
+        text: '(1) Notwithstanding anything contained in this Act,— (a) where no award under section 11 of the Land Acquisition Act, 1894 has been made, then, all provisions of this Act relating to the determination of compensation shall apply; or (b) where an award under said section 11 has been made, then such proceedings shall continue under the provisions of the said Land Acquisition Act, 1894, as if the said Act has not been repealed. (2) Notwithstanding anything contained in sub-section (1), in case of land acquisition proceedings initiated under the Land Acquisition Act, 1894, where an award under the said section 11 has been made five years or more prior to the commencement of this Act but the physical possession of the land has not been taken or the compensation has not been paid the said proceedings shall be deemed to have lapsed and the appropriate Government, if it so chooses, shall initiate the proceedings of such land acquisition afresh in accordance with the provisions of this Act: Provided that where an award has been made and compensation in respect of a majority of land holdings has not been deposited in the account of the beneficiaries, then, all beneficiaries specified in the notification for acquisition under section 4 of the said Land Acquisition Act, shall be entitled to compensation in accordance with the provisions of this Act. [Note: the Explanation, deeming any period during which litigation over compensation is pending before a court of competent jurisdiction to be excluded from the computation of the five-year period, is not reproduced here — this is the "lapse" provision, one of the most litigated sections of this Act, that has revived thousands of decades-old acquisition proceedings across India where the five-year non-payment/non-possession condition is met.]',
+      },
+      {
+        sectionNo: '64',
+        heading: 'Reference to Authority',
+        text: '(1) Any person interested who has not accepted the award may, by written application to the Collector, require that the matter be referred by the Collector for the determination of the Authority, whether his objection be to the measurement of the land, the amount of the compensation, the person to whom it is payable, the rights of Rehabilitation and Resettlement under Chapters V and VI, or the apportionment of the compensation among the persons interested. [Note: sub-sections (2)-(4), fixing the limitation period for making such an application (six weeks from the Collector\'s decision on the R&R scheme, or six months from the Collector\'s award, whichever is later) and the Collector\'s duty to state the grounds of objection in making the reference, are not reproduced here. The Authority\'s order on this reference is itself appealable to the High Court under section 74 of this Act.]',
+      },
+    ],
+  },
+  {
+    id: 'act-pocso-2012',
+    shortTitle: 'The Protection of Children from Sexual Offences Act, 2012',
+    year: 2012,
+    actNumber: '32 of 2012',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2079/1/A2012-32.pdf',
+    sections: [
+      {
+        sectionNo: '2(1)(d)',
+        heading: 'Definitions — "child"',
+        text: '"child" means any person below the age of eighteen years.',
+      },
+      {
+        sectionNo: '19',
+        heading: 'Reporting of offences',
+        text: '(1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973, any person (including the child), who has apprehension that an offence under this Act is likely to be committed or has knowledge that such an offence has been committed, shall provide such information to— (a) the Special Juvenile Police Unit; or (b) the local police. (2) Every report given under sub-section (1) shall be— (a) ascribed an entry number and recorded in writing; (b) be read over to the informant; (c) shall be entered in a book to be kept by the Special Juvenile Police Unit or the local police, in such form as may be prescribed. (3) Where the report under sub-section (1) is given by a child, the same shall be recorded under sub-section (2) in a simple language so that the child understands contents being recorded. (4) In case contents are being recorded in the language not understood by the child or wherever it is deemed necessary, a translator or an interpreter, having such qualifications, experience and on payment of such fees as may be prescribed, shall be provided to the child if he fails to understand the same. (5) Where the Special Juvenile Police Unit or local police is satisfied that the child against whom an offence has been committed is in need of care and protection, then, it shall, after recording the reasons in writing, make immediate arrangement to give him such care and protection (including admitting the child into shelter home or to the nearest hospital) within twenty-four hours of the report, as may be prescribed. (6) The Special Juvenile Police Unit or local police shall, without unnecessary delay but within a period of twenty-four hours, report the matter to the Child Welfare Committee and the Special Court or where no Special Court has been designated, to the Court of Session, including need of the child for care and protection and steps taken in this regard. (7) No person shall incur any liability, whether civil or criminal, for giving the information in good faith for the purpose of sub-section (1).',
+      },
+      {
+        sectionNo: '29',
+        heading: 'Presumption as to certain offences',
+        text: 'Where a person is prosecuted for committing or abetting or attempting to commit any offence under section 3, section 5, section 7 and section 9 of this Act, the Special Court shall presume, that such person has committed or abetted or attempted to commit the offence, as the case may be unless the contrary is proved. [Note: this presumption operates only once the prosecution has proved the foundational facts of the offence; it is confined to the offences the section names (penetrative sexual assault, aggravated penetrative sexual assault, sexual assault, and aggravated sexual assault) and is rebuttable, not conclusive.]',
+      },
+
+      {
+        sectionNo: '3',
+        heading: 'Penetrative sexual assault',
+        text: 'A person is said to commit "penetrative sexual assault" if— (a) he penetrates his penis, to any extent, into the vagina, mouth, urethra or anus of a child or makes the child to do so with him or any other person; or (b) he inserts, to any extent, any object or a part of the body, not being the penis, into the vagina, the urethra or anus of the child or makes the child to do so with him or any other person; or (c) he manipulates any part of the body of the child so as to cause penetration into the vagina, urethra, anus or any part of body of the child or makes the child to do so with him or any other person; or (d) he applies his mouth to the penis, vagina, anus, urethra of the child or makes the child to do so to such person or any other person.',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Punishment for penetrative sexual assault',
+        text: '(1) Whoever commits penetrative sexual assault shall be punished with imprisonment of either description for a term which shall not be less than ten years but which may extend to imprisonment for life, and shall also be liable to fine. (2) Whoever commits penetrative sexual assault on a child below sixteen years of age shall be punished with imprisonment for a term which shall not be less than twenty years, but which may extend to imprisonment for life, which shall mean imprisonment for the remainder of natural life of that person, and shall also be liable to fine. (3) The fine imposed under this section shall be just and reasonable and paid to the victim to meet the medical expenses and rehabilitation of such victim. [Note: sub-section (2)\'s twenty-year minimum was inserted by the Criminal Law (Amendment) Act, 2018, with effect from 21 April 2018 — an offence committed before that date against a child below sixteen still draws only the ten-year minimum under sub-section (1).]',
+      },
+    ],
+  },
+  {
+    id: 'act-sc-st-atrocities-1989',
+    shortTitle: 'The Scheduled Castes and the Scheduled Tribes (Prevention of Atrocities) Act, 1989',
+    year: 1989,
+    actNumber: '33 of 1989',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1994/1/A1989-33.pdf',
+    sections: [
+      {
+        sectionNo: '14A',
+        heading: 'Appeal',
+        text: '(1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974), an appeal shall lie, from any judgment, sentence or order, not being an interlocutory order, of a Special Court or an Exclusive Special Court, to the High Court both on facts and on law. (2) Notwithstanding anything contained in sub-section (3) of section 378 of the Code of Criminal Procedure, 1973 (2 of 1974), an appeal shall also lie to the High Court against an order of the Special Court or the Exclusive Special Court granting or refusing bail. (3) Every appeal under this section shall be preferred within a period of ninety days from the date of the judgment, sentence or order appealed from: Provided that the High Court may entertain an appeal after the expiry of the said period of ninety days if it is satisfied that the appellant had sufficient cause for not preferring the appeal within the period of ninety days. (4) An appeal preferred under sub-section (1) shall, as far as possible, be disposed of within a period of six months from the date of admission of the appeal.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Section 438 of the Code not to apply to persons committing an offence under the Act',
+        text: 'Nothing in section 438 of the Code shall apply in relation to any case involving the arrest of any person on an accusation of having committed an offence under this Act. [Note: this bars an application for anticipatory bail before arrest for an offence under this Act; courts have held the bar applies only once a prima facie case under the Act is made out on the complaint\'s own averments, and does not operate as an absolute, automatic bar irrespective of what the complaint actually alleges. "Section 438 of the Code" refers to the Code of Criminal Procedure, 1973 — under the Bharatiya Nagarik Suraksha Sanhita, 2023, the equivalent anticipatory-bail provision is section 482 (also in this Library), and section 18A(1)(b), inserted in 2018, extends the same bar to that provision.]',
+      },
+
+      {
+        sectionNo: '3',
+        heading: 'Punishments for offences of atrocities',
+        text: '(1) Whoever, not being a member of a Scheduled Caste or a Scheduled Tribe,— (r) intentionally insults or intimidates with intent to humiliate a member of a Scheduled Caste or a Scheduled Tribe in any place within public view; (s) abuses any member of a Scheduled Caste or a Scheduled Tribe by caste name in any place within public view; (v) gives any false or frivolous information to any public servant and thereby causes such public servant to use his lawful power to the injury or annoyance of a member of a Scheduled Caste or a Scheduled Tribe, commits an offence and shall be punishable with imprisonment for a term which shall not be less than six months but which may extend to five years and with fine. (2)(v) Whoever, not being a member of a Scheduled Caste or a Scheduled Tribe, commits any offence under the Indian Penal Code (45 of 1860) punishable with imprisonment for a term of ten years or more against a person or property on the ground that such person is a member of a Scheduled Caste or a Scheduled Tribe or such property belongs to such member, shall be punishable with imprisonment for life and with fine. [Note: sub-section (1) originally listed clauses (a)-(za), covering a wide range of specific acts of atrocity — only the most commonly-litigated clauses (r), (s), and (v) are quoted above; sub-section (2), with its own clauses (i)-(vii) covering false evidence, mischief by fire, and offences by public servants, is likewise only partially reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-ndps-1985',
+    shortTitle: 'The Narcotic Drugs and Psychotropic Substances Act, 1985',
+    year: 1985,
+    actNumber: '61 of 1985',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1900/1/A1985-61.pdf',
+    sections: [
+      {
+        sectionNo: '8',
+        heading: 'Prohibition of certain operations',
+        text: 'No person shall— (a) cultivate any coca plant or gather any portion of coca plant; or (b) cultivate the opium poppy or any cannabis plant; or (c) produce, manufacture, possess, sell, purchase, transport, warehouse, use, consume, import inter-State, export inter-State, import into India, export from India or tranship any narcotic drug or psychotropic substance, except for medical or scientific purposes and in the manner and to the extent provided by the provisions of this Act or the rules or orders made thereunder and in a case where any such provision, imposes any requirement by way of licence, permit or authorisation also in accordance with the terms and conditions of such licence, permit or authorisation: Provided that, and subject to the other provisions of this section and the provisions of section 9, no such prohibition shall apply to the export of poppy straw for decorative purposes.',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Punishment for contravention in relation to manufactured drugs and preparations',
+        text: 'Whoever, in contravention of any provision of this Act or any rule or order made or condition of licence granted thereunder, manufactures, possesses, sells, purchases, transports, imports inter-State, exports inter-State or uses any manufactured drug or any preparation containing any manufactured drug shall be punishable,— (a) where the contravention involves small quantity, with rigorous imprisonment for a term which may extend to one year, or with fine which may extend to ten thousand rupees, or with both; (b) where the contravention involves quantity, lesser than commercial quantity but greater than small quantity, with rigorous imprisonment for a term which may extend to ten years, and with fine which may extend to one lakh rupees; (c) where the contravention involves commercial quantity, with rigorous imprisonment for a term which shall not be less than ten years but which may extend to twenty years and with fine which shall not be less than one lakh rupees but which may extend to two lakh rupees: Provided that the court may, for reasons to be recorded in the judgment, impose a fine exceeding two lakh rupees.',
+      },
+
+      {
+        sectionNo: '37',
+        heading: 'Offences to be cognizable and non-bailable',
+        text: '(1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974),— (a) every offence punishable under this Act shall be cognizable; (b) no person accused of an offence punishable for offences under section 19 or section 24 or section 27A and also for offences involving commercial quantity shall be released on bail or on his own bond unless— (i) the Public Prosecutor has been given an opportunity to oppose the application for such release, and (ii) where the Public Prosecutor opposes the application, the court is satisfied that there are reasonable grounds for believing that he is not guilty of such offence and that he is not likely to commit any offence while on bail. (2) The limitations on granting of bail specified in clause (b) of sub-section (1) are in addition to the limitations under the Code of Criminal Procedure, 1973 (2 of 1974) or any other law for the time being in force, on granting of bail. [Note: this is the "twin conditions" bail bar — courts have held it does not impose an absolute restraint on bail, but the burden is on the accused to satisfy both conditions in clause (b), not merely to show the prosecution has not made out its case.]',
+      },
+    ],
+  },
+  {
+    id: 'act-prevention-of-corruption-1988',
+    shortTitle: 'The Prevention of Corruption Act, 1988',
+    year: 1988,
+    actNumber: '49 of 1988',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1976/1/A1988-49.pdf',
+    sections: [
+      {
+        sectionNo: '8',
+        heading: 'Offence relating to bribing of a public servant',
+        text: '(1) Any person who gives or promises to give an undue advantage to another person or persons with intention— (i) to induce a public servant to perform improperly a public duty; or (ii) to reward such public servant for the improper performance of public duty, shall be punishable with imprisonment for a term which may extend to seven years or with fine or with both: Provided that the provisions of this section shall not apply where a person is compelled to give such undue advantage: Provided further that the person so compelled shall report the matter to the law enforcement authority or investigating agency within a period of seven days from the date of giving such undue advantage. (2) Nothing in sub-section (1) shall apply to a person, if that person, after informing a law enforcement authority or investigating agency, gives or promises to give any undue advantage to another person in order to assist such law enforcement authority or investigating agency in its investigation of the offence alleged against the later. [Note: this section, penalising the bribe-giver as a substantive offence in its own right (not merely as an abettor of the public servant\'s offence under section 7), was inserted by the Prevention of Corruption (Amendment) Act, 2018, with effect from 26 July 2018.]',
+      },
+      {
+        sectionNo: '17A',
+        heading: 'Enquiry or inquiry or investigation of offences relatable to recommendations made or decision taken by public servant in discharge of official functions or duties',
+        text: 'No police officer shall conduct any enquiry or inquiry or investigation into any offence alleged to have been committed by a public servant under this Act, where the alleged offence is relatable to any recommendation made or decision taken by such public servant in discharge of his official functions or duties, without the previous approval— (a) in the case of a person who is or was employed, at the time when the offence was alleged to have been committed, in connection with the affairs of the Union, of that Government; (b) in the case of a person who is or was employed, at the time when the offence was alleged to have been committed, in connection with the affairs of a State, of that Government; (c) in the case of any other person, of the authority competent to remove him from his office, at the time when the offence was alleged to have been committed: Provided that no such approval shall be necessary for cases involving arrest of a person on the spot on the charge of accepting or attempting to accept any undue advantage for himself or for any other person referred to in section 7. [Note: this "safe zone" for bona fide official decision-making, inserted by the 2018 Amendment Act, does not require approval for a trap/spot-arrest case under section 7 — only for enquiries into recommendations or decisions already taken.]',
+      },
+
+      {
+        sectionNo: '7',
+        heading: 'Offence relating to public servant being bribed',
+        text: 'Any public servant who,— (a) obtains or accepts or attempts to obtain from any person, an undue advantage, with the intention to perform or cause performance of public duty improperly or dishonestly or to forbear or cause to forbear from performance of such duty either by himself or by another public servant; or (b) obtains or accepts or attempts to obtain, an undue advantage from any person as a reward for the improper or dishonest performance of a public duty or for forbearing to perform such duty either by himself or another public servant; or (c) performs or induces another public servant to perform improperly or dishonestly a public duty or to forbear performance of such duty in anticipation of or in consequence of accepting an undue advantage from any person, shall be punishable with imprisonment for a term which shall not be less than three years but which may extend to seven years and shall also be liable to fine. Explanation 1.—For the purpose of this section, the obtaining, accepting, or the attempting to obtain an undue advantage shall itself constitute an offence even if the performance of a public duty by public servant, is not or has not been improper. [Note: Explanations 2 and 3, and the four further illustrations to this section, are not reproduced here. This section was substituted in its entirety by the Prevention of Corruption (Amendment) Act, 2018, with effect from 26 July 2018.]',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Criminal misconduct by a public servant',
+        text: '(1) A public servant is said to commit the offence of criminal misconduct,— (a) if he dishonestly or fraudulently misappropriates or otherwise converts for his own use any property entrusted to him or under his control as a public servant or allows any other person so to do; or (b) if he intentionally enriches himself illicitly during the period of his office. Explanation 1.—A person shall be presumed to have intentionally enriched himself illicitly if he or any person on his behalf, is in possession of or has, at any time during the period of his office, been in possession of pecuniary resources or property disproportionate to his known sources of income which the public servant cannot satisfactorily account for. (2) Any public servant who commits criminal misconduct shall be punishable with imprisonment for a term which shall not be less than four years but which may extend to ten years and shall also be liable to fine. [Note: this section was also substituted in its entirety by the 2018 Amendment Act, which removed the earlier separate offence of merely possessing assets disproportionate to income and folded it into clause (b) as quoted above.]',
+      },
+    ],
+  },
+  {
+    id: 'act-pmla-2002',
+    shortTitle: 'The Prevention of Money-Laundering Act, 2002',
+    year: 2002,
+    actNumber: '15 of 2003',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2036/1/A2003-15.pdf',
+    sections: [
+      {
+        sectionNo: '5',
+        heading: 'Attachment of property involved in money-laundering',
+        text: '(1) Where the Director or any other officer not below the rank of Deputy Director authorised by the Director for the purposes of this section, has reason to believe (the reason for such belief to be recorded in writing), on the basis of material in his possession, that— (a) any person is in possession of any proceeds of crime; (b) such person has been charged of having committed a scheduled offence; and (c) such proceeds of crime are likely to be concealed, transferred or dealt with in any manner which may result in frustrating any proceedings relating to confiscation of such proceeds of crime under this Chapter, he may, by order in writing, provisionally attach such property for a period not exceeding one hundred and eighty days from the date of the order: Provided that no such order of attachment shall be made unless, in relation to the scheduled offence, a report has been forwarded to a Magistrate under section 173 of the Code of Criminal Procedure, 1973, or a complaint has been filed by a person authorised to investigate the offence mentioned in the Schedule, before a Magistrate or court for taking cognizance of the scheduled offence, as the case may be, or a similar report or complaint has been made or filed under the corresponding law of any other country. [Note: this provisional attachment must be placed before the Adjudicating Authority and confirmed by it within the statutory period, failing which it lapses; sub-sections (2)-(5), on the further procedure, are not reproduced here.]',
+      },
+      {
+        sectionNo: '24',
+        heading: 'Burden of proof',
+        text: 'In any proceeding relating to proceeds of crime under this Act,— (a) in the case of a person charged with the offence of money-laundering under section 3, the Authority or Court shall, unless the contrary is proved, presume that such proceeds of crime are involved in money-laundering; and (b) in the case of any other person the Authority or Court, may presume that such proceeds of crime are involved in money-laundering. [Note: this is a reverse burden of proof — the prosecution must first establish the foundational facts (commission of a scheduled offence, and the accused\'s connection to property derived from it), after which the burden shifts to the accused to prove, on a preponderance of probability rather than beyond reasonable doubt, that the proceeds are not tainted.]',
+      },
+
+      {
+        sectionNo: '3',
+        heading: 'Offence of money-laundering',
+        text: 'Whosoever directly or indirectly attempts to indulge or knowingly assists or knowingly is a party or is actually involved in any process or activity connected with the proceeds of crime including its concealment, possession, acquisition or use and projecting or claiming it as untainted property shall be guilty of offence of money-laundering. [Note: the Explanation inserted by the Finance Act, 2019, clarifying that this offence is a continuing one and that a person can be prosecuted for money-laundering even independent of any proceeding relating to the scheduled offence generating the proceeds of crime, is not reproduced here.]',
+      },
+      {
+        sectionNo: '4',
+        heading: 'Punishment for money-laundering',
+        text: 'Whoever commits the offence of money-laundering shall be punishable with rigorous imprisonment for a term which shall not be less than three years but which may extend to seven years and shall also be liable to fine: Provided that where the proceeds of crime involved in money-laundering relates to any offence specified under paragraph 2 of Part A of the Schedule, the provisions of this section shall have effect as if for the words "which may extend to seven years", the words "which may extend to ten years" had been substituted.',
+      },
+      {
+        sectionNo: '45',
+        heading: 'Offences to be cognizable and non-bailable',
+        text: '(1) Notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974),— (a) every offence punishable under this Act shall be cognizable; (b) no person accused of an offence punishable for a term of imprisonment of more than three years under Part A of the Schedule shall be released on bail or on his own bond unless— (i) the Public Prosecutor has been given an opportunity to oppose the application for such release; and (ii) where the Public Prosecutor opposes the application, the court is satisfied that there are reasonable grounds for believing that he is not guilty of such offence and that he is not likely to commit any offence while on bail: Provided that a person, who, is under the age of sixteen years, or is a woman, or is sick or infirm, or is accused either on his own or along with other co-accused of money-laundering a sum of less than one crore rupees, may be released on bail. [Note: this is the same "twin conditions" bail bar as section 37 of the NDPS Act (also in this Library); the Supreme Court has upheld its constitutionality while clarifying that it does not apply to anticipatory bail applications, and that the proviso\'s carve-outs (age, sex, health, and the sub-one-crore threshold) operate independently of the twin conditions.]',
+      },
+    ],
+  },
+  {
+    id: 'act-juvenile-justice-2015',
+    shortTitle: 'The Juvenile Justice (Care and Protection of Children) Act, 2015',
+    year: 2015,
+    actNumber: '2 of 2016',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2147/1/A2016-02.pdf',
+    sections: [
+      {
+        sectionNo: '2(13)',
+        heading: 'Definitions — "child in conflict with law"',
+        text: '"child in conflict with law" means a child who is alleged or found to have committed an offence and who has not completed eighteen years of age on the date of commission of such offence.',
+      },
+      {
+        sectionNo: '2(33)',
+        heading: 'Definitions — "heinous offences"',
+        text: '"heinous offences" includes the offences for which the minimum punishment under the Indian Penal Code (45 of 1860) or any other law for the time being in force is imprisonment for seven years or more. [Note: this three-tier classification — petty offences (maximum punishment up to three years), serious offences (three to seven years), and heinous offences (seven years or more, as quoted above) — is what determines whether a preliminary assessment under section 15 (also in this Library) is even triggered; only a heinous offence allegedly committed by a child of sixteen years or above can lead to trial as an adult.]',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Bail to a person who is apparently a child alleged to be in conflict with law',
+        text: '(1) When any person, who is apparently a child and is alleged to have committed a bailable or non-bailable offence, is apprehended or detained by the police or appears or brought before a Board, such person shall, notwithstanding anything contained in the Code of Criminal Procedure, 1973 (2 of 1974) or in any other law for the time being in force, be released on bail with or without surety or placed under the supervision of a probation officer or under the care of any fit person: Provided that such person shall not be so released if there appear reasonable grounds for believing that the release is likely to bring that person into association with any known criminal or expose the said person to moral, physical or psychological danger or the person\'s release would defeat the ends of justice, and the Board shall record the reasons for denying the bail and circumstances that led to such a decision. (2) When such person having been apprehended is not released on bail under sub-section (1) by the officer-in-charge of the police station, such officer shall cause the person to be kept only in an observation home or a place of safety, as the case may be, in such manner as may be prescribed until the person can be brought before a Board. (3) When such person is not released on bail under sub-section (1) by the Board, it shall make an order sending him to an observation home or a place of safety, as the case may be, for such period during the pendency of the inquiry regarding the person, as may be specified in the order. (4) When a child in conflict with law is unable to fulfil the conditions of bail order within seven days of the bail order, such child shall be produced before the Board for modification of the conditions of bail.',
+      },
+
+      {
+        sectionNo: '15',
+        heading: 'Preliminary assessment into heinous offences by Board',
+        text: '(1) In case of a heinous offence alleged to have been committed by a child, who has completed or is above the age of sixteen years, the Board shall conduct a preliminary assessment with regard to his mental and physical capacity to commit such offence, ability to understand the consequences of the offence and the circumstances in which he allegedly committed the offence, and may pass an order in accordance with the provisions of sub-section (3) of section 18: Provided that for such an assessment, the Board may take the assistance of experienced psychologists or psycho-social workers or other experts. (2) For the purposes of sub-section (1), the Board may call for a report from a probation officer or a social worker, or take the evidence of any other expert, ensuring that the child is given a fair opportunity to be heard and participate in the assessment. Explanation.—For the purposes of this section, it is clarified that preliminary assessment is not a trial, but is to assess the capacity of such child to commit and understand the consequences of the alleged offence.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Orders regarding child found to be in conflict with law',
+        text: '(3) Where the Board after preliminary assessment under section 15 pass an order that there is a need for trial of the said child as an adult, then the Board may order transfer of the trial of the case to the Children\'s Court having jurisdiction to try such offences. [Note: sub-sections (1) and (2), setting out the range of dispositions available to the Board for a child in conflict with law who is not transferred for trial as an adult — advice/admonition, community service, counselling, release on probation with or without a fit person/fit facility, or a special home for up to three years — are not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-epf-1952',
+    shortTitle: "The Employees' Provident Funds and Miscellaneous Provisions Act, 1952",
+    year: 1952,
+    actNumber: '19 of 1952',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1416/2/a1952-19.pdf',
+    sections: [
+      {
+        sectionNo: '1',
+        heading: 'Short title, extent and application',
+        text: '(3) Subject to the provisions contained in section 16, this Act applies— (a) to every establishment which is a factory engaged in any industry specified in Schedule I and in which twenty or more persons are employed, and (b) to any other establishment employing twenty or more persons or class of such establishments which the Central Government may, by notification in the Official Gazette, specify in this behalf: Provided that the Central Government may, after giving not less than two months\' notice of its intention so to do, by notification in the Official Gazette, apply the provisions of this Act to any establishment employing such number of persons less than twenty as may be specified in the notification. (4) Notwithstanding anything contained in sub-section (3), where it appears to the Central Provident Fund Commissioner, whether on an application made to him in this behalf or otherwise, that the employer and the majority of employees in relation to any establishment have agreed that the provisions of this Act should be made applicable to the establishment, he may, by notification in the Official Gazette, apply the provisions of this Act to that establishment on and from the date of such agreement or from any subsequent date specified in such agreement. [Note: section 16, exempting certain establishments (e.g. those registered under the Cooperative Societies Act employing less than fifty persons and working without the aid of power, or those newly set up until they complete a specified period), is not reproduced here.]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Contributions and matters which may be provided for in Schemes',
+        text: 'The contribution which shall be paid by the employer to the Fund shall be ten per cent of the basic wages, dearness allowance and retaining allowance (if any) for the time being payable to each of the employees (whether employed by him directly or by or through a contractor), and the employee\'s contribution shall be equal to the contribution payable by the employer in respect of him and may, if any employee so desires, be an amount exceeding ten per cent of his basic wages, dearness allowance and retaining allowance (if any), subject to the condition that the employer shall not be under an obligation to pay any contribution over and above his contribution payable under this section: Provided that in its application to any establishment or class of establishments which the Central Government may, by notification in the Official Gazette, specify, the words "ten per cent" occurring at both the places where they occur in this section shall be substituted by the words "twelve per cent". Explanation 1.—For the purposes of this section, "dearness allowance" shall be deemed to include also the cash value of any food concession allowed to the employee. Explanation 2.—For the purposes of this section, "retaining allowance" means an allowance payable for the time being to an employee of any factory or other establishment during any period in which the establishment is not working, for retaining his services.',
+      },
+
+      {
+        sectionNo: '7A',
+        heading: 'Determination of moneys due from employers',
+        text: '(1) The Central Provident Fund Commissioner, any Additional Central Provident Fund Commissioner, any Deputy Provident Fund Commissioner, any Regional Provident Fund Commissioner or any Assistant Provident Fund Commissioner may, by order,— (a) in a case where a dispute arises regarding the applicability of this Act to an establishment, decide such dispute; and (b) determine the amount due from any employer under any provision of this Act, the Scheme or the Pension Scheme or the Insurance Scheme, as the case may be, and for any of the aforesaid purposes may conduct such inquiry as he may deem necessary. (2) The officer conducting the inquiry under sub-section (1) shall, for the purposes of such inquiry, have the same powers as are vested in a court under the Code of Civil Procedure, 1908 (5 of 1908), for trying a suit in respect of— (a) enforcing the attendance of any person or examining him on oath; (b) requiring the discovery and production of documents; (c) receiving evidence on affidavit; (d) issuing commissions for the examination of witnesses. (4) Where the employer, employee or any other person required to attend the inquiry under sub-section (1) fails to attend such inquiry without assigning any valid reason or fails to produce any document or to file any report or return when called upon to do so, the officer conducting the inquiry may decide the applicability of the Act or determine the amount due from any employer, as the case may be, on the basis of the evidence adduced during such inquiry and other documents available on record. [Note: sub-sections (3), (3A), (3B) and (5), dealing with the power to reopen and set aside an order passed ex parte, and the finality of the amount determined subject to a further Section 7-I appeal, are not reproduced here.]',
+      },
+      {
+        sectionNo: '14B',
+        heading: 'Power to recover damages',
+        text: 'Where an employer makes default in the payment of any contribution to the Fund, the Pension Fund or the Insurance Fund or in the transfer of accumulations required to be transferred by him under sub-section (2) of section 15 or sub-section (5) of section 17 or in the payment of any charges payable under any other provision of this Act or of any Scheme or Insurance Scheme or under any of the conditions specified under section 17, the Central Provident Fund Commissioner or such other officer as may be authorised by the Central Government, by notification in the Official Gazette, in this behalf may recover from the employer by way of penalty such damages, not exceeding the amount of arrears, as may be specified in the Scheme: Provided that before levying and recovering such damages, the employer shall be given a reasonable opportunity of being heard.',
+      },
+    ],
+  },
+  {
+    id: 'act-payment-of-gratuity-1972',
+    shortTitle: 'The Payment of Gratuity Act, 1972',
+    year: 1972,
+    actNumber: '39 of 1972',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1932/1/A1972-39.pdf',
+    sections: [
+      {
+        sectionNo: '2A',
+        heading: 'Continuous service',
+        text: '(1) For the purposes of this Act,— an employee shall be said to be in continuous service for a period if he has, for that period, been in uninterrupted service, including service which may be interrupted on account of sickness, accident, leave, absence from duty without leave (not being absence in respect of which an order treating the absence as break in service has been passed in accordance with the standing orders, rules or regulations governing the employees of the establishment), lay-off, strike or a lock-out or cessation of work not due to any fault of the employee, whether such uninterrupted or interrupted service was rendered before or after the commencement of this Act. (2) Where an employee (not being an employee employed in a seasonal establishment) is not in continuous service within the meaning of clause (1), for any period of one year or six months, he shall be deemed to be in continuous service under the employer for the said period of one year or six months, if the employee, during the period of twelve calendar months or six calendar months preceding the date with reference to which the calculation is to be made, has actually worked under the employer for not less than— (a) one hundred and ninety days, in the case of an employee employed below the ground in a mine or in an establishment which works for less than six days in a week, and (b) two hundred and forty days, in any other case, for the said period of one year, and proportionately fewer days for the said period of six months. [Note: the Explanation, deeming certain days on which the employee did not actually work but was nonetheless entitled to be treated as having worked (lay-off, leave with full wages, absence due to temporary disablement caused by employment injury, and a female employee\'s maternity leave not exceeding twenty-six weeks) to be included in computing the number of days actually worked, is not reproduced here.]',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Determination of the amount of gratuity',
+        text: '(1) A person who is eligible for payment of gratuity under this Act or any person authorised, in writing, to act on his behalf shall send a written application to the employer, within such time and in such form, as may be prescribed, for payment of such gratuity. (2) As soon as gratuity becomes payable, the employer shall, whether an application referred to in sub-section (1) has been made or not, determine the amount of gratuity and give notice in writing to the person to whom the gratuity is payable and also to the controlling authority specifying the amount of gratuity so determined. (3) The employer shall arrange to pay the amount of gratuity within thirty days from the date it becomes payable to the person to whom the gratuity is payable. (3A) If the amount of gratuity payable under sub-section (3) is not paid by the employer within the period specified in sub-section (3), the employer shall pay, from the date on which the gratuity becomes payable to the date on which it is paid, simple interest at such rate, not exceeding the rate notified by the Central Government from time to time for repayment of long term deposits, as that Government may, by notification specify: Provided that no such interest shall be payable if the delay in the payment is due to the fault of the employee and the employer has obtained permission in writing from the controlling authority for the delayed payment on this ground. [Note: sub-sections (4)-(7), on disputes referred to the controlling authority for determination and the appeal to the appropriate Government under section 7, are not reproduced here.]',
+      },
+
+      {
+        sectionNo: '4',
+        heading: 'Payment of gratuity',
+        text: '(1) Gratuity shall be payable to an employee on the termination of his employment after he has rendered continuous service for not less than five years,— (a) on his superannuation, or (b) on his retirement or resignation, or (c) on his death or disablement due to accident or disease: Provided that the completion of continuous service of five years shall not be necessary where the termination of the employment of any employee is due to death or disablement: Provided further that in the case of death of the employee, gratuity payable to him shall be paid to his nominee or, if no nomination has been made, to his heirs, and where any such nominees or heirs is a minor, the share of such minor, shall be deposited with the controlling authority who shall invest the same for the benefit of such minor in such bank or other financial institution, as may be prescribed, until such minor attains majority. (2) For every completed year of service or part thereof in excess of six months, the employer shall pay gratuity to an employee at the rate of fifteen days\' wages based on the rate of wages last drawn by the employee concerned. (3) The amount of gratuity payable to an employee shall not exceed such amount as may be notified by the Central Government from time to time. [Note: sub-sections (4)-(6), dealing with computation of gratuity for piece-rate employees and seasonal establishments, and the forfeiture of gratuity (wholly or in part) for an employee terminated for riotous/disorderly conduct or an offence involving moral turpitude, are not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-esi-1948',
+    shortTitle: "The Employees' State Insurance Act, 1948",
+    year: 1948,
+    actNumber: '34 of 1948',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1917/1/A1948-34.pdf',
+    sections: [
+      {
+        sectionNo: '38',
+        heading: 'All employees to be insured',
+        text: 'Subject to the provisions of this Act, all employees in factories or establishments to which this Act applies shall be insured in the manner provided by this Act.',
+      },
+      {
+        sectionNo: '46',
+        heading: 'Benefits',
+        text: 'Subject to the provisions of this Act, the insured persons, their dependants or the persons hereinafter mentioned, as the case may be, shall be entitled to the following benefits, namely— (a) periodical payments to any insured person in case of his sickness certified by a duly appointed medical practitioner or by any other person possessing such qualifications and experience as the Corporation may, by regulations, specify in this behalf (hereinafter referred to as "sickness benefit"); (b) periodical payments to an insured woman in case of confinement or miscarriage or sickness arising out of pregnancy, confinement, premature birth of child or miscarriage, such woman being certified to be eligible for such payments by an authority specified in this behalf by the regulations (hereinafter referred to as "maternity benefit"); (c) periodical payments to an insured person suffering from disablement as a result of an employment injury sustained as an employee under this Act and certified to be eligible for such payments by an authority specified in this behalf by the regulations (hereinafter referred to as "disablement benefit"); (d) periodical payments to such dependants of an insured person who dies as a result of an employment injury sustained as an employee under this Act, as are entitled to compensation under this Act (hereinafter referred to as "dependants\' benefit"); (e) medical treatment for and attendance on insured persons (hereinafter referred to as "medical benefit"); (f) payment to the eldest surviving member of the family of an insured person who has died, towards the expenditure on the funeral of the deceased insured person or, where the insured person did not have a family or was not living with his family at the time of his death, to the person who actually incurs the expenditure on the funeral of the deceased insured person (hereinafter referred to as "funeral benefit").',
+      },
+
+      {
+        sectionNo: '75',
+        heading: "Matters to be decided by Employees' Insurance Court",
+        text: '(1) If any question or dispute arises as to— (a) whether any person is an employee within the meaning of this Act or whether he is liable to pay the employee\'s contribution, or (b) the rate of wages or average daily wages of an employee for the purposes of this Act, or (c) the rate of contribution payable by a principal employer in respect of any employee, or (d) the person who is or was the principal employer in respect of any employee, or (e) the right of any person to any benefit and as to the amount and duration thereof, or (g) any direction issued by the Corporation under section 55A on a review of any payment of dependants\' benefits, such question or dispute subject to the provisions of sub-section (2A) shall be decided by the Employees\' Insurance Court in accordance with the provisions of this Act. (2) Subject to the provisions of sub-section (1), the following claims shall be decided by the Employees\' Insurance Court, namely:— (a) claim for the recovery of contributions from the principal employer; (b) claim by a principal employer to recover contributions from any immediate employer; (c) claim against a principal employer under section 68; (d) claim under section 70 for the recovery of the value or amount of the benefits received by a person when he is not lawfully entitled thereto; and (e) any claim for the recovery of any benefit admissible under this Act. [Note: clause (f) of sub-section (1) and sub-sections (2A)-(3) — barring the Employees\' Insurance Court from deciding a disablement question without first obtaining a medical board/tribunal decision — are not reproduced here.]',
+      },
+    ],
+  },
+  {
+    id: 'act-factories-1948',
+    shortTitle: 'The Factories Act, 1948',
+    year: 1948,
+    actNumber: '63 of 1948',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/1928/1/A1948-63.pdf',
+    sections: [
+      {
+        sectionNo: '2(k)',
+        heading: 'Definitions — "manufacturing process"',
+        text: '"manufacturing process" means any process for— (i) making, altering, repairing, ornamenting, finishing, packing, oiling, washing, cleaning, breaking up, demolishing, or otherwise treating or adapting any article or substance with a view to its use, sale, transport, delivery or disposal, or (ii) pumping oil, water, sewage or any other substance; or (iii) generating, transforming or transmitting power; or (iv) composing types for printing, printing by letter press, lithography, photogravure or other similar process or book binding; or (v) constructing, reconstructing, repairing, refitting, finishing or breaking up ships or vessels; or (vi) preserving or storing any article in cold storage.',
+      },
+      {
+        sectionNo: '59',
+        heading: 'Extra wages for overtime',
+        text: '(1) Where a worker works in a factory for more than nine hours in any day or for more than forty-eight hours in any week, he shall, in respect of overtime work, be entitled to wages at the rate of twice his ordinary rate of wages. (2) For the purpose of this section, "ordinary rate of wages" means the basic wages plus such allowances, including the cash equivalent of the advantage accruing through the concessional sale to workers of foodgrains and other articles, as the worker is for the time being entitled to, but does not include a bonus and wages for overtime work. (3) Where any workers in a factory are paid on a piece-rate basis, the time rate shall be deemed to be equivalent to the daily average of their full-time earnings for the days on which they actually worked on the same or identical job during the month immediately preceding the calendar month during which the overtime work was done, and such time rates shall be deemed to be the ordinary rates of wages of those workers.',
+      },
+
+      {
+        sectionNo: '2(m)',
+        heading: 'Definitions — "factory"',
+        text: '"factory" means any premises including the precincts thereof— (i) whereon ten or more workers are working, or were working on any day of the preceding twelve months, and in any part of which a manufacturing process is being carried on with the aid of power, or is ordinarily so carried on, or (ii) whereon twenty or more workers are working, or were working on any day of the preceding twelve months, and in any part of which a manufacturing process is being carried on without the aid of power, or is ordinarily so carried on,— but does not include a mine subject to the operation of the Mines Act, 1952 (35 of 1952), or a mobile unit belonging to the armed forces of the Union, a railway running shed or a hotel, restaurant or eating place.',
+      },
+      {
+        sectionNo: '92',
+        heading: 'General penalty for offences',
+        text: 'Save as is otherwise expressly provided in this Act and subject to the provisions of section 93, if in, or in respect of, any factory there is any contravention of any of the provisions of this Act or of any rules made thereunder or of any order in writing given thereunder, the occupier and manager of the factory shall each be guilty of an offence and punishable with imprisonment for a term which may extend to two years or with fine which may extend to one lakh rupees or with both, and if the contravention is continued after conviction, with a further fine which may extend to one thousand rupees for each day on which the contravention is so continued: Provided that where contravention of any of the provisions of Chapter IV or any rule made thereunder or under section 87 has resulted in an accident causing death or serious bodily injury, the fine shall not be less than twenty-five thousand rupees in the case of an accident causing death, and five thousand rupees in the case of an accident causing serious bodily injury.',
+      },
+    ],
+  },
 ];
