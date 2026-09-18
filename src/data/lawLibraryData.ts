@@ -11618,4 +11618,139 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-sikkim-excise-1992',
+    shortTitle: 'The Sikkim Excise Act, 1992',
+    year: 1992,
+    actNumber: '2 of 1992',
+    jurisdiction: { type: 'state', state: 'Sikkim' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/sikkim/1992/1992Sikkim2.pdf',
+    sections: [
+      {
+        sectionNo: '2(n)',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" means liquid consisting of or containing alcohol and includes spirit, wine, pachwai, beer and any substance which the Government may by notification, declare to be liquor for the purposes of this Act. Explanation: In this clause "spirit" or "wine" means plain spirit of or above such strength as the Government may, by notification, specify. [Note: this Act repealed and replaced the Sikkim Excise (Abkari) Act, 1971.]',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Penalty for unlawful import, transport, manufacture, possession and sale',
+        text: 'Whoever in contravention of this Act or any rule, notification or order made or issued under this Act or of any licence, permit or pass obtained under this Act— (a) imports, exports, transports, possesses or sells any excisable article; or (b) manufactures any intoxicant; or (c) constructs or works any distillery or brewery; or (d) uses, keeps or has in his possession any materials, still, utensil, implement or apparatus whatsoever for the purpose of manufacturing any intoxicant or excisable article; or (e) bottles any liquor for the purpose of sale; or (f) removes any intoxicant from any distillery, brewery, warehouse licensed or other place of storage established or authorised under this Act; shall be liable to imprisonment for a term which may extend to one year and shall also be liable to fine which may extend to one thousand rupees but in no case shall the court award a sentence of imprisonment less than three months and a fine of five hundred rupees.',
+      },
+      {
+        sectionNo: '39',
+        heading: 'Penalty for possession of intoxicant in respect of which an offence has been committed',
+        text: 'If any person without lawful authority, has in his possession any quantity of any intoxicant knowing the same to have been unlawfully imported, transported or manufactured, or knowing that the prescribed duty has not been paid thereon, he shall be liable to imprisonment for a term which may extend to two years and shall also be liable to fine of minimum of five hundred rupees but not exceeding two thousand rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-puducherry-excise-1970',
+    shortTitle: 'The Puducherry Excise Act, 1970',
+    year: 1970,
+    actNumber: '12 of 1970',
+    jurisdiction: { type: 'state', state: 'Puducherry' },
+    sourceUrl: 'https://police.py.gov.in/Acts%20related%20to%20Puducherry%20UT/Puducherry%20Excise%20Act%201970.pdf',
+    sections: [
+      {
+        sectionNo: '2(19)',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" includes— (a) spirits of wine, denatured spirits, wine, beer, toddy and all liquids consisting of or containing alcohol; and (b) any other intoxicating substance, which the Government may, by notification, declare to be liquor for the purposes of this Act.',
+      },
+      {
+        sectionNo: '31',
+        heading: 'Penalty for illegal import, etc.',
+        text: 'Whoever in contravention of this Act, or of any rule, notification or order made, issued or passed thereunder, or of any licence or permit granted under this Act,— (a) imports, exports, transports, manufactures, collects or possesses any intoxicant; or (b) save in the cases provided for in section 36, sells any intoxicant; or (c) cultivates or fails to take the measures prescribed for checking the spontaneous growth or for the extirpation of the hemp plant; or (d) taps or draws toddy from any toddy producing tree; or (e) constructs or works any distillery or brewery; or (f) uses, keeps or has in his possession any materials, still, utensil, apparatus or implement whatsoever for the purpose of manufacturing any intoxicant other than toddy; or (g) removes any intoxicant from any distillery, brewery or warehouse licensed, established or continued under this Act; or (h) bottles any liquor, shall, on conviction, be punished with rigorous imprisonment for a term which shall not be less than three months but which may extend to three years and shall also be liable to fine which shall not be less than ten thousand rupees but which may extend to one lakh rupees. [Note: the enhanced minimum/maximum terms reflect the amendment by Act 3 of 1989, which the Act\'s Statement of Objects and Reasons explains was needed because the original 1970 penalties had proved inadequate as a deterrent.]',
+      },
+      {
+        sectionNo: '33',
+        heading: 'Penalty for illegal possession',
+        text: 'Whoever, without lawful authority has in his possession any quantity of an intoxicant knowing the same to have been unlawfully imported, transported, manufactured, cultivated or collected, or knowing the prescribed duty not to have been paid thereon, shall, on conviction, be punished with rigorous imprisonment for a term which shall not be less than three months but which may extend to three years and with fine which shall not be less than ten thousand rupees but which may extend to one lakh rupees.',
+      },
+    ],
+  },
+  {
+    id: 'act-arunachal-pradesh-excise-1993',
+    shortTitle: 'The Arunachal Pradesh Excise Act, 1993',
+    year: 1993,
+    actNumber: '(Arunachal Pradesh)',
+    jurisdiction: { type: 'state', state: 'Arunachal Pradesh' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/11682/1/arunachal_pradesh_excise_act_1993_as_amended.pdf',
+    sections: [
+      {
+        sectionNo: '2(p)',
+        heading: 'Definitions — "liquor"',
+        text: '"liquor" means intoxicating liquor and includes all liquid consisting of or containing alcohol and any substance which the State Government, by a notification may declare to be liquor for the purpose of the Act. [Note: this Act separately defines "apong" — fermented rice, millet or other grain liquor known locally by that name, distinct from beer — reflecting Arunachal Pradesh\'s traditional liquor.]',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act or any rule, notification or order made or issued under this Act, unlawfully imports, exports, transports, manufactures, possesses, sells, bottles for sale, works a distillery or brewery, or unlawfully keeps or possesses any apparatus for the manufacture of any intoxicant other than apong, shall be punished with imprisonment for a term which may extend to two years or with fine which may extend to five thousand rupees, or with both.',
+      },
+    ],
+  },
+  {
+    id: 'act-tripura-excise-1987',
+    shortTitle: 'The Tripura Excise Act, 1987',
+    year: 1987,
+    actNumber: '12 of 1987',
+    jurisdiction: { type: 'state', state: 'Tripura' },
+    sourceUrl: 'https://gomatipolice.tripura.gov.in/sites/default/files/uploaded-file/Tripura%20Excise%20Act%2C%201987.pdf',
+    sections: [
+      {
+        sectionNo: '2(o)',
+        heading: 'Definitions — "Liquor"',
+        text: '"Liquor" means intoxicating liquor and includes all liquid consisting of or containing alcohol and any substance which the State Government, by a notification may declare to be liquor for the purpose of the Act. [Note: this Act repealed the Bengal Excise Act, 1909 (Bengal Act V of 1909) in its application to Tripura.]',
+      },
+      {
+        sectionNo: '45',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale etc',
+        text: 'If any person, in contravention of this Act, or of any rule, notification or order made, issued or given, or licence, permit or pass granted, under this Act— (a) imports, exports, transports, manufactures, possesses or sells any intoxicant; or (b) cultivates any hemp plant (Cannabis Sativa); or (c) collects or sells any portion of the hemp plant (Cannabis Sativa) from which an intoxicating drug can be manufactured or produced; or (d) bottles any liquor for purposes of sale; or (e) works any distillery or brewery; or (f) uses, keeps or has in his possession any materials, still, utensil, implement or apparatus whatsoever for the purpose of manufacturing any intoxicant other than tari; or (g) establishes any distillery, brewery or warehouse; or (h) removes any intoxicant from any distillery, brewery, warehouse or other place of storage licensed, established, authorised or continued under this Act, he shall be liable to imprisonment for a term which may extend to two years or to fine which may extend to five thousand rupees, or to both.',
+      },
+      {
+        sectionNo: '54',
+        heading: 'Penalty for possession of intoxicant in respect of which an offence has been committed',
+        text: 'If any person, without lawful authority, has in his possession any quantity of any intoxicant knowing the same to have been unlawfully imported, transported or manufactured, or knowing that the prescribed duty has not been paid thereon, he shall be liable to imprisonment for a term which may extend to twelve months, or to fine which may extend to three thousand rupees, or to both.',
+      },
+    ],
+  },
+  {
+    id: 'act-manipur-excise-1910',
+    shortTitle: 'The Eastern Bengal and Assam Excise Act, 1910 (as applicable to Manipur)',
+    year: 1910,
+    actNumber: '1 of 1910',
+    jurisdiction: { type: 'state', state: 'Manipur' },
+    sourceUrl: 'https://indiankanoon.org/doc/142652205/',
+    sections: [
+      {
+        sectionNo: '21',
+        heading: 'Duty on excisable articles',
+        text: 'An excise duty or a countervailing duty, as the case may be, at such rate or rates as the State Government may direct, may be imposed on excisable articles imported, exported, transported, manufactured under licence, or produced in any distillery or brewery licensed, established or continued under this Act: Provided that no such duty shall be imposed on any article which is liable to duty under the Indian Tariff Act or the Sea Customs Act upon its importation into India: Provided further that duty may be imposed at different rates according to the places to which an excisable article is to be removed for consumption, or according to the varying strength and quality of such article. [Note: this Act remains the current operative excise law of Manipur; its 1910-era text is retained here since Manipur\'s own excise regime is presently governed by Rules made under this Act rather than by a separate modern Act (compare Assam, which replaced its own copy of this Act with the Assam Excise Act, 2000). The Manipur Liquor Prohibition Act, 1991, which had displaced this Act\'s practical operation for over three decades, was itself partially lifted by the State Government\'s Gazette Notification dated 6 December 2023 in Greater Imphal, district headquarters, tourist locations, and registered hotels with 20 or more rooms, reviving the operative effect of this 1910 Act (as amended by the Manipur Excise Rules) in those areas.]',
+      },
+      {
+        sectionNo: '53(1)',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act or of any rule, notification or order made or issued under this Act, or of any licence, permit or pass granted under this Act, imports, exports, transports, manufactures, possesses or sells any intoxicant other than tari and pachwai, cultivates the hemp plant, constructs or works any distillery, unlawfully possesses any apparatus for manufacturing any intoxicant, or bottles liquor for sale, shall be punished with imprisonment which may extend to two years and with fine; and the convicting Magistrate shall in addition direct imprisonment in default of payment of the fine for a term which may extend to one year.',
+      },
+    ],
+  },
+  {
+    id: 'act-meghalaya-excise-1910',
+    shortTitle: 'The Eastern Bengal and Assam Excise Act, 1910 (as adapted by Meghalaya)',
+    year: 1910,
+    actNumber: '1 of 1910',
+    jurisdiction: { type: 'state', state: 'Meghalaya' },
+    sourceUrl: 'https://indiankanoon.org/doc/142652205/',
+    sections: [
+      {
+        sectionNo: '21',
+        heading: 'Duty on excisable articles',
+        text: 'An excise duty or a countervailing duty, as the case may be, at such rate or rates as the State Government may direct, may be imposed on excisable articles imported, exported, transported, manufactured under licence, or produced in any distillery or brewery licensed, established or continued under this Act: Provided that no such duty shall be imposed on any article which is liable to duty under the Indian Tariff Act or the Sea Customs Act upon its importation into India: Provided further that duty may be imposed at different rates according to the places to which an excisable article is to be removed for consumption, or according to the varying strength and quality of such article. [Note: this remains Meghalaya\'s principal excise legislation, adapted for the State together with the Assam Excise Rules, 1945, the Assam Distillery Rules, 1945 and the Assam Bonded Warehouses Rules, 1965 (each as adapted); Meghalaya has amended this framework by its own Meghalaya Excise (Amendment) Rules rather than replacing the parent Act, unlike Assam, which enacted its own Assam Excise Act, 2000.]',
+      },
+      {
+        sectionNo: '53(1)',
+        heading: 'Penalty for unlawful import, export, transport, manufacture, possession, sale, etc.',
+        text: 'Whoever, in contravention of this Act or of any rule, notification or order made or issued under this Act, or of any licence, permit or pass granted under this Act, imports, exports, transports, manufactures, possesses or sells any intoxicant other than tari and pachwai, cultivates the hemp plant, constructs or works any distillery, unlawfully possesses any apparatus for manufacturing any intoxicant, or bottles liquor for sale, shall be punished with imprisonment which may extend to two years and with fine; and the convicting Magistrate shall in addition direct imprisonment in default of payment of the fine for a term which may extend to one year.',
+      },
+    ],
+  },
 ];
