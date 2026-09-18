@@ -11753,4 +11753,54 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-maharashtra-lokayukta-2023',
+    shortTitle: 'The Maharashtra Lokayukta Act, 2023',
+    year: 2023,
+    actNumber: 'Mah. XLVI of 2025',
+    jurisdiction: { type: 'state', state: 'Maharashtra' },
+    sourceUrl: 'https://cdnbbsr.s3waas.gov.in/s36a4cbdaedcbda0fa8ddc7ea32073c475/uploads/2026/02/20260216371303565.pdf',
+    sections: [
+      {
+        sectionNo: '2(1)(c) and 2(1)(s)',
+        heading: 'Definitions — "allegation" and "public servant"',
+        text: '"allegation" in relation to a public servant, means any affirmation that such public servant,— (i) has abused his position as such to obtain any gain or favour to himself or to any other person or to cause undue harm or hardship to any other person; (ii) was actuated in the discharge of his functions as such public servant by personal interest or improper or corrupt motives; or (iii) is guilty of corruption or lack of integrity in his capacity as such public servant. "public servant" means a person referred to in sub-section (1) of section 12 but does not include— (i) a public servant in respect of whom the jurisdiction is exercisable by any court or other authority under the Army Act, 1950, the Air Force Act, 1950, the Navy Act, 1957 and the Coast Guard Act, 1978 or the procedure is applicable to such public servant under those Acts; or (ii) a person who is or has been working on the Group ‘D’ post in the State Government, or its equivalent posts in the Government company, Government corporation, Government society or Government association. [Note: this Act, enacted pursuant to section 63 of the central Lokpal and Lokayuktas Act, 2013, repealed and replaced the Maharashtra Lokayukta and Upa-Lokayuktas Act, 1971; though titled "2023", it received the Governor\'s assent on 14 November 2025 and was substantially amended by Mah. 50 of 2025 with effect from 8 December 2025 to align its cross-references with the Bharatiya Nyaya Sanhita, 2023, the Bharatiya Nagarik Suraksha Sanhita, 2023 and the Bharatiya Sakshya Adhiniyam, 2023.]',
+      },
+      {
+        sectionNo: '12(1)',
+        heading: 'Jurisdiction of Lokayukta',
+        text: 'Subject to the other provisions of this Act, the Lokayukta shall inquire or cause an inquiry to be conducted into any matter involved in, or arising from, or connected with, any allegation of corruption under the Prevention of Corruption Act, 1988, made in a complaint in respect of the following, namely:— (a) any person who is or has been a Chief Minister: Provided that, before initiating any inquiry against Chief Minister the prior approval of the Maharashtra Legislative Assembly shall be obtained... such motion shall be passed by not less than two-third of the total Members of the Maharashtra Legislative Assembly...; (b) any other person who is or has been a Minister; (c) any person who is or has been a Member of the State Legislature; (d) any Member or Councillor of the Municipal Corporation, Municipal Council, Nagar Panchayat, Industrial Township, Zilla Parishad, Panchayat Samiti, or Village Panchayat including Mayor, Deputy Mayor, President, Vice-President, Chairman, Deputy Chairman, Sarpanch and Upa-Sarpanch and Chairman of any Committee of said local authorities; (e) All India Services Officers... in connection with the affairs of the State Government; (f) all officers and employees of the State Government and the public servants defined in sub-clauses (i) and (ii) of clause (c) of section 2 of the Prevention of Corruption Act, 1988, when serving or who have served, in connection with the affairs of the State excluding a person who is or has been working on Group ‘D’ post; (g) all officers and employees of any body, board, corporation, authority, company, society, trust or autonomous body established by an Act of Parliament or of the State Legislature or wholly or partly financed by, or controlled by, the State Government, equivalent to those in clause (f); (h) any person who is or has been a director, manager, secretary or other officer of every other society or association of persons or trust, wholly or partly financed or aided by the State Government or any local authority or Government company, corporation, association or trust.',
+      },
+      {
+        sectionNo: '51',
+        heading: 'Prosecution for false complaint and payment of compensation, etc., to public servant',
+        text: 'Notwithstanding anything contained in this Act, whoever makes any false, frivolous or vexatious complaint under this Act,— (a) the Lokayukta may impose penalty upto two lakh rupees... or (b) the Lokayukta may direct to prosecute the complainant and he shall on conviction, be punished with imprisonment for a term which may extend to one year and with fine which may extend to two lakh rupees. In case of conviction of a person... for having made a false complaint under this Act, such person shall be liable to pay compensation to the public servant against whom he made the false complaint in addition to the legal expenses for contesting the case by such public servant, as the Special Court may determine. Nothing contained in this section shall apply in case of complaints made in good faith.',
+      },
+    ],
+  },
+  {
+    id: 'act-karnataka-lokayukta-1984',
+    shortTitle: 'The Karnataka Lokayukta Act, 1984',
+    year: 1984,
+    actNumber: '4 of 1985',
+    jurisdiction: { type: 'state', state: 'Karnataka' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/karnataka/1985/1985KR4.pdf',
+    sections: [
+      {
+        sectionNo: '2(12)',
+        heading: 'Definitions — "public servant"',
+        text: '"public servant" means a person who is or was at any time,— (a) the Chief Minister; (b) a Minister; (c) a member of the State Legislature; (d) a Government Servant; (e) the Chairman and the Vice-Chairman (by whatever name called) or a member of a local authority in the State of Karnataka or a statutory body or corporation established by or under any law of the State Legislature, including a co-operative society, or a Government Company within the meaning of section 617 of the Companies Act, 1956 and such other corporations or boards as the State government may, having regard to its financial interest in such corporations or boards, by notification, from time to time, specify; (f) member of a Committee or Board, statutory or non-statutory, constituted by the Government; and (g) a person in the service or pay of a local authority, a statutory body or corporation owned or controlled by the State Government, a company in which not less than fifty-one per cent of the paid up share capital is held by the State Government, a society registered under the Karnataka Societies Registration Act, 1960 subject to State control, a co-operative society, or a university.',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Matters which may be investigated by the Lokayukta and an Upalokayukta',
+        text: 'Subject to the provisions of this Act, the Lokayukta may investigate any action which is taken by or with the general or special approval of,— (a)(i) the Chief Minister; (ii) a Minister; (iii) a member of the State Legislature; (iv) the Chairman and the Vice-Chairman (by whatever name called) or a member of an authority, board or a committee, a statutory or non-statutory body or a corporation established by or under any law of the State Legislature including a society, co-operative society or a Government company within the meaning of section 617 of the Companies Act, 1956, nominated by the State Government; in any case where a complaint involving a grievance or an allegation is made in respect of such action. (b) any other public servant holding a post or office carrying either a fixed pay, salary or remuneration of more than rupees twenty thousand per month or a pay scale the minimum of which is more than rupees twenty thousand, as may be revised, from time to time in any case where a complaint involving a grievance or an allegation is made in respect of such action or such action can be or could have been, in the opinion of the Lokayukta, recorded in writing, the subject of a grievance or an allegation. [Note: this text of sub-section (1) reflects the substitution made by the Karnataka Lokayukta (Amendment) Act, 2010, which also conferred suo motu investigative power on the Lokayukta.]',
+      },
+      {
+        sectionNo: '20',
+        heading: 'Prosecution for false complaint',
+        text: 'Notwithstanding anything contained in this Act, whoever makes any false and frivolous or vexatious complaint under this Act shall, on conviction be punished with imprisonment for a term which shall not be less than six months but which may extend to three years and with fine which shall not be less than two thousand rupees but which may extend to five thousand rupees. No court, except a court of a Metropolitan Magistrate or a Judicial Magistrate First Class shall take cognizance of an offence under sub-section (1), and no such court shall take cognizance of such an offence except on a complaint made by the person against whom the false, frivolous or vexatious complaint was made, after obtaining the previous sanction of the Lokayukta or Upalokayukta, as the case may be.',
+      },
+    ],
+  },
 ];
