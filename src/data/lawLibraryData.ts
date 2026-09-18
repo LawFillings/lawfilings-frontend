@@ -12613,4 +12613,619 @@ export const acts: Act[] = [
       },
     ],
   },
+  {
+    id: 'act-bihar-lokayukta-2011',
+    shortTitle: 'The Bihar Lokayukta Act, 2011',
+    year: 2011,
+    actNumber: 'Bihar Act 22 of 2011',
+    jurisdiction: { type: 'state', state: 'Bihar' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/bihar/2011/Act%20No.%2022%20of%202011%20Bihar.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "allegation", "public servant" and related terms',
+        text: '"Allegation" in relation to a public servant means affirmation that such public servant- (i) has abused his position as such to obtain any undue gain or favour to himself or to any other person to cause undue harm or hardship to any other person or loss to the State Government; (ii) was actuated in the discharge of the functions as such public servant by personal interest or improper, corrupt motives, or (iii) is guilty of corruption or lack of integrity in his capacity as such public servant; (iv) has done anything punishable under the Prevention of Corruption Act, 1988. "public authority" means any establishment or body or institution of the State Government; any Local Authority, the Local Self Government including Panchayti Raj Institutions and Urban Local Bodies; any Body/Board/Corporation/Authority/Company/Society/Autonomous Body (by whatever name called) established or constituted under an Act of State Legislature or wholly and partly financed by the State Govt. or controlled by it. "Public Servant" means a person referred to in clause of Section 16(1). [Note: this Act repealed and replaced the Bihar Lokayukta Act, 1973 with effect from 2011.]',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Jurisdiction of Lokayukta',
+        text: 'Subject to other provisions of this Act, Lokayukta shall inquire into any matter involved in, or arising from, or connected with any allegation or grievance against any public servant made in the complaint in respect of the following, namely: (a) any person who is or has been a Chief Minister of the State, (b) any person who is or has been a Minister of the State, (c) any person who is or has been a Member of either house of the State Legislature, (d) every officer referred to in clause (m) of Section 2, (e) every officer referred to in clause (m) of section 2 who on deputation or on transfer to foreign service is in the service or pay of local authorities, State-owned corporations, government companies with not less than fifty-one percent State shareholding, or societies notified by the State Government; (f) every Head or his Deputy and other employees of Local Authority, Corporation, Government company or a Society or Association of Persons or Trust or Non-Governmental Organizations having received a donation of more than Rs. five lakhs from any source including foreign sources, or any other institution subsidized or receiving payment of more than the prescribed amount from the Government; (g) any Chairperson or Member or Officer or equivalent/above in any body/Board/Corporation/Authority/Company/Society/Autonomous Body established or constituted under an Act of State Legislature or wholly and partly financed by the State Government or controlled by it. Provided that no investigation or prosecution shall be initiated without obtaining permission from a full bench of Lokayukta against persons named in clause (a), (b) and (c) above. The Lokayukta may inquire into any act or conduct of any person other than those specified if such person is associated with allegations of corruption under the Prevention of Corruption Act, 1988.',
+      },
+      {
+        sectionNo: '17',
+        heading: 'Matters pending before any court or committee before inquiry before Lokayukta',
+        text: 'If any matter or proceeding related to allegation of corruption under the Prevention of Corruption Act, 1988 is pending before any court, State Legislature committee, or any other authority prior to the commencement of this Act or prior to the commencement of any inquiry, such matter or proceeding shall continue before such court/committee/authority; except such matters as are protected under clause (2) of Article 194 of the Constitution or pending before a court, this shall not affect the power of the Lokayukta to inquire into such matters under this Act.',
+      },
+      {
+        sectionNo: '23',
+        heading: 'Provisions relating to inquiry and investigation',
+        text: 'The Lokayukta, on receipt of a complaint, may cause preliminary inquiry or investigation to ascertain whether a prima facie case exists for further action. Every preliminary inquiry or investigation shall ordinarily be completed within thirty days of receipt of complaint and, for reasons recorded in writing, within three months. Upon completion of preliminary investigation, the investigating authority shall submit its report to the Chairperson.',
+      },
+      {
+        sectionNo: '25',
+        heading: 'Lokayukta may require a public servant or other person to furnish information',
+        text: 'For the purpose of any investigation under this Act (including preliminary inquiry), the Lokayukta may require any public servant or other person who, in its opinion, can furnish relevant information or produce documents, to do so. For such purposes, the Lokayukta shall have all the powers of a civil court while trying a suit under the Code of Civil Procedure, 1908 in respect of: (a) summoning and enforcing attendance and examining on oath; (b) requiring discovery and production of documents; (c) receiving evidence on affidavits; (d) requisitioning public records from any court or office; (e) issuing commissions for examination of witnesses or documents. Any proceeding before the Lokayukta shall be deemed to be judicial proceeding under section 193 of the Indian Penal Code. No person shall be compelled to give evidence or produce a document which he could not be compelled to give or produce before a court.',
+      },
+      {
+        sectionNo: '26',
+        heading: 'Procedure for sanction of prosecution',
+        text: 'Insofar as sanction under section 197 Code of Criminal Procedure and section 19 of the Prevention of Corruption Act is concerned, the competent authority shall pass an appropriate order on the recommendation of Lokayukta within forty days from receipt of the recommendation for sanction or permission. In case of a public servant not removable from office save by or with sanction of the Central Government, the State Government shall send its recommendation to the Central Government within fifteen days.',
+      },
+      {
+        sectionNo: '29',
+        heading: 'Provisions relating to complaints',
+        text: 'The Lokayukta on receipt of a complaint or suo moto may initiate appropriate action; "complaint" means allegation, grievance or a request by whistleblower for protection. Every complaint shall be made as far as possible in the prescribed form, bear the heading "before the Lokayukta of Bihar", and state the complainant\'s full name and address and the name and address of the person complained against. Complaints shall be duly signed or, if the complainant is illiterate, bear his attested left thumb impression, and be supported by a prescribed affidavit. The Lokayukta shall not investigate a complaint involving grievance made more than twelve months after the complainant learned of it, or an allegation relating to conduct more than five years old, unless sufficient cause is shown. A letter written to the Lokayukta by a person in police custody, jail, or asylum shall be forwarded unopened and without delay.',
+      },
+      {
+        sectionNo: '31',
+        heading: 'Search and seizure',
+        text: 'Where the Lokayukta or an authorised officer has reason to believe that a person will not produce property, documents or things necessary for an inquiry, or is in possession of undisclosed property representing income or property not disclosed under any law, or that the purposes of an inquiry require a general search, the Lokayukta may issue a search warrant authorising an officer not below Inspector of Police to enter and search any building or place, break open locks where keys are unavailable, seize such property or documents, place identification marks, or make an inventory. A warrant issued under this section shall be deemed a warrant issued by a court under section 93 of the Code of Criminal Procedure, 1973.',
+      },
+      {
+        sectionNo: '33',
+        heading: 'Provisional attachment of assets',
+        text: 'Where the Lokayukta or an authorised investigation officer has reason to believe, recorded in writing, that a person is in possession of proceeds of corruption, is accused of an offence relating to corruption, and such proceeds are likely to be concealed, transferred or dealt with so as to frustrate confiscation proceedings, it may by written order provisionally attach such property for up to ninety days. The Lokayukta shall immediately forward a copy of the attachment order and material to the Special Court in a sealed envelope, and the Special Court may extend the attachment.',
+      },
+      {
+        sectionNo: '34',
+        heading: 'Confirmation of attachment of assets',
+        text: 'Within thirty days of a provisional attachment under section 33, the Lokayukta shall direct its prosecution wing to apply to the Special Court for confirmation of the attachment pending completion of proceedings against the public servant. The Special Court, if of the opinion that the provisionally attached property was acquired through corrupt means, may confirm the attachment until the proceedings are completed. If the public servant is subsequently acquitted, the property, with any accrued benefits, shall be returned to him.',
+      },
+      {
+        sectionNo: '36',
+        heading: 'Power of Lokayukta to give directions to prevent destruction of records during inquiry',
+        text: 'The Lokayukta may, in discharge of its functions, issue directions to a public servant entrusted with the preparation or custody of any document or record to protect it from destruction or damage, to prevent its alteration or concealment, or to prevent the public servant from transferring or alienating assets allegedly acquired through corrupt means.',
+      },
+      {
+        sectionNo: '46',
+        heading: 'Offences and penalties',
+        text: 'Notwithstanding anything in this Act, the Indian Penal Code, 1860, as well as the Prevention of Corruption Act, 1988 and the Bihar Special Court Act, 2009, shall apply insofar as offences and penalties are concerned.',
+      },
+      {
+        sectionNo: '47',
+        heading: 'Assessment of loss and its recovery by Special Court',
+        text: 'Where a public servant is convicted by the Special Court of an offence under the Prevention of Corruption Act, 1988, the Special Court may assess the loss caused to the public exchequer through the action or decision of such public servant not taken in good faith, and order recovery of such loss, if quantifiable, from the convicted public servant. If the Special Court concludes in writing that the loss was caused pursuant to a conspiracy with a beneficiary, such loss may also be recovered proportionately from the beneficiary or beneficiaries.',
+      },
+      {
+        sectionNo: '48',
+        heading: 'Whistleblower',
+        text: 'Any public official or member of the public possessing knowledge of a public authority indulging in corrupt practices shall be encouraged to send such information in confidence to the Lokayukta, which, if satisfied, shall order an inquiry by itself or its agency or order investigation under the Prevention of Corruption Act, 1988. It shall be incumbent upon the Lokayukta to keep the whistleblower\'s identity confidential where desired, and to provide full protection from physical harm or administrative harassment, including appropriate binding directions to security agencies or authorities. The Lokayukta shall pass an order under this section within one month of receiving the complaint, and investigations into complaints by whistleblowers facing victimisation shall be disposed of within three months.',
+      },
+      {
+        sectionNo: '49',
+        heading: 'Protection of action taken in good faith',
+        text: 'No suit, prosecution or other legal proceedings shall lie against the Lokayukta or any of its officials, employees, agency or person for anything done in good faith, or intended to be done, under this Act.',
+      },
+    ],
+  },
+  {
+    id: 'act-delhi-lokayukta-1995',
+    shortTitle: 'The Delhi Lokayukta and Upalokayukta Act, 1995',
+    year: 1995,
+    actNumber: 'Delhi Act No. 1 of 1996',
+    jurisdiction: { type: 'state', state: 'Delhi' },
+    sourceUrl: 'https://lokayukta.delhi.gov.in/sites/default/files/inline-files/delhi_lokayukta_act_1995_1.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "action", "allegation" and "public functionary"',
+        text: '"action" means action by way of prosecution or otherwise taken on the report of the Lokayukta or the Upalokayukta and includes failure to act. "allegation" in relation to a public functionary means an affirmation that such public functionary in his capacity as such- (i) has failed to act in accordance with the norms of integrity and conduct which ought to be followed by public functionaries or the class to which he belongs; (ii) has abused or misused his position to obtain any gain or favour to himself or to any other person or to cause loss or undue harm or hardship to any other person; (iii) was actuated in the discharge of his functions by improper or corrupt motives or personal interest; (iv) allegation of corruption, favour, nepotism or lack of faithfulness; (v) is or has at any time during his term of office been in possession of pecuniary resources or property disproportionate to his known sources of income, whether held personally or by any family member or another person on his behalf. "public functionary" means a person who is or has been at any time the Chief Minister or a Minister; a Member of the Legislative Assembly; a person having the rank of a Minister (excluding the Speaker and Deputy Speaker); a Chairman, Vice-Chairman, Managing Director or Member of the Board of Directors of specified co-operative societies, Government companies, local authorities or Government-controlled corporations or commissions; and a Member of the Municipal Corporation of Delhi.',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Matter which may be inquired into by Lokayukta or Upalokayukta',
+        text: 'Subject to the provisions of this Act, on receiving complaints or other information or suo moto- (a) the Lokayukta may proceed to inquire into an allegation made against a public functionary in relation to whom either the President or Lieutenant Governor is the Competent Authority; (b) the Upalokayukta may proceed to inquire into an allegation made against any public functionary other than that referred to in clause (a): Provided that the Lokayukta may inquire into an allegation made against any public functionary referred to in clause (b). The expressions "may proceed to inquire" and "may inquire" include investigation by any person or agency at the disposal of the Lokayukta and Upalokayukta.',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Matter not subject to inquiry',
+        text: 'The Lokayukta or an Upalokayukta shall not inquire into any matter- (a) which has been referred for inquiry under the Commissions of Inquiry Act, 1952; or (b) relating to an allegation against a public functionary, if the complaint is made after expiration of a period of five years from the date on which the conduct complained against is alleged to have been committed.',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Provisions relating to complaints',
+        text: 'Every complaint involving an allegation shall be made in such form as may be prescribed and shall be accompanied by a deposit of Rs. 500. The complainant shall also swear an affidavit before an officer authorized by the Lokayukta. Notwithstanding anything contained in Section 10, every person who wilfully or maliciously makes any false complaint under this Act shall, on conviction, be punished with rigorous imprisonment for up to three years or fine up to five thousand rupees or both, and the court may order that such sum as it deems fit out of the fine be paid by way of compensation to the person against whom such complaint was made; no court shall take cognizance of such offence except on complaint made by or under the authority of the Lokayukta or Upalokayukta.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Procedure in respect of inquiry',
+        text: 'The Lokayukta or Upalokayukta shall, in each case before it, decide the procedure to be followed for making the inquiry and shall ensure that the principles of natural justice are satisfied.',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Applicability of Evidence Act and Code of Criminal Procedure',
+        text: 'The provisions of the Evidence Act, 1872 and the Code of Criminal Procedure, 1973 shall, as nearly as may be, apply to the procedure of inquiry before Lokayukta or Upalokayukta in the matter of summoning and enforcing attendance and examination on oath; requiring discovery and production of documents and proof thereof; receiving evidence on affidavits; requisitioning any public record from any court or office; and issuing commissions for examination of witnesses or documents. No proceeding shall be invalidated merely for want of formal proof if the principles of natural justice are satisfied. Any proceeding before the Lokayukta or Upalokayukta shall be deemed a judicial proceeding within the meaning of sections 193 and 228 of the Indian Penal Code, and the Lokayukta or Upalokayukta shall be deemed a Civil Court for the purposes of section 195 and Chapter XXVI of the Code of Criminal Procedure, 1973.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Report of Lokayukta and Upalokayukta',
+        text: 'If, after inquiry into the allegations, the Lokayukta or an Upalokayukta is satisfied that such allegation is established, he shall by report in writing communicate his findings and recommendations along with relevant documents, materials and other evidence to the competent authority. The competent authority shall examine the report and intimate, within three months of receipt, the action taken or proposed. If satisfied with the action taken, the Lokayukta or Upalokayukta shall close the case; otherwise, if the case so deserves, he may make a special report to the Lieutenant Governor. The Lokayukta and the Upalokayukta shall present annually a consolidated report on the performance of their functions to the Lieutenant Governor. If any special or annual report makes an adverse comment against any public functionary, the report shall also contain the substance of the defence adduced by that functionary. On receipt of a special or annual report, the Lieutenant Governor shall cause a copy, with explanatory memorandum, to be laid before the Legislative Assembly.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Secrecy of Information',
+        text: 'Any information obtained by the Lokayukta or Upalokayukta or members of their staff in the course of any investigation, and any evidence recorded or collected in connection therewith, shall be treated as confidential and no court shall be entitled to compel the Lokayukta, Upalokayukta or any public functionary to give evidence relating to such information or produce it. This does not apply to disclosure for purposes of the inquiry or any report or action thereon, for proceedings for an offence under the Official Secrets Act, 1923, or an offence of giving or fabricating false evidence, or such other purposes as may be prescribed.',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Protection',
+        text: 'No suit, prosecution or other legal proceeding shall lie against the Lokayukta or Upalokayukta or against any member of their staff, or any officer, agency or person, for anything done or intended to be done in good faith under this Act. Save as otherwise provided in this Act, no proceeding, decision, order or report of the Lokayukta or Upalokayukta, including any recommendation made thereunder, shall be liable to be challenged, reviewed, quashed, modified or called in question in any manner in any court or tribunal.',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Lokayukta to make suggestions',
+        text: 'The Lokayukta, if in the discharge of his functions under this Act he notices a practice or procedure which in his opinion affords an opportunity for corruption or maladministration, may bring it to the notice of the Government and suggest such improvement in the practice or procedure as he may deem fit.',
+      },
+      {
+        sectionNo: '17',
+        heading: 'For the removal of doubts',
+        text: 'It is hereby declared that nothing in this Act shall be construed to authorize the Lokayukta or an Upalokayukta to inquire into an allegation against- (a) any member of the Judicial Services who is under the administrative control of the High Court under Article 235 of the Constitution; (b) any person who is a member of a Civil Service of the Union or an All India Service or Civil Service of a State or holds a Civil post under the Union or a State in connection with the affairs of Delhi.',
+      },
+    ],
+  },
+  {
+    id: 'act-tamil-nadu-lokayukta-2018',
+    shortTitle: 'The Tamil Nadu Lokayukta Act, 2018',
+    year: 2018,
+    actNumber: 'Act No. 33 of 2018',
+    jurisdiction: { type: 'state', state: 'Tamil Nadu' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/tamil-nadu/2018/Act%2033%20of%202018%20TN.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "competent authority", "complaint" and "public servant"',
+        text: '"competent authority" means, in relation to- (i) the Chief Minister, the Governor; (ii) a Minister, the Chief Minister; (iii) a Member of the Legislative Assembly other than a Minister, the Speaker; (iv) an officer in any Department, the Government; (v) a Chairperson or Members of a body/Board/Corporation/Authority/Company/Society/Autonomous Body established under an Act of Parliament or the State Legislature or wholly/partly financed or controlled by the Government, the Minister-in-charge or Chief Minister of the department concerned; (vi) an officer of such body, the head of that body; (vii) any other case, such department or authority as the Government may notify. "complaint" means a complaint, made in the prescribed form, alleging that a public servant has committed an offence punishable under the Prevention of Corruption Act, 1988. "public servant" means a person referred to in clauses (a) to (e) of sub-section (1) of section 12.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Jurisdiction of Lokayukta to include Ministers, Members of Legislative Assembly, officers and employees of Government',
+        text: 'Subject to the other provisions of this Act, the Lokayukta shall have its jurisdiction on all the following categories, namely: (a) any person who is or has been a Minister of the State; (b) any person who is or has been a Member of the Legislative Assembly; (c) all officers and employees of the State, from amongst the public servants defined in sub-clauses (i) and (ii) of clause (c) of section 2 of the Prevention of Corruption Act, 1988; (d) all officers and employees equivalent in any Body/Board/Corporation/Authority/Company/Society/Trust/Autonomous Body established by an Act of Parliament or the State Legislature or wholly/partly financed by the Government or controlled by it; (e) any person who is or has been a Director, Manager, Secretary or other officer of every other Society/Association of persons/Trust, wholly or partly financed or aided by the Government, whose annual income exceeds the notified amount. Notwithstanding the above, the Lokayukta shall not inquire into any allegation of corruption against a Member of the Legislative Assembly in respect of anything said or a vote given in the Assembly, covered under clause (2) of Article 194 of the Constitution. The Lokayukta may inquire into any act or conduct of any other person involved in abetting, bribe giving or bribe taking or conspiracy relating to an allegation of corruption against a person referred to above.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Matters not subject to inquiry',
+        text: 'Except as hereinafter provided, the Lokayukta shall not conduct any inquiry in the case of a complaint in respect of any action, if such action relates to any of the following matters: (a) action taken for investigating crime relating to the security of the State; (b) action taken in exercise of powers relating to determining whether a matter shall go to a court or not; (c) administrative action arising out of the terms of a contract governing purely commercial relations, except where the complainant alleges harassment or gross delay in meeting contractual obligation; (d) action in respect of appointment, transfer and postings, removal, pay, discipline, superannuation or other matters relating to conditions of service of public servants; (e) grant of honours and awards; (f) any action in respect of which a formal and public inquiry has been ordered with the prior concurrence of the Lokayukta; (g) any action referred to inquiry under the Commissions of Inquiry Act, 1952; (h) any action relating to a person or Local Body under the purview of the Ombudsman constituted under the Tamil Nadu Local Bodies Ombudsman Act, 2014. Nothing in this Act empowers the Lokayukta to question any administrative action involving the exercise of discretion, except where satisfied that the elements involved in that exercise were absent to such an extent that the discretion can prima facie be regarded as having been improperly exercised.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Matters pending before any court or committee or authority for inquiry not to be affected',
+        text: 'In case any matter or proceeding related to allegation of corruption under the Prevention of Corruption Act, 1988 has been pending before any court or committee of the Legislative Assembly or before any other authority prior to the commencement of this Act or prior to the commencement of any inquiry, such matter or proceeding shall continue before such Court, Committee or Authority.',
+      },
+      {
+        sectionNo: '19',
+        heading: 'Provisions relating to complaints and preliminary inquiry and detailed inquiry',
+        text: 'The Lokayukta shall, on receipt of a complaint, first decide whether to proceed or close the matter, and if it decides to proceed, shall order a preliminary inquiry against public servants covered under clauses (a), (b) and (e) of sub-section (1) of section 12 by its Inquiry Wing, or forward the complaint to the Vigilance Commission for public servants belonging to Groups A to D, to ascertain whether a prima facie case exists. The Inquiry Wing, agency, or Vigilance Commission shall seek the comments of the concerned public servant and competent authority, and submit its report within sixty days. A Bench of not less than three Members shall consider the report and, after giving the public servant an opportunity of being heard, decide whether a prima facie case exists and either order a detailed inquiry, recommend departmental action, or close the proceedings and act against the complainant under section 35. A detailed inquiry shall ordinarily be completed within six months, extendable by a further six months for recorded reasons. The Lokayukta may pass appropriate orders for the safe custody of relevant documents, and shall display on its website, in the manner specified by regulations, the status of complaints pending or disposed of.',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Lokayukta may require any public servant or any other person to furnish information, etc.',
+        text: 'Subject to the provisions of this Act, for the purpose of any preliminary inquiry or detailed inquiry, the Lokayukta or the Director of Inquiry may require any public servant or any other person who, in its opinion, is able to furnish information or produce documents relevant to such inquiry, to furnish any such information or produce any such document.',
+      },
+      {
+        sectionNo: '24',
+        heading: 'Lokayukta to have powers of civil court in certain cases',
+        text: 'Subject to the provisions of this section, for the purpose of any inquiry, the Inquiry Wing of the Lokayukta shall have all the powers of a civil court under the Code of Civil Procedure, 1908, while trying a suit in respect of: (a) summoning and enforcing the attendance of any person and examining him on oath; (b) requiring the discovery and production of any document; (c) receiving evidence on affidavits; (d) requisitioning any public record or copy thereof from any court or office; (e) issuing commissions for the examination of witnesses or documents, provided such commission for a witness is issued only where the witness is not in a position to attend proceedings; and (f) such other matters as may be prescribed. Any proceeding before the Lokayukta shall be deemed to be a judicial proceeding within the meaning of section 193 of the Indian Penal Code.',
+      },
+      {
+        sectionNo: '26',
+        heading: 'Power of Lokayukta to recommend transfer or suspension of public servant connected with allegation of corruption',
+        text: 'Where the Lokayukta, while making a preliminary inquiry into allegations of corruption, is prima facie satisfied on the basis of available evidence that the continuance of the public servant in his post is likely to adversely affect the inquiry, or that the public servant is likely to destroy or tamper with evidence or influence witnesses, the Lokayukta may recommend to the Government the transfer or suspension of such public servant from his post for such period as may be specified. The Government shall ordinarily accept such recommendation, except for reasons to be recorded in writing where it is not feasible to do so for administrative reasons.',
+      },
+      {
+        sectionNo: '35',
+        heading: 'Prosecution for false complaint and payment of compensation, etc., to public servant',
+        text: 'Notwithstanding anything contained in this Act, whoever makes any false and frivolous or vexatious complaint under this Act shall, on conviction, be punished with imprisonment for a term which may extend to one year and with fine which may extend to one lakh rupees. No Court shall take cognizance of such offence except on a complaint made by the person against whom the false, frivolous or vexatious complaint was made, or by an officer authorised by the Lokayukta. The prosecution shall be conducted by the public prosecutor at Government expense. On conviction, the person shall be liable to pay compensation to the public servant against whom the false complaint was made, in addition to legal expenses for contesting the case, as the Court may determine. Nothing in this section applies to complaints made in good faith.',
+      },
+      {
+        sectionNo: '38',
+        heading: 'Protection of action taken in good faith by others',
+        text: 'No suit, prosecution or other legal proceedings shall lie against the Lokayukta or against any officer, employee, agency or any person, in respect of anything which is done in good faith or intended to be done under this Act or the rules or regulations made thereunder.',
+      },
+      {
+        sectionNo: '40',
+        heading: 'Limitation to apply',
+        text: 'The Lokayukta shall not inquire into any complaint, if the complaint is not made within a period of four years from the date on which the offence mentioned in such complaint is alleged to have been committed.',
+      },
+      {
+        sectionNo: '41',
+        heading: 'Bar of Jurisdiction',
+        text: 'No Civil Court shall have jurisdiction in respect of any matter which the Lokayukta is empowered by or under this Act to determine.',
+      },
+      {
+        sectionNo: '42',
+        heading: 'Legal assistance',
+        text: 'The Lokayukta shall provide to every person against whom a complaint has been made before it, under this Act, legal assistance to defend his case before the Lokayukta, if such assistance is requested for.',
+      },
+    ],
+  },
+  {
+    id: 'act-west-bengal-lokayukta-2003',
+    shortTitle: 'The West Bengal Lokayukta Act, 2003',
+    year: 2003,
+    actNumber: 'West Bengal Act XXXV of 2003',
+    jurisdiction: { type: 'state', state: 'West Bengal' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/west-bengal/2003/2003WB35.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "action", "complaint", "corrupt practice" and "public functionary"',
+        text: '"action" means action taken by a public functionary in the discharge or purported discharge of his public function. "complaint", in relation to a public functionary, means an allegation made in writing by any person that such public functionary, in discharge or purported discharge of his public function, has been guilty of corrupt practice. "corrupt practice" means that the public functionary in any of his action has been guilty of wilful lack of financial integrity and/or wilful abuse of power for personal gain. "grievance" means a claim by a person that he sustained injustice or undue hardship in consequence of the wilful failure to perform duties duly assigned to a public functionary. "public functionary" means a person who is- (i) the Chief Minister or a Minister; (ii) a Member of the State Legislative Assembly; (iii) any other person holding an office or post consequent upon an election held under any law for the time being in force, including office-bearers of local bodies such as Panchayats, Zilla Parishads, Municipal Corporations and Municipalities. [Note: this Act was originally enacted providing for both a Lokayukta and one or more Upa-Lokayukta; the West Bengal Lokayukta (Amendment) Act, 2018 abolished the office of Upa-Lokayukta and substituted "Lokayukta" throughout for "Lokayukta or Upa-Lokayukta", so the institution now consists of the Lokayukta alone.]',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Matters which may be investigated by Lokayukta',
+        text: 'Subject to the provisions of this Act, the Lokayukta may investigate any complaint received by him with the general or specific approval of, or at the instance of, the competent authority, in any case where a complaint is made in respect of such action which can be, in the opinion of the Lokayukta, the subject of a complaint.',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Matters not subject to investigation by Lokayukta',
+        text: 'The Lokayukta shall not investigate any complaint- (a) in respect of which a formal and public inquiry has been ordered under the Public Servants (Inquiries) Act, 1850, or (b) in respect of a matter which has been referred to a Commission of Inquiry appointed under the Commissions of Inquiry Act, 1952, for inquiry. The Lokayukta shall not investigate any complaint made after the expiry of six months from the date on which the action complained of is alleged to have taken place, unless satisfied on the facts and circumstances that the delay has been properly explained or that it is necessary in the interest of justice to condone the delay. The Lokayukta shall not, except on a reference by a court of law, investigate any matter which is under adjudication by such court of law.',
+      },
+      {
+        sectionNo: '8A',
+        heading: 'Bar of investigation against Chief Minister and Government servant',
+        text: 'Notwithstanding anything contained in any of the provisions of this Act, the Lokayukta shall not investigate into- (a) any matter involved in, or arising from, or connected with, any allegation of corruption against the Chief Minister relating to public order; and (b) any complaint against a public servant without prior approval of the State Government: Provided that, notwithstanding anything contrary contained in section 7, the Lokayukta shall investigate into any complaint relating to other matters involved in, or arising from, or connected with, any allegation of corruption against the Chief Minister, with the approval of the West Bengal Legislative Assembly, by a majority of two-thirds of its members present and voting, as the competent authority.',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Provision relating to complaints',
+        text: 'Subject to the provisions of this Act, a complaint may be made by any person to the Lokayukta in respect of any action: Provided that death of the complainant shall not debar, if the Lokayukta who is in seisin of the matter so desires, the proceeding with the investigation with such help as considered necessary. Every complaint shall be made in such form and shall be accompanied by such affidavits as may be prescribed.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Procedure in respect of investigation',
+        text: 'Where the Lokayukta is satisfied on preliminary enquiry that a complaint needs investigation, he shall forward a copy of the complaint, with a statement setting out the grounds of investigation, to the public functionary and the competent authority concerned; give the public functionary an opportunity to offer comments; and may make orders as to safe custody of relevant documents. Every preliminary enquiry shall be made in private, and the identity of the complainant and public functionary shall not be made public before or during the enquiry, but the result of every investigation shall be made public. Every investigation shall be completed as early as possible, but in no case shall exceed one year. The Lokayukta may give direction to any officer or investigating agency, including the police, to assist in the conduct of an investigation, and such officer or agency shall promptly comply. The Lokayukta may, in his discretion, refuse to investigate or discontinue investigation of any complaint if it is frivolous, vexatious, not made in good faith, lacks sufficient grounds, or if other remedies are available and it would be more proper for the complainant to avail of such remedies, recording reasons and communicating them to the complainant and public functionary.',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Evidence',
+        text: 'For the purpose of any investigation, including preliminary enquiry, the Lokayukta may require any public servant or any other person who is able to furnish information or produce documents relevant to the investigation, to furnish such information or produce such document. For such purpose, the Lokayukta shall have all the powers of a civil court while trying a suit under the Code of Civil Procedure, 1908 in respect of summoning and enforcing attendance and examination on oath; requiring discovery and production of documents; receiving evidence on affidavits; requisitioning public records; and issuing commissions for examination of witnesses or documents. Any proceeding before the Lokayukta shall be deemed a judicial proceeding within the meaning of section 193 of the Indian Penal Code, 1860. No person shall be required to furnish information as might prejudice the security or defence or international relations of India, or the investigation or detection of crime, or as might involve disclosure of Cabinet proceedings; a certificate issued by the Chief Secretary to the Government certifying that information is of that nature shall be conclusive and binding.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Reports of Lokayukta',
+        text: 'If after investigation of any complaint the Lokayukta is satisfied that the complaint is substantiated, either wholly or partly, he shall send to the competent authority a report in writing recording his findings and recommendations along with relevant documents, materials or other evidence. The competent authority shall, on receipt of the report, examine it, take appropriate action, and inform the Lokayukta within three months of the date of receipt of the report.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Prosecution for false complaint',
+        text: 'Notwithstanding anything contained in section 10 or elsewhere in this Act, whoever wilfully or maliciously makes any false complaint under this Act shall, on conviction, be punished with imprisonment for a term which may extend to one year but shall not be less than three months, and shall also be liable to fine (which may extend to rupees ten thousand). No court, except the court of a Judicial Magistrate of the first class, shall take cognizance of an offence under this section, and no such court shall take cognizance except on a complaint made with the previous sanction of the Lokayukta by the person against whom the false complaint was made. Any such court may, on conviction, award to the opposite party such amount of compensation out of the fine as it thinks fit.',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Secrecy of information',
+        text: 'Any information obtained by the Lokayukta or by any of his officers or other employees in the course of, or for the purposes of, any preliminary enquiry under this Act, and any evidence recorded or collected in connection therewith, shall be treated as confidential and no court shall have jurisdiction to compel the Lokayukta or any public servant to give evidence relating to such information or to produce the evidence so recorded or collected. This does not apply to disclosure for the purposes of any investigation or report, for proceedings for an offence under the Official Secrets Act, 1923, or an offence of giving false evidence or fabricating false evidence, any trial of an offence under section 14, any proceedings under section 17, or such other purposes as may be prescribed.',
+      },
+      {
+        sectionNo: '17',
+        heading: 'Intentional insult or interruption to, or bringing into disrepute, Lokayukta',
+        text: 'Whoever intentionally insults or causes any interruption to the Lokayukta while making any investigation under this Act shall, on conviction, be punished with simple imprisonment for a term which may extend to six months, or with fine, or with both. Whoever, by words spoken or intended to be read, makes or publishes any statement or does any other act calculated to bring the Lokayukta into disrepute, shall on conviction be punished with simple imprisonment for a term which may extend to six months, or with fine, or with both. The Lokayukta shall have and exercise, in respect of contempt of itself, the same jurisdiction, powers and authority as a High Court, and the provisions of the Contempt of Courts Act, 1971 shall apply subject to the modification that any reference to the High Court shall be construed as a reference to the Lokayukta.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Protection of action taken in good faith',
+        text: 'No suit, prosecution or other legal proceedings shall lie against the Lokayukta or against any officer, employee, investigating agency or other person referred to in section 14 in respect of anything which is in good faith done or intended to be done under this Act. No proceeding of the Lokayukta shall be deemed to be invalid by reason only of any defect or infirmity in his appointment. No proceeding, decision, finding or recommendation of the Lokayukta shall be liable to be challenged, reviewed, quashed or called in question in any court or tribunal.',
+      },
+    ],
+  },
+  {
+    id: 'act-punjab-lokpal-1996',
+    shortTitle: 'The Punjab Lokpal Act, 1996',
+    year: 1996,
+    actNumber: 'Punjab Act 3 of 1997',
+    jurisdiction: { type: 'state', state: 'Punjab' },
+    sourceUrl: 'https://punjab.gov.in/wp-content/uploads/2021/11/The-Punjab-Lokpal-Act-1996....pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "complaint", "misconduct" and "public man"',
+        text: '"complaint" means a complaint alleging that a public man has, while holding any of the offices referred to in clause (k), committed misconduct. "complaint against a legislator" means a complaint alleging misconduct by a person who, at the time of the alleged commission of such misconduct, was a Member of the Legislative Assembly of the State. "corruption" includes anything made punishable under Chapter IX of the Indian Penal Code, 1860 or under the Prevention of Corruption Act, 1988. "public man" means a person who holds or has held the office of a Minister; a Member of the Legislative Assembly; the Chairman and a Member of a Board constituted by or under a State or Central Act or otherwise; the Chairman of any Government company in which not less than fifty-one per cent of paid-up share capital is held by the State Government; the Chairman and Member of any non-statutory Committee nominated by the State Government; the Chairman/Vice-Chairman of a Zila Parishad, Mayor/Deputy Mayor of a Municipal Corporation, and President/Vice-President of a Municipal Council or Nagar Panchayat, including officials thereof. [Note: this Act is still formally titled the "Punjab Lokpal Act", the institution having been established under the Punjab Lokpal Act, 1995 and continued/amended by this 1996 Act; it is commonly referred to as the Punjab Lokayukta, and consists of a Lokpal assisted by an Up-Lokpal.]',
+      },
+      {
+        sectionNo: '3',
+        heading: 'Misconduct by public man',
+        text: 'A public man commits misconduct- (a) if he is actuated in the discharge of his functions as such public man by motives of personal interest or other improper or corrupt motives; or (b) if he abuses, or attempts to abuse, his position as such public man to cause harm or undue hardship to any other persons; or (c) if he directly allows his position to be taken advantage of by any of his family member and by reason thereof such family member secures any undue gain or favour to himself or another, or causes harm or undue hardship to another; or (d) if any act or omission by him constitutes corruption; or (e) if he is in possession of pecuniary resources or property disproportionate to his known sources of income, held by him personally or by any member of his family or by some other person on his behalf. A Legislator commits misconduct if he abuses or attempts to abuse or knowingly allows to be abused his position as such legislator for securing for himself directly or indirectly any valuable thing or pecuniary advantage. A public man who abets or conceals or attempts to conceal from detection the commission of misconduct by another public man also commits misconduct.',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Jurisdiction of Lokpal or the Up-Lokpal',
+        text: 'Subject to the other provisions of this Act, the Lokpal or the Up-Lokpal may inquire into any matter involved in, or arising from, or connected with any allegation of misconduct against a public man made in a complaint under this Act. The onus to prove the allegation shall be on the complainant, but the Lokpal or the Up-Lokpal may collect evidence and may call upon the person against whom a complaint is made to produce evidence.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Limitation and matters not subject to jurisdiction',
+        text: 'The Lokpal or the Up-Lokpal shall enquire into an allegation of misconduct against a public man within five years from the date of occurrence of that misconduct. The Lokpal or the Up-Lokpal shall not enquire into any matter which has been referred for enquiry under the Commission of Inquiry Act, 1952 on his recommendations or with his prior concurrence. The Lokpal or the Up-Lokpal shall not enquire into any complaint suo-moto.',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Complaints',
+        text: 'Any person other than a public servant may make a complaint under this Act to the Lokpal. The complaint shall be in the prescribed form and shall set forth particulars of the misconduct alleged, shall be accompanied by an affidavit in support of the allegation and the particulars thereof, and a certificate in the prescribed form in respect of the deposit. The complainant shall deposit, in such manner and with such authority as may be prescribed, a sum of one thousand rupees as fee.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Procedure in respect of inquiries',
+        text: 'If, after consideration and verification under section 12 in respect of a complaint, the Lokpal or the Up-Lokpal proposes to conduct an inquiry, he shall forthwith forward a copy of the complaint to the competent authority; may make such orders as to the safe custody of documents relevant to the enquiry as he deems fit; and shall, at such time as he considers appropriate, forward a copy of the complaint to the public man concerned and afford him an opportunity to represent his case. Every such inquiry shall be conducted in camera. The procedure for conducting such inquiry shall be such as the Lokpal or Up-Lokpal considers appropriate, keeping in view the rules of natural justice; the person against whom a complaint has been made shall not be compelled to be a witness against himself.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Evidence',
+        text: 'For the purpose of any enquiry, the Lokpal or the Up-Lokpal may require any public servant or any other person who, in his opinion, is able to furnish information or produce documents relevant to such inquiry, to furnish any such information or produce any such document; and shall have all the powers of a civil court while trying a suit under the Code of Civil Procedure, 1908, in respect of summoning and enforcing attendance and examination on oath; requiring discovery and production of documents; receiving evidence on affidavits; requisitioning public records; and issuing commissions for the examination of witnesses. A proceeding before the Lokpal or the Up-Lokpal shall be deemed to be a judicial proceeding within the meaning of section 193 of the Indian Penal Code, 1860.',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Search and seizure',
+        text: 'If the Lokpal or the Up-Lokpal has reason to believe that any document useful for or relevant to any inquiry under the Act is secreted in any place, he may, with the prior approval of the Governor, authorise any officer subordinate to him or any officer or investigating agency to search for and seize such documents. If satisfied that any seized document would be evidence for the purpose of the inquiry, the Lokpal or Up-Lokpal may retain it in custody till completion of the inquiry, subject to returning it after a period of one year from seizure unless the inquiry has commenced. The provisions of the Code of Criminal Procedure, 1973 relating to searches shall, so far as may be, apply, with the modification that the words "Lokpal or the Up-Lokpal or any officer authorised by him" shall be substituted for "magistrate" wherever it occurs.',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Reports',
+        text: 'If, after inquiry in respect of a complaint, the Lokpal or the Up-Lokpal is satisfied that no allegation made has been substantiated, he shall close the case and intimate the complainant, the public man and the competent authority. If all or any of the allegations have been substantiated, he shall, by report in writing, communicate his findings and recommendations to the competent authority and intimate the complainant and public man. The competent authority shall communicate to the Lokpal or Up-Lokpal, within three months of receipt of the report, the action taken or proposed to be taken. If not satisfied with the action taken and the case so deserves, the Lokpal or Up-Lokpal may make a special report for reviewing the decision of the Governor. The Lokpal or Up-Lokpal shall present annually to the Governor a consolidated report on the administration of this Act, which shall be laid before the State Legislature.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Secrecy of information',
+        text: 'Any information obtained by the Lokpal or Up-Lokpal or by any officer, employee, agency or person, in the course of any verification or inquiry under the Act, and any evidence recorded or collected in connection therewith, shall be treated as confidential and no court shall be entitled to compel the Lokpal or Up-Lokpal or any such officer, employee, agency or person to give evidence relating to such information or to produce the evidence so recorded or collected. This does not apply to disclosure for the purpose of this Act or for the purposes of any action or proceedings taken on any report under section 16, for proceedings for an offence of giving or fabricating false evidence under the Indian Penal Code, 1860, or for such other purposes as may be prescribed.',
+      },
+      {
+        sectionNo: '20',
+        heading: 'Intentional insult or interruption to, or bringing into disrepute, Lokpal',
+        text: 'Whoever intentionally offers any insult, or causes any interruption, to the Lokpal or the Up-Lokpal while making any verification or conducting any inquiry under this Act, shall be punished with simple imprisonment for a term which may extend to one month or with fine of rupees two thousand or with both. Whoever, by words spoken or intended to be read, makes or publishes any statement, or does any other act, calculated to bring the Lokpal or the Up-Lokpal into disrepute, shall be punished with simple imprisonment for a term which may extend to one month or with fine of rupees two thousand or with both. No complaint in respect of such offence shall be made by the Public Prosecutor except with the previous sanction of the Lokpal or the Up-Lokpal.',
+      },
+      {
+        sectionNo: '22',
+        heading: 'Action in case of false complaint',
+        text: 'Every person who wilfully or maliciously makes any complaint which he knows or has reason to believe to be false under this Act shall be punished with imprisonment for a term which may extend to one year and shall also be liable to fine which may extend to five thousand rupees. No court except a court of Session shall take cognizance of an offence under this section, and no such court shall take cognizance except on a complaint in writing made by the Public Prosecutor at the direction of the Lokpal or the Up-Lokpal; the Court of Session may take cognizance of the offence on such complaint without the case being committed to it. The Court of Session, on conviction of the person making the false complaint, may award, out of the amount of fine, to the public man against whom such false complaint was made, such amount of compensation as it thinks fit.',
+      },
+      {
+        sectionNo: '24',
+        heading: 'Compensation or reward payable in certain cases to complainant',
+        text: 'If the Lokpal is satisfied that all or any of the allegations made in a complaint have been substantiated either wholly or partly, and that, having regard to the expenses incurred by the complainant in relation to the proceedings and all other relevant circumstances of the case, the complainant deserves to be compensated or rewarded, the Lokpal may recommend to the Government the amount which may be paid to the complainant by way of such compensation or reward, and the State Government may pay the amount so recommended.',
+      },
+      {
+        sectionNo: '25',
+        heading: 'Protection',
+        text: 'No suit, prosecution or other legal proceedings shall lie against the Lokpal or the Up-Lokpal, or against any officer, employee, agency or person referred to in section 8, in respect of anything which is done in good faith or intended to be done under this Act. Save as otherwise provided in section 21, no proceedings or decision of the Lokpal or Up-Lokpal shall be liable to be challenged, reviewed, quashed or called in question in any court.',
+      },
+    ],
+  },
+  {
+    id: 'act-haryana-lokayukta-2002',
+    shortTitle: 'The Haryana Lokayukta Act, 2002',
+    year: 2002,
+    actNumber: 'Haryana Act No. 1 of 2003',
+    jurisdiction: { type: 'state', state: 'Haryana' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/haryana/2003/2003HR1.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "allegation", "grievance", "mal-administration" and "public servant"',
+        text: '"act" means administrative action taken by a public servant by way of decision, recommendation or finding or in any other manner and shall include wilful failure to act. "allegation" in relation to a public servant means any affirmation that such public servant- (i) has knowingly and intentionally abused his position as such to obtain any undue gain or favour to himself or to any other person or to cause undue hardship or harm to any other person; (ii) was actuated in the discharge of his functions by personal interest, or improper or corrupt motives; (iii) is guilty of corruption, lack of integrity in his capacity as such public servant; or (iv) is in possession of pecuniary resources or property disproportionate to his known source of income, held personally or by any member of his family or by some other person on his behalf. "grievance" means the claim by a person that a right to which he is entitled is denied to him or is unreasonably delayed by the act of omission or commission of a public servant, or the act complained of amounts to mal-administration. "mal-administration" means an act which is unjust, unfair, unreasonable, oppressive, improperly discriminatory or not supported by law. "public servant" includes a person defined in section 21 of the Indian Penal Code, 1860, and also means a person who is or has been the Chief Minister, a Minister, a Member of the Haryana Legislative Assembly other than the Speaker and Deputy Speaker, or a Member; and includes chairpersons, office-bearers and members of specified statutory bodies, corporations, government companies, cooperative societies, and local authorities.',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Matters which may be inquired into by Lokayukta',
+        text: 'Subject to the provisions of this Act, the Lokayukta may, on receipt of a reference from Government, proceed to inquire into the allegations or grievances made against a public servant. The Lokayukta may inquire into any act or conduct of any person other than a public servant in so far as he considers it necessary to do so for the purpose of his enquiry into any allegation of misconduct against a public servant, provided that the Lokayukta shall give such a person reasonable opportunity of being heard and to produce evidence in his defence.',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Matters not subject to inquiry',
+        text: 'The Lokayukta shall not inquire into any matter- (a) in respect of which an inquiry has been ordered under the Public Servants (Inquiries) Act, 1850; or (b) which is not connected with the discharge of functions as public servant of the person against whom allegation is made; or (c) relating to "grievance of mal-administration", any administrative act involving the exercise of discretion, except where he is satisfied that the elements involved in the exercise of discretion were absent to such an extent that the discretion would not be regarded as having been properly exercised or was exercised for corruption.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Provisions relating to complaints',
+        text: 'Subject to the provisions of this Act, a complaint may be made under this Act to the Lokayukta- (a) in case of grievance, by the person aggrieved; (b) in case of allegation, by any person: Provided that where the person aggrieved is dead or unable to act for himself, the complaint may be made by any person permitted to act on his behalf. Notwithstanding anything contained in this Act, any letter written to the Lokayukta by a person in police custody, jail, asylum or any other custodial place shall be forwarded unopened and without delay, and the Lokayukta may, if satisfied it is necessary, treat such letter as a complaint made in accordance with the Act.',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Provisions for holding preliminary inquiry',
+        text: 'The Lokayukta, on receipt of a complaint, may before proceeding to investigate such complaint or case, make such preliminary inquiry as he deems fit for ascertaining whether there exists reasonable ground for conducting the investigation. If, on such preliminary inquiry, he finds that there exists no such ground, he shall record a finding to that effect and thereupon the matter shall be closed and the complainant shall be informed accordingly.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Procedure in respect of inquiry',
+        text: 'Subject to the provisions contained in this section, the Lokayukta shall devise his own procedure for conducting inquiry or investigation, but in so doing shall ensure that the principles of natural justice are satisfied. The Lokayukta shall complete the inquiry within one year. Every inquiry under the Act shall, unless the Lokayukta records reasons to determine otherwise, be conducted in camera.',
+      },
+      {
+        sectionNo: '13',
+        heading: 'Power to summon record',
+        text: 'The Lokayukta shall have the power to summon and call for records of the Government, local authority, corporation, government company, society, university or any college affiliated to or constituent of a university, or from any other person having any connection with any inquiry or investigation against a public servant undertaken by him: Provided that the State Government may withhold production of any record or document relating to affairs of the State on grounds of security or public interest in accordance with the provisions of the Indian Evidence Act, 1872, and the Indian Official Secrets Act, 1923.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Evidence',
+        text: 'Subject to the provisions of this section, for the purpose of any inquiry or investigation, the Lokayukta or any person authorised by him may require any public servant or any other person, who in his opinion is able to furnish information or produce documents relevant to such inquiry, to furnish such information or produce such document; may enter upon any land and survey, demarcate or prepare a map of the same; and shall have all the powers of a civil court while trying a suit under the Code of Civil Procedure, 1908, in respect of summoning and enforcing attendance and examination on oath, requiring discovery and production of documents, receiving evidence on affidavits, requisitioning public records, and issuing commissions for examination of witnesses or documents. Any proceeding before the Lokayukta shall be deemed to be a judicial proceeding within the meaning of section 193 and section 228 of the Indian Penal Code, 1860.',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Power of search and seizure',
+        text: 'Where, in consequence of information in his possession or after such inquiry as he thinks necessary, the Lokayukta has reason to believe that a person will not produce any property, document or thing necessary for an inquiry or proceedings, or is in possession of money, bullion, jewellery or other valuable article or thing representing either wholly or partly income or property not disclosed to the authorities, or considers that the purposes of an inquiry will be served by a general search or inspection, he may issue a search warrant, and he or any person authorised may enter and search any building or place where he has reason to suspect such property or document is kept, break open the lock of any door, box, locker, safe or other receptacle where keys are not available, seize such property, document, money or valuable article or thing found as a result of such search, place a mark of identification, or make a note or inventory. The provisions of section 100 of the Code of Criminal Procedure, 1973 shall, so far as may be, apply to searches under this section, and a warrant issued shall be deemed to be a warrant issued by a court under section 93 of that Code.',
+      },
+      {
+        sectionNo: '16',
+        heading: 'Punishment for false and malicious complaints',
+        text: 'Notwithstanding anything contained in this Act, any person who wilfully or maliciously makes any false complaint under this Act, shall, on conviction, be punished with rigorous imprisonment which may extend to three years or with fine which may extend to ten thousand rupees or with both, and the court may order that out of the amount of fine, such sum as it may deem fit be paid by way of compensation to the person against whom such complaint was made. No court shall take cognizance of an offence punishable under this section except on a complaint made by or under the authority of the Lokayukta; and the complaint made by or under the authority of the Lokayukta shall be exclusively tried by a court of sessions, which may take cognizance of the offence without the complaint being committed to it, notwithstanding anything contained in the Code of Criminal Procedure, 1973.',
+      },
+      {
+        sectionNo: '17',
+        heading: 'Reports of Lokayukta',
+        text: 'If, after inquiry in respect of a complaint, the Lokayukta is satisfied that no allegation or grievance has been substantiated, he shall close the case and intimate the competent authority. If all or any of the allegations or grievances have been substantiated wholly or partly, he shall, by report in writing, communicate his findings, appropriate recommendations and suggestions to the competent authority, and intimate the complainant and public servant concerned. The competent authority shall cause the report to be examined and communicate to the Lokayukta, within three months of receipt, the action taken thereon. The Lokayukta shall present to the Governor a consolidated annual report on the administration of this Act, and the Governor shall cause it to be laid before the State Legislature within six months of receipt, along with an explanatory memorandum and reasons for not taking action in a given case.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Power to issue interim direction',
+        text: 'The Lokayukta may, after receipt of a complaint, issue such interim direction as the case may warrant, so as to avoid grave injustice. The competent authority shall deal with the interim direction in the same manner as provided for final direction.',
+      },
+      {
+        sectionNo: '21',
+        heading: 'Secrecy of information',
+        text: 'Any information obtained by the Lokayukta or members of his staff in the course of, or for the purposes of, any inquiry or investigation under this Act, and any evidence recorded or collected in connection therewith, shall be treated as confidential and, notwithstanding anything contained in the Evidence Act, 1872, no court shall be entitled to compel the Lokayukta or any public servant to give evidence relating to such information or produce the evidence so recorded or collected. This does not apply to the disclosure of any information or particulars for purposes of the inquiry or any report to be made thereon or for any action or proceedings to be taken on such report, for purposes of any proceedings for an offence under the Official Secrets Act, 1923, or an offence of giving or fabricating false evidence under the Indian Penal Code, 1860, or under sub-sections (1) and (3) of section 12 of this Act, or for such other purposes as may be prescribed.',
+      },
+      {
+        sectionNo: '22',
+        heading: 'Protection of action taken in good faith',
+        text: 'No suit, prosecution or other legal proceedings shall lie against the Lokayukta or against any officer or employee, agency or person acting on his behalf, in respect of anything which is in good faith done or intended to be done under this Act.',
+      },
+    ],
+  },
+  {
+    id: 'act-chhattisgarh-lok-aayog-2002',
+    shortTitle: 'The Chhattisgarh Lok Aayog Adhiniyam, 2002',
+    year: 2002,
+    actNumber: 'Act No. 30 of 2002',
+    jurisdiction: { type: 'state', state: 'Chhattisgarh' },
+    sourceUrl: 'https://prsindia.org/files/bills_acts/acts_states/chhattisgarh/2002/2002CG30.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "misconduct" and "Public Servant"',
+        text: '"corruption" includes anything made punishable under Chapter IX of the Indian Penal Code or under the Prevention of Corruption Act, 1988. "Lok Aayog" means the Commission constituted under sub-section (1) of Section 3 of this Adhiniyam. "misconduct" by a public servant means and includes that such public servant- (i) has abused his position as such public servant to obtain any gain or favour to himself or to any other person or to cause undue harm or hardship to any other person, (ii) has actuated in the discharge of his functions as such public servant by personal interest or improper or corrupt motives, (iii) has indulged in corruption, undue favour, nepotism or lack of integrity in his capacity as such public servant, (iv) is in possession of pecuniary resources or property disproportionate to his known sources of income and such pecuniary resources or property is held by public servant personally or by any member of his family or by any other person on his behalf. "Public Servant" shall mean and include a person who is the Chief Minister, a Minister, a Member of the Legislative Assembly, a Government servant, the Chairperson and Vice-Chairperson of a local authority, statutory body, corporation, co-operative society or Government company, and any other person holding office in such bodies or in trusts or societies wholly or partly financed by the State Government. [Note: the institution is styled "Lok Aayog", presided over by the "Pramukh Lokayukt" assisted by one or more "Lokayukt".]',
+      },
+      {
+        sectionNo: '6',
+        heading: 'Matters that may be enquired into by Lok Aayog',
+        text: 'Subject to the provisions of this Adhiniyam, upon receiving specific information of misconduct or a complaint against the Chief Minister, a Minister or any other public servant, the Lok Aayog may proceed to inquire into the matter contained therein. The Lok Aayog may also, subject to the provisions of the Adhiniyam, proceed to inquire into the matter contained in any reference made to it by the State Government.',
+      },
+      {
+        sectionNo: '7',
+        heading: 'Matters not subject to inquiry',
+        text: 'Except as hereinafter provided, the Lok Aayog shall not conduct any inquiry under this Adhiniyam in respect of any action if such action relates to any matter specified in the Third Schedule, which includes: action taken under the Extradition Act, 1962 or the Foreigners Act, 1946; action taken for investigating crime or protecting the security of the State, including with respect to passports; action in matters arising from purely commercial contracts, except where the complaint relates to corruption, harassment or gross delay in meeting contractual obligations; action in relation to determining whether a matter shall go to a court; action in respect of removals, pay, discipline, superannuation or other conditions of service of public servants, except claims relating to pension, gratuity, provident fund arising on retirement, removal or termination; and grant of honours and awards. The Lok Aayog shall not inquire into any action in respect of which a formal and public inquiry has been ordered under the Public Servants (Inquiries) Act, 1950, or which has been referred for enquiry under the Commissions of Inquiry Act, 1952. The Lok Aayog shall not inquire into any complaint made after the expiry of twelve months from the date the action became known to the complainant, or after the expiry of five years from the date the action is alleged to have taken place, unless satisfied there was sufficient cause for the delay. Nothing shall empower the Lok Aayog to question any administrative action involving discretion, except where the elements involved in the exercise of discretion are absent to such an extent that the discretion cannot be regarded as having been properly exercised.',
+      },
+      {
+        sectionNo: '8',
+        heading: 'Provisions relating to complaints',
+        text: 'Every complaint involving a misconduct shall be made in the prescribed form and shall be accompanied by a deposit of two hundred and fifty rupees, and the complainant shall swear an affidavit in the prescribed form before a member or officer authorized by the Lok Aayog. Notwithstanding anything contained in this Adhiniyam, every person who wilfully or maliciously makes any false complaint may, on conviction, be punished with rigorous imprisonment which may extend to two years or with fine which may extend to ten thousand rupees or with both, and the court may order that out of the fine such sum as it may deem fit be paid by way of compensation to the person against whom such complaint was made. No court shall take cognisance of an offence under this section except on a complaint made by or under the authority of the Lok Aayog, and a complaint made under the signature and seal of the Secretary of the Lok Aayog shall be sufficient as the authority of the Lok Aayog for this purpose.',
+      },
+      {
+        sectionNo: '9',
+        heading: 'Procedure in respect of inquiries',
+        text: 'The Lok Aayog shall, in cases to be conducted before it, decide the procedure to be followed for making the inquiry, and in so doing ensure that the principles of natural justice are satisfied.',
+      },
+      {
+        sectionNo: '10',
+        heading: 'Evidence',
+        text: 'Subject to the provisions of this section, for the purpose of any inquiry under this Adhiniyam, including a preliminary inquiry, the Lok Aayog may require any public servant or any other person who in its opinion is able to furnish information or produce documents relevant to the inquiry, to furnish such information or produce such document. For such purpose the Lok Aayog shall have all the powers of a civil court while trying a suit under the Code of Civil Procedure, 1908, in respect of summoning and enforcing attendance and examining on oath; requiring discovery and production of documents; receiving evidence on affidavits; requisitioning any public record from any court or office; issuing commissions for examination of witnesses and documents; and such other matters as may be prescribed.',
+      },
+      {
+        sectionNo: '11',
+        heading: 'Reports of Lok Aayog',
+        text: 'If, after inquiry of any action in respect of which a complaint has been received, the Lok Aayog is of the opinion that the complaint is established, it shall by a report in writing communicate its findings and recommendations along with the relevant documents and other evidence to the competent authority. The opinion of the Lok Aayog in relation to any complaint, including a decision, report, finding or conclusion thereon, means the opinion of the majority of its members. The competent authority shall examine the report forwarded to it and intimate to the Lok Aayog, within three months of the date of receipt of the report, the action taken or proposed to be taken thereon. Any proceeding before the Lok Aayog shall be deemed to be a judicial proceeding within the meaning of section 193 and section 228 of the Indian Penal Code, 1860. If the Lok Aayog is satisfied with the action taken or proposed to be taken on its recommendations, it shall close the case under information to the complainant, the public servant and the competent authority; if not so satisfied and the Lok Aayog is of the opinion that the case so deserves, it may make a special report upon the case to the Governor and also inform the complainant. The Lok Aayog shall present to the Governor, annually, a consolidated report on the performance of its functions, which the Governor shall cause to be laid before the State Legislative Assembly along with an explanatory memorandum.',
+      },
+      {
+        sectionNo: '12',
+        heading: 'Reports in respect of the Chief Minister',
+        text: 'The Lok Aayog shall send its report in respect of a complaint against the Chief Minister with its recommendations to the Governor, who shall take such action thereupon as he may deem fit or expedient. The report of the Lok Aayog shall, along with the order passed by the Governor, be laid before the State Legislative Assembly.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Secrecy of information',
+        text: 'Any information obtained in the course of an inquiry by the Lok Aayog, members of its staff, or a person or agency whose services are utilized by the Lok Aayog for conducting inquiries, and any evidence recorded or collected in connection therewith, shall be treated as confidential. This does not apply to disclosure for the purpose of the enquiry or any report to be made thereon, for the purposes of any proceeding for an offence under the Official Secrets Act, 1923, or any offence of giving or fabricating false evidence under the Indian Penal Code or for the purpose of any proceedings under Section 15 of this Adhiniyam, or for such other purposes as may be prescribed.',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Protection',
+        text: 'No suit, prosecution or other legal proceedings shall lie against the Lok Aayog, the Pramukh Lokayukt, a Lokayukt, or against any officer, employee, agency or person, in respect of anything which is in good faith done or intended to be done under this Adhiniyam.',
+      },
+      {
+        sectionNo: '18',
+        heading: 'Removal of doubts',
+        text: 'For the removal of doubts it is hereby declared that nothing in this Adhiniyam shall be construed to authorize the Lok Aayog to enquire into a complaint against- (a) any member of the judicial service who is under the administrative control of the High Court of Chhattisgarh under Article 235 of the Constitution of India, (b) the Chairman or a member of the State Public Service Commission, (c) the Chief Electoral Officer of Chhattisgarh, (d) any member of the Secretariat staff of the Chhattisgarh Legislative Assembly, (e) any member of the staff of the Governor\'s secretariat.',
+      },
+    ],
+  },
+  {
+    id: 'act-uttarakhand-lokayukta-2014',
+    shortTitle: 'The Uttarakhand Lokayukta Act, 2014',
+    year: 2014,
+    actNumber: 'Uttarakhand Act No. 06 of 2014',
+    jurisdiction: { type: 'state', state: 'Uttarakhand' },
+    sourceUrl: 'https://cdnbbsr.s3waas.gov.in/s3bc7f621451b4f5df308a8e098112185d/uploads/2025/03/202503201217167024.pdf',
+    sections: [
+      {
+        sectionNo: '2',
+        heading: 'Definitions — "complaint", "investigation" and "public servant"',
+        text: '"complaint" means a complaint, made in such form as may be prescribed, alleging that a public servant has committed an offence punishable under the Prevention of Corruption Act, 1988. "investigation" means an investigation as defined under clause (h) of section 2 of the Code of Criminal Procedure, 1973. "preliminary inquiry" means an inquiry conducted under this Act. "public servant" means a person referred to in clauses (a) to (h) of subsection (1) of section 14. "Special Court" means the court of a Special Judge appointed under subsection (1) of section 3 of the Prevention of Corruption Act, 1988.',
+      },
+      {
+        sectionNo: '14',
+        heading: 'Jurisdiction of Lokayukta to include Chief Minister, Ministers, Members of Legislative Assembly, and Government officers and officials',
+        text: 'Subject to the other provisions of this Act, the Lokayukta shall inquire or cause an inquiry to be conducted into any matter involved in, or arising from, or connected with, any allegation of corruption made in a complaint in respect of: (a) any person who is or has been a Chief Minister, provided that the Lokayukta shall not inquire into any allegation against the Chief Minister unless a full bench of the Lokayukta consisting of its Chairperson and all Members considers the initiation of inquiry and at least four Members approve, and any such inquiry shall be conducted in camera; (b) any person who is or has been a Minister; (c) any person who is or has been a Member of the Legislative Assembly; (d) any Group A or Group B officer or higher, and (e) any Group C or Group D official, from amongst public servants defined in the Prevention of Corruption Act, 1988; (f) any chairperson, member, officer or employee of a body, Board, corporation, authority, company, society, trust or autonomous body established by an Act of the Legislative Assembly or wholly/partly financed by the State Government or controlled by it; (g) and (h) directors, managers, secretaries or officers of societies, associations or trusts wholly/partly financed or aided by the State Government, or in receipt of public donations or foreign contributions exceeding notified amounts. The Lokayukta shall not inquire into any allegation of corruption against a Member of the Legislative Assembly in respect of anything said or a vote given in the Assembly, covered under clause (2) of Article 194 of the Constitution. The Lokayukta may inquire into the act or conduct of any other person involved in abetting, bribe giving or bribe taking or conspiracy relating to an allegation of corruption against a person referred to above.',
+      },
+      {
+        sectionNo: '15',
+        heading: 'Matters pending before any court or committee or authority for inquiry before Lokayukta not to be affected',
+        text: 'In case any matter or proceeding related to allegation of corruption under the Prevention of Corruption Act, 1988 has been pending before any court or committee of the Legislative Assembly or before any other authority prior to commencement of this Act or prior to commencement of any inquiry after the commencement of this Act, such matter or proceeding shall be continued before such court, committee or authority.',
+      },
+      {
+        sectionNo: '20',
+        heading: 'Provisions relating to complaints and preliminary inquiry and investigation',
+        text: 'The Lokayukta shall, on receipt of a complaint, first decide whether to proceed or close the matter. If it decides to proceed, it shall order a preliminary inquiry by its Inquiry Wing or any agency to ascertain whether a prima facie case exists, or refer the complaint to the State Vigilance Commission in respect of Group A, B, C or D public servants. The preliminary inquiry shall ordinarily be completed within sixty days, extendable for reasons recorded in writing to a further ninety days. A Bench of not less than two Members shall consider the report and, after hearing the public servant, decide whether a prima facie case exists, and may direct investigation, initiate departmental proceedings, or close proceedings and act against the complainant under section 46. Where the Lokayukta decides to investigate, it shall direct an agency to complete the investigation within six months, extendable by a further six months for recorded reasons, and submit the investigation report. A Bench of not less than two Members shall consider the investigation report and decide whether to file a charge-sheet or closure report before the Special Court, or initiate departmental proceedings. The Lokayukta may pass appropriate orders for safe custody of relevant documents, and its website shall display the status of complaints pending or disposed of.',
+      },
+      {
+        sectionNo: '23',
+        heading: 'The power of Lokayukta to sanction of prosecution',
+        text: 'Notwithstanding anything contained in section 197 of the Code of Criminal Procedure, 1973 and section 19 of the Prevention of Corruption Act, 1988, the Lokayukta shall have the power to sanction initiation of prosecution under clause (a) of sub-section (7) of section 20. No court may take cognizance of such offence except with prior approval of the Lokayukta, and no prosecution shall be initiated against a public servant alleged to have performed the official duty or proceeding as purporting to do so, without such approval. This is without prejudice to the generality of the provisions contained in Article 311 and sub-clause (c) of clause (3) of Article 320 of the Constitution.',
+      },
+      {
+        sectionNo: '24',
+        heading: 'Action on investigation against public servant being Chief Minister, Ministers or Members of Legislative Assembly',
+        text: 'Where, after the conclusion of the investigation, the findings of the Lokayukta disclose the commission of an offence under the Prevention of Corruption Act, 1988 by a public servant referred to in clause (a), (b) or (c) of sub-section (1) of section 14, the Lokayukta may file a case in the Special Court and shall send a copy of the report together with its findings to the competent authority.',
+      },
+      {
+        sectionNo: '26',
+        heading: 'Search and seizure',
+        text: 'If the Lokayukta has reason to believe that any document which, in its opinion, shall be useful for or relevant to any investigation under this Act, is secreted in any place, it may authorise any agency to whom the investigation has been given to search for and seize such documents. If satisfied that any document seized may be used as evidence and needs retention, the Lokayukta may so retain it, or direct an authorised officer to retain it, till completion of the investigation, and shall return it after retaining authenticated copies where required to be returned.',
+      },
+      {
+        sectionNo: '27',
+        heading: 'Lokayukta to have powers of civil court in certain cases',
+        text: 'For the purpose of any preliminary inquiry, the Inquiry Wing of the Lokayukta shall have all the powers of a civil court under the Code of Civil Procedure, 1908, while trying a suit, in respect of summoning and enforcing attendance and examining on oath; requiring discovery and production of documents; receiving evidence on affidavits; requisitioning public records; issuing commissions for examination of witnesses or documents, provided such commission for a witness is issued only where he cannot attend the proceeding; and such other matters as may be prescribed. Any proceeding before the Lokayukta shall be deemed to be a judicial proceeding within the meaning of section 193 of the Indian Penal Code.',
+      },
+      {
+        sectionNo: '29',
+        heading: 'Provisional attachment of assets',
+        text: 'Where the Lokayukta or any authorised officer has reason to believe, recorded in writing, that a person is in possession of proceeds of corruption, is accused of an offence relating to corruption, and such proceeds are likely to be concealed, transferred or dealt with so as to frustrate confiscation, the Lokayukta may, by order in writing, provisionally attach such property for up to ninety days, in the manner provided in the Second Schedule to the Income-tax Act, 1961. The Lokayukta shall immediately forward a copy of the order and material to the Special Court in a sealed envelope, and such Court may extend the attachment.',
+      },
+      {
+        sectionNo: '31',
+        heading: 'Confiscation of assets, proceeds, receipts and benefits arisen or procured by means of corruption in special circumstances',
+        text: 'Without prejudice to sections 29 and 30, where the Special Court, on the basis of prima facie evidence, has reason to believe or is satisfied that assets, proceeds, receipts and benefits have arisen or been procured by means of corruption by the public servant, it may authorise confiscation of such assets, proceeds, receipts and benefits till his acquittal. If the order is modified or annulled by the High Court, or the public servant is acquitted, such assets shall be returned, together with interest at five per cent per annum where it is not possible to return the assets, proceeds, receipts and benefits themselves.',
+      },
+      {
+        sectionNo: '39',
+        heading: 'Assessment of loss and recovery thereof by Special Court',
+        text: 'If any public servant is convicted of an offence under the Prevention of Corruption Act, 1988 by the Special Court, it may, notwithstanding any other law, make an assessment of loss, if any, caused to the public exchequer on account of actions or decisions of such public servant not taken in good faith and for which he stands convicted, and may order recovery of such loss, if quantifiable, from such public servant. If the loss was caused pursuant to a conspiracy with a beneficiary, such loss may, if assessed and quantifiable, also be recovered from such beneficiary proportionately.',
+      },
+      {
+        sectionNo: '44',
+        heading: 'Declaration of assets',
+        text: 'Every public servant shall make a declaration of his assets and liabilities in the manner provided under this Act. A public servant shall, within thirty days of entering upon his office, furnish to the competent authority information relating to the assets of which he, his spouse and dependent children are owners or beneficiaries, and his and their liabilities. A public servant holding office at the commencement of this Act shall furnish such information within thirty days of the Act coming into force. Every public servant shall file with the competent authority, on or before 31st July of every year, an annual return of such assets and liabilities as on 31st March of that year. The competent authority shall ensure that all such statements are published on the website of the office or Department by 31st August of that year.',
+      },
+      {
+        sectionNo: '45',
+        heading: 'Presumption as to acquisition of assets by corrupt means in certain cases',
+        text: 'If any public servant wilfully or for unjustifiable reasons fails to declare his assets, or gives misleading information in respect of such assets and is found in possession of assets not disclosed or in respect of which misleading information was furnished, such assets shall, unless otherwise proved, be presumed to belong to the public servant and be presumed to be assets acquired by corrupt means, subject to the competent authority\'s power to condone or exempt the public servant from furnishing information in respect of assets not exceeding a prescribed minimum value.',
+      },
+      {
+        sectionNo: '46',
+        heading: 'Prosecution for false complaint and payment of compensation to public servant',
+        text: 'Notwithstanding anything contained in this Act, whoever makes any false and frivolous or vexatious complaint under this Act shall, on conviction, be punished with imprisonment for a term which may extend to one year and with fine which may extend to one lakh rupees. No court, except a Special Court, shall take cognizance of such offence, and no Special Court shall take cognizance except on a complaint made by the person against whom the false complaint was made, or by an officer authorised by the Lokayukta. The prosecution shall be conducted by the public prosecutor at State Government expense. On conviction, the complainant shall be liable to pay compensation to the public servant, including legal expenses, as the Special Court may determine. This does not apply to complaints made in good faith.',
+      },
+      {
+        sectionNo: '53',
+        heading: 'Limitation to apply in certain cases',
+        text: 'The Lokayukta shall not inquire or investigate into any complaint, if the complaint is made after the expiry of a period of seven years from the date on which the offence mentioned in such complaint is alleged to have been committed.',
+      },
+      {
+        sectionNo: '54',
+        heading: 'Bar of Jurisdiction',
+        text: 'No civil court shall have jurisdiction in respect of any matter which the Lokayukta is empowered by or under this Act to determine.',
+      },
+      {
+        sectionNo: '55',
+        heading: 'Legal assistance',
+        text: 'The Lokayukta shall provide to every person against whom a complaint has been made, before it, under this Act, legal assistance to defend his case before the Lokayukta, if such assistance is requested for.',
+      },
+    ],
+  },
 ];
