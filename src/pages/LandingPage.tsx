@@ -3,6 +3,7 @@ import { useSettings } from "../lib/settings";
 import { useLanguage } from "../lib/language";
 import { UspSlider } from "../components/UspSlider";
 import { HowItWorks } from "../components/HowItWorks";
+import { BuiltFor } from "../components/BuiltFor";
 import { BrandMark } from "../components/BrandMark";
 import { IconGridSection } from "../components/IconGridSection";
 import "./LandingPage.css";
@@ -121,79 +122,6 @@ function GlobeIcon() {
   );
 }
 
-function BriefcaseIcon() {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="3" y="7" width="18" height="13" rx="2" />
-      <path d="M8 7V5a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v2M3 12h18" />
-    </svg>
-  );
-}
-
-function PersonIcon() {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <circle cx="12" cy="8" r="4" />
-      <path d="M4 21c0-4.4 3.6-7 8-7s8 2.6 8 7" />
-    </svg>
-  );
-}
-
-function BuildingIcon() {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <rect x="4" y="3" width="16" height="18" rx="1" />
-      <path d="M8 7h2M14 7h2M8 11h2M14 11h2M8 15h2M14 15h2M10 21v-4h4v4" />
-    </svg>
-  );
-}
-
-function GraduationCapIcon() {
-  return (
-    <svg
-      width="28"
-      height="28"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="1.6"
-      strokeLinecap="round"
-      strokeLinejoin="round"
-    >
-      <path d="m2 9 10-5 10 5-10 5-10-5Z" />
-      <path d="M6 11v5c0 1.4 2.7 2.5 6 2.5s6-1.1 6-2.5v-5" />
-      <path d="M22 9v6" />
-    </svg>
-  );
-}
-
 function ClockIcon() {
   return (
     <svg
@@ -257,13 +185,6 @@ const WHY_LAWFILINGS_ICONS = [
   <TwoPeopleIcon key="people" />,
   <CalculatorIcon key="calc" />,
   <GlobeIcon key="globe" />,
-];
-
-const WHO_ITS_FOR_ICONS = [
-  <BriefcaseIcon key="briefcase" />,
-  <PersonIcon key="person" />,
-  <BuildingIcon key="building" />,
-  <GraduationCapIcon key="cap" />,
 ];
 
 // One icon per t.landing.news.items entry (src/lib/translations/en.ts), in the same order — kept
@@ -355,7 +276,7 @@ export function LandingPage({
           title={t.landing.whyChooseUs.title}
           sub={t.landing.whyChooseUs.sub}
           columns={3}
-          background="rgba(243, 227, 197, 0.35)"
+          background="rgba(150, 175, 205, 0.4)"
           items={t.landing.whyChooseUs.items.map((item, i) => ({
             icon: WHY_LAWFILINGS_ICONS[i],
             title: item.title,
@@ -364,43 +285,7 @@ export function LandingPage({
         />
       )}
 
-      {widgets.whoItsFor && (
-        <IconGridSection
-          id="who-its-for"
-          eyebrow={t.landing.whoItsFor.eyebrow}
-          title={t.landing.whoItsFor.title}
-          sub={t.landing.whoItsFor.sub}
-          columns={4}
-          background="rgba(150, 175, 205, 0.4)"
-          items={t.landing.whoItsFor.items.map((item, i) => ({
-            icon: WHO_ITS_FOR_ICONS[i],
-            title: item.title,
-            body: item.body,
-          }))}
-        />
-      )}
-
-      {widgets.lawLibraryTeaser && (
-        <section className="landing-section" id="law-library">
-          <p className="landing-section-eyebrow landing-section-eyebrow-centered">
-            {t.landing.actsSection.eyebrow}
-          </p>
-          <h2 className="landing-section-title landing-section-title-centered">
-            {t.landing.actsSection.title}
-          </h2>
-          <p className="landing-section-sub landing-section-sub-centered">
-            {t.landing.actsSection.sub}
-          </p>
-          <div className="landing-section-cta-centered">
-            <button
-              className="landing-cta-secondary"
-              onClick={onOpenLawLibrary}
-            >
-              {t.landing.actsSection.browseAll}
-            </button>
-          </div>
-        </section>
-      )}
+      {widgets.whoItsFor && <BuiltFor />}
 
       {widgets.news && (
         <IconGridSection
@@ -466,7 +351,9 @@ export function LandingPage({
           <p className="landing-footer-heading">
             {t.landing.footer.platformHeading}
           </p>
-          <a href="#law-library">{t.nav.actsAndRules}</a>
+          <button className="landing-footer-link" onClick={onOpenLawLibrary}>
+            {t.nav.actsAndRules}
+          </button>
           <button className="landing-footer-link" onClick={onStartFiling}>
             {t.landing.footer.startAFiling}
           </button>

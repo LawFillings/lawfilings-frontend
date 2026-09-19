@@ -1,4 +1,4 @@
-import { Fragment, useEffect, useRef, useState } from 'react';
+import { Fragment, useEffect, useRef, useState, type ReactNode } from 'react';
 import { BrandMark } from './BrandMark';
 import { useLanguage } from '../lib/language';
 import { fmt } from '../lib/format';
@@ -16,9 +16,11 @@ interface Props {
   ariaLabel: string;
   slides: SlideData[];
   intervalMs?: number;
+  /** Optional call-to-action shown at the bottom-right of the frame, on every slide. */
+  action?: ReactNode;
 }
 
-export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props) {
+export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action }: Props) {
   const { t } = useLanguage();
   const sc = t.landing.slideshow;
   const rootRef = useRef<HTMLElement>(null);
@@ -152,29 +154,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
                 />
               ))}
             </div>
-            <div className="lf-btns">
-              <button className="lf-btn" type="button" aria-label={sc.previous} onClick={() => go(index - 1)}>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M15 5l-7 7 7 7" />
-                </svg>
-              </button>
-              <button
-                className="lf-btn lf-pause"
-                type="button"
-                aria-label={paused ? sc.play : sc.pause}
-                onClick={() => setPaused((p) => !p)}
-              >
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path className="i-pause" d="M9 5v14M15 5v14" />
-                  <path className="i-play" d="M8 5l11 7-11 7z" />
-                </svg>
-              </button>
-              <button className="lf-btn" type="button" aria-label={sc.next} onClick={() => go(index + 1)}>
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M9 5l7 7-7 7" />
-                </svg>
-              </button>
-            </div>
+            {action && <div className="lf-action">{action}</div>}
           </div>
         </div>
         <div className="lf-bar" aria-hidden="true">

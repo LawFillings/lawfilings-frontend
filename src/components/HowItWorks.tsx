@@ -25,12 +25,15 @@ export function HowItWorks({ onStartFiling }: Props) {
   return (
     <section className="landing-howitworks" id="how-it-works">
       <div className="landing-howitworks-inner">
-        <LandingSlideshow ariaLabel={hw.eyebrow} slides={slides} />
-        <div className="landing-howitworks-cta">
-          <button className="landing-cta-secondary" onClick={onStartFiling}>
-            {hw.cta}
-          </button>
-        </div>
+        <LandingSlideshow
+          ariaLabel={hw.eyebrow}
+          slides={slides}
+          action={
+            <button className="landing-cta-secondary" onClick={onStartFiling}>
+              {hw.cta}
+            </button>
+          }
+        />
       </div>
     </section>
   );

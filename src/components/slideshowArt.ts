@@ -2,15 +2,23 @@
 // (no user input), injected via dangerouslySetInnerHTML by LandingSlideshow. Class names
 // (.a / .a-draw / .g / .pn ...) are styled in LandingSlideshow.css.
 
-function coverageDots(): string {
-  let out = '';
-  for (let i = 0; i < 36; i++) {
-    const cx = 44 + (i % 9) * 34;
-    const cy = 52 + Math.floor(i / 9) * 34;
-    const d = (0.3 + i * 0.04).toFixed(2);
-    out += `<circle cx="${cx}" cy="${cy}" r="9" class="${i < 28 ? 'g' : 'ut'} a a-pop" style="--d:${d}s"/>`;
+import { INDIA_MAP } from './indiaMapPaths';
+
+function coverageMap(): string {
+  const { width, items } = INDIA_MAP;
+  const ox = ((360 - width) / 2).toFixed(1);
+  let out = `<g transform="translate(${ox} 6)">`;
+  items.forEach((it, i) => {
+    const d = (0.15 + i * 0.05).toFixed(2);
+    out += `<path class="${it.kind === 'state' ? 'mps' : 'mpu'} a a-fade" style="--d:${d}s" d="${it.d}"/>`;
+  });
+  // Delhi, Chandigarh and Puducherry are too small to read on their own — ring them.
+  for (const it of items) {
+    if (it.name === 'NCT of Delhi' || it.name === 'Chandigarh' || it.name === 'Puducherry') {
+      out += `<circle class="mpr a a-fade" style="--d:2.1s" cx="${it.cx}" cy="${it.cy}" r="5"/>`;
+    }
   }
-  return out;
+  return out + '</g>';
 }
 
 export interface ArtLabels {
@@ -22,7 +30,7 @@ export interface ArtLabels {
 
 const e = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
 
-const svg = (inner: string) => `<svg viewBox="0 0 360 300" focusable="false">${inner}</svg>`;
+const svg = (inner: string, height = 300) => `<svg viewBox="0 0 360 ${height}" focusable="false">${inner}</svg>`;
 
 // ---- Slideshow 1: what the platform offers ----
 export const offersArt = (a: ArtLabels): string[] => [
@@ -54,12 +62,12 @@ export const offersArt = (a: ArtLabels): string[] => [
       <path d="M296 258h20M308 250l8 8-8 8" fill="none" stroke="#1C2B33" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
   `),
   svg(`
-    <g>${coverageDots()}</g>
-    <g class="a a-fade" style="--d:1.9s">
-      <circle class="g" cx="44" cy="224" r="9"/><text x="64" y="229">${e(a.states28)}</text>
-      <circle class="ut" cx="44" cy="260" r="9"/><text x="64" y="265">${e(a.unionTerritories8)}</text>
+    ${coverageMap()}
+    <g class="a a-fade" style="--d:2.3s">
+      <circle class="g" cx="88" cy="290" r="8"/><text x="106" y="295">${e(a.states28)}</text>
+      <circle class="mpu" cx="88" cy="316" r="8"/><text x="106" y="321">${e(a.unionTerritories8)}</text>
     </g>
-  `),
+  `, 336),
   svg(`
     <path class="ln a a-draw" d="M64 24V260" pathLength="1" style="--d:.2s;--t:1.6s"/>
     <circle class="nd a a-pop" cx="64" cy="44" r="8" style="--d:.5s"/>
@@ -162,5 +170,64 @@ export const howArt = (a: ArtLabels): string[] => [
     <circle class="gs a a-pop" cx="190" cy="252" r="13" style="--d:2.8s"/>
     <g class="a a-inl" style="--d:3s"><rect class="g" x="244" y="96" width="76" height="34" rx="5"/><text x="282" y="118" text-anchor="middle" style="fill:#1C2B33;font-weight:700">PDF</text></g>
     <g class="a a-inl" style="--d:3.3s"><rect class="pg" x="244" y="142" width="76" height="34" rx="5"/><text x="282" y="164" text-anchor="middle" style="font-weight:600">Word</text></g>
+  `),
+];
+
+// ---- Slideshow 3: "Built for" (intro + 4 audiences) — text-free, so no translation labels needed ----
+const ICON = {
+  briefcase: '<rect x="3" y="9" width="22" height="15" rx="2"/><path d="M10 9V6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v3M3 16h22"/>',
+  person: '<circle cx="14" cy="9" r="5"/><path d="M4 26c0-5.5 4.5-9 10-9s10 3.5 10 9"/>',
+  building: '<rect x="5" y="3" width="18" height="22" rx="1"/><path d="M10 9h2M16 9h2M10 14h2M16 14h2M12 25v-5h4v5"/>',
+  cap: '<path d="M2 11 14 5l12 6-12 6-12-6Z"/><path d="M7 14v6c0 2 3.2 3.5 7 3.5s7-1.5 7-3.5v-6M26 11v8"/>',
+};
+
+export const builtForArt: string[] = [
+  svg(`
+    <path class="ln a a-draw" d="M52 150H308" pathLength="1" style="--d:.2s;--t:1.4s"/>
+    <g class="a a-pop" style="--d:.5s"><circle class="nd" cx="52" cy="150" r="30"/><g class="gs" transform="translate(38 136)">${ICON.briefcase}</g></g>
+    <g class="a a-pop" style="--d:.9s"><circle class="nd" cx="137" cy="150" r="30"/><g class="gs" transform="translate(123 136)">${ICON.person}</g></g>
+    <g class="a a-pop" style="--d:1.3s"><circle class="nd" cx="223" cy="150" r="30"/><g class="gs" transform="translate(209 136)">${ICON.building}</g></g>
+    <g class="a a-pop" style="--d:1.7s"><circle class="g" cx="308" cy="150" r="30"/><g transform="translate(294 136)" fill="none" stroke="#1C2B33" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">${ICON.cap}</g></g>
+  `),
+  // Advocates: scales of justice + a filing with the cited provision highlighted
+  svg(`
+    <g class="gs">
+      <path class="a a-draw" d="M100 40V250M70 262H130" pathLength="1" style="--d:.2s;--t:.8s"/>
+      <path class="a a-draw" d="M44 66H156" pathLength="1" style="--d:.6s;--t:.6s"/>
+      <path class="a a-draw" d="M44 66l-22 56a26 26 0 0 0 44 0Z" pathLength="1" style="--d:.9s;--t:.7s"/>
+      <path class="a a-draw" d="M156 66l-22 56a26 26 0 0 0 44 0Z" pathLength="1" style="--d:1.1s;--t:.7s"/>
+    </g>
+    <g class="a a-inr" style="--d:1.2s"><rect class="iv" x="200" y="60" width="130" height="176" rx="4"/>
+      <rect class="ph" x="216" y="80" width="70" height="8" rx="2"/>
+      <rect class="gf" x="216" y="106" width="98" height="12" rx="3"/>
+      <rect class="pl" x="216" y="130" width="98" height="5" rx="2"/><rect class="pl" x="216" y="143" width="98" height="5" rx="2"/><rect class="pl" x="216" y="156" width="64" height="5" rx="2"/>
+      <rect class="pl" x="216" y="180" width="98" height="5" rx="2"/><rect class="pl" x="216" y="193" width="80" height="5" rx="2"/></g>
+  `),
+  // Self-represented: a person, plain questions, one clean form
+  svg(`
+    <g class="a a-pop" style="--d:.2s"><g class="gs"><circle cx="76" cy="120" r="22"/><path d="M34 214c0-30 19-46 42-46s42 16 42 46"/></g></g>
+    <g class="a a-pop" style="--d:.7s"><rect class="pn" x="126" y="66" width="70" height="40" rx="10"/><text x="161" y="94" text-anchor="middle" style="font-size:22px;fill:#D4AF37;font-weight:600">?</text></g>
+    <g class="a a-pop" style="--d:1.1s"><rect class="pn" x="70" y="30" width="54" height="34" rx="10"/><text x="97" y="55" text-anchor="middle" style="font-size:20px;fill:#F3EEE2">?</text></g>
+    <path class="gs a a-draw" d="M120 196H196" pathLength="1" style="--d:1.5s;--t:.5s"/>
+    <path class="gs a a-draw" d="M186 186l10 10-10 10" pathLength="1" style="--d:1.9s;--t:.3s"/>
+    <g class="a a-inr" style="--d:2s"><rect class="iv" x="220" y="120" width="106" height="130" rx="4"/>
+      <rect class="ph" x="234" y="136" width="52" height="7" rx="2"/>
+      <rect class="pl" x="234" y="156" width="78" height="5" rx="2"/><rect class="pl" x="234" y="169" width="78" height="5" rx="2"/><rect class="pl" x="234" y="182" width="52" height="5" rx="2"/>
+      <circle class="g" cx="304" cy="232" r="11"/><path d="M298 232l4 4 8-9" fill="none" stroke="#1C2B33" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
+  `),
+  // Corporates: an organisation, and dues coming back
+  svg(`
+    <g class="gs a a-pop" style="--d:.2s"><rect x="40" y="70" width="110" height="180" rx="3"/><path d="M62 100h14M100 100h14M62 132h14M100 132h14M62 164h14M100 164h14M84 250v-46h24v46"/></g>
+    <path class="gs a a-draw" d="M300 92c-34-46-110-46-150 0" pathLength="1" style="--d:1s;--t:1s"/>
+    <path class="gs a a-draw" d="M162 92l-14 2 4-14" pathLength="1" style="--d:2s;--t:.3s"/>
+    <g class="a a-pop" style="--d:1.4s"><circle class="g" cx="300" cy="150" r="30"/><text x="300" y="161" text-anchor="middle" style="font-size:30px;fill:#1C2B33;font-weight:700">₹</text></g>
+    <g class="a a-inr" style="--d:2.2s"><rect class="pn" x="196" y="200" width="134" height="48" rx="8"/><rect class="mu2" x="214" y="216" width="70" height="7" rx="3"/><rect class="mu" x="214" y="230" width="98" height="6" rx="3"/></g>
+  `),
+  // Students: sourced text and a study aid
+  svg(`
+    <g class="a a-pop" style="--d:.2s"><g class="gs"><path d="M60 92 180 40l120 52-120 52Z"/><path d="M104 118v58c0 16 34 30 76 30s76-14 76-30v-58M300 92v70"/></g></g>
+    <g class="a a-fade" style="--d:1s"><path class="iv" d="M60 230c40-14 80-14 120 0v46c-40-14-80-14-120 0Z"/><path class="iv" d="M180 230c40-14 80-14 120 0v46c-40-14-80-14-120 0Z"/>
+      <rect class="pl" x="78" y="240" width="76" height="4" rx="2"/><rect class="pl" x="78" y="251" width="60" height="4" rx="2"/>
+      <rect class="gf" x="200" y="240" width="76" height="6" rx="3"/><rect class="pl" x="200" y="252" width="60" height="4" rx="2"/></g>
   `),
 ];

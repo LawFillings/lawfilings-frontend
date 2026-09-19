@@ -47,7 +47,7 @@
   pointer-events: none;
 }
 
-/* Slideshow fixed on the left, hero text on the right; stacks (text first) on narrow screens. */
+/* Hero text on the left, slideshow fixed on the right; stacks (text first) on narrow screens. */
 .landing-hero-grid {
   position: relative;
   z-index: 1;
@@ -61,6 +61,7 @@
 
 .landing-hero-slideshow {
   min-width: 0;
+  order: 2;
 }
 
 .landing-hero-inner {
@@ -68,6 +69,7 @@
   z-index: 1;
   max-width: 620px;
   min-width: 0;
+  order: 1;
 }
 
 @media (max-width: 980px) {
@@ -264,4 +266,26 @@
   .landing-footer {
     grid-template-columns: 1fr;
   }
+}
+
+/* In the hero, the slideshow lets the hero's own background logo show through, so its
+   built-in logo is dropped and its navy panel is made translucent (still dark enough to read on). */
+.landing-hero-slideshow .lf-watermark {
+  display: none;
+}
+.landing-hero-slideshow .lf-frame {
+  background: rgba(20, 39, 63, 0.42);
+  box-shadow: none;
+}
+
+/* Hero slideshow copy is centred (slide text, gold rule and body). */
+.landing-hero-slideshow .lf-copy {
+  text-align: center;
+}
+.landing-hero-slideshow .lf-rule,
+.landing-hero-slideshow .lf-body {
+  margin-inline: auto;
+}
+.landing-hero-slideshow .lf-rule {
+  transform-origin: center;
 }

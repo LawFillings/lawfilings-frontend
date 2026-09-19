@@ -9,12 +9,12 @@
   width: 100vw;
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
-  background: rgba(150, 175, 205, 0.4);
-  padding: var(--space-8) var(--space-5);
+  background: #e4e6e9;
+  padding: var(--space-6) 0;
 }
 
 .landing-howitworks-inner {
-  max-width: 1080px;
+  max-width: none;
   margin: 0 auto;
 }
 
@@ -29,8 +29,16 @@
   margin-right: auto;
 }
 
-.landing-howitworks-cta {
-  display: flex;
-  justify-content: center;
-  margin-top: var(--space-6);
+
+
+/* Edge-to-edge: the slideshow frame runs the full width of the band with square outer corners. */
+.landing-howitworks .lf-frame {
+  border-radius: 0;
+}
+.landing-howitworks .lf-inner {
+  padding-inline: clamp(28px, 6vw, 110px);
+}
+/* "Built for" — same edge-to-edge band, in the site's blue-grey so it alternates against the light grey above. */
+.landing-builtfor {
+  background: rgba(150, 175, 205, 0.4);
 }

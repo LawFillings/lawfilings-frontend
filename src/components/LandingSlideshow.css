@@ -173,6 +173,9 @@
 }
 
 /* SVG paint helpers */
+.lf-art .mps { fill: var(--lf-gold); stroke: var(--lf-navy); stroke-width: 0.6; stroke-linejoin: round; }
+.lf-art .mpu { fill: var(--lf-ivory); stroke: var(--lf-navy); stroke-width: 0.6; stroke-linejoin: round; }
+.lf-art .mpr { fill: none; stroke: var(--lf-ivory); stroke-width: 1.2; }
 .lf-art .g { fill: var(--lf-gold); }
 .lf-art .gf { fill: rgba(212, 175, 55, 0.85); }
 .lf-art .gs { fill: none; stroke: var(--lf-gold); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
@@ -202,6 +205,7 @@
 /* Controls */
 .lf-controls {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: space-between;
   gap: 16px;
@@ -390,4 +394,10 @@
 }
 :root[dir='rtl'] .lf-bar i {
   transform-origin: right;
+}
+
+.lf-action .landing-cta-secondary {
+  font-size: 14px;
+  white-space: normal;
+  text-align: center;
 }
