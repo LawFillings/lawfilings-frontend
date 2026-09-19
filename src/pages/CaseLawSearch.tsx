@@ -2,6 +2,7 @@ import { useState, type FormEvent } from 'react';
 import { useAuth } from '../lib/auth';
 import { useLanguage } from '../lib/language';
 import { searchCaseLaw, type CaseLawResult, type CourtCategory } from '../lib/caseLawClient';
+import '../styles/split-page.css';
 import './CaseLawSearch.css';
 
 // Indian Kanoon's headline field may contain search-term highlight markup (e.g. <b> tags) and
@@ -61,11 +62,14 @@ export function CaseLawSearch({ onBack, onOpenLogin, onOpenTranslateDocument }: 
         {t.common.back}
       </button>
 
-      <header className="cls-hero">
+      <div className="split-card">
+      <header className="cls-hero split-left">
         <p className="cls-eyebrow">{t.caseLawSearch.eyebrow}</p>
         <h1 className="cls-title">{t.caseLawSearch.title}</h1>
         <p className="cls-sub">{t.caseLawSearch.sub}</p>
       </header>
+
+      <div className="split-right">
 
       <p className="cls-translate-nudge">
         {t.caseLawSearch.translateNudge}{' '}
@@ -133,6 +137,8 @@ export function CaseLawSearch({ onBack, onOpenLogin, onOpenTranslateDocument }: 
           )}
         </>
       )}
+      </div>
+      </div>
     </div>
   );
 }

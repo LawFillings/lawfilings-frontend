@@ -552,6 +552,8 @@ export const gu: Translations = {
     failedToDeleteCase: 'કેસ કાઢી નાખવામાં નિષ્ફળ',
   },
   lawLibrary: {
+    dropdownPlaceholder: "શોધવા ટાઇપ કરો અથવા યાદીમાંથી પસંદ કરો",
+    dropdownNoMatches: "કોઈ પરિણામ મળ્યું નથી",
     eyebrow: 'હંમેશા મફત — ખાતાની જરૂર નથી',
     title: 'બંધારણ અને મુખ્ય ઍક્ટ',
     sub: 'ભારતનું બંધારણ અને આ મંચ પરના કેસ પ્રકારો પાછળના ઍક્ટના વાસ્તવિક પાઠ, સીધા India Code — સત્તાવાર સરકારી ભંડાર — માંથી લેવાયેલા.',

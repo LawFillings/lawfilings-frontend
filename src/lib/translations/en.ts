@@ -550,6 +550,8 @@ export const en = {
     failedToDeleteCase: 'Failed to delete case',
   },
   lawLibrary: {
+    dropdownPlaceholder: "Type to search or pick from the list",
+    dropdownNoMatches: "No matches found",
     eyebrow: 'Free, always — no account needed',
     title: 'Constitution & Key Statutes',
     sub: 'The Constitution of India and the actual text of the Acts behind the case types on this platform, sourced directly from India Code, the official government repository.',

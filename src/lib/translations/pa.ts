@@ -552,6 +552,8 @@ export const pa: Translations = {
     failedToDeleteCase: 'ਮਾਮਲਾ ਹਟਾਉਣ ਵਿੱਚ ਅਸਫਲ',
   },
   lawLibrary: {
+    dropdownPlaceholder: "ਖੋਜਣ ਲਈ ਟਾਈਪ ਕਰੋ ਜਾਂ ਸੂਚੀ ਵਿੱਚੋਂ ਚੁਣੋ",
+    dropdownNoMatches: "ਕੋਈ ਨਤੀਜਾ ਨਹੀਂ ਮਿਲਿਆ",
     eyebrow: 'ਹਮੇਸ਼ਾ ਮੁਫ਼ਤ — ਬਿਨਾਂ ਖਾਤੇ ਦੇ',
     title: 'ਸੰਵਿਧਾਨ ਅਤੇ ਮੁੱਖ ਐਕਟ',
     sub: 'ਭਾਰਤ ਦਾ ਸੰਵਿਧਾਨ ਅਤੇ ਇਸ ਮੰਚ ਉੱਤੇ ਕੇਸ ਕਿਸਮਾਂ ਪਿੱਛੇ ਦੇ ਐਕਟਾਂ ਦਾ ਅਸਲ ਪਾਠ, ਸਿੱਧਾ India Code — ਅਧਿਕਾਰਤ ਸਰਕਾਰੀ ਭੰਡਾਰ — ਤੋਂ ਲਿਆ ਗਿਆ।',

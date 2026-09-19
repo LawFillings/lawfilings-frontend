@@ -4,6 +4,8 @@ import type { Act, ActSection } from '../data/lawLibraryData';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
 import { AskTheLibrary } from '../components/AskTheLibrary';
+import { SearchableSelect } from '../components/SearchableSelect';
+import '../styles/split-page.css';
 import './LawLibrary.css';
 
 interface Props {
@@ -97,7 +99,8 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
         {t.common.backToAllFilings}
       </button>
 
-      <header className="ll-hero">
+      <div className="split-card">
+      <header className="ll-hero split-left">
         <p className="ll-eyebrow">{t.lawLibrary.eyebrow}</p>
         <h1 className="ll-title">{t.lawLibrary.title}</h1>
         <p className="ll-sub">{t.lawLibrary.sub}</p>
@@ -113,18 +116,19 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
             }}
           />
         )}
+        {widgets.askAi && (
+          <div className="ll-ask-in-panel">
+            <AskTheLibrary onOpenLogin={onOpenLogin} />
+          </div>
+        )}
       </header>
 
-      <p className="ll-translate-nudge">
-        {t.lawLibrary.translateNudge}{' '}
-        <button type="button" className="ll-translate-nudge-link" onClick={onOpenTranslateDocument}>
-          {t.lawLibrary.translateNudgeLink}
-        </button>
-      </p>
+      <div className="split-right">
 
-      {widgets.askAi && <AskTheLibrary onOpenLogin={onOpenLogin} />}
+
 
       <div className="ll-layout">
+        <div className="ll-rail-col">
         <nav className="ll-category-rail" aria-label="Act category">
           {(
             [
@@ -147,6 +151,13 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
             </button>
           ))}
         </nav>
+        <p className="ll-translate-nudge">
+        {t.lawLibrary.translateNudge}{' '}
+        <button type="button" className="ll-translate-nudge-link" onClick={onOpenTranslateDocument}>
+          {t.lawLibrary.translateNudgeLink}
+        </button>
+        </p>
+        </div>
 
         <div className="ll-main">
       {widgets.search && searchResults && (
@@ -186,55 +197,48 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
 
           {category === 'constitution' && constitutionAct && (
             <div className="ll-act-picker">
-              <p className="ll-state-search-label">{t.lawLibrary.selectPartLabel}</p>
-              <div className="ll-option-list">
-                {constitutionParts.map((part) => (
-                  <button key={part} type="button" className="ll-option-list-item" onClick={() => setSelectedPart(part)}>
-                    <span className="ll-option-list-item-title">{part}</span>
-                  </button>
-                ))}
-              </div>
+              <SearchableSelect
+                label={t.lawLibrary.selectPartLabel}
+                placeholder={t.lawLibrary.dropdownPlaceholder}
+                noMatches={t.lawLibrary.dropdownNoMatches}
+                options={constitutionParts.map((part) => ({ key: part, label: part }))}
+                onSelect={(part) => setSelectedPart(part)}
+              />
             </div>
           )}
 
           {category === 'state' && (
             <div className="ll-state-picker">
-              <label className="ll-state-search-label" htmlFor="ll-state-select">
-                {t.lawLibrary.selectStateLabel}
-              </label>
-              <select
-                id="ll-state-select"
-                className="ll-state-select"
-                value={selectedState ?? ''}
-                onChange={(e) => setSelectedState(e.target.value || null)}
-              >
-                <option value="">{t.lawLibrary.selectStatePlaceholder}</option>
-                {statesWithActs.map((s) => (
-                  <option key={s} value={s}>
-                    {s}
-                  </option>
-                ))}
-              </select>
+              <SearchableSelect
+                label={t.lawLibrary.selectStateLabel}
+                placeholder={t.lawLibrary.selectStatePlaceholder}
+                noMatches={t.lawLibrary.dropdownNoMatches}
+                options={statesWithActs.map((st) => ({ key: st, label: st }))}
+                selectedKey={selectedState}
+                onSelect={(st) => setSelectedState(st)}
+              />
             </div>
           )}
 
           {(category === 'central' || category === 'rules' || (category === 'state' && selectedState)) && (
             <div className="ll-act-picker ll-act-picker-wide">
               {visibleActs.length > 0 ? (
-                <>
-                  <p className="ll-state-search-label">{t.lawLibrary.selectActLabel}</p>
-                  <div className="ll-option-list">
-                    {visibleActs.map((act) => (
-                      <button key={act.id} type="button" className="ll-option-list-item" onClick={() => openAct(act)}>
-                        <span className="ll-option-list-item-title">
-                          {act.shortTitle}
-                          {act.status === 'repealed' && <span className="ll-repealed-tag">{t.lawLibrary.repealedTag}</span>}
-                        </span>
-                        <span className="ll-option-list-item-meta">{t.lawLibrary.actMeta(act.actNumber)}</span>
-                      </button>
-                    ))}
-                  </div>
-                </>
+                <SearchableSelect
+                  key={`${category}-${selectedState ?? ''}`}
+                  label={t.lawLibrary.selectActLabel}
+                  placeholder={t.lawLibrary.dropdownPlaceholder}
+                  noMatches={t.lawLibrary.dropdownNoMatches}
+                  options={visibleActs.map((act) => ({
+                    key: act.id,
+                    label: act.shortTitle,
+                    meta: t.lawLibrary.actMeta(act.actNumber),
+                    tag: act.status === 'repealed' ? <span className="ll-repealed-tag">{t.lawLibrary.repealedTag}</span> : undefined,
+                  }))}
+                  onSelect={(id) => {
+                    const act = visibleActs.find((a) => a.id === id);
+                    if (act) openAct(act);
+                  }}
+                />
               ) : (
                 category === 'state' && selectedState && <p className="ll-state-empty">{t.lawLibrary.noActsForState(selectedState)}</p>
               )}
@@ -323,6 +327,8 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
         </div>
       )}
         </div>
+      </div>
+      </div>
       </div>
     </div>
   );

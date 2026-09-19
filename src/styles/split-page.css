@@ -3,7 +3,8 @@
    and softly coloured option buttons. Opt in with .split-card > .split-left + .split-right. */
 .cl-page.cl-page,
 .cfc-page.cfc-page,
-.td-page.td-page {
+.td-page.td-page,
+.cls-page.cls-page {
   max-width: 1120px;
 }
 
@@ -177,5 +178,106 @@
 
 /* Cause List: the left-panel text starts at the top instead of being vertically centred. */
 .cl-page .split-left {
+  justify-content: flex-start;
+}
+
+/* Case Law + Constitution & Key Statutes: coloured category buttons and a gold search action. */
+.ll-category-rail-btn,
+.cls-court-pill {
+  --tab-bg: #dbe7f6;
+  --tab-fg: #23507f;
+  --tab-solid: #2f5d9b;
+  background: var(--tab-bg);
+  color: var(--tab-fg);
+  border: 1px solid transparent;
+}
+.ll-category-rail-btn:nth-child(8n + 2), .cls-court-pill:nth-child(8n + 2) { --tab-bg: #f6e6c8; --tab-fg: #7d5410; --tab-solid: #b07a17; }
+.ll-category-rail-btn:nth-child(8n + 3), .cls-court-pill:nth-child(8n + 3) { --tab-bg: #d9eee3; --tab-fg: #1f6547; --tab-solid: #2c7a5a; }
+.ll-category-rail-btn:nth-child(8n + 4), .cls-court-pill:nth-child(8n + 4) { --tab-bg: #eadff3; --tab-fg: #61397f; --tab-solid: #7b4a9e; }
+.ll-category-rail-btn:nth-child(8n + 5), .cls-court-pill:nth-child(8n + 5) { --tab-bg: #f7dfdb; --tab-fg: #8f3128; --tab-solid: #b0473d; }
+.ll-category-rail-btn:nth-child(8n + 6), .cls-court-pill:nth-child(8n + 6) { --tab-bg: #d6edf0; --tab-fg: #16646d; --tab-solid: #20808a; }
+.ll-category-rail-btn:hover,
+.cls-court-pill:hover {
+  border-color: var(--tab-solid);
+  background: var(--tab-bg);
+}
+.ll-category-rail-btn.active,
+.cls-court-pill.active {
+  background: var(--tab-solid);
+  border-color: var(--tab-solid);
+  color: #fff;
+}
+.cls-search-btn {
+  background: var(--accent-gold, #d4af37);
+  border-color: var(--accent-gold, #d4af37);
+  color: #1c2b33;
+  font-weight: 600;
+}
+.split-left .ll-search {
+  background: #fff;
+  margin-top: var(--space-4);
+}
+
+/* Constitution & Key Statutes: the category list and its contents sit side by side inside the
+   right panel; the "Ask a question" box lives in the left panel under the search field. */
+.split-right .ll-layout {
+  gap: var(--space-5);
+}
+.ll-rail-col {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  width: 200px;
+  flex-shrink: 0;
+}
+.split-right .ll-category-rail {
+  position: static;
+  background: transparent;
+  border: none;
+  padding: 0;
+  width: 100%;
+}
+.ll-rail-col .ll-translate-nudge {
+  margin: 0;
+  font-size: 13px;
+  line-height: 1.5;
+}
+.split-right .ll-main {
+  max-width: none;
+}
+.ll-ask-in-panel {
+  margin-top: var(--space-5);
+}
+.ll-ask-in-panel > * {
+  color: var(--ink);
+}
+@media (max-width: 860px) {
+  .split-right .ll-layout {
+    flex-direction: column;
+  }
+  .ll-rail-col {
+    width: 100%;
+  }
+}
+
+/* Beat the older .ll-category-rail-btn rules in LawLibrary.css (loaded later). */
+.ll-category-rail .ll-category-rail-btn {
+  background: var(--tab-bg);
+  color: var(--tab-fg);
+  border: 1px solid transparent;
+  font-weight: 500;
+}
+.ll-category-rail .ll-category-rail-btn:hover {
+  background: var(--tab-bg);
+  border-color: var(--tab-solid);
+}
+.ll-category-rail .ll-category-rail-btn.active {
+  background: var(--tab-solid);
+  border-color: var(--tab-solid);
+  color: #fff;
+}
+
+/* The right panel is tall here (category list + contents), so the left text starts at the top. */
+.law-library .split-left {
   justify-content: flex-start;
 }
