@@ -1,5 +1,5 @@
 .home {
-  max-width: 960px;
+  max-width: 1120px;
   margin: 0 auto;
   padding: var(--space-8) var(--space-5);
 }
@@ -41,7 +41,7 @@
 }
 
 .home-picker-band-inner {
-  max-width: 960px;
+  max-width: 1120px;
   margin: 0 auto;
 }
 
@@ -239,4 +239,208 @@
   font-size: 15px;
   color: var(--text-secondary);
   line-height: 1.55;
+}
+
+/* Two-column picker: the question on the left, its answer buttons on the right. */
+.picker-split,
+.pick-row {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: var(--space-6);
+  align-items: center;
+}
+.picker-split .home-title {
+  margin-bottom: var(--space-5);
+}
+.picker-split .home-cta-row {
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+.picker-split .forum-tabs,
+.pick-row .top-category-tabs {
+  justify-content: flex-start;
+  margin-bottom: 0;
+}
+.pick-row {
+  margin-bottom: var(--space-6);
+}
+.pick-row-title {
+  font-size: 28px;
+  line-height: 1.2;
+  margin: 0;
+}
+.pick-row .subcategory-tabs {
+  grid-template-columns: repeat(2, 1fr);
+  margin-bottom: 0;
+}
+@media (max-width: 800px) {
+  .picker-split,
+  .pick-row {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+}
+
+/* ---- Colour: contrasting panels + coloured option buttons ---- */
+.picker-split,
+.pick-row {
+  gap: 0;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 22px rgba(20, 39, 63, 0.1);
+}
+/* Left panel: deep accent with light text. */
+.picker-split-left,
+.pick-row-title {
+  align-self: stretch;
+  padding: var(--space-6);
+  background: linear-gradient(140deg, var(--accent-deep), var(--accent));
+  color: var(--text-on-accent, #fff);
+}
+.picker-split-left {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.picker-split-left .home-title,
+.pick-row-title {
+  color: var(--text-on-accent, #fff);
+}
+.pick-row-title {
+  display: flex;
+  align-items: center;
+}
+.picker-split-left .ll-cta {
+  background: var(--accent-gold, #d4af37);
+  border-color: var(--accent-gold, #d4af37);
+  color: #1c2b33;
+  font-weight: 600;
+  text-align: start;
+}
+.picker-split-left .ll-cta:hover {
+  background: #fff;
+  border-color: #fff;
+  color: var(--accent-deep);
+}
+/* Right panel: light, so the coloured buttons stand out. */
+.picker-split-right,
+.pick-row .top-category-tabs,
+.pick-row .subcategory-tabs {
+  align-self: stretch;
+  align-content: center;
+  padding: var(--space-6);
+  background: #f7f5ef;
+}
+.picker-split-right {
+  display: flex;
+  align-items: center;
+}
+
+/* Each option button gets its own soft hue; the selected one turns solid. */
+.forum-tab,
+.top-category-tab,
+.subcategory-tab {
+  --tab-bg: #dbe7f6;
+  --tab-fg: #23507f;
+  --tab-solid: #2f5d9b;
+  background: var(--tab-bg);
+  border-color: transparent;
+  color: var(--tab-fg);
+}
+.forum-tab:nth-child(8n + 2),
+.top-category-tab:nth-child(8n + 2),
+.subcategory-tab:nth-child(8n + 2) { --tab-bg: #f6e6c8; --tab-fg: #7d5410; --tab-solid: #b07a17; }
+.forum-tab:nth-child(8n + 3),
+.top-category-tab:nth-child(8n + 3),
+.subcategory-tab:nth-child(8n + 3) { --tab-bg: #d9eee3; --tab-fg: #1f6547; --tab-solid: #2c7a5a; }
+.forum-tab:nth-child(8n + 4),
+.top-category-tab:nth-child(8n + 4),
+.subcategory-tab:nth-child(8n + 4) { --tab-bg: #eadff3; --tab-fg: #61397f; --tab-solid: #7b4a9e; }
+.forum-tab:nth-child(8n + 5),
+.top-category-tab:nth-child(8n + 5),
+.subcategory-tab:nth-child(8n + 5) { --tab-bg: #f7dfdb; --tab-fg: #8f3128; --tab-solid: #b0473d; }
+.forum-tab:nth-child(8n + 6),
+.top-category-tab:nth-child(8n + 6),
+.subcategory-tab:nth-child(8n + 6) { --tab-bg: #d6edf0; --tab-fg: #16646d; --tab-solid: #20808a; }
+.forum-tab:nth-child(8n + 7),
+.top-category-tab:nth-child(8n + 7),
+.subcategory-tab:nth-child(8n + 7) { --tab-bg: #e3e7f7; --tab-fg: #37418a; --tab-solid: #4b57b3; }
+.forum-tab:nth-child(8n + 8),
+.top-category-tab:nth-child(8n + 8),
+.subcategory-tab:nth-child(8n + 8) { --tab-bg: #ecefd6; --tab-fg: #55611a; --tab-solid: #7a8a23; }
+
+.forum-tab:hover,
+.top-category-tab:hover,
+.subcategory-tab:hover {
+  border-color: var(--tab-solid);
+}
+.forum-tab.active,
+.top-category-tab.active,
+.subcategory-tab.active {
+  background: var(--tab-solid);
+  border-color: var(--tab-solid);
+  color: #fff;
+}
+@media (max-width: 800px) {
+  .picker-split-left,
+  .pick-row-title,
+  .picker-split-right,
+  .pick-row .top-category-tabs,
+  .pick-row .subcategory-tabs {
+    padding: var(--space-4);
+  }
+}
+
+/* Case cards: a light shade of the hue of the button that revealed them. */
+.forum-group {
+  --card-bg: #eef4fb;
+  --card-line: #c5d6ec;
+}
+.forum-group[data-tone='2'] { --card-bg: #fbf3e2; --card-line: #ecd9ae; }
+.forum-group[data-tone='3'] { --card-bg: #eaf6f0; --card-line: #bde0cf; }
+.forum-group[data-tone='4'] { --card-bg: #f3ecf8; --card-line: #d8c5e6; }
+.forum-group[data-tone='5'] { --card-bg: #fbeceA; --card-line: #eec3bd; }
+.forum-group[data-tone='6'] { --card-bg: #e9f6f7; --card-line: #b7dde1; }
+.forum-group[data-tone='7'] { --card-bg: #eef0fb; --card-line: #c7cdee; }
+.forum-group[data-tone='8'] { --card-bg: #f5f7e6; --card-line: #d9dfae; }
+.forum-group .case-type-card {
+  background: var(--card-bg);
+  border-color: var(--card-line);
+}
+.forum-group .case-type-card:hover {
+  border-color: var(--accent);
+}
+
+/* Privacy reassurance under the picker heading. */
+.home-privacy-note {
+  margin-top: var(--space-1);
+  padding-top: var(--space-4);
+  border-top: 1px solid rgba(255, 255, 255, 0.25);
+  max-width: 44ch;
+}
+.home-privacy-title {
+  margin: 0 0 var(--space-2);
+  font-size: 15px;
+  font-weight: 700;
+  color: var(--accent-gold, #d4af37);
+}
+.home-privacy-body {
+  margin: 0 0 var(--space-3);
+  font-size: 14px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+}
+.home-privacy-link {
+  border: none;
+  background: none;
+  padding: 0;
+  font-size: 14px;
+  font-weight: 600;
+  color: #fff;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.home-privacy-link:hover {
+  color: var(--accent-gold, #d4af37);
 }

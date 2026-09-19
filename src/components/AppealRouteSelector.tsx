@@ -12,7 +12,7 @@ export function AppealRouteSelector({ group, onSelect }: AppealRouteSelectorProp
   const appealRouteGroups: Record<string, { question: string; optionHelp: Record<string, string> }> = t.appealRouteGroups;
   const copy = appealRouteGroups[group.id];
   return (
-    <div>
+    <div className="route-split">
       <p className="route-question">{copy.question}</p>
       <div className="route-options">
         {group.options.map((opt) => (

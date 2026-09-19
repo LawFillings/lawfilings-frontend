@@ -331,7 +331,9 @@ export const en = {
   home: {
     eyebrow: 'A drafting platform for Indian tribunals and courts',
     settingsLink: '⚙ Settings',
-    title: 'Where do you need to file?',
+    title: "Select the court/forum where you need to file",
+    privacyTitle: "Your data stays confidential",
+    privacyBody: "Case details you enter are never sold or shared with other users, and are protected by encrypted connections and access controls.",
     browseActs: 'Browse Constitution & Key Statutes — curated for you →',
     categoryLabels: {
       original: 'Start a case',

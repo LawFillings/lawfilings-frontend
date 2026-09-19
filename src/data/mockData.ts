@@ -23,7 +23,7 @@ export const forums: Forum[] = [
   // Home.tsx rendering Income Tax/GST/Customs & Excise as a top-category tier (each item's
   // `topCategory`), mirroring the pattern already used for district_court's Civil/Criminal/Family
   // split above.
-  { id: 'f-tax', name: 'Tax Matters', forumType: 'tax_matters', advocateMandatory: false },
+  { id: 'f-tax', name: 'Taxation Tribunals', forumType: 'tax_matters', advocateMandatory: false },
   // Umbrella tab for filings that don't belong under any single court/tribunal — pre-litigation
   // letters, private deeds, criminal-court applications and complaints. Each wizard resolves its
   // own actual forum/court internally (from user choices), independent of this shared forumType,

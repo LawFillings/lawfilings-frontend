@@ -10,8 +10,8 @@ interface HomeProps {
   onBack: () => void;
   onSelectCaseType: (ct: CaseType) => void;
   onSelectAppealGroup: (group: AppealGroup) => void;
-  onOpenLawLibrary: () => void;
   onOpenSettings: () => void;
+  onOpenPrivacyPolicy: () => void;
 }
 
 // Case types reachable only through an appeal group's branching question, not as a standalone card
@@ -19,10 +19,10 @@ const caseTypeIdsInAppealGroups = new Set(
   appealGroups.flatMap((g) => g.options.map((o) => o.caseTypeId))
 );
 
-export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawLibrary, onOpenSettings }: HomeProps) {
+export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSettings, onOpenPrivacyPolicy }: HomeProps) {
   const { settings } = useSettings();
   const { color, widgets } = settings.home;
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const [selectedForumType, setSelectedForumType] = useState<string | null>(null);
   const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<string | null>(null);
   const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
@@ -87,6 +87,14 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
           .filter((sc) => sc.items.length > 0)
       : null;
 
+  // Tint the case cards with the hue of the option button that revealed them (same 8-colour cycle
+  // as the tab buttons in Home.css): the deepest tier the user has picked.
+  const forumIdx = visibleForums.findIndex((f) => f.forumType === selectedForumType);
+  const topIdx = topCategorySections ? topCategorySections.findIndex((tc) => tc.key === selectedTopCategoryKey) : -1;
+  const subIdx = subcategorySections ? subcategorySections.findIndex((sc) => sc.key === selectedSubcategoryKey) : -1;
+  const toneIdx = subIdx >= 0 ? subIdx : topIdx >= 0 ? topIdx : Math.max(forumIdx, 0);
+  const cardTone = (toneIdx % 8) + 1;
+
   return (
     <div className="home" data-color-theme={color}>
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
@@ -104,44 +112,53 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
 
       <div className="home-picker-band">
         <div className="home-picker-band-inner">
-          <h1 className="home-title home-title-centered">{t.home.title}</h1>
+          <div className="picker-split">
+            <div className="picker-split-left">
+              <h1 className="home-title">{t.home.title}</h1>
 
-          {widgets.lawLibraryCta && (
-            <div className="home-cta-row">
-              <button className="ll-cta" onClick={onOpenLawLibrary}>
-                {t.home.browseActs}
-              </button>
+              <div className="home-privacy-note">
+                <p className="home-privacy-title">{t.home.privacyTitle} 🔒</p>
+                <p className="home-privacy-body">{t.home.privacyBody}</p>
+                <button className="home-privacy-link" onClick={onOpenPrivacyPolicy}>
+                  {t.landing.footer.privacyPolicy} {language === 'ur' ? '←' : '→'}
+                </button>
+              </div>
             </div>
-          )}
 
-          <div className="forum-tabs">
-            {visibleForums.map((forum) => (
-              <button
-                key={forum.id}
-                className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
-                onClick={() => selectForum(forum.forumType)}
-              >
-                {forum.name}
-              </button>
-            ))}
+            <div className="picker-split-right">
+              <div className="forum-tabs">
+                {visibleForums.map((forum) => (
+                  <button
+                    key={forum.id}
+                    className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
+                    onClick={() => selectForum(forum.forumType)}
+                  >
+                    {forum.name}
+                  </button>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
       </div>
 
       {selectedForum && (
-        <section className="forum-group">
+        <section className="forum-group" data-tone={cardTone}>
           {topCategorySections && (
-            <div className="top-category-tabs">
-              {topCategorySections.map((tc) => (
-                <button
-                  key={tc.key}
-                  className={tc.key === selectedTopCategoryKey ? 'top-category-tab active' : 'top-category-tab'}
-                  onClick={() => selectTopCategory(tc.key)}
-                >
-                  {topCategoryLabel[tc.key] ?? tc.label}
-                  <span className="top-category-tab-count">{tc.items.length}</span>
-                </button>
-              ))}
+            <div className="pick-row">
+              <h2 className="pick-row-title">{selectedForum.name}</h2>
+              <div className="top-category-tabs">
+                {topCategorySections.map((tc) => (
+                  <button
+                    key={tc.key}
+                    className={tc.key === selectedTopCategoryKey ? 'top-category-tab active' : 'top-category-tab'}
+                    onClick={() => selectTopCategory(tc.key)}
+                  >
+                    {topCategoryLabel[tc.key] ?? tc.label}
+                    <span className="top-category-tab-count">{tc.items.length}</span>
+                  </button>
+                ))}
+              </div>
             </div>
           )}
           {topCategorySections && !activeTopSection ? (
@@ -159,17 +176,22 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenLawL
                   ))}
                 </div>
               )}
-              <div className="subcategory-tabs">
-                {subcategorySections.map((sc) => (
-                  <button
-                    key={sc.key}
-                    className={sc.key === selectedSubcategoryKey ? 'subcategory-tab active' : 'subcategory-tab'}
-                    onClick={() => setSelectedSubcategoryKey(sc.key === selectedSubcategoryKey ? null : sc.key)}
-                  >
-                    {subcategoryLabel[sc.key] ?? sc.label}
-                    <span className="subcategory-tab-count">{sc.items.length}</span>
-                  </button>
-                ))}
+              <div className="pick-row">
+                <h2 className="pick-row-title">
+                  {activeTopSection ? topCategoryLabel[activeTopSection.key] ?? activeTopSection.label : selectedForum.name}
+                </h2>
+                <div className="subcategory-tabs">
+                  {subcategorySections.map((sc) => (
+                    <button
+                      key={sc.key}
+                      className={sc.key === selectedSubcategoryKey ? 'subcategory-tab active' : 'subcategory-tab'}
+                      onClick={() => setSelectedSubcategoryKey(sc.key === selectedSubcategoryKey ? null : sc.key)}
+                    >
+                      {subcategoryLabel[sc.key] ?? sc.label}
+                      <span className="subcategory-tab-count">{sc.items.length}</span>
+                    </button>
+                  ))}
+                </div>
               </div>
               {(() => {
                 const activeSection = subcategorySections.find((sc) => sc.key === selectedSubcategoryKey);

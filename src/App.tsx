@@ -221,8 +221,8 @@ function AppScreens() {
           onBack={onBack}
           onSelectCaseType={(ct) => requireAuth({ kind: 'caseType', caseType: ct })}
           onSelectAppealGroup={(g) => requireAuth({ kind: 'appealGroup', group: g })}
-          onOpenLawLibrary={openLawLibraryNav}
           onOpenSettings={openSettingsNav}
+          onOpenPrivacyPolicy={openPrivacyPolicyNav}
         />
       );
     }

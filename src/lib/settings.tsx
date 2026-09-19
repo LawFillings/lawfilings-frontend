@@ -43,7 +43,6 @@ export const WIDGET_DEFS: Record<PageKey, WidgetDef[]> = {
     { key: 'news', label: 'Law news', description: 'Verified law-change news cards.' },
   ],
   home: [
-    { key: 'lawLibraryCta', label: 'Constitution & Key Statutes button', description: 'The button linking to Constitution & Key Statutes.' },
     { key: 'caseDescriptions', label: 'Case descriptions', description: 'Plain-language summary text on each case-type card.' },
   ],
   lawLibrary: [

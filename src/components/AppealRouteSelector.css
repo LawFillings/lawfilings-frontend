@@ -3,14 +3,14 @@
   font-size: 18px;
   font-weight: 600;
   color: var(--ink);
-  margin: 0 0 var(--space-5);
+  margin: 0;
 }
 
 .route-options {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
-  max-width: 480px;
+  max-width: none;
 }
 
 .route-card {
@@ -40,4 +40,18 @@
 .route-card-help {
   font-size: 12px;
   color: var(--text-secondary);
+}
+
+/* Question on the left, route options on the right. */
+.route-split {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  gap: var(--space-6);
+  align-items: start;
+}
+@media (max-width: 800px) {
+  .route-split {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
 }
