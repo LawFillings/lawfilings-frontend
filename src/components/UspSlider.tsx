@@ -9,6 +9,7 @@ export function UspSlider() {
   // original order (statutes first), so the reorder is applied here for every language.
   const ORDER = [4, 1, 2, 3, 0];
   const src = t.landing.uspSlider.slides;
-  const slides = ORDER.map((i) => ({ title: src[i].title, body: src[i].body, art: offersArt[i] }));
+  const art = offersArt(t.landing.slideshow.art);
+  const slides = ORDER.map((i) => ({ title: src[i].title, body: src[i].body, art: art[i] }));
   return <LandingSlideshow ariaLabel={t.landing.uspSlider.ariaLabel} slides={slides} />;
 }

@@ -1,5 +1,7 @@
 import { Fragment, useEffect, useRef, useState } from 'react';
 import { BrandMark } from './BrandMark';
+import { useLanguage } from '../lib/language';
+import { fmt } from '../lib/format';
 import './LandingSlideshow.css';
 
 export interface SlideData {
@@ -17,6 +19,8 @@ interface Props {
 }
 
 export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props) {
+  const { t } = useLanguage();
+  const sc = t.landing.slideshow;
   const rootRef = useRef<HTMLElement>(null);
   const [index, setIndex] = useState(0);
   const [leaving, setLeaving] = useState<number | null>(null);
@@ -77,8 +81,9 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
       }}
       onBlur={() => setFocusRing(false)}
       onKeyDown={(e) => {
-        if (e.key === 'ArrowRight') go(index + 1);
-        else if (e.key === 'ArrowLeft') go(index - 1);
+        const rtl = document.documentElement.dir === 'rtl';
+        if (e.key === 'ArrowRight') go(index + (rtl ? -1 : 1));
+        else if (e.key === 'ArrowLeft') go(index + (rtl ? 1 : -1));
       }}
     >
       <div className="lf-frame">
@@ -97,7 +102,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
               if (startX.current === null) return;
               const dx = e.clientX - startX.current;
               startX.current = null;
-              if (Math.abs(dx) > 50) go(index + (dx < 0 ? 1 : -1));
+              if (Math.abs(dx) > 50) go(index + ((dx < 0) !== (document.documentElement.dir === 'rtl') ? 1 : -1));
             }}
           >
             {slides.map((s, i) => {
@@ -109,7 +114,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
                   className={cls}
                   role="group"
                   aria-roledescription="slide"
-                  aria-label={`${i + 1} of ${slides.length}`}
+                  aria-label={fmt(sc.slideOf, { n: i + 1, total: slides.length })}
                   aria-hidden={i === index ? undefined : true}
                   inert={i !== index}
                 >
@@ -141,14 +146,14 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
                   key={i}
                   type="button"
                   className="lf-dot"
-                  aria-label={`Go to slide ${i + 1}`}
+                  aria-label={fmt(sc.goToSlide, { n: i + 1 })}
                   aria-current={i === index}
                   onClick={() => go(i)}
                 />
               ))}
             </div>
             <div className="lf-btns">
-              <button className="lf-btn" type="button" aria-label="Previous slide" onClick={() => go(index - 1)}>
+              <button className="lf-btn" type="button" aria-label={sc.previous} onClick={() => go(index - 1)}>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M15 5l-7 7 7 7" />
                 </svg>
@@ -156,7 +161,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
               <button
                 className="lf-btn lf-pause"
                 type="button"
-                aria-label={paused ? 'Play slideshow' : 'Pause slideshow'}
+                aria-label={paused ? sc.play : sc.pause}
                 onClick={() => setPaused((p) => !p)}
               >
                 <svg viewBox="0 0 24 24" aria-hidden="true">
@@ -164,7 +169,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000 }: Props
                   <path className="i-play" d="M8 5l11 7-11 7z" />
                 </svg>
               </button>
-              <button className="lf-btn" type="button" aria-label="Next slide" onClick={() => go(index + 1)}>
+              <button className="lf-btn" type="button" aria-label={sc.next} onClick={() => go(index + 1)}>
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M9 5l7 7-7 7" />
                 </svg>

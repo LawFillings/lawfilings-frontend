@@ -10,14 +10,15 @@ interface Props {
 export function HowItWorks({ onStartFiling }: Props) {
   const { t } = useLanguage();
   const hw = t.landing.howItWorks;
+  const art = howArt(t.landing.slideshow.art);
   // Intro slide (eyebrow + title), then one slide per step.
   const slides = [
-    { step: hw.eyebrow, title: hw.title, art: howArt[0] },
+    { step: hw.eyebrow, title: hw.title, art: art[0] },
     ...hw.steps.map((s, i) => ({
       step: `${i + 1} / ${hw.steps.length}`,
       title: s.title,
       body: s.body,
-      art: howArt[i + 1],
+      art: art[i + 1],
     })),
   ];
 

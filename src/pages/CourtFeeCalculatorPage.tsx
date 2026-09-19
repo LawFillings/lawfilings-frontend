@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useLanguage } from '../lib/language';
+import { fmt } from '../lib/format';
 import { courtFeeSchedules, calculateCourtFee, type CourtFeeResult } from '../lib/courtFee';
 import './CourtFeeCalculatorPage.css';
 
@@ -11,8 +12,18 @@ function formatINR(n: number) {
   return '₹' + n.toLocaleString('en-IN', { maximumFractionDigits: 2 });
 }
 
+function formatDate(iso: string, lang: string) {
+  const opts: Intl.DateTimeFormatOptions = { year: 'numeric', month: 'long', day: 'numeric' };
+  try {
+    return new Date(iso).toLocaleDateString(`${lang}-IN`, opts);
+  } catch {
+    return new Date(iso).toLocaleDateString('en-IN', opts);
+  }
+}
+
 export function CourtFeeCalculatorPage({ onBack }: Props) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
+  const c = t.courtFeePage;
   const [scheduleId, setScheduleId] = useState(courtFeeSchedules[0].id);
   const [suitValue, setSuitValue] = useState('');
 
@@ -28,17 +39,16 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
       </button>
 
       <header className="cfc-hero">
-        <p className="cfc-eyebrow">Ad valorem court fee</p>
-        <h1 className="cfc-title">Court Fee Calculator</h1>
+        <p className="cfc-eyebrow">{c.eyebrow}</p>
+        <h1 className="cfc-title">{c.title}</h1>
         <p className="cfc-sub">
-          Estimates the ad valorem court fee payable on a civil suit's value, state by state — covering{' '}
-          {courtFeeSchedules.length} schedules across India's states and union territories.
+          {fmt(c.sub, { count: courtFeeSchedules.length })}
         </p>
       </header>
 
       <div className="cfc-form">
         <label className="field-label" htmlFor="cfc-state">
-          State
+          {c.stateLabel}
         </label>
         <select id="cfc-state" className="cfc-select" value={scheduleId} onChange={(e) => setScheduleId(e.target.value)}>
           {courtFeeSchedules.map((s) => (
@@ -49,7 +59,7 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
         </select>
 
         <label className="field-label" htmlFor="cfc-value" style={{ marginTop: 'var(--space-4)' }}>
-          Value of the suit
+          {c.valueLabel}
         </label>
         <input
           id="cfc-value"
@@ -63,24 +73,23 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
         {hasValue && result && (
           <div className="cfc-result">
             <div className="cfc-result-row">
-              <span className="cfc-result-label">Court fee payable</span>
+              <span className="cfc-result-label">{c.feePayable}</span>
               <span className="cfc-result-value">{formatINR(result.fee)}</span>
             </div>
             {result.capped && (
               <p className="cfc-cap-note">
-                Capped — {schedule.stateLabel}'s Act limits the maximum ad valorem fee to {formatINR(schedule.cap!)},
-                regardless of suit value.
+                {fmt(c.capNote, { state: schedule.stateLabel, cap: formatINR(schedule.cap!) })}
               </p>
             )}
             <p className="cfc-provision">
-              Under {schedule.governingLaw}. {schedule.sourceNote}
+              {fmt(c.under, { law: schedule.governingLaw })} {schedule.sourceNote}
               <br />
-              Last checked {new Date(schedule.lastVerified).toLocaleDateString('en-IN', { year: 'numeric', month: 'long', day: 'numeric' })}.
+              {fmt(c.lastChecked, { date: formatDate(schedule.lastVerified, language) })}
             </p>
           </div>
         )}
 
-        {hasValue && !result && <p className="step-help">Enter a suit value greater than zero.</p>}
+        {hasValue && !result && <p className="step-help">{c.invalidValue}</p>}
       </div>
     </div>
   );

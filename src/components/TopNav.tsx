@@ -82,10 +82,10 @@ export function TopNav({
           </button>
           <div className="top-nav-dropdown-menu">
             <button type="button" className="top-nav-dropdown-item" onClick={onOpenCauseListBasic}>
-              {t.nav.causeList} (Basic)
+              {t.nav.causeList} ({t.nav.planBasic})
             </button>
             <button type="button" className="top-nav-dropdown-item" onClick={onOpenCauseListPro}>
-              {t.nav.causeList} (Pro)
+              {t.nav.causeList} ({t.nav.planPro})
             </button>
           </div>
         </div>

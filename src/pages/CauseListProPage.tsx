@@ -1,10 +1,22 @@
 import { useMemo, useRef, useState } from 'react';
 import { useAuth } from '../lib/auth';
+import { useLanguage } from '../lib/language';
+import { fmt } from '../lib/format';
 import { fetchCauseList, type CauseListEntry } from '../lib/causeListClient';
 import { causeListCourts, type CauseListCourt } from '../data/causeListCourts';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import './CauseListPage.css';
+
+const CATEGORY_KEYS = {
+  'Supreme Court': 'supremeCourt',
+  'High Court': 'highCourt',
+  'District Court': 'districtCourt',
+  DRT: 'drt',
+  DRAT: 'drat',
+  NCLT: 'nclt',
+  NCLAT: 'nclat',
+} as const;
 
 interface Props {
   onBack: () => void;
@@ -27,6 +39,10 @@ function todayIso(): string {
  *  no-extraction alternative is CauseListBasicPage (a plain directory of each court's own page). */
 export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
   const { user, token } = useAuth();
+  const { t } = useLanguage();
+  const c = t.causeListPage;
+  const p = c.pro;
+  const catLabel = (cat: CauseListCourt['category']) => c.categories[CATEGORY_KEYS[cat]];
 
   const [courtId, setCourtId] = useState(causeListCourts[0]?.id ?? '');
   const [date, setDate] = useState(todayIso());
@@ -83,7 +99,7 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
         setError(err.message);
         setStatus('error');
       } else {
-        setError(err instanceof Error ? err.message : "Couldn't process that — please try again.");
+        setError(err instanceof Error ? err.message : p.genericError);
         setStatus('error');
       }
     }
@@ -110,23 +126,20 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
   return (
     <div className="cl-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        Back
+        {t.common.back}
       </button>
 
       <header className="cl-hero">
-        <p className="cl-eyebrow">Daily cause list — Pro</p>
-        <h1 className="cl-title">Find your matters on today's cause list</h1>
-        <p className="cl-sub">
-          Pick a court and date. For most courts you'll download the list yourself (the source sites gate this
-          behind a captcha) and upload it here — we'll read it and pull out every matter, with yours highlighted.
-        </p>
+        <p className="cl-eyebrow">{p.eyebrow}</p>
+        <h1 className="cl-title">{p.title}</h1>
+        <p className="cl-sub">{p.sub}</p>
       </header>
 
       {!user && (
         <div className="cl-login-gate">
-          <p>Log in to use the cause-list lookup.</p>
+          <p>{p.loginPrompt}</p>
           <button type="button" className="para-btn" onClick={onOpenLogin}>
-            Log in
+            {t.nav.logIn}
           </button>
         </div>
       )}
@@ -134,7 +147,7 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
       {user && (
         <div className="cl-form">
           <label className="field-label" htmlFor="cl-court">
-            Court / Bench
+            {p.courtLabel}
           </label>
           <select
             id="cl-court"
@@ -149,7 +162,7 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
             }}
           >
             {Array.from(grouped.entries()).map(([category, courts]) => (
-              <optgroup key={category} label={category}>
+              <optgroup key={category} label={catLabel(category)}>
                 {courts.map((c) => (
                   <option key={c.id} value={c.id}>
                     {c.name}
@@ -160,24 +173,23 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
           </select>
 
           <label className="field-label" htmlFor="cl-date" style={{ marginTop: 'var(--space-4)' }}>
-            Date
+            {p.dateLabel}
           </label>
           <input id="cl-date" type="date" className="cl-select" value={date} onChange={(e) => setDate(e.target.value)} />
 
           <label className="field-label" htmlFor="cl-keyword" style={{ marginTop: 'var(--space-4)' }}>
-            Your name (as it appears on cause lists)
+            {p.nameLabel}
           </label>
           <input
             id="cl-keyword"
             type="text"
             className="cl-select"
-            placeholder="e.g. A. Sharma"
+            placeholder={p.namePlaceholder}
             value={keyword}
             onChange={(e) => updateKeyword(e.target.value)}
           />
           <p className="step-help" style={{ margin: 'var(--space-2) 0 0' }}>
-            Matters are matched by this name appearing in the cause list's own advocate column — check spelling
-            variants if you don't see an expected matter.
+            {p.nameHelp}
           </p>
 
           {court?.tier === 'auto' && (
@@ -188,7 +200,7 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
                 onClick={() => runExtraction({ source: 'fetch' })}
                 disabled={status === 'loading'}
               >
-                {status === 'loading' ? 'Fetching…' : `Fetch ${court.name}'s list for this date`}
+                {status === 'loading' ? p.fetching : fmt(p.fetchButton, { court: court.name })}
               </button>
             </div>
           )}
@@ -212,7 +224,7 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
                 onClick={() => runExtraction({ source: 'fetch', scope: scope.trim() })}
                 disabled={status === 'loading' || !scope.trim()}
               >
-                {status === 'loading' ? 'Fetching…' : `Fetch ${court.name}'s list for this date`}
+                {status === 'loading' ? p.fetching : fmt(p.fetchButton, { court: court.name })}
               </button>
             </div>
           )}
@@ -220,10 +232,10 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
           {court?.tier === 'manual' && (
             <div style={{ marginTop: 'var(--space-5)' }}>
               <a href={court.portalUrl} target="_blank" rel="noopener noreferrer" className="cl-portal-link">
-                Open {court.name}'s cause list page ↗
+                {fmt(p.openPortal, { court: court.name })}
               </a>
               <p className="step-help" style={{ margin: 'var(--space-2) 0 var(--space-3)' }}>
-                Download the list for {date} from there (you may need to solve a captcha), then upload it below.
+                {fmt(p.manualHelp, { date })}
               </p>
               <input
                 ref={fileInputRef}
@@ -242,7 +254,7 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
                 onClick={() => fileInputRef.current?.click()}
                 disabled={status === 'loading'}
               >
-                {status === 'loading' ? 'Reading…' : 'Upload cause list (PDF, JPG, or PNG)'}
+                {status === 'loading' ? p.reading : p.uploadButton}
               </button>
             </div>
           )}
@@ -252,12 +264,8 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
             <div style={{ marginTop: 'var(--space-3)' }}>
               <PaywallBlock
                 onChoosePlan={onOpenPricing}
-                label={paywall === 'usage_cap_reached' ? 'Pro usage limit reached for this month' : 'Cause-list lookup needs the Pro plan'}
-                body={
-                  paywall === 'usage_cap_reached'
-                    ? 'Your Pro plan’s fair-use limit for cause-list + translation resets at the start of next month.'
-                    : 'Cause-list lookups are a Pro-plan feature, alongside document translation — subscribe to Pro to use it.'
-                }
+                label={paywall === 'usage_cap_reached' ? p.paywallUsageLabel : p.paywallProLabel}
+                body={paywall === 'usage_cap_reached' ? p.paywallUsageBody : p.paywallProBody}
               />
             </div>
           )}
@@ -266,20 +274,19 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
             <div className="cl-result">
               <h2 className="cl-result-heading">
                 {entries.length === 0
-                  ? 'No matters could be read from that document.'
-                  : `${entries.length} matter${entries.length === 1 ? '' : 's'} found${
-                      keyword.trim() ? `, ${matchedEntries.length} matching "${keyword.trim()}"` : ''
-                    }`}
+                  ? p.noMatters
+                  : fmt(entries.length === 1 ? p.mattersFoundOne : p.mattersFound, { n: entries.length }) +
+                    (keyword.trim() ? fmt(p.matchingSuffix, { m: matchedEntries.length, kw: keyword.trim() }) : '')}
               </h2>
 
               {entries.length > 0 && (
                 <table className="cl-table">
                   <thead>
                     <tr>
-                      <th>Item No.</th>
-                      <th>Case No.</th>
-                      <th>Parties</th>
-                      <th>Advocate(s)</th>
+                      <th>{p.colItemNo}</th>
+                      <th>{p.colCaseNo}</th>
+                      <th>{p.colParties}</th>
+                      <th>{p.colAdvocates}</th>
                     </tr>
                   </thead>
                   <tbody>

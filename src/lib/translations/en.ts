@@ -1,4 +1,65 @@
 export const en = {
+  causeListPage: {
+    categories: {
+      supremeCourt: "Supreme Court",
+      highCourt: "High Court",
+      districtCourt: "District Court",
+      drt: "DRT",
+      drat: "DRAT",
+      nclt: "NCLT",
+      nclat: "NCLAT"
+    },
+    basic: {
+      eyebrow: "Daily cause list — Basic",
+      title: "Browse cause lists by court",
+      sub: "Links to every court's own official cause-list page, grouped by court. Open the one you need and search it yourself. Want it fetched, searched by your name, and tabulated automatically instead? That's Cause List (Pro).",
+      loginPrompt: "Log in to use the cause-list directory.",
+      paywallLabel: "Want this done automatically?",
+      paywallBody: "Upgrade to Pro to have LawFilings fetch a court's list, search it for your name, and tabulate it — instead of browsing and searching it yourself below."
+    },
+    pro: {
+      eyebrow: "Daily cause list — Pro",
+      title: "Find your matters on today's cause list",
+      sub: "Pick a court and date. For most courts you'll download the list yourself (the source sites gate this behind a captcha) and upload it here — we'll read it and pull out every matter, with yours highlighted.",
+      loginPrompt: "Log in to use the cause-list lookup.",
+      courtLabel: "Court / Bench",
+      dateLabel: "Date",
+      nameLabel: "Your name (as it appears on cause lists)",
+      namePlaceholder: "e.g. A. Sharma",
+      nameHelp: "Matters are matched by this name appearing in the cause list's own advocate column — check spelling variants if you don't see an expected matter.",
+      fetching: "Fetching…",
+      fetchButton: "Fetch {court}'s list for this date",
+      openPortal: "Open {court}'s cause list page ↗",
+      manualHelp: "Download the list for {date} from there (you may need to solve a captcha), then upload it below.",
+      reading: "Reading…",
+      uploadButton: "Upload cause list (PDF, JPG, or PNG)",
+      genericError: "Couldn't process that — please try again.",
+      paywallUsageLabel: "Pro usage limit reached for this month",
+      paywallProLabel: "Cause-list lookup needs the Pro plan",
+      paywallUsageBody: "Your Pro plan’s fair-use limit for cause-list + translation resets at the start of next month.",
+      paywallProBody: "Cause-list lookups are a Pro-plan feature, alongside document translation — subscribe to Pro to use it.",
+      noMatters: "No matters could be read from that document.",
+      mattersFoundOne: "{n} matter found",
+      mattersFound: "{n} matters found",
+      matchingSuffix: ", {m} matching “{kw}”",
+      colItemNo: "Item No.",
+      colCaseNo: "Case No.",
+      colParties: "Parties",
+      colAdvocates: "Advocate(s)"
+    }
+  },
+  courtFeePage: {
+    eyebrow: "Ad valorem court fee",
+    title: "Court Fee Calculator",
+    sub: "Estimates the ad valorem court fee payable on a civil suit's value, state by state — covering {count} schedules across India's states and union territories.",
+    stateLabel: "State",
+    valueLabel: "Value of the suit",
+    feePayable: "Court fee payable",
+    capNote: "Capped — {state}'s Act limits the maximum ad valorem fee to {cap}, regardless of suit value.",
+    under: "Under {law}.",
+    lastChecked: "Last checked {date}.",
+    invalidValue: "Enter a suit value greater than zero."
+  },
   common: {
     back: '← Back',
     backToAllFilings: '← Back to all filings',
@@ -13,6 +74,8 @@ export const en = {
     unsupported: 'Dictation isn’t supported in this browser — try Chrome or Edge',
   },
   nav: {
+    planBasic: "Basic",
+    planPro: "Pro",
     home: 'Home',
     actsAndRules: 'Constitution & Key Statutes',
     caseLaw: 'Case Law',
@@ -38,6 +101,34 @@ export const en = {
     accountMenu: 'Account menu',
   },
   landing: {
+    slideshow: {
+      previous: "Previous slide",
+      next: "Next slide",
+      pause: "Pause slideshow",
+      play: "Play slideshow",
+      goToSlide: "Go to slide {n}",
+      slideOf: "{n} of {total}",
+      art: {
+        deadline: "Deadline",
+        jurisdiction: "Jurisdiction",
+        eligibility: "Eligibility",
+        draft: "Draft",
+        states28: "28 states",
+        unionTerritories8: "8 union territories",
+        plainLanguage: "Plain language",
+        legalPhrasing: "Legal phrasing",
+        sameFacts: "Same facts captured",
+        fir: "FIR",
+        notice: "Notice",
+        order: "Order",
+        complaint: "Complaint",
+        answer: "Answer",
+        upload: "Upload",
+        check: "Check",
+        today: "Today",
+        gapFlagged: "Gap flagged"
+      }
+    },
     logo: 'LawFilings',
     hero: {
       eyebrow: 'Legal drafting, filing and law referencing tailor made for you',
@@ -159,25 +250,25 @@ export const en = {
       ariaLabel: 'Why this platform',
       slides: [
         {
-          title: 'The Constitution and 300+ Acts, curated for litigation',
-          body: 'The Constitution of India, plus 300+ Central and State Acts covering every state and union territory — sourced directly from primary legislative text, not summarised.',
+          title: "The Constitution and 300+ Acts, curated for litigation",
+          body: "The Constitution of India, plus 300+ Central and State Acts covering every state and union territory — sourced directly from primary legislative text, not summarised."
         },
         {
-          title: 'Wizards built on real procedure',
-          body: 'Deadline calculators, jurisdiction checks, and eligibility gates run before you draft, not after you’ve wasted time on the wrong form.',
+          title: "Wizards built on real procedure",
+          body: "Deadline calculators, jurisdiction checks, and eligibility gates run before you draft, not after you’ve wasted time on the wrong form."
         },
         {
-          title: 'Full coverage — District courts of all States/UTs',
-          body: 'Filings of civil and criminal cases in District Courts of all 28 states and 8 union territories. Cause-list lookups also treat all courts distinct, never mixed together.',
+          title: "Full coverage — District courts of all States/UTs",
+          body: "Filings of civil and criminal cases in District Courts of all 28 states and 8 union territories. Cause-list lookups also treat all courts distinct, never mixed together."
         },
         {
-          title: 'Track your cases yourself',
-          body: 'Save a case and add status updates over time, entered by you — no dependency on an external court portal.',
+          title: "Track your cases yourself",
+          body: "Save a case and add status updates over time, entered by you — no dependency on an external court portal."
         },
         {
-          title: 'Real, assembled drafts',
-          body: 'Clause-templated documents, downloadable as a PDF — no placeholder brackets left for you to fill in by hand.',
-        },
+          title: "Real, assembled drafts",
+          body: "Clause-templated documents, downloadable as a PDF — no placeholder brackets left for you to fill in by hand."
+        }
       ],
     },
     howItWorks: {

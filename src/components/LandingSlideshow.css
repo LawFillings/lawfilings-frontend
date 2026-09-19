@@ -16,7 +16,7 @@
   position: relative;
   color: var(--lf-ivory);
   font-family: var(--lf-font-body);
-  text-align: left;
+  text-align: start;
 }
 .lf-show *,
 .lf-show *::before,
@@ -163,6 +163,7 @@
 }
 
 .lf-art svg {
+  direction: ltr; /* the drawings use physical coordinates; only the label text itself is RTL */
   display: block;
   width: 100%;
   max-width: 400px;
@@ -377,4 +378,16 @@
   .lf-controls {
     margin-top: 18px;
   }
+}
+
+/* Right-to-left (Urdu): mirror the direction-bearing bits. Prev/next order flips on its own via flex;
+   their chevrons and the gold rule's growth origin need mirroring by hand. */
+:root[dir='rtl'] .lf-btn:not(.lf-pause) svg {
+  transform: scaleX(-1);
+}
+:root[dir='rtl'] .lf-rule {
+  transform-origin: right;
+}
+:root[dir='rtl'] .lf-bar i {
+  transform-origin: right;
 }

@@ -13,10 +13,19 @@ function coverageDots(): string {
   return out;
 }
 
+export interface ArtLabels {
+  deadline: string; jurisdiction: string; eligibility: string; draft: string; states28: string;
+  unionTerritories8: string; plainLanguage: string; legalPhrasing: string; sameFacts: string; fir: string;
+  notice: string; order: string; complaint: string; answer: string; upload: string; check: string;
+  today: string; gapFlagged: string;
+}
+
+const e = (s: string) => s.replace(/&/g, '&amp;').replace(/</g, '&lt;');
+
 const svg = (inner: string) => `<svg viewBox="0 0 360 300" focusable="false">${inner}</svg>`;
 
 // ---- Slideshow 1: what the platform offers ----
-export const offersArt: string[] = [
+export const offersArt = (a: ArtLabels): string[] => [
   svg(`
     <path class="gs a a-draw" d="M20 262H340" pathLength="1" style="--d:.2s;--t:1s"/>
     <g class="a a-rise" style="--d:.45s"><rect class="g" x="36" y="66" width="38" height="196" rx="2"/><rect class="nv" x="43" y="88" width="24" height="3"/><rect class="nv" x="43" y="96" width="24" height="3"/></g>
@@ -32,23 +41,23 @@ export const offersArt: string[] = [
     <g class="a a-rise" style="--d:1.23s"><rect class="bk-b" x="314" y="166" width="20" height="96" rx="2"/><rect class="g" x="317" y="178" width="14" height="3"/></g>
   `),
   svg(`
-    <g class="a a-inl" style="--d:.3s"><rect class="pn" x="30" y="20" width="300" height="52" rx="6"/><text x="54" y="52">Deadline</text><circle class="ivs" cx="304" cy="46" r="13"/></g>
+    <g class="a a-inl" style="--d:.3s"><rect class="pn" x="30" y="20" width="300" height="52" rx="6"/><text x="54" y="52">${e(a.deadline)}</text><circle class="ivs" cx="304" cy="46" r="13"/></g>
     <path class="gs a a-draw" d="M297 46l5 5 9-11" pathLength="1" style="--d:.7s;--t:.4s"/>
     <path class="ln a a-draw" d="M60 72V88" pathLength="1" style="--d:.85s;--t:.3s"/>
-    <g class="a a-inl" style="--d:.9s"><rect class="pn" x="30" y="88" width="300" height="52" rx="6"/><text x="54" y="120">Jurisdiction</text><circle class="ivs" cx="304" cy="114" r="13"/></g>
+    <g class="a a-inl" style="--d:.9s"><rect class="pn" x="30" y="88" width="300" height="52" rx="6"/><text x="54" y="120">${e(a.jurisdiction)}</text><circle class="ivs" cx="304" cy="114" r="13"/></g>
     <path class="gs a a-draw" d="M297 114l5 5 9-11" pathLength="1" style="--d:1.3s;--t:.4s"/>
     <path class="ln a a-draw" d="M60 140V156" pathLength="1" style="--d:1.45s;--t:.3s"/>
-    <g class="a a-inl" style="--d:1.5s"><rect class="pn" x="30" y="156" width="300" height="52" rx="6"/><text x="54" y="188">Eligibility</text><circle class="ivs" cx="304" cy="182" r="13"/></g>
+    <g class="a a-inl" style="--d:1.5s"><rect class="pn" x="30" y="156" width="300" height="52" rx="6"/><text x="54" y="188">${e(a.eligibility)}</text><circle class="ivs" cx="304" cy="182" r="13"/></g>
     <path class="gs a a-draw" d="M297 182l5 5 9-11" pathLength="1" style="--d:1.9s;--t:.4s"/>
     <path class="ln a a-draw" d="M60 208V232" pathLength="1" style="--d:2.05s;--t:.3s"/>
-    <g class="a a-pop" style="--d:2.2s"><rect class="g" x="30" y="232" width="300" height="52" rx="6"/><text x="54" y="264" style="fill:#1C2B33;font-weight:600;font-size:17px">Draft</text>
+    <g class="a a-pop" style="--d:2.2s"><rect class="g" x="30" y="232" width="300" height="52" rx="6"/><text x="54" y="264" style="fill:#1C2B33;font-weight:600;font-size:17px">${e(a.draft)}</text>
       <path d="M296 258h20M308 250l8 8-8 8" fill="none" stroke="#1C2B33" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></g>
   `),
   svg(`
     <g>${coverageDots()}</g>
     <g class="a a-fade" style="--d:1.9s">
-      <circle class="g" cx="44" cy="224" r="9"/><text x="64" y="229">28 states</text>
-      <circle class="ut" cx="44" cy="260" r="9"/><text x="64" y="265">8 union territories</text>
+      <circle class="g" cx="44" cy="224" r="9"/><text x="64" y="229">${e(a.states28)}</text>
+      <circle class="ut" cx="44" cy="260" r="9"/><text x="64" y="265">${e(a.unionTerritories8)}</text>
     </g>
   `),
   svg(`
@@ -84,32 +93,32 @@ export const offersArt: string[] = [
 ];
 
 // ---- Slideshow 2: how it works (intro + 4 steps) ----
-export const howArt: string[] = [
+export const howArt = (a: ArtLabels): string[] => [
   svg(`
     <path class="ln a a-draw" d="M52 140H308" pathLength="1" style="--d:.2s;--t:1.5s"/>
     <g class="a a-pop" style="--d:.5s"><circle class="nd" cx="52" cy="140" r="17"/><text x="52" y="140" text-anchor="middle" dominant-baseline="central" style="font-weight:600">1</text></g>
     <g class="a a-pop" style="--d:.9s"><circle class="nd" cx="137" cy="140" r="17"/><text x="137" y="140" text-anchor="middle" dominant-baseline="central" style="font-weight:600">2</text></g>
     <g class="a a-pop" style="--d:1.3s"><circle class="nd" cx="223" cy="140" r="17"/><text x="223" y="140" text-anchor="middle" dominant-baseline="central" style="font-weight:600">3</text></g>
     <g class="a a-pop" style="--d:1.7s"><circle class="g" cx="308" cy="140" r="17"/><text x="308" y="140" text-anchor="middle" dominant-baseline="central" style="font-weight:700;fill:#1C2B33">4</text></g>
-    <text class="sm a a-fade" x="52" y="184" text-anchor="middle" style="--d:.65s">Answer</text>
-    <text class="sm a a-fade" x="137" y="184" text-anchor="middle" style="--d:1.05s">Upload</text>
-    <text class="sm a a-fade" x="223" y="184" text-anchor="middle" style="--d:1.45s">Check</text>
-    <text class="sm a a-fade" x="308" y="184" text-anchor="middle" style="--d:1.85s">Draft</text>
+    <text class="sm a a-fade" x="52" y="184" text-anchor="middle" style="--d:.65s">${e(a.answer)}</text>
+    <text class="sm a a-fade" x="137" y="184" text-anchor="middle" style="--d:1.05s">${e(a.upload)}</text>
+    <text class="sm a a-fade" x="223" y="184" text-anchor="middle" style="--d:1.45s">${e(a.check)}</text>
+    <text class="sm a a-fade" x="308" y="184" text-anchor="middle" style="--d:1.85s">${e(a.draft)}</text>
   `),
   svg(`
-    <g class="a a-inl" style="--d:.3s"><rect class="pn" x="24" y="20" width="212" height="76" rx="8"/><text class="sm" x="42" y="46">Plain language</text><rect class="mu2" x="42" y="58" width="150" height="6" rx="3"/><rect class="mu" x="42" y="72" width="104" height="6" rx="3"/></g>
-    <g class="a a-inr" style="--d:.6s"><rect class="pn" x="124" y="108" width="212" height="76" rx="8"/><text class="sm" x="142" y="134">Legal phrasing</text><rect class="mu2" x="142" y="146" width="176" height="6" rx="3"/><rect class="mu" x="142" y="160" width="150" height="6" rx="3"/></g>
+    <g class="a a-inl" style="--d:.3s"><rect class="pn" x="24" y="20" width="212" height="76" rx="8"/><text class="sm" x="42" y="46">${e(a.plainLanguage)}</text><rect class="mu2" x="42" y="58" width="150" height="6" rx="3"/><rect class="mu" x="42" y="72" width="104" height="6" rx="3"/></g>
+    <g class="a a-inr" style="--d:.6s"><rect class="pn" x="124" y="108" width="212" height="76" rx="8"/><text class="sm" x="142" y="134">${e(a.legalPhrasing)}</text><rect class="mu2" x="142" y="146" width="176" height="6" rx="3"/><rect class="mu" x="142" y="160" width="150" height="6" rx="3"/></g>
     <path class="ln a a-draw" d="M52 96V204" pathLength="1" style="--d:1s;--t:.6s"/>
     <path class="ln a a-draw" d="M304 184V204" pathLength="1" style="--d:1.2s;--t:.3s"/>
     <path class="ln a a-draw" d="M52 204H304" pathLength="1" style="--d:1.5s;--t:.5s"/>
     <path class="gs a a-draw" d="M178 204V230" pathLength="1" style="--d:2s;--t:.3s"/>
-    <g class="a a-pop" style="--d:2.2s"><rect class="pg" x="88" y="230" width="180" height="54" rx="8"/><text x="108" y="262" style="font-size:14px">Same facts captured</text><path class="gs" d="M246 258l5 5 9-11"/></g>
+    <g class="a a-pop" style="--d:2.2s"><rect class="pg" x="88" y="230" width="180" height="54" rx="8"/><text x="108" y="262" style="font-size:14px">${e(a.sameFacts)}</text><path class="gs" d="M246 258l5 5 9-11"/></g>
   `),
   svg(`
-    <g class="a a-pop" style="--d:.2s"><rect class="pn" x="24" y="14" width="52" height="30" rx="15"/><text x="50" y="34" text-anchor="middle" style="font-size:14px">FIR</text></g>
-    <g class="a a-pop" style="--d:.3s"><rect class="pn" x="84" y="14" width="76" height="30" rx="15"/><text x="122" y="34" text-anchor="middle" style="font-size:14px">Notice</text></g>
-    <g class="a a-pop" style="--d:.4s"><rect class="pn" x="168" y="14" width="68" height="30" rx="15"/><text x="202" y="34" text-anchor="middle" style="font-size:14px">Order</text></g>
-    <g class="a a-pop" style="--d:.5s"><rect class="pn" x="244" y="14" width="92" height="30" rx="15"/><text x="290" y="34" text-anchor="middle" style="font-size:14px">Complaint</text></g>
+    <g class="a a-pop" style="--d:.2s"><rect class="pn" x="24" y="14" width="52" height="30" rx="15"/><text x="50" y="34" text-anchor="middle" style="font-size:14px">${e(a.fir)}</text></g>
+    <g class="a a-pop" style="--d:.3s"><rect class="pn" x="84" y="14" width="76" height="30" rx="15"/><text x="122" y="34" text-anchor="middle" style="font-size:14px">${e(a.notice)}</text></g>
+    <g class="a a-pop" style="--d:.4s"><rect class="pn" x="168" y="14" width="68" height="30" rx="15"/><text x="202" y="34" text-anchor="middle" style="font-size:14px">${e(a.order)}</text></g>
+    <g class="a a-pop" style="--d:.5s"><rect class="pn" x="244" y="14" width="92" height="30" rx="15"/><text x="290" y="34" text-anchor="middle" style="font-size:14px">${e(a.complaint)}</text></g>
     <path class="gs a a-draw" d="M180 54V92" pathLength="1" style="--d:.9s;--t:.5s"/>
     <path class="gs a a-draw" d="M172 84l8 8 8-8" pathLength="1" style="--d:1.3s;--t:.3s"/>
     <rect class="pn a a-fade" x="40" y="104" width="280" height="180" rx="8" style="--d:1.2s"/>
@@ -128,13 +137,13 @@ export const howArt: string[] = [
   svg(`
     <rect class="tk a a-fade" x="30" y="52" width="300" height="10" rx="5" style="--d:.1s"/>
     <rect class="gf a a-gx" x="30" y="52" width="208" height="10" rx="5" style="--d:.3s;--t:1.5s"/>
-    <g class="a a-fade" style="--d:.5s"><path class="gs" d="M292 36V78" stroke-dasharray="3 4"/><text x="292" y="26" text-anchor="middle" style="fill:#D4AF37;font-size:14px;font-weight:600">Deadline</text></g>
-    <g class="a a-pop" style="--d:1.7s"><circle class="iv" cx="238" cy="57" r="8"/><text class="sm" x="238" y="90" text-anchor="middle">Today</text></g>
-    <g class="a a-inl" style="--d:2s"><rect class="pn" x="30" y="118" width="300" height="44" rx="6"/><text x="50" y="146">Jurisdiction</text><circle class="ivs" cx="306" cy="140" r="12"/></g>
+    <g class="a a-fade" style="--d:.5s"><path class="gs" d="M292 36V78" stroke-dasharray="3 4"/><text x="292" y="26" text-anchor="middle" style="fill:#D4AF37;font-size:14px;font-weight:600">${e(a.deadline)}</text></g>
+    <g class="a a-pop" style="--d:1.7s"><circle class="iv" cx="238" cy="57" r="8"/><text class="sm" x="238" y="90" text-anchor="middle">${e(a.today)}</text></g>
+    <g class="a a-inl" style="--d:2s"><rect class="pn" x="30" y="118" width="300" height="44" rx="6"/><text x="50" y="146">${e(a.jurisdiction)}</text><circle class="ivs" cx="306" cy="140" r="12"/></g>
     <path class="gs a a-draw" d="M300 140l4 4 8-9" pathLength="1" style="--d:2.35s;--t:.35s"/>
-    <g class="a a-inl" style="--d:2.5s"><rect class="pn" x="30" y="170" width="300" height="44" rx="6"/><text x="50" y="198">Eligibility</text><circle class="ivs" cx="306" cy="192" r="12"/></g>
+    <g class="a a-inl" style="--d:2.5s"><rect class="pn" x="30" y="170" width="300" height="44" rx="6"/><text x="50" y="198">${e(a.eligibility)}</text><circle class="ivs" cx="306" cy="192" r="12"/></g>
     <path class="gs a a-draw" d="M300 192l4 4 8-9" pathLength="1" style="--d:2.85s;--t:.35s"/>
-    <g class="a a-inl" style="--d:3s"><rect class="gap" x="30" y="222" width="300" height="44" rx="6"/><text x="50" y="250" style="fill:#D4AF37">Gap flagged</text><circle class="g" cx="306" cy="244" r="12"/><text x="306" y="244" text-anchor="middle" dominant-baseline="central" style="fill:#1C2B33;font-weight:700">!</text></g>
+    <g class="a a-inl" style="--d:3s"><rect class="gap" x="30" y="222" width="300" height="44" rx="6"/><text x="50" y="250" style="fill:#D4AF37">${e(a.gapFlagged)}</text><circle class="g" cx="306" cy="244" r="12"/><text x="306" y="244" text-anchor="middle" dominant-baseline="central" style="fill:#1C2B33;font-weight:700">!</text></g>
   `),
   svg(`
     <rect class="iv a a-fade" x="30" y="14" width="200" height="272" rx="4" style="--d:.15s"/>
