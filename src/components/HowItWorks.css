@@ -29,67 +29,8 @@
   margin-right: auto;
 }
 
-.howitworks-flow {
-  display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  align-items: start;
-  gap: var(--space-5);
-  margin: var(--space-8) 0 var(--space-6);
-}
-
-.howitworks-step {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  text-align: center;
-}
-
-.howitworks-icon {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  width: 68px;
-  height: 68px;
-  border-radius: 50%;
-  background: var(--accent);
-  color: var(--text-on-accent);
-  box-shadow: 0 4px 14px rgba(184, 117, 46, 0.35);
-  margin-bottom: var(--space-4);
-}
-
-.howitworks-step-title {
-  font-family: var(--font-display);
-  font-size: 18px;
-  font-weight: 600;
-  color: var(--ink);
-  margin: 0 0 var(--space-2);
-}
-
-.howitworks-step-body {
-  font-size: 14px;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  margin: 0;
-}
-
 .landing-howitworks-cta {
   display: flex;
   justify-content: center;
-}
-
-@media (max-width: 900px) {
-  .howitworks-flow {
-    grid-template-columns: repeat(2, 1fr);
-  }
-}
-
-@media (max-width: 480px) {
-  .howitworks-flow {
-    grid-template-columns: 1fr;
-    justify-items: center;
-  }
-
-  .howitworks-step {
-    max-width: 320px;
-  }
+  margin-top: var(--space-6);
 }

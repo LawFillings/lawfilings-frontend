@@ -159,8 +159,8 @@ export const en = {
       ariaLabel: 'Why this platform',
       slides: [
         {
-          title: 'The Constitution and 200+ Acts, always free',
-          body: 'The Constitution of India, plus 200+ Central and State Acts covering every state and union territory — sourced directly from primary legislative text, not summarised.',
+          title: 'The Constitution and 300+ Acts, curated for litigation',
+          body: 'The Constitution of India, plus 300+ Central and State Acts covering every state and union territory — sourced directly from primary legislative text, not summarised.',
         },
         {
           title: 'Wizards built on real procedure',
@@ -168,14 +168,14 @@ export const en = {
         },
         {
           title: 'Full coverage — District courts of all States/UTs',
-          body: 'Money recovery and summary suits now span all 28 states and 8 union territories. Cause-list lookups also treat all courts distinct, never mixed together.',
+          body: 'Filings of civil and criminal cases in District Courts of all 28 states and 8 union territories. Cause-list lookups also treat all courts distinct, never mixed together.',
         },
         {
-          title: 'Track your case yourself',
+          title: 'Track your cases yourself',
           body: 'Save a case and add status updates over time, entered by you — no dependency on an external court portal.',
         },
         {
-          title: 'A real, assembled draft',
+          title: 'Real, assembled drafts',
           body: 'Clause-templated documents, downloadable as a PDF — no placeholder brackets left for you to fill in by hand.',
         },
       ],

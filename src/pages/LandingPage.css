@@ -47,11 +47,37 @@
   pointer-events: none;
 }
 
+/* Slideshow fixed on the left, hero text on the right; stacks (text first) on narrow screens. */
+.landing-hero-grid {
+  position: relative;
+  z-index: 1;
+  max-width: 1280px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  gap: var(--space-7, 48px);
+  align-items: center;
+}
+
+.landing-hero-slideshow {
+  min-width: 0;
+}
+
 .landing-hero-inner {
   position: relative;
   z-index: 1;
-  max-width: 720px;
-  margin: 0 auto;
+  max-width: 620px;
+  min-width: 0;
+}
+
+@media (max-width: 980px) {
+  .landing-hero-grid {
+    grid-template-columns: 1fr;
+  }
+  .landing-hero-inner {
+    order: -1;
+    max-width: 720px;
+  }
 }
 
 .landing-hero-eyebrow {

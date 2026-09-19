@@ -1,46 +1,14 @@
-import { useEffect, useState } from 'react';
 import { useLanguage } from '../lib/language';
-import './UspSlider.css';
+import { LandingSlideshow } from './LandingSlideshow';
+import { offersArt } from './slideshowArt';
 
-const INTERVAL_MS = 5000;
-
+/** Hero slideshow: what the platform offers (copy: t.landing.uspSlider). */
 export function UspSlider() {
   const { t } = useLanguage();
-  const slides = t.landing.uspSlider.slides;
-  const [index, setIndex] = useState(0);
-  const [paused, setPaused] = useState(false);
-
-  useEffect(() => {
-    if (paused) return;
-    const timer = setInterval(() => setIndex((i) => (i + 1) % slides.length), INTERVAL_MS);
-    return () => clearInterval(timer);
-  }, [paused, slides.length]);
-
-  const slide = slides[index];
-
-  return (
-    <section
-      className="usp-slider"
-      aria-label={t.landing.uspSlider.ariaLabel}
-      onMouseEnter={() => setPaused(true)}
-      onMouseLeave={() => setPaused(false)}
-    >
-      <div className="usp-slider-inner">
-        <div className="usp-slide" key={index}>
-          <p className="usp-slide-title">{slide.title}</p>
-          <p className="usp-slide-body">{slide.body}</p>
-        </div>
-        <div className="usp-dots">
-          {slides.map((_, i) => (
-            <button
-              key={i}
-              className={i === index ? 'usp-dot active' : 'usp-dot'}
-              aria-label={`Show slide ${i + 1} of ${slides.length}`}
-              onClick={() => setIndex(i)}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+  // Display order: drafts, wizards, coverage, tracking, statutes. The translation files keep their
+  // original order (statutes first), so the reorder is applied here for every language.
+  const ORDER = [4, 1, 2, 3, 0];
+  const src = t.landing.uspSlider.slides;
+  const slides = ORDER.map((i) => ({ title: src[i].title, body: src[i].body, art: offersArt[i] }));
+  return <LandingSlideshow ariaLabel={t.landing.uspSlider.ariaLabel} slides={slides} />;
 }

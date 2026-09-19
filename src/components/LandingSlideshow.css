@@ -1,0 +1,380 @@
+/* Animated landing slideshows (hero "what we offer" + "how it works"). Fixed brand navy/gold, like
+   the LawFilings mark, so it doesn't shift with the page's accent theme. Layout adapts to the
+   frame's own width (container query), so the same component works beside the hero text and at
+   full section width. */
+.lf-show {
+  --lf-navy: #1c2b33;
+  --lf-panel: #26393f;
+  --lf-panel-hi: #34505a;
+  --lf-gold: #d4af37;
+  --lf-ivory: #f3eee2;
+  --lf-mute: #b8c3c7;
+  --lf-line: rgba(243, 238, 226, 0.28);
+  --lf-font-display: 'Libre Caslon Text', 'Iowan Old Style', 'Palatino Linotype', Georgia, serif;
+  --lf-font-body: 'Hanken Grotesk', system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+  --lf-ease: cubic-bezier(0.2, 0.7, 0.2, 1);
+  position: relative;
+  color: var(--lf-ivory);
+  font-family: var(--lf-font-body);
+  text-align: left;
+}
+.lf-show *,
+.lf-show *::before,
+.lf-show *::after {
+  box-sizing: border-box;
+}
+
+/* Frame: double gold line, echoing the LawFilings badge */
+.lf-frame {
+  position: relative;
+  background: var(--lf-navy);
+  border-radius: 8px;
+  overflow: hidden;
+  container-type: inline-size;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.28);
+}
+.lf-frame::before,
+.lf-frame::after {
+  content: '';
+  position: absolute;
+  pointer-events: none;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 2px;
+  z-index: 2;
+}
+.lf-frame::before {
+  inset: 14px;
+}
+.lf-frame::after {
+  inset: 19px;
+  border-color: rgba(212, 175, 55, 0.2);
+}
+
+/* The LawFilings mark, set behind the slide content */
+.lf-watermark {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  opacity: 0.09;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.lf-inner {
+  position: relative;
+  z-index: 1;
+  padding: 52px 60px 44px;
+}
+
+/* The bottom edge of the inner frame line fills with gold as the slide runs */
+.lf-bar {
+  position: absolute;
+  left: 19px;
+  right: 19px;
+  bottom: 18px;
+  height: 3px;
+  pointer-events: none;
+  z-index: 3;
+}
+.lf-bar i {
+  display: block;
+  height: 100%;
+  background: var(--lf-gold);
+  transform-origin: left;
+  transform: scaleX(0);
+  animation: lf-fill var(--lf-interval, 7000ms) linear both paused;
+}
+.lf-show[data-inview='true']:not([data-paused='true']):not([data-hold='true']) .lf-bar i {
+  animation-play-state: running;
+}
+@keyframes lf-fill {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* Slides stack in one grid cell so the frame keeps the height of the tallest slide */
+.lf-stage {
+  display: grid;
+  touch-action: pan-y;
+}
+.lf-slide {
+  grid-area: 1 / 1;
+  display: grid;
+  grid-template-columns: minmax(0, 1.08fr) minmax(0, 0.92fr);
+  gap: clamp(24px, 5vw, 64px);
+  align-items: center;
+  min-height: 380px;
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.35s ease, visibility 0s linear 0.35s;
+}
+.lf-slide.is-active {
+  opacity: 1;
+  visibility: visible;
+  transition: opacity 0.4s ease 0.12s, visibility 0s;
+}
+
+.lf-step {
+  margin: 0 0 14px;
+  font-size: 0.9375rem;
+  font-weight: 500;
+  color: var(--lf-gold);
+  letter-spacing: 0.01em;
+}
+.lf-title {
+  margin: 0;
+  font-family: var(--lf-font-display);
+  font-weight: 400;
+  font-size: clamp(1.7rem, 1.15rem + 2vw, 2.6rem);
+  line-height: 1.13;
+  text-wrap: balance;
+  color: var(--lf-ivory);
+  letter-spacing: 0;
+}
+.lf-title .w {
+  display: inline-block;
+  overflow: hidden;
+  vertical-align: top;
+  padding-bottom: 0.14em;
+  margin-bottom: -0.14em;
+}
+.lf-title .w > span {
+  display: inline-block;
+}
+.lf-rule {
+  display: block;
+  height: 2px;
+  width: 72px;
+  margin: 22px 0 20px;
+  background: var(--lf-gold);
+  transform-origin: left;
+}
+.lf-body {
+  margin: 0;
+  max-width: 44ch;
+  font-size: 1.0625rem;
+  line-height: 1.65;
+  color: var(--lf-mute);
+}
+
+.lf-art svg {
+  display: block;
+  width: 100%;
+  max-width: 400px;
+  height: auto;
+  margin-inline: auto;
+  overflow: visible;
+}
+
+/* SVG paint helpers */
+.lf-art .g { fill: var(--lf-gold); }
+.lf-art .gf { fill: rgba(212, 175, 55, 0.85); }
+.lf-art .gs { fill: none; stroke: var(--lf-gold); stroke-width: 2.2; stroke-linecap: round; stroke-linejoin: round; }
+.lf-art .iv { fill: var(--lf-ivory); }
+.lf-art .ivs { fill: none; stroke: var(--lf-line); stroke-width: 1.5; }
+.lf-art .ivd { fill: none; stroke: rgba(243, 238, 226, 0.4); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.lf-art .ut { fill: none; stroke: var(--lf-ivory); stroke-width: 2; }
+.lf-art .pn { fill: var(--lf-panel); stroke: var(--lf-line); stroke-width: 1.25; }
+.lf-art .pg { fill: var(--lf-panel); stroke: var(--lf-gold); stroke-width: 1.5; }
+.lf-art .tk { fill: var(--lf-panel-hi); }
+.lf-art .mu { fill: rgba(184, 195, 199, 0.5); }
+.lf-art .mu2 { fill: rgba(243, 238, 226, 0.82); }
+.lf-art .nv { fill: var(--lf-navy); }
+.lf-art .ln { fill: none; stroke: var(--lf-line); stroke-width: 2; stroke-linecap: round; }
+.lf-art .nd { fill: var(--lf-navy); stroke: var(--lf-gold); stroke-width: 2; }
+.lf-art .dash { fill: none; stroke: var(--lf-gold); stroke-width: 1.5; stroke-dasharray: 4 4; }
+.lf-art .gap { fill: rgba(212, 175, 55, 0.1); stroke: var(--lf-gold); stroke-width: 1.5; stroke-dasharray: 5 4; }
+.lf-art .ph { fill: rgba(28, 43, 51, 0.85); }
+.lf-art .pl { fill: rgba(28, 43, 51, 0.24); }
+.lf-art .nvs { fill: none; stroke: rgba(28, 43, 51, 0.6); stroke-width: 1.5; stroke-linecap: round; }
+.lf-art .bk-a { fill: #2f4953; stroke: rgba(243, 238, 226, 0.22); stroke-width: 1; }
+.lf-art .bk-b { fill: #3b5c68; stroke: rgba(243, 238, 226, 0.22); stroke-width: 1; }
+.lf-art .bk-c { fill: #d9d2bf; }
+.lf-art text { font-family: var(--lf-font-body); font-size: 15px; fill: var(--lf-ivory); }
+.lf-art .sm { font-size: 13px; fill: var(--lf-mute); }
+
+/* Controls */
+.lf-controls {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 16px;
+  margin-top: 28px;
+}
+.lf-dots {
+  display: flex;
+  gap: 2px;
+}
+.lf-dot {
+  appearance: none;
+  border: 0;
+  background: none;
+  padding: 10px 5px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+}
+.lf-dot::before {
+  content: '';
+  display: block;
+  width: 8px;
+  height: 8px;
+  border-radius: 99px;
+  background: rgba(243, 238, 226, 0.35);
+  transition: width 0.35s var(--lf-ease), background 0.25s ease;
+}
+.lf-dot:hover::before {
+  background: rgba(243, 238, 226, 0.7);
+}
+.lf-dot[aria-current='true']::before {
+  width: 26px;
+  background: var(--lf-gold);
+}
+.lf-btns {
+  display: flex;
+  gap: 8px;
+}
+.lf-btn {
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  padding: 0;
+  border-radius: 50%;
+  border: 1px solid var(--lf-line);
+  background: transparent;
+  color: var(--lf-ivory);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+.lf-btn:hover {
+  border-color: var(--lf-gold);
+  color: var(--lf-gold);
+}
+.lf-btn svg {
+  width: 18px;
+  height: 18px;
+  stroke: currentColor;
+  fill: none;
+  stroke-width: 2;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.lf-btn .i-play {
+  fill: currentColor;
+  display: none;
+}
+.lf-show[data-paused='true'] .lf-pause .i-play {
+  display: block;
+}
+.lf-show[data-paused='true'] .lf-pause .i-pause {
+  display: none;
+}
+.lf-show :is(.lf-btn, .lf-dot):focus-visible {
+  outline: 2px solid var(--lf-gold);
+  outline-offset: 3px;
+}
+
+/* ---------- Motion (only once mounted, so it degrades to a static slide) ---------- */
+.lf-show.is-ready .lf-title .w > span {
+  transform: translateY(108%);
+}
+.lf-show.is-ready .lf-rule {
+  transform: scaleX(0);
+}
+.lf-show.is-ready .lf-body,
+.lf-show.is-ready .lf-step,
+.lf-show.is-ready .a {
+  opacity: 0;
+}
+.lf-show.is-ready .a {
+  transform-box: fill-box;
+}
+.lf-show.is-ready .a-draw {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+}
+.a-rise { transform-origin: 50% 100%; }
+.a-gx { transform-origin: 0 50%; }
+.a-pop { transform-origin: 50% 50%; }
+
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .lf-step { animation: lf-appear 0.5s ease 0.05s both; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .lf-title .w > span { animation: lf-up 0.8s var(--lf-ease) calc(0.15s + var(--i, 0) * 0.07s) both; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .lf-rule { animation: lf-gx 0.6s var(--lf-ease) 0.55s both; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .lf-body { animation: lf-appear 0.7s ease 0.75s both; }
+
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a {
+  animation-duration: var(--t, 0.7s);
+  animation-timing-function: var(--lf-ease);
+  animation-delay: var(--d, 0s);
+  animation-fill-mode: both;
+}
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-draw { animation-name: lf-draw; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-rise { animation-name: lf-rise; --t: 0.9s; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-pop { animation-name: lf-pop; --t: 0.5s; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-inl { animation-name: lf-inl; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-inr { animation-name: lf-inr; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-gx { animation-name: lf-gx; }
+.lf-show.is-ready[data-inview='true'] :is(.is-active, .is-leaving) .a-fade { animation-name: lf-appear; }
+
+@keyframes lf-up { from { transform: translateY(108%); } to { transform: none; } }
+@keyframes lf-appear { from { opacity: 0; } to { opacity: 1; } }
+@keyframes lf-gx { from { opacity: 0; transform: scaleX(0); } to { opacity: 1; transform: none; } }
+@keyframes lf-draw { 0% { opacity: 0; stroke-dashoffset: 1; } 1% { opacity: 1; } 100% { opacity: 1; stroke-dashoffset: 0; } }
+@keyframes lf-rise { from { opacity: 0; transform: scaleY(0.02); } to { opacity: 1; transform: none; } }
+@keyframes lf-pop { from { opacity: 0; transform: scale(0.55); } to { opacity: 1; transform: none; } }
+@keyframes lf-inl { from { opacity: 0; transform: translateX(-22px); } to { opacity: 1; transform: none; } }
+@keyframes lf-inr { from { opacity: 0; transform: translateX(22px); } to { opacity: 1; transform: none; } }
+
+/* Reduced motion: static slides, no autoplay (they can still press play) */
+@media (prefers-reduced-motion: reduce) {
+  .lf-show .a,
+  .lf-show .lf-title .w > span,
+  .lf-show .lf-rule,
+  .lf-show .lf-body,
+  .lf-show .lf-step {
+    animation: none !important;
+    opacity: 1 !important;
+    transform: none !important;
+    stroke-dashoffset: 0 !important;
+  }
+  .lf-slide,
+  .lf-slide.is-active {
+    transition-duration: 0.01s;
+    transition-delay: 0s;
+  }
+}
+
+/* Narrow frame (phones, or the hero column): single column, art above the copy */
+@container (max-width: 700px) {
+  .lf-inner {
+    padding: 40px 30px 38px;
+  }
+  .lf-slide {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    min-height: 0;
+    align-content: start;
+  }
+  .lf-art {
+    order: -1;
+  }
+  .lf-art svg {
+    max-height: 190px;
+  }
+  .lf-title {
+    font-size: clamp(1.45rem, 1rem + 1.6vw, 1.9rem);
+  }
+  .lf-body {
+    font-size: 1rem;
+  }
+  .lf-controls {
+    margin-top: 18px;
+  }
+}
