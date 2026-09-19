@@ -157,3 +157,26 @@
   white-space: nowrap;
   border: 0;
 }
+
+/* Urdu: pin one compact Naskh-style font for every browser. Left to the OS fallback, Safari/macOS
+   picks Nastaliq (very tall, needs ~2x line height and overflows layouts tuned for other scripts)
+   while Chrome picks a Naskh face — so the same page looked tangled in one and fine in the other.
+   Letter-spacing is reset too, since spacing breaks the joining of Arabic-script letters. */
+:root[lang='ur'] {
+  --font-body: 'Noto Naskh Arabic', 'Geeza Pro', 'Damascus', 'Al Bayan', 'Segoe UI', Tahoma, sans-serif;
+  --font-display: var(--font-body);
+  --font-mono: var(--font-body);
+}
+:root[lang='ur'] .lf-show {
+  --lf-font-display: var(--font-body);
+  --lf-font-body: var(--font-body);
+}
+:root[lang='ur'] * {
+  letter-spacing: 0 !important;
+}
+:root[lang='ur'] :is(h1, h2, h3, h4, h5, h6) {
+  line-height: 1.5 !important;
+}
+:root[lang='ur'] :is(p, li, label, button, a, td, th, legend, summary, option, .landing-hero-eyebrow) {
+  line-height: 1.75;
+}
