@@ -6,6 +6,7 @@ import { fetchCauseList, type CauseListEntry } from '../lib/causeListClient';
 import { causeListCourts, type CauseListCourt } from '../data/causeListCourts';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import '../styles/split-page.css';
 import './CauseListPage.css';
 
 const CATEGORY_KEYS = {
@@ -129,11 +130,14 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
         {t.common.back}
       </button>
 
-      <header className="cl-hero">
+      <div className="split-card">
+      <header className="cl-hero split-left">
         <p className="cl-eyebrow">{p.eyebrow}</p>
         <h1 className="cl-title">{p.title}</h1>
         <p className="cl-sub">{p.sub}</p>
       </header>
+
+      <div className="split-right">
 
       {!user && (
         <div className="cl-login-gate">
@@ -313,6 +317,8 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
           )}
         </div>
       )}
+      </div>
+      </div>
     </div>
   );
 }

@@ -6,6 +6,7 @@ import { formatDateOnly } from '../lib/casesClient';
 import type { CaseRecord } from '../lib/casesClient';
 import { listCaseTypes, type CaseTypeOption } from '../lib/catalogClient';
 import { CaseCalendar } from '../components/CaseCalendar';
+import '../styles/split-page.css';
 import './MyCasesPage.css';
 import './AuthForm.css';
 
@@ -160,7 +161,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin }: Props) {
         {t.common.back}
       </button>
 
-      <header className="my-cases-hero">
+      <div className="split-card">
+      <header className="my-cases-hero split-left">
         <p className="my-cases-eyebrow">
           {t.myCases.yourAccount}
           {user?.role === 'advocate' && user.verificationStatus !== 'not_applicable' && (
@@ -175,6 +177,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin }: Props) {
         <h1 className="my-cases-title">{t.myCases.title}</h1>
         <p className="my-cases-sub">{t.myCases.sub}</p>
       </header>
+
+      <div className="split-right">
 
       {!user && (
         <div className="my-cases-empty">
@@ -259,10 +263,12 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin }: Props) {
       {user && cases && cases.length === 0 && (
         <p className="step-help">{t.myCases.noSavedCases}</p>
       )}
+      </div>
+      </div>
 
       {user && cases && cases.length > 0 && (
         <>
-          <div className="my-cases-layout">
+          <div className="my-cases-layout my-cases-board">
             <div className="my-cases-calendar-col">
               <CaseCalendar cases={cases} onSelectDate={handleSelectDate} />
             </div>

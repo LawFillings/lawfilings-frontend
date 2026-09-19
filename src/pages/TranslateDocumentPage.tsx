@@ -7,6 +7,7 @@ import { ApiError } from '../lib/apiError';
 import { acts } from '../data/lawLibraryData';
 import type { Act } from '../data/lawLibraryData';
 import { PaywallBlock } from '../components/PaywallBlock';
+import '../styles/split-page.css';
 import './TranslateDocumentPage.css';
 
 interface Props {
@@ -137,11 +138,14 @@ export function TranslateDocumentPage({ onBack, onOpenLogin, onOpenPricing }: Pr
         {t.common.back}
       </button>
 
-      <header className="td-hero">
+      <div className="split-card">
+      <header className="td-hero split-left">
         <p className="td-eyebrow">{copy.eyebrow}</p>
         <h1 className="td-title">{copy.title}</h1>
         <p className="td-sub">{copy.sub}</p>
       </header>
+
+      <div className="split-right">
 
       <div className="td-disclaimer">{copy.disclaimer}</div>
 
@@ -299,6 +303,8 @@ export function TranslateDocumentPage({ onBack, onOpenLogin, onOpenPricing }: Pr
           )}
         </div>
       )}
+      </div>
+      </div>
     </div>
   );
 }

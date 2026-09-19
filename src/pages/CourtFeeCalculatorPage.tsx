@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useLanguage } from '../lib/language';
 import { fmt } from '../lib/format';
 import { courtFeeSchedules, calculateCourtFee, type CourtFeeResult } from '../lib/courtFee';
+import '../styles/split-page.css';
 import './CourtFeeCalculatorPage.css';
 
 interface Props {
@@ -38,13 +39,16 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
         {t.common.back}
       </button>
 
-      <header className="cfc-hero">
+      <div className="split-card">
+      <header className="cfc-hero split-left">
         <p className="cfc-eyebrow">{c.eyebrow}</p>
         <h1 className="cfc-title">{c.title}</h1>
         <p className="cfc-sub">
           {fmt(c.sub, { count: courtFeeSchedules.length })}
         </p>
       </header>
+
+      <div className="split-right">
 
       <div className="cfc-form">
         <label className="field-label" htmlFor="cfc-state">
@@ -90,6 +94,8 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
         )}
 
         {hasValue && !result && <p className="step-help">{c.invalidValue}</p>}
+      </div>
+      </div>
       </div>
     </div>
   );

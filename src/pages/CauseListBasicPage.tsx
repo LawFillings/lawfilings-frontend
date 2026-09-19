@@ -3,6 +3,7 @@ import { useAuth } from '../lib/auth';
 import { useLanguage } from '../lib/language';
 import { causeListCourts, type CauseListCourt } from '../data/causeListCourts';
 import { PaywallBlock } from '../components/PaywallBlock';
+import '../styles/split-page.css';
 import './CauseListPage.css';
 
 const CATEGORY_KEYS = {
@@ -51,11 +52,14 @@ export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props
         {t.common.back}
       </button>
 
-      <header className="cl-hero">
+      <div className="split-card">
+      <header className="cl-hero split-left">
         <p className="cl-eyebrow">{c.basic.eyebrow}</p>
         <h1 className="cl-title">{c.basic.title}</h1>
         <p className="cl-sub">{c.basic.sub}</p>
       </header>
+
+      <div className="split-right">
 
       {!user && (
         <div className="cl-login-gate">
@@ -104,6 +108,8 @@ export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props
           ))}
         </div>
       )}
+      </div>
+      </div>
     </div>
   );
 }

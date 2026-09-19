@@ -1,0 +1,176 @@
+/* Shared "two-panel" page theme (also used by the filing picker in Home.css): a deep-accent left
+   panel carrying the page heading, a light right panel carrying the page's controls and content,
+   and softly coloured option buttons. Opt in with .split-card > .split-left + .split-right. */
+.cl-page.cl-page,
+.cfc-page.cfc-page,
+.td-page.td-page {
+  max-width: 1120px;
+}
+
+.split-card {
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 22px rgba(20, 39, 63, 0.1);
+  margin-bottom: var(--space-6);
+}
+
+.split-left {
+  align-self: stretch;
+  margin: 0;
+  padding: var(--space-6);
+  background: linear-gradient(140deg, var(--accent-deep), var(--accent));
+  color: var(--text-on-accent, #fff);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+.split-left [class$='-eyebrow'] {
+  color: var(--accent-gold, #d4af37);
+  font-size: 17px;
+  line-height: 1.4;
+  margin: 0 0 var(--space-4);
+}
+.split-left [class$='-title'] {
+  color: var(--text-on-accent, #fff);
+  margin-bottom: var(--space-3);
+}
+.split-left [class$='-sub'] {
+  color: rgba(255, 255, 255, 0.86);
+  max-width: none;
+}
+.split-left .my-cases-status-badge {
+  background: rgba(255, 255, 255, 0.16);
+  color: #fff;
+}
+
+.split-right {
+  align-self: stretch;
+  padding: var(--space-6);
+  background: #f7f5ef;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: var(--space-4);
+  min-width: 0;
+}
+.split-right > * {
+  max-width: none;
+  margin-top: 0;
+  margin-bottom: 0;
+}
+.split-right .cl-form,
+.split-right .cfc-form,
+.split-right .td-form,
+.split-right .cl-directory {
+  max-width: none;
+}
+
+/* Colour for the buttons that live in the right panel. */
+.split-right .para-btn {
+  background: var(--accent-gold, #d4af37);
+  border-color: var(--accent-gold, #d4af37);
+  color: #1c2b33;
+  font-weight: 600;
+}
+.split-right .para-btn:hover {
+  background: var(--accent-deep);
+  border-color: var(--accent-deep);
+  color: #fff;
+}
+.cl-directory-dropdown,
+.td-mode-tab {
+  --tab-bg: #dbe7f6;
+  --tab-solid: #2f5d9b;
+}
+.split-right .cl-directory-dropdown {
+  background: var(--tab-bg);
+  border-color: transparent;
+}
+.split-right .cl-directory-dropdown[open] {
+  border-color: var(--tab-solid);
+}
+.split-right .cl-directory-dropdown-summary::before {
+  color: var(--tab-solid);
+}
+.split-right .cl-directory-dropdown .cl-directory-list {
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: var(--radius);
+  padding: var(--space-2) var(--space-3);
+}
+/* Translate page: the two source tabs become coloured pills. */
+.split-right .td-mode-tabs {
+  border-bottom: none;
+  gap: var(--space-3);
+}
+.split-right .td-mode-tab {
+  padding: 10px 22px;
+  border-radius: 999px;
+  background: var(--tab-bg);
+  color: var(--tab-solid);
+  font-weight: 500;
+}
+.split-right .td-mode-tab:nth-child(2) {
+  --tab-bg: #d9eee3;
+  --tab-solid: #2c7a5a;
+}
+.split-right .td-mode-tab.active {
+  background: var(--tab-solid);
+  color: #fff;
+}
+.split-right .td-mode-tab.active::after {
+  display: none;
+}
+
+/* My Cases: the calendar + table board below the header gets a light panel of its own. */
+.my-cases-board {
+  background: #f7f5ef;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  padding: var(--space-5);
+  box-shadow: 0 6px 22px rgba(20, 39, 63, 0.06);
+}
+
+@media (max-width: 800px) {
+  .split-card {
+    grid-template-columns: 1fr;
+  }
+  .split-left,
+  .split-right {
+    padding: var(--space-4);
+  }
+}
+
+/* Inputs read as white fields on the light panel. */
+.split-right select,
+.split-right input[type='text'],
+.split-right input[type='date'],
+.split-right input[type='search'],
+.split-right .date-input,
+.split-right .cl-select,
+.split-right .cfc-select {
+  background: #fff;
+}
+
+/* Cause List Basic: every court group — including the single Supreme Court link — shares one blue. */
+.split-right .cl-directory-group .cl-directory-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+.split-right .cl-directory-group .cl-portal-link {
+  display: block;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: #dbe7f6;
+  color: var(--ink);
+  font-family: var(--font-display);
+  font-size: 16px;
+  font-weight: 600;
+  text-decoration: none;
+}
+.split-right .cl-directory-group .cl-portal-link:hover {
+  outline: 1px solid #2f5d9b;
+}
