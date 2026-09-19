@@ -78,7 +78,6 @@ export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props
             body={c.basic.paywallBody}
           />
           <div className="cl-directory-group">
-            <h2 className="cl-directory-heading">{c.categories.supremeCourt}</h2>
             <ul className="cl-directory-list">
               {supremeCourt.map((c) => (
                 <li key={c.id} className="cl-directory-item">

@@ -52,7 +52,7 @@
   background: #f7f5ef;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
   gap: var(--space-4);
   min-width: 0;
 }
@@ -173,4 +173,9 @@
 }
 .split-right .cl-directory-group .cl-portal-link:hover {
   outline: 1px solid #2f5d9b;
+}
+
+/* Cause List: the left-panel text starts at the top instead of being vertically centred. */
+.cl-page .split-left {
+  justify-content: flex-start;
 }
