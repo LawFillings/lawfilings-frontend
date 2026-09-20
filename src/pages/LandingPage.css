@@ -313,7 +313,7 @@
   }
   .landing-quick-tile {
     width: 88px;
-    aspect-ratio: 1 / 1;
+    min-height: 88px; /* square, but grows (with its row) if a translated label needs a third line */
     display: flex;
     flex-direction: column;
     align-items: center;
