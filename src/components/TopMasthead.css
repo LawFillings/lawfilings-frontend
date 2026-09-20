@@ -246,6 +246,16 @@
   .top-masthead-btn {
     padding: var(--space-2) var(--space-3);
     font-size: 13px;
+    white-space: nowrap;
+  }
+
+  /* Long translated labels (e.g. Urdu/Hindi "Log in") must not be squeezed into a tall sliver:
+     the right-hand buttons keep their width and the brand name shrinks instead. */
+  .top-masthead-right {
+    flex-shrink: 0;
+  }
+  .top-masthead-left {
+    min-width: 0;
   }
 
   /* Below this width the primary button navigates immediately on tap, so a hover/focus-reveal
@@ -283,3 +293,12 @@
 .top-masthead-sparkle:nth-child(4) { top: 75%; left: 55%; animation-duration: 2.9s; animation-delay: 1.6s; }
 .top-masthead-sparkle:nth-child(5) { top: 25%; left: 88%; animation-duration: 3.2s; animation-delay: 0.9s; }
 .top-masthead-sparkle:nth-child(6) { top: 65%; left: 95%; animation-duration: 2.6s; animation-delay: 0.1s; }
+
+@media (max-width: 480px) {
+  .top-masthead-logo {
+    font-size: 21px;
+  }
+  .top-masthead-left {
+    gap: var(--space-2);
+  }
+}

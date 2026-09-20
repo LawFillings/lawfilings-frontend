@@ -270,6 +270,12 @@
   .landing-hero-title {
     display: none;
   }
+  /* On phones the news is reached through the What's New tile in the hero, so the standalone
+     section (and the drawer link that scrolls to it) is dropped. */
+  #news,
+  .app-sidebar-link[href="#news"] {
+    display: none;
+  }
   .landing-hero-ctas {
     justify-content: center;
   }
