@@ -305,7 +305,11 @@
 
 @media (max-width: 400px) {
   .top-masthead-logo {
-    font-size: 18px;
+    font-size: 16px;
+  }
+  .top-masthead-brand-mark {
+    width: 30px;
+    height: 30px;
   }
   .top-masthead-btn {
     padding-inline: 10px;
