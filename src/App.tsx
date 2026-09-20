@@ -91,6 +91,8 @@ import { GrievanceOfficerPage } from './pages/GrievanceOfficerPage';
 import { SettingsPage } from './pages/SettingsPage';
 import { LoginPage } from './pages/LoginPage';
 import { SignupPage } from './pages/SignupPage';
+import { ForgotPasswordPage } from './pages/ForgotPasswordPage';
+import { ResetPasswordPage } from './pages/ResetPasswordPage';
 import { MyCasesPage } from './pages/MyCasesPage';
 import { CaseDetailPage } from './pages/CaseDetailPage';
 import { PricingPage } from './pages/PricingPage';
@@ -136,6 +138,8 @@ type Screen =
   | { kind: 'settings' }
   | { kind: 'login' }
   | { kind: 'signup' }
+  | { kind: 'forgotPassword'; email?: string }
+  | { kind: 'resetPassword'; token: string }
   | { kind: 'myCases' }
   | { kind: 'caseDetail'; caseId: string }
   | { kind: 'pricing' }
@@ -157,7 +161,20 @@ export default function App() {
 
 function AppScreens() {
   const { user } = useAuth();
-  const [history, setHistory] = useState<Screen[]>([{ kind: 'landing' }]);
+  const [history, setHistory] = useState<Screen[]>(() => {
+    // Password-reset emails link to /?reset=<token>; strip it from the address bar so it isn't
+    // left in history, and open the reset screen straight away.
+    try {
+      const token = new URLSearchParams(window.location.search).get('reset');
+      if (token) {
+        window.history.replaceState(null, '', window.location.pathname);
+        return [{ kind: 'landing' }, { kind: 'resetPassword', token }];
+      }
+    } catch {
+      // Fall through to the normal landing screen.
+    }
+    return [{ kind: 'landing' }];
+  });
   const [pendingScreen, setPendingScreen] = useState<Screen | null>(null);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const screen = history[history.length - 1];
@@ -275,6 +292,7 @@ function AppScreens() {
             navigate(destination ?? { kind: 'myCases' });
           }}
           onSwitchToSignup={() => navigate({ kind: 'signup' })}
+          onForgotPassword={(email) => navigate({ kind: 'forgotPassword', email })}
         />
       );
     }
@@ -293,6 +311,19 @@ function AppScreens() {
             navigate(role === 'advocate' ? { kind: 'pricing' } : destination ?? { kind: 'myCases' });
           }}
           onSwitchToLogin={openLoginNav}
+          onForgotPassword={(email) => navigate({ kind: 'forgotPassword', email })}
+        />
+      );
+    }
+    if (screen.kind === 'forgotPassword') {
+      return <ForgotPasswordPage onBack={onBack} onBackToLogin={openLoginNav} initialEmail={screen.email} />;
+    }
+    if (screen.kind === 'resetPassword') {
+      return (
+        <ResetPasswordPage
+          token={screen.token}
+          onDone={openLoginNav}
+          onRequestNew={() => navigate({ kind: 'forgotPassword' })}
         />
       );
     }

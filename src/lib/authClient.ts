@@ -87,3 +87,23 @@ export async function logout(token: string): Promise<void> {
     // Best-effort — if this fails the local session is cleared regardless (see auth.tsx).
   });
 }
+
+async function postRecovery(path: string, body: unknown): Promise<void> {
+  const res = await fetch(`${API_BASE}/api/auth/${path}`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(body),
+  });
+  if (!res.ok) {
+    const data = await res.json().catch(() => ({}));
+    throw new Error(data.error ?? `Request failed (${res.status})`);
+  }
+}
+
+export function requestPasswordReset(email: string) {
+  return postRecovery('forgot-password', { email });
+}
+
+export function resetPassword(token: string, password: string) {
+  return postRecovery('reset-password', { token, password });
+}

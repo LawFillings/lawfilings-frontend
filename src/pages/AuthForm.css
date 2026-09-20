@@ -105,3 +105,20 @@
   font-weight: 500;
   padding: 0;
 }
+
+.auth-forgot {
+  margin: var(--space-3) 0 0;
+  font-size: 14px;
+  text-align: end;
+}
+
+.auth-inline-link {
+  border: none;
+  background: none;
+  padding: 0;
+  color: var(--accent-deep);
+  font: inherit;
+  font-weight: 500;
+  text-decoration: underline;
+  cursor: pointer;
+}

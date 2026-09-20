@@ -7,9 +7,10 @@ interface Props {
   onBack: () => void;
   onLoggedIn: () => void;
   onSwitchToSignup: () => void;
+  onForgotPassword: (email: string) => void;
 }
 
-export function LoginPage({ onBack, onLoggedIn, onSwitchToSignup }: Props) {
+export function LoginPage({ onBack, onLoggedIn, onSwitchToSignup, onForgotPassword }: Props) {
   const { login } = useAuth();
   const { t } = useLanguage();
   const [email, setEmail] = useState('');
@@ -43,7 +44,20 @@ export function LoginPage({ onBack, onLoggedIn, onSwitchToSignup }: Props) {
       </header>
 
       <div className="auth-card">
-        {error && <div className="auth-error">{error}</div>}
+        {error && (
+          <div className="auth-error">
+            {error}
+            {/invalid email or password/i.test(error) && (
+              <>
+                <br />
+                {t.auth.recovery.wrongPasswordHint}{' '}
+                <button type="button" className="auth-inline-link" onClick={() => onForgotPassword(email)}>
+                  {t.auth.recovery.forgotLink}
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
@@ -56,6 +70,11 @@ export function LoginPage({ onBack, onLoggedIn, onSwitchToSignup }: Props) {
               <input type="password" required value={password} onChange={(e) => setPassword(e.target.value)} />
             </label>
           </div>
+          <p className="auth-forgot">
+            <button type="button" className="auth-inline-link" onClick={() => onForgotPassword(email)}>
+              {t.auth.recovery.forgotLink}
+            </button>
+          </p>
           <button className="auth-submit" type="submit" disabled={submitting}>
             {submitting ? t.auth.login.submitting : t.auth.login.submit}
           </button>

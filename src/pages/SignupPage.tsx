@@ -8,9 +8,10 @@ interface Props {
   onBack: () => void;
   onSignedUp: (role: UserRole) => void;
   onSwitchToLogin: () => void;
+  onForgotPassword: (email: string) => void;
 }
 
-export function SignupPage({ onBack, onSignedUp, onSwitchToLogin }: Props) {
+export function SignupPage({ onBack, onSignedUp, onSwitchToLogin, onForgotPassword }: Props) {
   const { signup } = useAuth();
   const { t } = useLanguage();
   const [role, setRole] = useState<UserRole>('advocate');
@@ -90,7 +91,24 @@ export function SignupPage({ onBack, onSignedUp, onSwitchToLogin }: Props) {
           </button>
         </div>
 
-        {error && <div className="auth-error">{error}</div>}
+        {error && (
+          <div className="auth-error">
+            {error}
+            {/already exists/i.test(error) && !/Bar Council/i.test(error) && (
+              <>
+                <br />
+                {t.auth.recovery.existingAccountHint}{' '}
+                <button type="button" className="auth-inline-link" onClick={onSwitchToLogin}>
+                  {t.auth.signup.logIn}
+                </button>
+                {' · '}
+                <button type="button" className="auth-inline-link" onClick={() => onForgotPassword(email)}>
+                  {t.auth.recovery.forgotLink}
+                </button>
+              </>
+            )}
+          </div>
+        )}
 
         <form onSubmit={handleSubmit}>
           <div className="form-grid">
