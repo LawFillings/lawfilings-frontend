@@ -23,6 +23,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
@@ -424,6 +425,18 @@ export function MoneyRecoverySuitWizard({
         {step === 3 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? mrw.step3.headingAdvocate : mrw.step3.headingJusticeSeeker}</h3>
+            <DocumentAutofill
+              documentLabel="agreement, invoice or demand notice"
+              buttonLabel="Fill from an agreement, invoice or demand notice (PDF)"
+              fields={[
+                { key: 'plaintiffName', label: 'The party owed the money (creditor / seller / lender)', value: plaintiffName, set: setPlaintiffName },
+                { key: 'plaintiffAddress', label: 'Address of the party owed the money', value: plaintiffAddress, set: setPlaintiffAddress },
+                { key: 'defendantName', label: 'The party who owes the money (debtor / buyer / borrower)', hint: 'never the party owed the money', value: defendantName, set: setDefendantName },
+                { key: 'defendantAddress', label: 'Address of the party who owes the money', value: defendantAddress, set: setDefendantAddress },
+                { key: 'claimAmount', label: 'Total amount claimed as due', kind: 'amount', hint: 'the principal or invoice amount demanded, in rupees', value: claimAmount, set: setClaimAmount },
+                { key: 'factsNarrative', label: 'Short plain summary of the transaction and the default', hint: 'what was agreed or supplied, when, what was due and not paid — only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

@@ -13,6 +13,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 
@@ -346,6 +347,22 @@ export function NIActComplaintWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">What was the underlying debt, and the cheque issued for it?</h3>
+            <DocumentAutofill
+              documentLabel="cheque return memo"
+              buttonLabel="Fill from the bank's cheque return memo (PDF)"
+              fields={[
+                { key: 'chequeNumber', label: 'Cheque number', value: chequeNumber, set: setChequeNumber },
+                { key: 'chequeDate', label: 'Date on the cheque', kind: 'date', value: chequeDate, set: setChequeDate },
+                { key: 'chequeAmount', label: 'Cheque amount', kind: 'amount', value: chequeAmount, set: setChequeAmount },
+                { key: 'draweeBank', label: 'Drawee bank (the bank the cheque is drawn on)', value: draweeBank, set: setDraweeBank },
+                { key: 'draweeBranch', label: 'Branch of the drawee bank', value: draweeBranch, set: setDraweeBranch },
+                { key: 'drawerAccount', label: "Drawer's account number", value: drawerAccount, set: setDrawerAccount },
+                { key: 'presentationDate', label: 'Date the cheque was presented for encashment', kind: 'date', value: presentationDate, set: setPresentationDate },
+                { key: 'dishonourDate', label: 'Date of the dishonour / return memo', kind: 'date', value: dishonourDate, set: setDishonourDate },
+                { key: 'accusedName', label: 'Drawer of the cheque (the account holder who issued it)', hint: 'the person who wrote the cheque, not the payee', value: accusedName, set: setAccusedName },
+                { key: 'complainantName', label: 'Payee (the person the cheque was issued to)', value: complainantName, set: setComplainantName },
+              ]}
+            />
             <div className="grounds-grid">
               {underlyingDebtNatureOptions.map((opt) => (
                 <button
@@ -393,6 +410,15 @@ export function NIActComplaintWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Dishonour and notice</h3>
+            <DocumentAutofill
+              documentLabel="legal notice"
+              buttonLabel="Fill from your demand notice (PDF)"
+              fields={[
+                { key: 'noticeDate', label: 'Date of the demand notice', kind: 'date', value: noticeDate, set: setNoticeDate },
+                { key: 'complainantAddress', label: 'Address of the sender of the notice (the payee)', value: complainantAddress, set: setComplainantAddress },
+                { key: 'accusedAddress', label: 'Address of the person the notice is addressed to (the drawer)', value: accusedAddress, set: setAccusedAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Date presented for encashment</span>

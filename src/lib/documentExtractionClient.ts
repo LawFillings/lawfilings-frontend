@@ -116,3 +116,29 @@ export interface ConsumerComplaintExtraction {
 export function extractConsumerComplaintFromText(text: string, token: string): Promise<ConsumerComplaintExtraction> {
   return postExtraction('extract-consumer-complaint', text, token);
 }
+
+export interface ExtractFieldSpec {
+  key: string;
+  label: string;
+  hint?: string;
+}
+
+/** General-purpose extraction: the wizard names the document it is reading and the fields it
+ *  wants; the reply maps each requested key to a string ('' when the document doesn't say). */
+export async function extractFieldsFromText(
+  text: string,
+  documentLabel: string,
+  fields: ExtractFieldSpec[],
+  token: string
+): Promise<Record<string, string>> {
+  const res = await fetch(`${API_BASE}/api/copilot/extract-fields`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ text, documentLabel, fields }),
+  });
+  const data = await res.json().catch(() => null);
+  if (!res.ok) {
+    throw new ApiError(data?.error ?? `Request failed (${res.status})`, res.status, data);
+  }
+  return data.values as Record<string, string>;
+}

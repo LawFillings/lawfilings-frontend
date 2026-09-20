@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -442,6 +443,23 @@ export function MactClaimPetitionWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The accident</h3>
+            <DocumentAutofill
+              documentLabel="FIR or accident report"
+              buttonLabel="Fill from the FIR / accident report (PDF)"
+              fields={[
+                { key: 'accidentDate', label: 'Date of the accident', kind: 'date', value: accidentDate, set: setAccidentDate },
+                { key: 'accidentPlace', label: 'Place of the accident', value: accidentPlace, set: setAccidentPlace },
+                { key: 'vehicleRegNo', label: "Offending vehicle's registration number", hint: 'the vehicle that caused the accident', value: vehicleRegNo, set: setVehicleRegNo },
+                { key: 'driverName', label: 'Driver of the offending vehicle', value: driverName, set: setDriverName },
+                { key: 'driverAddress', label: 'Address of that driver', value: driverAddress, set: setDriverAddress },
+                { key: 'ownerName', label: 'Registered owner of the offending vehicle', value: ownerName, set: setOwnerName },
+                { key: 'ownerAddress', label: 'Address of that owner', value: ownerAddress, set: setOwnerAddress },
+                { key: 'insurerName', label: 'Insurance company of the offending vehicle', value: insurerName, set: setInsurerName },
+                { key: 'victimName', label: 'Injured or deceased person', hint: 'the victim, not the accused driver', value: victimName, set: setVictimName },
+                { key: 'victimAge', label: 'Age of the injured or deceased person', hint: 'digits only', value: victimAge, set: setVictimAge },
+                { key: 'factsNarrative', label: 'Short plain account of how the accident happened', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Date of accident</span>
