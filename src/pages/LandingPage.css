@@ -259,9 +259,62 @@
   color: var(--accent-deep);
 }
 
+/* Phone-only shortcut tiles and short tagline: hidden on larger screens. */
+.landing-quick,
+.landing-hero-sub-short {
+  display: none;
+}
+
 @media (max-width: 640px) {
+  /* On phones the four-line headline gives way to the descriptive line, which becomes the headline. */
   .landing-hero-title {
-    font-size: 34px;
+    display: none;
+  }
+  .landing-hero-sub-full,
+  .landing-hero-eyebrow,
+  .landing-cta-primary {
+    display: none;
+  }
+  .landing-hero-sub-short {
+    display: block;
+  }
+  .landing-hero-sub {
+    font-size: 22px;
+    line-height: 1.45;
+    font-weight: 500;
+    color: var(--text-on-accent);
+    margin-bottom: var(--space-5);
+  }
+  .landing-quick {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: var(--space-3);
+    margin: 0 0 var(--space-5);
+  }
+  .landing-quick-tile {
+    aspect-ratio: 1 / 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    padding: 8px;
+    text-align: center;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1.2;
+    color: var(--text-on-accent);
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.28);
+    border-radius: 14px;
+  }
+  .landing-quick-tile:hover,
+  .landing-quick-tile:active {
+    background: rgba(255, 255, 255, 0.22);
+    border-color: var(--accent, #d8b04a);
+  }
+  .landing-quick-tile svg {
+    color: #e6c56a;
   }
   .landing-footer {
     grid-template-columns: 1fr;

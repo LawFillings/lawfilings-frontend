@@ -196,6 +196,26 @@ const LAW_NEWS_ICONS = [
   <VerifiedDocIcon key="verified-news" />, // SARFAESI Act added
 ];
 
+// Phone-only shortcut tiles to the main sections (the desktop top menu is a hamburger there).
+const QUICK_ICONS: Record<string, string[]> = {
+  filing: ["M14 3v5a1 1 0 0 0 1 1h5", "M17 21H7a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h7l5 5v11a2 2 0 0 1-2 2Z", "M9 14h6", "M12 11v6"],
+  causeList: ["M8 6h13", "M8 12h13", "M8 18h13", "M3 6h.01", "M3 12h.01", "M3 18h.01"],
+  tools: ["M4 4h16v16H4Z", "M8 8h8", "M8 12h.01", "M12 12h.01", "M16 12h.01", "M8 16h.01", "M12 16h.01", "M16 16h.01"],
+  myCases: ["M3 7h18v13H3Z", "M8 7V4h8v3"],
+  caseLaw: ["M12 3v18", "M5 7h14", "M5 7l-3 7a3 3 0 0 0 6 0Z", "M19 7l-3 7a3 3 0 0 0 6 0Z"],
+  news: ["M4 5h14v14a1 1 0 0 1-1 1H6a2 2 0 0 1-2-2Z", "M18 9h2v9a2 2 0 0 1-2 2", "M8 9h6", "M8 13h6", "M8 17h4"],
+};
+
+function QuickIcon({ name }: { name: string }) {
+  return (
+    <svg width="30" height="30" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+      {QUICK_ICONS[name].map((d, i) => (
+        <path d={d} key={i} />
+      ))}
+    </svg>
+  );
+}
+
 interface Props {
   onStartFiling: () => void;
   onOpenLawLibrary: () => void;
@@ -204,6 +224,10 @@ interface Props {
   onOpenPrivacyPolicy: () => void;
   onOpenTermsOfService: () => void;
   onOpenGrievanceOfficer: () => void;
+  onOpenCauseList: () => void;
+  onOpenLegalTools: () => void;
+  onOpenCaseLaw: () => void;
+  onOpenMyCases: () => void;
 }
 
 export function LandingPage({
@@ -214,6 +238,10 @@ export function LandingPage({
   onOpenPrivacyPolicy,
   onOpenTermsOfService,
   onOpenGrievanceOfficer,
+  onOpenCauseList,
+  onOpenLegalTools,
+  onOpenCaseLaw,
+  onOpenMyCases,
 }: Props) {
   const { settings } = useSettings();
   const { color, widgets } = settings.landing;
@@ -250,7 +278,27 @@ export function LandingPage({
               <br />
               {t.landing.hero.titleLine4}
             </h1>
-            <p className="landing-hero-sub">{t.landing.hero.sub}</p>
+            <p className="landing-hero-sub landing-hero-sub-full">{t.landing.hero.sub}</p>
+            <p className="landing-hero-sub landing-hero-sub-short">{t.landing.hero.subShort}</p>
+            <nav className="landing-quick" aria-label={t.landing.hero.startFiling}>
+              {[
+                { key: 'filing', label: t.nav.startAFiling, onClick: onStartFiling },
+                { key: 'causeList', label: t.nav.causeList, onClick: onOpenCauseList },
+                { key: 'tools', label: t.nav.legalTools, onClick: onOpenLegalTools },
+                { key: 'myCases', label: t.nav.myCases, onClick: onOpenMyCases },
+                { key: 'caseLaw', label: t.nav.caseLaw, onClick: onOpenCaseLaw },
+                {
+                  key: 'news',
+                  label: t.landing.news.eyebrow,
+                  onClick: () => document.getElementById('news')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
+                },
+              ].map((q) => (
+                <button type="button" className="landing-quick-tile" key={q.key} onClick={q.onClick}>
+                  <QuickIcon name={q.key} />
+                  <span>{q.label}</span>
+                </button>
+              ))}
+            </nav>
             <p className="landing-hero-eyebrow">{t.landing.hero.eyebrow}</p>
             <div className="landing-hero-ctas">
               <button className="landing-cta-primary" onClick={onStartFiling}>

@@ -228,6 +228,10 @@ function AppScreens() {
           onOpenPrivacyPolicy={openPrivacyPolicyNav}
           onOpenTermsOfService={openTermsOfServiceNav}
           onOpenGrievanceOfficer={openGrievanceOfficerNav}
+          onOpenCauseList={openCauseListBasicNav}
+          onOpenLegalTools={openCourtFeeCalculatorNav}
+          onOpenCaseLaw={openCaseLawSearchNav}
+          onOpenMyCases={openMyCasesNav}
         />
       );
     }
