@@ -17,6 +17,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -380,6 +381,19 @@ export function ForeclosureMortgageSuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The mortgage and parties</h3>
+            <DocumentAutofill
+              documentLabel={'mortgage deed'}
+              fields={[
+                { key: 'plaintiffName', label: 'the mortgagee (the lender who holds the mortgage)', value: plaintiffName, set: setPlaintiffName },
+                { key: 'plaintiffAge', label: 'Age of the mortgagee (the lender who holds the mortgage)', kind: 'amount', hint: 'digits only', value: plaintiffAge, set: setPlaintiffAge },
+                { key: 'plaintiffAddress', label: 'Address of the mortgagee (the lender who holds the mortgage)', value: plaintiffAddress, set: setPlaintiffAddress },
+                { key: 'defendantName', label: 'the mortgagor (the borrower who mortgaged the property)', value: defendantName, set: setDefendantName },
+                { key: 'defendantAddress', label: 'Address of the mortgagor (the borrower who mortgaged the property)', value: defendantAddress, set: setDefendantAddress },
+                { key: 'mortgageDeedDetails', label: 'The mortgage deed: type, date, registration details', value: mortgageDeedDetails, set: setMortgageDeedDetails },
+                { key: 'propertyDescription', label: 'Description of the mortgaged property', value: propertyDescription, set: setPropertyDescription },
+                { key: 'principalAmount', label: 'Principal amount secured', kind: 'amount', value: principalAmount, set: setPrincipalAmount },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>{mode === 'advocate' ? 'Plaintiff (mortgagee)' : 'Your name'}</span>

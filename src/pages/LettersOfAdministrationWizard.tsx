@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -380,6 +381,15 @@ export function LettersOfAdministrationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Deceased and family details</h3>
+            <DocumentAutofill
+              documentLabel={'death certificate'}
+              fields={[
+                { key: 'deceasedName', label: 'Name of the deceased', value: deceasedName, set: setDeceasedName },
+                { key: 'dateOfDeath', label: 'Date of death', kind: 'date', value: dateOfDeath, set: setDateOfDeath },
+                { key: 'placeOfDeath', label: 'Place of death', value: placeOfDeath, set: setPlaceOfDeath },
+                { key: 'ordinaryResidence', label: 'Ordinary residence of the deceased', value: ordinaryResidence, set: setOrdinaryResidence },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Name of the deceased</span>

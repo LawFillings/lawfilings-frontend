@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -316,6 +317,18 @@ export function FirDirectionApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Your complaint to the Superintendent of Police</h3>
+            <DocumentAutofill
+              documentLabel={'complaint you made to the police or Superintendent of Police'}
+              fields={[
+                { key: 'applicantName', label: 'the complainant', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the complainant', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the complainant', value: applicantAddress, set: setApplicantAddress },
+                { key: 'policeStation', label: 'Police station complained to', value: policeStation, set: setPoliceStation },
+                { key: 'spComplaintDate', label: 'Date of the complaint to the Superintendent of Police', kind: 'date', value: spComplaintDate, set: setSpComplaintDate },
+                { key: 'offenceFacts', label: 'Short plain account of the offence complained of', hint: 'only what the document states', value: offenceFacts, set: setOffenceFacts },
+                { key: 'bnsSections', label: 'Offence sections cited, exactly as written', value: bnsSections, set: setBnsSections },
+              ]}
+            />
             <p className="step-help">
               Before approaching the Magistrate, you must first have submitted a written complaint (in person or by
               registered post) to the Superintendent of Police and been refused or received no response — this

@@ -19,6 +19,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -400,6 +401,13 @@ export function MutualConsentDivorceWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Petitioners and marriage</h3>
+            <DocumentAutofill
+              documentLabel={'marriage certificate'}
+              fields={[
+                { key: 'marriageDate', label: 'Date of marriage', kind: 'date', value: marriageDate, set: setMarriageDate },
+                { key: 'marriagePlace', label: 'Place of marriage', value: marriagePlace, set: setMarriagePlace },
+              ]}
+            />
             <p className="step-help">A mutual consent petition is filed jointly by both spouses as co-petitioners.</p>
             <div className="form-grid">
               <label className="form-field">

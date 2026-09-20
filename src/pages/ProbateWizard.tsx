@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -346,6 +347,16 @@ export function ProbateWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Will and testator details</h3>
+            <DocumentAutofill
+              documentLabel={'will'}
+              fields={[
+                { key: 'testatorName', label: 'Name of the testator (the person who made the will)', value: testatorName, set: setTestatorName },
+                { key: 'willDate', label: 'Date of the will', kind: 'date', value: willDate, set: setWillDate },
+                { key: 'dateOfDeath', label: 'Date of death of the testator', kind: 'date', value: dateOfDeath, set: setDateOfDeath },
+                { key: 'ordinaryResidence', label: 'Ordinary residence of the testator', value: ordinaryResidence, set: setOrdinaryResidence },
+                { key: 'assetsDescription', label: 'Assets bequeathed under the will', value: assetsDescription, set: setAssetsDescription },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Name of the testator</span>

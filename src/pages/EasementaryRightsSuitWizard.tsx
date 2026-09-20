@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -411,6 +412,14 @@ export function EasementaryRightsSuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The easement and parties</h3>
+            <DocumentAutofill
+              documentLabel={'deed or document describing the properties'}
+              fields={[
+                { key: 'dominantHeritageDescription', label: 'The property that benefits from the easement (dominant heritage)', value: dominantHeritageDescription, set: setDominantHeritageDescription },
+                { key: 'servientHeritageDescription', label: 'The property that carries the burden (servient heritage)', value: servientHeritageDescription, set: setServientHeritageDescription },
+                { key: 'easementDescription', label: 'The easement claimed (e.g. right of way, light, water)', value: easementDescription, set: setEasementDescription },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>{mode === 'advocate' ? 'Plaintiff (dominant owner)' : 'Your name'}</span>

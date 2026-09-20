@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -339,6 +340,14 @@ export function SeizedPropertyApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The property and your entitlement</h3>
+            <DocumentAutofill
+              documentLabel={'seizure memo, FIR or police record'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'FIR / case number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'policeStation', label: 'Police station', value: policeStation, set: setPoliceStation },
+                { key: 'propertyDescription', label: 'Description of the seized property', value: propertyDescription, set: setPropertyDescription },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>FIR/Case No.</span>

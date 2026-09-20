@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -367,6 +368,13 @@ export function RectificationOfInstrumentSuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The instrument and parties</h3>
+            <DocumentAutofill
+              documentLabel={'the instrument (deed or agreement) to be rectified'}
+              fields={[
+                { key: 'instrumentDetails', label: 'The instrument: type, date, registration details', value: instrumentDetails, set: setInstrumentDetails },
+                { key: 'writtenTermsDescription', label: 'What the instrument actually says on the point in question', value: writtenTermsDescription, set: setWrittenTermsDescription },
+              ]}
+            />
             <label className="form-field">
               <span>Describe the instrument (nature, date)</span>
               <textarea className="facts-textarea" rows={3} value={instrumentDetails} onChange={(e) => setInstrumentDetails(e.target.value)} placeholder="e.g. a sale agreement dated 15.03.2024 between the Plaintiff and Defendant" />

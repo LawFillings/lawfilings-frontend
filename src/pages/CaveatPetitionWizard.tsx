@@ -17,6 +17,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -306,6 +307,15 @@ export function CaveatPetitionWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The anticipated application</h3>
+            <DocumentAutofill
+              documentLabel={'notice or pleading showing the expected proceeding'}
+              fields={[
+                { key: 'connectedCaseNumber', label: 'Case number of any related proceeding already filed', value: connectedCaseNumber, set: setConnectedCaseNumber },
+                { key: 'subjectMatterDescription', label: 'Subject matter of the dispute and the application expected', value: subjectMatterDescription, set: setSubjectMatterDescription },
+                { key: 'respondentName', label: 'the person expected to file the application or suit', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the person expected to file the application or suit', value: respondentAddress, set: setRespondentAddress },
+              ]}
+            />
             <p className="step-help">
               A caveat lasts 90 days from the date you lodge it — if the anticipated application still hasn't been
               made by then, you'll need to lodge a fresh one.

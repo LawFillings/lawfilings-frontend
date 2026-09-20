@@ -18,6 +18,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -466,6 +467,14 @@ export function WritPetitionWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Grievance and grounds</h3>
+            <DocumentAutofill
+              documentLabel={'impugned order, notification or notice'}
+              fields={[
+                { key: 'impugnedAction', label: 'The action or order challenged', value: impugnedAction, set: setImpugnedAction },
+                { key: 'impugnedDate', label: 'Date of the order or action', kind: 'date', value: impugnedDate, set: setImpugnedDate },
+                { key: 'passedBy', label: 'The authority that passed it', value: passedBy, set: setPassedBy },
+              ]}
+            />
             {writType === 'certiorari' && (
               <div className="form-grid">
                 <label className="form-field">

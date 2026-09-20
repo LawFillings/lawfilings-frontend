@@ -23,6 +23,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
@@ -384,6 +385,16 @@ export function SummarySuitWizard({
         {step === 4 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Parties and instrument' : 'Who is this against, and why?'}</h3>
+            <DocumentAutofill
+              documentLabel={'cheque, promissory note, bill of exchange or written contract'}
+              fields={[
+                { key: 'plaintiffName', label: 'The holder or payee (the party owed the money)', value: plaintiffName, set: setPlaintiffName },
+                { key: 'defendantName', label: 'The drawer or maker (the party who owes the money)', value: defendantName, set: setDefendantName },
+                { key: 'defendantAddress', label: 'Address of the party who owes the money', value: defendantAddress, set: setDefendantAddress },
+                { key: 'claimAmount', label: 'Amount claimed as due', kind: 'amount', value: claimAmount, set: setClaimAmount },
+                { key: 'factsNarrative', label: 'Short plain account of the transaction and default', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

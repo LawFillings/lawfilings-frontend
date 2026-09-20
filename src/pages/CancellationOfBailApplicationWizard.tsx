@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -335,6 +336,15 @@ export function CancellationOfBailApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">The bail order and the parties</h3>
+            <DocumentAutofill
+              documentLabel={'bail order'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'FIR / case number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'bailOrderDate', label: 'Date of the bail order', kind: 'date', value: bailOrderDate, set: setBailOrderDate },
+                { key: 'bailGrantingCourt', label: 'Court that granted bail', value: bailGrantingCourt, set: setBailGrantingCourt },
+                { key: 'respondentName', label: 'Person granted bail', hint: 'the accused who was released on bail', value: respondentName, set: setRespondentName },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>FIR/Case No.</span>

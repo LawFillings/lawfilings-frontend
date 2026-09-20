@@ -10,6 +10,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 
@@ -299,6 +300,20 @@ export function MediationApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Applicant' : 'Your details'}</h3>
+            <DocumentAutofill
+              documentLabel={'agreement, invoice or demand notice'}
+              fields={[
+                { key: 'applicantName', label: 'the party raising the dispute (owed money or performance)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAddress', label: 'Address of the party raising the dispute (owed money or performance)', value: applicantAddress, set: setApplicantAddress },
+                { key: 'oppositePartyNames', label: 'The opposite party or parties', value: oppositePartyNames, set: setOppositePartyNames },
+                { key: 'oppositePartyAddress', label: 'Address of the opposite party', value: oppositePartyAddress, set: setOppositePartyAddress },
+                { key: 'transactionDate', label: 'Date of the transaction', kind: 'date', value: transactionDate, set: setTransactionDate },
+                { key: 'transactionAmount', label: 'Amount of the transaction', kind: 'amount', value: transactionAmount, set: setTransactionAmount },
+                { key: 'defaultDescription', label: 'What the opposite party failed to do', value: defaultDescription, set: setDefaultDescription },
+                { key: 'defaultDate', label: 'Date of the default', kind: 'date', value: defaultDate, set: setDefaultDate },
+                { key: 'claimAmount', label: 'Amount claimed', kind: 'amount', value: claimAmount, set: setClaimAmount },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>{mode === 'advocate' ? 'Applicant name' : 'Your name'}</span>

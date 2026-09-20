@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -329,6 +330,18 @@ export function QuashingPetitionWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Parties and the impugned FIR/complaint</h3>
+            <DocumentAutofill
+              documentLabel={'FIR'}
+              fields={[
+                { key: 'firNumber', label: 'FIR number', value: firNumber, set: setFirNumber },
+                { key: 'policeStation', label: 'Police station', value: policeStation, set: setPoliceStation },
+                { key: 'firDate', label: 'Date of the FIR', kind: 'date', value: firDate, set: setFirDate },
+                { key: 'offenceSections', label: 'Offence sections cited, exactly as written', value: offenceSections, set: setOffenceSections },
+                { key: 'petitionerName', label: 'the accused named in the FIR (who wants it quashed)', value: petitionerName, set: setPetitionerName },
+                { key: 'petitionerAge', label: 'Age of the accused named in the FIR (who wants it quashed)', kind: 'amount', hint: 'digits only', value: petitionerAge, set: setPetitionerAge },
+                { key: 'petitionerAddress', label: 'Address of the accused named in the FIR (who wants it quashed)', value: petitionerAddress, set: setPetitionerAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

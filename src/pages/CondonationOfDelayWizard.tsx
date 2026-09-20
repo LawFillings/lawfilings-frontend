@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -358,6 +359,13 @@ export function CondonationOfDelayWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The delayed filing</h3>
+            <DocumentAutofill
+              documentLabel={'order or judgment the delayed filing relates to'}
+              fields={[
+                { key: 'connectedCaseNumber', label: 'Case / appeal number', value: connectedCaseNumber, set: setConnectedCaseNumber },
+                { key: 'connectedFilingDescription', label: 'The order or judgment (court, date) the delayed filing is against', value: connectedFilingDescription, set: setConnectedFilingDescription },
+              ]}
+            />
             <label className="form-field">
               <span>What are you filing late? (e.g. "First Appeal against the judgment and decree dated ... passed in ...")</span>
               <textarea

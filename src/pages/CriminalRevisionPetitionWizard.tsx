@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -396,6 +397,15 @@ export function CriminalRevisionPetitionWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Impugned order and grounds</h3>
+            <DocumentAutofill
+              documentLabel={'impugned order'}
+              fields={[
+                { key: 'impugningCourt', label: 'Court that passed the order', value: impugningCourt, set: setImpugningCourt },
+                { key: 'caseNumber', label: 'Case / suit number', value: caseNumber, set: setCaseNumber },
+                { key: 'orderDate', label: 'Date of the order', kind: 'date', value: orderDate, set: setOrderDate },
+                { key: 'orderNature', label: 'What the order decided, in a few words', value: orderNature, set: setOrderNature },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Court which passed the impugned order</span>

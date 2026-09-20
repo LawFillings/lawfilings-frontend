@@ -25,6 +25,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 
@@ -574,6 +575,18 @@ export function DrtSaWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">Property & SARFAESI action</h3>
+            <DocumentAutofill
+              documentLabel={'SARFAESI notice (Section 13(2) demand or possession notice)'}
+              fields={[
+                { key: 'propertyAddress', label: 'Address of the secured property', value: propertyAddress, set: setPropertyAddress },
+                { key: 'loanAmount', label: 'Amount demanded in the notice', kind: 'amount', value: loanAmount, set: setLoanAmount },
+                { key: 'securityDescription', label: 'Description of the secured asset', value: securityDescription, set: setSecurityDescription },
+                { key: 'noticeDate', label: 'Date of the notice', kind: 'date', value: noticeDate, set: setNoticeDate },
+                { key: 'applicantName', label: 'the borrower or guarantor the notice is addressed to', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the borrower or guarantor the notice is addressed to', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the borrower or guarantor the notice is addressed to', value: applicantAddress, set: setApplicantAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Property address (the secured asset)</span>

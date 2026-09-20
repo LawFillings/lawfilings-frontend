@@ -17,6 +17,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -362,6 +363,12 @@ export function RecoveryOfMovablePropertySuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The property and parties</h3>
+            <DocumentAutofill
+              documentLabel={'invoice, receipt or document describing the property'}
+              fields={[
+                { key: 'propertyDescription', label: 'Description of the movable property', hint: 'make, model, quantity, identifying numbers', value: propertyDescription, set: setPropertyDescription },
+              ]}
+            />
             <label className="form-field">
               <span>Describe the property</span>
               <textarea className="facts-textarea" rows={3} value={propertyDescription} onChange={(e) => setPropertyDescription(e.target.value)} placeholder="e.g. one Maruti Suzuki Swift, Registration No. DL-01-AB-1234, Chassis No. ..." />

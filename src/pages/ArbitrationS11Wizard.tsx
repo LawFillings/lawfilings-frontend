@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -329,6 +330,22 @@ export function ArbitrationS11Wizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Parties</h3>
+            <DocumentAutofill
+              documentLabel={'arbitration agreement or notice invoking arbitration'}
+              fields={[
+                { key: 'applicantName', label: 'the party asking the court to appoint an arbitrator (the party who invoked arbitration)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the party asking the court to appoint an arbitrator (the party who invoked arbitration)', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the party asking the court to appoint an arbitrator (the party who invoked arbitration)', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the other party to the arbitration agreement', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the other party to the arbitration agreement', value: respondentAddress, set: setRespondentAddress },
+                { key: 'agreementDate', label: 'Date of the arbitration agreement', kind: 'date', value: agreementDate, set: setAgreementDate },
+                { key: 'natureOfDispute', label: 'Nature of the dispute, in a few words', value: natureOfDispute, set: setNatureOfDispute },
+                { key: 'numberOfArbitrators', label: 'Number of arbitrators the agreement provides for', value: numberOfArbitrators, set: setNumberOfArbitrators },
+                { key: 'requestDate', label: 'Date of the request / notice invoking arbitration', kind: 'date', value: requestDate, set: setRequestDate },
+                { key: 'proposedArbitrator', label: 'Arbitrator proposed by the applicant, if any', value: proposedArbitrator, set: setProposedArbitrator },
+                { key: 'factsNarrative', label: 'Short plain account of the dispute', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

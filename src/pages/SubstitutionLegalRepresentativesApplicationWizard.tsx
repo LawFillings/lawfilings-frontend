@@ -18,6 +18,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -357,6 +358,13 @@ export function SubstitutionLegalRepresentativesApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The suit and the deceased party</h3>
+            <DocumentAutofill
+              documentLabel={'death certificate'}
+              fields={[
+                { key: 'deceasedName', label: 'Name of the deceased party', value: deceasedName, set: setDeceasedName },
+                { key: 'dateOfDeath', label: 'Date of death', value: dateOfDeath, set: setDateOfDeath },
+              ]}
+            />
             <label className="form-field">
               <span>Suit number</span>
               <input type="text" value={parentCaseNumber} onChange={(e) => setParentCaseNumber(e.target.value)} placeholder="e.g. CS No. 45/2026" />

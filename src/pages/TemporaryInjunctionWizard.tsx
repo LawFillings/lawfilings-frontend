@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -371,6 +372,19 @@ export function TemporaryInjunctionWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Parties and the pending suit</h3>
+            <DocumentAutofill
+              documentLabel={'plaint in the pending suit'}
+              fields={[
+                { key: 'plaintiffName', label: 'the plaintiff', value: plaintiffName, set: setPlaintiffName },
+                { key: 'plaintiffAge', label: 'Age of the plaintiff', kind: 'amount', hint: 'digits only', value: plaintiffAge, set: setPlaintiffAge },
+                { key: 'plaintiffAddress', label: 'Address of the plaintiff', value: plaintiffAddress, set: setPlaintiffAddress },
+                { key: 'defendantName', label: 'the defendant', value: defendantName, set: setDefendantName },
+                { key: 'defendantAddress', label: 'Address of the defendant', value: defendantAddress, set: setDefendantAddress },
+                { key: 'parentSuitNumber', label: 'Suit number', value: parentSuitNumber, set: setParentSuitNumber },
+                { key: 'courtName', label: 'Court where the suit is pending', value: courtName, set: setCourtName },
+                { key: 'propertyDescription', label: 'Description of the property or subject matter of the suit', value: propertyDescription, set: setPropertyDescription },
+              ]}
+            />
             <p className="step-help">This application is filed within an already-instituted civil suit.</p>
             <div className="form-grid">
               <label className="form-field">

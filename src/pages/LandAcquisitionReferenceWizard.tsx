@@ -10,6 +10,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -318,6 +319,17 @@ export function LandAcquisitionReferenceWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Which district's Collector made the award?</h3>
+            <DocumentAutofill
+              documentLabel={'Collector\'s award or acquisition notification'}
+              fields={[
+                { key: 'collectorAddress', label: 'Address of the Collector who passed the award', value: collectorAddress, set: setCollectorAddress },
+                { key: 'notificationDetails', label: 'The acquisition notification: number and date', value: notificationDetails, set: setNotificationDetails },
+                { key: 'landDescription', label: 'Description of the acquired land', value: landDescription, set: setLandDescription },
+                { key: 'awardNumber', label: 'Award number', value: awardNumber, set: setAwardNumber },
+                { key: 'awardDate', label: 'Date of the award', kind: 'date', value: awardDate, set: setAwardDate },
+                { key: 'collectorAwardedAmount', label: 'Compensation awarded by the Collector', kind: 'amount', value: collectorAwardedAmount, set: setCollectorAwardedAmount },
+              ]}
+            />
             {selectedState ? (
               <LocationSelector
                 mode={mode}

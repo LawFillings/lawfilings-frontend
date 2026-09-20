@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -351,6 +352,14 @@ export function PossessionResistanceApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The decree and execution</h3>
+            <DocumentAutofill
+              documentLabel={'decree, execution order or notice'}
+              fields={[
+                { key: 'connectedExecutionCaseNumber', label: 'Execution case number', value: connectedExecutionCaseNumber, set: setConnectedExecutionCaseNumber },
+                { key: 'decreeDetails', label: 'The decree: court, date and what it awards', value: decreeDetails, set: setDecreeDetails },
+                { key: 'propertyDescription', label: 'Description of the property', value: propertyDescription, set: setPropertyDescription },
+              ]}
+            />
             <label className="form-field">
               <span>Execution Petition number</span>
               <input

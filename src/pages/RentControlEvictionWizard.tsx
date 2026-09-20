@@ -18,6 +18,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -507,6 +508,22 @@ export function RentControlEvictionWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">State and parties</h3>
+            <DocumentAutofill
+              documentLabel={'rent agreement, rent receipts or notice to the tenant'}
+              fields={[
+                { key: 'landlordName', label: 'the landlord', value: landlordName, set: setLandlordName },
+                { key: 'landlordAge', label: 'Age of the landlord', kind: 'amount', hint: 'digits only', value: landlordAge, set: setLandlordAge },
+                { key: 'landlordAddress', label: 'Address of the landlord', value: landlordAddress, set: setLandlordAddress },
+                { key: 'tenantName', label: 'the tenant', value: tenantName, set: setTenantName },
+                { key: 'tenantAddress', label: 'Address of the tenant', value: tenantAddress, set: setTenantAddress },
+                { key: 'premisesAddress', label: 'Address of the rented premises', value: premisesAddress, set: setPremisesAddress },
+                { key: 'premisesCity', label: 'City of the premises', value: premisesCity, set: setPremisesCity },
+                { key: 'monthlyRent', label: 'Monthly rent', kind: 'amount', value: monthlyRent, set: setMonthlyRent },
+                { key: 'tenancyStartDate', label: 'Date the tenancy began', kind: 'date', value: tenancyStartDate, set: setTenancyStartDate },
+                { key: 'arrearsAmount', label: 'Rent arrears claimed', kind: 'amount', value: arrearsAmount, set: setArrearsAmount },
+                { key: 'noticeDate', label: 'Date of the notice', kind: 'date', value: noticeDate, set: setNoticeDate },
+              ]}
+            />
             <p className="step-help">
               Which state's Rent Control Act applies depends on where the premises are situated. Tamil Nadu,
               Uttarakhand, and a few Union territories have replaced the classic Rent Control Act model with a

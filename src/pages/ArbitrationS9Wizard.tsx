@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -354,6 +355,19 @@ export function ArbitrationS9Wizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Court and parties</h3>
+            <DocumentAutofill
+              documentLabel={'arbitration agreement or notice of dispute'}
+              fields={[
+                { key: 'applicantName', label: 'the party asking the court for interim protection', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the party asking the court for interim protection', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the party asking the court for interim protection', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the other party to the arbitration agreement', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the other party to the arbitration agreement', value: respondentAddress, set: setRespondentAddress },
+                { key: 'agreementDate', label: 'Date of the arbitration agreement', kind: 'date', value: agreementDate, set: setAgreementDate },
+                { key: 'natureOfDispute', label: 'Nature of the dispute, in a few words', value: natureOfDispute, set: setNatureOfDispute },
+                { key: 'factsNarrative', label: 'Short plain account of the dispute', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <p className="step-help">
               Which "Court" has jurisdiction depends on whether this is an international commercial arbitration.
             </p>

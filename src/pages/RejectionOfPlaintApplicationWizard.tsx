@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -357,6 +358,17 @@ export function RejectionOfPlaintApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The suit and parties</h3>
+            <DocumentAutofill
+              documentLabel={'plaint in the suit'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'Suit number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'applicantName', label: 'the defendant (who is asking for the plaint to be rejected)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the defendant (who is asking for the plaint to be rejected)', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the defendant (who is asking for the plaint to be rejected)', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the plaintiff', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the plaintiff', value: respondentAddress, set: setRespondentAddress },
+              ]}
+            />
             <p className="step-help">
               You are the Defendant in the original suit; in this application, you are the Applicant. The Plaintiff
               is the Respondent here.

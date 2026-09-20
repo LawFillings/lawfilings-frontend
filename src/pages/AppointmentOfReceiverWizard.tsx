@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -368,6 +369,18 @@ export function AppointmentOfReceiverWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The suit and the property</h3>
+            <DocumentAutofill
+              documentLabel={'pleading in the pending suit'}
+              fields={[
+                { key: 'connectedSuitNumber', label: 'Suit number of the pending suit', value: connectedSuitNumber, set: setConnectedSuitNumber },
+                { key: 'propertyDescription', label: 'Description of the property in dispute', hint: 'location, area, boundaries, survey numbers if stated', value: propertyDescription, set: setPropertyDescription },
+                { key: 'applicantName', label: 'the party asking for a receiver to be appointed (usually the plaintiff)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the party asking for a receiver to be appointed (usually the plaintiff)', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the party asking for a receiver to be appointed (usually the plaintiff)', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the opposite party (usually the defendant)', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the opposite party (usually the defendant)', value: respondentAddress, set: setRespondentAddress },
+              ]}
+            />
             <label className="form-field">
               <span>Suit number</span>
               <input type="text" value={connectedSuitNumber} onChange={(e) => setConnectedSuitNumber(e.target.value)} placeholder="e.g. CS No. 45/2026" />

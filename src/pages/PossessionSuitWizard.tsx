@@ -17,6 +17,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -391,6 +392,13 @@ export function PossessionSuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">Parties and the property</h3>
+            <DocumentAutofill
+              documentLabel={'title deed, lease or notice to quit'}
+              fields={[
+                { key: 'propertyDescription', label: 'Description of the property', hint: 'location, area, boundaries, survey numbers if stated', value: propertyDescription, set: setPropertyDescription },
+                { key: 'noticeToQuitDate', label: 'Date of the notice to quit', kind: 'date', value: noticeToQuitDate, set: setNoticeToQuitDate },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

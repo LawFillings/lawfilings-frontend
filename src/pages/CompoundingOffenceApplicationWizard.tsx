@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -324,6 +325,15 @@ export function CompoundingOffenceApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">The case and the offence</h3>
+            <DocumentAutofill
+              documentLabel={'chargesheet, FIR or court order in the case'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'Case number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'bnsSection', label: 'Section of the Bharatiya Nyaya Sanhita (or IPC) under which the offence is charged', value: bnsSection, set: setBnsSection },
+                { key: 'applicantName', label: 'The accused person seeking compounding', value: applicantName, set: setApplicantName },
+                { key: 'complainantName', label: 'The complainant / victim', value: complainantName, set: setComplainantName },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Case No.</span>

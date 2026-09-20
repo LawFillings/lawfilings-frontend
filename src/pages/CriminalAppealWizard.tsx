@@ -15,6 +15,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -318,6 +319,20 @@ export function CriminalAppealWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Court and parties</h3>
+            <DocumentAutofill
+              documentLabel={'judgment of conviction'}
+              fields={[
+                { key: 'appellantName', label: 'the convicted person who is appealing', value: appellantName, set: setAppellantName },
+                { key: 'appellantAge', label: 'Age of the convicted person who is appealing', kind: 'amount', hint: 'digits only', value: appellantAge, set: setAppellantAge },
+                { key: 'appellantAddress', label: 'Address of the convicted person who is appealing', value: appellantAddress, set: setAppellantAddress },
+                { key: 'trialCourt', label: 'Court that convicted', value: trialCourt, set: setTrialCourt },
+                { key: 'caseNumber', label: 'Case / suit number', value: caseNumber, set: setCaseNumber },
+                { key: 'judgmentDate', label: 'Date of the judgment', kind: 'date', value: judgmentDate, set: setJudgmentDate },
+                { key: 'convictionSections', label: 'Sections under which convicted', value: convictionSections, set: setConvictionSections },
+                { key: 'sentenceAwarded', label: 'Sentence awarded', value: sentenceAwarded, set: setSentenceAwarded },
+                { key: 'factsNarrative', label: 'Short plain account of the prosecution case', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <p className="step-help">
               Section 415 fixes which court you appeal to based on who convicted you and the sentence passed — pick
               the one that matches your case.

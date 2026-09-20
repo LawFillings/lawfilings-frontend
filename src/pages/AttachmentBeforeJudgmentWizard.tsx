@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -352,6 +353,18 @@ export function AttachmentBeforeJudgmentWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The pending suit and parties</h3>
+            <DocumentAutofill
+              documentLabel={'plaint in the pending suit'}
+              fields={[
+                { key: 'connectedSuitNumber', label: 'Suit number', value: connectedSuitNumber, set: setConnectedSuitNumber },
+                { key: 'suitClaimDescription', label: 'Relief the plaintiff claims in the suit', value: suitClaimDescription, set: setSuitClaimDescription },
+                { key: 'plaintiffName', label: 'the plaintiff', value: plaintiffName, set: setPlaintiffName },
+                { key: 'plaintiffAge', label: 'Age of the plaintiff', kind: 'amount', hint: 'digits only', value: plaintiffAge, set: setPlaintiffAge },
+                { key: 'plaintiffAddress', label: 'Address of the plaintiff', value: plaintiffAddress, set: setPlaintiffAddress },
+                { key: 'defendantName', label: 'the defendant', value: defendantName, set: setDefendantName },
+                { key: 'defendantAddress', label: 'Address of the defendant', value: defendantAddress, set: setDefendantAddress },
+              ]}
+            />
             <label className="form-field">
               <span>Suit number</span>
               <input type="text" value={connectedSuitNumber} onChange={(e) => setConnectedSuitNumber(e.target.value)} placeholder="e.g. CS No. 45/2026" />

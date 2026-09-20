@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -361,6 +362,20 @@ export function ArbitrationS34Wizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Court and parties</h3>
+            <DocumentAutofill
+              documentLabel={'arbitral award'}
+              fields={[
+                { key: 'arbitratorName', label: 'Name of the arbitrator(s) / tribunal who passed the award', value: arbitratorName, set: setArbitratorName },
+                { key: 'awardDate', label: 'Date of the award', kind: 'date', value: awardDate, set: setAwardDate },
+                { key: 'applicantName', label: 'the party challenging the award (the party against whom the award mainly goes)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the party challenging the award (the party against whom the award mainly goes)', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the party challenging the award (the party against whom the award mainly goes)', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the party in whose favour the award was passed', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the party in whose favour the award was passed', value: respondentAddress, set: setRespondentAddress },
+                { key: 'natureOfDispute', label: 'Nature of the dispute, in a few words', value: natureOfDispute, set: setNatureOfDispute },
+                { key: 'factsNarrative', label: 'Short plain account of the dispute and the award', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <p className="step-help">
               Which "Court" has jurisdiction depends on whether this is an international commercial arbitration.
             </p>

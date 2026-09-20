@@ -21,6 +21,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -317,6 +318,13 @@ export function DischargeApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The case and the parties</h3>
+            <DocumentAutofill
+              documentLabel={'chargesheet or order framing charge'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'Case / suit number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'applicantName', label: 'The accused seeking discharge', value: applicantName, set: setApplicantName },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Case No.</span>

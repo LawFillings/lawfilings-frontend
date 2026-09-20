@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 
@@ -340,6 +341,19 @@ export function NcltSection9Wizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Corporate debtor details' : 'Details of the company'}</h3>
+            <DocumentAutofill
+              documentLabel={'demand notice under Section 8 of the IBC, or invoices'}
+              fields={[
+                { key: 'companyName', label: 'The corporate debtor (the company that owes the money)', value: companyName, set: setCompanyName },
+                { key: 'registeredOffice', label: 'Registered office of that company', value: registeredOffice, set: setRegisteredOffice },
+                { key: 'natureOfDebt', label: 'Nature of the operational debt, in a few words', value: natureOfDebt, set: setNatureOfDebt },
+                { key: 'defaultAmount', label: 'Amount in default', kind: 'amount', value: defaultAmount, set: setDefaultAmount },
+                { key: 'noticeDate', label: 'Date of the demand notice', kind: 'date', value: noticeDate, set: setNoticeDate },
+                { key: 'deliveryDate', label: 'Date the notice was delivered', kind: 'date', value: deliveryDate, set: setDeliveryDate },
+                { key: 'applicantName', label: 'The operational creditor (the party owed the money)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAddress', label: 'Address of the operational creditor', value: applicantAddress, set: setApplicantAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Company name</span>

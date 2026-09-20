@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -320,6 +321,13 @@ export function VictimCompensationApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Which Legal Services Authority?</h3>
+            <DocumentAutofill
+              documentLabel={'FIR or judgment in the criminal case'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'FIR / case number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'incidentFacts', label: 'Short plain account of the incident', hint: 'only what the document states', value: incidentFacts, set: setIncidentFacts },
+              ]}
+            />
             <p className="step-help">File with the District (or State) Legal Services Authority for the area concerned.</p>
             <div className="form-grid">
               <label className="form-field">

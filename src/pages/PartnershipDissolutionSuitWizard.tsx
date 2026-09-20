@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -391,6 +392,14 @@ export function PartnershipDissolutionSuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The firm and parties</h3>
+            <DocumentAutofill
+              documentLabel={'partnership deed'}
+              fields={[
+                { key: 'firmName', label: 'Name of the firm', value: firmName, set: setFirmName },
+                { key: 'firmBusinessPlace', label: 'Principal place of business', value: firmBusinessPlace, set: setFirmBusinessPlace },
+                { key: 'partnershipDeedDetails', label: 'The partnership deed: date, partners and profit shares', value: partnershipDeedDetails, set: setPartnershipDeedDetails },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>{mode === 'advocate' ? 'Plaintiff (partner suing)' : 'Your name'}</span>

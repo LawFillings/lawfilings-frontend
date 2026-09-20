@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -346,6 +347,19 @@ export function InjunctionDisobedienceApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The injunction</h3>
+            <DocumentAutofill
+              documentLabel={'injunction order'}
+              fields={[
+                { key: 'connectedSuitNumber', label: 'Suit number', value: connectedSuitNumber, set: setConnectedSuitNumber },
+                { key: 'injunctionOrderDetails', label: 'The injunction order: court, date and what it restrains', value: injunctionOrderDetails, set: setInjunctionOrderDetails },
+                { key: 'applicantName', label: 'the party who obtained the injunction', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the party who obtained the injunction', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the party who obtained the injunction', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the party restrained by the injunction', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the party restrained by the injunction', value: respondentAddress, set: setRespondentAddress },
+                { key: 'propertyDescription', label: 'Property the injunction concerns', value: propertyDescription, set: setPropertyDescription },
+              ]}
+            />
             <label className="form-field">
               <span>Suit number</span>
               <input type="text" value={connectedSuitNumber} onChange={(e) => setConnectedSuitNumber(e.target.value)} placeholder="e.g. CS No. 45/2026" />

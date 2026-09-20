@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -324,6 +325,18 @@ export function DefaultBailApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">Custody and the chargesheet deadline</h3>
+            <DocumentAutofill
+              documentLabel={'FIR or remand order'}
+              fields={[
+                { key: 'firNumber', label: 'FIR number', value: firNumber, set: setFirNumber },
+                { key: 'policeStation', label: 'Police station', value: policeStation, set: setPoliceStation },
+                { key: 'bnsSections', label: 'Offence sections cited, exactly as written', value: bnsSections, set: setBnsSections },
+                { key: 'arrestDate', label: 'Date of arrest', kind: 'date', value: arrestDate, set: setArrestDate },
+                { key: 'applicantName', label: 'the accused person who was arrested', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the accused person who was arrested', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the accused person who was arrested', value: applicantAddress, set: setApplicantAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>FIR No.</span>

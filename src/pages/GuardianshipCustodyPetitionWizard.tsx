@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -328,6 +329,14 @@ export function GuardianshipCustodyPetitionWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Parties and the minor</h3>
+            <DocumentAutofill
+              documentLabel={'birth certificate or school record of the minor'}
+              fields={[
+                { key: 'minorName', label: 'Minor\'s name', value: minorName, set: setMinorName },
+                { key: 'minorDob', label: 'Minor\'s date of birth', kind: 'date', value: minorDob, set: setMinorDob },
+                { key: 'minorResidence', label: 'Minor\'s place of residence', value: minorResidence, set: setMinorResidence },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

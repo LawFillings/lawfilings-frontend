@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -331,6 +332,17 @@ export function SuspensionOfSentenceApplicationWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">The conviction and appeal</h3>
+            <DocumentAutofill
+              documentLabel={'judgment of conviction or order of sentence'}
+              fields={[
+                { key: 'convictionCaseNumber', label: 'Case number in which convicted', value: convictionCaseNumber, set: setConvictionCaseNumber },
+                { key: 'sentenceDescription', label: 'Sentence awarded', value: sentenceDescription, set: setSentenceDescription },
+                { key: 'appealCaseNumber', label: 'Appeal number, if the document shows one', value: appealCaseNumber, set: setAppealCaseNumber },
+                { key: 'applicantName', label: 'the convicted person', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the convicted person', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the convicted person', value: applicantAddress, set: setApplicantAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Original Case No. (where convicted)</span>

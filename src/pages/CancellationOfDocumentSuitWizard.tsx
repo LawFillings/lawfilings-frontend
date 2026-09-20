@@ -22,6 +22,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -385,6 +386,12 @@ export function CancellationOfDocumentSuitWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">Parties and the document</h3>
+            <DocumentAutofill
+              documentLabel={'document sought to be cancelled'}
+              fields={[
+                { key: 'documentDetails', label: 'The document: its type, date and registration details if any', hint: 'e.g. sale deed dated …, registered at …', value: documentDetails, set: setDocumentDetails },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

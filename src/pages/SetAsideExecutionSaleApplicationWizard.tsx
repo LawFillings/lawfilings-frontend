@@ -23,6 +23,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -366,6 +367,14 @@ export function SetAsideExecutionSaleApplicationWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The execution sale</h3>
+            <DocumentAutofill
+              documentLabel={'sale proclamation, sale notice or sale certificate'}
+              fields={[
+                { key: 'executionCaseNumber', label: 'Execution case number', value: executionCaseNumber, set: setExecutionCaseNumber },
+                { key: 'saleDate', label: 'Date of the sale', value: saleDate, set: setSaleDate },
+                { key: 'propertyDescription', label: 'Description of the property sold', value: propertyDescription, set: setPropertyDescription },
+              ]}
+            />
             <label className="form-field">
               <span>Execution case number</span>
               <input type="text" value={executionCaseNumber} onChange={(e) => setExecutionCaseNumber(e.target.value)} placeholder="e.g. Ex. No. 12/2026" />

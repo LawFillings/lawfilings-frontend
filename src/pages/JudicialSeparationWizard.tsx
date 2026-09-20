@@ -19,6 +19,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -319,6 +320,13 @@ export function JudicialSeparationWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Parties and marriage' : 'You, your spouse, and your marriage'}</h3>
+            <DocumentAutofill
+              documentLabel={'marriage certificate'}
+              fields={[
+                { key: 'marriageDate', label: 'Date of marriage', kind: 'date', value: marriageDate, set: setMarriageDate },
+                { key: 'marriagePlace', label: 'Place of marriage', value: marriagePlace, set: setMarriagePlace },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

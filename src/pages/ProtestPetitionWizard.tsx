@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -329,6 +330,18 @@ export function ProtestPetitionWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Informant and the FIR' : 'Your details and the FIR'}</h3>
+            <DocumentAutofill
+              documentLabel={'closure report or police report'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'FIR / case number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'policeStation', label: 'Police station', value: policeStation, set: setPoliceStation },
+                { key: 'closureReportDate', label: 'Date of the closure report', kind: 'date', value: closureReportDate, set: setClosureReportDate },
+                { key: 'accusedName', label: 'The accused named in the report', value: accusedName, set: setAccusedName },
+                { key: 'applicantName', label: 'the informant (the person who lodged the FIR)', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the informant (the person who lodged the FIR)', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the informant (the person who lodged the FIR)', value: applicantAddress, set: setApplicantAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>FIR No.</span>

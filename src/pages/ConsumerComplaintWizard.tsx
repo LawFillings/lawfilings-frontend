@@ -26,6 +26,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 
@@ -350,6 +351,16 @@ export function ConsumerComplaintWizard({
         {step === 1 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Pecuniary jurisdiction' : 'Where should this be filed?'}</h3>
+            <DocumentAutofill
+              documentLabel={'invoice, bill, warranty card or legal notice'}
+              fields={[
+                { key: 'complainantName', label: 'the consumer (the buyer or service user making the complaint)', value: complainantName, set: setComplainantName },
+                { key: 'complainantAge', label: 'Age of the consumer (the buyer or service user making the complaint)', kind: 'amount', hint: 'digits only', value: complainantAge, set: setComplainantAge },
+                { key: 'complainantAddress', label: 'Address of the consumer (the buyer or service user making the complaint)', value: complainantAddress, set: setComplainantAddress },
+                { key: 'opponentName', label: 'The opposite party (the seller or service provider)', value: opponentName, set: setOpponentName },
+                { key: 'facts', label: 'Short plain account of the purchase or service and the deficiency', hint: 'only what the document states', value: facts, set: setFacts },
+              ]}
+            />
             <p className="step-help">
               {mode === 'advocate'
                 ? 'Jurisdiction is based on value of consideration paid, not compensation claimed.'

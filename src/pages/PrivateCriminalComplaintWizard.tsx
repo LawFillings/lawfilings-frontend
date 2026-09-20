@@ -20,6 +20,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -281,6 +282,18 @@ export function PrivateCriminalComplaintWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">Parties</h3>
+            <DocumentAutofill
+              documentLabel={'police complaint, notice or other document about the offence'}
+              fields={[
+                { key: 'complainantName', label: 'the person making the complaint', value: complainantName, set: setComplainantName },
+                { key: 'complainantAge', label: 'Age of the person making the complaint', kind: 'amount', hint: 'digits only', value: complainantAge, set: setComplainantAge },
+                { key: 'complainantAddress', label: 'Address of the person making the complaint', value: complainantAddress, set: setComplainantAddress },
+                { key: 'accusedName', label: 'the person accused', value: accusedName, set: setAccusedName },
+                { key: 'accusedAddress', label: 'Address of the person accused', value: accusedAddress, set: setAccusedAddress },
+                { key: 'offenceSections', label: 'Offence sections cited, exactly as written', value: offenceSections, set: setOffenceSections },
+                { key: 'factsNarrative', label: 'Short plain account of the offence', hint: 'only what the document states', value: factsNarrative, set: setFactsNarrative },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>

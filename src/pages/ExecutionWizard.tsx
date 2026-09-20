@@ -18,6 +18,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CaseType, UserRole } from '../types';
 
@@ -244,6 +245,16 @@ export function ExecutionWizard({
         {step === 0 && (
           <div>
             <h3 className="step-heading">{mode === 'advocate' ? 'Order details' : 'The order that wasn’t followed'}</h3>
+            <DocumentAutofill
+              documentLabel={'decree or order being executed'}
+              fields={[
+                { key: 'orderDate', label: 'Date of the decree / order', kind: 'date', value: orderDate, set: setOrderDate },
+                { key: 'orderNumber', label: 'Decree / order / case number', value: orderNumber, set: setOrderNumber },
+                { key: 'reliefOrdered', label: 'What the decree or order directs', value: reliefOrdered, set: setReliefOrdered },
+                { key: 'applicantName', label: 'Decree-holder', hint: 'the party in whose favour the decree or order was passed', value: applicantName, set: setApplicantName },
+                { key: 'respondentName', label: 'Judgment-debtor', hint: 'the party against whom it was passed', value: respondentName, set: setRespondentName },
+              ]}
+            />
             <p className="step-help">
               {mode === 'advocate'
                 ? 'Enter the details of the order you are seeking to enforce.'

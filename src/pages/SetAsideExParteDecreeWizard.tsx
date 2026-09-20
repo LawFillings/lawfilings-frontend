@@ -23,6 +23,7 @@ import { useAuth } from '../lib/auth';
 import * as casesClient from '../lib/casesClient';
 import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
+import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
@@ -379,6 +380,18 @@ export function SetAsideExParteDecreeWizard({
         {step === 2 && (
           <div>
             <h3 className="step-heading">The suit and the ex-parte decree</h3>
+            <DocumentAutofill
+              documentLabel={'ex parte decree or judgment'}
+              fields={[
+                { key: 'parentCaseNumber', label: 'Suit number', value: parentCaseNumber, set: setParentCaseNumber },
+                { key: 'decreeDate', label: 'Date of the ex parte decree', kind: 'date', value: decreeDate, set: setDecreeDate },
+                { key: 'applicantName', label: 'the defendant against whom the ex parte decree was passed', value: applicantName, set: setApplicantName },
+                { key: 'applicantAge', label: 'Age of the defendant against whom the ex parte decree was passed', kind: 'amount', hint: 'digits only', value: applicantAge, set: setApplicantAge },
+                { key: 'applicantAddress', label: 'Address of the defendant against whom the ex parte decree was passed', value: applicantAddress, set: setApplicantAddress },
+                { key: 'respondentName', label: 'the plaintiff who obtained the decree', value: respondentName, set: setRespondentName },
+                { key: 'respondentAddress', label: 'Address of the plaintiff who obtained the decree', value: respondentAddress, set: setRespondentAddress },
+              ]}
+            />
             <div className="form-grid">
               <label className="form-field">
                 <span>Original suit number</span>
