@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { Fragment, useState } from 'react';
 import { forums, caseTypes, appealGroups, caseTypeSubcategories, topCategories } from '../data/mockData';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
@@ -52,6 +52,29 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
     return items.length > 0 || groups.length > 0;
   });
 
+  // Fixed button layout for the court/forum picker: one row per group, each centred.
+  const forumRows: string[][] = [
+    ['misc_drafts', 'district_court', 'high_court', 'supreme_court'],
+    ['DRT', 'NCLT', 'tax_matters'],
+    ['consumer_commission'],
+  ];
+  const forumTabLabel: Record<string, string> = {
+    DRT: 'DRT/DRAT',
+    NCLT: 'NCLT/NCLAT',
+    consumer_commission: 'Consumer Forum',
+  };
+  const rowOfForum = (type: string) => {
+    const i = forumRows.findIndex((r) => r.includes(type));
+    return i === -1 ? forumRows.length : i;
+  };
+  const orderedForums = [...visibleForums].sort((a, b) => {
+    const ra = rowOfForum(a.forumType);
+    const rb = rowOfForum(b.forumType);
+    if (ra !== rb) return ra - rb;
+    const flat = forumRows.flat();
+    return flat.indexOf(a.forumType) - flat.indexOf(b.forumType);
+  });
+
   const selectedForum = visibleForums.find((f) => f.forumType === selectedForumType) ?? null;
   const selectedItems = selectedForum
     ? caseTypes.filter(
@@ -89,7 +112,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
 
   // Tint the case cards with the hue of the option button that revealed them (same 8-colour cycle
   // as the tab buttons in Home.css): the deepest tier the user has picked.
-  const forumIdx = visibleForums.findIndex((f) => f.forumType === selectedForumType);
+  const forumIdx = orderedForums.findIndex((f) => f.forumType === selectedForumType);
   const topIdx = topCategorySections ? topCategorySections.findIndex((tc) => tc.key === selectedTopCategoryKey) : -1;
   const subIdx = subcategorySections ? subcategorySections.findIndex((sc) => sc.key === selectedSubcategoryKey) : -1;
   const toneIdx = subIdx >= 0 ? subIdx : topIdx >= 0 ? topIdx : Math.max(forumIdx, 0);
@@ -127,14 +150,19 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
 
             <div className="picker-split-right">
               <div className="forum-tabs">
-                {visibleForums.map((forum) => (
-                  <button
-                    key={forum.id}
-                    className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
-                    onClick={() => selectForum(forum.forumType)}
-                  >
-                    {forum.name}
-                  </button>
+                {orderedForums.map((forum, i) => (
+                  <Fragment key={forum.id}>
+                    {i > 0 && rowOfForum(forum.forumType) !== rowOfForum(orderedForums[i - 1].forumType) && (
+                      <span className="forum-tabs-break" aria-hidden="true" />
+                    )}
+                    <button
+                      data-hue={(i % 8) + 1}
+                      className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
+                      onClick={() => selectForum(forum.forumType)}
+                    >
+                      {forumTabLabel[forum.forumType] ?? forum.name}
+                    </button>
+                  </Fragment>
                 ))}
               </div>
             </div>

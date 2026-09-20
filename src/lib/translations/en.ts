@@ -136,14 +136,14 @@ export const en = {
       titleLine2: 'Know your deadline.',
       titleLine3: 'Draft your filing.',
       titleLine4: 'Monitor your matters.',
-      sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, DRTs/DRATs and NCLT/NCLAT.',
+      sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, Tribunals, High Courts and Supreme Court.',
       startFiling: 'Start a filing →',
       browseActs: 'Browse Constitution & Key Statutes — curated for you',
     },
     actsSection: {
       eyebrow: 'Curated from Primary sources',
       title: 'Constitution & Key Statutes',
-      sub: 'The Constitution and the actual text of the Acts behind these case types — sourced directly from India Code, not summarised.',
+      sub: 'The Constitution and the actual text of the Acts behind these case types — sourced directly from India Code and official state gazettes, not summarised.',
       browseAll: 'Browse Curated Primary Sources →',
     },
     news: {
@@ -175,9 +175,9 @@ export const en = {
         },
         {
           date: 'Just added',
-          title: 'SARFAESI Act now in Constitution & Key Statutes',
+          title: 'Lokayukta Acts of the States, now in Constitution & Key Statutes',
           summary:
-            'Enforcement, DRT application, appeal, and limitation provisions — sourced directly from India Code, not summarised. Read alongside the RDDBFI Act if you’re dealing with a bank enforcement action.',
+            'State Lokayukta Acts, including the latest additions for Sikkim, Tripura and Arunachal Pradesh (as amended in 2019) — with the provisions on complaints, inquiry procedure and limitation given verbatim, not summarised.',
           tag: 'Constitution & Key Statutes',
         },
       ],
@@ -190,7 +190,7 @@ export const en = {
         {
           tag: 'Sourced, not summarised',
           title: 'Constitution & Key Statutes you can actually cite',
-          body: 'Every Act section is the verbatim text from India Code, with a source link and the date it was last checked.',
+          body: 'Every Act section is the verbatim text from India Code or the official state gazette, with a source link and the date it was last checked.',
         },
         {
           tag: 'Filed the way courts expect',
@@ -208,9 +208,9 @@ export const en = {
           body: 'Every wizard adapts its language depending on who is filing — an advocate drafting for a client, or someone representing themselves.',
         },
         {
-          tag: 'Free tool',
-          title: 'An instant Court Fee Calculator',
-          body: 'Estimate the ad valorem court fee for a suit in seconds, across every state and union territory we cover — sourced and dated.',
+          tag: 'Legal Tools',
+          title: 'Cause Lists, Case Law and a Court Fee Calculator',
+          body: 'Look up cause lists across 100+ courts, search case law, translate a document, and estimate the ad valorem court fee for a suit in every state and union territory we cover — sourced and dated.',
         },
         {
           tag: '13 languages',
@@ -227,7 +227,7 @@ export const en = {
         {
           tag: 'For advocates',
           title: 'Advocates',
-          body: 'Draft DRT, NCLT, Consumer Commission, and District Court filings faster, with the governing provision already cited — so your time goes to judgment, not formatting.',
+          body: 'Draft District Court, High Court, Supreme Court, Tribunal and Consumer Commission filings faster, with the governing provision already cited — so your time goes to judgment, not formatting.',
         },
         {
           tag: 'For self-represented litigants',
@@ -242,7 +242,7 @@ export const en = {
         {
           tag: 'For students',
           title: 'Law students',
-          body: 'Free access to sourced Act text, with a Q&A tool that answers strictly from that text — useful for study, not a substitute for it.',
+          body: 'Free access to sourced Act text, plus a Q&A tool (login required) that answers strictly from that text — useful for study, not a substitute for it.',
         },
       ],
     },
