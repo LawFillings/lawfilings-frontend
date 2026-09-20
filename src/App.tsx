@@ -112,7 +112,7 @@ import './App.css';
 
 type Screen =
   | { kind: 'landing' }
-  | { kind: 'home' }
+  | { kind: 'home'; forumType?: string }
   | {
       kind: 'caseType';
       caseType: CaseType;
@@ -228,8 +228,11 @@ function AppScreens() {
           onOpenPrivacyPolicy={openPrivacyPolicyNav}
           onOpenTermsOfService={openTermsOfServiceNav}
           onOpenGrievanceOfficer={openGrievanceOfficerNav}
-          onOpenCauseList={openCauseListBasicNav}
-          onOpenLegalTools={openCourtFeeCalculatorNav}
+          onOpenCauseListBasic={openCauseListBasicNav}
+          onOpenCauseListPro={openCauseListProNav}
+          onOpenForum={(forumType) => navigate({ kind: 'home', forumType })}
+          onOpenCourtFee={openCourtFeeCalculatorNav}
+          onOpenTranslateDocument={openTranslateDocumentNav}
           onOpenCaseLaw={openCaseLawSearchNav}
           onOpenMyCases={openMyCasesNav}
         />
@@ -244,6 +247,8 @@ function AppScreens() {
           onSelectAppealGroup={(g) => requireAuth({ kind: 'appealGroup', group: g })}
           onOpenSettings={openSettingsNav}
           onOpenPrivacyPolicy={openPrivacyPolicyNav}
+          initialForumType={screen.forumType}
+          key={screen.forumType ?? 'default'}
         />
       );
     }

@@ -1,6 +1,9 @@
 import { externalLawNewsSites } from "../data/newsItems";
+import { forums } from "../data/mockData";
+import { forumRows, forumTabLabel } from "../data/forumPicker";
 import { useSettings } from "../lib/settings";
 import { useLanguage } from "../lib/language";
+import { useState } from "react";
 import { UspSlider } from "../components/UspSlider";
 import { HowItWorks } from "../components/HowItWorks";
 import { BuiltFor } from "../components/BuiltFor";
@@ -224,8 +227,11 @@ interface Props {
   onOpenPrivacyPolicy: () => void;
   onOpenTermsOfService: () => void;
   onOpenGrievanceOfficer: () => void;
-  onOpenCauseList: () => void;
-  onOpenLegalTools: () => void;
+  onOpenCauseListBasic: () => void;
+  onOpenCauseListPro: () => void;
+  onOpenForum: (forumType: string) => void;
+  onOpenCourtFee: () => void;
+  onOpenTranslateDocument: () => void;
   onOpenCaseLaw: () => void;
   onOpenMyCases: () => void;
 }
@@ -238,14 +244,19 @@ export function LandingPage({
   onOpenPrivacyPolicy,
   onOpenTermsOfService,
   onOpenGrievanceOfficer,
-  onOpenCauseList,
-  onOpenLegalTools,
+  onOpenCauseListBasic,
+  onOpenCauseListPro,
+  onOpenForum,
+  onOpenCourtFee,
+  onOpenTranslateDocument,
   onOpenCaseLaw,
   onOpenMyCases,
 }: Props) {
   const { settings } = useSettings();
   const { color, widgets } = settings.landing;
   const { t } = useLanguage();
+  // Phone shortcut tiles: Start a filing, Cause List, Legal Tools and What's New expand a small list underneath.
+  const [quickPanel, setQuickPanel] = useState<'filing' | 'causeList' | 'tools' | 'news' | null>(null);
 
   return (
     <div className="landing" data-color-theme={color}>
@@ -281,23 +292,83 @@ export function LandingPage({
             <p className="landing-hero-sub landing-hero-sub-full">{t.landing.hero.sub}</p>
             <p className="landing-hero-sub landing-hero-sub-short">{t.landing.hero.subShort}</p>
             <nav className="landing-quick" aria-label={t.landing.hero.startFiling}>
+              <div className="landing-quick-grid">
               {[
-                { key: 'filing', label: t.nav.startAFiling, onClick: onStartFiling },
-                { key: 'causeList', label: t.nav.causeList, onClick: onOpenCauseList },
-                { key: 'tools', label: t.nav.legalTools, onClick: onOpenLegalTools },
+                { key: 'filing', label: t.nav.startAFiling, onClick: () => setQuickPanel((p) => (p === 'filing' ? null : 'filing')), expanded: quickPanel === 'filing' },
+                { key: 'causeList', label: t.nav.causeList, onClick: () => setQuickPanel((p) => (p === 'causeList' ? null : 'causeList')), expanded: quickPanel === 'causeList' },
                 { key: 'myCases', label: t.nav.myCases, onClick: onOpenMyCases },
+                { key: 'tools', label: t.nav.legalTools, onClick: () => setQuickPanel((p) => (p === 'tools' ? null : 'tools')), expanded: quickPanel === 'tools' },
                 { key: 'caseLaw', label: t.nav.caseLaw, onClick: onOpenCaseLaw },
-                {
-                  key: 'news',
-                  label: t.landing.news.eyebrow,
-                  onClick: () => document.getElementById('news')?.scrollIntoView({ behavior: 'smooth', block: 'start' }),
-                },
+                { key: 'news', label: t.landing.hero.whatsNew, onClick: () => setQuickPanel((p) => (p === 'news' ? null : 'news')), expanded: quickPanel === 'news' },
               ].map((q) => (
-                <button type="button" className="landing-quick-tile" key={q.key} onClick={q.onClick}>
+                <button
+                  type="button"
+                  className="landing-quick-tile"
+                  key={q.key}
+                  onClick={q.onClick}
+                  aria-expanded={q.expanded}
+                  data-open={q.expanded ? 'true' : undefined}
+                >
                   <QuickIcon name={q.key} />
                   <span>{q.label}</span>
                 </button>
               ))}
+              </div>
+              {quickPanel === 'filing' && (
+                <ul className="landing-quick-panel">
+                  {forumRows.flat().map((type) => (
+                    <li key={type}>
+                      <button type="button" onClick={() => onOpenForum(type)}>
+                        {forumTabLabel[type] ?? forums.find((f) => f.forumType === type)?.name ?? type}
+                      </button>
+                    </li>
+                  ))}
+                </ul>
+              )}
+              {quickPanel === 'causeList' && (
+                <ul className="landing-quick-panel">
+                  <li>
+                    <button type="button" onClick={onOpenCauseListBasic}>{t.nav.causeList} ({t.nav.planBasic})</button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={onOpenCauseListPro}>{t.nav.causeList} ({t.nav.planPro})</button>
+                  </li>
+                </ul>
+              )}
+              {quickPanel === 'tools' && (
+                <ul className="landing-quick-panel">
+                  <li>
+                    <button type="button" onClick={onOpenCourtFee}>{t.nav.courtFeeCalculator}</button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={onOpenTranslateDocument}>{t.nav.translateDocument}</button>
+                  </li>
+                </ul>
+              )}
+              {quickPanel === 'news' && (
+                <div className="landing-quick-panel landing-quick-news">
+                  <ul>
+                    {/* Newest first: the source list runs oldest to newest. */}
+                    {[...t.landing.news.items].reverse().map((item, i) => (
+                      <li key={i}>
+                        <span className="landing-quick-news-meta">
+                          {item.date} · {item.tag}
+                        </span>
+                        <strong>{item.title}</strong>
+                        <span>{item.summary}</span>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="landing-quick-news-more">
+                    {t.landing.news.moreSourcesLabel}
+                    {externalLawNewsSites.map((site) => (
+                      <a key={site.name} href={site.url} target="_blank" rel="noopener noreferrer nofollow">
+                        {site.name} ↗
+                      </a>
+                    ))}
+                  </p>
+                </div>
+              )}
             </nav>
             <p className="landing-hero-eyebrow">{t.landing.hero.eyebrow}</p>
             <div className="landing-hero-ctas">

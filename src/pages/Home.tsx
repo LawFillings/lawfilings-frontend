@@ -1,4 +1,5 @@
 import { Fragment, useState } from 'react';
+import { forumRows, forumTabLabel } from '../data/forumPicker';
 import { forums, caseTypes, appealGroups, caseTypeSubcategories, topCategories } from '../data/mockData';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
@@ -12,6 +13,7 @@ interface HomeProps {
   onSelectAppealGroup: (group: AppealGroup) => void;
   onOpenSettings: () => void;
   onOpenPrivacyPolicy: () => void;
+  initialForumType?: string;
 }
 
 // Case types reachable only through an appeal group's branching question, not as a standalone card
@@ -19,11 +21,11 @@ const caseTypeIdsInAppealGroups = new Set(
   appealGroups.flatMap((g) => g.options.map((o) => o.caseTypeId))
 );
 
-export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSettings, onOpenPrivacyPolicy }: HomeProps) {
+export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSettings, onOpenPrivacyPolicy, initialForumType }: HomeProps) {
   const { settings } = useSettings();
   const { color, widgets } = settings.home;
   const { t, language } = useLanguage();
-  const [selectedForumType, setSelectedForumType] = useState<string | null>(null);
+  const [selectedForumType, setSelectedForumType] = useState<string | null>(initialForumType ?? null);
   const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<string | null>(null);
   const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
 
@@ -52,17 +54,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
     return items.length > 0 || groups.length > 0;
   });
 
-  // Fixed button layout for the court/forum picker: one row per group, each centred.
-  const forumRows: string[][] = [
-    ['misc_drafts', 'district_court', 'high_court', 'supreme_court'],
-    ['DRT', 'NCLT', 'tax_matters'],
-    ['consumer_commission'],
-  ];
-  const forumTabLabel: Record<string, string> = {
-    DRT: 'DRT/DRAT',
-    NCLT: 'NCLT/NCLAT',
-    consumer_commission: 'Consumer Forum',
-  };
+  // Fixed button layout for the court/forum picker: one row per group, each centred (see data/forumPicker.ts).
   const rowOfForum = (type: string) => {
     const i = forumRows.findIndex((r) => r.includes(type));
     return i === -1 ? forumRows.length : i;
