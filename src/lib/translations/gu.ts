@@ -110,6 +110,9 @@ export const gu: Translations = {
       play: "સ્લાઇડશો ચલાવો",
       goToSlide: "સ્લાઇડ {n} પર જાઓ",
       slideOf: "{total} માંથી {n}",
+      listen: "સાંભળો",
+      stopListening: "અટકાવો",
+      noVoice: "આ ડિવાઇસમાં આ ભાષાનો અવાજ ઇન્સ્ટોલ નથી, તેથી સ્લાઇડ સંભળાવી શકાતી નથી.",
       art: {
         deadline: "સમયમર્યાદા",
         jurisdiction: "અધિકારક્ષેત્ર",

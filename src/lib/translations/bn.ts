@@ -110,6 +110,9 @@ export const bn: Translations = {
       play: "স্লাইডশো চালান",
       goToSlide: "স্লাইড {n}-এ যান",
       slideOf: "{total}-এর মধ্যে {n}",
+      listen: "শুনুন",
+      stopListening: "থামান",
+      noVoice: "এই ডিভাইসে এই ভাষার ভয়েস ইনস্টল করা নেই, তাই স্লাইডটি শোনানো যাচ্ছে না।",
       art: {
         deadline: "সময়সীমা",
         jurisdiction: "এখতিয়ার",

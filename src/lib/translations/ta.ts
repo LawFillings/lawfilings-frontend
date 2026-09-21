@@ -110,6 +110,9 @@ export const ta: Translations = {
       play: "ஸ்லைடு ஷோவை இயக்கு",
       goToSlide: "ஸ்லைடு {n}-க்குச் செல்",
       slideOf: "{total}-இல் {n}",
+      listen: "கேளுங்கள்",
+      stopListening: "நிறுத்து",
+      noVoice: "இந்தச் சாதனத்தில் இந்த மொழிக்கான குரல் நிறுவப்படவில்லை, எனவே ஸ்லைடைப் படித்துக் காட்ட முடியாது.",
       art: {
         deadline: "காலக்கெடு",
         jurisdiction: "அதிகார எல்லை",

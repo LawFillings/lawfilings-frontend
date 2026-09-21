@@ -401,3 +401,34 @@
   white-space: normal;
   text-align: center;
 }
+
+/* Read-aloud toggle sits beside the progress dots. */
+.lf-controls-start {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  flex-wrap: wrap;
+}
+.lf-listen {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 5px 12px;
+  font-size: 13px;
+  font-weight: 600;
+  color: inherit;
+  background: rgba(255, 255, 255, 0.14);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: 999px;
+  cursor: pointer;
+}
+.lf-listen:hover,
+.lf-listen[aria-pressed='true'] {
+  background: rgba(255, 255, 255, 0.26);
+  border-color: rgba(230, 197, 106, 0.9);
+}
+.lf-novoice {
+  margin: 10px 0 0;
+  font-size: 13px;
+  opacity: 0.85;
+}

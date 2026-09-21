@@ -110,6 +110,9 @@ export const kn: Translations = {
       play: "ಸ್ಲೈಡ್‌ಶೋ ಪ್ರಾರಂಭಿಸಿ",
       goToSlide: "ಸ್ಲೈಡ್ {n}ಕ್ಕೆ ಹೋಗಿ",
       slideOf: "{total}ರಲ್ಲಿ {n}",
+      listen: "ಆಲಿಸಿ",
+      stopListening: "ನಿಲ್ಲಿಸಿ",
+      noVoice: "ಈ ಸಾಧನದಲ್ಲಿ ಈ ಭಾಷೆಯ ಧ್ವನಿ ಸ್ಥಾಪಿಸಲಾಗಿಲ್ಲ, ಆದ್ದರಿಂದ ಸ್ಲೈಡ್ ಅನ್ನು ಓದಿ ಹೇಳಲು ಸಾಧ್ಯವಿಲ್ಲ.",
       art: {
         deadline: "ಗಡುವು",
         jurisdiction: "ವ್ಯಾಪ್ತಿ",

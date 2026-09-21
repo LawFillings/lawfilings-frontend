@@ -12,6 +12,26 @@ export interface SlideData {
   art: string;
 }
 
+// BCP-47 tags for the browser's built-in speech voices, by site language.
+const SPEECH_LANG: Record<string, string> = {
+  en: 'en-IN', hi: 'hi-IN', pa: 'pa-IN', gu: 'gu-IN', as: 'as-IN', bn: 'bn-IN', mr: 'mr-IN',
+  ta: 'ta-IN', te: 'te-IN', kn: 'kn-IN', ml: 'ml-IN', or: 'or-IN', ur: 'ur-PK',
+};
+
+/** A voice installed on this device for the given site language, if any. Reading aloud uses the
+ *  browser's own speech engine (nothing is sent anywhere), so which languages work depends on the
+ *  voices the device ships with. */
+function findVoice(language: string): SpeechSynthesisVoice | null {
+  const base = (SPEECH_LANG[language] ?? language).split('-')[0].toLowerCase();
+  const voices = window.speechSynthesis.getVoices();
+  const matches = voices.filter((v) => v.lang.replace('_', '-').toLowerCase().split('-')[0] === base);
+  const preferred = SPEECH_LANG[language]?.toLowerCase();
+  return matches.find((v) => v.lang.replace('_', '-').toLowerCase() === preferred) ?? matches[0] ?? null;
+}
+
+// Only one slideshow reads at a time: starting one stops whichever was reading.
+let stopActiveReader: (() => void) | null = null;
+
 interface Props {
   ariaLabel: string;
   slides: SlideData[];
@@ -21,7 +41,7 @@ interface Props {
 }
 
 export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action }: Props) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const sc = t.landing.slideshow;
   const rootRef = useRef<HTMLElement>(null);
   const [index, setIndex] = useState(0);
@@ -31,6 +51,13 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action 
   const [focusRing, setFocusRing] = useState(false);
   const [inView, setInView] = useState(false);
   const [ready, setReady] = useState(false);
+  const [reading, setReading] = useState(false);
+  const [noVoice, setNoVoice] = useState(false);
+  const canSpeak = typeof window !== 'undefined' && 'speechSynthesis' in window;
+  const goRef = useRef<(n: number) => void>(() => {});
+  // Read through refs so a parent re-render (new `slides` array identity) doesn't restart the speech.
+  const slidesRef = useRef(slides);
+  slidesRef.current = slides;
   const leaveTimer = useRef<number | undefined>(undefined);
   const startX = useRef<number | null>(null);
 
@@ -62,6 +89,62 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action 
     setIndex(next);
   };
 
+  goRef.current = go;
+
+  // Reads the current slide aloud, then moves on to the next, until the last slide or until stopped.
+  useEffect(() => {
+    if (!reading) return;
+    const synth = window.speechSynthesis;
+    let stale = false;
+    const slide = slidesRef.current[index];
+    const utterance = new SpeechSynthesisUtterance([slide.title, slide.body].filter(Boolean).join('. '));
+    const voice = findVoice(language);
+    if (voice) utterance.voice = voice;
+    utterance.lang = SPEECH_LANG[language] ?? language;
+    utterance.onend = () => {
+      if (stale) return;
+      // Read through to the last slide, then stop rather than looping forever.
+      if (index >= slidesRef.current.length - 1) setReading(false);
+      else goRef.current(index + 1);
+    };
+    utterance.onerror = (e) => {
+      // 'interrupted'/'canceled' just mean a newer utterance or a stop replaced this one.
+      if (!stale && e.error !== 'interrupted' && e.error !== 'canceled') setReading(false);
+    };
+    synth.cancel();
+    synth.speak(utterance);
+    return () => {
+      stale = true;
+      synth.cancel();
+    };
+  }, [reading, index, language]);
+
+  useEffect(
+    () => () => {
+      if (canSpeak) window.speechSynthesis.cancel();
+    },
+    [canSpeak]
+  );
+
+  const toggleReading = () => {
+    if (reading) {
+      setReading(false);
+      return;
+    }
+    setNoVoice(false);
+    if (!findVoice(language)) {
+      // The voice list can load late on some browsers — try once more shortly before giving up.
+      window.speechSynthesis.getVoices();
+      if (!findVoice(language)) {
+        setNoVoice(true);
+        return;
+      }
+    }
+    stopActiveReader?.();
+    stopActiveReader = () => setReading(false);
+    setReading(true);
+  };
+
   return (
     <section
       ref={rootRef}
@@ -70,7 +153,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action 
       aria-label={ariaLabel}
       data-inview={inView}
       data-paused={paused}
-      data-hold={hover || focusRing}
+      data-hold={hover || focusRing || reading}
       style={{ ['--lf-interval' as string]: `${intervalMs}ms` }}
       onPointerEnter={(e) => e.pointerType === 'mouse' && setHover(true)}
       onPointerLeave={(e) => e.pointerType === 'mouse' && setHover(false)}
@@ -142,6 +225,7 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action 
           </div>
 
           <div className="lf-controls">
+            <div className="lf-controls-start">
             <div className="lf-dots">
               {slides.map((_, i) => (
                 <button
@@ -154,8 +238,36 @@ export function LandingSlideshow({ ariaLabel, slides, intervalMs = 8000, action 
                 />
               ))}
             </div>
+            {canSpeak && (
+              <button
+                type="button"
+                className="lf-listen"
+                aria-pressed={reading}
+                onClick={toggleReading}
+                title={reading ? sc.stopListening : sc.listen}
+              >
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
+                  {reading ? (
+                    <rect x="6" y="6" width="12" height="12" rx="1.5" />
+                  ) : (
+                    <>
+                      <path d="M11 5 6 9H3v6h3l5 4V5Z" />
+                      <path d="M15.5 8.5a5 5 0 0 1 0 7" />
+                      <path d="M18.5 6a9 9 0 0 1 0 12" />
+                    </>
+                  )}
+                </svg>
+                <span>{reading ? sc.stopListening : sc.listen}</span>
+              </button>
+            )}
+            </div>
             {action && <div className="lf-action">{action}</div>}
           </div>
+          {noVoice && (
+            <p className="lf-novoice" role="status">
+              {sc.noVoice}
+            </p>
+          )}
         </div>
         <div className="lf-bar" aria-hidden="true">
           <i key={index} onAnimationEnd={(e) => e.target === e.currentTarget && go(index + 1)} />

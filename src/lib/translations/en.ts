@@ -108,6 +108,9 @@ export const en = {
       play: "Play slideshow",
       goToSlide: "Go to slide {n}",
       slideOf: "{n} of {total}",
+      listen: "Listen",
+      stopListening: "Stop",
+      noVoice: "This device has no voice installed for this language, so the slide can't be read aloud.",
       art: {
         deadline: "Deadline",
         jurisdiction: "Jurisdiction",

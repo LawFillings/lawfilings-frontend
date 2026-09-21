@@ -110,6 +110,9 @@ export const pa: Translations = {
       play: "ਸਲਾਈਡਸ਼ੋਅ ਚਲਾਓ",
       goToSlide: "ਸਲਾਈਡ {n} ਉੱਤੇ ਜਾਓ",
       slideOf: "{total} ਵਿੱਚੋਂ {n}",
+      listen: "ਸੁਣੋ",
+      stopListening: "ਰੋਕੋ",
+      noVoice: "ਇਸ ਡਿਵਾਈਸ ਵਿੱਚ ਇਸ ਭਾਸ਼ਾ ਦੀ ਆਵਾਜ਼ ਇੰਸਟਾਲ ਨਹੀਂ ਹੈ, ਇਸ ਲਈ ਸਲਾਈਡ ਨੂੰ ਸੁਣਾਇਆ ਨਹੀਂ ਜਾ ਸਕਦਾ।",
       art: {
         deadline: "ਸਮਾਂ-ਸੀਮਾ",
         jurisdiction: "ਅਧਿਕਾਰ-ਖੇਤਰ",

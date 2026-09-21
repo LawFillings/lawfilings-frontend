@@ -110,6 +110,9 @@ export const te: Translations = {
       play: "స్లయిడ్‌షోను నడపండి",
       goToSlide: "స్లయిడ్ {n}కు వెళ్లండి",
       slideOf: "{total}లో {n}",
+      listen: "వినండి",
+      stopListening: "ఆపండి",
+      noVoice: "ఈ పరికరంలో ఈ భాషకు వాయిస్ ఇన్‌స్టాల్ చేసి లేదు, కాబట్టి స్లైడ్‌ను చదివి వినిపించలేము.",
       art: {
         deadline: "గడువు",
         jurisdiction: "అధికార పరిధి",

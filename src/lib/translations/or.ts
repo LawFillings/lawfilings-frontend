@@ -110,6 +110,9 @@ export const or: Translations = {
       play: "ସ୍ଲାଇଡ୍‌ଶୋ ଚଲାନ୍ତୁ",
       goToSlide: "ସ୍ଲାଇଡ୍ {n}କୁ ଯାଆନ୍ତୁ",
       slideOf: "{total}ରୁ {n}",
+      listen: "ଶୁଣନ୍ତୁ",
+      stopListening: "ବନ୍ଦ କରନ୍ତୁ",
+      noVoice: "ଏହି ଡିଭାଇସରେ ଏହି ଭାଷାର ସ୍ୱର ଇନଷ୍ଟଲ ହୋଇନାହିଁ, ତେଣୁ ସ୍ଲାଇଡ୍ ପଢ଼ି ଶୁଣାଇହେବ ନାହିଁ।",
       art: {
         deadline: "ସମୟସୀମା",
         jurisdiction: "ଅଧିକାର କ୍ଷେତ୍ର",

@@ -110,6 +110,9 @@ export const mr: Translations = {
       play: "स्लाइडशो सुरू करा",
       goToSlide: "स्लाइड {n} वर जा",
       slideOf: "{total} पैकी {n}",
+      listen: "ऐका",
+      stopListening: "थांबवा",
+      noVoice: "या डिव्हाइसमध्ये या भाषेचा आवाज इंस्टॉल केलेला नाही, त्यामुळे स्लाइड ऐकवता येत नाही.",
       art: {
         deadline: "मुदत",
         jurisdiction: "अधिकारक्षेत्र",

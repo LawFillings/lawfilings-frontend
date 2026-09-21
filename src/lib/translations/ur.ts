@@ -110,6 +110,9 @@ export const ur: Translations = {
       play: "سلائیڈ شو چلائیں",
       goToSlide: "سلائیڈ {n} پر جائیں",
       slideOf: "{total} میں سے {n}",
+      listen: "سنیں",
+      stopListening: "روکیں",
+      noVoice: "اس ڈیوائس میں اس زبان کی آواز انسٹال نہیں ہے، اس لیے سلائیڈ سنائی نہیں جا سکتی۔",
       art: {
         deadline: "مدت",
         jurisdiction: "دائرۂ اختیار",

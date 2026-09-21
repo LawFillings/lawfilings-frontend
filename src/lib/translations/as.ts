@@ -110,6 +110,9 @@ export const as: Translations = {
       play: "শ্লাইডশ্ব' চলাওক",
       goToSlide: "শ্লাইড {n}লৈ যাওক",
       slideOf: "{total}ৰ ভিতৰত {n}",
+      listen: "শুনক",
+      stopListening: "বন্ধ কৰক",
+      noVoice: "এই ডিভাইচত এই ভাষাৰ কণ্ঠস্বৰ ইনষ্টল কৰা নাই, সেয়ে স্লাইডটো শুনুৱাব নোৱাৰি।",
       art: {
         deadline: "সময়সীমা",
         jurisdiction: "এখতিয়াৰ",

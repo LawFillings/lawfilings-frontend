@@ -110,6 +110,9 @@ export const ml: Translations = {
       play: "സ്ലൈഡ്ഷോ പ്ലേ ചെയ്യുക",
       goToSlide: "സ്ലൈഡ് {n}-ലേക്ക് പോകുക",
       slideOf: "{total}-ൽ {n}",
+      listen: "കേൾക്കുക",
+      stopListening: "നിർത്തുക",
+      noVoice: "ഈ ഉപകരണത്തിൽ ഈ ഭാഷയുടെ ശബ്ദം ഇൻസ്റ്റാൾ ചെയ്തിട്ടില്ല, അതിനാൽ സ്ലൈഡ് വായിച്ചു കേൾപ്പിക്കാൻ കഴിയില്ല.",
       art: {
         deadline: "സമയപരിധി",
         jurisdiction: "അധികാരപരിധി",
