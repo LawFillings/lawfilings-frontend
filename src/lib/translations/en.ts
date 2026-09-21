@@ -1278,8 +1278,8 @@ export const en = {
       'Valuation & relief',
       'Filing details',
       'Documents',
-      'Match a style (optional)',
       'Preview',
+      'Match a style (optional)',
     ],
     step0: {
       heading: 'Which state is the suit in?',

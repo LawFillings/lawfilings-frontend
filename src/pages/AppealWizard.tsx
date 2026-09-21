@@ -138,15 +138,15 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
     'Grounds',
     'Filing details',
     'Documents',
-    'Match a style (optional)',
     'Preview',
+    'Match a style (optional)',
   ];
   const depositStepIndex = hasDeposit ? 1 : -1;
   const groundsStepIndex = hasDeposit ? 2 : 1;
   const filingDetailsStepIndex = groundsStepIndex + 1;
   const documentsStepIndex = filingDetailsStepIndex + 1;
-  const judgeStyleStepIndex = documentsStepIndex + 1;
-  const previewStepIndex = STEPS.length - 1;
+  const previewStepIndex = documentsStepIndex + 1;
+  const judgeStyleStepIndex = STEPS.length - 1;
 
   const handleSaveDraft = async () => {
     if (!user || !token) return;
@@ -453,14 +453,6 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
           </div>
         )}
 
-        {step === judgeStyleStepIndex && (
-          <JudgeStyleStep
-            profile={judgeStyleProfile}
-            onProfileReady={setJudgeStyleProfile}
-            onOpenPricing={onOpenPricing}
-          />
-        )}
-
         {step === previewStepIndex && (
           <div>
             <h3 className="step-heading">Preview</h3>
@@ -498,7 +490,29 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
             <DraftDocument title={`${resolvedCaseType.name} — Affidavit`} causeTitleHtml={affidavitCauseTitleHtml} sections={affidavitSections} />
 
             <FilingGuidance forum={forumTypeToFilingForum(resolvedCaseType.forumType)} />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Do you want to match your draft with a particular style?
+              </p>
+              <p className="deadline-body">
+                This is the standard draft. If you'd like the sections above reordered to match how a particular
+                judge or bench is used to reading one, or to follow a sample application's format, go to the next
+                step and upload it there — that's a paid, on-demand feature, not included by default.
+              </p>
+            </div>
           </div>
+        )}
+
+        {step === judgeStyleStepIndex && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
         )}
       </WizardShell>
     </div>

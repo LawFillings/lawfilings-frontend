@@ -23,8 +23,8 @@ const STEPS = [
   'Parties',
   'Filing details',
   'Documents (Index)',
-  'Match a style (optional)',
   'Preview',
+  'Match a style (optional)',
 ];
 
 interface DocEntry {
@@ -584,14 +584,6 @@ export function NIActComplaintWizard({
         )}
 
         {step === 5 && (
-          <JudgeStyleStep
-            profile={judgeStyleProfile}
-            onProfileReady={setJudgeStyleProfile}
-            onOpenPricing={onOpenPricing}
-          />
-        )}
-
-        {step === 6 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -633,7 +625,29 @@ export function NIActComplaintWizard({
             />
 
             <FilingGuidance forum="criminalCourt" />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Do you want to match your draft with a particular style?
+              </p>
+              <p className="deadline-body">
+                This is the standard draft. If you'd like the sections above reordered to match how a particular
+                judge or bench is used to reading one, or to follow a sample application's format, go to the next
+                step and upload it there — that's a paid, on-demand feature, not included by default.
+              </p>
+            </div>
           </div>
+        )}
+
+        {step === 6 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
         )}
       </WizardShell>
     </div>

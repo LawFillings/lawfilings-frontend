@@ -54,8 +54,8 @@ const STEPS = [
   'Relief',
   'Filing details',
   'Documents',
-  'Match a style (optional)',
   'Preview',
+  'Match a style (optional)',
 ];
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-cc-complaint')!;
@@ -547,14 +547,6 @@ export function ConsumerComplaintWizard({
         )}
 
         {step === 7 && (
-          <JudgeStyleStep
-            profile={judgeStyleProfile}
-            onProfileReady={setJudgeStyleProfile}
-            onOpenPricing={onOpenPricing}
-          />
-        )}
-
-        {step === 8 && (
           <div>
             <h3 className="step-heading">Preview</h3>
             {user ? (
@@ -598,7 +590,29 @@ export function ConsumerComplaintWizard({
                   : `${matchedTier?.forumLabel ?? 'Consumer Commission'}${district ? `, ${district} District` : ''}`
               }
             />
+
+            <div className="deadline-card status-warn" style={{ marginTop: 'var(--space-6)' }}>
+              <p
+                className="deadline-label"
+                style={{ fontSize: '16px', fontWeight: 700, opacity: 1, textTransform: 'none', letterSpacing: 'normal' }}
+              >
+                Do you want to match your draft with a particular style?
+              </p>
+              <p className="deadline-body">
+                This is the standard draft. If you'd like the sections above reordered to match how a particular
+                judge or bench is used to reading one, or to follow a sample application's format, go to the next
+                step and upload it there — that's a paid, on-demand feature, not included by default.
+              </p>
+            </div>
           </div>
+        )}
+
+        {step === 8 && (
+          <JudgeStyleStep
+            profile={judgeStyleProfile}
+            onProfileReady={setJudgeStyleProfile}
+            onOpenPricing={onOpenPricing}
+          />
         )}
       </WizardShell>
     </div>
