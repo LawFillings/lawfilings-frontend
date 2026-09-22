@@ -1,0 +1,73 @@
+/* 16:9 frame for the explainer video: slide area on top, subtitle strip below. */
+html,
+body {
+  margin: 0;
+  background: #0f1a24;
+}
+.sb-root {
+  width: 960px;
+  height: 540px;
+  display: flex;
+  flex-direction: column;
+  background: #0f1a24;
+  overflow: hidden;
+}
+.sb-root .lf-show {
+  flex: 1;
+  min-height: 0;
+}
+.sb-frame {
+  height: 100%;
+  border-radius: 0;
+  box-shadow: none;
+}
+.sb-inner {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  padding: 40px 56px;
+}
+.sb-inner .lf-stage {
+  width: 100%;
+}
+.sb-inner .lf-slide {
+  min-height: 0;
+}
+.sb-hero {
+  display: flex !important;
+  align-items: center;
+  justify-content: center;
+}
+.sb-hero-inner {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 18px;
+  text-align: center;
+}
+.sb-hero-line {
+  max-width: 24ch;
+  font-size: 1.8rem !important;
+}
+.sb-caption {
+  height: 64px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0 40px;
+  text-align: center;
+  font-family: 'Hanken Grotesk', system-ui, sans-serif;
+  font-size: 17px;
+  line-height: 1.35;
+  color: #f3eee2;
+  background: #0b1219;
+  border-top: 1px solid rgba(212, 175, 55, 0.35);
+}
+
+/* Video is watched from further away than a page: enlarge the slide copy. */
+.sb-inner .lf-copy {
+  zoom: 1.28;
+}
+.sb-inner .lf-art {
+  zoom: 1.05;
+}

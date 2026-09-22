@@ -37,7 +37,6 @@ export const PAGE_LABELS: Record<PageKey, string> = {
 
 export const WIDGET_DEFS: Record<PageKey, WidgetDef[]> = {
   landing: [
-    { key: 'howItWorks', label: 'How it works', description: 'The three-step explainer section.' },
     { key: 'whyChooseUs', label: 'Why Choose Us', description: 'Feature-highlight grid explaining what the platform does today.' },
     { key: 'whoItsFor', label: "Who It's For", description: 'Audience cards — advocates, self-represented litigants, corporates, law students.' },
     { key: 'news', label: 'Law news', description: 'Verified law-change news cards.' },

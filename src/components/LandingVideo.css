@@ -1,0 +1,15 @@
+.landing-video {
+  position: relative;
+  width: 100%;
+  border: 1px solid rgba(212, 175, 55, 0.55);
+  border-radius: 8px;
+  overflow: hidden;
+  background: #0f1a24;
+  box-shadow: 0 10px 34px rgba(0, 0, 0, 0.28);
+}
+.landing-video-player {
+  display: block;
+  width: 100%;
+  aspect-ratio: 16 / 9;
+  background: #0f1a24;
+}

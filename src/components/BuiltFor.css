@@ -1,0 +1,25 @@
+/* "Built for" section band (was shared with the removed HowItWorks slideshow — see git history
+   for that half; kept here since only this section uses the class names now). Full-bleed band,
+   same technique as .landing-hero/.usp-slider — a tinted band so this reads as a deliberate
+   alternating rhythm against its plain neighbours down the page. Semi-transparent, not solid, so
+   the page-wide fixed brand watermark behind the page still shows through. */
+.landing-builtfor {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: rgba(150, 175, 205, 0.4);
+  padding: var(--space-6) 0;
+}
+
+.landing-builtfor-inner {
+  max-width: none;
+  margin: 0 auto;
+}
+
+/* Edge-to-edge: the slideshow frame runs the full width of the band with square outer corners. */
+.landing-builtfor .lf-frame {
+  border-radius: 0;
+}
+.landing-builtfor .lf-inner {
+  padding-inline: clamp(28px, 6vw, 110px);
+}

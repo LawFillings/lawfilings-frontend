@@ -4,8 +4,7 @@ import { forumRows, forumTabLabel } from "../data/forumPicker";
 import { useSettings } from "../lib/settings";
 import { useLanguage } from "../lib/language";
 import { useState } from "react";
-import { UspSlider } from "../components/UspSlider";
-import { HowItWorks } from "../components/HowItWorks";
+import { LandingVideo } from "../components/LandingVideo";
 import { BuiltFor } from "../components/BuiltFor";
 import { BrandMark } from "../components/BrandMark";
 import { IconGridSection } from "../components/IconGridSection";
@@ -276,8 +275,8 @@ export function LandingPage({
           className="landing-hero-watermark"
         />
         <div className="landing-hero-grid">
-          <div className="landing-hero-slideshow">
-            <UspSlider />
+          <div className="landing-hero-video">
+            <LandingVideo />
           </div>
           <div className="landing-hero-inner">
             <h1 className="landing-hero-title">
@@ -385,8 +384,6 @@ export function LandingPage({
           </div>
         </div>
       </header>
-
-      {widgets.howItWorks && <HowItWorks onStartFiling={onStartFiling} />}
 
       {widgets.whyChooseUs && (
         <IconGridSection
