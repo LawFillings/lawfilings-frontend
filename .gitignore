@@ -19,3 +19,11 @@ npm-debug.log*
 *.njsproj
 *.sln
 *.sw?
+
+# Explainer-video build artifacts (tools/video/) — regenerate via the render pipeline documented
+# in that folder; never commit the intermediate wavs/frames/scene-timing JSON.
+tools/video/a_*_neural/
+tools/video/frames_*/
+tools/video/narration_*.wav
+tools/video/scenes_*.json
+tools/video/samples/

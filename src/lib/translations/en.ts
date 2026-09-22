@@ -271,7 +271,7 @@ export const en = {
           body: "Save a case and add status updates over time, entered by you — no dependency on an external court portal."
         },
         {
-          title: "Real, assembled drafts",
+          title: "Real assembled drafts",
           body: "Clause-templated documents, downloadable as a PDF — no placeholder brackets left for you to fill in by hand."
         }
       ],

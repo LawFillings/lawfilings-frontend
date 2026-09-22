@@ -13,10 +13,11 @@ sys.path.insert(0, os.path.dirname(__file__))
 from script import LINES
 
 VOICES = {
-    'en': ('en-IN', 'en-IN-NeerjaNeural'),
-    'hi': ('hi-IN', 'hi-IN-SwaraNeural'),
+    'en': ('en-IN', 'en-IN-PrabhatNeural'),
+    'hi': ('hi-IN', 'hi-IN-MadhurNeural'),
 }
-RATE = '-4%'  # slightly slower than default reads more clearly over the animations
+RATE = '0%'  # default pace — a slowed rate exaggerates Azure's own pauses at commas/periods,
+             # which read as unnaturally long; leave the voice's own natural pacing alone instead.
 
 
 def ssml(lang, voice, text):

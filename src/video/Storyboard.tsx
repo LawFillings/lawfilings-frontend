@@ -3,6 +3,42 @@ import { SettingsProvider } from '../lib/settings';
 import { LanguageProvider, useLanguage } from '../lib/language';
 import { BrandMark } from '../components/BrandMark';
 import { offersArt, howArt } from '../components/slideshowArt';
+import shotDraftPreview from '../../tools/video/screens/draft-preview.png';
+import shotDeadline from '../../tools/video/screens/deadline.png';
+import shotHomePicker from '../../tools/video/screens/home-picker.png';
+import shotMyCases from '../../tools/video/screens/my-cases.png';
+import shotLawLibrary from '../../tools/video/screens/law-library.png';
+import shotUploadStep from '../../tools/video/screens/upload-step.png';
+import shotPartiesStep from '../../tools/video/screens/parties-step.png';
+
+// Real screenshots of the app itself (mock-authed local build, same code as lawfilings.in — see
+// tools/video/capture.mjs), flown in over each matching slide's own art for a moment as proof
+// the slide isn't just an illustration. One shot can suit more than one slide.
+const SHOTS: Record<string, string> = {
+  hero0: shotDraftPreview,
+  hero1: shotDeadline,
+  hero2: shotHomePicker,
+  hero3: shotMyCases,
+  hero4: shotLawLibrary,
+  step0: shotPartiesStep,
+  step1: shotUploadStep,
+  step2: shotDeadline,
+  step3: shotDraftPreview,
+};
+
+// Which edge each slide's screenshot flies in from (and exits toward the opposite edge) — varied
+// per slide, cycling right/top/left/bottom, so nine slides in a row don't all move the same way.
+const SHOT_DIR: Record<string, 'top' | 'bottom' | 'left' | 'right'> = {
+  hero0: 'right',
+  hero1: 'top',
+  hero2: 'left',
+  hero3: 'bottom',
+  hero4: 'right',
+  step0: 'top',
+  step1: 'left',
+  step2: 'bottom',
+  step3: 'right',
+};
 import '../components/LandingSlideshow.css';
 import './storyboard.css';
 
@@ -12,6 +48,13 @@ import './storyboard.css';
  * exposes window.__seek(seconds) so a driver script can scrub to any moment and screenshot it.
  * Scenes and timing come from window.__SB (written by the video build script).
  */
+// A slide's own scene length, so its screenshot's fly-in/hold/fly-out timing always matches how
+// long that slide is actually on screen, regardless of playback order.
+function sceneDuration(scenes: Scene[], key: string): number {
+  const scene = scenes.find((sc) => sc.key === key);
+  return scene ? scene.end - scene.start : 6;
+}
+
 interface Scene {
   key: string;
   start: number;
@@ -100,6 +143,21 @@ function Frame() {
                     {s.body && <p className="lf-body">{s.body}</p>}
                   </div>
                   <div className="lf-art" aria-hidden="true" dangerouslySetInnerHTML={{ __html: s.art }} />
+                  {SHOTS[key] && (
+                    <div
+                      className={`sb-shot sb-shot-${SHOT_DIR[key] ?? 'right'}`}
+                      style={{ ['--sdur' as string]: `${sceneDuration(scenes, key)}s` }}
+                      aria-hidden="true"
+                    >
+                      <div className="sb-shot-bar">
+                        <i />
+                        <i />
+                        <i />
+                        <em>lawfilings.in</em>
+                      </div>
+                      <img src={SHOTS[key]} alt="" />
+                    </div>
+                  )}
                 </article>
               ))}
               {isCustom && (
