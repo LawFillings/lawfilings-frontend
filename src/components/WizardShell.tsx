@@ -1,4 +1,4 @@
-import type { ReactNode } from 'react';
+import { useEffect, useRef, type ReactNode } from 'react';
 import type { UserRole } from '../types';
 import { useSettings } from '../lib/settings';
 import { useLanguage } from '../lib/language';
@@ -27,6 +27,19 @@ export function WizardShell({
 }: WizardShellProps) {
   const { settings } = useSettings();
   const { t } = useLanguage();
+
+  // The step content is swapped wholesale on step change, but the page's scroll position doesn't
+  // reset — if the previous step was scrolled down, advancing to a shorter step can land you
+  // scrolled past all of its content, which looks exactly like the click did nothing.
+  const stepContentRef = useRef<HTMLDivElement>(null);
+  const hasMountedRef = useRef(false);
+  useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
+    stepContentRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  }, [currentStep]);
 
   return (
     <div className="wizard" data-color-theme={settings.wizard.color}>
@@ -66,7 +79,7 @@ export function WizardShell({
           ))}
         </nav>
 
-        <div className="step-content">
+        <div className="step-content" ref={stepContentRef}>
           {children}
           <div className="step-nav">
             {currentStep > 0 && (

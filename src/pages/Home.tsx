@@ -1,4 +1,4 @@
-import { Fragment, useState } from 'react';
+import { Fragment, useEffect, useRef, useState } from 'react';
 import { forumRows, forumTabLabel } from '../data/forumPicker';
 import { forums, caseTypes, appealGroups, caseTypeSubcategories, topCategories } from '../data/mockData';
 import { useSettings } from '../lib/settings';
@@ -29,6 +29,28 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
   const [selectedForumType, setSelectedForumType] = useState<string | null>(initialForumType ?? null);
   const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<string | null>(null);
   const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
+
+  // A selection here reveals new content further down the page — on a short viewport that reveal
+  // can land entirely below the fold, so a click can look like it did nothing. Scroll the newly
+  // revealed block into view each time, skipping the very first render (e.g. an initialForumType
+  // passed in from elsewhere shouldn't yank the page on mount).
+  const hasMountedRef = useRef(false);
+  const forumGroupRef = useRef<HTMLElement>(null);
+  const topCategoryContentRef = useRef<HTMLDivElement>(null);
+  const subcategoryContentRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
+    if (selectedSubcategoryKey && subcategoryContentRef.current) {
+      subcategoryContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (selectedTopCategoryKey && topCategoryContentRef.current) {
+      topCategoryContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else if (selectedForumType && forumGroupRef.current) {
+      forumGroupRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  }, [selectedForumType, selectedTopCategoryKey, selectedSubcategoryKey]);
 
   const selectForum = (forumType: string) => {
     setSelectedForumType((current) => (forumType === current ? null : forumType));
@@ -171,7 +193,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
       </div>
 
       {selectedForum && (
-        <section className="forum-group" data-tone={cardTone}>
+        <section className="forum-group" data-tone={cardTone} ref={forumGroupRef}>
           {topCategorySections && (
             <div className="pick-row">
               <h2 className="pick-row-title">{selectedForum.name}</h2>
@@ -204,7 +226,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
                   ))}
                 </div>
               )}
-              <div className="pick-row">
+              <div className="pick-row" ref={topCategoryContentRef}>
                 <h2 className="pick-row-title">
                   {activeTopSection ? topCategoryLabel[activeTopSection.key] ?? activeTopSection.label : selectedForum.name}
                 </h2>
@@ -224,7 +246,7 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
               {(() => {
                 const activeSection = subcategorySections.find((sc) => sc.key === selectedSubcategoryKey);
                 return activeSection ? (
-                  <div className="case-type-grid">
+                  <div className="case-type-grid" ref={subcategoryContentRef}>
                     {activeSection.items.map((ct) => (
                       <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
                         <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
