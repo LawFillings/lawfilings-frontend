@@ -1,4 +1,4 @@
-import { useId, useMemo, useState, type ReactNode } from 'react';
+import { useId, useMemo, useRef, useState, type ReactNode } from 'react';
 import './SearchableSelect.css';
 
 export interface SearchableOption {
@@ -26,6 +26,7 @@ export function SearchableSelect({ label, placeholder, noMatches, options, onSel
   const [text, setText] = useState('');
   const [open, setOpen] = useState(false);
   const [active, setActive] = useState(0);
+  const inputRef = useRef<HTMLInputElement>(null);
 
   const selectedLabel = selectedKey ? options.find((o) => o.key === selectedKey)?.label ?? '' : '';
 
@@ -39,6 +40,10 @@ export function SearchableSelect({ label, placeholder, noMatches, options, onSel
     setOpen(false);
     setText('');
     onSelect(o.key);
+    // The option list's onMouseDown preventDefault()s to stop the input blurring awkwardly
+    // mid-click, but that also leaves the field focused (and its focus ring showing) after a
+    // choice is made — blur it explicitly so the field visibly settles once it's answered.
+    inputRef.current?.blur();
   };
 
   const onKeyDown = (e: React.KeyboardEvent<HTMLInputElement>) => {
@@ -66,6 +71,7 @@ export function SearchableSelect({ label, placeholder, noMatches, options, onSel
       </label>
       <div className="ss-field">
         <input
+          ref={inputRef}
           id={id}
           type="text"
           role="combobox"
