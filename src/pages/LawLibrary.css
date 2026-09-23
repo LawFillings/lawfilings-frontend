@@ -148,22 +148,24 @@
 }
 
 /* Draws the eye to whichever picker is the next thing to fill in, right after the previous
-   selection reveals it — a short one-time pulse, not a persistent distraction. */
+   selection reveals it — a couple of pulses, then a ring that stays clearly visible (not just a
+   faint tint) until that field is answered. */
 .ll-highlight-next .ss-input {
   border-color: var(--accent);
-  box-shadow: 0 0 0 3px var(--accent-tint);
-  animation: ll-highlight-pulse 1.4s ease-out 1;
+  background: var(--accent-tint);
+  box-shadow: 0 0 0 4px rgba(31, 58, 95, 0.28);
+  animation: ll-highlight-pulse 1.6s ease-out 2;
 }
 
 @keyframes ll-highlight-pulse {
   0% {
-    box-shadow: 0 0 0 0 var(--accent-tint);
+    box-shadow: 0 0 0 0 rgba(31, 58, 95, 0.5);
   }
-  60% {
-    box-shadow: 0 0 0 8px transparent;
+  70% {
+    box-shadow: 0 0 0 10px rgba(31, 58, 95, 0);
   }
   100% {
-    box-shadow: 0 0 0 3px var(--accent-tint);
+    box-shadow: 0 0 0 4px rgba(31, 58, 95, 0.28);
   }
 }
 
