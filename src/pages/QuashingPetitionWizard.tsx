@@ -316,7 +316,7 @@ export function QuashingPetitionWizard({
   return (
     <div>
       <button className="back-link" onClick={onBack}>
-        ← Back to all filings
+        Back to all filings
       </button>
       <WizardShell
         title={caseType.name}

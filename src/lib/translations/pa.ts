@@ -63,7 +63,7 @@ export const pa: Translations = {
     invalidValue: "ਸਿਫ਼ਰ ਤੋਂ ਵੱਧ ਮੁਕੱਦਮੇ ਦਾ ਮੁੱਲ ਦਰਜ ਕਰੋ।"
   },
   common: {
-    back: '← ਪਿੱਛੇ',
+    back: 'ਪਿੱਛੇ',
     backToAllFilings: '← ਸਾਰੀਆਂ ਫਾਈਲਿੰਗਾਂ ਵੱਲ ਵਾਪਸ',
     backToMyCases: '← ਮੇਰੇ ਮਾਮਲਿਆਂ ਵੱਲ ਵਾਪਸ',
     loading: 'ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…',

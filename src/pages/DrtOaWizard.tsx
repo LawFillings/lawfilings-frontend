@@ -345,7 +345,7 @@ export function DrtOaWizard({
     return (
       <div>
         <button className="back-link" onClick={onBack}>
-          ← Back to all filings
+          Back to all filings
         </button>
         <div className="wizard">
           <div className="step-content" style={{ maxWidth: 640 }}>
@@ -738,7 +738,7 @@ export function DrtOaWizard({
   return (
     <div>
       <button className="back-link" onClick={onBack}>
-        ← Back to all filings
+        Back to all filings
       </button>
       <WizardShell
         title={caseType.name}

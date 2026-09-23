@@ -79,7 +79,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
     return (
       <div className="fa-page">
         <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0 }}>
-          ← Back
+          Back
         </button>
         <p className="step-help">This page is for advocate accounts.</p>
       </div>
@@ -89,7 +89,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
   return (
     <div className="fa-page mal-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        ← Back
+        Back
       </button>
       <h1 className="mal-title">My directory listing</h1>
       <p className="step-help">

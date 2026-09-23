@@ -326,7 +326,7 @@ export function ForeclosureMortgageSuitWizard({
   return (
     <div>
       <button className="back-link" onClick={onBack}>
-        ← Back to all filings
+        Back to all filings
       </button>
       <WizardShell
         title={isForeclosure ? 'Suit for Foreclosure of Mortgaged Property' : 'Suit for Sale of Mortgaged Property'}

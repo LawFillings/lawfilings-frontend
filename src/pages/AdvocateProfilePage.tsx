@@ -45,7 +45,7 @@ export function AdvocateProfilePage({ advocateId, onBack }: Props) {
   return (
     <div className="fa-page ap-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        ← Back to directory
+        Back to directory
       </button>
 
       {advocate === null && <p className="step-help">Loading…</p>}

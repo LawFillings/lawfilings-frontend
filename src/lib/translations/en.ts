@@ -61,7 +61,7 @@ export const en = {
     invalidValue: "Enter a suit value greater than zero."
   },
   common: {
-    back: '← Back',
+    back: 'Back',
     backToAllFilings: '← Back to all filings',
     backToMyCases: '← Back to My Cases',
     loading: 'Loading…',

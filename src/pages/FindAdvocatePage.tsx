@@ -44,7 +44,7 @@ export function FindAdvocatePage({ onBack, onOpenAdvocate, initialForumType, ini
   return (
     <div className="fa-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        ← Back
+        Back
       </button>
 
       <div className="split-card">

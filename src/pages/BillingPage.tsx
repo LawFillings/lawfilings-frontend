@@ -62,7 +62,7 @@ export function BillingPage({ onBack, onOpenPricing, onOpenLogin }: Props) {
   return (
     <div className="my-cases-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        ← Back
+        Back
       </button>
 
       <header className="my-cases-hero">

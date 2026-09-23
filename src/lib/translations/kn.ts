@@ -63,7 +63,7 @@ export const kn: Translations = {
     invalidValue: "ಸೊನ್ನೆಗಿಂತ ಹೆಚ್ಚಿನ ದಾವೆಯ ಮೌಲ್ಯವನ್ನು ನಮೂದಿಸಿ."
   },
   common: {
-    back: '← ಹಿಂದೆ',
+    back: 'ಹಿಂದೆ',
     backToAllFilings: '← ಎಲ್ಲಾ ಫೈಲಿಂಗ್‌ಗಳಿಗೆ ಹಿಂತಿರುಗಿ',
     backToMyCases: '← ನನ್ನ ಪ್ರಕರಣಗಳಿಗೆ ಹಿಂತಿರುಗಿ',
     loading: 'ಲೋಡ್ ಆಗುತ್ತಿದೆ…',

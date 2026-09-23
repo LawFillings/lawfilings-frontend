@@ -63,7 +63,7 @@ export const hi: Translations = {
     invalidValue: "शून्य से अधिक वाद मूल्य दर्ज करें।"
   },
   common: {
-    back: '← पीछे',
+    back: 'पीछे',
     backToAllFilings: '← सभी फाइलिंग पर वापस जाएं',
     backToMyCases: '← मेरे मामलों पर वापस जाएं',
     loading: 'लोड हो रहा है…',

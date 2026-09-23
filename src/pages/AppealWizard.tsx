@@ -104,7 +104,7 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
     return (
       <div>
         <button className="back-link" onClick={onBack}>
-          ← Back to all filings
+          Back to all filings
         </button>
         <div className="wizard">
           <header className="wizard-header">
@@ -275,7 +275,7 @@ export function AppealWizard({ group, onBack, onOpenPricing }: Props) {
   return (
     <div>
       <button className="back-link" onClick={onBack}>
-        ← Back to all filings
+        Back to all filings
       </button>
       <WizardShell
         title={resolvedCaseType.name}

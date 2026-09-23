@@ -63,7 +63,7 @@ export const mr: Translations = {
     invalidValue: "शून्यापेक्षा जास्त दाव्याचे मूल्य टाका."
   },
   common: {
-    back: '← मागे',
+    back: 'मागे',
     backToAllFilings: '← सर्व फायलिंगकडे परत जा',
     backToMyCases: '← माझ्या प्रकरणांकडे परत जा',
     loading: 'लोड होत आहे…',

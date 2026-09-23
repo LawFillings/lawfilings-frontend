@@ -63,7 +63,7 @@ export const bn: Translations = {
     invalidValue: "শূন্যের চেয়ে বেশি মামলার মূল্য লিখুন।"
   },
   common: {
-    back: '← ফিরে যান',
+    back: 'ফিরে যান',
     backToAllFilings: '← সমস্ত ফাইলিংয়ে ফিরে যান',
     backToMyCases: '← আমার মামলায় ফিরে যান',
     loading: 'লোড হচ্ছে…',

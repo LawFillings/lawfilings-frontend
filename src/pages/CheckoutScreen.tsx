@@ -95,7 +95,7 @@ export function CheckoutScreen({ intent, onBack, onSuccess }: Props) {
   return (
     <div className="auth-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        ← Back
+        Back
       </button>
       <header className="auth-hero">
         <p className="auth-eyebrow">Checkout</p>

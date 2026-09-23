@@ -63,7 +63,7 @@ export const as: Translations = {
     invalidValue: "শূন্যতকৈ অধিক গোচৰৰ মূল্য দিয়ক।"
   },
   common: {
-    back: '← উভতি যাওক',
+    back: 'উভতি যাওক',
     backToAllFilings: '← সকলো ফাইলিঙলৈ উভতি যাওক',
     backToMyCases: '← মোৰ গোচৰলৈ উভতি যাওক',
     loading: 'ল’ড হৈ আছে…',

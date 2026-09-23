@@ -63,7 +63,7 @@ export const ta: Translations = {
     invalidValue: "பூஜ்ஜியத்தை விட அதிகமான வழக்கு மதிப்பை உள்ளிடவும்."
   },
   common: {
-    back: '← பின்செல்',
+    back: 'பின்செல்',
     backToAllFilings: '← அனைத்து தாக்கல்களுக்கும் திரும்பு',
     backToMyCases: '← எனது வழக்குகளுக்குத் திரும்பு',
     loading: 'ஏற்றப்படுகிறது…',

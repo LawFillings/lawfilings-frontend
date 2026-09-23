@@ -63,7 +63,7 @@ export const gu: Translations = {
     invalidValue: "શૂન્યથી વધુ દાવાનું મૂલ્ય દાખલ કરો."
   },
   common: {
-    back: '← પાછળ',
+    back: 'પાછળ',
     backToAllFilings: '← બધી ફાઇલિંગ પર પાછા જાઓ',
     backToMyCases: '← મારા કેસ પર પાછા જાઓ',
     loading: 'લોડ થઈ રહ્યું છે…',

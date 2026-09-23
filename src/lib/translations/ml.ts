@@ -63,7 +63,7 @@ export const ml: Translations = {
     invalidValue: "പൂജ്യത്തേക്കാൾ കൂടുതലുള്ള കേസ് മൂല്യം നൽകുക."
   },
   common: {
-    back: '← തിരികെ',
+    back: 'തിരികെ',
     backToAllFilings: '← എല്ലാ ഫയലിംഗുകളിലേക്കും തിരികെ',
     backToMyCases: '← എന്റെ കേസുകളിലേക്ക് തിരികെ',
     loading: 'ലോഡ് ചെയ്യുന്നു…',

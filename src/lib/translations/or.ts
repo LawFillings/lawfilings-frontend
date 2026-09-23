@@ -63,7 +63,7 @@ export const or: Translations = {
     invalidValue: "ଶୂନ୍ୟଠାରୁ ଅଧିକ ମକଦ୍ଦମା ମୂଲ୍ୟ ଦିଅନ୍ତୁ।"
   },
   common: {
-    back: '← ପଛକୁ',
+    back: 'ପଛକୁ',
     backToAllFilings: '← ସମସ୍ତ ଫାଇଲିଂକୁ ଫେରନ୍ତୁ',
     backToMyCases: '← ମୋ ମାମଲାଗୁଡ଼ିକୁ ଫେରନ୍ତୁ',
     loading: 'ଲୋଡ୍ ହେଉଛି…',

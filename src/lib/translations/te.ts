@@ -63,7 +63,7 @@ export const te: Translations = {
     invalidValue: "సున్నా కంటే ఎక్కువ దావా విలువను నమోదు చేయండి."
   },
   common: {
-    back: '← వెనుకకు',
+    back: 'వెనుకకు',
     backToAllFilings: '← అన్ని ఫైలింగ్‌లకు తిరిగి వెళ్ళండి',
     backToMyCases: '← నా కేసులకు తిరిగి వెళ్ళండి',
     loading: 'లోడ్ అవుతోంది…',

@@ -63,7 +63,7 @@ export const ur: Translations = {
     invalidValue: "صفر سے زیادہ مقدمے کی قدر درج کریں۔"
   },
   common: {
-    back: '→ واپس',
+    back: 'واپس',
     backToAllFilings: '→ تمام فائلنگز پر واپس جائیں',
     backToMyCases: '→ میرے مقدمات پر واپس جائیں',
     loading: 'لوڈ ہو رہا ہے…',
