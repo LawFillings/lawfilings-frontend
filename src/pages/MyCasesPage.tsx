@@ -6,6 +6,7 @@ import { formatDateOnly } from '../lib/casesClient';
 import type { CaseRecord } from '../lib/casesClient';
 import { listCaseTypes, type CaseTypeOption } from '../lib/catalogClient';
 import { CaseCalendar } from '../components/CaseCalendar';
+import { getMyAdvocateProfile } from '../lib/advocateDirectoryClient';
 import '../styles/split-page.css';
 import './MyCasesPage.css';
 import './AuthForm.css';
@@ -14,6 +15,7 @@ interface Props {
   onBack: () => void;
   onOpenCase: (caseId: string) => void;
   onOpenLogin: () => void;
+  onOpenMyAdvocateListing: () => void;
 }
 
 const STATUS_TONE: Record<CaseRecord['status'], 'warn' | 'safe' | 'neutral'> = {
@@ -33,12 +35,41 @@ const VERIFICATION_TONE: Record<VerificationStatus, 'warn' | 'safe' | 'neutral'>
   rejected: 'warn',
 };
 
-export function MyCasesPage({ onBack, onOpenCase, onOpenLogin }: Props) {
+export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateListing }: Props) {
   const { user, token } = useAuth();
   const { t } = useLanguage();
   const [cases, setCases] = useState<CaseRecord[] | null>(null);
   const [error, setError] = useState<string | null>(null);
   const [highlightedIds, setHighlightedIds] = useState<string[]>([]);
+
+  // A one-line nudge for a verified advocate who hasn't opted into the public directory yet —
+  // never emailed, just shown here on the page they already visit most. Dismissing it is
+  // remembered locally (per browser) so it doesn't nag every visit.
+  const NUDGE_DISMISS_KEY = 'legalassist:hideAdvocateListingNudge';
+  const [showListingNudge, setShowListingNudge] = useState(false);
+  useEffect(() => {
+    if (!token || user?.role !== 'advocate' || user.verificationStatus !== 'verified') return;
+    let dismissed = false;
+    try {
+      dismissed = localStorage.getItem(NUDGE_DISMISS_KEY) === '1';
+    } catch {
+      // Ignore — worst case the nudge shows every visit for this browser.
+    }
+    if (dismissed) return;
+    getMyAdvocateProfile(token)
+      .then((p) => setShowListingNudge(!p.listed))
+      .catch(() => {
+        // Silent — this is a nudge, not core page functionality.
+      });
+  }, [token, user?.role, user?.verificationStatus]);
+  const dismissListingNudge = () => {
+    setShowListingNudge(false);
+    try {
+      localStorage.setItem(NUDGE_DISMISS_KEY, '1');
+    } catch {
+      // Ignore — dismissal just won't persist across visits on this browser.
+    }
+  };
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [newTitle, setNewTitle] = useState('');
@@ -176,6 +207,18 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin }: Props) {
         </p>
         <h1 className="my-cases-title">{t.myCases.title}</h1>
         <p className="my-cases-sub">{t.myCases.sub}</p>
+
+        {showListingNudge && (
+          <div className="my-cases-advocate-nudge">
+            <span>You're verified — want to appear in Find an Advocate?</span>
+            <button type="button" className="home-privacy-link" onClick={onOpenMyAdvocateListing}>
+              Set up my listing →
+            </button>
+            <button type="button" className="my-cases-advocate-nudge-close" onClick={dismissListingNudge} aria-label="Dismiss">
+              ×
+            </button>
+          </div>
+        )}
       </header>
 
       <div className="split-right">

@@ -25,6 +25,12 @@ export interface AdvocateProfile {
   listed: boolean;
 }
 
+export interface AdvocateProfileWithSuggestions extends AdvocateProfile {
+  /** Forums this advocate has actually drafted a filing in on LawFilings — offered as a pre-fill
+   *  suggestion on a not-yet-completed listing, never applied without the advocate seeing it first. */
+  suggestedForums: string[];
+}
+
 export interface AdvocateInquiry {
   id: string;
   forumType: string | null;
@@ -69,7 +75,7 @@ export function getAdvocate(id: string): Promise<AdvocateListing> {
   return req(`/${id}`);
 }
 
-export function getMyAdvocateProfile(token: string): Promise<AdvocateProfile> {
+export function getMyAdvocateProfile(token: string): Promise<AdvocateProfileWithSuggestions> {
   return req('/me/profile', { headers: authHeader(token) });
 }
 

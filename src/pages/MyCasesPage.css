@@ -54,6 +54,32 @@
   margin: 0;
 }
 
+.my-cases-advocate-nudge {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: var(--space-2) var(--space-3);
+  margin-top: var(--space-4);
+  padding: var(--space-3) var(--space-4);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.28);
+  border-radius: var(--radius);
+  font-size: 14px;
+  color: rgba(255, 255, 255, 0.88);
+}
+
+.my-cases-advocate-nudge-close {
+  margin-inline-start: auto;
+  font-size: 18px;
+  line-height: 1;
+  color: rgba(255, 255, 255, 0.6);
+  padding: 0 var(--space-1);
+}
+
+.my-cases-advocate-nudge-close:hover {
+  color: rgba(255, 255, 255, 0.95);
+}
+
 .my-cases-empty {
   display: flex;
   flex-direction: column;

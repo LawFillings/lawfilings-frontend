@@ -29,18 +29,30 @@ export function MyAdvocateListingPage({ onBack }: Props) {
   const [city, setCity] = useState('');
   const [saveState, setSaveState] = useState<'idle' | 'saving' | 'saved' | 'error'>('idle');
   const [error, setError] = useState<string | null>(null);
+  const [prefilled, setPrefilled] = useState(false);
 
   useEffect(() => {
     if (!token) return;
     getMyAdvocateProfile(token)
       .then((p) => {
-        setProfile(p);
+        // Only ever pre-fill a genuinely untouched listing — an advocate who's already saved
+        // something (even an empty-looking one they deliberately cleared) never gets overwritten.
+        const isUntouched = !p.city && !p.practiceState && p.practiceForums.length === 0 && !p.listed;
+        if (isUntouched && (p.suggestedForums.length > 0 || user?.barState)) {
+          const matchedState = user?.barState
+            ? districtCourtStates.find((s) => user.barState!.toLowerCase().includes(s.label.toLowerCase()))
+            : undefined;
+          setProfile({ ...p, practiceState: matchedState?.id ?? p.practiceState, practiceForums: p.suggestedForums });
+          setPrefilled(true);
+        } else {
+          setProfile(p);
+        }
         setCity(p.city ?? '');
       })
       .catch(() => {
         setProfile(EMPTY);
       });
-  }, [token]);
+  }, [token, user?.barState]);
 
   const isVerified = user?.verificationStatus === 'verified';
 
@@ -90,6 +102,13 @@ export function MyAdvocateListingPage({ onBack }: Props) {
         <div className="ap-sent mal-verify-note" style={{ background: 'var(--status-warn-bg)', color: 'var(--status-warn-text)', borderColor: 'var(--status-warn-border)' }}>
           Your Bar Council verification is {user.verificationStatus === 'pending' ? 'still pending' : 'not yet complete'} — you
           can fill in your listing now, but it can only go live once verification is approved.
+        </div>
+      )}
+
+      {prefilled && profile && (
+        <div className="ap-sent mal-verify-note" style={{ background: 'var(--accent-tint)', color: 'var(--accent-deep)', borderColor: 'var(--accent)' }}>
+          Pre-filled from your Bar Council state and the forums you've actually drafted filings in on LawFilings —
+          nothing is saved yet, review and adjust before you save.
         </div>
       )}
 

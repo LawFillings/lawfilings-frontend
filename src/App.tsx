@@ -355,6 +355,7 @@ function AppScreens() {
           onBack={onBack}
           onOpenCase={(caseId) => navigate({ kind: 'caseDetail', caseId })}
           onOpenLogin={openLoginNav}
+          onOpenMyAdvocateListing={openMyAdvocateListingNav}
         />
       );
     }
