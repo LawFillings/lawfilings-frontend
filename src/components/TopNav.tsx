@@ -19,6 +19,7 @@ interface Props {
   onOpenContact: () => void;
   onOpenMyCases: () => void;
   onStartFiling: () => void;
+  onOpenFindAdvocate: () => void;
 }
 
 /**
@@ -42,6 +43,7 @@ export function TopNav({
   onOpenContact,
   onOpenMyCases,
   onStartFiling,
+  onOpenFindAdvocate,
 }: Props) {
   const { user } = useAuth();
   const { t } = useLanguage();
@@ -126,6 +128,9 @@ export function TopNav({
 
         <button className={linkClass('caseLawSearch')} onClick={onOpenCaseLawSearch}>
           {t.nav.caseLaw}
+        </button>
+        <button className={linkClass('findAdvocate')} onClick={onOpenFindAdvocate}>
+          Find an Advocate
         </button>
         {user && (
           <button className={linkClass('myCases')} onClick={onOpenMyCases}>

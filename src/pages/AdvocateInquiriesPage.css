@@ -1,0 +1,66 @@
+.ai-page {
+  max-width: 760px;
+}
+
+.ai-list {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}
+
+.ai-card {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  cursor: pointer;
+}
+
+.ai-card-new {
+  border-color: var(--accent);
+  background: var(--accent-tint);
+}
+
+.ai-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.ai-card-name {
+  font-weight: 600;
+  color: var(--ink);
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.ai-badge {
+  font-size: 11px;
+  font-weight: 600;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: var(--accent);
+  color: var(--text-on-accent);
+}
+
+.ai-card-date {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.ai-card-contact {
+  margin: var(--space-1) 0 var(--space-2);
+  font-size: 13px;
+  color: var(--text-secondary);
+}
+
+.ai-card-message {
+  margin: 0;
+  font-size: 14px;
+  line-height: 1.5;
+  color: var(--text);
+}

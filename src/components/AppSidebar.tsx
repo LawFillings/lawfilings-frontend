@@ -30,6 +30,9 @@ interface Props {
   onOpenPricing: () => void;
   onOpenBilling: () => void;
   onStartFiling: () => void;
+  onOpenFindAdvocate: () => void;
+  onOpenMyAdvocateListing: () => void;
+  onOpenAdvocateInquiries: () => void;
 }
 
 /**
@@ -59,6 +62,9 @@ export function AppSidebar({
   onOpenPricing,
   onOpenBilling,
   onStartFiling,
+  onOpenFindAdvocate,
+  onOpenMyAdvocateListing,
+  onOpenAdvocateInquiries,
 }: Props) {
   const { user, logout } = useAuth();
   const { t } = useLanguage();
@@ -179,6 +185,10 @@ export function AppSidebar({
             {t.nav.caseLaw}
           </button>
 
+          <button className="app-sidebar-link" onClick={go(onOpenFindAdvocate)}>
+            Find an Advocate
+          </button>
+
           {user && (
             <button className="app-sidebar-link" onClick={go(onOpenMyCases)}>
               {t.nav.myCases}
@@ -227,6 +237,16 @@ export function AppSidebar({
         <nav className="app-sidebar-links">
           {user ? (
             <>
+              {user.role === 'advocate' && (
+                <>
+                  <button className="app-sidebar-link" onClick={go(onOpenMyAdvocateListing)}>
+                    My directory listing
+                  </button>
+                  <button className="app-sidebar-link" onClick={go(onOpenAdvocateInquiries)}>
+                    Inquiries
+                  </button>
+                </>
+              )}
               <button className="app-sidebar-link" onClick={go(onOpenBilling)}>
                 {t.nav.billing}
               </button>

@@ -1,0 +1,66 @@
+.ap-page {
+  max-width: 720px;
+}
+
+.ap-card {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  border-radius: var(--radius-lg);
+  padding: var(--space-6);
+}
+
+.ap-name {
+  font-size: 26px;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
+}
+
+.ap-meta {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-4);
+}
+
+.ap-languages {
+  font-size: 14px;
+  color: var(--text-secondary);
+  margin: 0 0 var(--space-3);
+}
+
+.ap-bio {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 var(--space-5);
+}
+
+.ap-contact {
+  border-top: 1px solid var(--line-soft);
+  padding-top: var(--space-5);
+  margin-top: var(--space-5);
+}
+
+.ap-contact-heading {
+  font-size: 18px;
+  margin: 0 0 var(--space-2);
+}
+
+.ap-textarea {
+  width: 100%;
+  margin: var(--space-3) 0;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  font-family: var(--font-body);
+  font-size: 14px;
+  resize: vertical;
+}
+
+.ap-sent {
+  background: var(--status-safe-bg);
+  color: var(--status-safe-text);
+  border: 1px solid var(--status-safe-border);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  font-size: 14px;
+}

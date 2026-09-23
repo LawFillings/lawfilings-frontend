@@ -13,6 +13,7 @@ interface HomeProps {
   onSelectAppealGroup: (group: AppealGroup) => void;
   onOpenSettings: () => void;
   onOpenPrivacyPolicy: () => void;
+  onOpenFindAdvocate: () => void;
   initialForumType?: string;
 }
 
@@ -21,7 +22,7 @@ const caseTypeIdsInAppealGroups = new Set(
   appealGroups.flatMap((g) => g.options.map((o) => o.caseTypeId))
 );
 
-export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSettings, onOpenPrivacyPolicy, initialForumType }: HomeProps) {
+export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSettings, onOpenPrivacyPolicy, onOpenFindAdvocate, initialForumType }: HomeProps) {
   const { settings } = useSettings();
   const { color, widgets } = settings.home;
   const { t, language } = useLanguage();
@@ -138,6 +139,13 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
                   {t.landing.footer.privacyPolicy} {language === 'ur' ? '←' : '→'}
                 </button>
               </div>
+
+              <p className="home-advocate-mention">
+                Prefer to hand this to a lawyer?{' '}
+                <button className="home-privacy-link" onClick={onOpenFindAdvocate}>
+                  Find a verified advocate {language === 'ur' ? '←' : '→'}
+                </button>
+              </p>
             </div>
 
             <div className="picker-split-right">

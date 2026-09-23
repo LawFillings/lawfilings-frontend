@@ -15,6 +15,8 @@ interface Props {
   onOpenBilling: () => void;
   onOpenSettings: () => void;
   onOpenAdminGaps: () => void;
+  onOpenMyAdvocateListing: () => void;
+  onOpenAdvocateInquiries: () => void;
   onToggleMobileMenu: () => void;
 }
 
@@ -31,6 +33,8 @@ export function TopMasthead({
   onOpenBilling,
   onOpenSettings,
   onOpenAdminGaps,
+  onOpenMyAdvocateListing,
+  onOpenAdvocateInquiries,
   onToggleMobileMenu,
 }: Props) {
   const { user, logout } = useAuth();
@@ -122,6 +126,16 @@ export function TopMasthead({
             {user?.email === ADMIN_EMAIL && (
               <button className="top-masthead-account-menu-item" onClick={onOpenAdminGaps}>
                 Library gaps
+              </button>
+            )}
+            {user?.role === 'advocate' && (
+              <button className="top-masthead-account-menu-item" onClick={onOpenMyAdvocateListing}>
+                My directory listing
+              </button>
+            )}
+            {user?.role === 'advocate' && (
+              <button className="top-masthead-account-menu-item" onClick={onOpenAdvocateInquiries}>
+                Inquiries
               </button>
             )}
             {user && (

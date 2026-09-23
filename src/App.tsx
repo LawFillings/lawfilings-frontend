@@ -99,6 +99,10 @@ import { PricingPage } from './pages/PricingPage';
 import { CheckoutScreen, type CheckoutIntent } from './pages/CheckoutScreen';
 import { BillingPage } from './pages/BillingPage';
 import { AdminGapsPage } from './pages/AdminGapsPage';
+import { FindAdvocatePage } from './pages/FindAdvocatePage';
+import { AdvocateProfilePage } from './pages/AdvocateProfilePage';
+import { MyAdvocateListingPage } from './pages/MyAdvocateListingPage';
+import { AdvocateInquiriesPage } from './pages/AdvocateInquiriesPage';
 import { AppSidebar } from './components/AppSidebar';
 import { TopMasthead } from './components/TopMasthead';
 import { TopNav } from './components/TopNav';
@@ -145,7 +149,11 @@ type Screen =
   | { kind: 'pricing' }
   | { kind: 'checkout'; intent: CheckoutIntent }
   | { kind: 'billing' }
-  | { kind: 'adminGaps' };
+  | { kind: 'adminGaps' }
+  | { kind: 'findAdvocate'; forumType?: string; state?: string }
+  | { kind: 'advocateProfile'; advocateId: string }
+  | { kind: 'myAdvocateListing' }
+  | { kind: 'advocateInquiries' };
 
 export default function App() {
   return (
@@ -216,6 +224,10 @@ function AppScreens() {
   const openPricingNav = () => navigate({ kind: 'pricing' });
   const openBillingNav = () => navigate({ kind: 'billing' });
   const openAdminGapsNav = () => navigate({ kind: 'adminGaps' });
+  const openFindAdvocateNav = (filters?: { forumType?: string; state?: string }) =>
+    navigate({ kind: 'findAdvocate', forumType: filters?.forumType, state: filters?.state });
+  const openMyAdvocateListingNav = () => requireAuth({ kind: 'myAdvocateListing' });
+  const openAdvocateInquiriesNav = () => requireAuth({ kind: 'advocateInquiries' });
 
   function renderScreen() {
     if (screen.kind === 'landing') {
@@ -247,6 +259,7 @@ function AppScreens() {
           onSelectAppealGroup={(g) => requireAuth({ kind: 'appealGroup', group: g })}
           onOpenSettings={openSettingsNav}
           onOpenPrivacyPolicy={openPrivacyPolicyNav}
+          onOpenFindAdvocate={() => openFindAdvocateNav()}
           initialForumType={screen.forumType}
           key={screen.forumType ?? 'default'}
         />
@@ -388,6 +401,25 @@ function AppScreens() {
     }
     if (screen.kind === 'adminGaps') {
       return <AdminGapsPage onBack={onBack} />;
+    }
+    if (screen.kind === 'findAdvocate') {
+      return (
+        <FindAdvocatePage
+          onBack={onBack}
+          onOpenAdvocate={(advocateId) => requireAuth({ kind: 'advocateProfile', advocateId })}
+          initialForumType={screen.forumType}
+          initialState={screen.state}
+        />
+      );
+    }
+    if (screen.kind === 'advocateProfile') {
+      return <AdvocateProfilePage advocateId={screen.advocateId} onBack={onBack} />;
+    }
+    if (screen.kind === 'myAdvocateListing') {
+      return <MyAdvocateListingPage onBack={onBack} />;
+    }
+    if (screen.kind === 'advocateInquiries') {
+      return <AdvocateInquiriesPage onBack={onBack} />;
     }
 
     const ct = screen.caseType;
@@ -821,6 +853,14 @@ function AppScreens() {
           openAdminGapsNav();
           closeMobileMenu();
         }}
+        onOpenMyAdvocateListing={() => {
+          openMyAdvocateListingNav();
+          closeMobileMenu();
+        }}
+        onOpenAdvocateInquiries={() => {
+          openAdvocateInquiriesNav();
+          closeMobileMenu();
+        }}
         onToggleMobileMenu={() => setIsMobileMenuOpen((open) => !open)}
       />
       <TopNav
@@ -838,6 +878,7 @@ function AppScreens() {
         onOpenContact={openContactNav}
         onOpenMyCases={openMyCasesNav}
         onStartFiling={startFilingNav}
+        onOpenFindAdvocate={() => openFindAdvocateNav()}
       />
       <div className="app-shell">
         <AppSidebar
@@ -860,6 +901,9 @@ function AppScreens() {
           onOpenMyCases={openMyCasesNav}
           onOpenPricing={openPricingNav}
           onOpenBilling={openBillingNav}
+          onOpenFindAdvocate={() => openFindAdvocateNav()}
+          onOpenMyAdvocateListing={openMyAdvocateListingNav}
+          onOpenAdvocateInquiries={openAdvocateInquiriesNav}
         />
         <main className="app-content">{renderScreen()}</main>
       </div>

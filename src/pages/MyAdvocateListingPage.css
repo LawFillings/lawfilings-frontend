@@ -1,0 +1,24 @@
+.mal-page {
+  max-width: 760px;
+}
+
+.mal-title {
+  font-size: 26px;
+  margin: 0 0 var(--space-2);
+}
+
+.mal-verify-note {
+  display: block;
+  margin: var(--space-4) 0;
+}
+
+.mal-form {
+  margin-top: var(--space-6);
+}
+
+.mal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-3);
+  margin-top: var(--space-5);
+}

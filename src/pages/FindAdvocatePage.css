@@ -1,0 +1,113 @@
+.fa-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5);
+}
+
+.fa-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--accent-gold-soft);
+  margin: 0 0 var(--space-2);
+}
+
+.fa-title {
+  font-size: 30px;
+  line-height: 1.2;
+  margin: 0 0 var(--space-3);
+  color: var(--text-on-accent);
+}
+
+.fa-sub {
+  color: rgba(255, 255, 255, 0.82);
+  line-height: 1.55;
+  margin: 0 0 var(--space-6);
+  max-width: 46ch;
+}
+
+.fa-filters {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+.fa-results {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+  align-content: start;
+}
+
+.fa-error {
+  background: var(--status-danger-bg);
+  color: var(--status-danger-text);
+  border: 1px solid var(--status-danger-border);
+  border-radius: var(--radius);
+  padding: var(--space-3) var(--space-4);
+  font-size: 14px;
+}
+
+.fa-card {
+  text-align: left;
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  border-radius: var(--radius);
+  padding: var(--space-4) var(--space-5);
+  transition: border-color 0.15s ease, box-shadow 0.15s ease;
+}
+
+.fa-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 14px rgba(20, 39, 63, 0.1);
+}
+
+.fa-card-head {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  gap: var(--space-3);
+}
+
+.fa-card-name {
+  font-family: var(--font-display);
+  font-size: 19px;
+  font-weight: 600;
+  color: var(--ink);
+}
+
+.fa-card-years {
+  font-size: 13px;
+  color: var(--text-muted);
+  white-space: nowrap;
+}
+
+.fa-card-meta {
+  margin: var(--space-1) 0 var(--space-3);
+  font-size: 14px;
+  color: var(--text-secondary);
+}
+
+.fa-card-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: var(--space-2);
+  margin-bottom: var(--space-3);
+}
+
+.fa-chip {
+  font-size: 12px;
+  font-weight: 500;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: var(--accent-tint);
+  color: var(--accent-deep);
+}
+
+.fa-card-bio {
+  margin: 0;
+  font-size: 14px;
+  color: var(--text-secondary);
+  line-height: 1.5;
+}
