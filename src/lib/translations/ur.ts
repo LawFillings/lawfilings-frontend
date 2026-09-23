@@ -64,8 +64,8 @@ export const ur: Translations = {
   },
   common: {
     back: 'واپس',
-    backToAllFilings: '→ تمام فائلنگز پر واپس جائیں',
-    backToMyCases: '→ میرے مقدمات پر واپس جائیں',
+    backToAllFilings: 'تمام فائلنگز پر واپس جائیں',
+    backToMyCases: 'میرے مقدمات پر واپس جائیں',
     loading: 'لوڈ ہو رہا ہے…',
     logIn: 'لاگ ان کریں',
   },

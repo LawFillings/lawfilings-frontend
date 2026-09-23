@@ -64,8 +64,8 @@ export const pa: Translations = {
   },
   common: {
     back: 'ਪਿੱਛੇ',
-    backToAllFilings: '← ਸਾਰੀਆਂ ਫਾਈਲਿੰਗਾਂ ਵੱਲ ਵਾਪਸ',
-    backToMyCases: '← ਮੇਰੇ ਮਾਮਲਿਆਂ ਵੱਲ ਵਾਪਸ',
+    backToAllFilings: 'ਸਾਰੀਆਂ ਫਾਈਲਿੰਗਾਂ ਵੱਲ ਵਾਪਸ',
+    backToMyCases: 'ਮੇਰੇ ਮਾਮਲਿਆਂ ਵੱਲ ਵਾਪਸ',
     loading: 'ਲੋਡ ਹੋ ਰਿਹਾ ਹੈ…',
     logIn: 'ਲੌਗ ਇਨ ਕਰੋ',
   },

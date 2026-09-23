@@ -62,8 +62,8 @@ export const en = {
   },
   common: {
     back: 'Back',
-    backToAllFilings: '← Back to all filings',
-    backToMyCases: '← Back to My Cases',
+    backToAllFilings: 'Back to all filings',
+    backToMyCases: 'Back to My Cases',
     loading: 'Loading…',
     logIn: 'Log in',
   },

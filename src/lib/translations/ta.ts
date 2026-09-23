@@ -64,8 +64,8 @@ export const ta: Translations = {
   },
   common: {
     back: 'பின்செல்',
-    backToAllFilings: '← அனைத்து தாக்கல்களுக்கும் திரும்பு',
-    backToMyCases: '← எனது வழக்குகளுக்குத் திரும்பு',
+    backToAllFilings: 'அனைத்து தாக்கல்களுக்கும் திரும்பு',
+    backToMyCases: 'எனது வழக்குகளுக்குத் திரும்பு',
     loading: 'ஏற்றப்படுகிறது…',
     logIn: 'உள்நுழையவும்',
   },

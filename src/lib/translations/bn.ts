@@ -64,8 +64,8 @@ export const bn: Translations = {
   },
   common: {
     back: 'ফিরে যান',
-    backToAllFilings: '← সমস্ত ফাইলিংয়ে ফিরে যান',
-    backToMyCases: '← আমার মামলায় ফিরে যান',
+    backToAllFilings: 'সমস্ত ফাইলিংয়ে ফিরে যান',
+    backToMyCases: 'আমার মামলায় ফিরে যান',
     loading: 'লোড হচ্ছে…',
     logIn: 'লগ ইন করুন',
   },

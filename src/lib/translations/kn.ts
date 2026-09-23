@@ -64,8 +64,8 @@ export const kn: Translations = {
   },
   common: {
     back: 'ಹಿಂದೆ',
-    backToAllFilings: '← ಎಲ್ಲಾ ಫೈಲಿಂಗ್‌ಗಳಿಗೆ ಹಿಂತಿರುಗಿ',
-    backToMyCases: '← ನನ್ನ ಪ್ರಕರಣಗಳಿಗೆ ಹಿಂತಿರುಗಿ',
+    backToAllFilings: 'ಎಲ್ಲಾ ಫೈಲಿಂಗ್‌ಗಳಿಗೆ ಹಿಂತಿರುಗಿ',
+    backToMyCases: 'ನನ್ನ ಪ್ರಕರಣಗಳಿಗೆ ಹಿಂತಿರುಗಿ',
     loading: 'ಲೋಡ್ ಆಗುತ್ತಿದೆ…',
     logIn: 'ಲಾಗಿನ್ ಮಾಡಿ',
   },

@@ -64,8 +64,8 @@ export const ml: Translations = {
   },
   common: {
     back: 'തിരികെ',
-    backToAllFilings: '← എല്ലാ ഫയലിംഗുകളിലേക്കും തിരികെ',
-    backToMyCases: '← എന്റെ കേസുകളിലേക്ക് തിരികെ',
+    backToAllFilings: 'എല്ലാ ഫയലിംഗുകളിലേക്കും തിരികെ',
+    backToMyCases: 'എന്റെ കേസുകളിലേക്ക് തിരികെ',
     loading: 'ലോഡ് ചെയ്യുന്നു…',
     logIn: 'ലോഗിൻ ചെയ്യുക',
   },

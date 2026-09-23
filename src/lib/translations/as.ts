@@ -64,8 +64,8 @@ export const as: Translations = {
   },
   common: {
     back: 'উভতি যাওক',
-    backToAllFilings: '← সকলো ফাইলিঙলৈ উভতি যাওক',
-    backToMyCases: '← মোৰ গোচৰলৈ উভতি যাওক',
+    backToAllFilings: 'সকলো ফাইলিঙলৈ উভতি যাওক',
+    backToMyCases: 'মোৰ গোচৰলৈ উভতি যাওক',
     loading: 'ল’ড হৈ আছে…',
     logIn: 'লগ ইন কৰক',
   },

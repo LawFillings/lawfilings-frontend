@@ -64,8 +64,8 @@ export const gu: Translations = {
   },
   common: {
     back: 'પાછળ',
-    backToAllFilings: '← બધી ફાઇલિંગ પર પાછા જાઓ',
-    backToMyCases: '← મારા કેસ પર પાછા જાઓ',
+    backToAllFilings: 'બધી ફાઇલિંગ પર પાછા જાઓ',
+    backToMyCases: 'મારા કેસ પર પાછા જાઓ',
     loading: 'લોડ થઈ રહ્યું છે…',
     logIn: 'લૉગ ઇન કરો',
   },

@@ -196,7 +196,7 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
           </div>
 
           {category === 'constitution' && constitutionAct && (
-            <div className="ll-act-picker">
+            <div className="ll-act-picker ll-highlight-next">
               <SearchableSelect
                 label={t.lawLibrary.selectPartLabel}
                 placeholder={t.lawLibrary.dropdownPlaceholder}
@@ -208,7 +208,7 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
           )}
 
           {category === 'state' && (
-            <div className="ll-state-picker">
+            <div className={selectedState ? 'll-state-picker' : 'll-state-picker ll-highlight-next'}>
               <SearchableSelect
                 label={t.lawLibrary.selectStateLabel}
                 placeholder={t.lawLibrary.selectStatePlaceholder}
@@ -221,7 +221,7 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
           )}
 
           {(category === 'central' || category === 'rules' || (category === 'state' && selectedState)) && (
-            <div className="ll-act-picker ll-act-picker-wide">
+            <div className="ll-act-picker ll-act-picker-wide ll-highlight-next" key={`${category}-${selectedState ?? ''}`}>
               {visibleActs.length > 0 ? (
                 <SearchableSelect
                   key={`${category}-${selectedState ?? ''}`}

@@ -64,8 +64,8 @@ export const hi: Translations = {
   },
   common: {
     back: 'पीछे',
-    backToAllFilings: '← सभी फाइलिंग पर वापस जाएं',
-    backToMyCases: '← मेरे मामलों पर वापस जाएं',
+    backToAllFilings: 'सभी फाइलिंग पर वापस जाएं',
+    backToMyCases: 'मेरे मामलों पर वापस जाएं',
     loading: 'लोड हो रहा है…',
     logIn: 'लॉग इन करें',
   },

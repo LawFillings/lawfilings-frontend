@@ -147,6 +147,26 @@
   max-width: 360px;
 }
 
+/* Draws the eye to whichever picker is the next thing to fill in, right after the previous
+   selection reveals it — a short one-time pulse, not a persistent distraction. */
+.ll-highlight-next .ss-input {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 3px var(--accent-tint);
+  animation: ll-highlight-pulse 1.4s ease-out 1;
+}
+
+@keyframes ll-highlight-pulse {
+  0% {
+    box-shadow: 0 0 0 0 var(--accent-tint);
+  }
+  60% {
+    box-shadow: 0 0 0 8px transparent;
+  }
+  100% {
+    box-shadow: 0 0 0 3px var(--accent-tint);
+  }
+}
+
 .ll-state-select {
   width: 100%;
   font-size: 15px;

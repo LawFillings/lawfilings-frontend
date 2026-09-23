@@ -64,8 +64,8 @@ export const te: Translations = {
   },
   common: {
     back: 'వెనుకకు',
-    backToAllFilings: '← అన్ని ఫైలింగ్‌లకు తిరిగి వెళ్ళండి',
-    backToMyCases: '← నా కేసులకు తిరిగి వెళ్ళండి',
+    backToAllFilings: 'అన్ని ఫైలింగ్‌లకు తిరిగి వెళ్ళండి',
+    backToMyCases: 'నా కేసులకు తిరిగి వెళ్ళండి',
     loading: 'లోడ్ అవుతోంది…',
     logIn: 'లాగిన్ చేయండి',
   },

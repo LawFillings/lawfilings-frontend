@@ -64,8 +64,8 @@ export const or: Translations = {
   },
   common: {
     back: 'ପଛକୁ',
-    backToAllFilings: '← ସମସ୍ତ ଫାଇଲିଂକୁ ଫେରନ୍ତୁ',
-    backToMyCases: '← ମୋ ମାମଲାଗୁଡ଼ିକୁ ଫେରନ୍ତୁ',
+    backToAllFilings: 'ସମସ୍ତ ଫାଇଲିଂକୁ ଫେରନ୍ତୁ',
+    backToMyCases: 'ମୋ ମାମଲାଗୁଡ଼ିକୁ ଫେରନ୍ତୁ',
     loading: 'ଲୋଡ୍ ହେଉଛି…',
     logIn: 'ଲଗ ଇନ କରନ୍ତୁ',
   },
