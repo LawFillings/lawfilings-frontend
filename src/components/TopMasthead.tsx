@@ -130,12 +130,12 @@ export function TopMasthead({
             )}
             {user?.role === 'advocate' && (
               <button className="top-masthead-account-menu-item" onClick={onOpenMyAdvocateListing}>
-                My directory listing
+                {t.advocateDirectory.myListing.title}
               </button>
             )}
             {user?.role === 'advocate' && (
               <button className="top-masthead-account-menu-item" onClick={onOpenAdvocateInquiries}>
-                Inquiries
+                {t.advocateDirectory.inquiries.title}
               </button>
             )}
             {user && (

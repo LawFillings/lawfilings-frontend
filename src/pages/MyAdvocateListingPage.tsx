@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { forums } from '../data/mockData';
 import { districtCourtStates } from '../data/districtCourtLocations';
-import { LANGUAGES } from '../lib/language';
+import { LANGUAGES, useLanguage } from '../lib/language';
 import { useAuth } from '../lib/auth';
 import { getMyAdvocateProfile, saveMyAdvocateProfile, type AdvocateProfile } from '../lib/advocateDirectoryClient';
 import { ApiError } from '../lib/apiError';
@@ -24,6 +24,8 @@ const EMPTY: AdvocateProfile = {
 };
 
 export function MyAdvocateListingPage({ onBack }: Props) {
+  const { t } = useLanguage();
+  const ml = t.advocateDirectory.myListing;
   const { user, token } = useAuth();
   const [profile, setProfile] = useState<AdvocateProfile | null>(null);
   const [city, setCity] = useState('');
@@ -71,7 +73,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
       setSaveState('saved');
     } catch (err) {
       setSaveState('error');
-      setError(err instanceof ApiError ? err.message : "Couldn't save your listing — please try again.");
+      setError(err instanceof ApiError ? err.message : ml.saveError);
     }
   };
 
@@ -79,9 +81,9 @@ export function MyAdvocateListingPage({ onBack }: Props) {
     return (
       <div className="fa-page">
         <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0 }}>
-          Back
+          {t.common.back}
         </button>
-        <p className="step-help">This page is for advocate accounts.</p>
+        <p className="step-help">{t.advocateDirectory.advocateOnly}</p>
       </div>
     );
   }
@@ -89,26 +91,20 @@ export function MyAdvocateListingPage({ onBack }: Props) {
   return (
     <div className="fa-page mal-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        Back
+        {t.common.back}
       </button>
-      <h1 className="mal-title">My directory listing</h1>
-      <p className="step-help">
-        Opt in to appear in Find an Advocate, LawFilings' public, browsable directory. Nothing here is shared until
-        you turn listing on below, and a prospective client only ever sees what you fill in here — never your
-        contact details directly; they reach you by sending an inquiry through the platform.
-      </p>
+      <h1 className="mal-title">{ml.title}</h1>
+      <p className="step-help">{ml.intro}</p>
 
       {!isVerified && (
         <div className="ap-sent mal-verify-note" style={{ background: 'var(--status-warn-bg)', color: 'var(--status-warn-text)', borderColor: 'var(--status-warn-border)' }}>
-          Your Bar Council verification is {user.verificationStatus === 'pending' ? 'still pending' : 'not yet complete'} — you
-          can fill in your listing now, but it can only go live once verification is approved.
+          {user.verificationStatus === 'pending' ? ml.verifyPending : ml.verifyIncomplete}
         </div>
       )}
 
       {prefilled && profile && (
         <div className="ap-sent mal-verify-note" style={{ background: 'var(--accent-tint)', color: 'var(--accent-deep)', borderColor: 'var(--accent)' }}>
-          Pre-filled from your Bar Council state and the forums you've actually drafted filings in on LawFilings —
-          nothing is saved yet, review and adjust before you save.
+          {ml.prefilledNote}
         </div>
       )}
 
@@ -116,19 +112,19 @@ export function MyAdvocateListingPage({ onBack }: Props) {
         <div className="mal-form">
           <div className="form-grid">
             <label className="form-field">
-              <span>City</span>
-              <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder="e.g. Chandigarh" />
+              <span>{ml.cityLabel}</span>
+              <input type="text" value={city} onChange={(e) => setCity(e.target.value)} placeholder={ml.cityPlaceholder} />
             </label>
             <SearchableSelect
-              label="State you practice in"
-              placeholder="Choose a state"
-              noMatches="No match"
+              label={ml.stateLabel}
+              placeholder={ml.statePlaceholder}
+              noMatches={ml.noMatch}
               selectedKey={profile.practiceState ?? undefined}
               options={districtCourtStates.map((s) => ({ key: s.id, label: s.label }))}
               onSelect={(key) => setProfile((p) => (p ? { ...p, practiceState: key } : p))}
             />
             <label className="form-field">
-              <span>Practicing since (year)</span>
+              <span>{ml.practicingSinceLabel}</span>
               <input
                 type="number"
                 min={1950}
@@ -140,7 +136,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
           </div>
 
           <h3 className="step-heading" style={{ marginTop: 'var(--space-5)' }}>
-            Forums you practice in
+            {ml.forumsHeading}
           </h3>
           <div className="grounds-grid">
             {forums.map((f) => (
@@ -156,7 +152,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
           </div>
 
           <h3 className="step-heading" style={{ marginTop: 'var(--space-5)' }}>
-            Languages you work in
+            {ml.languagesHeading}
           </h3>
           <div className="grounds-grid">
             {LANGUAGES.map((l) => (
@@ -172,7 +168,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
           </div>
 
           <label className="form-field" style={{ marginTop: 'var(--space-5)' }}>
-            <span>Short bio (shown on your listing)</span>
+            <span>{ml.bioLabel}</span>
             <textarea
               className="ap-textarea"
               rows={4}
@@ -186,25 +182,25 @@ export function MyAdvocateListingPage({ onBack }: Props) {
 
           <div className="mal-actions">
             <button className="para-btn" onClick={() => handleSave(false)} disabled={saveState === 'saving'}>
-              {saveState === 'saving' ? 'Saving…' : 'Save (not listed)'}
+              {saveState === 'saving' ? ml.saving : ml.saveNotListed}
             </button>
             <button
               className="para-btn"
               onClick={() => handleSave(true)}
               disabled={saveState === 'saving' || !isVerified}
-              title={isVerified ? undefined : 'Verification must be approved first'}
+              title={isVerified ? undefined : ml.verificationRequiredTitle}
             >
-              {profile.listed ? 'Update listing (live)' : 'Save and go live'}
+              {profile.listed ? ml.updateListing : ml.saveAndGoLive}
             </button>
             {profile.listed && (
               <button className="para-btn" onClick={() => handleSave(false)} disabled={saveState === 'saving'}>
-                Remove from directory
+                {ml.removeFromDirectory}
               </button>
             )}
           </div>
           {saveState === 'saved' && (
             <p className="step-help" style={{ color: 'var(--status-safe-text)' }}>
-              {profile.listed ? 'Live in the directory.' : 'Saved — not currently listed.'}
+              {profile.listed ? ml.liveInDirectory : ml.savedNotListed}
             </p>
           )}
         </div>

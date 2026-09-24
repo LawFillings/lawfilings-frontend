@@ -130,7 +130,7 @@ export function TopNav({
           {t.nav.caseLaw}
         </button>
         <button className={linkClass('findAdvocate')} onClick={onOpenFindAdvocate}>
-          Find an Advocate
+          {t.nav.findAdvocate}
         </button>
         {user && (
           <button className={linkClass('myCases')} onClick={onOpenMyCases}>

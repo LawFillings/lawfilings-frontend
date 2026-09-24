@@ -100,8 +100,8 @@ async function postRecovery(path: string, body: unknown): Promise<void> {
   }
 }
 
-export function requestPasswordReset(email: string) {
-  return postRecovery('forgot-password', { email });
+export function requestPasswordReset(email: string, language: string) {
+  return postRecovery('forgot-password', { email, language });
 }
 
 export function resetPassword(token: string, password: string) {

@@ -186,7 +186,7 @@ export function AppSidebar({
           </button>
 
           <button className="app-sidebar-link" onClick={go(onOpenFindAdvocate)}>
-            Find an Advocate
+            {t.nav.findAdvocate}
           </button>
 
           {user && (
@@ -240,10 +240,10 @@ export function AppSidebar({
               {user.role === 'advocate' && (
                 <>
                   <button className="app-sidebar-link" onClick={go(onOpenMyAdvocateListing)}>
-                    My directory listing
+                    {t.advocateDirectory.myListing.title}
                   </button>
                   <button className="app-sidebar-link" onClick={go(onOpenAdvocateInquiries)}>
-                    Inquiries
+                    {t.advocateDirectory.inquiries.title}
                   </button>
                 </>
               )}

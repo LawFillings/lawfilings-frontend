@@ -11,7 +11,7 @@ interface Props {
 }
 
 export function ForgotPasswordPage({ onBack, onBackToLogin, initialEmail = '' }: Props) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const r = t.auth.recovery;
   const [email, setEmail] = useState(initialEmail);
   const [error, setError] = useState<string | null>(null);
@@ -23,7 +23,7 @@ export function ForgotPasswordPage({ onBack, onBackToLogin, initialEmail = '' }:
     setError(null);
     setSubmitting(true);
     try {
-      await requestPasswordReset(email.trim());
+      await requestPasswordReset(email.trim(), language);
       setSent(true);
     } catch (err) {
       setError(err instanceof Error ? err.message : r.sendError);
