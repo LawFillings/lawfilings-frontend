@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import type { ForumLocation } from '../data/forumLocations';
 import type { UserRole } from '../types';
 import { useLanguage } from '../lib/language';
@@ -31,6 +31,21 @@ export function LocationSelector({
   const filtered = locations.filter((l) => l.label.toLowerCase().includes(query.toLowerCase()));
   const selected = locations.find((l) => l.id === value);
 
+  // With a long bench/location list, the "Selected" confirmation below it can land well below
+  // the fold — scroll it into view so picking near the top of the list doesn't look like nothing
+  // happened. Skip the very first render (e.g. a value passed in from a saved draft).
+  const selectedCardRef = useRef<HTMLDivElement>(null);
+  const hasMountedRef = useRef(false);
+  useEffect(() => {
+    if (!hasMountedRef.current) {
+      hasMountedRef.current = true;
+      return;
+    }
+    if (value) {
+      selectedCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    }
+  }, [value]);
+
   return (
     <div>
       <label className="field-label" htmlFor="location-search">
@@ -59,7 +74,7 @@ export function LocationSelector({
         {filtered.length === 0 && <p className="bench-empty">{t.wizardShared.locationNoMatch}</p>}
       </div>
       {selected && (
-        <div className="deadline-card status-safe" style={{ maxWidth: 420 }}>
+        <div className="deadline-card status-safe" style={{ maxWidth: 420 }} ref={selectedCardRef}>
           <p className="deadline-label">{t.wizardShared.locationSelected}</p>
           <p className="deadline-body">
             {selected.label}
