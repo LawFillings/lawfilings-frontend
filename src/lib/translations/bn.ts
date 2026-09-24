@@ -337,7 +337,6 @@ export const bn: Translations = {
     sendButton: 'ইমেইল পাঠান',
   },
   home: {
-    eyebrow: 'ভারতীয় ট্রাইব্যুনাল ও আদালতসমূহের জন্য একটি ড্রাফটিং মঞ্চ',
     settingsLink: '⚙ সেটিংস',
     title: "যেখানে ফাইল করতে চান সেই আদালত/ফোরাম বেছে নিন",
     privacyTitle: "আপনার তথ্য গোপন থাকে",

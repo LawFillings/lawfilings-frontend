@@ -337,7 +337,6 @@ export const as: Translations = {
     sendButton: 'ইমেইল পঠিয়াওক',
   },
   home: {
-    eyebrow: 'ভাৰতীয় ট্ৰাইব্যুনেল আৰু আদালতসমূহৰ বাবে এটা ড্ৰাফ্টিং মঞ্চ',
     settingsLink: '⚙ ছেটিংছ',
     title: "য’ত ফাইল কৰিব লাগে সেই আদালত/ফৰাম বাছক",
     privacyTitle: "আপোনাৰ তথ্য গোপন থাকে",

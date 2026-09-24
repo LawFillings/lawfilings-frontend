@@ -335,7 +335,6 @@ export const en = {
     sendButton: 'Send email',
   },
   home: {
-    eyebrow: 'A drafting platform for Indian tribunals and courts',
     settingsLink: '⚙ Settings',
     title: "Select the court/forum where you need to file",
     privacyTitle: "Your data stays confidential",

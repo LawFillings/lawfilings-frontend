@@ -337,7 +337,6 @@ export const pa: Translations = {
     sendButton: 'ਈਮੇਲ ਭੇਜੋ',
   },
   home: {
-    eyebrow: 'ਭਾਰਤੀ ਟ੍ਰਿਬਿਊਨਲਾਂ ਅਤੇ ਅਦਾਲਤਾਂ ਲਈ ਇੱਕ ਡਰਾਫਟਿੰਗ ਮੰਚ',
     settingsLink: '⚙ ਸੈਟਿੰਗਾਂ',
     title: "ਉਹ ਅਦਾਲਤ/ਫ਼ੋਰਮ ਚੁਣੋ ਜਿੱਥੇ ਤੁਸੀਂ ਫਾਈਲ ਕਰਨਾ ਹੈ",
     privacyTitle: "ਤੁਹਾਡਾ ਡੇਟਾ ਗੁਪਤ ਰਹਿੰਦਾ ਹੈ",

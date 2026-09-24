@@ -135,12 +135,11 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
 
   return (
     <div className="home" data-color-theme={color}>
-      <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
-        {t.common.back}
-      </button>
       <div className="home-hero-top">
-        <p className="home-eyebrow">{t.home.eyebrow}</p>
-        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)' }}>
+        <button className="back-link home-hero-back" onClick={onBack}>
+          {t.common.back}
+        </button>
+        <div className="home-hero-controls">
           <LanguageSwitcher compact className="home-settings-link" />
           <button className="home-settings-link" onClick={onOpenSettings}>
             {t.home.settingsLink}

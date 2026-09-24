@@ -337,7 +337,6 @@ export const mr: Translations = {
     sendButton: 'ईमेल पाठवा',
   },
   home: {
-    eyebrow: 'भारतीय न्यायाधिकरणे आणि न्यायालयांसाठी एक मसुदा व्यासपीठ',
     settingsLink: '⚙ सेटिंग्ज',
     title: "जिथे फाइल करायचे आहे ते न्यायालय/मंच निवडा",
     privacyTitle: "तुमचा डेटा गोपनीय राहतो",

@@ -337,7 +337,6 @@ export const hi: Translations = {
     sendButton: 'ईमेल भेजें',
   },
   home: {
-    eyebrow: 'भारतीय अधिकरणों और न्यायालयों के लिए एक ड्राफ्टिंग मंच',
     settingsLink: '⚙ सेटिंग्स',
     title: "वह न्यायालय/फ़ोरम चुनें जहाँ आपको फाइल करना है",
     privacyTitle: "आपका डेटा गोपनीय रहता है",

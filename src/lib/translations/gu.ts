@@ -337,7 +337,6 @@ export const gu: Translations = {
     sendButton: 'ઈમેલ મોકલો',
   },
   home: {
-    eyebrow: 'ભારતીય ટ્રિબ્યુનલો અને અદાલતો માટે એક ડ્રાફ્ટિંગ મંચ',
     settingsLink: '⚙ સેટિંગ્સ',
     title: "જ્યાં ફાઇલ કરવું હોય તે અદાલત/ફોરમ પસંદ કરો",
     privacyTitle: "તમારો ડેટા ગોપનીય રહે છે",

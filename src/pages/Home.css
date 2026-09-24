@@ -1,29 +1,36 @@
 .home {
   max-width: 1120px;
   margin: 0 auto;
-  padding: var(--space-8) var(--space-5);
+  padding: var(--space-4) var(--space-5) var(--space-8);
 }
 
 .home-hero-top {
   display: flex;
-  align-items: baseline;
+  align-items: center;
   justify-content: space-between;
   gap: var(--space-4);
-  margin-bottom: var(--space-6);
+  margin-bottom: var(--space-3);
 }
 
-.home-eyebrow {
-  font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--accent-deep);
-  margin: 0 0 var(--space-3);
+.back-link.home-hero-back {
+  margin: 0;
+  padding: 0;
+  max-width: none;
+  font-size: 16px;
+}
+
+.home-hero-controls {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+  font-size: 15px;
 }
 
 .home-settings-link {
   border: none;
   background: none;
   color: var(--text-muted);
-  font-size: 12px;
+  font-size: inherit;
   white-space: nowrap;
 }
 
@@ -36,7 +43,7 @@
   margin-left: calc(50% - 50vw);
   margin-right: calc(50% - 50vw);
   background: var(--accent-tint);
-  padding: var(--space-8) var(--space-5);
+  padding: var(--space-4) var(--space-5) var(--space-8);
   margin-bottom: var(--space-6);
 }
 
