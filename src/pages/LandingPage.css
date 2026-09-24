@@ -295,6 +295,7 @@
     font-weight: 500;
     color: var(--text-on-accent);
     margin-bottom: var(--space-5);
+    text-align: center;
   }
   .landing-quick {
     display: block;

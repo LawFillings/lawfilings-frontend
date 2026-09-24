@@ -141,10 +141,10 @@ export const en = {
       titleLine3: 'Draft your filing.',
       titleLine4: 'Monitor your matters.',
       sub: 'A platform for Advocates and justice seekers for filing of applications/affidavits and handling legal cases - across District Courts, Consumer Forums, Tribunals, High Courts and Supreme Court.',
-      subShort: "Legal drafting, law referencing and filing made easy across District Courts, Consumer Forums, Tribunals, High Courts and Supreme Court.",
+      subShort: "A platform for legal drafting, referencing and filing assistance.",
       whatsNew: "What's New",
       startFiling: 'Start a filing →',
-      browseActs: 'Browse Constitution & Key Statutes — curated for you',
+      browseActs: 'Constitution & Key Statutes',
     },
     actsSection: {
       eyebrow: 'Curated from Primary sources',
