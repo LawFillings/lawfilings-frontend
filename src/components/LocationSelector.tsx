@@ -31,10 +31,13 @@ export function LocationSelector({
   const filtered = locations.filter((l) => l.label.toLowerCase().includes(query.toLowerCase()));
   const selected = locations.find((l) => l.id === value);
 
-  // With a long bench/location list, the "Selected" confirmation below it can land well below
-  // the fold — scroll it into view so picking near the top of the list doesn't look like nothing
-  // happened. Skip the very first render (e.g. a value passed in from a saved draft).
-  const selectedCardRef = useRef<HTMLDivElement>(null);
+  // A selection reveals the "Selected" confirmation, and sometimes more text after it — but the
+  // actual next action is the wizard's own Continue button, outside this component entirely.
+  // WizardShell renders it with a fixed, site-wide class, so target it directly rather than just
+  // getting close via this component's own last element. Falls back to this component's end if
+  // there's no Continue on the current step (e.g. the wizard's final step).
+  // Skip the very first render (e.g. a value passed in from a saved draft).
+  const rootRef = useRef<HTMLDivElement>(null);
   const hasMountedRef = useRef(false);
   useEffect(() => {
     if (!hasMountedRef.current) {
@@ -42,12 +45,13 @@ export function LocationSelector({
       return;
     }
     if (value) {
-      selectedCardRef.current?.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+      const continueBtn = document.querySelector('.step-nav-btn.primary');
+      (continueBtn ?? rootRef.current)?.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [value]);
 
   return (
-    <div>
+    <div ref={rootRef}>
       <label className="field-label" htmlFor="location-search">
         {label}
       </label>
@@ -74,7 +78,7 @@ export function LocationSelector({
         {filtered.length === 0 && <p className="bench-empty">{t.wizardShared.locationNoMatch}</p>}
       </div>
       {selected && (
-        <div className="deadline-card status-safe" style={{ maxWidth: 420 }} ref={selectedCardRef}>
+        <div className="deadline-card status-safe" style={{ maxWidth: 420 }}>
           <p className="deadline-label">{t.wizardShared.locationSelected}</p>
           <p className="deadline-body">
             {selected.label}
