@@ -374,7 +374,7 @@ export const te: Translations = {
       'writs-supervisory': 'రిట్‌లు మరియు పర్యవేక్షణ అధికార పరిధి',
       'hc-appeals': 'అప్పీళ్లు',
       'hc-special-proceedings': 'ప్రత్యేక చర్యలు',
-      'sc-slp': 'ప్రత్యేక అనుమతి పిటిషన్‌లు',
+      'sc-slp': 'స్పెషల్ లీవ్ పిటిషన్‌లు',
       'sc-writs': 'రిట్‌లు (ప్రాథమిక హక్కులు)',
       'sc-post-judgment-remedies': 'తీర్పు అనంతర పరిష్కారాలు',
       'sc-special-jurisdiction': 'ప్రత్యేక అధికార పరిధి',

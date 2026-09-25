@@ -374,7 +374,7 @@ export const ur: Translations = {
       'writs-supervisory': 'رٹ اور نگرانی کا دائرہ اختیار',
       'hc-appeals': 'اپیلیں',
       'hc-special-proceedings': 'خصوصی کارروائیاں',
-      'sc-slp': 'خصوصی اجازت کی درخواستیں',
+      'sc-slp': 'اسپیشل لیو پٹیشنز',
       'sc-writs': 'رٹ (بنیادی حقوق)',
       'sc-post-judgment-remedies': 'فیصلے کے بعد کے ازالے',
       'sc-special-jurisdiction': 'خصوصی دائرہ اختیار',

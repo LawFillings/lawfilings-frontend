@@ -374,7 +374,7 @@ export const gu: Translations = {
       'writs-supervisory': 'રિટ અને દેખરેખ અધિકારક્ષેત્ર',
       'hc-appeals': 'અપીલો',
       'hc-special-proceedings': 'વિશેષ કાર્યવાહીઓ',
-      'sc-slp': 'વિશેષ રજા અરજીઓ',
+      'sc-slp': 'સ્પેશિયલ લીવ પિટિશન',
       'sc-writs': 'રિટ (મૂળભૂત અધિકારો)',
       'sc-post-judgment-remedies': 'ચુકાદા પછીના ઉપાયો',
       'sc-special-jurisdiction': 'વિશેષ અધિકારક્ષેત્ર',

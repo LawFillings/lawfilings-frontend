@@ -374,7 +374,7 @@ export const ml: Translations = {
       'writs-supervisory': 'റിട്ടുകളും മേൽനോട്ട അധികാരപരിധിയും',
       'hc-appeals': 'അപ്പീലുകൾ',
       'hc-special-proceedings': 'പ്രത്യേക നടപടികൾ',
-      'sc-slp': 'പ്രത്യേക അനുമതി ഹർജികൾ',
+      'sc-slp': 'സ്പെഷ്യൽ ലീവ് പെറ്റീഷനുകൾ',
       'sc-writs': 'റിട്ടുകൾ (മൗലികാവകാശങ്ങൾ)',
       'sc-post-judgment-remedies': 'വിധിക്ക് ശേഷമുള്ള പരിഹാരങ്ങൾ',
       'sc-special-jurisdiction': 'പ്രത്യേക അധികാരപരിധി',

@@ -374,7 +374,7 @@ export const mr: Translations = {
       'writs-supervisory': 'रिट व देखरेख अधिकारक्षेत्र',
       'hc-appeals': 'अपील',
       'hc-special-proceedings': 'विशेष कार्यवाही',
-      'sc-slp': 'विशेष अनुमती याचिका',
+      'sc-slp': 'स्पेशल लीव्ह पिटिशन',
       'sc-writs': 'रिट (मूलभूत हक्क)',
       'sc-post-judgment-remedies': 'निकालानंतरचे उपाय',
       'sc-special-jurisdiction': 'विशेष अधिकारक्षेत्र',

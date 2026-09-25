@@ -374,7 +374,7 @@ export const kn: Translations = {
       'writs-supervisory': 'ರಿಟ್ ಮತ್ತು ಮೇಲ್ವಿಚಾರಣಾ ಅಧಿಕಾರ ವ್ಯಾಪ್ತಿ',
       'hc-appeals': 'ಮೇಲ್ಮನವಿಗಳು',
       'hc-special-proceedings': 'ವಿಶೇಷ ಪ್ರಕ್ರಿಯೆಗಳು',
-      'sc-slp': 'ವಿಶೇಷ ರಜೆ ಅರ್ಜಿಗಳು',
+      'sc-slp': 'ಸ್ಪೆಷಲ್ ಲೀವ್ ಪಿಟಿಷನ್‌ಗಳು',
       'sc-writs': 'ರಿಟ್‌ಗಳು (ಮೂಲಭೂತ ಹಕ್ಕುಗಳು)',
       'sc-post-judgment-remedies': 'ತೀರ್ಪಿನ ನಂತರದ ಪರಿಹಾರಗಳು',
       'sc-special-jurisdiction': 'ವಿಶೇಷ ಅಧಿಕಾರ ವ್ಯಾಪ್ತಿ',

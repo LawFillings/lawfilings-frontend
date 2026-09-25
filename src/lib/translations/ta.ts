@@ -374,7 +374,7 @@ export const ta: Translations = {
       'writs-supervisory': 'ரிட் மற்றும் மேற்பார்வை அதிகார வரம்பு',
       'hc-appeals': 'மேல்முறையீடுகள்',
       'hc-special-proceedings': 'சிறப்பு நடவடிக்கைகள்',
-      'sc-slp': 'சிறப்பு விடுப்பு மனுக்கள்',
+      'sc-slp': 'ஸ்பெஷல் லீவ் பெட்டிஷன்கள்',
       'sc-writs': 'ரிட் (அடிப்படை உரிமைகள்)',
       'sc-post-judgment-remedies': 'தீர்ப்புக்குப் பிந்தைய நிவாரணங்கள்',
       'sc-special-jurisdiction': 'சிறப்பு அதிகார வரம்பு',

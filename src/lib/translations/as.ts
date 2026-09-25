@@ -374,7 +374,7 @@ export const as: Translations = {
       'writs-supervisory': 'ৰিট আৰু নিৰীক্ষণ অধিক্ষেত্ৰ',
       'hc-appeals': 'আপীল',
       'hc-special-proceedings': 'বিশেষ কাৰ্যধাৰা',
-      'sc-slp': 'বিশেষ অনুমতি আবেদন',
+      'sc-slp': 'স্পেচিয়েল লিভ পিটিচন',
       'sc-writs': 'ৰিট (মৌলিক অধিকাৰ)',
       'sc-post-judgment-remedies': 'ৰায়ৰ পিছৰ প্ৰতিকাৰ',
       'sc-special-jurisdiction': 'বিশেষ অধিক্ষেত্ৰ',

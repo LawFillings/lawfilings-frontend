@@ -374,7 +374,7 @@ export const or: Translations = {
       'writs-supervisory': 'ରିଟ୍ ଏବଂ ତଦାରଖ ଅଧିକାରକ୍ଷେତ୍ର',
       'hc-appeals': 'ଆପିଲ୍‌',
       'hc-special-proceedings': 'ବିଶେଷ କାର୍ଯ୍ୟଧାରା',
-      'sc-slp': 'ବିଶେଷ ଅନୁମତି ଆବେଦନ',
+      'sc-slp': 'ସ୍ପେସିଆଲ ଲିଭ ପିଟିସନ',
       'sc-writs': 'ରିଟ୍ (ମୌଳିକ ଅଧିକାର)',
       'sc-post-judgment-remedies': 'ରାୟ ପରର ପ୍ରତିକାର',
       'sc-special-jurisdiction': 'ବିଶେଷ ଅଧିକାରକ୍ଷେତ୍ର',

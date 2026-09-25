@@ -374,7 +374,7 @@ export const pa: Translations = {
       'writs-supervisory': 'ਰਿੱਟ ਅਤੇ ਨਿਗਰਾਨੀ ਅਧਿਕਾਰ ਖੇਤਰ',
       'hc-appeals': 'ਅਪੀਲਾਂ',
       'hc-special-proceedings': 'ਵਿਸ਼ੇਸ਼ ਕਾਰਵਾਈਆਂ',
-      'sc-slp': 'ਵਿਸ਼ੇਸ਼ ਛੁੱਟੀ ਪਟੀਸ਼ਨਾਂ',
+      'sc-slp': 'ਸਪੈਸ਼ਲ ਲੀਵ ਪਟੀਸ਼ਨਾਂ',
       'sc-writs': 'ਰਿੱਟ (ਮੌਲਿਕ ਅਧਿਕਾਰ)',
       'sc-post-judgment-remedies': 'ਫੈਸਲੇ ਤੋਂ ਬਾਅਦ ਦੇ ਉਪਚਾਰ',
       'sc-special-jurisdiction': 'ਵਿਸ਼ੇਸ਼ ਅਧਿਕਾਰ ਖੇਤਰ',

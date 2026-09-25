@@ -374,7 +374,7 @@ export const bn: Translations = {
       'writs-supervisory': 'রিট ও তদারকি এখতিয়ার',
       'hc-appeals': 'আপিল',
       'hc-special-proceedings': 'বিশেষ কার্যধারা',
-      'sc-slp': 'বিশেষ অনুমতি আবেদন',
+      'sc-slp': 'স্পেশাল লিভ পিটিশন',
       'sc-writs': 'রিট (মৌলিক অধিকার)',
       'sc-post-judgment-remedies': 'রায়-পরবর্তী প্রতিকার',
       'sc-special-jurisdiction': 'বিশেষ এখতিয়ার',
