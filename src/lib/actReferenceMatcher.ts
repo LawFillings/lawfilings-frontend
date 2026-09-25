@@ -557,9 +557,27 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // question of law; deliberately distinct from the IBC's own Section 62 appeal route (a different
   // provision with a shorter 45+15-day limitation), which this case type does not cover.
   'ct-nclat-statutory-appeal-sc': [{ actId: 'act-companies-2013', sectionNo: '423' }],
-  // Miscellaneous Application (Supreme Court) — Order XI Rule 1 is the general "on motion after
-  // notice" procedure; Rule 7 is what actually names "interlocutory or miscellaneous application"
-  // as the category this case type covers.
+  // Civil Appeal (Certificate) — Article 133 is the civil-matter certificate power, Article 132 the
+  // constitutional-question one (folded into the same wizard since both are the as-of-right,
+  // certificate-based route), Article 134A the procedure by which the High Court actually grants it.
+  'ct-sc-appeal-certificate-civil': [
+    { actId: 'act-constitution-india', sectionNo: 'Article 132' },
+    { actId: 'act-constitution-india', sectionNo: 'Article 133' },
+    { actId: 'act-constitution-india', sectionNo: 'Article 134A' },
+  ],
+  // Criminal Appeal (Article 134) — the entire filing is an Article 134 appeal; deliberately
+  // distinct from ct-slp-criminal (Article 136), the discretionary route most criminal appeals to
+  // the Supreme Court actually use.
+  'ct-sc-appeal-certificate-criminal': [{ actId: 'act-constitution-india', sectionNo: 'Article 134' }],
+  // Interlocutory Application (Supreme Court) and Miscellaneous Application (Supreme Court) — both
+  // cite the same Order XI: Rule 1 is the general "on motion after notice" procedure, Rule 7 is what
+  // actually names "interlocutory or miscellaneous application" as the category both cover. The two
+  // case types split the same rule by registry practice (IA while the main matter is pending, MA
+  // once it is not), not by any separate provision.
+  'ct-sc-interlocutory-application': [
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XI, Rule 1' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XI, Rule 7' },
+  ],
   'ct-sc-misc-application': [
     { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XI, Rule 1' },
     { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XI, Rule 7' },

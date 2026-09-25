@@ -1443,13 +1443,49 @@ export const caseTypes: CaseType[] = [
     subcategory: 'sc-statutory-appeals',
   },
   {
+    id: 'ct-sc-appeal-certificate-civil',
+    forumType: 'supreme_court',
+    name: 'Civil Appeal (Certificate, Article 132/133)',
+    governingLaw: 'The Constitution of India, Articles 132, 133 and 134A',
+    plainLanguageSummary:
+      "File this before the Supreme Court once the High Court itself has certified — under Article 134A — that your case involves a substantial question of law of general importance needing the Supreme Court's decision (Article 133), or a substantial question of law as to the interpretation of the Constitution (Article 132). This is a distinct, as-of-right route from the discretionary Special Leave Petition (Article 136): apply to the same High Court for the certificate first; only if it's refused does the SLP route apply.",
+    applicantEligibility: 'party_holding_a_high_court_certificate_of_fitness_to_appeal_civil_or_constitutional',
+    filingCategory: 'appeal',
+    parentRequired: true,
+    subcategory: 'sc-statutory-appeals',
+  },
+  {
+    id: 'ct-sc-appeal-certificate-criminal',
+    forumType: 'supreme_court',
+    name: 'Criminal Appeal (Article 134)',
+    governingLaw: 'The Constitution of India, Article 134',
+    plainLanguageSummary:
+      "File this before the Supreme Court against a High Court's judgment, final order, or sentence in a criminal case — as of right, without needing special leave — if the High Court either (a) reversed your acquittal on appeal and sentenced you to death, (b) convicted and sentenced you to death in a case it withdrew to itself for trial, or (c) has itself certified, under Article 134A, that the case is fit for appeal to the Supreme Court.",
+    applicantEligibility: 'accused_covered_by_article_134_or_holding_a_high_court_certificate',
+    filingCategory: 'appeal',
+    parentRequired: true,
+    subcategory: 'sc-statutory-appeals',
+  },
+  {
+    id: 'ct-sc-interlocutory-application',
+    forumType: 'supreme_court',
+    name: 'Interlocutory Application (IA) — general',
+    governingLaw: 'Supreme Court Rules, 2013, Order XI',
+    plainLanguageSummary:
+      "Use this for an application connected with a pending Supreme Court matter — such as an interim stay, impleadment of a party, exemption from a procedural requirement, or condonation of delay — made on notice to the other side under the Court's general procedure for applications. Filed as an 'IA' while the main matter is still pending; once it's disposed of, use the Miscellaneous Application (MA) wizard instead.",
+    applicantEligibility: 'any_party_to_a_pending_supreme_court_matter',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'sc-misc-applications',
+  },
+  {
     id: 'ct-sc-misc-application',
     forumType: 'supreme_court',
     name: 'Miscellaneous Application (MA) — general',
     governingLaw: 'Supreme Court Rules, 2013, Order XI',
     plainLanguageSummary:
-      "Use this for an application connected with a pending Supreme Court matter that doesn't fit a more specific wizard — such as impleadment, modification of an earlier order, clarification, or a direction — made on notice to the other side under the Court's general procedure for applications.",
-    applicantEligibility: 'any_party_to_a_pending_supreme_court_matter',
+      "Use this for an application connected with a Supreme Court matter that doesn't fit an Interlocutory Application — most commonly filed after the main matter is already disposed of, such as for modification of an earlier order, clarification, recall, or restoration — made on notice to the other side under the Court's general procedure for applications.",
+    applicantEligibility: 'any_party_to_a_supreme_court_matter',
     filingCategory: 'interlocutory',
     parentRequired: true,
     subcategory: 'sc-misc-applications',
@@ -1633,10 +1669,10 @@ export const caseTypeSubcategories: { key: string; label: string }[] = [
   { key: 'hc-misc-applications', label: 'Miscellaneous Applications' },
   { key: 'sc-slp', label: 'Special Leave Petitions' },
   { key: 'sc-writs', label: 'Writs (Fundamental Rights)' },
-  { key: 'sc-statutory-appeals', label: 'Statutory Appeals' },
+  { key: 'sc-statutory-appeals', label: 'Statutory & Certificate Appeals' },
   { key: 'sc-post-judgment-remedies', label: 'Post-Judgment Remedies' },
   { key: 'sc-special-jurisdiction', label: 'Special Jurisdiction' },
-  { key: 'sc-misc-applications', label: 'Miscellaneous Applications' },
+  { key: 'sc-misc-applications', label: 'Interlocutory & Miscellaneous Applications' },
 ];
 
 export const appealGroups: AppealGroup[] = [
