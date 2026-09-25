@@ -1,5 +1,4 @@
 .td-page {
-  max-width: 640px;
   margin: 0 auto;
   padding: var(--space-6) var(--space-5) var(--space-8);
 }
@@ -28,19 +27,15 @@
   max-width: 60ch;
 }
 
+/* Right-panel note — lighter and left-aligned, unlike .trio-nudge-card's default bold centred CTA
+   styling, since this is informational prose rather than a call to action (matches the equivalent
+   override on Court Fee Calculator's right-panel sourcing note). */
 .td-disclaimer {
+  text-align: left;
+  font-weight: 400;
   font-size: 13px;
-  color: var(--text-secondary);
-  line-height: 1.55;
-  background: var(--accent-tint);
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  padding: var(--space-3) var(--space-4);
-  margin-bottom: var(--space-5);
-}
-
-.td-disclaimer-inline {
-  margin: var(--space-4) 0 0;
+  line-height: 1.6;
+  color: #4a2e63;
 }
 
 .td-login-gate {

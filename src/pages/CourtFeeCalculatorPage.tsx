@@ -39,63 +39,63 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
         {t.common.back}
       </button>
 
-      <div className="split-card">
-      <header className="cfc-hero split-left">
-        <p className="cfc-eyebrow">{c.eyebrow}</p>
-        <h1 className="cfc-title">{c.title}</h1>
-        <p className="cfc-sub">
-          {fmt(c.sub, { count: courtFeeSchedules.length })}
-        </p>
-      </header>
+      <div className="trio-card">
+        <aside className="trio-left">
+          <p className="cfc-eyebrow">{c.eyebrow}</p>
+          <h1 className="cfc-title">{c.title}</h1>
+          <p className="cfc-sub">{fmt(c.sub, { count: courtFeeSchedules.length })}</p>
+        </aside>
 
-      <div className="split-right">
+        <main className="trio-center">
+          <div className="cfc-form">
+            <label className="field-label" htmlFor="cfc-state">
+              {c.stateLabel}
+            </label>
+            <select id="cfc-state" className="cfc-select" value={scheduleId} onChange={(e) => setScheduleId(e.target.value)}>
+              {courtFeeSchedules.map((s) => (
+                <option key={s.id} value={s.id}>
+                  {s.stateLabel}
+                </option>
+              ))}
+            </select>
 
-      <div className="cfc-form">
-        <label className="field-label" htmlFor="cfc-state">
-          {c.stateLabel}
-        </label>
-        <select id="cfc-state" className="cfc-select" value={scheduleId} onChange={(e) => setScheduleId(e.target.value)}>
-          {courtFeeSchedules.map((s) => (
-            <option key={s.id} value={s.id}>
-              {s.stateLabel}
-            </option>
-          ))}
-        </select>
+            <label className="field-label" htmlFor="cfc-value" style={{ marginTop: 'var(--space-4)' }}>
+              {c.valueLabel}
+            </label>
+            <input
+              id="cfc-value"
+              type="text"
+              className="date-input"
+              placeholder="₹"
+              value={suitValue}
+              onChange={(e) => setSuitValue(e.target.value)}
+            />
 
-        <label className="field-label" htmlFor="cfc-value" style={{ marginTop: 'var(--space-4)' }}>
-          {c.valueLabel}
-        </label>
-        <input
-          id="cfc-value"
-          type="text"
-          className="date-input"
-          placeholder="₹"
-          value={suitValue}
-          onChange={(e) => setSuitValue(e.target.value)}
-        />
-
-        {hasValue && result && (
-          <div className="cfc-result">
-            <div className="cfc-result-row">
-              <span className="cfc-result-label">{c.feePayable}</span>
-              <span className="cfc-result-value">{formatINR(result.fee)}</span>
-            </div>
-            {result.capped && (
-              <p className="cfc-cap-note">
-                {fmt(c.capNote, { state: schedule.stateLabel, cap: formatINR(schedule.cap!) })}
-              </p>
+            {hasValue && result && (
+              <div className="cfc-result">
+                <div className="cfc-result-row">
+                  <span className="cfc-result-label">{c.feePayable}</span>
+                  <span className="cfc-result-value">{formatINR(result.fee)}</span>
+                </div>
+                {result.capped && (
+                  <p className="cfc-cap-note">
+                    {fmt(c.capNote, { state: schedule.stateLabel, cap: formatINR(schedule.cap!) })}
+                  </p>
+                )}
+              </div>
             )}
-            <p className="cfc-provision">
-              {fmt(c.under, { law: schedule.governingLaw })} {schedule.sourceNote}
-              <br />
-              {fmt(c.lastChecked, { date: formatDate(schedule.lastVerified, language) })}
-            </p>
-          </div>
-        )}
 
-        {hasValue && !result && <p className="step-help">{c.invalidValue}</p>}
-      </div>
-      </div>
+            {hasValue && !result && <p className="step-help">{c.invalidValue}</p>}
+          </div>
+        </main>
+
+        <aside className="trio-right">
+          <div className="trio-nudge-card cfc-source-note">
+            {fmt(c.under, { law: schedule.governingLaw })} {schedule.sourceNote}
+            <br />
+            {fmt(c.lastChecked, { date: formatDate(schedule.lastVerified, language) })}
+          </div>
+        </aside>
       </div>
     </div>
   );

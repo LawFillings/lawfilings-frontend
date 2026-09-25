@@ -138,50 +138,49 @@ export function TranslateDocumentPage({ onBack, onOpenLogin, onOpenPricing }: Pr
         {t.common.back}
       </button>
 
-      <div className="split-card">
-      <header className="td-hero split-left">
-        <p className="td-eyebrow">{copy.eyebrow}</p>
-        <h1 className="td-title">{copy.title}</h1>
-        <p className="td-sub">{copy.sub}</p>
-      </header>
+      <div className="trio-card">
+        <aside className="trio-left">
+          <p className="td-eyebrow">{copy.eyebrow}</p>
+          <h1 className="td-title">{copy.title}</h1>
+          <p className="td-sub">{copy.sub}</p>
 
-      <div className="split-right">
+          {user && (
+            <div className="trio-filter" role="tablist">
+              <button
+                type="button"
+                role="tab"
+                aria-selected={sourceMode === 'upload'}
+                className={sourceMode === 'upload' ? 'trio-filter-btn active' : 'trio-filter-btn'}
+                onClick={() => switchMode('upload')}
+              >
+                {copy.uploadTab}
+              </button>
+              <button
+                type="button"
+                role="tab"
+                aria-selected={sourceMode === 'search'}
+                className={sourceMode === 'search' ? 'trio-filter-btn active' : 'trio-filter-btn'}
+                onClick={() => switchMode('search')}
+              >
+                {copy.searchTab}
+              </button>
+            </div>
+          )}
+        </aside>
 
-      <div className="td-disclaimer">{copy.disclaimer}</div>
+        <main className="trio-center">
+          {!user && (
+            <div className="td-login-gate">
+              <p>{copy.logInPrompt}</p>
+              <button type="button" className="para-btn" onClick={onOpenLogin}>
+                {t.common.logIn}
+              </button>
+            </div>
+          )}
 
-      {!user && (
-        <div className="td-login-gate">
-          <p>{copy.logInPrompt}</p>
-          <button type="button" className="para-btn" onClick={onOpenLogin}>
-            {t.common.logIn}
-          </button>
-        </div>
-      )}
-
-      {user && (
-        <div className="td-form">
-          <div className="td-mode-tabs" role="tablist">
-            <button
-              type="button"
-              role="tab"
-              aria-selected={sourceMode === 'upload'}
-              className={sourceMode === 'upload' ? 'td-mode-tab active' : 'td-mode-tab'}
-              onClick={() => switchMode('upload')}
-            >
-              {copy.uploadTab}
-            </button>
-            <button
-              type="button"
-              role="tab"
-              aria-selected={sourceMode === 'search'}
-              className={sourceMode === 'search' ? 'td-mode-tab active' : 'td-mode-tab'}
-              onClick={() => switchMode('search')}
-            >
-              {copy.searchTab}
-            </button>
-          </div>
-
-          {sourceMode === 'upload' && (
+          {user && (
+            <div className="td-form">
+              {sourceMode === 'upload' && (
             <>
               <label className="field-label" htmlFor="td-file">
                 {copy.uploadLabel}
@@ -298,12 +297,15 @@ export function TranslateDocumentPage({ onBack, onOpenLogin, onOpenPricing }: Pr
               </div>
               {truncated && <p className="td-truncated-notice">{copy.truncatedNotice}</p>}
               <div className="td-result-text">{translatedText}</div>
-              <p className="td-disclaimer td-disclaimer-inline">{copy.disclaimer}</p>
             </div>
           )}
-        </div>
-      )}
-      </div>
+            </div>
+          )}
+        </main>
+
+        <aside className="trio-right">
+          <div className="trio-nudge-card td-disclaimer">{copy.disclaimer}</div>
+        </aside>
       </div>
     </div>
   );

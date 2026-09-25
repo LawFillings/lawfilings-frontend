@@ -62,82 +62,89 @@ export function CaseLawSearch({ onBack, onOpenLogin, onOpenTranslateDocument }: 
         {t.common.back}
       </button>
 
-      <div className="split-card">
-      <header className="cls-hero split-left">
-        <p className="cls-eyebrow">{t.caseLawSearch.eyebrow}</p>
-        <h1 className="cls-title">{t.caseLawSearch.title}</h1>
-        <p className="cls-sub">{t.caseLawSearch.sub}</p>
-      </header>
+      <div className="cls-3col">
+        <aside className="cls-left-panel">
+          <p className="cls-eyebrow">{t.caseLawSearch.eyebrow}</p>
+          <h1 className="cls-title">{t.caseLawSearch.title}</h1>
+          <p className="cls-sub">{t.caseLawSearch.sub}</p>
 
-      <div className="split-right">
-
-      <p className="cls-translate-nudge">
-        {t.caseLawSearch.translateNudge}{' '}
-        <button type="button" className="cls-translate-nudge-link" onClick={onOpenTranslateDocument}>
-          {t.caseLawSearch.translateNudgeLink}
-        </button>
-      </p>
-
-      {!user && (
-        <div className="cls-empty">
-          <p>{t.caseLawSearch.logInPrompt}</p>
-          <button className="para-btn" onClick={onOpenLogin}>
-            {t.common.logIn}
-          </button>
-        </div>
-      )}
-
-      {user && (
-        <>
-          <form className="cls-search-form" onSubmit={runSearch}>
-            <input
-              type="text"
-              className="cls-search-input"
-              placeholder={t.caseLawSearch.searchPlaceholder}
-              value={query}
-              onChange={(e) => setQuery(e.target.value)}
-            />
-            <button type="submit" className="cls-search-btn" disabled={loading || !query.trim()}>
-              {loading ? t.caseLawSearch.searching : t.caseLawSearch.search}
-            </button>
-          </form>
-
-          <div className="cls-court-filter" role="group" aria-label={t.caseLawSearch.courtCategoryLabel}>
-            {courtCategories.map((c) => (
-              <button
-                type="button"
-                key={c.label}
-                className={courtCategory === c.value ? 'cls-court-pill active' : 'cls-court-pill'}
-                onClick={() => setCourtCategory(c.value)}
-              >
-                {c.label}
-              </button>
-            ))}
-          </div>
-
-          {error && <div className="auth-error">{error}</div>}
-
-          {!error && results !== null && results.length === 0 && (
-            <p className="step-help">{t.caseLawSearch.noResults}</p>
-          )}
-
-          {results && results.length > 0 && (
-            <div className="cls-results">
-              {results.map((r) => (
-                <div className="cls-result-card" key={r.docId}>
-                  <p className="cls-result-title">{r.title}</p>
-                  <p className="cls-result-meta">{[r.court, r.date, r.citation].filter(Boolean).join(' · ')}</p>
-                  {r.snippet && <p className="cls-result-snippet">{stripHtml(r.snippet)}</p>}
-                  <a className="cls-result-link" href={r.indianKanoonUrl} target="_blank" rel="noreferrer">
-                    {t.caseLawSearch.viewFullJudgment}
-                  </a>
-                </div>
+          {user && (
+            <div
+              className="cls-court-filter cls-court-filter-stacked"
+              role="group"
+              aria-label={t.caseLawSearch.courtCategoryLabel}
+            >
+              {courtCategories.map((c) => (
+                <button
+                  type="button"
+                  key={c.label}
+                  className={courtCategory === c.value ? 'cls-court-pill active' : 'cls-court-pill'}
+                  onClick={() => setCourtCategory(c.value)}
+                >
+                  {c.label}
+                </button>
               ))}
             </div>
           )}
-        </>
-      )}
-      </div>
+        </aside>
+
+        <main className="cls-center-panel">
+          {!user && (
+            <div className="cls-empty">
+              <p>{t.caseLawSearch.logInPrompt}</p>
+              <button className="para-btn" onClick={onOpenLogin}>
+                {t.common.logIn}
+              </button>
+            </div>
+          )}
+
+          {user && (
+            <>
+              <form className="cls-search-form" onSubmit={runSearch}>
+                <input
+                  type="text"
+                  className="cls-search-input"
+                  placeholder={t.caseLawSearch.searchPlaceholder}
+                  value={query}
+                  onChange={(e) => setQuery(e.target.value)}
+                />
+                <button type="submit" className="cls-search-btn" disabled={loading || !query.trim()}>
+                  {loading ? t.caseLawSearch.searching : t.caseLawSearch.search}
+                </button>
+              </form>
+
+              {error && <div className="auth-error">{error}</div>}
+
+              {!error && results !== null && results.length === 0 && (
+                <p className="step-help">{t.caseLawSearch.noResults}</p>
+              )}
+
+              {results && results.length > 0 && (
+                <div className="cls-results">
+                  {results.map((r) => (
+                    <div className="cls-result-card" key={r.docId}>
+                      <p className="cls-result-title">{r.title}</p>
+                      <p className="cls-result-meta">{[r.court, r.date, r.citation].filter(Boolean).join(' · ')}</p>
+                      {r.snippet && <p className="cls-result-snippet">{stripHtml(r.snippet)}</p>}
+                      <a className="cls-result-link" href={r.indianKanoonUrl} target="_blank" rel="noreferrer">
+                        {t.caseLawSearch.viewFullJudgment}
+                      </a>
+                    </div>
+                  ))}
+                </div>
+              )}
+            </>
+          )}
+        </main>
+
+        <aside className="cls-right-panel">
+          <button type="button" className="cls-nudge-card" onClick={onOpenTranslateDocument}>
+            {t.caseLawSearch.translateNudge}
+          </button>
+          <button type="button" className="cls-nudge-card cls-nudge-card-solid" onClick={onOpenTranslateDocument}>
+            {t.caseLawSearch.translateNudgeLink}
+          </button>
+        </aside>
       </div>
     </div>
   );

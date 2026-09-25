@@ -1,69 +1,110 @@
-.cls-page {
-  max-width: 760px;
+/* Overrides split-page.css's shared `.cls-page.cls-page { max-width: 1120px; }` (same selector
+   specificity, later in the cascade since this file is imported after split-page.css) — unlike the
+   other split-card pages, this one is meant to use the full breadth of the page, not a centred
+   content column, per the reference layout the user gave. */
+.cls-page.cls-page {
+  max-width: 1800px;
   margin: 0 auto;
-  padding: var(--space-6) var(--space-5) var(--space-8);
+  padding: var(--space-6) var(--space-6) var(--space-8);
 }
 
-.cls-hero {
-  margin-bottom: var(--space-6);
+/* Three visually distinct zones — filters | search | translate nudges — echoing the "symmetry of
+   colours" reference the user gave (a dark left panel, a plain centre, a tinted right panel), built
+   from this site's own accent-deep/accent-gold/purple family rather than the reference's literal
+   colours. Same rounded/bordered/shadowed container treatment as the shared .split-card pages. */
+.cls-3col {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.6fr) minmax(220px, 0.8fr);
+  min-height: 720px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 22px rgba(20, 39, 63, 0.1);
+  align-items: stretch;
+}
+
+.cls-left-panel {
+  padding: var(--space-6) var(--space-5);
+  background: linear-gradient(140deg, var(--accent-deep), var(--accent));
+  color: var(--text-on-accent);
+  display: flex;
+  flex-direction: column;
+}
+
+.cls-center-panel {
+  padding: var(--space-6) var(--space-5);
+  background: var(--paper-raised);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  min-width: 0;
+}
+
+.cls-right-panel {
+  padding: var(--space-6) var(--space-4);
+  background: #f3ecf9;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
 }
 
 .cls-eyebrow {
   font-family: var(--font-mono);
-  font-size: 14px;
-  color: var(--accent-deep);
+  font-size: 13px;
+  color: var(--accent-gold-soft);
   margin: 0 0 var(--space-2);
 }
 
 .cls-title {
-  font-size: 32px;
+  font-size: 28px;
+  color: var(--text-on-accent);
   margin-bottom: var(--space-3);
 }
 
 .cls-sub {
-  font-size: 16px;
-  color: var(--text-secondary);
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.86);
   line-height: 1.6;
   margin: 0 0 var(--space-5);
-  max-width: 60ch;
-}
-
-.cls-translate-nudge {
-  font-size: 14px;
-  color: var(--text-secondary);
-  margin: 0 0 var(--space-5);
-}
-
-.cls-translate-nudge-link {
-  background: none;
-  border: none;
-  padding: 0;
-  font: inherit;
-  color: var(--accent);
-  text-decoration: underline;
-  cursor: pointer;
 }
 
 .cls-empty {
   display: flex;
   flex-direction: column;
-  align-items: flex-start;
+  align-items: center;
   gap: var(--space-3);
   color: var(--text-secondary);
   font-size: 15px;
+  text-align: center;
+  margin: var(--space-6) auto auto;
 }
 
 .cls-search-form {
   display: flex;
-  gap: var(--space-3);
-  margin-bottom: var(--space-3);
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-4);
+  width: 100%;
+  max-width: 480px;
+  margin: var(--space-6) 0 auto;
 }
 
 .cls-court-filter {
   display: flex;
   flex-wrap: wrap;
   gap: var(--space-2);
-  margin-bottom: var(--space-5);
+}
+
+.cls-court-filter-stacked {
+  flex-direction: column;
+  align-items: stretch;
+}
+
+.cls-court-filter-stacked .cls-court-pill {
+  border-radius: var(--radius);
+  text-align: center;
+  padding: var(--space-3) var(--space-4);
+  font-size: 14px;
 }
 
 .cls-court-pill {
@@ -87,8 +128,22 @@
   border-color: var(--ink);
 }
 
+/* The stacked variant sits on the left panel's navy gradient — --ink is nearly the same dark tone
+   as that background, so an active pill there would all but disappear into it. Use the site's gold
+   accent instead, which reads clearly against navy (and already appears elsewhere in this panel,
+   e.g. the eyebrow text). */
+.cls-court-filter-stacked .cls-court-pill.active {
+  background: var(--accent-gold);
+  color: var(--ink);
+  border-color: var(--accent-gold);
+}
+
+.cls-court-filter-stacked .cls-court-pill:hover {
+  border-color: var(--accent-gold-soft);
+}
+
 .cls-search-input {
-  flex: 1;
+  width: 100%;
   font-size: 15px;
   padding: var(--space-4);
   border: 1px solid var(--line);
@@ -101,8 +156,8 @@
   background: var(--ink);
   color: var(--paper);
   font-size: 15px;
-  font-weight: 500;
-  padding: 0 var(--space-5);
+  font-weight: 600;
+  padding: var(--space-3) var(--space-6);
   border-radius: var(--radius);
   white-space: nowrap;
 }
@@ -115,10 +170,57 @@
   opacity: 0.5;
 }
 
+/* Right panel: two stacked nudge cards pointing at Translate a Document — a soft outlined card
+   framing the question, a solid purple card carrying the call to action, both from the same purple
+   already used in the court-filter colour cycle (split-page.css), so the new third zone reads as
+   part of the existing palette rather than a new one. */
+.cls-nudge-card {
+  border: 1px solid #c9b3dd;
+  background: #fff;
+  color: #4a2e63;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+  padding: var(--space-4);
+  border-radius: var(--radius);
+}
+
+.cls-nudge-card:hover {
+  border-color: #7b4a9e;
+}
+
+.cls-nudge-card-solid {
+  align-self: center;
+  width: auto;
+  padding: var(--space-3) var(--space-5);
+  font-size: 13px;
+  background: #7b4a9e;
+  border-color: #7b4a9e;
+  color: #fff;
+}
+
+.cls-nudge-card-solid:hover {
+  background: #61397f;
+}
+
+@media (max-width: 900px) {
+  .cls-3col {
+    grid-template-columns: 1fr;
+  }
+  .cls-left-panel,
+  .cls-center-panel,
+  .cls-right-panel {
+    padding: var(--space-5) var(--space-4);
+  }
+}
+
 .cls-results {
   display: flex;
   flex-direction: column;
   gap: var(--space-3);
+  width: 100%;
+  align-self: stretch;
 }
 
 .cls-result-card {

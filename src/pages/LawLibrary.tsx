@@ -99,67 +99,56 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
         {t.common.backToAllFilings}
       </button>
 
-      <div className="split-card">
-      <header className="ll-hero split-left">
-        <p className="ll-eyebrow">{t.lawLibrary.eyebrow}</p>
-        <h1 className="ll-title">{t.lawLibrary.title}</h1>
-        <p className="ll-sub">{t.lawLibrary.sub}</p>
-        {widgets.search && (
-          <input
-            type="text"
-            className="ll-search"
-            placeholder={t.lawLibrary.searchPlaceholder}
-            value={query}
-            onChange={(e) => {
-              setQuery(e.target.value);
-              setSelectedAct(null);
-            }}
-          />
-        )}
-        {widgets.askAi && (
-          <div className="ll-ask-in-panel">
-            <AskTheLibrary onOpenLogin={onOpenLogin} />
-          </div>
-        )}
-      </header>
+      <div className="trio-card">
+        <aside className="trio-left">
+          <p className="ll-eyebrow">{t.lawLibrary.eyebrow}</p>
+          <h1 className="ll-title">{t.lawLibrary.title}</h1>
+          <p className="ll-sub">{t.lawLibrary.sub}</p>
 
-      <div className="split-right">
-
-
-
-      <div className="ll-layout">
-        <div className="ll-rail-col">
-        <nav className="ll-category-rail" aria-label="Act category">
-          {(
-            [
-              ['constitution', t.lawLibrary.categoryConstitution],
-              ['central', t.lawLibrary.categoryCentralActs],
-              ['state', t.lawLibrary.categoryStateActs],
-              ['rules', t.lawLibrary.categoryRules],
-            ] as [ActCategory, string][]
-          ).map(([value, label]) => (
-            <button
-              key={value}
-              type="button"
-              className={`ll-category-rail-btn${category === value && !query ? ' active' : ''}`}
-              onClick={() => {
-                setQuery('');
-                changeCategory(value);
-              }}
-            >
-              {label}
+          <nav className="ll-category-rail" aria-label="Act category">
+            {(
+              [
+                ['constitution', t.lawLibrary.categoryConstitution],
+                ['central', t.lawLibrary.categoryCentralActs],
+                ['state', t.lawLibrary.categoryStateActs],
+                ['rules', t.lawLibrary.categoryRules],
+              ] as [ActCategory, string][]
+            ).map(([value, label]) => (
+              <button
+                key={value}
+                type="button"
+                className={`ll-category-rail-btn${category === value && !query ? ' active' : ''}`}
+                onClick={() => {
+                  setQuery('');
+                  changeCategory(value);
+                }}
+              >
+                {label}
+              </button>
+            ))}
+          </nav>
+          <p className="ll-translate-nudge">
+            {t.lawLibrary.translateNudge}{' '}
+            <button type="button" className="ll-translate-nudge-link" onClick={onOpenTranslateDocument}>
+              {t.lawLibrary.translateNudgeLink}
             </button>
-          ))}
-        </nav>
-        <p className="ll-translate-nudge">
-        {t.lawLibrary.translateNudge}{' '}
-        <button type="button" className="ll-translate-nudge-link" onClick={onOpenTranslateDocument}>
-          {t.lawLibrary.translateNudgeLink}
-        </button>
-        </p>
-        </div>
+          </p>
+        </aside>
 
-        <div className="ll-main">
+        <main className="trio-center">
+          {widgets.search && (
+            <input
+              type="text"
+              className="ll-search"
+              placeholder={t.lawLibrary.searchPlaceholder}
+              value={query}
+              onChange={(e) => {
+                setQuery(e.target.value);
+                setSelectedAct(null);
+              }}
+            />
+          )}
+
       {widgets.search && searchResults && (
         <div className="ll-results">
           <p className="ll-results-count">{t.lawLibrary.resultsCount(searchResults.length)}</p>
@@ -326,9 +315,9 @@ export function LawLibrary({ onBack, initialCategory, onOpenLogin, onOpenTransla
           ))}
         </div>
       )}
-        </div>
-      </div>
-      </div>
+        </main>
+
+        <aside className="trio-right">{widgets.askAi && <AskTheLibrary onOpenLogin={onOpenLogin} />}</aside>
       </div>
     </div>
   );

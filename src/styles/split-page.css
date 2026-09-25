@@ -8,6 +8,149 @@
   max-width: 1120px;
 }
 
+/* Pages on the wide "trio" scheme (see below) use the full breadth of the page instead. */
+.cfc-page.cfc-page,
+.td-page.td-page,
+.cls-page.cls-page,
+.law-library.law-library {
+  max-width: 1800px;
+}
+
+/* ===== "Trio" full-width three-column page scheme ==========================================
+   Established on Case Law Search, then carried to Court Fee Calculator, Translate a Document,
+   and Constitution & Key Statutes (Law Library): a dark navy-gradient left panel (page hero, plus
+   an optional stacked filter/tab list), a plain white centre panel (the page's actual tool or
+   content), and a light-purple-tinted right panel (secondary nudges/notes/tools) — all built from
+   this site's own accent-deep/accent/accent-gold/purple palette. Opt in with
+   .trio-card > .trio-left + .trio-center + .trio-right. Each page keeps its own `xxx-eyebrow` /
+   `xxx-title` / `xxx-sub` class names (styled here the same way .split-left already does it, via
+   an attribute-ends-with selector) so no page needs to rename its existing text elements. */
+.trio-card {
+  display: grid;
+  grid-template-columns: minmax(240px, 0.85fr) minmax(0, 1.6fr) minmax(220px, 0.8fr);
+  min-height: 720px;
+  border-radius: 16px;
+  overflow: hidden;
+  border: 1px solid var(--line);
+  box-shadow: 0 6px 22px rgba(20, 39, 63, 0.1);
+  align-items: stretch;
+  margin-bottom: var(--space-6);
+}
+
+.trio-left {
+  padding: var(--space-6) var(--space-5);
+  background: linear-gradient(140deg, var(--accent-deep), var(--accent));
+  color: var(--text-on-accent);
+  display: flex;
+  flex-direction: column;
+}
+.trio-left [class$='-eyebrow'] {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-gold-soft);
+  margin: 0 0 var(--space-2);
+}
+.trio-left [class$='-title'] {
+  font-size: 28px;
+  color: var(--text-on-accent);
+  margin-bottom: var(--space-3);
+}
+.trio-left [class$='-sub'] {
+  font-size: 15px;
+  color: rgba(255, 255, 255, 0.86);
+  line-height: 1.6;
+  margin: 0 0 var(--space-5);
+  max-width: none;
+}
+
+.trio-center {
+  padding: var(--space-6) var(--space-5);
+  background: var(--paper-raised);
+  display: flex;
+  flex-direction: column;
+  min-width: 0;
+}
+
+.trio-right {
+  padding: var(--space-6) var(--space-4);
+  background: #f3ecf9;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-4);
+}
+
+/* A stacked filter/tab list for the left panel — Case Law's court categories, Translate a
+   Document's Upload/Choose-an-Act tabs. Active state uses gold rather than the site's usual
+   --ink/dark-selected treatment, since --ink is nearly the same dark tone as this panel's own
+   navy gradient and would otherwise all but disappear into the background. */
+.trio-filter {
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+}
+.trio-filter-btn {
+  border: 1px solid var(--line);
+  background: var(--paper-raised);
+  color: var(--text-secondary);
+  font-size: 14px;
+  font-weight: 500;
+  text-align: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+}
+.trio-filter-btn:hover {
+  color: var(--ink);
+  border-color: var(--accent-gold-soft);
+}
+.trio-filter-btn.active {
+  background: var(--accent-gold);
+  color: var(--ink);
+  border-color: var(--accent-gold);
+}
+
+/* Right-panel nudge cards — a soft outlined card framing a note/question, and an optional solid
+   purple CTA card, sized smaller so it doesn't compete with the card above it. Same purple used in
+   Case Law's court-filter colour cycle above, so the right panel reads as one palette, not a new
+   one introduced just for it. */
+.trio-nudge-card {
+  border: 1px solid #c9b3dd;
+  background: #fff;
+  color: #4a2e63;
+  font-size: 14px;
+  font-weight: 600;
+  line-height: 1.45;
+  text-align: center;
+  padding: var(--space-4);
+  border-radius: var(--radius);
+}
+.trio-nudge-card:hover {
+  border-color: #7b4a9e;
+}
+.trio-nudge-card-solid {
+  align-self: center;
+  width: auto;
+  padding: var(--space-3) var(--space-5);
+  font-size: 13px;
+  background: #7b4a9e;
+  border-color: #7b4a9e;
+  color: #fff;
+}
+.trio-nudge-card-solid:hover {
+  background: #61397f;
+}
+
+@media (max-width: 900px) {
+  .trio-card {
+    grid-template-columns: 1fr;
+    min-height: 0;
+  }
+  .trio-left,
+  .trio-center,
+  .trio-right {
+    padding: var(--space-5) var(--space-4);
+  }
+}
+
 .split-card {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.4fr);
@@ -218,46 +361,36 @@
   margin-top: var(--space-4);
 }
 
-/* Constitution & Key Statutes: the category list and its contents sit side by side inside the
-   right panel; the "Ask a question" box lives in the left panel under the search field. */
-.split-right .ll-layout {
-  gap: var(--space-5);
-}
-.ll-rail-col {
+/* Constitution & Key Statutes: the category rail and translate nudge sit in the dark left panel
+   below the hero text (see .trio-left [class$='-sub'] above for the hero styling itself); the
+   "Ask a question" tool lives in the light right panel instead. */
+.trio-left .ll-category-rail {
   display: flex;
-  flex-direction: column;
-  gap: var(--space-4);
-  width: 200px;
-  flex-shrink: 0;
-}
-.split-right .ll-category-rail {
   position: static;
   background: transparent;
   border: none;
   padding: 0;
   width: 100%;
+  gap: var(--space-2);
 }
-.ll-rail-col .ll-translate-nudge {
-  margin: 0;
+.trio-left .ll-translate-nudge {
+  margin: var(--space-4) 0 0;
   font-size: 13px;
   line-height: 1.5;
+  color: rgba(255, 255, 255, 0.86);
 }
-.split-right .ll-main {
-  max-width: none;
+.trio-left .ll-translate-nudge-link {
+  color: var(--accent-gold-soft);
 }
-.ll-ask-in-panel {
-  margin-top: var(--space-5);
-}
-.ll-ask-in-panel > * {
+.trio-right .ll-ask-in-panel,
+.trio-right > * {
   color: var(--ink);
 }
-@media (max-width: 860px) {
-  .split-right .ll-layout {
-    flex-direction: column;
-  }
-  .ll-rail-col {
-    width: 100%;
-  }
+/* The old narrow-viewport <select> fallback for category browsing is retired — the rail above is
+   always visible now (it moves with the rest of .trio-left into the single stacked column below
+   900px), so showing both at once would just duplicate the same control. */
+.trio-center .ll-category-filter {
+  display: none;
 }
 
 /* Beat the older .ll-category-rail-btn rules in LawLibrary.css (loaded later). */
@@ -275,9 +408,4 @@
   background: var(--tab-solid);
   border-color: var(--tab-solid);
   color: #fff;
-}
-
-/* The right panel is tall here (category list + contents), so the left text starts at the top. */
-.law-library .split-left {
-  justify-content: flex-start;
 }
