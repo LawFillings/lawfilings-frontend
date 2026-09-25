@@ -1222,6 +1222,17 @@ export const en = {
       ],
       note: 'Stamp duty rates, registration fees, and the exact documents required vary by state — confirm the current requirement with the Sub-Registrar’s office or your state’s revenue department before executing.',
     },
+    llpAgreementFiling: {
+      heading: 'Filing this LLP Agreement',
+      intro: 'this Agreement — and any later supplementary or amended Agreement — must be filed with the Registrar of Companies, in Form 3, through the MCA21 portal.',
+      steps: [
+        'File Form 3 within 30 days of the date this Agreement is executed — this 30-day window runs afresh from every subsequent amendment, not just the original Agreement.',
+        'The form is signed using the digital signature certificate (DSC) of a designated partner, and is typically certified by a practising Company Secretary, Chartered Accountant, or Cost Accountant.',
+        'Attach a scanned copy of the executed Agreement, printed on stamp paper of the value applicable in your state, as the mandatory supporting document.',
+        'A delay beyond 30 days attracts an additional fee that increases the longer the filing is delayed — file as close to execution as possible.',
+      ],
+      note: 'Stamp duty on an LLP Agreement varies by state and by the amount of capital contribution — confirm the current rate for your state before printing and executing it.',
+    },
   },
   // UI/guidance chrome shared by every drafting wizard (WizardShell, LocationSelector,
   // PaywallBlock, ActReferencePanel, JudgeStyleStep). Generated draft/filing text itself is

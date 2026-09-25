@@ -12,6 +12,10 @@ import { LegalNoticeWizard } from './pages/LegalNoticeWizard';
 import { ContractAgreementWizard } from './pages/ContractAgreementWizard';
 import { PropertyDeedWizard } from './pages/PropertyDeedWizard';
 import { PowerOfAttorneyWizard } from './pages/PowerOfAttorneyWizard';
+import { BoardResolutionWizard } from './pages/BoardResolutionWizard';
+import { ShareTransferDeedWizard } from './pages/ShareTransferDeedWizard';
+import { LLPAgreementWizard } from './pages/LLPAgreementWizard';
+import { MoaAoaWizard } from './pages/MoaAoaWizard';
 import { BailApplicationWizard } from './pages/BailApplicationWizard';
 import { ContestedDivorceWizard } from './pages/ContestedDivorceWizard';
 import { MutualConsentDivorceWizard } from './pages/MutualConsentDivorceWizard';
@@ -497,6 +501,24 @@ function AppScreens() {
       return (
         <PowerOfAttorneyWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
+    }
+    if (ct.id === 'ct-board-resolution') {
+      return (
+        <BoardResolutionWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-share-transfer-deed') {
+      return (
+        <ShareTransferDeedWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-llp-agreement') {
+      return (
+        <LLPAgreementWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-moa-aoa') {
+      return <MoaAoaWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />;
     }
     if (ct.id === 'ct-bail-application') {
       return (

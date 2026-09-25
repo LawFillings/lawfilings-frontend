@@ -471,6 +471,179 @@ export function buildAgreementClosing(signatories: AgreementSignatory[]): LegalD
   ];
 }
 
+export interface ResolutionInfo {
+  /** e.g. "BOARD RESOLUTION" */
+  documentTitle: string;
+  companyName: string;
+  cin: string;
+  registeredOffice: string;
+  meetingDate: string;
+  meetingTime: string;
+  meetingPlace: string;
+}
+
+/** Renders a Board Resolution's letterhead-style opening as an HTML fragment — company identity,
+ *  and the "CERTIFIED TRUE COPY OF A RESOLUTION PASSED..." recital — meant for DraftDocument's
+ *  `causeTitleHtml` prop like the other builders above, even though a resolution has no forum or
+ *  opposing party: it's a unilateral corporate record, not a filing or a deed between two parties.
+ *  The numbered "RESOLVED THAT" clauses that follow are ordinary DraftSections; buildResolutionClosing
+ *  below renders the certification footer. */
+export function buildResolutionHtml(info: ResolutionInfo): string {
+  return (
+    `<h3 style="text-align:center;">${escapeHtml(info.companyName) || '[Company Name]'}</h3>` +
+    `<p style="text-align:center;">CIN: ${escapeHtml(info.cin) || '[CIN]'}</p>` +
+    `<p style="text-align:center;">Registered Office: ${escapeHtml(info.registeredOffice) || '[Registered Office Address]'}</p>` +
+    `<h3 style="text-align:center;">${escapeHtml(info.documentTitle || 'BOARD RESOLUTION')}</h3>` +
+    `<p style="text-align:justify;">Certified true copy of a resolution passed by the Board of Directors of ${
+      escapeHtml(info.companyName) || '[Company Name]'
+    } at its meeting held on ${escapeHtml(info.meetingDate) || '[Date]'} at ${escapeHtml(info.meetingTime) || '[Time]'} at ${
+      escapeHtml(info.meetingPlace) || '[Place]'
+    }, a quorum being present throughout:</p>`
+  );
+}
+
+/** The Board Resolution's certification footer — "Certified to be a true copy" plus a right-aligned
+ *  signature block for the certifying Director/Company Secretary (Companies Act 2013, section 118). */
+export function buildResolutionClosing(certifierName: string, certifierRole: string): LegalDraftSection[] {
+  return [
+    {
+      unnumbered: true,
+      paragraphs: ['Certified to be a true copy of the resolution recorded in the Minutes Book of the Company.'],
+    },
+    {
+      unnumbered: true,
+      align: 'right',
+      paragraphs: [`(${certifierName || '[Name]'})`, certifierRole || '[Director / Company Secretary]'],
+    },
+  ];
+}
+
+export interface MultiPartyAgreementInfo {
+  title: string;
+  date: string;
+  place: string;
+  /** Each party's role label is fixed to "Partner" throughout for an LLP Agreement — the numbered
+   *  ordinal ("Partner of the FIRST PART" etc.) is what actually distinguishes them, matching how
+   *  real multi-partner deeds read. */
+  parties: { name: string; address: string }[];
+  recitals: string[];
+}
+
+const ORDINALS = ['FIRST', 'SECOND', 'THIRD', 'FOURTH', 'FIFTH', 'SIXTH', 'SEVENTH', 'EIGHTH', 'NINTH', 'TENTH'];
+
+/** Same purpose as buildAgreementHtml, but for a deed among three or more parties (an LLP Agreement
+ *  commonly has more than two partners) — "BETWEEN ... AND ... AND ..." rather than a fixed
+ *  BETWEEN/AND pair, with each party numbered "of the FIRST PART" / "of the SECOND PART" etc. */
+export function buildMultiPartyAgreementHtml(info: MultiPartyAgreementInfo): string {
+  const parties = info.parties.length > 0 ? info.parties : [{ name: '', address: '' }, { name: '', address: '' }];
+  const recitalParagraphs = info.recitals.length > 0 ? info.recitals : ['[Recitals — the background and purpose of this Agreement]'];
+  const partyParagraphs = parties
+    .map((p, i) => {
+      const ordinal = ORDINALS[i] ?? `${i + 1}TH`;
+      const connector = i === 0 ? '<p style="text-align:center;"><strong>BETWEEN</strong></p>' : '<p style="text-align:center;"><strong>AND</strong></p>';
+      return (
+        connector +
+        `<p style="text-align:justify;">${escapeHtml(p.name) || `[Partner ${i + 1} Name]`}, ${
+          escapeHtml(p.address) || `[Partner ${i + 1} Address]`
+        } (hereinafter referred to as "Partner No. ${i + 1}", which expression shall, unless repugnant to the context or meaning thereof, include his/her/its heirs, legal representatives, and permitted assigns), of the ${ordinal} PART;</p>`
+      );
+    })
+    .join('');
+  return (
+    `<h3 style="text-align:center;">${escapeHtml(info.title || 'AGREEMENT')}</h3>` +
+    `<p style="text-align:center;">This Agreement is made on ${escapeHtml(info.date) || '[Date]'} at ${
+      escapeHtml(info.place) || '[Place]'
+    }</p>` +
+    partyParagraphs +
+    `<p style="text-align:justify;">(collectively referred to as the "Partners" and individually as a "Partner")</p>` +
+    `<p><strong>WHEREAS:</strong></p>` +
+    recitalParagraphs.map((r) => `<p style="text-align:justify;">${escapeHtml(r)}</p>`).join('') +
+    `<p><strong>NOW THEREFORE</strong>, in consideration of the mutual covenants contained herein, the Partners agree as follows:</p>`
+  );
+}
+
+export interface ShareTransferInfo {
+  companyName: string;
+  cin: string;
+  registeredOffice: string;
+  classOfShares: string;
+  nominalValue: string;
+  paidUpValue: string;
+  numberOfShares: string;
+  distinctiveNumbers: string;
+  certificateNo: string;
+  folioNo: string;
+  transferorName: string;
+  transferorAddress: string;
+  transfereeName: string;
+  transfereeAddress: string;
+  consideration: string;
+  date: string;
+}
+
+/** Renders Form SH-4 (Companies (Share Capital and Debentures) Rules, 2014, Rule 11) as an HTML
+ *  fragment — the statutory instrument of transfer is a fixed field-by-field form, not a BETWEEN/AND
+ *  deed, so this doesn't reuse buildAgreementHtml. Meant for DraftDocument's `causeTitleHtml` prop
+ *  like the other builders above. */
+export function buildShareTransferInstrumentHtml(info: ShareTransferInfo): string {
+  const field = (label: string, value: string) =>
+    `<table><tbody><tr><td data-party-role="name">${escapeHtml(label)}</td><td data-party-role="label">${
+      escapeHtml(value) || `[${label}]`
+    }</td></tr></tbody></table>`;
+  return (
+    `<h3 style="text-align:center;">FORM SH-4</h3>` +
+    `<p style="text-align:center;">SECURITIES TRANSFER FORM</p>` +
+    `<p style="text-align:center;">[Rule 11(1) of the Companies (Share Capital and Debentures) Rules, 2014]</p>` +
+    `<p style="text-align:justify;">INSTRUMENT OF TRANSFER OF SHARES, executed on ${escapeHtml(info.date) || '[Date]'}</p>` +
+    field('Name of the Company', info.companyName) +
+    field('CIN of the Company', info.cin) +
+    field('Registered Office', info.registeredOffice) +
+    field('Class of Shares', info.classOfShares) +
+    field('Nominal value per share', info.nominalValue) +
+    field('Amount paid up per share', info.paidUpValue) +
+    field('Number of shares to be transferred', info.numberOfShares) +
+    field('Distinctive numbers of shares', info.distinctiveNumbers) +
+    field('Share Certificate No.', info.certificateNo) +
+    field('Ledger Folio of Transferor', info.folioNo) +
+    `<p style="text-align:justify;">In consideration of the sum of ${
+      escapeHtml(info.consideration) || '[Consideration]'
+    } paid to me/us by the Transferee named below, I/We, ${escapeHtml(info.transferorName) || '[Transferor Name]'} of ${
+      escapeHtml(info.transferorAddress) || '[Transferor Address]'
+    } (the "Transferor"), do hereby transfer to ${escapeHtml(info.transfereeName) || '[Transferee Name]'} of ${
+      escapeHtml(info.transfereeAddress) || '[Transferee Address]'
+    } (the "Transferee"), the above-described shares, subject to the several conditions on which I/We hold the same, and the Transferee does hereby agree to take the said shares subject to the same conditions.</p>`
+  );
+}
+
+/** The SH-4 instrument's signature footer — Transferor and Transferee, each with a witness line,
+ *  matching the statutory form's execution block. */
+export function buildShareTransferClosing(transferorName: string, transfereeName: string): LegalDraftSection[] {
+  return [
+    {
+      heading: 'Transferor',
+      unnumbered: true,
+      paragraphs: [`Signature: _____________________`, `Name: ${transferorName || '[Transferor Name]'}`, 'Witness: _____________________'],
+    },
+    {
+      heading: 'Transferee',
+      unnumbered: true,
+      paragraphs: [`Signature: _____________________`, `Name: ${transfereeName || '[Transferee Name]'}`, 'Witness: _____________________'],
+    },
+  ];
+}
+
+/** A simple centered title block — document title over the company's (proposed) name — for a
+ *  company-incorporation document like a Memorandum or Articles of Association, which has no
+ *  forum, no opposing party, and (before incorporation) no CIN yet, so neither buildCauseTitleHtml
+ *  nor buildResolutionHtml's company-identity block fits. */
+export function buildCompanyDocumentHeaderHtml(title: string, companyName: string): string {
+  return (
+    `<h3 style="text-align:center;">${escapeHtml(title)}</h3>` +
+    `<p style="text-align:center;">OF</p>` +
+    `<h3 style="text-align:center;">${escapeHtml(companyName) || '[Company Name]'}</h3>`
+  );
+}
+
 /** Returns two sections — a centered-heading Verification block, plus a separate right-aligned
  *  "DEPONENT" signature line, matching how real affidavits close: the verification text as
  *  ordinary prose, then the deponent's attestation flush against the right margin below it. */

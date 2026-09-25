@@ -23,7 +23,8 @@ export type FilingForum =
   | 'cestat'
   | 'notFiledNotice'
   | 'notFiledAgreement'
-  | 'subRegistrarRegistration';
+  | 'subRegistrarRegistration'
+  | 'llpAgreementFiling';
 
 // tax_matters groups five genuinely separate filing destinations (each with its own portal and
 // procedure) under one forum tab — forumType alone can't disambiguate them, so this maps the

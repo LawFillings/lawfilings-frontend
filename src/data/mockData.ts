@@ -417,6 +417,46 @@ export const caseTypes: CaseType[] = [
     filingCategory: 'original',
   },
   {
+    id: 'ct-board-resolution',
+    forumType: 'misc_drafts',
+    name: 'Board Resolution',
+    governingLaw: 'Companies Act, 2013',
+    plainLanguageSummary:
+      "Draft a certified true copy of a Board Resolution — the record a company's Board of Directors must pass by formal resolution for matters like opening a bank account, borrowing money, granting a loan or guarantee, or approving financial statements. Not filed with the ROC by itself; some resolutions must separately be reported via Form MGT-14 within 30 days.",
+    applicantEligibility: 'company_director_or_company_secretary',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-share-transfer-deed',
+    forumType: 'misc_drafts',
+    name: 'Share Transfer Deed (Form SH-4)',
+    governingLaw: 'Companies Act, 2013',
+    plainLanguageSummary:
+      'Draft the statutory instrument of transfer (Form SH-4) used to transfer physical (non-demat) shares of a company from a Transferor to a Transferee. Must be duly stamped and delivered to the company within 60 days of execution; dematerialised shares transfer through a depository instead and do not use this form.',
+    applicantEligibility: 'transferor_or_transferee_of_company_shares',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-llp-agreement',
+    forumType: 'misc_drafts',
+    name: 'LLP Agreement',
+    governingLaw: 'Limited Liability Partnership Act, 2008',
+    plainLanguageSummary:
+      "Draft the agreement that governs an LLP's partners — capital contribution, profit sharing, management, and admission/retirement of partners. Must be filed with the Registrar in Form 3 within 30 days of execution, for both an original agreement and any later supplementary/amended one.",
+    applicantEligibility: 'partner_of_an_llp',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-moa-aoa',
+    forumType: 'misc_drafts',
+    name: 'Memorandum & Articles of Association',
+    governingLaw: 'Companies Act, 2013',
+    plainLanguageSummary:
+      "Draft a company's Memorandum of Association (name, registered office, objects, liability, and capital clauses) or its Articles of Association (internal management regulations, ordinarily built on Table F of Schedule I). Typically prepared at incorporation and filed with the ROC as part of the SPICe+ incorporation bundle, not as a standalone filing.",
+    applicantEligibility: 'promoter_or_subscriber_of_a_company',
+    filingCategory: 'original',
+  },
+  {
     id: 'ct-bail-application',
     forumType: 'district_court',
     topCategory: 'criminal',
@@ -2103,6 +2143,23 @@ export const clauses: ClauseDef[] = [
     plainLanguageExplanation: 'States that Indian law applies to this Power of Attorney.',
   },
   {
+    code: 'LLP-01',
+    caseTypeId: 'ct-llp-agreement',
+    category: 'governing_law',
+    title: 'Governing law',
+    bodyTemplate:
+      'This Agreement shall be governed by and construed in accordance with the laws of India, including the Limited Liability Partnership Act, 2008. Any dispute arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts at {{jurisdiction_place}}.',
+    plainLanguageExplanation: 'States that Indian LLP law applies and which courts would hear a dispute, if one arose.',
+  },
+  {
+    code: 'MOA-01',
+    caseTypeId: 'ct-moa-aoa',
+    category: 'governing_law',
+    title: 'Applicable law',
+    bodyTemplate: 'This document is prepared in accordance with the Companies Act, 2013 and the rules made thereunder.',
+    plainLanguageExplanation: 'States that Indian company law applies.',
+  },
+  {
     code: 'BA-01',
     caseTypeId: 'ct-bail-application',
     category: 'case_details',
@@ -2272,6 +2329,30 @@ export const propertyDeedTypeOptions = [
 export const powerOfAttorneyTypeOptions = [
   { id: 'general_poa', label: 'General Power of Attorney' },
   { id: 'special_poa', label: 'Special Power of Attorney' },
+];
+
+// Drives LLPAgreementWizard.tsx's LLP_TYPE_CONFIGS.
+export const llpAgreementTypeOptions = [
+  { id: 'original_llp_agreement', label: 'Original LLP Agreement (at incorporation)' },
+  { id: 'supplementary_llp_agreement', label: 'Supplementary/Amended LLP Agreement' },
+];
+
+// Drives MoaAoaWizard.tsx — which of the two incorporation documents to draft.
+export const moaAoaTypeOptions = [
+  { id: 'moa', label: 'Memorandum of Association (MOA)' },
+  { id: 'aoa', label: 'Articles of Association (AOA)' },
+];
+
+// Drives BoardResolutionWizard.tsx's quick-start templates — a starting RESOLVED clause the user
+// can edit freely; the resolution isn't restricted to these purposes.
+export const boardResolutionPurposeOptions = [
+  { id: 'bank_account', label: 'Opening/operating a bank account' },
+  { id: 'authorised_signatory', label: 'Appointing an authorised signatory' },
+  { id: 'borrowing', label: 'Borrowing money / availing a loan facility' },
+  { id: 'loan_guarantee', label: 'Granting a loan, guarantee, or security' },
+  { id: 'investment', label: 'Investing company funds' },
+  { id: 'financial_statements', label: "Approving the financial statements and Board's report" },
+  { id: 'other', label: 'Other — describe below' },
 ];
 
 export const bailTypeOptions = [
