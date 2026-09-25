@@ -387,7 +387,7 @@ export function buildNoticeLetterHtml(info: NoticeLetterInfo): string {
     `<p>${escapeHtml(info.recipientAddress) || '[Recipient Address]'}</p>` +
     `<p><strong>Subject: ${escapeHtml(info.subject) || '[Subject]'}</strong></p>` +
     `<p>Dear Sir/Madam,</p>` +
-    `<p>${openingLine}</p>`
+    `<p style="text-align:justify;">${openingLine}</p>`
   );
 }
 
