@@ -12,11 +12,18 @@
   margin-bottom: var(--space-3);
 }
 
+/* Sits inline within .home-hero-top's own row here, not pinned to the viewport corner like the
+   base .back-link is elsewhere — reset the fixed positioning back to normal flow. */
 .back-link.home-hero-back {
+  position: static;
+  z-index: auto;
   margin: 0;
   padding: 0;
   max-width: none;
   font-size: 16px;
+  background: none;
+  box-shadow: none;
+  border-radius: 0;
 }
 
 .home-hero-controls {

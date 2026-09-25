@@ -397,6 +397,26 @@ export const caseTypes: CaseType[] = [
     filingCategory: 'original',
   },
   {
+    id: 'ct-property-deed',
+    forumType: 'misc_drafts',
+    name: 'Property Deed (Sale/Gift/Lease/Mortgage)',
+    governingLaw: 'Transfer of Property Act, 1882; Registration Act, 1908',
+    plainLanguageSummary:
+      "Draft a Sale Deed, Gift Deed, Lease Deed, or Mortgage Deed for immovable property — these transfer or create an interest in the property itself, and (unlike a private rent/lease agreement) must be registered at the Sub-Registrar's office to take legal effect. Not for a short-term private rent/leave-and-licence arrangement — use Contract Agreement instead.",
+    applicantEligibility: 'any_party_to_a_property_transaction',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-power-of-attorney',
+    forumType: 'misc_drafts',
+    name: 'Power of Attorney (General/Special)',
+    governingLaw: 'Powers-of-Attorney Act, 1882',
+    plainLanguageSummary:
+      "Draft a document authorising someone — your 'attorney' or agent — to act on your behalf, either broadly across your affairs (General Power of Attorney) or for one specific act, such as selling a particular property (Special Power of Attorney). Registration is compulsory in some states when it relates to transferring immovable property; confirm the requirement for the state of execution before executing.",
+    applicantEligibility: 'any_person_wishing_to_appoint_an_agent',
+    filingCategory: 'original',
+  },
+  {
     id: 'ct-bail-application',
     forumType: 'district_court',
     topCategory: 'criminal',
@@ -2065,6 +2085,24 @@ export const clauses: ClauseDef[] = [
     plainLanguageExplanation: 'States that Indian law applies and which courts would hear a dispute, if one arose.',
   },
   {
+    code: 'PD-01',
+    caseTypeId: 'ct-property-deed',
+    category: 'governing_law',
+    title: 'Governing law and dispute resolution',
+    bodyTemplate:
+      'This Deed shall be governed by and construed in accordance with the laws of India, including the Transfer of Property Act, 1882. Any dispute arising out of or in connection with this Deed shall be subject to the exclusive jurisdiction of the courts at {{jurisdiction_place}}.',
+    plainLanguageExplanation: 'States that Indian property law applies and which courts would hear a dispute, if one arose.',
+  },
+  {
+    code: 'POA-01',
+    caseTypeId: 'ct-power-of-attorney',
+    category: 'governing_law',
+    title: 'Governing law',
+    bodyTemplate:
+      'This Power of Attorney shall be governed by and construed in accordance with the laws of India, including the Powers-of-Attorney Act, 1882.',
+    plainLanguageExplanation: 'States that Indian law applies to this Power of Attorney.',
+  },
+  {
     code: 'BA-01',
     caseTypeId: 'ct-bail-application',
     category: 'case_details',
@@ -2219,6 +2257,21 @@ export const contractTypeOptions = [
   { id: 'loan_promissory_note', label: 'Loan Agreement / Promissory Note' },
   { id: 'employment', label: 'Employment Agreement' },
   { id: 'general', label: 'General-purpose agreement' },
+];
+
+// Drives PropertyDeedWizard.tsx's DEED_TYPE_CONFIGS — role labels, recitals, and covenants vary
+// per type, so each id there must match one here.
+export const propertyDeedTypeOptions = [
+  { id: 'sale_deed', label: 'Sale Deed' },
+  { id: 'gift_deed', label: 'Gift Deed' },
+  { id: 'lease_deed', label: 'Lease Deed (registrable)' },
+  { id: 'mortgage_deed', label: 'Mortgage Deed' },
+];
+
+// Drives PowerOfAttorneyWizard.tsx's POA_TYPE_CONFIGS.
+export const powerOfAttorneyTypeOptions = [
+  { id: 'general_poa', label: 'General Power of Attorney' },
+  { id: 'special_poa', label: 'Special Power of Attorney' },
 ];
 
 export const bailTypeOptions = [

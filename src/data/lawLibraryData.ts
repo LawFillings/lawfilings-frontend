@@ -3624,6 +3624,41 @@ export const acts: Act[] = [
         heading: 'Determination of lease',
         text: 'A lease of immoveable property determines— (a) by efflux of the time limited thereby; (b) where such time is limited conditionally on the happening of some event—by the happening of such event; (c) where the interest of the lessor in the property terminates on, or his power to dispose of the same extends only to, the happening of any event—by the happening of such event; (d) in case the interests of the lessee and the lessor in the whole of the property become vested at the same time in one person in the same right; (e) by express surrender, that is to say, in case the lessee yields up his interest under the lease to the lessor, by mutual agreement between them; (f) by implied surrender; (g) by forfeiture, that is to say, (1) in case the lessee breaks an express condition which provides that, on breach thereof, the lessor may re-enter; or (2) in case the lessee renounces his character as such by setting up a title in a third person or by claiming title in himself; or (3) the lessee is adjudicated an insolvent and the lease provides that the lessor may re-enter on the happening of such event; and in any of these cases the lessor or his transferee gives notice in writing to the lessee of his intention to determine the lease; (h) on the expiration of a notice to determine the lease, or to quit, or of intention to quit, the property leased, duly given by one party to the other. [Note: clause (h) — expiry of a notice to quit under section 106 above — is the ordinary route for a landlord to determine a periodic tenancy and is the ground most often pleaded in a possession suit against a tenant holding over; clause (g) (forfeiture) applies instead where the lease itself reserves a right of re-entry on breach of a condition.]',
       },
+      {
+        sectionNo: '54',
+        heading: '"Sale" defined',
+        text: '"Sale" is a transfer of ownership in exchange for a price paid or promised or part-paid and part-promised. Such transfer, in the case of tangible immoveable property of the value of one hundred rupees and upwards, or in the case of a reversion or other intangible thing, can be made only by a registered instrument. In the case of tangible immoveable property of a value less than one hundred rupees, such transfer may be made either by a registered instrument or by delivery of the property. [Note: in practice every sale of tangible immovable property is registered regardless of value, since the Registration Act, 1908, Section 17 (also in this Library) independently makes registration compulsory once value reaches one hundred rupees — a threshold no real property sale falls under today.]',
+      },
+      {
+        sectionNo: '58',
+        heading: '"Mortgage", "mortgagor", "mortgagee", "mortgage-money" and "mortgage-deed" defined',
+        text: 'A mortgage is the transfer of an interest in specific immoveable property for the purpose of securing the payment of money advanced or to be advanced by way of loan, an existing or future debt, or the performance of an engagement which may give rise to a pecuniary liability. The transferor is called a mortgagor, the transferee a mortgagee; the principal money and interest of which payment is secured for the time being are called the mortgage-money, and the instrument (if any) by which the transfer is effected is called a mortgage-deed. [Note: this section goes on to define six species of mortgage — simple mortgage, mortgage by conditional sale, usufructuary mortgage, English mortgage, mortgage by deposit of title-deeds (equitable mortgage), and anomalous mortgage — each with its own rights and remedies on default. A mortgage-deed generally requires registration under the Registration Act, 1908, Section 17 once the secured amount reaches one hundred rupees, except a mortgage by deposit of title-deeds, which is created by mere delivery of the title documents and needs no registered deed at all.]',
+      },
+      {
+        sectionNo: '105',
+        heading: '"Lease", "lessor", "lessee", "premium" and "rent" defined',
+        text: 'A lease of immoveable property is a transfer of a right to enjoy such property, made for a certain time, express or implied, or in perpetuity, in consideration of a price paid or promised, or of money, a share of crops, service or any other thing of value, to be rendered periodically or on specified occasions to the transferor by the transferee, who accepts the transfer on such terms. The transferor is called the lessor, the transferee is called the lessee, the price is called the premium, and the money, share, service or other thing to be so rendered is called the rent.',
+      },
+      {
+        sectionNo: '107',
+        heading: 'Leases how made',
+        text: 'A lease of immoveable property from year to year, or for any term exceeding one year, or reserving a yearly rent, can be made only by a registered instrument. All other leases of immoveable property may be made either by a registered instrument or by oral agreement accompanied by delivery of possession. [Note: this is why a standard "11-month leave and licence"/rent agreement is typically kept under a year — to fall outside this compulsory-registration requirement — while a genuine longer-term lease needs a registered Lease Deed.]',
+      },
+      {
+        sectionNo: '122',
+        heading: '"Gift" defined',
+        text: 'Gift is the transfer of certain existing moveable or immoveable property made voluntarily and without consideration, by one person, called the donor, to another, called the donee, and accepted by or on behalf of the donee. Such acceptance must be made during the lifetime of the donor and while he is still capable of giving. If the donee dies before acceptance, the gift is void.',
+      },
+      {
+        sectionNo: '123',
+        heading: 'Transfer how effected',
+        text: 'For the purpose of making a gift of immoveable property, the transfer must be effected by a registered instrument signed by or on behalf of the donor, and attested by at least two witnesses. For the purpose of making a gift of moveable property, the transfer may be effected either by a registered instrument signed as aforesaid or by delivery. Such delivery may be made in the same way as goods sold may be delivered.',
+      },
+      {
+        sectionNo: '126',
+        heading: 'When gift may be suspended or revoked',
+        text: 'The donor and donee may agree that on the happening of any specified event which does not depend on the will of the donor a gift shall be suspended or revoked; but a gift which the parties agree shall be revocable wholly or in part, at the mere will of the donor, is void wholly or in part. A gift may also be revoked in any of the cases (save want or failure of consideration) in which, if it were a contract, it might be rescinded. Save as aforesaid, a gift cannot be revoked. [Note: this is why a Gift Deed cannot simply reserve the donor\'s right to take the property back whenever they wish — that condition would void the gift outright — though the deed may validly condition the gift on a specific future event outside the donor\'s own control.]',
+      },
     ],
   },
   {
@@ -3638,6 +3673,26 @@ export const acts: Act[] = [
         sectionNo: '6',
         heading: 'Devolution of interest in coparcenary property',
         text: 'On and from the commencement of the Hindu Succession (Amendment) Act, 2005, in a Joint Hindu family governed by the Mitakshara law, the daughter of a coparcener shall,— (a) by birth become a coparcener in her own right in the same manner as the son; (b) have the same rights in the coparcenary property as she would have had if she had been a son; (c) be subject to the same liabilities in respect of the said coparcenary property as that of a son, and any reference to a Hindu Mitakshara coparcener shall be deemed to include a reference to a daughter of a coparcener: Provided that nothing contained in this sub-section shall affect or invalidate any disposition or alienation including any partition or testamentary disposition of property which had taken place before the 20th day of December, 2004. ... (5) Nothing contained in this section shall apply to a partition, which has been effected before the 20th day of December, 2004. Explanation.—For the purposes of this section "partition" means any partition made by execution of a deed of partition duly registered under the Registration Act, 1908 or partition effected by a decree of a court. [Note: sub-sections (2)-(4), dealing with testamentary disposition of the coparcenary interest and its devolution by succession (not survivorship) on a coparcener\'s death after the 2005 Amendment, are omitted here as their precise current wording could not be cleanly verified this pass — confirm against a current bare act before relying on them. Sub-section (1) is the basis for a daughter\'s equal right to seek partition of Mitakshara coparcenary property regardless of when she was born, per Vineeta Sharma v. Rakesh Sharma, (2020) 9 SCC 1. Sub-section (5)\'s Explanation is directly relevant to pleading a partition suit: an oral, unregistered, or merely acknowledged family arrangement does NOT count as a "partition" that would bar a fresh partition suit — only a registered partition deed or a court decree does.]',
+      },
+    ],
+  },
+  {
+    id: 'act-powers-of-attorney-1882',
+    shortTitle: 'The Powers-of-Attorney Act, 1882',
+    year: 1882,
+    actNumber: '7 of 1882',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://www.indiacode.nic.in/bitstream/123456789/2360/1/a1882-07.pdf',
+    sections: [
+      {
+        sectionNo: '1A',
+        heading: 'Definition of "Power-of-Attorney"',
+        text: 'In this Act, "Power-of-Attorney" includes any instrument empowering a specified person to act for and in the name of the person executing it.',
+      },
+      {
+        sectionNo: '2',
+        heading: 'Execution under power-of-attorney',
+        text: "The donee of a power-of-attorney may, if he thinks fit, execute or do any instrument or thing in and with his own name and signature, and his own seal, where sealing is required, by the authority of the donor of the power; and every instrument and thing so executed and done, shall be as effectual in law as if it had been executed or done by the donee of the power in the name, and with the signature and seal, of the donor thereof. This section applies to powers-of-attorney created by instruments executed either before or after this Act comes into force. [Note: this two-section Act is deliberately narrow — it only validates the *manner* in which an attorney signs on the principal's behalf; it does not itself require or regulate registration or stamping. Whether a Power of Attorney needs to be registered depends on what it authorises and where it is executed: several states (including Gujarat, Kerala, Maharashtra, Madhya Pradesh, Odisha, Rajasthan, Tamil Nadu, and Uttar Pradesh) have amended the Registration Act, 1908, Section 17 to make a Power of Attorney relating to the transfer of immovable property compulsorily registrable in that state, while other states do not — confirm the position for the state where the Power of Attorney is executed. Stamp duty is likewise state-specific, charged under the Indian Stamp Act, 1899 (also in this Library) as applied or modified by that state.]",
       },
     ],
   },

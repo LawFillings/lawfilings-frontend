@@ -6,13 +6,16 @@
 
 .wizard-header {
   display: flex;
-  justify-content: space-between;
-  align-items: flex-end;
-  gap: var(--space-5);
-  flex-wrap: wrap;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--space-3);
   margin-bottom: var(--space-6);
   padding-bottom: var(--space-5);
   border-bottom: 1px solid var(--line);
+}
+
+.wizard-header-title {
+  text-align: center;
 }
 
 .wizard-eyebrow {

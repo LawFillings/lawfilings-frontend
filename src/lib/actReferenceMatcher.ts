@@ -310,6 +310,24 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   ],
   // Miscellaneous Application (MA) — general — the entire filing invokes the Court's inherent powers.
   'ct-dc-ma-general': [{ actId: 'act-cpc-1908', sectionNo: '151' }],
+  // Property Deed (Sale/Gift/Lease/Mortgage) — one static set of citations for the whole wizard
+  // regardless of which of the four sub-types is chosen (same pattern as Contract Agreement,
+  // which cites nothing specific); these are each sub-type's own defining section plus the
+  // registration requirement common to all of them.
+  'ct-property-deed': [
+    { actId: 'act-transfer-of-property-1882', sectionNo: '54' },
+    { actId: 'act-transfer-of-property-1882', sectionNo: '58' },
+    { actId: 'act-transfer-of-property-1882', sectionNo: '105' },
+    { actId: 'act-transfer-of-property-1882', sectionNo: '122' },
+    { actId: 'act-registration-1908', sectionNo: '17' },
+  ],
+  // Power of Attorney (General/Special) — the Act's own two substantive sections; the state-varying
+  // registration requirement is covered in the case type's own plainLanguageSummary rather than
+  // cited here, since it isn't fixed by a single central-Act section (see the Act's own [Note:]).
+  'ct-power-of-attorney': [
+    { actId: 'act-powers-of-attorney-1882', sectionNo: '1A' },
+    { actId: 'act-powers-of-attorney-1882', sectionNo: '2' },
+  ],
   // Suit for Declaration — the entire filing is a Section 34 declaration suit.
   'ct-suit-declaration': [{ actId: 'act-specific-relief-1963', sectionNo: '34' }],
   // Suit for Specific Performance — Section 10 is the substantive right to the remedy; Section 16

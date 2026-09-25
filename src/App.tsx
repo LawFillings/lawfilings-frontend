@@ -10,6 +10,8 @@ import { MoneyRecoverySuitWizard } from './pages/MoneyRecoverySuitWizard';
 import { SummarySuitWizard } from './pages/SummarySuitWizard';
 import { LegalNoticeWizard } from './pages/LegalNoticeWizard';
 import { ContractAgreementWizard } from './pages/ContractAgreementWizard';
+import { PropertyDeedWizard } from './pages/PropertyDeedWizard';
+import { PowerOfAttorneyWizard } from './pages/PowerOfAttorneyWizard';
 import { BailApplicationWizard } from './pages/BailApplicationWizard';
 import { ContestedDivorceWizard } from './pages/ContestedDivorceWizard';
 import { MutualConsentDivorceWizard } from './pages/MutualConsentDivorceWizard';
@@ -484,6 +486,16 @@ function AppScreens() {
     if (ct.id === 'ct-contract-agreement') {
       return (
         <ContractAgreementWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-property-deed') {
+      return (
+        <PropertyDeedWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-power-of-attorney') {
+      return (
+        <PowerOfAttorneyWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-bail-application') {

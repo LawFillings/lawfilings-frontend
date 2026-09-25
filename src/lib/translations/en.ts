@@ -1211,6 +1211,17 @@ export const en = {
       ],
       note: 'Stamp duty and registration requirements vary by state and by the type of agreement — confirm the current requirement before you print and sign.',
     },
+    subRegistrarRegistration: {
+      heading: 'Registering this document',
+      intro: 'where registration applies to this document, it must be done at the Sub-Registrar’s office for the area where the property is situated.',
+      steps: [
+        'Pay the applicable stamp duty for your state before execution — usually ad valorem on the property’s market value or the consideration stated, whichever is higher; confirm the current rate and mode of payment (stamp paper or e-stamping) for your state.',
+        'All executants and the witnesses must appear in person before the Sub-Registrar with original photo ID, PAN, and passport-size photographs — biometrics are also captured in most states.',
+        'Present the document for registration within four months of the date of execution; a further four months is available on payment of a fine if the delay was unavoidable.',
+        'Pay the registration fee — separate from stamp duty, and usually a smaller percentage of the property’s value — and collect the registered document once endorsed.',
+      ],
+      note: 'Stamp duty rates, registration fees, and the exact documents required vary by state — confirm the current requirement with the Sub-Registrar’s office or your state’s revenue department before executing.',
+    },
   },
   // UI/guidance chrome shared by every drafting wizard (WizardShell, LocationSelector,
   // PaywallBlock, ActReferencePanel, JudgeStyleStep). Generated draft/filing text itself is

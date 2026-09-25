@@ -422,22 +422,22 @@ export function buildAgreementHtml(info: AgreementInfo): string {
       escapeHtml(info.place) || '[Place]'
     }</p>` +
     `<p style="text-align:center;"><strong>BETWEEN</strong></p>` +
-    `<p>${escapeHtml(info.partyAName) || '[Party A Name]'}, ${
+    `<p style="text-align:justify;">${escapeHtml(info.partyAName) || '[Party A Name]'}, ${
       escapeHtml(info.partyAAddress) || '[Party A Address]'
     } (hereinafter referred to as "the ${escapeHtml(
       info.partyARole
     )}", which expression shall, unless repugnant to the context or meaning thereof, include its/his/her successors, heirs, legal representatives, and permitted assigns), of the FIRST PART;</p>` +
     `<p style="text-align:center;"><strong>AND</strong></p>` +
-    `<p>${escapeHtml(info.partyBName) || '[Party B Name]'}, ${
+    `<p style="text-align:justify;">${escapeHtml(info.partyBName) || '[Party B Name]'}, ${
       escapeHtml(info.partyBAddress) || '[Party B Address]'
     } (hereinafter referred to as "the ${escapeHtml(
       info.partyBRole
     )}", which expression shall, unless repugnant to the context or meaning thereof, include its/his/her successors, heirs, legal representatives, and permitted assigns), of the SECOND PART;</p>` +
-    `<p>(the "${escapeHtml(info.partyARole)}" and the "${escapeHtml(
+    `<p style="text-align:justify;">(the "${escapeHtml(info.partyARole)}" and the "${escapeHtml(
       info.partyBRole
     )}" are hereinafter collectively referred to as the "Parties" and individually as a "Party")</p>` +
     `<p><strong>WHEREAS:</strong></p>` +
-    recitalParagraphs.map((r) => `<p>${escapeHtml(r)}</p>`).join('') +
+    recitalParagraphs.map((r) => `<p style="text-align:justify;">${escapeHtml(r)}</p>`).join('') +
     `<p><strong>NOW THEREFORE</strong>, in consideration of the mutual covenants contained herein, the Parties agree as follows:</p>`
   );
 }

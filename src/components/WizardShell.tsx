@@ -44,7 +44,7 @@ export function WizardShell({
   return (
     <div className="wizard" data-color-theme={settings.wizard.color}>
       <header className="wizard-header">
-        <div>
+        <div className="wizard-header-title">
           <p className="wizard-eyebrow">{governingLaw}</p>
           <h1 className="wizard-title">{title}</h1>
         </div>
