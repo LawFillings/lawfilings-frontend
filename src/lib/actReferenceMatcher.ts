@@ -514,6 +514,21 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-representation-of-the-people-1951', sectionNo: '80' },
     { actId: 'act-representation-of-the-people-1951', sectionNo: '81' },
   ],
+  // Review Petition (High Court, Civil) — Section 114 is the substantive power, Order XLVII Rule 1
+  // the grounds; deliberately no criminal-side citation since the High Court has no equivalent
+  // statutory review remedy over its own criminal orders (see the case type's own summary).
+  'ct-review-petition-hc': [
+    { actId: 'act-cpc-1908', sectionNo: '114' },
+    { actId: 'act-cpc-1908', sectionNo: 'Order XLVII, Rule 1' },
+  ],
+  // Arbitration Appeal (S.37) — the entire filing is a Section 37 appeal; deliberately no single
+  // Limitation Act citation here since the applicable period (60/90/30 days) genuinely varies by
+  // which order is appealed and whether the Commercial Courts Act, 2015 applies — see the case
+  // type's own summary rather than asserting one period.
+  'ct-arbitration-s37-appeal': [{ actId: 'act-arbitration-1996', sectionNo: '37' }],
+  // Miscellaneous Petition (High Court) — same inherent-powers basis as ct-dc-ma-general below,
+  // scoped to a pending High Court proceeding instead of a district court suit.
+  'ct-hc-misc-petition': [{ actId: 'act-cpc-1908', sectionNo: '151' }],
   // Writ Petition (Article 32) — the entire filing is an Article 32 petition, the Supreme Court's
   // own (not supervisory) jurisdiction to enforce a fundamental right directly.
   'ct-writ-petition-32': [{ actId: 'act-constitution-india', sectionNo: 'Article 32' }],
@@ -538,6 +553,17 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // deliberately distinct from ct-criminal-transfer-petition (BNSS ss.446/447) at district_court,
   // which covers the criminal-case transfer power instead.
   'ct-transfer-petition-civil-sc': [{ actId: 'act-cpc-1908', sectionNo: '25' }],
+  // Statutory Appeal from NCLAT (S.423) — the entire filing is a Section 423 appeal, limited to a
+  // question of law; deliberately distinct from the IBC's own Section 62 appeal route (a different
+  // provision with a shorter 45+15-day limitation), which this case type does not cover.
+  'ct-nclat-statutory-appeal-sc': [{ actId: 'act-companies-2013', sectionNo: '423' }],
+  // Miscellaneous Application (Supreme Court) — Order XI Rule 1 is the general "on motion after
+  // notice" procedure; Rule 7 is what actually names "interlocutory or miscellaneous application"
+  // as the category this case type covers.
+  'ct-sc-misc-application': [
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XI, Rule 1' },
+    { actId: 'act-supreme-court-rules-2013', sectionNo: 'Order XI, Rule 7' },
+  ],
   // Appeal Against Assessment/Demand Order (CIT-Appeals) — section 357 is the appealable-orders
   // list, section 358 the limitation/form provision the wizard's own deadline computation uses.
   'ct-cit-appeal': [

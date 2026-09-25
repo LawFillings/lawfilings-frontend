@@ -150,7 +150,6 @@ export const en = {
       eyebrow: 'Curated from Primary sources',
       title: 'Constitution & Key Statutes',
       sub: 'The Constitution and the actual text of the Acts behind these case types — sourced directly from India Code and official state gazettes, not summarised.',
-      browseAll: 'Browse Curated Primary Sources →',
     },
     news: {
       eyebrow: 'Law news',
@@ -339,7 +338,6 @@ export const en = {
     title: "Select the court/forum where you need to file",
     privacyTitle: "Your data stays confidential",
     privacyBody: "Case details you enter are never sold or shared with other users, and are protected by encrypted connections and access controls.",
-    browseActs: 'Browse Constitution & Key Statutes — curated for you →',
     categoryLabels: {
       original: 'Start a case',
       reply: 'Respond to something filed against you',

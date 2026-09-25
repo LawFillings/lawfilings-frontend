@@ -1308,6 +1308,42 @@ export const caseTypes: CaseType[] = [
     subcategory: 'hc-special-proceedings',
   },
   {
+    id: 'ct-review-petition-hc',
+    forumType: 'high_court',
+    name: 'Review Petition (Civil)',
+    governingLaw: 'Code of Civil Procedure, 1908, Section 114 and Order XLVII',
+    plainLanguageSummary:
+      "File this before the same Bench that decided your case, within 30 days of the High Court's civil judgment or order, to have it reviewed — on the ground of discovery of new and important evidence, a mistake or error apparent on the face of the record, or any other sufficient reason. Applies only to civil matters; the High Court has no equivalent statutory review remedy over its own criminal orders.",
+    applicantEligibility: 'party_aggrieved_by_a_high_court_civil_judgment_or_order',
+    filingCategory: 'original',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 30,
+    subcategory: 'hc-special-proceedings',
+  },
+  {
+    id: 'ct-arbitration-s37-appeal',
+    forumType: 'high_court',
+    name: 'Arbitration Appeal (S.37)',
+    governingLaw: 'The Arbitration and Conciliation Act, 1996, Section 37',
+    plainLanguageSummary:
+      "File this before the High Court to appeal an order refusing to refer parties to arbitration, granting or refusing an interim measure, an arbitral tribunal's ruling on its own jurisdiction, or an order setting aside (or refusing to set aside) an arbitral award — no further appeal lies from this order. The limitation period depends on the dispute: 60 days if it's a commercial dispute of specified value under the Commercial Courts Act, 2015, otherwise 90 or 30 days under the Limitation Act depending on which order is being appealed — confirm which applies to your case.",
+    applicantEligibility: 'party_aggrieved_by_an_appealable_arbitration_order',
+    filingCategory: 'appeal',
+    subcategory: 'hc-appeals',
+  },
+  {
+    id: 'ct-hc-misc-petition',
+    forumType: 'high_court',
+    name: 'Miscellaneous Petition (MP) — general',
+    governingLaw: 'Code of Civil Procedure, 1908, Section 151',
+    plainLanguageSummary:
+      "Use this for anything connected to a pending High Court proceeding that doesn't fit a more specific wizard — such as seeking a direction, condonation of a procedural delay, an exemption, or a correction the Court has inherent power to grant to serve the ends of justice or prevent abuse of its process. Some High Courts call this a Civil Miscellaneous Petition (CMP); the underlying provision is the same.",
+    applicantEligibility: 'any_party_to_a_pending_high_court_proceeding',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'hc-misc-applications',
+  },
+  {
     id: 'ct-slp-civil',
     forumType: 'supreme_court',
     name: 'Special Leave Petition (Civil, Article 136)',
@@ -1391,6 +1427,32 @@ export const caseTypes: CaseType[] = [
     deadlineSource: 'statutory_fixed',
     limitationDays: 365,
     subcategory: 'sc-special-jurisdiction',
+  },
+  {
+    id: 'ct-nclat-statutory-appeal-sc',
+    forumType: 'supreme_court',
+    name: 'Statutory Appeal from NCLAT (S.423)',
+    governingLaw: 'The Companies Act, 2013, Section 423',
+    plainLanguageSummary:
+      "File this before the Supreme Court to appeal an order of the National Company Law Appellate Tribunal (NCLAT) — but only on a question of law arising from that order — within 60 days of receiving it; the Court may condone a further delay of up to 60 days on sufficient cause.",
+    applicantEligibility: 'person_aggrieved_by_an_nclat_order',
+    filingCategory: 'appeal',
+    deadlineSource: 'statutory_fixed',
+    limitationDays: 60,
+    condonableExtensionDays: 60,
+    subcategory: 'sc-statutory-appeals',
+  },
+  {
+    id: 'ct-sc-misc-application',
+    forumType: 'supreme_court',
+    name: 'Miscellaneous Application (MA) — general',
+    governingLaw: 'Supreme Court Rules, 2013, Order XI',
+    plainLanguageSummary:
+      "Use this for an application connected with a pending Supreme Court matter that doesn't fit a more specific wizard — such as impleadment, modification of an earlier order, clarification, or a direction — made on notice to the other side under the Court's general procedure for applications.",
+    applicantEligibility: 'any_party_to_a_pending_supreme_court_matter',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+    subcategory: 'sc-misc-applications',
   },
   {
     id: 'ct-cit-appeal',
@@ -1568,10 +1630,13 @@ export const caseTypeSubcategories: { key: string; label: string }[] = [
   { key: 'writs-supervisory', label: 'Writs & Supervisory Jurisdiction' },
   { key: 'hc-appeals', label: 'Appeals' },
   { key: 'hc-special-proceedings', label: 'Special Proceedings' },
+  { key: 'hc-misc-applications', label: 'Miscellaneous Applications' },
   { key: 'sc-slp', label: 'Special Leave Petitions' },
   { key: 'sc-writs', label: 'Writs (Fundamental Rights)' },
+  { key: 'sc-statutory-appeals', label: 'Statutory Appeals' },
   { key: 'sc-post-judgment-remedies', label: 'Post-Judgment Remedies' },
   { key: 'sc-special-jurisdiction', label: 'Special Jurisdiction' },
+  { key: 'sc-misc-applications', label: 'Miscellaneous Applications' },
 ];
 
 export const appealGroups: AppealGroup[] = [
