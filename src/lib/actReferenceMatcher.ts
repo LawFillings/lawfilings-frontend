@@ -152,6 +152,10 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
   // Code, 2016, Section 61" in mockData.ts. (The company-law NCLAT appeal is a different case
   // type, governed by the Companies Act, 2013, Section 421 — not curated here.)
   'ct-nclat-appeal-ibc': [{ actId: 'act-ibc-2016', sectionNo: '61' }],
+  // Interlocutory Application (NCLAT) — the entire filing is a Rule 31 application; covers stay,
+  // direction, condonation of delay, exemption, or extension of time in a pending appeal, whether
+  // that appeal itself was filed under the IBC or the Companies Act route above.
+  'ct-nclat-ia-general': [{ actId: 'act-nclat-rules-2016', sectionNo: 'Rule 31' }],
   // Mediation Application — the entire filing is a Section 12A application, and Section 2's
   // "commercial dispute" definition is what makes the dispute eligible for it in the first place.
   'ct-mediation-application': [

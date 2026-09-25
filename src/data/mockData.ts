@@ -226,6 +226,17 @@ export const caseTypes: CaseType[] = [
     condonableExtensionDays: 45,
   },
   {
+    id: 'ct-nclat-ia-general',
+    forumType: 'NCLT',
+    name: 'Interlocutory Application (IA) — NCLAT appeal',
+    governingLaw: 'National Company Law Appellate Tribunal Rules, 2016, Rule 31',
+    plainLanguageSummary:
+      'Use this to ask the Appellate Tribunal for a stay, direction, condonation of delay, exemption from producing a certified copy of the order appealed against, or extension of time, while your appeal is pending.',
+    applicantEligibility: 'any_party_to_pending_case',
+    filingCategory: 'interlocutory',
+    parentRequired: true,
+  },
+  {
     id: 'ct-cc-execution',
     forumType: 'consumer_commission',
     name: 'Execution Application',

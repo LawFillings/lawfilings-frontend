@@ -4121,6 +4121,21 @@ export const acts: Act[] = [
     ],
   },
   {
+    id: 'act-nclat-rules-2016',
+    shortTitle: 'The National Company Law Appellate Tribunal Rules, 2016',
+    year: 2016,
+    actNumber: 'Notification dated 21 July 2016',
+    jurisdiction: { type: 'central' },
+    sourceUrl: 'https://ibclaw.in/nclat-rules-2016/',
+    sections: [
+      {
+        sectionNo: 'Rule 31',
+        heading: 'Interlocutory applications',
+        text: "Every interlocutory application for stay, direction, condonation of delay, exemption from production of copy of order appealed against or extension of time prayed for in pending matters shall be in Form NCLAT-2 and the requirements prescribed in that behalf shall be complied with by the applicant, besides filing a affidavit supporting the application. [Note: this rule covers only interlocutory applications within an appeal already pending before the Appellate Tribunal — it does not extend to execution of the Appellate Tribunal's own order or direction, which is a separate proceeding.]",
+      },
+    ],
+  },
+  {
     id: 'act-bnss-2023',
     shortTitle: 'The Bharatiya Nagarik Suraksha Sanhita, 2023',
     year: 2023,
