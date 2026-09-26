@@ -335,7 +335,7 @@ export const courtFeeSchedules: CourtFeeSchedule[] = [
   {
     id: 'west-bengal',
     stateLabel: 'West Bengal',
-    governingLaw: 'The Court-fees Act, 1870, Schedule I (as applicable to West Bengal)',
+    governingLaw: 'The West Bengal Court-Fees Act, 1970, Schedule I',
     lastVerified: '2026-08-15',
     sourceNote: VERIFY_CAVEAT,
     cap: 50000,

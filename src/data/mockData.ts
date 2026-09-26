@@ -313,7 +313,7 @@ export const caseTypes: CaseType[] = [
     id: 'ct-cc-revision-district',
     forumType: 'consumer_commission',
     name: 'Revision Petition (State over District)',
-    governingLaw: 'Consumer Protection Act, 2019, Section 40',
+    governingLaw: 'Consumer Protection Act, 2019, Section 47(1)(b)',
     plainLanguageSummary: 'A narrower remedy than an appeal — use this only if the District Commission exceeded or failed to exercise its jurisdiction, not simply because you disagree with the outcome.',
     applicantEligibility: 'any_aggrieved_party',
     filingCategory: 'interlocutory',
