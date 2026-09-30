@@ -2,6 +2,8 @@ import { useState } from 'react';
 import { useAuth } from '../lib/auth';
 import { useLanguage } from '../lib/language';
 import type { UserRole } from '../types';
+import { districtCourtStates } from '../data/districtCourtLocations';
+import { SearchableSelect } from '../components/SearchableSelect';
 import './AuthForm.css';
 
 interface Props {
@@ -31,6 +33,10 @@ export function SignupPage({ onBack, onSignedUp, onSwitchToLogin, onForgotPasswo
     setError(null);
     if (password !== confirmPassword) {
       setError(t.auth.signup.passwordMismatch);
+      return;
+    }
+    if (role === 'advocate' && !barState) {
+      setError(t.auth.signup.barStateRequired);
       return;
     }
     setSubmitting(true);
@@ -151,23 +157,19 @@ export function SignupPage({ onBack, onSignedUp, onSwitchToLogin, onForgotPasswo
                     onChange={(e) => setBarCouncilNo(e.target.value)}
                   />
                 </label>
+                <SearchableSelect
+                  label={t.auth.signup.barState}
+                  placeholder={t.auth.signup.barStatePlaceholder}
+                  noMatches={t.auth.signup.noMatch}
+                  selectedKey={districtCourtStates.find((s) => s.label === barState)?.id}
+                  options={districtCourtStates.map((s) => ({ key: s.id, label: s.label }))}
+                  onSelect={(key) => setBarState(districtCourtStates.find((s) => s.id === key)?.label ?? '')}
+                />
                 <label className="form-field">
-                  <span>{t.auth.signup.barState}</span>
+                  <span>{t.auth.signup.verificationDocUrl}</span>
                   <input
                     type="text"
                     required
-                    placeholder={t.auth.signup.barStatePlaceholder}
-                    value={barState}
-                    onChange={(e) => setBarState(e.target.value)}
-                  />
-                </label>
-                <label className="form-field">
-                  <span>
-                    {t.auth.signup.verificationDocUrl}
-                    <span style={{ fontWeight: 400, color: 'var(--text-muted)' }}> {t.auth.signup.optional}</span>
-                  </span>
-                  <input
-                    type="text"
                     placeholder={t.auth.signup.verificationDocPlaceholder}
                     value={verificationDocUrl}
                     onChange={(e) => setVerificationDocUrl(e.target.value)}

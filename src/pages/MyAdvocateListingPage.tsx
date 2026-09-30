@@ -11,6 +11,9 @@ import './MyAdvocateListingPage.css';
 
 interface Props {
   onBack: () => void;
+  /** True when arriving straight from advocate signup, before the subscription checkout step. */
+  postSignup?: boolean;
+  onContinueToPricing?: () => void;
 }
 
 const EMPTY: AdvocateProfile = {
@@ -23,7 +26,7 @@ const EMPTY: AdvocateProfile = {
   listed: false,
 };
 
-export function MyAdvocateListingPage({ onBack }: Props) {
+export function MyAdvocateListingPage({ onBack, postSignup, onContinueToPricing }: Props) {
   const { t } = useLanguage();
   const ml = t.advocateDirectory.myListing;
   const { user, token } = useAuth();
@@ -42,7 +45,7 @@ export function MyAdvocateListingPage({ onBack }: Props) {
         const isUntouched = !p.city && !p.practiceState && p.practiceForums.length === 0 && !p.listed;
         if (isUntouched && (p.suggestedForums.length > 0 || user?.barState)) {
           const matchedState = user?.barState
-            ? districtCourtStates.find((s) => user.barState!.toLowerCase().includes(s.label.toLowerCase()))
+            ? districtCourtStates.find((s) => s.label === user.barState)
             : undefined;
           setProfile({ ...p, practiceState: matchedState?.id ?? p.practiceState, practiceForums: p.suggestedForums });
           setPrefilled(true);
@@ -95,6 +98,17 @@ export function MyAdvocateListingPage({ onBack }: Props) {
       </button>
       <h1 className="mal-title">{ml.title}</h1>
       <p className="step-help">{ml.intro}</p>
+
+      {postSignup && (
+        <div className="ap-sent mal-verify-note" style={{ background: 'var(--accent-tint)', color: 'var(--accent-deep)', borderColor: 'var(--accent)' }}>
+          <p style={{ margin: 0 }}>{ml.postSignupWelcome}</p>
+          {onContinueToPricing && (
+            <button type="button" className="para-btn" style={{ marginTop: 'var(--space-3)' }} onClick={onContinueToPricing}>
+              {ml.continueToPlans}
+            </button>
+          )}
+        </div>
+      )}
 
       {!isVerified && (
         <div className="ap-sent mal-verify-note" style={{ background: 'var(--status-warn-bg)', color: 'var(--status-warn-text)', borderColor: 'var(--status-warn-border)' }}>

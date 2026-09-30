@@ -158,7 +158,7 @@ type Screen =
   | { kind: 'adminGaps' }
   | { kind: 'findAdvocate'; forumType?: string; state?: string }
   | { kind: 'advocateProfile'; advocateId: string }
-  | { kind: 'myAdvocateListing' }
+  | { kind: 'myAdvocateListing'; postSignup?: boolean }
   | { kind: 'advocateInquiries' };
 
 export default function App() {
@@ -341,9 +341,11 @@ function AppScreens() {
           onSignedUp={(role) => {
             const destination = pendingScreen;
             setPendingScreen(null);
-            // A brand-new advocate still goes through subscription checkout first — the trial
-            // mandate has to be set up regardless of what they were trying to do when they signed up.
-            navigate(role === 'advocate' ? { kind: 'pricing' } : destination ?? { kind: 'myCases' });
+            // A brand-new advocate lands on their (pre-filled) directory listing first, so their
+            // sign-up details carry straight into Find an Advocate and verification is front of
+            // mind — then on to subscription checkout, which is still mandatory regardless of
+            // what they were trying to do when they signed up.
+            navigate(role === 'advocate' ? { kind: 'myAdvocateListing', postSignup: true } : destination ?? { kind: 'myCases' });
           }}
           onSwitchToLogin={openLoginNav}
           onForgotPassword={(email) => navigate({ kind: 'forgotPassword', email })}
@@ -431,7 +433,13 @@ function AppScreens() {
       return <AdvocateProfilePage advocateId={screen.advocateId} onBack={onBack} />;
     }
     if (screen.kind === 'myAdvocateListing') {
-      return <MyAdvocateListingPage onBack={onBack} />;
+      return (
+        <MyAdvocateListingPage
+          onBack={onBack}
+          postSignup={screen.postSignup}
+          onContinueToPricing={screen.postSignup ? openPricingNav : undefined}
+        />
+      );
     }
     if (screen.kind === 'advocateInquiries') {
       return <AdvocateInquiriesPage onBack={onBack} />;
