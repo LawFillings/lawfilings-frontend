@@ -230,6 +230,7 @@ interface Props {
   onOpenCauseListPro: () => void;
   onOpenForum: (forumType: string) => void;
   onOpenCourtFee: () => void;
+  onOpenLegalDictionary: () => void;
   onOpenTranslateDocument: () => void;
   onOpenCaseLaw: () => void;
   onOpenMyCases: () => void;
@@ -247,6 +248,7 @@ export function LandingPage({
   onOpenCauseListPro,
   onOpenForum,
   onOpenCourtFee,
+  onOpenLegalDictionary,
   onOpenTranslateDocument,
   onOpenCaseLaw,
   onOpenMyCases,
@@ -341,6 +343,9 @@ export function LandingPage({
                   </li>
                   <li>
                     <button type="button" onClick={onOpenTranslateDocument}>{t.nav.translateDocument}</button>
+                  </li>
+                  <li>
+                    <button type="button" onClick={onOpenLegalDictionary}>{t.nav.legalDictionary}</button>
                   </li>
                 </ul>
               )}

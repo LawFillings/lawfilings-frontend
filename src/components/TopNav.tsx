@@ -12,6 +12,7 @@ interface Props {
   onOpenCaseLawSearch: () => void;
   onOpenCourtFeeCalculator: () => void;
   onOpenTranslateDocument: () => void;
+  onOpenLegalDictionary: () => void;
   onOpenCauseListBasic: () => void;
   onOpenCauseListPro: () => void;
   onOpenPricing: () => void;
@@ -36,6 +37,7 @@ export function TopNav({
   onOpenCaseLawSearch,
   onOpenCourtFeeCalculator,
   onOpenTranslateDocument,
+  onOpenLegalDictionary,
   onOpenCauseListBasic,
   onOpenCauseListPro,
   onOpenPricing,
@@ -57,7 +59,7 @@ export function TopNav({
     ['rules', t.lawLibrary.categoryRules],
   ];
 
-  const legalToolsKinds = ['courtFeeCalculator', 'translateDocument'];
+  const legalToolsKinds = ['courtFeeCalculator', 'translateDocument', 'legalDictionary'];
   const legalToolsActive = legalToolsKinds.includes(activeKind);
 
   const causeListKinds = ['causeListBasic', 'causeListPro'];
@@ -103,6 +105,9 @@ export function TopNav({
             </button>
             <button type="button" className="top-nav-dropdown-item" onClick={onOpenTranslateDocument}>
               {t.nav.translateDocument}
+            </button>
+            <button type="button" className="top-nav-dropdown-item" onClick={onOpenLegalDictionary}>
+              {t.nav.legalDictionary}
             </button>
           </div>
         </div>

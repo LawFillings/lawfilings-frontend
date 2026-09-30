@@ -19,6 +19,7 @@ interface Props {
   onOpenLawLibraryCategory: (category: ActCategory) => void;
   onOpenCaseLawSearch: () => void;
   onOpenCourtFeeCalculator: () => void;
+  onOpenLegalDictionary: () => void;
   onOpenTranslateDocument: () => void;
   onOpenCauseListBasic: () => void;
   onOpenCauseListPro: () => void;
@@ -51,6 +52,7 @@ export function AppSidebar({
   onOpenLawLibraryCategory,
   onOpenCaseLawSearch,
   onOpenCourtFeeCalculator,
+  onOpenLegalDictionary,
   onOpenTranslateDocument,
   onOpenCauseListBasic,
   onOpenCauseListPro,
@@ -154,6 +156,9 @@ export function AppSidebar({
               </button>
               <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenTranslateDocument)}>
                 {t.nav.translateDocument}
+              </button>
+              <button className="app-sidebar-link app-sidebar-sublink" onClick={go(onOpenLegalDictionary)}>
+                {t.nav.legalDictionary}
               </button>
             </div>
           )}

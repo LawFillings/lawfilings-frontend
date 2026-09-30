@@ -86,6 +86,7 @@ import { GenericCaseWizard } from './pages/GenericCaseWizard';
 import { LawLibrary, type ActCategory } from './pages/LawLibrary';
 import { CaseLawSearch } from './pages/CaseLawSearch';
 import { CourtFeeCalculatorPage } from './pages/CourtFeeCalculatorPage';
+import { LegalDictionaryPage } from './pages/LegalDictionaryPage';
 import { TranslateDocumentPage } from './pages/TranslateDocumentPage';
 import { CauseListBasicPage } from './pages/CauseListBasicPage';
 import { CauseListProPage } from './pages/CauseListProPage';
@@ -137,6 +138,7 @@ type Screen =
   | { kind: 'lawLibrary'; category?: ActCategory }
   | { kind: 'caseLawSearch' }
   | { kind: 'courtFeeCalculator' }
+  | { kind: 'legalDictionary' }
   | { kind: 'translateDocument' }
   | { kind: 'causeListBasic' }
   | { kind: 'causeListPro' }
@@ -216,6 +218,7 @@ function AppScreens() {
   const openLawLibraryCategoryNav = (category: ActCategory) => navigate({ kind: 'lawLibrary', category });
   const openCaseLawSearchNav = () => navigate({ kind: 'caseLawSearch' });
   const openCourtFeeCalculatorNav = () => navigate({ kind: 'courtFeeCalculator' });
+  const openLegalDictionaryNav = () => navigate({ kind: 'legalDictionary' });
   const openTranslateDocumentNav = () => navigate({ kind: 'translateDocument' });
   const openCauseListBasicNav = () => navigate({ kind: 'causeListBasic' });
   const openCauseListProNav = () => navigate({ kind: 'causeListPro' });
@@ -250,6 +253,7 @@ function AppScreens() {
           onOpenCauseListPro={openCauseListProNav}
           onOpenForum={(forumType) => navigate({ kind: 'home', forumType })}
           onOpenCourtFee={openCourtFeeCalculatorNav}
+          onOpenLegalDictionary={openLegalDictionaryNav}
           onOpenTranslateDocument={openTranslateDocumentNav}
           onOpenCaseLaw={openCaseLawSearchNav}
           onOpenMyCases={openMyCasesNav}
@@ -292,6 +296,9 @@ function AppScreens() {
     }
     if (screen.kind === 'courtFeeCalculator') {
       return <CourtFeeCalculatorPage onBack={onBack} />;
+    }
+    if (screen.kind === 'legalDictionary') {
+      return <LegalDictionaryPage onBack={onBack} onOpenLawLibrary={openLawLibraryNav} />;
     }
     if (screen.kind === 'translateDocument') {
       return <TranslateDocumentPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
@@ -922,6 +929,7 @@ function AppScreens() {
         onOpenCaseLawSearch={openCaseLawSearchNav}
         onOpenCourtFeeCalculator={openCourtFeeCalculatorNav}
         onOpenTranslateDocument={openTranslateDocumentNav}
+        onOpenLegalDictionary={openLegalDictionaryNav}
         onOpenCauseListBasic={openCauseListBasicNav}
         onOpenCauseListPro={openCauseListProNav}
         onOpenPricing={openPricingNav}
@@ -943,6 +951,7 @@ function AppScreens() {
           onOpenCaseLawSearch={openCaseLawSearchNav}
           onOpenCourtFeeCalculator={openCourtFeeCalculatorNav}
           onOpenTranslateDocument={openTranslateDocumentNav}
+          onOpenLegalDictionary={openLegalDictionaryNav}
           onOpenCauseListBasic={openCauseListBasicNav}
           onOpenCauseListPro={openCauseListProNav}
           onOpenAbout={openAboutNav}

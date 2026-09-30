@@ -6,7 +6,8 @@
 .td-page.td-page,
 .cls-page.cls-page,
 .fa-page.fa-page,
-.my-cases-page.my-cases-page {
+.my-cases-page.my-cases-page,
+.ld-page.ld-page {
   max-width: 1120px;
 }
 
@@ -17,7 +18,8 @@
 .law-library.law-library,
 .cl-page.cl-page,
 .fa-page.fa-page,
-.my-cases-page.my-cases-page {
+.my-cases-page.my-cases-page,
+.ld-page.ld-page {
   max-width: 1800px;
 }
 

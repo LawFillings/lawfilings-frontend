@@ -1,0 +1,160 @@
+.ld-page {
+  margin: 0 auto;
+  padding: var(--space-6) var(--space-5) var(--space-8);
+}
+
+.ld-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  margin: 0 0 var(--space-2);
+}
+
+.ld-title {
+  font-size: 28px;
+  margin-bottom: var(--space-3);
+}
+
+.ld-sub {
+  font-size: 15px;
+  line-height: 1.6;
+  margin: 0 0 var(--space-5);
+}
+
+.ld-search-input {
+  width: 100%;
+  font-size: 15px;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font-family: var(--font-body);
+  margin-bottom: var(--space-4);
+}
+
+/* Cap the trio-card to a fixed height on desktop so a long term list scrolls within the middle
+   column instead of growing the whole page — scrolling down the list would otherwise push the
+   right column's definition panel out of view. Reset below the trio breakpoint (900px, where
+   split-page.css itself stacks the three columns to auto height) since a short scrolling box
+   makes little sense once the columns are no longer side by side. */
+.ld-page .trio-card {
+  height: 720px;
+  grid-template-rows: minmax(0, 1fr);
+  overflow: hidden;
+}
+.ld-page .trio-left,
+.ld-page .trio-right {
+  overflow-y: auto;
+  min-height: 0;
+}
+.ld-page .trio-center {
+  min-height: 0;
+}
+
+.ld-term-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+}
+
+@media (max-width: 900px) {
+  .ld-page .trio-card {
+    height: auto;
+    grid-template-rows: none;
+    overflow: visible;
+  }
+  .ld-page .trio-left,
+  .ld-page .trio-right,
+  .ld-page .trio-center {
+    overflow-y: visible;
+  }
+  .ld-term-list {
+    flex: none;
+    overflow-y: visible;
+  }
+}
+
+.ld-term-row {
+  width: 100%;
+  text-align: left;
+  padding: var(--space-3) var(--space-4);
+  border: 1px solid var(--line-soft);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.ld-term-row:hover {
+  border-color: var(--accent);
+}
+
+.ld-term-row.active {
+  border-color: var(--accent-deep);
+  background: var(--accent-tint);
+}
+
+.ld-term-row-title {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: 15px;
+  color: var(--ink);
+}
+
+.ld-term-row-snippet {
+  font-size: 13px;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+/* A highlighted card, not just plain text sitting in the purple panel — since selecting a term in
+   the (now internally-scrolling) middle column updates this panel without the page itself moving,
+   it needs to visibly catch the eye on its own. */
+.ld-detail {
+  background: var(--accent-tint);
+  border: 1px solid var(--accent);
+  border-radius: var(--radius);
+  padding: var(--space-4);
+}
+
+.ld-detail-category {
+  font-family: var(--font-mono);
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-2);
+}
+
+.ld-detail-term {
+  font-size: 22px;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-3);
+}
+
+.ld-detail-definition {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--text);
+  margin: 0 0 var(--space-3);
+}
+
+.ld-detail-aka {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0;
+}
+
+@media (max-width: 800px) {
+  .ld-term-row-snippet {
+    white-space: normal;
+  }
+}
