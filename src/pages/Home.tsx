@@ -30,12 +30,15 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
   const [selectedTopCategoryKey, setSelectedTopCategoryKey] = useState<string | null>(null);
   const [selectedSubcategoryKey, setSelectedSubcategoryKey] = useState<string | null>(null);
 
-  // A selection here reveals new content further down the page — on a short viewport that reveal
-  // can land entirely below the fold, so a click can look like it did nothing. Scroll the newly
-  // revealed block into view each time, skipping the very first render (e.g. an initialForumType
+  // A selection here reveals new content in the results column — on a short viewport, or once
+  // that column has grown tall with cards, the top of the picker (and the newly-revealed content)
+  // can end up out of view. Bring the whole picker row back into view each time (not just the deep
+  // child that changed — scrolling a tall nested child to the viewport's very top would push the
+  // hero/court-button columns of that same row off the top of the screen, since every column
+  // shares one page scroll position), skipping the very first render (e.g. an initialForumType
   // passed in from elsewhere shouldn't yank the page on mount).
   const hasMountedRef = useRef(false);
-  const forumGroupRef = useRef<HTMLElement>(null);
+  const forumGroupRef = useRef<HTMLDivElement>(null);
   const topCategoryContentRef = useRef<HTMLDivElement>(null);
   const subcategoryContentRef = useRef<HTMLDivElement>(null);
   useEffect(() => {
@@ -43,12 +46,8 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
       hasMountedRef.current = true;
       return;
     }
-    if (selectedSubcategoryKey && subcategoryContentRef.current) {
-      subcategoryContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (selectedTopCategoryKey && topCategoryContentRef.current) {
-      topCategoryContentRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
-    } else if (selectedForumType && forumGroupRef.current) {
-      forumGroupRef.current.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if ((selectedForumType || selectedTopCategoryKey || selectedSubcategoryKey) && forumGroupRef.current) {
+      forumGroupRef.current.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     }
   }, [selectedForumType, selectedTopCategoryKey, selectedSubcategoryKey]);
 
@@ -154,8 +153,6 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
               <h1 className="home-title">{t.home.title}</h1>
 
               <div className="home-privacy-note">
-                <p className="home-privacy-title">{t.home.privacyTitle} 🔒</p>
-                <p className="home-privacy-body">{t.home.privacyBody}</p>
                 <button className="home-privacy-link" onClick={onOpenPrivacyPolicy}>
                   {t.landing.footer.privacyPolicy} {language === 'ur' ? '←' : '→'}
                 </button>
@@ -169,120 +166,150 @@ export function Home({ onBack, onSelectCaseType, onSelectAppealGroup, onOpenSett
               </p>
             </div>
 
-            <div className="picker-split-right">
-              <div className="forum-tabs">
-                {orderedForums.map((forum, i) => (
-                  <Fragment key={forum.id}>
-                    {i > 0 && rowOfForum(forum.forumType) !== rowOfForum(orderedForums[i - 1].forumType) && (
-                      <span className="forum-tabs-break" aria-hidden="true" />
-                    )}
-                    <button
-                      data-hue={(i % 8) + 1}
-                      className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
-                      onClick={() => selectForum(forum.forumType)}
-                    >
-                      {forumTabLabel[forum.forumType] ?? forum.name}
-                    </button>
-                  </Fragment>
-                ))}
+            {!selectedForum && (
+              <div className="picker-split-mid">
+                <div className="forum-tabs">
+                  {orderedForums.map((forum, i) => (
+                    <Fragment key={forum.id}>
+                      {i > 0 && rowOfForum(forum.forumType) !== rowOfForum(orderedForums[i - 1].forumType) && (
+                        <span className="forum-tabs-break" aria-hidden="true" />
+                      )}
+                      <button
+                        data-hue={(i % 8) + 1}
+                        className={forum.forumType === selectedForumType ? 'forum-tab active' : 'forum-tab'}
+                        onClick={() => selectForum(forum.forumType)}
+                      >
+                        {forumTabLabel[forum.forumType] ?? forum.name}
+                      </button>
+                    </Fragment>
+                  ))}
+                </div>
               </div>
+            )}
+
+            <div
+              className={selectedForum ? 'picker-split-right picker-split-right-wide' : 'picker-split-right'}
+              data-tone={cardTone}
+              ref={forumGroupRef}
+            >
+              {!selectedForum && <p className="subcategory-prompt">{t.home.pickACourtPrompt}</p>}
+
+              {selectedForum && (
+                <div ref={topCategoryContentRef}>
+                  {/* Selecting a court hides the court-button column to leave more room for
+                      results — this breadcrumb is the only way back to it, so the forum segment
+                      is always clickable here, not just once a deeper tier has been picked. */}
+                  <div className="picker-breadcrumb">
+                    <button
+                      type="button"
+                      className="picker-breadcrumb-reset"
+                      onClick={() => selectForum(selectedForumType!)}
+                      aria-label={`${t.home.changeCategory}: ${selectedForum.name}`}
+                    >
+                      {selectedForum.name}
+                      <span aria-hidden="true"> ✕</span>
+                    </button>
+                    {activeTopSection && (
+                      <>
+                        <span className="picker-breadcrumb-sep" aria-hidden="true">
+                          ›
+                        </span>
+                        <button
+                          type="button"
+                          className="picker-breadcrumb-reset"
+                          onClick={() => selectTopCategory(activeTopSection.key)}
+                          aria-label={`${t.home.changeCategory}: ${topCategoryLabel[activeTopSection.key] ?? activeTopSection.label}`}
+                        >
+                          {topCategoryLabel[activeTopSection.key] ?? activeTopSection.label}
+                          <span aria-hidden="true"> ✕</span>
+                        </button>
+                      </>
+                    )}
+                  </div>
+
+                  {topCategorySections && !activeTopSection ? (
+                    <div className="top-category-tabs">
+                      {topCategorySections.map((tc) => (
+                        <button
+                          key={tc.key}
+                          className={tc.key === selectedTopCategoryKey ? 'top-category-tab active' : 'top-category-tab'}
+                          onClick={() => selectTopCategory(tc.key)}
+                        >
+                          {topCategoryLabel[tc.key] ?? tc.label}
+                          <span className="top-category-tab-count">{tc.items.length}</span>
+                        </button>
+                      ))}
+                    </div>
+                  ) : subcategorySections ? (
+                    <>
+                      {selectedGroups.length > 0 && (
+                        <div className="case-type-grid" style={{ marginBottom: 'var(--space-5)' }}>
+                          {selectedGroups.map((g) => (
+                            <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
+                              <span className="case-type-kind">{categoryLabel.appeal}</span>
+                              <span className="case-type-name">{t.home.appeal}</span>
+                              <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
+                            </button>
+                          ))}
+                        </div>
+                      )}
+                      <div className="subcategory-tabs">
+                        {subcategorySections.map((sc) => (
+                          <button
+                            key={sc.key}
+                            className={sc.key === selectedSubcategoryKey ? 'subcategory-tab active' : 'subcategory-tab'}
+                            onClick={() => setSelectedSubcategoryKey(sc.key === selectedSubcategoryKey ? null : sc.key)}
+                          >
+                            {subcategoryLabel[sc.key] ?? sc.label}
+                            <span className="subcategory-tab-count">{sc.items.length}</span>
+                          </button>
+                        ))}
+                      </div>
+                      {(() => {
+                        const activeSection = subcategorySections.find((sc) => sc.key === selectedSubcategoryKey);
+                        return activeSection ? (
+                          <div className="case-type-grid" ref={subcategoryContentRef} style={{ marginTop: 'var(--space-4)' }}>
+                            {activeSection.items.map((ct) => (
+                              <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
+                                <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
+                                <span className="case-type-name">{ct.name}</span>
+                                {widgets.caseDescriptions && ct.plainLanguageSummary && (
+                                  <span className="case-type-desc">{caseTypeSummary[ct.id] ?? ct.plainLanguageSummary}</span>
+                                )}
+                              </button>
+                            ))}
+                          </div>
+                        ) : (
+                          <p className="subcategory-prompt">{t.home.pickACategory}</p>
+                        );
+                      })()}
+                    </>
+                  ) : (
+                    <div className="case-type-grid">
+                      {selectedGroups.map((g) => (
+                        <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
+                          <span className="case-type-kind">{categoryLabel.appeal}</span>
+                          <span className="case-type-name">{t.home.appeal}</span>
+                          <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
+                        </button>
+                      ))}
+                      {workingItems.map((ct) => (
+                        <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
+                          <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
+                          <span className="case-type-name">{ct.name}</span>
+                          {widgets.caseDescriptions && ct.plainLanguageSummary && (
+                            <span className="case-type-desc">{caseTypeSummary[ct.id] ?? ct.plainLanguageSummary}</span>
+                          )}
+                        </button>
+                      ))}
+                    </div>
+                  )}
+                </div>
+              )}
             </div>
           </div>
         </div>
       </div>
-
-      {selectedForum && (
-        <section className="forum-group" data-tone={cardTone} ref={forumGroupRef}>
-          {topCategorySections && (
-            <div className="pick-row">
-              <h2 className="pick-row-title">{selectedForum.name}</h2>
-              <div className="top-category-tabs">
-                {topCategorySections.map((tc) => (
-                  <button
-                    key={tc.key}
-                    className={tc.key === selectedTopCategoryKey ? 'top-category-tab active' : 'top-category-tab'}
-                    onClick={() => selectTopCategory(tc.key)}
-                  >
-                    {topCategoryLabel[tc.key] ?? tc.label}
-                    <span className="top-category-tab-count">{tc.items.length}</span>
-                  </button>
-                ))}
-              </div>
-            </div>
-          )}
-          {topCategorySections && !activeTopSection ? (
-            <p className="subcategory-prompt">{t.home.pickACategory}</p>
-          ) : subcategorySections ? (
-            <>
-              {selectedGroups.length > 0 && (
-                <div className="case-type-grid" style={{ marginBottom: 'var(--space-6)' }}>
-                  {selectedGroups.map((g) => (
-                    <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
-                      <span className="case-type-kind">{categoryLabel.appeal}</span>
-                      <span className="case-type-name">{t.home.appeal}</span>
-                      <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
-                    </button>
-                  ))}
-                </div>
-              )}
-              <div className="pick-row" ref={topCategoryContentRef}>
-                <h2 className="pick-row-title">
-                  {activeTopSection ? topCategoryLabel[activeTopSection.key] ?? activeTopSection.label : selectedForum.name}
-                </h2>
-                <div className="subcategory-tabs">
-                  {subcategorySections.map((sc) => (
-                    <button
-                      key={sc.key}
-                      className={sc.key === selectedSubcategoryKey ? 'subcategory-tab active' : 'subcategory-tab'}
-                      onClick={() => setSelectedSubcategoryKey(sc.key === selectedSubcategoryKey ? null : sc.key)}
-                    >
-                      {subcategoryLabel[sc.key] ?? sc.label}
-                      <span className="subcategory-tab-count">{sc.items.length}</span>
-                    </button>
-                  ))}
-                </div>
-              </div>
-              {(() => {
-                const activeSection = subcategorySections.find((sc) => sc.key === selectedSubcategoryKey);
-                return activeSection ? (
-                  <div className="case-type-grid" ref={subcategoryContentRef}>
-                    {activeSection.items.map((ct) => (
-                      <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
-                        <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
-                        <span className="case-type-name">{ct.name}</span>
-                        {widgets.caseDescriptions && ct.plainLanguageSummary && (
-                          <span className="case-type-desc">{caseTypeSummary[ct.id] ?? ct.plainLanguageSummary}</span>
-                        )}
-                      </button>
-                    ))}
-                  </div>
-                ) : (
-                  <p className="subcategory-prompt">{t.home.pickACategory}</p>
-                );
-              })()}
-            </>
-          ) : (
-            <div className="case-type-grid">
-              {selectedGroups.map((g) => (
-                <button className="case-type-card" key={g.id} onClick={() => onSelectAppealGroup(g)}>
-                  <span className="case-type-kind">{categoryLabel.appeal}</span>
-                  <span className="case-type-name">{t.home.appeal}</span>
-                  <span className="case-type-desc">{appealGroupQuestion[g.id].question}</span>
-                </button>
-              ))}
-              {workingItems.map((ct) => (
-                <button className="case-type-card" key={ct.id} onClick={() => onSelectCaseType(ct)}>
-                  <span className="case-type-kind">{categoryLabel[ct.filingCategory]}</span>
-                  <span className="case-type-name">{ct.name}</span>
-                  {widgets.caseDescriptions && ct.plainLanguageSummary && (
-                    <span className="case-type-desc">{caseTypeSummary[ct.id] ?? ct.plainLanguageSummary}</span>
-                  )}
-                </button>
-              ))}
-            </div>
-          )}
-        </section>
-      )}
     </div>
   );
 }

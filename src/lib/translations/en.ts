@@ -15,7 +15,8 @@ export const en = {
       sub: "Links to every court's own official cause-list page, grouped by court. Open the one you need and search it yourself. Want it fetched, searched by your name, and tabulated automatically instead? That's Cause List (Pro).",
       loginPrompt: "Log in to use the cause-list directory.",
       paywallLabel: "Want this done automatically?",
-      paywallBody: "Upgrade to Pro to have LawFilings fetch a court's list, search it for your name, and tabulate it — instead of browsing and searching it yourself below."
+      paywallBody: "Upgrade to Pro to have LawFilings fetch a court's list, search it for your name, and tabulate it — instead of browsing and searching it yourself below.",
+      paywallButton: "Upgrade to Pro →"
     },
     pro: {
       eyebrow: "Daily cause list — Pro",
@@ -45,7 +46,9 @@ export const en = {
       colItemNo: "Item No.",
       colCaseNo: "Case No.",
       colParties: "Parties",
-      colAdvocates: "Advocate(s)"
+      colAdvocates: "Advocate(s)",
+      basicNudge: "Just want a direct link to a court's own cause-list page, without automatic fetching or search?",
+      basicNudgeLink: "Browse the free directory instead →"
     }
   },
   courtFeePage: {
@@ -59,6 +62,7 @@ export const en = {
     forumNclt: "NCLT / NCLAT",
     forumConsumer: "Consumer Commission",
     forumHighCourt: "High Court",
+    forumSupremeCourt: "Supreme Court",
     stateLabel: "State",
     valueLabel: "Value of the suit",
     feePayable: "Court fee payable",
@@ -92,7 +96,10 @@ export const en = {
     hcFundamentalRightsNo: "No",
     hcFundamentalRightsYes: "Yes",
     hcUnverifiedNote: "This figure is a reasoned inference, not a confirmed line item in the Act — see the note alongside before relying on it.",
-    hcFeeUnavailable: "No confirmed fee amount for this application type in this state — see the note alongside for what is and isn't verified."
+    hcFeeUnavailable: "No confirmed fee amount for this application type in this state — see the note alongside for what is and isn't verified.",
+    scSub: "Fees for Supreme Court petitions, appeals, and applications — one central schedule applies nationwide, rather than a schedule per state. Several matters (criminal proceedings, contempt petitions) carry no court fee at all.",
+    scTypeLabel: "Type of proceeding",
+    scDerivativeFee: "This carries the same fee you paid on the original proceeding now being reviewed — there's no separate figure to compute here."
   },
   common: {
     back: 'Back',
@@ -415,6 +422,8 @@ export const en = {
       'sc-misc-applications': 'Interlocutory & Miscellaneous Applications',
     },
     pickACategory: 'Pick a category above to see its filings.',
+    pickACourtPrompt: 'Select a court or forum to see what you can file there.',
+    changeCategory: 'Change',
   },
   settings: {
     eyebrow: 'Admin only',
@@ -1598,6 +1607,8 @@ export const en = {
       loadError: "Couldn't load the directory — please try again.",
       yearsSuffix: '{n}+ yrs',
       barCouncilOf: 'Bar Council of {state}',
+      listingNudge: 'Are you an advocate? Get listed here so clients searching by court, state, or language can find you.',
+      listingNudgeLink: 'Set up my listing →',
     },
     profile: {
       backToDirectory: 'Back to directory',

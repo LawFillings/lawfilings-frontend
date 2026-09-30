@@ -166,3 +166,17 @@
   background: var(--accent-tint);
   font-weight: 600;
 }
+
+/* The pinned paywall card in the right column reads small next to the rest of this page's
+ * full-width trio layout — bump it up a step from PaywallBlock's own (smaller) default sizing,
+ * which was tuned for the narrower cards it normally sits in inside a wizard's sidebar. */
+.trio-right .deadline-label {
+  font-size: 13px;
+}
+.trio-right .deadline-body {
+  font-size: 16px;
+}
+.trio-right .para-btn {
+  font-size: 15px;
+  padding: 8px 16px;
+}

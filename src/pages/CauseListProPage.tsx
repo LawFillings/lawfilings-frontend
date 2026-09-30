@@ -23,6 +23,7 @@ interface Props {
   onBack: () => void;
   onOpenLogin: () => void;
   onOpenPricing: () => void;
+  onOpenCauseListBasic: () => void;
 }
 
 type Status = 'idle' | 'loading' | 'done' | 'error';
@@ -38,7 +39,7 @@ function todayIso(): string {
  *  A non-Pro account reaching this page still sees the full form; submitting is what surfaces the
  *  402 paywall below, same pattern as judge-style analysis elsewhere on the platform. The free,
  *  no-extraction alternative is CauseListBasicPage (a plain directory of each court's own page). */
-export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) {
+export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing, onOpenCauseListBasic }: Props) {
   const { user, token } = useAuth();
   const { t } = useLanguage();
   const c = t.causeListPage;
@@ -130,25 +131,24 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
         {t.common.back}
       </button>
 
-      <div className="split-card">
-      <header className="cl-hero split-left">
-        <p className="cl-eyebrow">{p.eyebrow}</p>
-        <h1 className="cl-title">{p.title}</h1>
-        <p className="cl-sub">{p.sub}</p>
-      </header>
+      <div className="trio-card">
+        <aside className="trio-left">
+          <p className="cl-eyebrow">{p.eyebrow}</p>
+          <h1 className="cl-title">{p.title}</h1>
+          <p className="cl-sub">{p.sub}</p>
+        </aside>
 
-      <div className="split-right">
+        <main className="trio-center">
+          {!user && (
+            <div className="cl-login-gate">
+              <p>{p.loginPrompt}</p>
+              <button type="button" className="para-btn" onClick={onOpenLogin}>
+                {t.nav.logIn}
+              </button>
+            </div>
+          )}
 
-      {!user && (
-        <div className="cl-login-gate">
-          <p>{p.loginPrompt}</p>
-          <button type="button" className="para-btn" onClick={onOpenLogin}>
-            {t.nav.logIn}
-          </button>
-        </div>
-      )}
-
-      {user && (
+          {user && (
         <div className="cl-form">
           <label className="field-label" htmlFor="cl-court">
             {p.courtLabel}
@@ -315,9 +315,18 @@ export function CauseListProPage({ onBack, onOpenLogin, onOpenPricing }: Props) 
               )}
             </div>
           )}
-        </div>
-      )}
-      </div>
+            </div>
+          )}
+        </main>
+
+        <aside className="trio-right">
+          <button type="button" className="trio-nudge-card" onClick={onOpenCauseListBasic}>
+            {p.basicNudge}
+          </button>
+          <button type="button" className="trio-nudge-card trio-nudge-card-solid" onClick={onOpenCauseListBasic}>
+            {p.basicNudgeLink}
+          </button>
+        </aside>
       </div>
     </div>
   );

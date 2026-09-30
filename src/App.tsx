@@ -300,7 +300,14 @@ function AppScreens() {
       return <CauseListBasicPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
     }
     if (screen.kind === 'causeListPro') {
-      return <CauseListProPage onBack={onBack} onOpenLogin={openLoginNav} onOpenPricing={openPricingNav} />;
+      return (
+        <CauseListProPage
+          onBack={onBack}
+          onOpenLogin={openLoginNav}
+          onOpenPricing={openPricingNav}
+          onOpenCauseListBasic={openCauseListBasicNav}
+        />
+      );
     }
     if (screen.kind === 'about') return <AboutPage onBack={onBack} onStartFiling={startFilingNav} />;
     if (screen.kind === 'contact') return <ContactPage onBack={onBack} />;
@@ -414,6 +421,7 @@ function AppScreens() {
         <FindAdvocatePage
           onBack={onBack}
           onOpenAdvocate={(advocateId) => requireAuth({ kind: 'advocateProfile', advocateId })}
+          onOpenMyAdvocateListing={openMyAdvocateListingNav}
           initialForumType={screen.forumType}
           initialState={screen.state}
         />

@@ -4,7 +4,9 @@
 .cl-page.cl-page,
 .cfc-page.cfc-page,
 .td-page.td-page,
-.cls-page.cls-page {
+.cls-page.cls-page,
+.fa-page.fa-page,
+.my-cases-page.my-cases-page {
   max-width: 1120px;
 }
 
@@ -12,7 +14,10 @@
 .cfc-page.cfc-page,
 .td-page.td-page,
 .cls-page.cls-page,
-.law-library.law-library {
+.law-library.law-library,
+.cl-page.cl-page,
+.fa-page.fa-page,
+.my-cases-page.my-cases-page {
   max-width: 1800px;
 }
 

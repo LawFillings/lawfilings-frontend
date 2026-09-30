@@ -12,13 +12,14 @@ import './FindAdvocatePage.css';
 interface Props {
   onBack: () => void;
   onOpenAdvocate: (id: string) => void;
+  onOpenMyAdvocateListing: () => void;
   initialForumType?: string;
   initialState?: string;
 }
 
 const FORUM_LABEL: Record<string, string> = Object.fromEntries(forums.map((f) => [f.forumType, f.name]));
 
-export function FindAdvocatePage({ onBack, onOpenAdvocate, initialForumType, initialState }: Props) {
+export function FindAdvocatePage({ onBack, onOpenAdvocate, onOpenMyAdvocateListing, initialForumType, initialState }: Props) {
   const { t } = useLanguage();
   const fa = t.advocateDirectory.find;
   const [forumType, setForumType] = useState(initialForumType ?? '');
@@ -50,8 +51,8 @@ export function FindAdvocatePage({ onBack, onOpenAdvocate, initialForumType, ini
         {t.common.back}
       </button>
 
-      <div className="split-card">
-        <header className="fa-hero split-left">
+      <div className="trio-card">
+        <aside className="trio-left">
           <p className="fa-eyebrow">{fa.eyebrow}</p>
           <h1 className="fa-title">{fa.title}</h1>
           <p className="fa-sub">{fa.sub}</p>
@@ -82,9 +83,9 @@ export function FindAdvocatePage({ onBack, onOpenAdvocate, initialForumType, ini
               onSelect={setLanguage}
             />
           </div>
-        </header>
+        </aside>
 
-        <div className="fa-results split-right">
+        <main className="fa-results trio-center">
           {error && <div className="fa-error">{error}</div>}
           {results === null && !error && <p className="step-help">{t.common.loading}</p>}
           {results !== null && results.length === 0 && !error && (
@@ -118,7 +119,16 @@ export function FindAdvocatePage({ onBack, onOpenAdvocate, initialForumType, ini
               {a.bio && <p className="fa-card-bio">{a.bio}</p>}
             </button>
           ))}
-        </div>
+        </main>
+
+        <aside className="trio-right">
+          <button type="button" className="trio-nudge-card" onClick={onOpenMyAdvocateListing}>
+            {fa.listingNudge}
+          </button>
+          <button type="button" className="trio-nudge-card trio-nudge-card-solid" onClick={onOpenMyAdvocateListing}>
+            {fa.listingNudgeLink}
+          </button>
+        </aside>
       </div>
     </div>
   );

@@ -80,6 +80,20 @@
   color: rgba(255, 255, 255, 0.95);
 }
 
+/* The nudge now sits in the trio scheme's light-purple right column instead of the dark left
+ * panel it was designed for — flip it from light-on-dark to dark-on-light so it stays legible. */
+.trio-right .my-cases-advocate-nudge {
+  background: #fff;
+  border-color: #c9b3dd;
+  color: #4a2e63;
+}
+.trio-right .my-cases-advocate-nudge-close {
+  color: #8a6ba8;
+}
+.trio-right .my-cases-advocate-nudge-close:hover {
+  color: #4a2e63;
+}
+
 .my-cases-empty {
   display: flex;
   flex-direction: column;

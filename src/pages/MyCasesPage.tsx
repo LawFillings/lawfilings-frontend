@@ -192,8 +192,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
         {t.common.back}
       </button>
 
-      <div className="split-card">
-      <header className="my-cases-hero split-left">
+      <div className="trio-card">
+      <aside className="my-cases-hero trio-left">
         <p className="my-cases-eyebrow">
           {t.myCases.yourAccount}
           {user?.role === 'advocate' && user.verificationStatus !== 'not_applicable' && (
@@ -207,21 +207,9 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
         </p>
         <h1 className="my-cases-title">{t.myCases.title}</h1>
         <p className="my-cases-sub">{t.myCases.sub}</p>
+      </aside>
 
-        {showListingNudge && (
-          <div className="my-cases-advocate-nudge">
-            <span>You're verified — want to appear in Find an Advocate?</span>
-            <button type="button" className="home-privacy-link" onClick={onOpenMyAdvocateListing}>
-              Set up my listing →
-            </button>
-            <button type="button" className="my-cases-advocate-nudge-close" onClick={dismissListingNudge} aria-label="Dismiss">
-              ×
-            </button>
-          </div>
-        )}
-      </header>
-
-      <div className="split-right">
+      <main className="trio-center">
 
       {!user && (
         <div className="my-cases-empty">
@@ -306,7 +294,23 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
       {user && cases && cases.length === 0 && (
         <p className="step-help">{t.myCases.noSavedCases}</p>
       )}
-      </div>
+      </main>
+
+      <aside className="trio-right">
+        {showListingNudge ? (
+          <>
+            <div className="my-cases-advocate-nudge">
+              <span>You're verified — want to appear in Find an Advocate?</span>
+              <button type="button" className="my-cases-advocate-nudge-close" onClick={dismissListingNudge} aria-label="Dismiss">
+                ×
+              </button>
+            </div>
+            <button type="button" className="trio-nudge-card trio-nudge-card-solid" onClick={onOpenMyAdvocateListing}>
+              Set up my listing →
+            </button>
+          </>
+        ) : null}
+      </aside>
       </div>
 
       {user && cases && cases.length > 0 && (

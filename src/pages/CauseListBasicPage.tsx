@@ -52,62 +52,65 @@ export function CauseListBasicPage({ onBack, onOpenLogin, onOpenPricing }: Props
         {t.common.back}
       </button>
 
-      <div className="split-card">
-      <header className="cl-hero split-left">
-        <p className="cl-eyebrow">{c.basic.eyebrow}</p>
-        <h1 className="cl-title">{c.basic.title}</h1>
-        <p className="cl-sub">{c.basic.sub}</p>
-      </header>
+      <div className="trio-card">
+        <aside className="trio-left">
+          <p className="cl-eyebrow">{c.basic.eyebrow}</p>
+          <h1 className="cl-title">{c.basic.title}</h1>
+          <p className="cl-sub">{c.basic.sub}</p>
+        </aside>
 
-      <div className="split-right">
+        <main className="trio-center">
+          {!user && (
+            <div className="cl-login-gate">
+              <p>{c.basic.loginPrompt}</p>
+              <button type="button" className="para-btn" onClick={onOpenLogin}>
+                {t.nav.logIn}
+              </button>
+            </div>
+          )}
 
-      {!user && (
-        <div className="cl-login-gate">
-          <p>{c.basic.loginPrompt}</p>
-          <button type="button" className="para-btn" onClick={onOpenLogin}>
-            {t.nav.logIn}
-          </button>
-        </div>
-      )}
+          {user && (
+            <div className="cl-directory">
+              <div className="cl-directory-group">
+                <ul className="cl-directory-list">
+                  {supremeCourt.map((c) => (
+                    <li key={c.id} className="cl-directory-item">
+                      <a href={c.portalUrl} target="_blank" rel="noopener noreferrer" className="cl-portal-link">
+                        {c.name} ↗
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
 
-      {user && (
-        <div className="cl-directory">
+              {Array.from(groupedOthers.entries()).map(([category, courts]) => (
+                <details key={category} className="cl-directory-dropdown">
+                  <summary className="cl-directory-dropdown-summary">
+                    {catLabel(category)} <span className="cl-directory-dropdown-count">({courts.length})</span>
+                  </summary>
+                  <ul className="cl-directory-list">
+                    {courts.map((c) => (
+                      <li key={c.id} className="cl-directory-item">
+                        <a href={c.portalUrl} target="_blank" rel="noopener noreferrer" className="cl-portal-link">
+                          {c.name} ↗
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
+                </details>
+              ))}
+            </div>
+          )}
+        </main>
+
+        <aside className="trio-right">
           <PaywallBlock
             onChoosePlan={onOpenPricing}
             label={c.basic.paywallLabel}
             body={c.basic.paywallBody}
+            buttonLabel={c.basic.paywallButton}
           />
-          <div className="cl-directory-group">
-            <ul className="cl-directory-list">
-              {supremeCourt.map((c) => (
-                <li key={c.id} className="cl-directory-item">
-                  <a href={c.portalUrl} target="_blank" rel="noopener noreferrer" className="cl-portal-link">
-                    {c.name} ↗
-                  </a>
-                </li>
-              ))}
-            </ul>
-          </div>
-
-          {Array.from(groupedOthers.entries()).map(([category, courts]) => (
-            <details key={category} className="cl-directory-dropdown">
-              <summary className="cl-directory-dropdown-summary">
-                {catLabel(category)} <span className="cl-directory-dropdown-count">({courts.length})</span>
-              </summary>
-              <ul className="cl-directory-list">
-                {courts.map((c) => (
-                  <li key={c.id} className="cl-directory-item">
-                    <a href={c.portalUrl} target="_blank" rel="noopener noreferrer" className="cl-portal-link">
-                      {c.name} ↗
-                    </a>
-                  </li>
-                ))}
-              </ul>
-            </details>
-          ))}
-        </div>
-      )}
-      </div>
+        </aside>
       </div>
     </div>
   );
