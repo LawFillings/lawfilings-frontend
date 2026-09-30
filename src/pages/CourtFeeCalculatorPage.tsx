@@ -6,6 +6,7 @@ import { DRT_APPLICATION_TYPES, calculateDrtFee, type DrtApplicationTypeId, type
 import { NCLT_APPLICATION_TYPES, type NcltApplicationTypeId } from '../data/ncltFeeSchedule';
 import { CONSUMER_APPLICATION_TYPES, calculateConsumerFee, type ConsumerApplicationTypeId } from '../data/consumerFeeSchedule';
 import { HC_STATE_SCHEDULES, HC_TYPE_OPTIONS, type HcTypeId, type HcFlatTypeId } from '../data/hcFlatFeeSchedule';
+import { SC_APPLICATION_TYPES, calculateScAdValoremFee, type ScApplicationTypeId } from '../data/scFeeSchedule';
 import '../styles/split-page.css';
 import './CourtFeeCalculatorPage.css';
 
@@ -13,7 +14,7 @@ interface Props {
   onBack: () => void;
 }
 
-type Forum = 'district_court' | 'drt' | 'nclt' | 'consumer' | 'high_court';
+type Forum = 'district_court' | 'drt' | 'nclt' | 'consumer' | 'high_court' | 'supreme_court';
 
 function formatINR(n: number) {
   return '₹' + n.toLocaleString('en-IN', { maximumFractionDigits: 2 });
@@ -51,6 +52,10 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
   const [hcValue, setHcValue] = useState('');
   const [hcReviewFiledBefore, setHcReviewFiledBefore] = useState(true);
   const [hcFundamentalRights, setHcFundamentalRights] = useState(false);
+
+  const [scTypeId, setScTypeId] = useState<ScApplicationTypeId>('slp-civil');
+  const [scToggle, setScToggle] = useState(false);
+  const [scValue, setScValue] = useState('');
 
   const schedule = courtFeeSchedules.find((s) => s.id === scheduleId)!;
   const numeric = Number(suitValue.replace(/[^0-9.]/g, ''));
@@ -108,6 +113,13 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
         ? hcReviewRule.note
         : hcFlatEntry?.note ?? '';
 
+  const scType = SC_APPLICATION_TYPES.find((s) => s.id === scTypeId)!;
+  const scNumeric = Number(scValue.replace(/[^0-9.]/g, ''));
+  const scHasValue = scValue.length > 0 && !Number.isNaN(scNumeric) && scNumeric > 0;
+  const scTierTable = scType.kind === 'ad-valorem' ? scType.fixedTierTable ?? (scToggle ? 'part4' : 'general') : null;
+  const scAdValoremFee = scTierTable && scHasValue ? calculateScAdValoremFee(scTierTable, scNumeric) : null;
+  const scFlatFee = scType.kind === 'flat' ? scType.flatFee! : scType.kind === 'toggle' ? (scToggle ? scType.feeIfYes! : scType.feeIfNo!) : null;
+
   return (
     <div className="cfc-page">
       <button className="back-link" onClick={onBack} style={{ margin: 0, padding: 0, marginBottom: 'var(--space-5)' }}>
@@ -127,7 +139,9 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
                   ? c.consumerSub
                   : forum === 'high_court'
                     ? c.hcSub
-                    : fmt(c.sub, { count: courtFeeSchedules.length })}
+                    : forum === 'supreme_court'
+                      ? c.scSub
+                      : fmt(c.sub, { count: courtFeeSchedules.length })}
           </p>
 
           <div className="trio-filter" role="tablist" aria-label={c.forumLabel}>
@@ -165,6 +179,13 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
               onClick={() => setForum('high_court')}
             >
               {c.forumHighCourt}
+            </button>
+            <button
+              type="button"
+              className={forum === 'supreme_court' ? 'trio-filter-btn active' : 'trio-filter-btn'}
+              onClick={() => setForum('supreme_court')}
+            >
+              {c.forumSupremeCourt}
             </button>
           </div>
         </aside>
@@ -503,6 +524,90 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
               )}
             </div>
           )}
+
+          {forum === 'supreme_court' && (
+            <div className="cfc-form">
+              <label className="field-label" htmlFor="cfc-sc-type">
+                {c.scTypeLabel}
+              </label>
+              <select
+                id="cfc-sc-type"
+                className="cfc-select"
+                value={scTypeId}
+                onChange={(e) => {
+                  setScTypeId(e.target.value as ScApplicationTypeId);
+                  setScToggle(false);
+                  setScValue('');
+                }}
+              >
+                {SC_APPLICATION_TYPES.map((s) => (
+                  <option key={s.id} value={s.id}>
+                    {s.label}
+                  </option>
+                ))}
+              </select>
+
+              {scType.kind === 'toggle' && (
+                <div className="form-field" style={{ marginTop: 'var(--space-4)' }}>
+                  <span>{scType.toggleLabel}</span>
+                  <label style={{ display: 'block', fontWeight: 400 }}>
+                    <input type="radio" checked={!scToggle} onChange={() => setScToggle(false)} /> {scType.toggleNoLabel}
+                  </label>
+                  <label style={{ display: 'block', fontWeight: 400 }}>
+                    <input type="radio" checked={scToggle} onChange={() => setScToggle(true)} /> {scType.toggleYesLabel}
+                  </label>
+                </div>
+              )}
+
+              {scType.kind === 'ad-valorem' && scType.toggleForTierTable && (
+                <div className="form-field" style={{ marginTop: 'var(--space-4)' }}>
+                  <span>{scType.toggleForTierTable.label}</span>
+                  <label style={{ display: 'block', fontWeight: 400 }}>
+                    <input type="radio" checked={!scToggle} onChange={() => setScToggle(false)} /> {scType.toggleForTierTable.noLabel}
+                  </label>
+                  <label style={{ display: 'block', fontWeight: 400 }}>
+                    <input type="radio" checked={scToggle} onChange={() => setScToggle(true)} /> {scType.toggleForTierTable.yesLabel}
+                  </label>
+                </div>
+              )}
+
+              {scType.kind === 'ad-valorem' && (
+                <>
+                  <label className="field-label" htmlFor="cfc-sc-value" style={{ marginTop: 'var(--space-4)' }}>
+                    {c.valueLabel}
+                  </label>
+                  <input
+                    id="cfc-sc-value"
+                    type="text"
+                    className="date-input"
+                    placeholder="₹"
+                    value={scValue}
+                    onChange={(e) => setScValue(e.target.value)}
+                  />
+
+                  <div className="cfc-result">
+                    <div className="cfc-result-row">
+                      <span className="cfc-result-label">{c.feePayable}</span>
+                      <span className="cfc-result-value">{formatINR(scAdValoremFee ?? 0)}</span>
+                    </div>
+                  </div>
+
+                  {scHasValue && scAdValoremFee === null && <p className="step-help">{c.invalidValue}</p>}
+                </>
+              )}
+
+              {(scType.kind === 'flat' || scType.kind === 'toggle') && (
+                <div className="cfc-result">
+                  <div className="cfc-result-row">
+                    <span className="cfc-result-label">{c.feePayable}</span>
+                    <span className="cfc-result-value">{formatINR(scFlatFee ?? 0)}</span>
+                  </div>
+                </div>
+              )}
+
+              {scType.kind === 'derivative' && <p className="step-help">{c.scDerivativeFee}</p>}
+            </div>
+          )}
         </main>
 
         <aside className="trio-right">
@@ -530,7 +635,7 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
               <br />
               {fmt(c.lastChecked, { date: formatDate(consumerType.lastVerified, language) })}
             </div>
-          ) : (
+          ) : forum === 'high_court' ? (
             <div className="trio-nudge-card cfc-source-note">
               {fmt(c.under, { law: hcCourtSchedule.governingLaw })} {hcNote}
               {hcSchedule.overallNote && (
@@ -542,6 +647,12 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
               )}
               <br />
               {fmt(c.lastChecked, { date: formatDate('2026-09-26', language) })}
+            </div>
+          ) : (
+            <div className="trio-nudge-card cfc-source-note">
+              {fmt(c.under, { law: scType.governingLaw })} {scType.sourceNote}
+              <br />
+              {fmt(c.lastChecked, { date: formatDate(scType.lastVerified, language) })}
             </div>
           )}
         </aside>
