@@ -1114,4 +1114,235 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
     definition:
       'The principle that courts should follow the precedents set by earlier decisions, especially those of higher courts, rather than deciding each similar case afresh. It promotes consistency and predictability in how the law is applied.',
   },
+  {
+    id: 'habeas-corpus',
+    term: 'Habeas Corpus',
+    category: 'latin_maxims',
+    definition:
+      'A writ issued under Article 32 or Article 226 of the Constitution, directing a person or authority holding someone in custody to produce that person before the court and justify the detention. It is the primary remedy against unlawful or arbitrary detention.',
+  },
+  {
+    id: 'mandamus',
+    term: 'Mandamus',
+    category: 'latin_maxims',
+    definition:
+      'A writ issued under Article 32 or Article 226 of the Constitution, directing a public authority or official to perform a public duty it has failed or refused to perform.',
+  },
+  {
+    id: 'certiorari',
+    term: 'Certiorari',
+    category: 'latin_maxims',
+    definition:
+      'A writ issued under Article 32 or Article 226 of the Constitution, by which a higher court calls for the record of a case from a lower court or tribunal and quashes its order if it was passed without jurisdiction or in violation of natural justice.',
+  },
+  {
+    id: 'quo-warranto',
+    term: 'Quo Warranto',
+    category: 'latin_maxims',
+    definition:
+      'A writ issued under Article 32 or Article 226 of the Constitution, questioning the authority by which a person holds a public office, and removing them from it if they are found to be occupying it without legal right.',
+  },
+  {
+    id: 'amicus-curiae',
+    term: 'Amicus Curiae',
+    category: 'latin_maxims',
+    definition:
+      'A person or organisation, not a party to a case, whom a court permits to assist it by offering information, expertise, or arguments relevant to the case, usually on a matter of public importance.',
+  },
+  {
+    id: 'de-facto',
+    term: 'De Facto',
+    category: 'latin_maxims',
+    definition:
+      'Existing in practice or fact, whether or not it is formally or legally recognised. Often contrasted with "de jure," which means existing by law.',
+  },
+  {
+    id: 'de-jure',
+    term: 'De Jure',
+    category: 'latin_maxims',
+    definition:
+      'Existing by law or as a matter of legal right, whether or not it reflects what is actually happening in practice. Often contrasted with "de facto," which means existing in fact.',
+  },
+  {
+    id: 'inter-alia',
+    term: 'Inter Alia',
+    category: 'latin_maxims',
+    definition:
+      'Among other things. Used to indicate that a list or statement is not exhaustive — that other matters exist besides the ones specifically mentioned.',
+  },
+  {
+    id: 'ipso-facto',
+    term: 'Ipso Facto',
+    category: 'latin_maxims',
+    definition:
+      'By that very fact itself, without anything more being needed to bring about a particular result or consequence.',
+  },
+  {
+    id: 'quid-pro-quo',
+    term: 'Quid Pro Quo',
+    category: 'latin_maxims',
+    definition:
+      'Something given or done in exchange for something else of comparable value. Used, for example, in contract law to describe consideration passing between the parties to an agreement.',
+  },
+  {
+    id: 'status-quo',
+    term: 'Status Quo',
+    category: 'latin_maxims',
+    definition:
+      'The existing state of affairs at a given point in time. Courts often pass interim orders to "maintain status quo," preventing any party from changing the existing situation while a case is pending.',
+  },
+  {
+    id: 'pari-passu',
+    term: 'Pari Passu',
+    category: 'latin_maxims',
+    definition:
+      'On equal footing, without preference. Used mainly where creditors or claimants are paid or treated proportionately, with none given priority over the others.',
+  },
+  {
+    id: 'res-ipsa-loquitur',
+    term: 'Res Ipsa Loquitur',
+    category: 'latin_maxims',
+    definition:
+      'The thing speaks for itself. Applied mainly in negligence cases, where the circumstances of an accident are so obviously indicative of carelessness that the facts alone are treated as evidence of negligence, without needing further proof of exactly how it happened.',
+  },
+  {
+    id: 'ejusdem-generis',
+    term: 'Ejusdem Generis',
+    category: 'latin_maxims',
+    definition:
+      'A rule of statutory interpretation: where a law lists specific items followed by general words, those general words are read as limited to things of the same kind as the items listed, not as covering anything whatsoever.',
+  },
+  {
+    id: 'noscitur-a-sociis',
+    term: 'Noscitur a Sociis',
+    category: 'latin_maxims',
+    definition:
+      'A rule of statutory interpretation: the meaning of an unclear word or phrase in a law can be understood by looking at the words surrounding it, since a word is known by the company it keeps.',
+  },
+  {
+    id: 'doli-incapax',
+    term: 'Doli Incapax',
+    category: 'latin_maxims',
+    definition:
+      'Incapable of committing a crime. Used mainly for young children, who are presumed by law to lack the understanding needed to be held criminally responsible for their actions below a certain age.',
+  },
+  {
+    id: 'uberrima-fides',
+    term: 'Uberrima Fides',
+    category: 'latin_maxims',
+    definition:
+      'Utmost good faith. Certain contracts, most notably insurance contracts, require each party to voluntarily disclose all material facts to the other, going beyond the ordinary duty not to misrepresent that applies to most contracts.',
+  },
+  {
+    id: 'de-novo',
+    term: 'De Novo',
+    category: 'latin_maxims',
+    definition:
+      'Anew, or starting afresh. A "de novo" hearing or trial means the matter is heard again from the beginning, as if the earlier proceeding had not taken place, rather than merely being reviewed for errors.',
+  },
+  {
+    id: 'functus-officio',
+    term: 'Functus Officio',
+    category: 'latin_maxims',
+    definition:
+      'Having discharged one\'s duty or authority, and therefore no longer having the power to act further in the matter. For example, a court that has already passed a final decree is, on most matters, functus officio in relation to that case.',
+  },
+  {
+    id: 'sui-generis',
+    term: 'Sui Generis',
+    category: 'latin_maxims',
+    definition:
+      'Of its own kind, or unique — not fitting neatly into an existing category or classification, and therefore requiring its own distinct legal treatment.',
+  },
+  {
+    id: 'lis-pendens',
+    term: 'Lis Pendens',
+    category: 'latin_maxims',
+    definition:
+      'A pending suit or litigation. Under the doctrine of lis pendens, a property that is the subject matter of an ongoing case cannot be transferred in a way that affects the rights of the other party to that case.',
+  },
+  {
+    id: 'pendente-lite',
+    term: 'Pendente Lite',
+    category: 'latin_maxims',
+    definition:
+      'While the litigation is pending. Used to describe an order, right, or arrangement, such as interim maintenance or custody, that applies only for the duration of the case until it is finally decided.',
+  },
+  {
+    id: 'ex-post-facto',
+    term: 'Ex Post Facto',
+    category: 'latin_maxims',
+    definition:
+      'After the fact. Most often used for a law that seeks to criminalise an act, or increase the punishment for it, with effect from before the date the law itself was made — something the Constitution generally prohibits in criminal matters.',
+  },
+  {
+    id: 'nunc-pro-tunc',
+    term: 'Nunc Pro Tunc',
+    category: 'latin_maxims',
+    definition:
+      'Now for then. An order that a court makes now but which takes legal effect from an earlier date, typically used to correct the record where a delay or omission would otherwise unfairly affect a party\'s rights.',
+  },
+  {
+    id: 'quantum-meruit',
+    term: 'Quantum Meruit',
+    category: 'latin_maxims',
+    definition:
+      'As much as one has earned. A claim for reasonable payment for work done or services provided, made when no fixed price was agreed, or when a contract could not be completed, rather than a claim for damages.',
+  },
+  {
+    id: 'bona-vacantia',
+    term: 'Bona Vacantia',
+    category: 'latin_maxims',
+    definition:
+      'Ownerless property. Property with no identifiable owner, such as the assets of a dissolved company or of a person who dies without heirs or a will, which by law passes to the government.',
+  },
+  {
+    id: 'modus-operandi',
+    term: 'Modus Operandi',
+    category: 'latin_maxims',
+    definition:
+      'A particular method or pattern of operating. In criminal matters, it refers to the characteristic way in which an offence is carried out, which can sometimes help link an accused to similar past offences.',
+  },
+  {
+    id: 'coram-non-judice',
+    term: 'Coram Non Judice',
+    category: 'latin_maxims',
+    definition:
+      'Before a person who is not a judge, or before a court that lacks the authority to hear the matter. An order passed coram non judice is treated as a nullity, since it was made without proper jurisdiction to begin with.',
+  },
+  {
+    id: 'mutatis-mutandis',
+    term: 'Mutatis Mutandis',
+    category: 'latin_maxims',
+    definition:
+      'With the necessary changes having been made. Used when applying a rule, clause, or provision written for one situation to another, similar situation, adjusting only the details that must necessarily differ.',
+  },
+  {
+    id: 'sine-die',
+    term: 'Sine Die',
+    category: 'latin_maxims',
+    definition:
+      'Without a fixed date for resuming. A hearing or matter adjourned "sine die" is postponed indefinitely, with no specific date set for when it will next be taken up.',
+  },
+  {
+    id: 'sine-qua-non',
+    term: 'Sine Qua Non',
+    category: 'latin_maxims',
+    definition:
+      'An essential condition, without which something cannot happen or exist. Used to describe a requirement that is absolutely indispensable to a particular outcome.',
+  },
+  {
+    id: 'nemo-judex-in-causa-sua',
+    term: 'Nemo Judex in Causa Sua',
+    category: 'latin_maxims',
+    definition:
+      'No one should be a judge in his own cause. A core principle of natural justice requiring that a person or authority deciding a matter must not have a personal interest in its outcome.',
+  },
+  {
+    id: 'volenti-non-fit-injuria',
+    term: 'Volenti Non Fit Injuria',
+    category: 'latin_maxims',
+    definition:
+      'To a willing person, no injury is done. A defence, mainly in tort law, that a person who knowingly and voluntarily accepted the risk of harm cannot later claim compensation for that harm.',
+  },
 ];
