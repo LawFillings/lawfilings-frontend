@@ -147,6 +147,29 @@
   margin: 0 0 var(--space-3);
 }
 
+.ld-detail-example {
+  margin: 0 0 var(--space-3);
+  padding-top: var(--space-3);
+  border-top: 1px solid var(--accent);
+}
+
+.ld-detail-example-label {
+  font-family: var(--font-mono);
+  font-size: 11px;
+  text-transform: uppercase;
+  letter-spacing: 0.03em;
+  color: var(--accent-deep);
+  margin: 0 0 var(--space-1);
+}
+
+.ld-detail-example-text {
+  font-size: 14px;
+  font-style: italic;
+  line-height: 1.5;
+  color: var(--text);
+  margin: 0;
+}
+
 .ld-detail-aka {
   font-size: 13px;
   color: var(--text-muted);

@@ -713,6 +713,7 @@ export const te: Translations = {
     categoryLatinMaxims: 'లాటిన్ సూక్తులు',
     searchPlaceholder: 'ఒక పదాన్ని శోధించండి…',
     noResults: 'మీ శోధనకు సరిపోలే పదాలు ఏవీ లేవు.',
+    exampleLabel: 'ఉదాహరణ',
     alsoKnownAs: 'దీన్ని ఈ పేర్లతో కూడా పిలుస్తారు: {names}',
     selectPrompt: 'నిర్వచనాన్ని చూడటానికి ఒక పదాన్ని ఎంచుకోండి.',
     lawLibraryNudge: 'ఒక చట్టం యొక్క అసలు పాఠం కావాలా, కేవలం నిర్వచనం కాదా?',

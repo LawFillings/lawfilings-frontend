@@ -713,6 +713,7 @@ export const mr: Translations = {
     categoryLatinMaxims: 'लॅटिन सुभाषिते',
     searchPlaceholder: 'एखादी संज्ञा शोधा…',
     noResults: 'तुमच्या शोधाशी जुळणारी कोणतीही संज्ञा सापडली नाही.',
+    exampleLabel: 'उदाहरण',
     alsoKnownAs: 'हे या नावांनीही ओळखले जाते: {names}',
     selectPrompt: 'व्याख्या पाहण्यासाठी एखादी संज्ञा निवडा.',
     lawLibraryNudge: 'एखाद्या कायद्याचा प्रत्यक्ष मजकूर हवा आहे, फक्त व्याख्या नाही?',

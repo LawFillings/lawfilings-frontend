@@ -713,6 +713,7 @@ export const pa: Translations = {
     categoryLatinMaxims: 'ਲਾਤੀਨੀ ਸੂਕਤੀਆਂ',
     searchPlaceholder: 'ਕੋਈ ਸ਼ਬਦ ਖੋਜੋ…',
     noResults: 'ਤੁਹਾਡੀ ਖੋਜ ਨਾਲ ਮੇਲ ਖਾਂਦਾ ਕੋਈ ਸ਼ਬਦ ਨਹੀਂ ਮਿਲਿਆ।',
+    exampleLabel: 'ਉਦਾਹਰਣ',
     alsoKnownAs: 'ਇਸਨੂੰ ਇਹਨਾਂ ਨਾਵਾਂ ਨਾਲ ਵੀ ਜਾਣਿਆ ਜਾਂਦਾ ਹੈ: {names}',
     selectPrompt: 'ਪਰਿਭਾਸ਼ਾ ਵੇਖਣ ਲਈ ਕੋਈ ਸ਼ਬਦ ਚੁਣੋ।',
     lawLibraryNudge: 'ਕਿਸੇ ਐਕਟ ਦਾ ਅਸਲ ਪਾਠ ਚਾਹੀਦਾ ਹੈ, ਸਿਰਫ਼ ਪਰਿਭਾਸ਼ਾ ਨਹੀਂ?',

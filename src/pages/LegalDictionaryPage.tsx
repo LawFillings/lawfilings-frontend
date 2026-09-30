@@ -115,6 +115,10 @@ export function LegalDictionaryPage({ onBack, onOpenLawLibrary }: Props) {
               <p className="ld-detail-category">{categories.find((cat) => cat.id === selected.category)?.label}</p>
               <h2 className="ld-detail-term">{selected.term}</h2>
               <p className="ld-detail-definition">{selected.definition}</p>
+              <div className="ld-detail-example">
+                <p className="ld-detail-example-label">{c.exampleLabel}</p>
+                <p className="ld-detail-example-text">{selected.example}</p>
+              </div>
               {selected.alsoKnownAs && selected.alsoKnownAs.length > 0 && (
                 <p className="ld-detail-aka">{fmt(c.alsoKnownAs, { names: selected.alsoKnownAs.join(', ') })}</p>
               )}

@@ -713,6 +713,7 @@ export const ml: Translations = {
     categoryLatinMaxims: 'ലാറ്റിൻ സൂക്തങ്ങൾ',
     searchPlaceholder: 'ഒരു പദം തിരയുക…',
     noResults: 'നിങ്ങളുടെ തിരയലുമായി പൊരുത്തപ്പെടുന്ന പദങ്ങളൊന്നുമില്ല.',
+    exampleLabel: 'ഉദാഹരണം',
     alsoKnownAs: 'ഇത് ഈ പേരുകളിലും അറിയപ്പെടുന്നു: {names}',
     selectPrompt: 'നിർവചനം കാണാൻ ഒരു പദം തിരഞ്ഞെടുക്കുക.',
     lawLibraryNudge: 'ഒരു നിയമത്തിന്റെ യഥാർത്ഥ വാചകം വേണോ, വെറും നിർവചനമല്ല?',

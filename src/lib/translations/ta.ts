@@ -713,6 +713,7 @@ export const ta: Translations = {
     categoryLatinMaxims: 'லத்தீன் மொழிச் சொலவடைகள்',
     searchPlaceholder: 'ஒரு சொல்லைத் தேடுங்கள்…',
     noResults: 'உங்கள் தேடலுக்குப் பொருந்தும் சொற்கள் எதுவும் இல்லை.',
+    exampleLabel: 'உதாரணம்',
     alsoKnownAs: 'இது இந்தப் பெயர்களிலும் அறியப்படுகிறது: {names}',
     selectPrompt: 'விளக்கத்தைக் காண ஒரு சொல்லைத் தேர்ந்தெடுக்கவும்.',
     lawLibraryNudge: 'ஒரு சட்டத்தின் உண்மையான உரை வேண்டுமா, வெறும் விளக்கம் மட்டுமல்ல?',

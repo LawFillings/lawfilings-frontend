@@ -715,6 +715,7 @@ export const en = {
     categoryLatinMaxims: 'Latin Maxims',
     searchPlaceholder: 'Search a term…',
     noResults: 'No terms match your search.',
+    exampleLabel: 'Example',
     alsoKnownAs: 'Also known as: {names}',
     selectPrompt: 'Select a term to see its definition.',
     lawLibraryNudge: 'Looking for an Act’s actual text, not just a definition?',

@@ -713,6 +713,7 @@ export const hi: Translations = {
     categoryLatinMaxims: 'लैटिन सूक्तियाँ',
     searchPlaceholder: 'कोई शब्द खोजें…',
     noResults: 'आपकी खोज से मेल खाने वाला कोई शब्द नहीं मिला।',
+    exampleLabel: 'उदाहरण',
     alsoKnownAs: 'इसे इन नामों से भी जाना जाता है: {names}',
     selectPrompt: 'परिभाषा देखने के लिए कोई शब्द चुनें।',
     lawLibraryNudge: 'किसी अधिनियम का वास्तविक पाठ चाहिए, सिर्फ़ परिभाषा नहीं?',

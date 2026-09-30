@@ -713,6 +713,7 @@ export const kn: Translations = {
     categoryLatinMaxims: 'ಲ್ಯಾಟಿನ್ ಸೂಕ್ತಿಗಳು',
     searchPlaceholder: 'ಒಂದು ಪದವನ್ನು ಹುಡುಕಿ…',
     noResults: 'ನಿಮ್ಮ ಹುಡುಕಾಟಕ್ಕೆ ಹೊಂದುವ ಯಾವುದೇ ಪದ ಕಂಡುಬಂದಿಲ್ಲ.',
+    exampleLabel: 'ಉದಾಹರಣೆ',
     alsoKnownAs: 'ಇದನ್ನು ಈ ಹೆಸರುಗಳಿಂದಲೂ ಕರೆಯಲಾಗುತ್ತದೆ: {names}',
     selectPrompt: 'ವ್ಯಾಖ್ಯಾನ ನೋಡಲು ಒಂದು ಪದವನ್ನು ಆಯ್ಕೆಮಾಡಿ.',
     lawLibraryNudge: 'ಒಂದು ಕಾಯಿದೆಯ ನಿಜವಾದ ಪಠ್ಯ ಬೇಕೇ, ಕೇವಲ ವ್ಯಾಖ್ಯಾನವಲ್ಲ?',

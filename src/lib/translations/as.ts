@@ -713,6 +713,7 @@ export const as: Translations = {
     categoryLatinMaxims: 'লেটিন প্ৰবচন',
     searchPlaceholder: 'এটা শব্দ সন্ধান কৰক…',
     noResults: 'আপোনাৰ সন্ধানৰ সৈতে মিল থকা কোনো শব্দ পোৱা নগ’ল।',
+    exampleLabel: 'উদাহৰণ',
     alsoKnownAs: 'ইয়াক এই নামেৰেও জনা যায়: {names}',
     selectPrompt: 'সংজ্ঞা চাবলৈ এটা শব্দ বাছক।',
     lawLibraryNudge: 'কোনো আইনৰ প্ৰকৃত পাঠ লাগে নেকি, কেৱল সংজ্ঞা নহয়?',

@@ -713,6 +713,7 @@ export const ur: Translations = {
     categoryLatinMaxims: 'لاطینی اقوال',
     searchPlaceholder: 'کوئی اصطلاح تلاش کریں…',
     noResults: 'آپ کی تلاش سے میل کھاتی کوئی اصطلاح نہیں ملی۔',
+    exampleLabel: 'مثال',
     alsoKnownAs: 'اسے ان ناموں سے بھی جانا جاتا ہے: {names}',
     selectPrompt: 'تعریف دیکھنے کے لیے کوئی اصطلاح منتخب کریں۔',
     lawLibraryNudge: 'کسی ایکٹ کا اصل متن چاہیے، محض تعریف نہیں؟',

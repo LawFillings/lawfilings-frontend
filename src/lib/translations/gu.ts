@@ -713,6 +713,7 @@ export const gu: Translations = {
     categoryLatinMaxims: 'લેટિન સૂક્તિઓ',
     searchPlaceholder: 'એક શબ્દ શોધો…',
     noResults: 'તમારી શોધ સાથે મેળ ખાતો કોઈ શબ્દ મળ્યો નથી.',
+    exampleLabel: 'ઉદાહરણ',
     alsoKnownAs: 'આને આ નામોથી પણ ઓળખવામાં આવે છે: {names}',
     selectPrompt: 'વ્યાખ્યા જોવા માટે એક શબ્દ પસંદ કરો.',
     lawLibraryNudge: 'કોઈ ઍક્ટનો વાસ્તવિક પાઠ જોઈએ છે, ફક્ત વ્યાખ્યા નહીં?',

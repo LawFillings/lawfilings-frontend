@@ -713,6 +713,7 @@ export const or: Translations = {
     categoryLatinMaxims: 'ଲାଟିନ୍ ପ୍ରବଚନ',
     searchPlaceholder: 'ଏକ ଶବ୍ଦ ଖୋଜନ୍ତୁ…',
     noResults: 'ଆପଣଙ୍କ ସନ୍ଧାନ ସହିତ ମେଳ ଖାଉଥିବା କୌଣସି ଶବ୍ଦ ମିଳିଲା ନାହିଁ।',
+    exampleLabel: 'ଉଦାହରଣ',
     alsoKnownAs: 'ଏହାକୁ ଏହି ନାମରେ ମଧ୍ୟ ଜଣାଯାଏ: {names}',
     selectPrompt: 'ପରିଭାଷା ଦେଖିବାକୁ ଏକ ଶବ୍ଦ ବାଛନ୍ତୁ।',
     lawLibraryNudge: 'କୌଣସି ଆଇନର ପ୍ରକୃତ ପାଠ୍ୟ ଦରକାର, କେବଳ ପରିଭାଷା ନୁହେଁ?',
