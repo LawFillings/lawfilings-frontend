@@ -2,6 +2,7 @@ import { useMemo, useState } from 'react';
 import { useLanguage } from '../lib/language';
 import { fmt } from '../lib/format';
 import { legalDictionaryTerms, type DictionaryCategory, type DictionaryTerm } from '../data/legalDictionary';
+import { legalDictionaryDefinitionTranslations } from '../data/legalDictionaryTranslations';
 import '../styles/split-page.css';
 import './LegalDictionaryPage.css';
 
@@ -11,8 +12,14 @@ interface Props {
 }
 
 export function LegalDictionaryPage({ onBack, onOpenLawLibrary }: Props) {
-  const { t } = useLanguage();
+  const { t, language } = useLanguage();
   const c = t.legalDictionaryPage;
+
+  // The term/example stay English (headwords and usage lines, same convention as Law Library's
+  // Act text); only the definition itself is translated, with English as the fallback wherever a
+  // given term/language pair hasn't been translated yet.
+  const getDefinition = (term: DictionaryTerm) =>
+    language === 'en' ? term.definition : (legalDictionaryDefinitionTranslations[language]?.[term.id] ?? term.definition);
   const [category, setCategory] = useState<DictionaryCategory | 'all'>('all');
   const [query, setQuery] = useState('');
   const [selectedId, setSelectedId] = useState<string | null>(null);
@@ -38,12 +45,12 @@ export function LegalDictionaryPage({ onBack, onOpenLawLibrary }: Props) {
         if (!q) return true;
         return (
           term.term.toLowerCase().includes(q) ||
-          term.definition.toLowerCase().includes(q) ||
+          getDefinition(term).toLowerCase().includes(q) ||
           (term.alsoKnownAs ?? []).some((a) => a.toLowerCase().includes(q))
         );
       })
       .sort((a, b) => a.term.localeCompare(b.term));
-  }, [category, query]);
+  }, [category, query, language]);
 
   const selected: DictionaryTerm | undefined = selectedId
     ? legalDictionaryTerms.find((term) => term.id === selectedId)
@@ -101,7 +108,7 @@ export function LegalDictionaryPage({ onBack, onOpenLawLibrary }: Props) {
                     onClick={() => setSelectedId(term.id)}
                   >
                     <span className="ld-term-row-title">{term.term}</span>
-                    <span className="ld-term-row-snippet">{term.definition}</span>
+                    <span className="ld-term-row-snippet">{getDefinition(term)}</span>
                   </button>
                 </li>
               ))}
@@ -114,7 +121,7 @@ export function LegalDictionaryPage({ onBack, onOpenLawLibrary }: Props) {
             <div className="ld-detail">
               <p className="ld-detail-category">{categories.find((cat) => cat.id === selected.category)?.label}</p>
               <h2 className="ld-detail-term">{selected.term}</h2>
-              <p className="ld-detail-definition">{selected.definition}</p>
+              <p className="ld-detail-definition">{getDefinition(selected)}</p>
               <div className="ld-detail-example">
                 <p className="ld-detail-example-label">{c.exampleLabel}</p>
                 <p className="ld-detail-example-text">{selected.example}</p>

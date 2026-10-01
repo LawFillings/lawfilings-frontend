@@ -189,6 +189,123 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
     example:
       'The family lodged a caveat before the District Court, apprehending that the other side might move an ex parte application for probate.',
   },
+  {
+    id: 'plaintiff',
+    term: 'Plaintiff',
+    category: 'general_procedure',
+    definition:
+      'The person who files a civil suit, asking the court to grant them some relief against the defendant.',
+    example:
+      'The plaintiff sought a decree directing the defendant to vacate the premises and pay the arrears of rent.',
+  },
+  {
+    id: 'defendant',
+    term: 'Defendant',
+    category: 'general_procedure',
+    definition:
+      'The person against whom a civil suit is filed, and who is called upon to answer the plaintiff\'s claims by filing a written statement.',
+    example:
+      'The defendant denied the plaintiff\'s claim in its entirety and sought dismissal of the suit.',
+  },
+  {
+    id: 'petitioner',
+    term: 'Petitioner',
+    category: 'general_procedure',
+    definition:
+      'The person who files a petition, used instead of "plaintiff" in matters like writ petitions, matrimonial cases, or company law proceedings.',
+    example:
+      'The petitioner prayed that the impugned order be quashed and set aside.',
+  },
+  {
+    id: 'respondent',
+    term: 'Respondent',
+    category: 'general_procedure',
+    definition:
+      'The person against whom a petition, appeal, or revision is filed, and who is called upon to answer it, playing the same role in such proceedings that a defendant plays in a suit.',
+    example:
+      'Notice was issued to the respondents, calling upon them to file their reply within four weeks.',
+  },
+  {
+    id: 'appellant',
+    term: 'Appellant',
+    category: 'general_procedure',
+    definition:
+      'The person who files an appeal, challenging the decision of a lower court or tribunal, as distinct from the respondent who defends that decision.',
+    example:
+      'The appellant contended that the trial court had misread the evidence on record.',
+  },
+  {
+    id: 'applicant',
+    term: 'Applicant',
+    category: 'general_procedure',
+    definition:
+      'The person who files an application seeking a specific order or direction from a court or tribunal, a term most commonly used in interlocutory applications and in proceedings before tribunals such as the NCLT or a Consumer Commission.',
+    example:
+      'The applicant sought urgent interim relief pending disposal of the main petition.',
+  },
+  {
+    id: 'dismissal-for-default',
+    term: 'Dismissal for Default',
+    category: 'general_procedure',
+    definition:
+      'An order closing a case because a party, usually the plaintiff or appellant, failed to appear or take a required step, such as paying court fees or filing documents, within the time allowed. It is not a decision on the merits of the case.',
+    example:
+      'As no one appeared for the plaintiff despite the case being called thrice, the suit was dismissed for default.',
+  },
+  {
+    id: 'restoration-of-suit',
+    term: 'Restoration of Suit',
+    category: 'general_procedure',
+    definition:
+      'An application asking the court to revive a case that was dismissed for default, typically by showing a sufficient reason for the earlier non-appearance or non-compliance. If allowed, the case continues from where it was dismissed.',
+    example:
+      'The plaintiff filed an application for restoration of the suit, explaining that he had missed the hearing due to sudden hospitalisation.',
+  },
+  {
+    id: 'transfer-petition',
+    term: 'Transfer Petition',
+    category: 'general_procedure',
+    definition:
+      'A request asking a higher court to move a pending case from one court or tribunal to another, usually on grounds such as the convenience of the parties, ensuring a fair trial, or because another court already has a connected case.',
+    example:
+      'The wife filed a transfer petition before the High Court seeking transfer of the matrimonial case to the city where she resided.',
+  },
+  {
+    id: 'pecuniary-jurisdiction',
+    term: 'Pecuniary Jurisdiction',
+    category: 'general_procedure',
+    definition:
+      'The authority of a court to hear a case based specifically on the monetary value of the claim involved. Courts and tribunals are typically assigned value ranges, so a claim above or below the prescribed limit must be filed before a different forum.',
+    example:
+      'Since the claim exceeded the trial court\'s pecuniary jurisdiction, the suit was ordered to be filed before the District Judge instead.',
+  },
+  {
+    id: 'substituted-service',
+    term: 'Substituted Service',
+    category: 'general_procedure',
+    definition:
+      'An alternative method of serving notice or summons on a party, used when it has not been possible to deliver it to them directly or personally, such as by publishing the notice in a newspaper or affixing it at the party\'s last known address.',
+    example:
+      'After normal service failed repeatedly, the court permitted substituted service by publication in a local newspaper.',
+  },
+  {
+    id: 'court-fee',
+    term: 'Court Fee',
+    category: 'general_procedure',
+    definition:
+      'A fee paid to the government, usually through stamps or an online payment, before a plaint, petition, or appeal can be filed. It is generally calculated as a percentage of the amount or value claimed in the case, subject to a cap for certain types of filings.',
+    example:
+      'The suit was returned for correction since the plaintiff had paid court fee calculated on the wrong valuation of the relief claimed.',
+  },
+  {
+    id: 'next-friend',
+    term: 'Next Friend',
+    category: 'general_procedure',
+    definition:
+      'A responsible adult, typically a parent or close relative, who files and conducts a civil suit on behalf of a minor plaintiff, since a minor cannot sue in their own name.',
+    example:
+      'The suit was filed by the minor\'s mother as his next friend, since he was only fourteen years old.',
+  },
 
   // ─── Pleadings & Documents ────────────────────────────────────────
   {
@@ -335,6 +452,105 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
     example:
       'The special leave petition opened with a synopsis and list of dates setting out the chronology of proceedings before the High Court.',
   },
+  {
+    id: 'written-version',
+    term: 'Written Version',
+    category: 'pleadings_documents',
+    definition:
+      'The formal written reply filed by the opposite party in a case before a Consumer Commission, answering the allegations made in the complaint. It serves the same purpose there that a written statement does in an ordinary civil suit.',
+    example:
+      'The opposite party filed its written version within the time allowed, denying any deficiency in the service rendered.',
+  },
+  {
+    id: 'memorandum-of-appearance',
+    term: 'Memorandum of Appearance',
+    category: 'pleadings_documents',
+    definition:
+      'A document filed before certain tribunals, such as the NCLT, by which a party\'s authorised representative formally enters appearance in a case, serving a similar purpose to a vakalatnama filed before a court.',
+    example:
+      'The company\'s counsel filed a memorandum of appearance before the National Company Law Tribunal on the first date of hearing.',
+  },
+  {
+    id: 'affidavit-of-service',
+    term: 'Affidavit of Service',
+    category: 'pleadings_documents',
+    definition:
+      'An affidavit filed by the person who served a notice, summons, or other document on another party, confirming when, how, and on whom it was served. Courts rely on it to be satisfied that proper service has been effected.',
+    example:
+      'The process server filed an affidavit of service confirming that the summons had been personally handed over to the defendant.',
+  },
+  {
+    id: 'list-of-witnesses',
+    term: 'List of Witnesses',
+    category: 'pleadings_documents',
+    definition:
+      'A list filed by a party before evidence begins, naming the witnesses they intend to produce to prove their case. It lets the court and the other side know in advance who will be examined.',
+    example:
+      'Along with the list of witnesses, the plaintiff named three persons he proposed to examine to prove execution of the agreement.',
+  },
+  {
+    id: 'paper-book',
+    term: 'Paper Book',
+    category: 'pleadings_documents',
+    definition:
+      'A compiled set of all the relevant pleadings, documents, and orders in a case, bound together and indexed, prepared mainly for use in appeals and hearings before higher courts and tribunals.',
+    example:
+      'Counsel took the bench through the trial court\'s findings with the help of the paper book filed for the appeal.',
+  },
+  {
+    id: 'supplementary-affidavit',
+    term: 'Supplementary Affidavit',
+    category: 'pleadings_documents',
+    definition:
+      'An additional affidavit filed by a party after their original affidavit, to place new facts, documents, or developments before the court that were not covered earlier, rather than filing an entirely fresh application.',
+    example:
+      'The petitioner filed a supplementary affidavit placing on record the authority\'s reply received after the petition was originally filed.',
+  },
+  {
+    id: 'amendment-of-pleadings',
+    term: 'Amendment of Pleadings',
+    category: 'pleadings_documents',
+    definition:
+      'A court\'s permission allowing a party to make a correction or addition to their plaint or written statement, such as adding a fact or a relief, after it has already been filed. Courts generally allow this if it does not fundamentally alter the nature of the case.',
+    example:
+      'The plaintiff sought amendment of the pleadings to add a prayer for mesne profits that had inadvertently been left out.',
+  },
+  {
+    id: 'undertaking',
+    term: 'Undertaking',
+    category: 'pleadings_documents',
+    definition:
+      'A formal promise made to a court, either orally and recorded in the order, or through an affidavit, that a party will or will not do a particular thing. Breaking an undertaking given to a court can itself amount to contempt of court.',
+    example:
+      'The defendant gave an undertaking to the court that he would not create any third-party rights over the property during the pendency of the suit.',
+  },
+  {
+    id: 'notice-of-motion',
+    term: 'Notice of Motion',
+    category: 'pleadings_documents',
+    definition:
+      'A formal notice filed, mainly in certain High Courts\' original civil jurisdiction, informing the opposite side that an application for interim relief will be moved before the court on a specified date.',
+    example:
+      'The plaintiff filed a notice of motion seeking an ad-interim injunction, returnable in two weeks.',
+  },
+  {
+    id: 'reply-to-legal-notice',
+    term: 'Reply to Legal Notice',
+    category: 'pleadings_documents',
+    definition:
+      'A written response sent by the recipient of a legal notice, through their own advocate, either accepting, denying, or explaining the claims made in it before any case is filed.',
+    example:
+      'In his reply to the legal notice, the recipient denied owing any amount and asserted that the dues had already been cleared.',
+  },
+  {
+    id: 'compilation-of-judgments',
+    term: 'Compilation of Judgments',
+    category: 'pleadings_documents',
+    definition:
+      'A bound set of previously decided judgments that a party relies on and files before the court, to support the legal arguments made in a case.',
+    example:
+      'Counsel filed a compilation of judgments in support of the submission that similarly worded clauses had been interpreted the same way by other courts.',
+  },
 
   // ─── Evidence ─────────────────────────────────────────────────────
   {
@@ -480,6 +696,116 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
       'A conclusion that the law allows, or requires, a court to draw from certain facts unless it is disproved by evidence to the contrary. For example, a document that is more than a certain number of years old and produced from proper custody may be presumed genuine without separate proof.',
     example:
       'The court invoked the presumption available in law and accepted the thirty-year-old document as genuine, since it was produced from proper custody.',
+  },
+  {
+    id: 'interrogatories',
+    term: 'Interrogatories',
+    category: 'evidence',
+    definition:
+      'A set of written questions that one party in a civil case can require the opposite party to answer under oath, used to obtain facts or admissions relevant to the case before the trial.',
+    example:
+      'The plaintiff served interrogatories on the defendant, asking him to state under oath the exact date on which the goods were delivered.',
+  },
+  {
+    id: 'discovery-of-documents',
+    term: 'Discovery of Documents',
+    category: 'evidence',
+    definition:
+      'A procedure by which one party in a civil case can require the other side to disclose and produce documents in their possession that are relevant to the case, before the trial begins.',
+    example:
+      'The plaintiff sought discovery of documents, asking the defendant to produce all correspondence relating to the disputed transaction.',
+  },
+  {
+    id: 'evidence-by-affidavit',
+    term: 'Evidence by Affidavit',
+    category: 'evidence',
+    definition:
+      'A practice, followed especially before tribunals and commissions, where a witness\'s examination-in-chief is filed in the form of a sworn affidavit rather than being given orally in court. The witness can still be called for cross-examination on the statements made in that affidavit.',
+    example:
+      'The complainant filed her evidence by affidavit, and was thereafter cross-examined by counsel for the opposite party.',
+    alsoKnownAs: ['Affidavit in Lieu of Examination-in-Chief'],
+  },
+  {
+    id: 'primary-evidence',
+    term: 'Primary Evidence',
+    category: 'evidence',
+    definition:
+      'The original document itself, produced for the court\'s inspection, as opposed to secondary evidence such as a copy or oral account of its contents. Courts generally insist on primary evidence wherever the original document is available.',
+    example:
+      'The bank produced the original loan agreement as primary evidence rather than relying on a photocopy.',
+  },
+  {
+    id: 'secondary-evidence',
+    term: 'Secondary Evidence',
+    category: 'evidence',
+    definition:
+      'Evidence of a document\'s contents other than the original itself, such as a certified copy or an oral account by someone who has seen it, allowed only in specific situations like when the original has been lost or is in the other side\'s possession.',
+    example:
+      'Since the original agreement had been destroyed in a fire, the party was permitted to lead secondary evidence by producing a certified copy.',
+  },
+  {
+    id: 'leading-question',
+    term: 'Leading Question',
+    category: 'evidence',
+    definition:
+      'A question that suggests or hints at its own answer, or assumes a fact that has not yet been established. Leading questions are generally not allowed during examination-in-chief except on introductory or undisputed matters, but are permitted during cross-examination.',
+    example:
+      'The judge disallowed the leading question put to the witness during examination-in-chief and asked counsel to rephrase it.',
+  },
+  {
+    id: 'test-identification-parade',
+    term: 'Test Identification Parade',
+    category: 'evidence',
+    definition:
+      'A procedure conducted, usually by a magistrate, in which a witness is asked to pick out a suspect from among a group of other people, to check whether the witness can correctly identify them as the person involved in the offence.',
+    example:
+      'The investigating officer arranged a test identification parade to check whether the witness could identify the accused among a group of similar-looking persons.',
+    alsoKnownAs: ['TIP'],
+  },
+  {
+    id: 'dying-declaration',
+    term: 'Dying Declaration',
+    category: 'evidence',
+    definition:
+      'A statement made by a person about the cause of, or circumstances leading to, their death, given before they die. Courts treat a dying declaration as an exception to the usual rule against hearsay and can convict an accused on the basis of a reliable one alone.',
+    example:
+      'The prosecution relied heavily on the victim\'s dying declaration recorded by the magistrate at the hospital shortly before she succumbed to her injuries.',
+  },
+  {
+    id: 'confession',
+    term: 'Confession',
+    category: 'evidence',
+    definition:
+      'A statement made by an accused person admitting their own guilt in an offence, as distinct from an admission, which is a party\'s acknowledgment of a fact against their own interest in a civil matter. Under the Bharatiya Sakshya Adhiniyam, 2023 (BSA), the evidence law that replaced the Indian Evidence Act, a confession made to the police alone, as opposed to before a magistrate, generally cannot be used against the accused at trial.',
+    example:
+      'The trial court held that the accused\'s confession to the police could not be read in evidence against him.',
+  },
+  {
+    id: 'interested-witness',
+    term: 'Interested Witness',
+    category: 'evidence',
+    definition:
+      'A witness who has some personal stake in the outcome of a case, such as a close relative of a party, whose testimony courts examine with greater care rather than rejecting outright merely because of that relationship.',
+    example:
+      'The court noted that the witness, being the complainant\'s brother, was an interested witness and scrutinised his testimony carefully before relying on it.',
+  },
+  {
+    id: 'proof-of-document',
+    term: 'Proof of Document',
+    category: 'evidence',
+    definition:
+      'The process of establishing, usually through a witness, that a document is genuine and was executed or created the way it is claimed to be, before a court can rely on its contents. Simply placing a document on the court record does not by itself prove it.',
+    example:
+      'The plaintiff examined the scribe to prove the document, since the defendant had specifically disputed its execution.',
+  },
+  {
+    id: 'chain-of-custody',
+    term: 'Chain of Custody',
+    category: 'evidence',
+    definition:
+      'A documented record of everyone who has handled or had control over a physical object or sample, such as a weapon or forensic sample, from the time it was seized until it is produced in court. A broken or poorly documented chain of custody can raise doubts about whether the evidence produced is the same as what was originally seized.',
+    example:
+      'The defence argued that gaps in the chain of custody raised doubts about whether the sample tested at the laboratory was the one seized from the accused.',
   },
 
   // ─── Criminal Procedure ─────────────────────────────────────────
@@ -638,6 +964,127 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
     example:
       'Since the dispute was purely personal, the parties sought the court\'s permission for compounding of offence and settling the matter.',
   },
+  {
+    id: 'zero-fir',
+    term: 'Zero FIR',
+    category: 'criminal_procedure',
+    definition:
+      'An FIR registered by any police station for a cognizable offence, even if that police station does not have territorial jurisdiction over the place where the offence occurred. It is later transferred to the police station with proper jurisdiction for investigation.',
+    example:
+      'Since the assault had occurred in another district, the police station initially registered a Zero FIR and transferred it to the jurisdictional police station the same day.',
+  },
+  {
+    id: 'quashing-of-fir',
+    term: 'Quashing of FIR',
+    category: 'criminal_procedure',
+    definition:
+      'A plea made before the High Court, invoking its inherent powers, asking it to cancel an FIR or ongoing criminal proceedings, typically on the ground that they are baseless, an abuse of the legal process, or that the dispute has already been genuinely settled between the parties.',
+    example:
+      'The accused moved the High Court seeking quashing of the FIR, contending that the dispute was purely civil in nature and had already been amicably settled.',
+    alsoKnownAs: ['Quashing Petition'],
+  },
+  {
+    id: 'plea-bargaining',
+    term: 'Plea Bargaining',
+    category: 'criminal_procedure',
+    definition:
+      'A process under the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS) in which an accused can apply to negotiate a lesser sentence in exchange for pleading guilty, available only for certain categories of offences.',
+    example:
+      'The accused filed an application for plea bargaining, offering to plead guilty in exchange for a reduced sentence.',
+  },
+  {
+    id: 'default-bail',
+    term: 'Default Bail',
+    category: 'criminal_procedure',
+    definition:
+      'Bail that an accused becomes entitled to as of right when the police fail to complete the investigation and file the chargesheet within the time period allowed under the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS), regardless of how serious the allegation is.',
+    example:
+      'As the chargesheet had not been filed within the prescribed period, the accused applied for default bail.',
+    alsoKnownAs: ['Statutory Bail'],
+  },
+  {
+    id: 'bail-bond',
+    term: 'Bail Bond',
+    category: 'criminal_procedure',
+    definition:
+      'A document executed by an accused on being released on bail, undertaking to appear before the court as required, often along with one or more sureties who undertake to produce the accused or forfeit a specified sum if they fail to appear.',
+    example:
+      'The accused executed a bail bond of ₹50,000 along with two local sureties before being released from custody.',
+    alsoKnownAs: ['Surety Bond'],
+  },
+  {
+    id: 'private-complaint',
+    term: 'Private Complaint',
+    category: 'criminal_procedure',
+    definition:
+      'A criminal complaint filed directly before a magistrate by a private person, rather than through the police, commonly used for non-cognizable offences or where the police have refused to register an FIR for a cognizable one.',
+    example:
+      'After the police declined to register his complaint, the aggrieved person filed a private complaint directly before the magistrate.',
+    alsoKnownAs: ['Complaint Case'],
+  },
+  {
+    id: 'proclaimed-offender',
+    term: 'Proclaimed Offender',
+    category: 'criminal_procedure',
+    definition:
+      'A person formally declared by a court to have absconded or hidden themselves to avoid arrest, after which the court can take further steps against them, including attaching their property, until they appear.',
+    example:
+      'After the accused failed to appear despite repeated warrants, the court declared him a proclaimed offender and ordered attachment of his property.',
+  },
+  {
+    id: 'conviction',
+    term: 'Conviction',
+    category: 'criminal_procedure',
+    definition:
+      'A court\'s final finding, after trial, that the accused is guilty of the offence charged, leading to the court imposing a sentence. It is the opposite outcome of an acquittal.',
+    example:
+      'The trial court recorded a conviction under the relevant provisions of the Bharatiya Nyaya Sanhita, 2023 (BNS) and proceeded to hear arguments on sentence.',
+  },
+  {
+    id: 'sentence',
+    term: 'Sentence',
+    category: 'criminal_procedure',
+    definition:
+      'The punishment, such as imprisonment or a fine, that a court imposes on a person after convicting them of an offence. Courts generally hear the convicted person separately on the appropriate sentence before passing it.',
+    example:
+      'After hearing both sides on the question of sentence, the court sentenced the accused to three years\' imprisonment.',
+  },
+  {
+    id: 'probation',
+    term: 'Probation',
+    category: 'criminal_procedure',
+    definition:
+      'An order releasing a convicted person on good behaviour, under supervision and on conditions set by the court, instead of sending them to serve a sentence of imprisonment. It is generally considered for first-time offenders or less serious offences.',
+    example:
+      'Considering that the convict was a first-time offender, the court released him on probation of good conduct instead of sending him to prison.',
+  },
+  {
+    id: 'status-report',
+    term: 'Status Report',
+    category: 'criminal_procedure',
+    definition:
+      'A report filed by the police before the court, at the court\'s direction, updating it on the progress made in investigating a case.',
+    example:
+      'The court directed the investigating officer to file a status report on the progress of the investigation within four weeks.',
+  },
+  {
+    id: 'closure-report',
+    term: 'Closure Report',
+    category: 'criminal_procedure',
+    definition:
+      'A report filed by the police at the end of an investigation stating that no case is made out against the named suspects, and that the matter should not proceed to trial. It is filed under the Bharatiya Nagarik Suraksha Sanhita, 2023 (BNSS), the code that replaced the CrPC, and the complainant is entitled to be heard before the magistrate accepts it.',
+    example:
+      'After investigation revealed no evidence against the suspect, the police filed a closure report before the magistrate.',
+  },
+  {
+    id: 'protest-petition',
+    term: 'Protest Petition',
+    category: 'criminal_procedure',
+    definition:
+      'An objection filed by the complainant before the magistrate challenging a closure report, asking the magistrate not to accept it and to instead take cognizance of the offence and proceed with the case.',
+    example:
+      'The complainant filed a protest petition opposing the closure report and urging the magistrate to proceed against the accused.',
+  },
 
   // ─── Civil Remedies ───────────────────────────────────────────────
   {
@@ -783,6 +1230,114 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
       'The compensation a court can order a person to pay for wrongfully occupying and using someone else\'s property, calculated based on the profit or benefit they gained, or that the rightful owner lost, during that period of wrongful possession.',
     example:
       'Along with possession, the plaintiff also claimed mesne profits for the period the defendant had wrongfully occupied the shop.',
+  },
+  {
+    id: 'rejection-of-plaint',
+    term: 'Rejection of Plaint',
+    category: 'civil_remedies',
+    definition:
+      'An order by which a court refuses to proceed with a suit because the plaint itself suffers from a basic defect, such as disclosing no cause of action or being insufficiently stamped, without going into a full trial on the merits. Unlike dismissal after trial, it leaves the plaintiff free, in some situations, to file a fresh suit on the same cause of action.',
+    example:
+      'The court rejected the plaint, holding that it disclosed no cause of action against the defendant as framed.',
+  },
+  {
+    id: 'return-of-plaint',
+    term: 'Return of Plaint',
+    category: 'civil_remedies',
+    definition:
+      'An order returning a plaint to the plaintiff for presentation before the correct court, made when the court finds it does not have jurisdiction to try the suit. The plaintiff can then refile the same plaint in the proper court.',
+    example:
+      'Finding that it lacked territorial jurisdiction, the court ordered return of the plaint for presentation before the appropriate District Court.',
+  },
+  {
+    id: 'mandatory-injunction',
+    term: 'Mandatory Injunction',
+    category: 'civil_remedies',
+    definition:
+      'A court order directing a party to actively do a specific act, such as removing an encroachment or restoring a demolished structure, rather than simply restraining them from doing something. It is distinguished from a prohibitory injunction, which only stops a party from acting.',
+    example:
+      'The plaintiff sought a mandatory injunction directing the defendant to remove the unauthorised construction encroaching on the common passage.',
+  },
+  {
+    id: 'interpleader-suit',
+    term: 'Interpleader Suit',
+    category: 'civil_remedies',
+    definition:
+      'A suit filed by a person who holds money or property claimed by two or more other people, none of whom he has any personal interest in disputing, asking the court to decide who among the rival claimants is actually entitled to it.',
+    example:
+      'Unsure which of the two claimants was entitled to the deposited amount, the stakeholder filed an interpleader suit asking the court to decide between them.',
+  },
+  {
+    id: 'garnishee-order',
+    term: 'Garnishee Order',
+    category: 'civil_remedies',
+    definition:
+      'An order in execution proceedings directing a third party who owes money to, or holds money belonging to, the judgment-debtor, such as a bank, to pay that amount directly to the decree-holder instead of to the judgment-debtor.',
+    example:
+      'The decree-holder obtained a garnishee order directing the judgment-debtor\'s bank to pay the balance in his account towards satisfaction of the decree.',
+  },
+  {
+    id: 'attachment-before-judgment',
+    term: 'Attachment Before Judgment',
+    category: 'civil_remedies',
+    definition:
+      'An order attaching a defendant\'s property while a suit is still pending, passed when the court is satisfied that the defendant is likely to dispose of or remove their assets to defeat any decree that may eventually be passed against them.',
+    example:
+      'Apprehending that the defendant was about to sell off his only immovable property, the plaintiff sought attachment before judgment.',
+  },
+  {
+    id: 'costs',
+    term: 'Costs',
+    category: 'civil_remedies',
+    definition:
+      'The expenses of litigation, such as court fees and legal costs, that a court can direct one party to pay to another, usually the losing party to the winning party, as part of its final decision in a case.',
+    example:
+      'While dismissing the frivolous application, the court imposed costs of ₹10,000 on the applicant.',
+  },
+  {
+    id: 'decree-holder-and-judgment-debtor',
+    term: 'Decree-Holder and Judgment-Debtor',
+    category: 'civil_remedies',
+    definition:
+      'A decree-holder is the party in whose favour a court has passed a decree and who is entitled to have it enforced. A judgment-debtor is the party against whom the decree has been passed and who owes the resulting obligation, typically to pay money or hand over property.',
+    example:
+      'The decree-holder initiated execution proceedings after the judgment-debtor failed to pay the decretal amount voluntarily.',
+  },
+  {
+    id: 'consent-decree',
+    term: 'Consent Decree',
+    category: 'civil_remedies',
+    definition:
+      'A decree passed by the court in terms of a settlement that both parties to a suit have voluntarily agreed to, rather than after a contested trial on the merits. Once passed, it generally cannot be challenged in appeal on the ground that the underlying decision was wrong, except in limited circumstances.',
+    example:
+      'Once both sides agreed to the settlement terms, the court passed a consent decree disposing of the suit.',
+  },
+  {
+    id: 'abatement-of-suit',
+    term: 'Abatement of Suit',
+    category: 'civil_remedies',
+    definition:
+      'The automatic ending of a suit, or a part of it concerning a particular party, most commonly because a party has died and their legal heirs were not brought on record within the time allowed by law.',
+    example:
+      'Since the sole defendant had died and no application to bring his legal heirs on record was filed in time, the suit abated against him.',
+  },
+  {
+    id: 'liquidated-damages',
+    term: 'Liquidated Damages',
+    category: 'civil_remedies',
+    definition:
+      'A specific sum of money that the parties to a contract agree in advance will be paid as compensation if one of them breaches it, as distinct from unliquidated damages, which a court must assess and quantify after the breach has occurred.',
+    example:
+      'The contract provided for liquidated damages of one percent of the contract value for every week of delay in completion.',
+  },
+  {
+    id: 'receiver',
+    term: 'Receiver',
+    category: 'civil_remedies',
+    definition:
+      'A person appointed by a court to take temporary custody of, manage, or preserve property that is the subject matter of a dispute, so that it is not wasted, damaged, or wrongly dealt with while the case is being decided.',
+    example:
+      'Apprehending that the property would be mismanaged during the pendency of the partition suit, the court appointed a receiver to collect the rents until the dispute was resolved.',
   },
 
   // ─── Tribunals & Forums ───────────────────────────────────────────
@@ -945,6 +1500,109 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
       'The aggrieved party filed a Special Leave Petition under Article 136 before the Supreme Court against the High Court\'s judgment.',
     alsoKnownAs: ['SLP'],
   },
+  {
+    id: 'debts-recovery-appellate-tribunal',
+    term: 'Debts Recovery Appellate Tribunal',
+    category: 'tribunals_forums',
+    definition:
+      'The appellate tribunal that hears appeals against orders passed by a Debt Recovery Tribunal (DRT), such as in Original Applications or Securitisation Applications.',
+    example:
+      'Aggrieved by the DRT\'s order, the borrower filed an appeal before the Debts Recovery Appellate Tribunal.',
+    alsoKnownAs: ['DRAT'],
+  },
+  {
+    id: 'pre-deposit',
+    term: 'Pre-Deposit',
+    category: 'tribunals_forums',
+    definition:
+      'An amount of money that a party must deposit with the appellate tribunal before an appeal, most commonly against a DRT, NCLT, or SARFAESI order, will even be registered or heard, usually fixed as a percentage of the amount in dispute.',
+    example:
+      'The appeal could not be registered until the borrower complied with the pre-deposit requirement before the appellate tribunal.',
+  },
+  {
+    id: 'national-company-law-tribunal',
+    term: 'National Company Law Tribunal',
+    category: 'tribunals_forums',
+    definition:
+      'The specialised tribunal that decides company law and insolvency matters, including company disputes, mergers, and the Corporate Insolvency Resolution Process.',
+    example:
+      'The financial creditor filed its application before the National Company Law Tribunal seeking initiation of the Corporate Insolvency Resolution Process.',
+    alsoKnownAs: ['NCLT'],
+  },
+  {
+    id: 'national-company-law-appellate-tribunal',
+    term: 'National Company Law Appellate Tribunal',
+    category: 'tribunals_forums',
+    definition:
+      'The appellate tribunal that hears appeals against orders passed by the National Company Law Tribunal.',
+    example:
+      'The resolution applicant whose plan was rejected filed an appeal before the National Company Law Appellate Tribunal.',
+    alsoKnownAs: ['NCLAT'],
+  },
+  {
+    id: 'corporate-debtor',
+    term: 'Corporate Debtor',
+    category: 'tribunals_forums',
+    definition:
+      'The company against which the Corporate Insolvency Resolution Process has been initiated because it has defaulted on its debts.',
+    example:
+      'Once the application was admitted, the corporate debtor\'s board of directors ceased to manage its affairs, and control passed to the resolution professional.',
+  },
+  {
+    id: 'resolution-professional',
+    term: 'Resolution Professional',
+    category: 'tribunals_forums',
+    definition:
+      'The insolvency professional appointed to run a company\'s affairs during the Corporate Insolvency Resolution Process, including inviting and verifying creditors\' claims, and overseeing preparation of a resolution plan. In the early part of the process, this role is held on an interim basis.',
+    example:
+      'The resolution professional invited claims from all creditors of the corporate debtor and placed the verified list before the Committee of Creditors.',
+    alsoKnownAs: ['RP', 'Interim Resolution Professional', 'IRP'],
+  },
+  {
+    id: 'moratorium-ibc',
+    term: 'Moratorium',
+    category: 'tribunals_forums',
+    definition:
+      'An automatic freeze on filing or continuing most legal proceedings against a company, including recovery suits and enforcement of security, that comes into effect once the Corporate Insolvency Resolution Process is admitted against it. It stays in place while the process is ongoing.',
+    example:
+      'Once the moratorium came into effect, the bank could not continue its pending recovery suit against the corporate debtor.',
+  },
+  {
+    id: 'liquidator',
+    term: 'Liquidator',
+    category: 'tribunals_forums',
+    definition:
+      'The insolvency professional appointed to sell off a company\'s assets and distribute the proceeds among its creditors, once it has been ordered into liquidation because the Corporate Insolvency Resolution Process did not result in an approved resolution plan.',
+    example:
+      'After no viable resolution plan was approved, the National Company Law Tribunal ordered liquidation and appointed a liquidator to realise the company\'s assets.',
+  },
+  {
+    id: 'possession-notice-sarfaesi',
+    term: 'Possession Notice',
+    category: 'tribunals_forums',
+    definition:
+      'A notice issued by a bank or financial institution under the SARFAESI Act, after a borrower defaults, informing them that the lender has taken possession of the property pledged as security for the loan.',
+    example:
+      'The bank affixed a possession notice on the mortgaged property after the borrower failed to clear the overdue instalments.',
+  },
+  {
+    id: 'division-bench',
+    term: 'Division Bench',
+    category: 'tribunals_forums',
+    definition:
+      'A bench of a High Court or the Supreme Court made up of two or more judges sitting together, as distinguished from a Single Judge Bench. Certain matters, such as appeals against a Single Judge\'s order, are required to be heard by a Division Bench.',
+    example:
+      'The writ appeal against the Single Judge\'s order was placed before a Division Bench of the High Court.',
+  },
+  {
+    id: 'adjudicating-authority',
+    term: 'Adjudicating Authority',
+    category: 'tribunals_forums',
+    definition:
+      'The role performed by the National Company Law Tribunal when it decides matters under the Insolvency and Bankruptcy Code, such as admitting or rejecting an application to initiate the Corporate Insolvency Resolution Process.',
+    example:
+      'The application was placed before the Adjudicating Authority, National Company Law Tribunal, for admission.',
+  },
 
   // ─── Company Law ──────────────────────────────────────────────────
   {
@@ -1097,6 +1755,134 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
       'The official address of a company on record with the Registrar of Companies, used for receiving legal notices and official communications. It need not be the company\'s main place of business, but the company must be able to receive communications there.',
     example:
       'All statutory notices to the company were sent to the address recorded as its registered office.',
+  },
+  {
+    id: 'scheme-of-arrangement',
+    term: 'Scheme of Arrangement',
+    category: 'company_law',
+    definition:
+      'An arrangement between a company and its shareholders or creditors, used for purposes such as a merger, demerger, or compromise on debts, approved by the National Company Law Tribunal, that becomes binding on all parties once sanctioned.',
+    example:
+      'The two companies filed a joint application before the National Company Law Tribunal seeking approval of their scheme of arrangement for the proposed merger.',
+  },
+  {
+    id: 'private-company',
+    term: 'Private Company',
+    category: 'company_law',
+    definition:
+      'A company whose shares cannot be freely offered to the general public and whose articles restrict the right to transfer its shares, as distinguished from a public company, whose shares can be freely traded and, if listed, bought and sold on a stock exchange.',
+    example:
+      'Being a private company, the firm could not invite the general public to subscribe to its shares.',
+  },
+  {
+    id: 'one-person-company',
+    term: 'One Person Company',
+    category: 'company_law',
+    definition:
+      'A type of company that can be formed and run by a single individual, who is its only shareholder, while still giving the business the benefit of being a separate legal entity with limited liability.',
+    example:
+      'The founder registered his business as a One Person Company so that he alone could hold all the shares while limiting his personal liability.',
+    alsoKnownAs: ['OPC'],
+  },
+  {
+    id: 'shareholder',
+    term: 'Shareholder',
+    category: 'company_law',
+    definition:
+      'A person who owns shares in a company and is, to that extent, one of its owners, with rights such as voting at general meetings and receiving dividends. Also called a member of the company.',
+    example:
+      'The shareholders present at the meeting voted to approve the proposed increase in share capital.',
+    alsoKnownAs: ['Member'],
+  },
+  {
+    id: 'director',
+    term: 'Director',
+    category: 'company_law',
+    definition:
+      'A person appointed to the board of a company to manage its affairs and take decisions on its behalf, owing duties to act in good faith and in the company\'s best interests. A managing director or whole-time director is one given specific day-to-day executive responsibilities, beyond simply attending board meetings.',
+    example:
+      'The board appointed one of its directors as the managing director, responsible for the company\'s day-to-day operations.',
+  },
+  {
+    id: 'company-secretary',
+    term: 'Company Secretary',
+    category: 'company_law',
+    definition:
+      'A qualified professional responsible for a company\'s compliance with company law, including maintaining statutory registers, organising meetings, and ensuring filings are made with the Registrar of Companies on time.',
+    example:
+      'The company secretary certified that all the required annual filings had been made with the Registrar of Companies.',
+  },
+  {
+    id: 'auditor',
+    term: 'Auditor',
+    category: 'company_law',
+    definition:
+      'An independent, qualified professional appointed by a company to examine its financial statements and accounting records, and to report to its shareholders on whether they give a true and fair view of the company\'s financial position.',
+    example:
+      'The auditor\'s report was placed before the shareholders at the Annual General Meeting along with the audited accounts.',
+  },
+  {
+    id: 'charge-company',
+    term: 'Charge',
+    category: 'company_law',
+    definition:
+      'A right created over a company\'s assets, such as its property or receivables, in favour of a lender as security for a loan. A company is required to register such a charge with the Registrar of Companies within a prescribed time for it to be enforceable against others.',
+    example:
+      'The company registered the charge created in favour of the bank over its factory premises with the Registrar of Companies.',
+  },
+  {
+    id: 'dividend',
+    term: 'Dividend',
+    category: 'company_law',
+    definition:
+      'A portion of a company\'s profit that it distributes to its shareholders, usually in proportion to the shares they hold, after being declared at a general meeting or, for an interim dividend, by the board.',
+    example:
+      'The board recommended a dividend of ₹2 per share, to be formally declared by the shareholders at the Annual General Meeting.',
+  },
+  {
+    id: 'quorum',
+    term: 'Quorum',
+    category: 'company_law',
+    definition:
+      'The minimum number of members or directors who must be present for a meeting, such as a board meeting, Annual General Meeting, or Extraordinary General Meeting, to be validly held and for its decisions to be binding.',
+    example:
+      'The meeting had to be adjourned for want of quorum, as only one shareholder was present.',
+  },
+  {
+    id: 'proxy',
+    term: 'Proxy',
+    category: 'company_law',
+    definition:
+      'A person authorised by a shareholder, through a signed document, to attend a general meeting and vote on their behalf when the shareholder is themselves unable to attend.',
+    example:
+      'Unable to attend in person, the shareholder appointed his son as proxy to vote at the Annual General Meeting.',
+  },
+  {
+    id: 'striking-off',
+    term: 'Striking Off',
+    category: 'company_law',
+    definition:
+      'A process by which the Registrar of Companies removes a defunct company\'s name from the register, either on the company\'s own application for a fast-track exit or on the Registrar\'s own initiative, where it has not been carrying on business.',
+    example:
+      'Having remained inactive for several years, the company applied for striking off its name from the register instead of undergoing formal winding up.',
+  },
+  {
+    id: 'oppression-and-mismanagement',
+    term: 'Oppression and Mismanagement',
+    category: 'company_law',
+    definition:
+      'A remedy available to shareholders, mainly minority shareholders, to approach the National Company Law Tribunal where the affairs of a company are being conducted in a manner oppressive to them or prejudicial to the company\'s own interests.',
+    example:
+      'The minority shareholders filed a petition alleging oppression and mismanagement, complaining that the majority shareholders had excluded them from all decision-making.',
+  },
+  {
+    id: 'shareholders-agreement',
+    term: 'Shareholders Agreement',
+    category: 'company_law',
+    definition:
+      'A private contract among some or all of a company\'s shareholders, setting out matters such as how shares can be transferred, rights to appoint directors, and what happens if there is a deadlock, going beyond what is recorded in the Articles of Association.',
+    example:
+      'The shareholders agreement gave the minority investor a right of first refusal if the founder decided to sell his shares.',
   },
 
   // ─── Property Law ─────────────────────────────────────────────────
@@ -1254,6 +2040,114 @@ export const legalDictionaryTerms: DictionaryTerm[] = [
       'A document by which a co-owner of a property gives up their share in it in favour of one or more of the other co-owners, most commonly used to settle inherited family property among relatives.',
     example:
       'One brother executed a relinquishment deed giving up his share in the ancestral house in favour of his siblings.',
+  },
+  {
+    id: 'will',
+    term: 'Will',
+    category: 'property_law',
+    definition:
+      'A legal document in which a person sets out how their property should be distributed after their death. It generally takes effect only on the maker\'s death and can be changed or revoked by them at any time before that.',
+    example:
+      'In his will, he bequeathed the ancestral house to his daughter and the balance of his bank deposits equally to his two sons.',
+  },
+  {
+    id: 'probate',
+    term: 'Probate',
+    category: 'property_law',
+    definition:
+      'A certificate issued by a competent court confirming that a will is genuine and valid, and authorising the executor named in it to administer the deceased\'s estate accordingly.',
+    example:
+      'The executor applied for probate of the will before the court so that he could legally deal with the deceased\'s assets.',
+  },
+  {
+    id: 'succession-certificate',
+    term: 'Succession Certificate',
+    category: 'property_law',
+    definition:
+      'A certificate issued by a court, where a person has died without a will, authorising the holder to collect debts and securities, such as bank balances or shares, due to the deceased, and to give a valid receipt or transfer them.',
+    example:
+      'Since their father had died without a will, the children applied for a succession certificate to enable them to claim the balance in his fixed deposit.',
+  },
+  {
+    id: 'letters-of-administration',
+    term: 'Letters of Administration',
+    category: 'property_law',
+    definition:
+      'An authorisation granted by a court, where a person has died without a will or without naming an executor, appointing an administrator to collect, manage, and distribute the deceased\'s estate.',
+    example:
+      'As the deceased had left no will, his widow applied for letters of administration to deal with his estate.',
+  },
+  {
+    id: 'legal-heir-certificate',
+    term: 'Legal Heir Certificate',
+    category: 'property_law',
+    definition:
+      'A certificate issued by a revenue or municipal authority identifying the legal heirs of a deceased person, commonly used for simpler purposes such as transferring utility connections or claiming small dues, as a quicker alternative to a succession certificate for larger or disputed claims.',
+    example:
+      'The family obtained a legal heir certificate from the local revenue office to get the electricity connection transferred to the deceased\'s son.',
+  },
+  {
+    id: 'khata-patta',
+    term: 'Khata / Patta',
+    category: 'property_law',
+    definition:
+      'A record maintained by the local municipal or revenue authority, known by different names in different states such as Khata or Patta, showing a person\'s name against a specific property for purposes like property tax assessment. It is a record of these authorities\' own recognition of possession or tax liability, not itself proof of ownership.',
+    example:
+      'The buyer applied to have the Khata transferred to his name with the municipal authority after registering the sale deed.',
+  },
+  {
+    id: 'adverse-possession',
+    term: 'Adverse Possession',
+    category: 'property_law',
+    definition:
+      'A legal doctrine under which a person who has been in open, continuous, and hostile possession of someone else\'s property for a long enough period, without the true owner\'s permission, can acquire legal title to it and defeat the original owner\'s claim.',
+    example:
+      'The occupant claimed title to the plot by adverse possession, asserting that he had been in open and uninterrupted possession of it for well over the required period.',
+  },
+  {
+    id: 'benami-transaction',
+    term: 'Benami Transaction',
+    category: 'property_law',
+    definition:
+      'A transaction in which property is bought in the name of one person, but the money for it is paid by another person who actually enjoys its benefits, with the person named in the documents holding it only for the real buyer. Such transactions are generally prohibited and the property can be confiscated by the government, subject to limited exceptions recognised by law.',
+    example:
+      'The authority initiated proceedings alleging that the flat, though purchased in the domestic help\'s name, was in fact a benami transaction for the real owner\'s benefit.',
+  },
+  {
+    id: 'landlord-and-tenant',
+    term: 'Landlord and Tenant',
+    category: 'property_law',
+    definition:
+      'A landlord is the owner of a property who allows another person, the tenant, to occupy and use it for an agreed period in exchange for rent, under a lease or rental agreement, without transferring ownership.',
+    example:
+      'The landlord filed a petition seeking eviction of the tenant on the ground of default in payment of rent.',
+  },
+  {
+    id: 'mortgagor-and-mortgagee',
+    term: 'Mortgagor and Mortgagee',
+    category: 'property_law',
+    definition:
+      'The mortgagor is the owner who pledges their property as security for a loan under a mortgage deed. The mortgagee is the lender in whose favour that security is created, and who can enforce their rights over the property if the mortgagor fails to repay the loan.',
+    example:
+      'Upon the mortgagor\'s default, the mortgagee initiated proceedings to recover the loan by enforcing its security over the mortgaged property.',
+  },
+  {
+    id: 'attestation',
+    term: 'Attestation',
+    category: 'property_law',
+    definition:
+      'The signing of a document, such as a will or certain deeds, by witnesses who confirm that they saw the person execute it and that the signature is genuine. Some documents are legally valid only if attested by the required number of witnesses.',
+    example:
+      'The will was attested by two witnesses who signed it in the presence of the testator, as required for it to be valid.',
+  },
+  {
+    id: 'circle-rate',
+    term: 'Circle Rate',
+    category: 'property_law',
+    definition:
+      'The minimum value per unit area at which a property in a particular area is officially assumed to be worth, as notified by the state government, used as the floor for calculating stamp duty even if the actual sale price agreed between the parties is lower.',
+    example:
+      'Although the parties had agreed on a lower price, stamp duty on the sale deed had to be paid on the applicable circle rate for the area.',
   },
 
   // ─── Latin Maxims ─────────────────────────────────────────────────
