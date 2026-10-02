@@ -121,6 +121,11 @@ export function CaseLawSearch({ onBack, onOpenLogin, onOpenTranslateDocument }: 
 
               {results && results.length > 0 && (
                 <div className="cls-results">
+                  <img
+                    src="https://api.indiankanoon.org/static/pics/ikanoon6_powered_transparent.png"
+                    alt="Powered by Indian Kanoon"
+                    className="cls-ikanoon-badge"
+                  />
                   {results.map((r) => (
                     <div className="cls-result-card" key={r.docId}>
                       <p className="cls-result-title">{r.title}</p>

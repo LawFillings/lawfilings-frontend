@@ -223,6 +223,14 @@
   align-self: stretch;
 }
 
+/* Required by Indian Kanoon's API terms whenever their search results are displayed — must stay
+   un-resized, un-cropped, and not obscured. */
+.cls-ikanoon-badge {
+  height: 28px;
+  width: auto;
+  align-self: flex-start;
+}
+
 .cls-result-card {
   background: var(--paper-raised);
   border: 1px solid var(--line-soft);
