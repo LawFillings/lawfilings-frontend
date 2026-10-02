@@ -27,3 +27,6 @@ tools/video/frames_*/
 tools/video/narration_*.wav
 tools/video/scenes_*.json
 tools/video/samples/
+tools/video/screenshots/
+tools/video/lawfilings_video_package/
+tools/video/lawfilings_video_package.zip
