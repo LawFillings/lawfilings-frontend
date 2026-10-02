@@ -21,6 +21,7 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CaseType, UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 const STEPS = [
   'Order details',
@@ -80,10 +81,12 @@ export function ExecutionWizard({
   const [nonComplianceDetails, setNonComplianceDetails] = useState(saved?.nonComplianceDetails ?? '');
   const [applicantName, setApplicantName] = useState(saved?.applicantName ?? '');
   const [respondentName, setRespondentName] = useState(saved?.respondentName ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);

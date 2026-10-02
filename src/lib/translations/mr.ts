@@ -1427,8 +1427,8 @@ export const mr: Translations = {
     },
     step5: {
       heading: 'दाखल तपशील',
-      yourAge: 'तुमचे वय',
-      yourAddress: 'तुमचा पत्ता',
+      plaintiffAge: "वादीचे वय",
+      plaintiffAddress: "वादीचा पत्ता",
       advocateName: 'वकिलाचे नाव',
       advocateAddress: 'वकिलाचा पत्ता',
       advocatePhone: 'वकिलाचा फोन',

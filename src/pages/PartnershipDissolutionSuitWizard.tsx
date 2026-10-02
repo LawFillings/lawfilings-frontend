@@ -28,6 +28,7 @@ import { JudgeStyleStep } from '../components/JudgeStyleStep';
 import { applyJudgeStyleToSections } from '../lib/judgeStyle';
 import type { JudgeStyleProfile } from '../lib/judgeStyleClient';
 import type { UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-suit-partnership-dissolution-accounts')!;
 
@@ -121,10 +122,12 @@ export function PartnershipDissolutionSuitWizard({
   const [groundNarrative, setGroundNarrative] = useState(saved?.groundNarrative ?? '');
   const [accountsNarrative, setAccountsNarrative] = useState(saved?.accountsNarrative ?? '');
   const [suitValuation, setSuitValuation] = useState(saved?.suitValuation ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');

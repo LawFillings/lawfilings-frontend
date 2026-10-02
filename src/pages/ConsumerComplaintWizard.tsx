@@ -29,6 +29,7 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 // A precedent is only safe to cite in an exported filing once it's a real, sourced judgment —
 // the `precedents` table also holds inert "[PLACEHOLDER — UNVERIFIED]" rows seeded so the
@@ -120,10 +121,12 @@ export function ConsumerComplaintWizard({
   const [opponentName, setOpponentName] = useState(saved?.opponentName ?? '');
   const [complainantAge, setComplainantAge] = useState(saved?.complainantAge ?? '');
   const [complainantAddress, setComplainantAddress] = useState(saved?.complainantAddress ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
@@ -478,11 +481,11 @@ export function ConsumerComplaintWizard({
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Your age</span>
+                <span>Complainant's age</span>
                 <input type="text" value={complainantAge} onChange={(e) => setComplainantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Your address</span>
+                <span>Complainant's address</span>
                 <input type="text" value={complainantAddress} onChange={(e) => setComplainantAddress(e.target.value)} />
               </label>
               <label className="form-field">

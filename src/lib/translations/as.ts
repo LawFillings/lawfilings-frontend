@@ -1427,8 +1427,8 @@ export const as: Translations = {
     },
     step5: {
       heading: 'দাখিলৰ বিৱরণ',
-      yourAge: 'আপোনাৰ বয়স',
-      yourAddress: 'আপোনাৰ ঠিকনা',
+      plaintiffAge: "বাদীৰ বয়স",
+      plaintiffAddress: "বাদীৰ ঠিকনা",
       advocateName: 'অধিবক্তাৰ নাম',
       advocateAddress: 'অধিবক্তাৰ ঠিকনা',
       advocatePhone: 'অধিবক্তাৰ ফোন',

@@ -28,6 +28,7 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 // Real filed SA bundle we were shown as reference is a 3-document bundle — the Application
 // itself (particulars of the applicant and every respondent, jurisdiction, limitation, facts,
@@ -206,10 +207,12 @@ export function DrtSaWizard({
   const [draftNumber, setDraftNumber] = useState(saved?.draftNumber ?? '');
   const [draftDate, setDraftDate] = useState(saved?.draftDate ?? '');
   const [draftAmount, setDraftAmount] = useState(saved?.draftAmount ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
   const [advocateEnrollment, setAdvocateEnrollment] = useState(saved?.advocateEnrollment ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: '', phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
   const [registrarAddressText, setRegistrarAddressText] = useState(saved?.registrarAddressText ?? '');

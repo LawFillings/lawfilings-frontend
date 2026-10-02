@@ -27,6 +27,7 @@ import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 const STEPS = [
   'Eligibility',
@@ -105,10 +106,12 @@ export function SummarySuitWizard({
   const [claimAmount, setClaimAmount] = useState(saved?.claimAmount ?? '');
   const [plaintiffAge, setPlaintiffAge] = useState(saved?.plaintiffAge ?? '');
   const [plaintiffAddress, setPlaintiffAddress] = useState(saved?.plaintiffAddress ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
@@ -477,11 +480,11 @@ export function SummarySuitWizard({
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Your age</span>
+                <span>Plaintiff's age</span>
                 <input type="text" value={plaintiffAge} onChange={(e) => setPlaintiffAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Your address</span>
+                <span>Plaintiff's address</span>
                 <input type="text" value={plaintiffAddress} onChange={(e) => setPlaintiffAddress(e.target.value)} />
               </label>
               <label className="form-field">

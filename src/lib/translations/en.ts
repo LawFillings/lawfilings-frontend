@@ -1436,8 +1436,8 @@ export const en = {
     },
     step5: {
       heading: 'Filing details',
-      yourAge: 'Your age',
-      yourAddress: 'Your address',
+      plaintiffAge: "Plaintiff's age",
+      plaintiffAddress: "Plaintiff's address",
       advocateName: 'Advocate name',
       advocateAddress: 'Advocate address',
       advocatePhone: 'Advocate phone',

@@ -25,6 +25,7 @@ import { ApiError } from '../lib/apiError';
 import { PaywallBlock } from '../components/PaywallBlock';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { CaseType, UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 // The case types that reference an existing ORDER/DECREE (a Tribunal order, a court decree, or an
 // IA/MA-general's most recent order in the pending case it belongs to), where uploading it can
@@ -144,10 +145,12 @@ export function GenericCaseWizard({
 
   const [applicantAge, setApplicantAge] = useState(saved?.applicantAge ?? '');
   const [applicantAddress, setApplicantAddress] = useState(saved?.applicantAddress ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');

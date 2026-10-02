@@ -1427,8 +1427,8 @@ export const or: Translations = {
     },
     step5: {
       heading: 'ଦାଖଲ ବିବରଣୀ',
-      yourAge: 'ଆପଣଙ୍କ ବୟସ',
-      yourAddress: 'ଆପଣଙ୍କ ଠିକଣା',
+      plaintiffAge: "ବାଦୀଙ୍କ ବୟସ",
+      plaintiffAddress: "ବାଦୀଙ୍କ ଠିକଣା",
       advocateName: 'ଓକିଲଙ୍କ ନାମ',
       advocateAddress: 'ଓକିଲଙ୍କ ଠିକଣା',
       advocatePhone: 'ଓକିଲଙ୍କ ଫୋନ୍',

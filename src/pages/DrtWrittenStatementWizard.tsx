@@ -27,6 +27,7 @@ import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractOaFromText } from '../lib/documentExtractionClient';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { ParaResponse, UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 // Bundled with an Index page first and an Affidavit page last, matching the convention
 // established for OA/SA — the Written Statement itself (Part II) is filed by the Defendant, so
@@ -112,10 +113,12 @@ export function DrtWrittenStatementWizard({
   const [oaExtractState, setOaExtractState] = useState<'idle' | 'extracting' | 'done' | 'error'>('idle');
   const [oaExtractError, setOaExtractError] = useState<string | null>(null);
   const oaFileInputRef = useRef<HTMLInputElement>(null);
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
@@ -495,11 +498,11 @@ export function DrtWrittenStatementWizard({
             <h3 className="step-heading">Filing details</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>Your age</span>
+                <span>Defendant's age</span>
                 <input type="text" value={defendantAge} onChange={(e) => setDefendantAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>Your address</span>
+                <span>Defendant's address</span>
                 <input type="text" value={defendantAddress} onChange={(e) => setDefendantAddress(e.target.value)} />
               </label>
               <label className="form-field">

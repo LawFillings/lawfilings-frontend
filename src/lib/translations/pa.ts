@@ -1427,8 +1427,8 @@ export const pa: Translations = {
     },
     step5: {
       heading: 'ਦਾਖਲੇ ਦਾ ਵੇਰਵਾ',
-      yourAge: 'ਤੁਹਾਡੀ ਉਮਰ',
-      yourAddress: 'ਤੁਹਾਡਾ ਪਤਾ',
+      plaintiffAge: "ਵਾਦੀ ਦੀ ਉਮਰ",
+      plaintiffAddress: "ਵਾਦੀ ਦਾ ਪਤਾ",
       advocateName: 'ਵਕੀਲ ਦਾ ਨਾਮ',
       advocateAddress: 'ਵਕੀਲ ਦਾ ਪਤਾ',
       advocatePhone: 'ਵਕੀਲ ਦਾ ਫੋਨ',

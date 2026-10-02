@@ -1427,8 +1427,8 @@ export const ur: Translations = {
     },
     step5: {
       heading: 'دائر کرنے کی تفصیلات',
-      yourAge: 'آپ کی عمر',
-      yourAddress: 'آپ کا پتہ',
+      plaintiffAge: "مدعی کی عمر",
+      plaintiffAddress: "مدعی کا پتہ",
       advocateName: 'وکیل کا نام',
       advocateAddress: 'وکیل کا پتہ',
       advocatePhone: 'وکیل کا فون',

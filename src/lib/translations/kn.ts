@@ -1427,8 +1427,8 @@ export const kn: Translations = {
     },
     step5: {
       heading: 'ದಾಖಲೆ ವಿವರಗಳು',
-      yourAge: 'ನಿಮ್ಮ ವಯಸ್ಸು',
-      yourAddress: 'ನಿಮ್ಮ ವಿಳಾಸ',
+      plaintiffAge: "ವಾದಿಯ ವಯಸ್ಸು",
+      plaintiffAddress: "ವಾದಿಯ ವಿಳಾಸ",
       advocateName: 'ವಕೀಲರ ಹೆಸರು',
       advocateAddress: 'ವಕೀಲರ ವಿಳಾಸ',
       advocatePhone: 'ವಕೀಲರ ಫೋನ್',

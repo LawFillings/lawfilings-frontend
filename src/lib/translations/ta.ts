@@ -1427,8 +1427,8 @@ export const ta: Translations = {
     },
     step5: {
       heading: 'தாக்கல் விவரங்கள்',
-      yourAge: 'உங்கள் வயது',
-      yourAddress: 'உங்கள் முகவரி',
+      plaintiffAge: "வாதியின் வயது",
+      plaintiffAddress: "வாதியின் முகவரி",
       advocateName: 'வழக்கறிஞர் பெயர்',
       advocateAddress: 'வழக்கறிஞர் முகவரி',
       advocatePhone: 'வழக்கறிஞர் தொலைபேசி',

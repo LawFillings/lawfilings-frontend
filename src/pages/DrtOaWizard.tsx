@@ -30,6 +30,7 @@ import { extractTextFromPdf, NoTextLayerError } from '../lib/pdfTextExtraction';
 import { extractOaLoanRecallFromText } from '../lib/documentExtractionClient';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 const STEPS = [
   'Debt amount',
@@ -185,10 +186,12 @@ export function DrtOaWizard({
   const [draftNumber, setDraftNumber] = useState(saved?.draftNumber ?? '');
   const [draftDate, setDraftDate] = useState(saved?.draftDate ?? '');
   const [draftAmount, setDraftAmount] = useState(saved?.draftAmount ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [authorisedRepFatherName, setAuthorisedRepFatherName] = useState(saved?.authorisedRepFatherName ?? '');

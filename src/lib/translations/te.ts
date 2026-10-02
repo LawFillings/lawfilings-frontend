@@ -1427,8 +1427,8 @@ export const te: Translations = {
     },
     step5: {
       heading: 'దాఖలు వివరాలు',
-      yourAge: 'మీ వయస్సు',
-      yourAddress: 'మీ చిరునామా',
+      plaintiffAge: "వాది వయస్సు",
+      plaintiffAddress: "వాది చిరునామా",
       advocateName: 'న్యాయవాది పేరు',
       advocateAddress: 'న్యాయవాది చిరునామా',
       advocatePhone: 'న్యాయవాది ఫోన్',

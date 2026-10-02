@@ -1427,8 +1427,8 @@ export const hi: Translations = {
     },
     step5: {
       heading: 'दाखिल करने का विवरण',
-      yourAge: 'आपकी उम्र',
-      yourAddress: 'आपका पता',
+      plaintiffAge: "वादी की उम्र",
+      plaintiffAddress: "वादी का पता",
       advocateName: 'अधिवक्ता का नाम',
       advocateAddress: 'अधिवक्ता का पता',
       advocatePhone: 'अधिवक्ता का फोन',

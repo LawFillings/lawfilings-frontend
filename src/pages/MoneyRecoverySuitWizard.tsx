@@ -27,6 +27,7 @@ import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
 import '../components/DeadlineCalculator.css';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 const caseType = caseTypes.find((ct) => ct.id === 'ct-dc-money-recovery')!;
 const mrsClauses = clauses.filter((c) => c.caseTypeId === 'ct-dc-money-recovery');
@@ -128,10 +129,12 @@ export function MoneyRecoverySuitWizard({
   );
   const [plaintiffAge, setPlaintiffAge] = useState(saved?.plaintiffAge ?? '');
   const [plaintiffAddress, setPlaintiffAddress] = useState(saved?.plaintiffAddress ?? '');
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
-  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? '');
-  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? '');
-  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  const [advocateAddress, setAdvocateAddress] = useState(saved?.advocateAddress ?? advocateDefaults.address);
+  const [advocatePhone, setAdvocatePhone] = useState(saved?.advocatePhone ?? advocateDefaults.phone);
+  const [advocateEmail, setAdvocateEmail] = useState(saved?.advocateEmail ?? advocateDefaults.email);
+  useRememberAdvocateDetails({ name: advocateName, address: advocateAddress, phone: advocatePhone, email: advocateEmail });
   const [filingPlace, setFilingPlace] = useState(saved?.filingPlace ?? '');
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [verificationPlace, setVerificationPlace] = useState(saved?.verificationPlace ?? '');
@@ -585,11 +588,11 @@ export function MoneyRecoverySuitWizard({
             <h3 className="step-heading">{mrw.step5.heading}</h3>
             <div className="form-grid">
               <label className="form-field">
-                <span>{mrw.step5.yourAge}</span>
+                <span>{mrw.step5.plaintiffAge}</span>
                 <input type="text" value={plaintiffAge} onChange={(e) => setPlaintiffAge(e.target.value)} />
               </label>
               <label className="form-field">
-                <span>{mrw.step5.yourAddress}</span>
+                <span>{mrw.step5.plaintiffAddress}</span>
                 <input type="text" value={plaintiffAddress} onChange={(e) => setPlaintiffAddress(e.target.value)} />
               </label>
               <label className="form-field">

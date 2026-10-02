@@ -16,6 +16,7 @@ import { PaywallBlock } from '../components/PaywallBlock';
 import { DocumentAutofill } from '../components/DocumentAutofill';
 import { WIZARD_CASE_TYPE_KEY } from '../lib/draftResume';
 import type { UserRole } from '../types';
+import { useAdvocateDefaults, useRememberAdvocateDetails } from '../lib/advocateDefaults';
 
 const STEPS = [
   'Cheque & debt details',
@@ -121,7 +122,9 @@ export function NIActComplaintWizard({
   const [courtCity, setCourtCity] = useState(saved?.courtCity ?? '');
   const [witnesses, setWitnesses] = useState(saved?.witnesses ?? '');
   const [documentEntries, setDocumentEntries] = useState<DocEntry[]>(saved?.documentEntries ?? []);
-  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? '');
+  const advocateDefaults = useAdvocateDefaults();
+  const [advocateName, setAdvocateName] = useState(saved?.advocateName ?? advocateDefaults.name);
+  useRememberAdvocateDetails({ name: advocateName, address: '', phone: '', email: '' });
   const [filingDate, setFilingDate] = useState(saved?.filingDate ?? '');
   const [caseId, setCaseId] = useState<string | null>(initialCaseId ?? null);
   const [draftId, setDraftId] = useState<string | null>(initialDraftId ?? null);

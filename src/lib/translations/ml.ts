@@ -1428,8 +1428,8 @@ export const ml: Translations = {
     },
     step5: {
       heading: 'ഫയലിംഗ് വിശദാംശങ്ങൾ',
-      yourAge: 'നിങ്ങളുടെ പ്രായം',
-      yourAddress: 'നിങ്ങളുടെ വിലാസം',
+      plaintiffAge: "വാദിയുടെ പ്രായം",
+      plaintiffAddress: "വാദിയുടെ വിലാസം",
       advocateName: 'അഭിഭാഷകന്റെ പേര്',
       advocateAddress: 'അഭിഭാഷകന്റെ വിലാസം',
       advocatePhone: 'അഭിഭാഷകന്റെ ഫോൺ',

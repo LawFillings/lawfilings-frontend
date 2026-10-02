@@ -1427,8 +1427,8 @@ export const gu: Translations = {
     },
     step5: {
       heading: 'ફાઇલિંગ વિગતો',
-      yourAge: 'તમારી ઉંમર',
-      yourAddress: 'તમારું સરનામું',
+      plaintiffAge: "વાદીની ઉંમર",
+      plaintiffAddress: "વાદીનું સરનામું",
       advocateName: 'વકીલનું નામ',
       advocateAddress: 'વકીલનું સરનામું',
       advocatePhone: 'વકીલનો ફોન',
