@@ -1,22 +1,18 @@
 import { useLanguage } from '../lib/language';
-import { LandingSlideshow } from './LandingSlideshow';
-import { builtForArt } from './slideshowArt';
+import { LandingVideo } from './LandingVideo';
 import './BuiltFor.css';
 
-/** "Built for" audiences as a slideshow: an intro slide, then one slide per audience. The copy is
- *  the existing, already-translated t.landing.whoItsFor (its "sub" line refers to cards, so it's
- *  not used here). */
+/** "Built for" section: the cartoon video about who LawFilings is for (English only for now; other
+ *  languages get the English cut). The earlier audience slideshow was removed — its slides, art and
+ *  translated copy are still in git history, slideshowArt.ts (builtForArt) and t.landing.whoItsFor. */
 export function BuiltFor() {
   const { t } = useLanguage();
-  const w = t.landing.whoItsFor;
-  const slides = [
-    { step: w.eyebrow, title: w.title, art: builtForArt[0] },
-    ...w.items.map((item, i) => ({ step: item.tag, title: item.title, body: item.body, art: builtForArt[i + 1] })),
-  ];
   return (
     <section className="landing-builtfor" id="who-its-for">
       <div className="landing-builtfor-inner">
-        <LandingSlideshow ariaLabel={w.eyebrow} slides={slides} />
+        <div className="landing-builtfor-video">
+          <LandingVideo base="builtfor" languages={['en']} id="built-for-video" ariaLabel={t.landing.whoItsFor.eyebrow} />
+        </div>
       </div>
     </section>
   );
