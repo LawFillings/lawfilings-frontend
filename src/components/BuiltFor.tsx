@@ -10,7 +10,7 @@ export function BuiltFor() {
     <section className="landing-builtfor" id="who-its-for">
       <div className="landing-builtfor-inner">
         <div className="landing-builtfor-video">
-          <LandingVideo base="builtfor" languages={['en', 'hi', 'pa']} id="built-for-video" ariaLabel={t.landing.whoItsFor.eyebrow} />
+          <LandingVideo base="builtfor" languages={['en', 'hi', 'pa', 'mr']} id="built-for-video" ariaLabel={t.landing.whoItsFor.eyebrow} />
         </div>
       </div>
     </section>
