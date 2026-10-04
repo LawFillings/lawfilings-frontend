@@ -1,0 +1,22 @@
+// Hindi on-screen labels, keyed by the English text drawn in the scenes.
+window.DICT_HI = {
+  'SHOP': 'दुकान', 'No refund!': 'पैसे वापस नहीं!',
+  'Forms': 'फ़ॉर्म', 'Format': 'प्रारूप', 'Legal language': 'कानूनी भाषा', 'Running around': 'दौड़-भाग',
+  'Choose court': 'न्यायालय चुनें', 'Answer questions': 'सवालों के जवाब', 'Review draft': 'ड्राफ्ट देखें',
+  'CONSUMER': 'उपभोक्ता', 'COMPLAINT': 'शिकायत',
+  'Register': 'पंजीकरण', 'Upload documents': 'दस्तावेज़ अपलोड', 'Pay fee & submit': 'शुल्क भरें, जमा करें',
+  'Find an Advocate': 'वकील खोजें', 'Adv. verified': 'सत्यापित वकील', 'Bar Council enrolment verified': 'बार काउंसिल पंजीकरण सत्यापित',
+  'in your language': 'आपकी भाषा में', 'Drafting… again?!': 'फिर से ड्राफ्टिंग?!',
+  'District Courts': 'ज़िला न्यायालय', 'civil · criminal · family': 'दीवानी · फ़ौजदारी · पारिवारिक',
+  'High Courts': 'उच्च न्यायालय', 'writs · appeals': 'रिट · अपील',
+  'Supreme Court': 'सर्वोच्च न्यायालय', 'SLPs · petitions': 'एसएलपी · याचिकाएँ',
+  'DRT / DRAT': 'ऋण वसूली अधिकरण', 'OA · SA': 'ओए · एसए',
+  'company matters': 'कंपनी मामले', 'Consumer Forums': 'उपभोक्ता फोरम', 'complaints': 'शिकायतें',
+  'Taxation Tribunals': 'कर अधिकरण', 'tax appeals': 'कर अपीलें', 'filings': 'फाइलिंग',
+  'Fields filled for you': 'जानकारी अपने-आप भरी', 'Upload a PDF': 'PDF अपलोड करें', 'NOTICE': 'नोटिस',
+  'Your details · remembered': 'आपका विवरण · याद रखा गया', 'Name': 'नाम', 'Adv. Rohit Sharma': 'अधि. रोहित शर्मा',
+  'Address': 'पता', 'Chamber 12, Tis Hazari': 'चैंबर 12, तीस हज़ारी', 'Phone': 'फ़ोन',
+  'Law Library': 'कानून पुस्तकालय', 'Cause Lists': 'कॉज़ लिस्ट', 'Court Fees': 'कोर्ट फीस',
+  'More time arguing!': 'बहस के लिए ज़्यादा समय!',
+  '13 Indian languages': '13 भारतीय भाषाएँ', 'Draft faster. File with confidence.': 'तेज़ ड्राफ्टिंग। भरोसे के साथ फाइलिंग।',
+};

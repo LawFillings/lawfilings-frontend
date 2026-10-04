@@ -31,5 +31,66 @@
       "voice": "en-IN-NeerjaNeural",
       "rate": "+8%"
     }
+  },
+  "hi": {
+    "voice": "Lekha",
+    "azure": {
+      "locale": "hi-IN",
+      "voice": "hi-IN-SwaraNeural",
+      "rate": "+8%"
+    },
+    "scenes": [
+      [
+        "आपने पैसे दिए, पर सामान कभी मिला ही नहीं, या वह कभी ठीक से चला ही नहीं। और विक्रेता सुनने को तैयार नहीं।",
+        "आप जानते हैं कि आपको उपभोक्ता न्यायालय में शिकायत करनी चाहिए। लेकिन फ़ॉर्म, प्रारूप, कानूनी भाषा और दौड़-भाग, सब कुछ बहुत ज़्यादा लगता है।",
+        "यही वजह है कि LawFilings बना है।"
+      ],
+      [
+        "लॉग इन करें, अपना न्यायालय और मामले का प्रकार चुनें, और सरल सवालों के जवाब अपनी भाषा में दें। आपकी शिकायत उचित न्यायालयीन प्रारूप में आपके लिए तैयार हो जाती है।",
+        "फिर आपको चरण-दर-चरण मार्गदर्शन और आधिकारिक ई-फाइलिंग लिंक मिलता है, ताकि आप उसे ऑनलाइन दाखिल कर सकें।",
+        "चाहें तो इसे किसी को सौंप दें। हमारी डायरेक्टरी में एक सत्यापित वकील खोजें, और अपना मामला सीधे उन्हें भेजें।"
+      ],
+      [
+        "और अगर आप वकील हैं, तो आप जानते ही हैं कि आपके दिन का कितना समय ड्राफ्टिंग में चला जाता है।"
+      ],
+      [
+        "LawFilings आपको चालीस से ज़्यादा तरह की फाइलिंग के लिए ड्राफ्टिंग विज़ार्ड देता है। ज़िला न्यायालय, उच्च न्यायालय, सर्वोच्च न्यायालय, डी आर टी, एन सी एल टी, उपभोक्ता फोरम और कर अधिकरण।",
+        "कोई नोटिस या अनुबंध अपलोड करें, और जानकारी अपने-आप भर जाती है। आपका नाम, पता और फ़ोन याद रखे जाते हैं, इसलिए उन्हें बार-बार टाइप नहीं करना पड़ता।",
+        "कानून पुस्तकालय में खोजें, कॉज़ लिस्ट देखें, और कोर्ट फीस की गणना करें, सब एक ही जगह।",
+        "ड्राफ्टिंग में कम समय। बहस के लिए ज़्यादा समय।"
+      ],
+      [
+        "तेरह भारतीय भाषाओं में उपलब्ध।",
+        "LawFilings। तेज़ ड्राफ्टिंग। भरोसे के साथ फाइलिंग। lawfilings dot in।"
+      ]
+    ]
+  },
+  "builtfor": {
+    "voice": "Rishi",
+    "azure": {
+      "locale": "en-IN",
+      "voice": "en-IN-PrabhatNeural",
+      "rate": "+8%"
+    },
+    "scenes": [
+      [
+        "So, who is LawFilings built for? The one who actually files court cases."
+      ],
+      [
+        "If you're an advocate, draft District Court, High Court, Supreme Court, Tribunal and Consumer Commission filings faster, with the governing provision already cited. So your time goes to judgment, not formatting."
+      ],
+      [
+        "If you're filing on your own, you answer plain-language questions instead of facing legal forms. And you can browse the Constitution and Key Statutes free, before you ever start a case. No account needed to look something up."
+      ],
+      [
+        "If you're a business or a legal team chasing dues, recovery filings are built in. Money Recovery Suits, Commercial Courts Act matters, D R T applications, and N C L T Section 9 insolvency applications."
+      ],
+      [
+        "And if you're a law student, you get free access to sourced Act text, plus a question and answer tool, with login, that answers strictly from that text. Useful for study, not a substitute for it."
+      ],
+      [
+        "LawFilings. Built for the one who actually files court cases."
+      ]
+    ]
   }
 }

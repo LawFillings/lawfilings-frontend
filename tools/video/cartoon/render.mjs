@@ -4,7 +4,7 @@ import fs from 'node:fs';
 import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 const here = path.dirname(fileURLToPath(import.meta.url));
-const [,, lang = 'en', fpsArg = '24', only] = process.argv;
+const [,, lang = 'en', fpsArg = '24', only] = process.argv;   // lang = en | hi | builtfor
 const fps = Number(fpsArg);
 const tl = JSON.parse(fs.readFileSync(path.join(here, `timeline_${lang}.json`), 'utf8'));
 const dir = path.join(here, only ? `preview_${lang}` : `frames_${lang}`);
@@ -14,7 +14,8 @@ const page = await browser.newPage();
 await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 1 });
 page.on('console', (m) => { if (m.type() === 'warning' || m.type() === 'error') console.log('page:', m.text()); });
 page.on('pageerror', (e) => console.log('pageerror:', e.message));
-await page.goto('file://' + path.join(here, 'cartoon.html'));
+await page.evaluateOnNewDocument((l) => { window.__LANG = l; }, lang);
+await page.goto('file://' + path.join(here, lang === 'builtfor' ? 'builtfor.html' : 'cartoon.html'));
 await page.evaluate((tl) => window.__setTimeline(tl), tl);
 const times = only ? only.split(',').map(Number) : Array.from({ length: Math.ceil(tl.total * fps) }, (_, i) => i / fps);
 let n = 0;
