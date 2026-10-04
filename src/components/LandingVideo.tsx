@@ -1,15 +1,14 @@
 import { useLanguage } from '../lib/language';
 import './LandingVideo.css';
 
-// Which cuts of the explainer exist. Visitors get their own language's cut when there is one; English
-// and the four South Indian languages (Tamil, Telugu, Kannada, Malayalam) get English; every other
-// language gets Hindi.
-const VIDEO_LANGUAGES = ['en', 'hi', 'pa', 'mr'];
-const ENGLISH_CUT_LANGUAGES = ['en', 'ta', 'te', 'kn', 'ml'];
+// Which cuts of the explainer exist. Visitors get their own language's cut when there is one; English,
+// Telugu and Malayalam (no cut yet) get English; every other language without its own cut gets Hindi.
+export const VIDEO_LANGUAGES = ['en', 'hi', 'pa', 'mr', 'ta', 'kn', 'gu'];
+const ENGLISH_CUT_LANGUAGES = ['en', 'te', 'ml'];
 
 export function pickVideoLanguage(language: string, available: string[]): string {
-  if (ENGLISH_CUT_LANGUAGES.includes(language)) return 'en';
   if (available.includes(language)) return language;
+  if (ENGLISH_CUT_LANGUAGES.includes(language)) return 'en';
   return available.includes('hi') ? 'hi' : 'en';
 }
 

@@ -9,7 +9,7 @@ const fps = Number(fpsArg);
 const tl = JSON.parse(fs.readFileSync(path.join(here, `timeline_${lang}.json`), 'utf8'));
 const dir = path.join(here, only ? `preview_${lang}` : `frames_${lang}`);
 fs.rmSync(dir, { recursive: true, force: true }); fs.mkdirSync(dir);
-const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--no-sandbox', '--font-render-hinting=none', '--allow-file-access-from-files'] });
+const browser = await puppeteer.launch({ executablePath: '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome', headless: 'new', args: ['--no-sandbox', '--font-render-hinting=none', '--allow-file-access-from-files', '--disable-gpu', '--disable-renderer-backgrounding', '--disable-background-timer-throttling', '--disable-backgrounding-occluded-windows', '--disable-frame-rate-limit', '--disable-features=CalculateNativeWinOcclusion'] });
 const page = await browser.newPage();
 await page.setViewport({ width: 1280, height: 720, deviceScaleFactor: 1 });
 page.on('console', (m) => { if (m.type() === 'warning' || m.type() === 'error') console.log('page:', m.text()); });
