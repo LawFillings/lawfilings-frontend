@@ -41,10 +41,10 @@ addScene('S0', 'url(#gCool)', `
   <text id="eyebrow" x="640" y="92" text-anchor="middle" font-size="30" font-weight="800" fill="#a67c10" letter-spacing="6">BUILT FOR</text>
   <text id="ttl1" class="serif" x="640" y="170" text-anchor="middle" font-size="62" font-weight="700" fill="#14273f">The one who actually</text>
   <text id="ttl2" class="serif" x="640" y="242" text-anchor="middle" font-size="62" font-weight="700" fill="#14273f">files court cases</text>
-  ${person('a0', { skin: '#d9a47c', hair: '#161616', coat: true, glasses: true })}
-  ${person('a1', { skin: '#c98f66', hair: '#1c140e', shirt: '#3b6ea5' })}
+  ${person('a0', { skin: '#d9a47c', hair: '#161616', coat: true, glasses: true, male: true, beard: true })}
+  ${person('a1', { skin: '#c98f66', hair: '#1c140e', shirt: '#3b6ea5', male: true })}
   ${person('a2', { skin: '#e2b28d', hair: '#2a1a12', shirt: '#4b5565', longHair: true })}
-  ${person('a3', { skin: '#d9a47c', hair: '#161616', shirt: '#e08a1e' })}
+  ${person('a3', { skin: '#d9a47c', hair: '#161616', shirt: '#e08a1e', male: true })}
   ${chip('p0', 'Advocates', 210, '#14273f')}${chip('p1', 'Individuals', 210, '#3b6ea5')}${chip('p2', 'Businesses', 210, '#4b5565')}${chip('p3', 'Law students', 210, '#e08a1e')}
 `);
 CAP('a3');
@@ -53,7 +53,7 @@ CAP('a3');
 addScene('S1', 'url(#gSun)', `
   ${floor('#efe3c4')}
   ${desk('dk1', 60, 520)}
-  ${person('adv', { skin: '#d9a47c', hair: '#161616', coat: true, glasses: true })}
+  ${person('adv', { skin: '#d9a47c', hair: '#161616', coat: true, glasses: true, male: true, beard: true })}
   ${chip('fc0', 'District Court', 190, '#3b6ea5')}${chip('fc1', 'High Court', 170, '#7b4a9e')}${chip('fc2', 'Supreme Court', 200, '#d4a72c', '#14273f')}
   ${chip('fc3', 'Tribunal', 150, '#2f8f6b')}${chip('fc4', 'Consumer Commission', 270, '#e08a1e')}
   <g id="adoc">${paper('ad', 220, 270, '#fff', 9, '#3b6ea5')}
@@ -70,7 +70,7 @@ addScene('S1', 'url(#gSun)', `
 addScene('S2', 'url(#gWarm)', `
   ${floor()}
   ${desk('dk2', 60, 520)}
-  ${person('ind', { skin: '#c98f66', hair: '#1c140e', shirt: '#3b6ea5' })}
+  ${person('ind', { skin: '#c98f66', hair: '#1c140e', shirt: '#3b6ea5', male: true })}
   <g id="forms">${paper('lf0', 100, 130, '#fff', 8, '#d9534f')}${paper('lf1', 100, 130, '#fff', 8, '#e08a1e')}${paper('lf2', 100, 130, '#fff', 8, '#7b4a9e')}
     <g id="xmark"><line x1="-60" y1="-70" x2="60" y2="70" stroke="#d9534f" stroke-width="14" stroke-linecap="round"/><line x1="60" y1="-70" x2="-60" y2="70" stroke="#d9534f" stroke-width="14" stroke-linecap="round"/></g></g>
   <g id="qCard"><rect x="-210" y="-135" width="420" height="270" rx="22" fill="#fff" stroke="#14273f" stroke-width="4" filter="url(#shadow)"/>
@@ -85,17 +85,14 @@ addScene('S2', 'url(#gWarm)', `
     <g transform="translate(0 -38) scale(0.8)" stroke="#d4a72c" stroke-width="4" fill="none" stroke-linecap="round"><line x1="0" y1="-26" x2="0" y2="22"/><line x1="-26" y1="-16" x2="26" y2="-16"/><path d="M-26 -16 L-34 4 Q-26 12 -18 4 Z"/><path d="M26 -16 L18 4 Q26 12 34 4 Z"/></g>
     <text x="0" y="68" text-anchor="middle" font-size="22" font-weight="900" fill="#14273f">Constitution &amp; Key Statutes</text>
     <text x="0" y="100" text-anchor="middle" font-size="17" font-weight="700" fill="#5b6b82">browse before you ever start a case</text></g>
-  ${chip('freeChip', 'FREE', 120, '#d4a72c', '#14273f', 26)}
-  <g id="noAcc"><rect x="-150" y="-26" width="300" height="52" rx="26" fill="#2f8f6b" filter="url(#shadow)"/><g transform="translate(-118 4) scale(0.9)">${padlock('lk0', true)}</g><text x="26" y="8" text-anchor="middle" font-size="22" font-weight="900" fill="#fff">No account needed</text></g>
+  <g id="logPill"><rect x="-110" y="-26" width="220" height="52" rx="26" fill="#14273f" filter="url(#shadow)"/><text x="0" y="9" text-anchor="middle" font-size="24" font-weight="900" fill="#d4a72c">Log in to begin</text></g>
 `);
-// white-ish padlock for the pill: keep navy lock on green pill readable via white backing
-$('lk0').insertAdjacentHTML('afterbegin', '<circle cx="0" cy="-2" r="26" fill="#fff"/>');
 
 // ---- S3: businesses ----
 addScene('S3', 'url(#gCool)', `
   ${floor()}
   ${desk('dk3', 40, 560)}
-  ${person('bz0', { skin: '#d9a47c', hair: '#161616', shirt: '#4b5565' })}
+  ${person('bz0', { skin: '#d9a47c', hair: '#161616', shirt: '#4b5565', male: true, tie: true })}
   ${person('bz1', { skin: '#e2b28d', hair: '#2a1a12', shirt: '#6b4c9a', longHair: true })}
   <g id="inv0">${paper('iv0', 96, 124, '#fff', 6, '#d9534f')}<text x="0" y="12" text-anchor="middle" font-size="20" font-weight="900" fill="#d9534f" transform="rotate(-12)">UNPAID</text></g>
   <g id="inv1">${paper('iv1', 96, 124, '#fff', 6, '#d9534f')}<text x="0" y="12" text-anchor="middle" font-size="20" font-weight="900" fill="#d9534f" transform="rotate(8)">UNPAID</text></g>
@@ -114,18 +111,16 @@ addScene('S3', 'url(#gCool)', `
 addScene('S4', 'url(#gWarm)', `
   ${floor('#efe3c4')}
   ${desk('dk4', 60, 520)}
-  ${person('stu', { skin: '#d9a47c', hair: '#161616', shirt: '#e08a1e' })}
+  ${person('stu', { skin: '#d9a47c', hair: '#161616', shirt: '#e08a1e', male: true })}
   <g id="books"><rect x="-70" y="-20" width="140" height="22" rx="4" fill="#3b6ea5"/><rect x="-62" y="-42" width="124" height="22" rx="4" fill="#d9534f"/><rect x="-56" y="-64" width="112" height="22" rx="4" fill="#2f8f6b"/></g>
   <g id="actCard"><rect x="-230" y="-100" width="460" height="200" rx="20" fill="#fff" stroke="#14273f" stroke-width="4" filter="url(#shadow)"/>
     <text x="-200" y="-62" font-size="22" font-weight="900" fill="#14273f">Sourced Act text</text>
     <rect x="-200" y="-40" width="300" height="9" rx="4" fill="#b8c2cf"/><rect x="-200" y="-22" width="380" height="9" rx="4" fill="#b8c2cf"/><rect x="-200" y="-4" width="340" height="9" rx="4" fill="#b8c2cf"/><rect x="-200" y="14" width="390" height="9" rx="4" fill="#b8c2cf"/><rect x="-200" y="32" width="250" height="9" rx="4" fill="#b8c2cf"/>
     <text x="-200" y="76" font-size="17" font-weight="700" fill="#5b6b82">primary text, not summarised</text></g>
-  ${chip('freeChip2', 'FREE', 110, '#d4a72c', '#14273f', 24)}
   ${bubble('qBub', 'What does this section say?', 400, 74, '#3b6ea5', '#14273f', 'left', 24, '#fff')}
   <g id="aCard"><rect x="-230" y="-70" width="460" height="140" rx="20" fill="#fff" stroke="#14273f" stroke-width="4" filter="url(#shadow)"/>
     <rect x="-200" y="-44" width="360" height="9" rx="4" fill="#b8c2cf"/><rect x="-200" y="-26" width="400" height="9" rx="4" fill="#b8c2cf"/><rect x="-200" y="-8" width="320" height="9" rx="4" fill="#b8c2cf"/>
     <rect x="-200" y="18" width="330" height="36" rx="18" fill="#2f8f6b"/><text x="-35" y="43" text-anchor="middle" font-size="19" font-weight="900" fill="#fff">answers only from the Act's text</text></g>
-  <g id="loginTag"><rect x="-90" y="-22" width="180" height="44" rx="22" fill="#fff" stroke="#14273f" stroke-width="3"/><g transform="translate(-58 3) scale(0.7)">${padlock('lk1', false)}</g><text x="14" y="7" text-anchor="middle" font-size="18" font-weight="900" fill="#14273f">login required</text></g>
   ${chip('study', 'for study, not a substitute', 380, '#e08a1e', '#fff', 24)}
 `);
 CAP('stu');
@@ -193,8 +188,7 @@ function sceneS2(t) {
   // constitution book card
   const bv = pop(t, 7.0, 0.5);
   tf('bookCard', { x: 900, y: 290, s: Math.max(0, bv) });
-  tf('freeChip', { x: 1085, y: 170, s: pop(t, 8.6, 0.4), r: 8 });
-  tf('noAcc', { x: 900, y: 520, s: pop(t, 10.8, 0.45) * 0.9 });
+  tf('logPill', { x: 900, y: 520, s: pop(t, 8.2, 0.45) * 0.9 });
 }
 function sceneS3(t) {
   tf('dk3', {}); tf('bz0', { x: 200, y: 480, s: 1.25 }); tf('bz1', { x: 400, y: 480, s: 1.25 });
@@ -218,10 +212,8 @@ function sceneS4(t) {
   idle('stu', t, 'happy', t < 12);
   tf('books', { x: 470, y: 480, s: pop(t, 0.2, 0.4) });
   tf('actCard', { x: 900, y: 170, s: pop(t, 0.8, 0.5) * 0.85 });
-  tf('freeChip2', { x: 1130, y: 90, s: pop(t, 2.8, 0.4), r: 8 });
   tf('qBub', { x: 880, y: 330, s: pop(t, 5.0, 0.45) * 0.8 });
   tf('aCard', { x: 900, y: 440, s: pop(t, 6.6, 0.5) * 0.8 });
-  tf('loginTag', { x: 560, y: 330, s: pop(t, 4.2, 0.4) * 0.9 });
   tf('study', { x: 640, y: 560 - 0, s: 0 });
   tf('study', { x: 900, y: 545, s: pop(t, 10.0, 0.5) * 0.9 });
 }

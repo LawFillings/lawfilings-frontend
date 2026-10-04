@@ -26,11 +26,12 @@ const MOODS = {
   angry: 'M-14 26 Q0 14 14 26',
 };
 function person(id, o) {
-  const { skin = '#e9b98f', hair = '#2b1d16', shirt = '#3b6ea5', coat = false, glasses = false, mustache = false, longHair = false, apron = false, bindi = false } = o;
+  const { skin = '#e9b98f', hair = '#2b1d16', shirt = '#3b6ea5', coat = false, glasses = false, mustache = false, longHair = false, apron = false, bindi = false, male = false, beard = false, tie = false } = o;
   const torso = coat ? '#1d1f27' : shirt;
   return `<g id="${id}">
     <g id="${id}-body">
-      <path d="M-64 0 L-60 -85 Q-56 -114 -22 -118 L22 -118 Q56 -114 60 -85 L64 0 Z" fill="${torso}"/>
+      <path d="${male ? 'M-72 0 L-68 -86 Q-64 -114 -26 -118 L26 -118 Q64 -114 68 -86 L72 0 Z' : 'M-64 0 L-60 -85 Q-56 -114 -22 -118 L22 -118 Q56 -114 60 -85 L64 0 Z'}" fill="${torso}"/>
+      ${tie && !coat ? '<path d="M-24 -118 L0 -94 L24 -118 Z" fill="#fff"/><path d="M-7 -110 L7 -110 L11 -66 L0 -54 L-11 -66 Z" fill="#a83232"/><path d="M-8 -112 L8 -112 L5 -102 L-5 -102 Z" fill="#8a2727"/>' : ''}
       ${coat ? `<path d="M-20 -118 L0 -60 L20 -118 Z" fill="#f4f4f4"/><path d="M-6 -112 L0 -100 L6 -112 Z" fill="#fff"/><rect x="-5" y="-108" width="4" height="14" fill="#fff"/><rect x="1" y="-108" width="4" height="14" fill="#fff"/><path d="M-22 -118 L-8 -50 L-30 -20 L-40 -110 Z" fill="#14151b"/><path d="M22 -118 L8 -50 L30 -20 L40 -110 Z" fill="#14151b"/>` : ''}
       ${apron ? `<path d="M-40 -110 L-40 0 L40 0 L40 -110 Z" fill="#e9e1cf" opacity="0.95"/>` : ''}
       <rect x="-12" y="-130" width="24" height="18" fill="${skin}"/>
@@ -44,12 +45,15 @@ function person(id, o) {
       <circle r="47" fill="${skin}"/>
       ${longHair
         ? `<path d="M-48 -10 Q-40 -58 0 -58 Q40 -58 48 -10 Q20 -34 -4 -30 Q-30 -26 -48 -10 Z" fill="${hair}"/>`
-        : `<path d="M-47 -8 Q-50 -56 0 -56 Q50 -56 47 -8 Q38 -36 0 -36 Q-38 -36 -47 -8 Z" fill="${hair}"/>`}
+        : male
+          ? `<path d="M-49 -4 Q-54 -66 0 -64 Q54 -66 49 -4 Q44 -40 26 -44 Q2 -34 -24 -44 Q-44 -40 -49 -4 Z" fill="${hair}"/><path d="M-50 -8 L-40 -8 L-42 22 L-47 16 Z" fill="${hair}"/><path d="M50 -8 L40 -8 L42 22 L47 16 Z" fill="${hair}"/>`
+          : `<path d="M-47 -8 Q-50 -56 0 -56 Q50 -56 47 -8 Q38 -36 0 -36 Q-38 -36 -47 -8 Z" fill="${hair}"/>`}
+      ${beard ? `<path d="M-47 8 Q-50 60 0 66 Q50 60 47 8 Q38 46 0 48 Q-38 46 -47 8 Z" fill="${hair}"/>` : ''}
       ${bindi ? '<circle cx="0" cy="-20" r="3.5" fill="#d33"/>' : ''}
       <circle id="${id}-eL" cx="-17" cy="-6" r="6.5" fill="#1a1a1a"/><circle id="${id}-eR" cx="17" cy="-6" r="6.5" fill="#1a1a1a"/>
       <circle cx="-15" cy="-8" r="2" fill="#fff"/><circle cx="19" cy="-8" r="2" fill="#fff"/>
-      <line id="${id}-bL" x1="-27" y1="-20" x2="-9" y2="-20" stroke="${hair}" stroke-width="4.5" stroke-linecap="round"/>
-      <line id="${id}-bR" x1="9" y1="-20" x2="27" y2="-20" stroke="${hair}" stroke-width="4.5" stroke-linecap="round"/>
+      <line id="${id}-bL" x1="-27" y1="-20" x2="-9" y2="-20" stroke="${hair}" stroke-width="${male ? 8 : 4.5}" stroke-linecap="round"/>
+      <line id="${id}-bR" x1="9" y1="-20" x2="27" y2="-20" stroke="${hair}" stroke-width="${male ? 8 : 4.5}" stroke-linecap="round"/>
       ${glasses ? '<circle cx="-17" cy="-6" r="13" fill="none" stroke="#222" stroke-width="3"/><circle cx="17" cy="-6" r="13" fill="none" stroke="#222" stroke-width="3"/><line x1="-4" y1="-6" x2="4" y2="-6" stroke="#222" stroke-width="3"/>' : ''}
       ${mustache ? '<path d="M-20 14 Q-10 6 0 12 Q10 6 20 14 Q10 20 0 15 Q-10 20 -20 14 Z" fill="#2b1d16"/>' : ''}
       <path id="${id}-mouth" d="${MOODS.neutral}" transform="translate(0 ${mustache ? 14 : 8})" fill="#a33" stroke="#7b2020" stroke-width="3.5" stroke-linecap="round" stroke-linejoin="round"/>
