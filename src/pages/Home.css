@@ -340,9 +340,10 @@
 }
 
 /* The always-visible court/forum buttons: stacked vertically rather than the wrapped horizontal
-   rows used elsewhere, so a long list stays readable in this narrower middle column. The
-   .forum-tabs-break elements (originally there to force a new row between forumRows groups in a
-   wrapped layout) now just add a bit of extra vertical space between those same groups. */
+   rows used elsewhere, so a long list stays readable in this narrower middle column. Spacing is
+   uniform between every button; the .forum-tabs-break elements (which force a new row between
+   forumRows groups in the wrapped layout) are hidden here, since a flex-gap on each side of one
+   made some gaps visibly bigger than the rest. */
 .picker-split .forum-tabs {
   flex-direction: column;
   align-items: stretch;
@@ -357,9 +358,7 @@
   white-space: nowrap;
 }
 .picker-split .forum-tabs-break {
-  flex-basis: auto;
-  width: 100%;
-  height: var(--space-2);
+  display: none;
 }
 
 /* The breadcrumb at the top of the results column — always shown once a court's picked, since
