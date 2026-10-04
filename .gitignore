@@ -34,3 +34,10 @@ tools/video/lawfilings_video_package.zip
 tools/video/screenshots_promo/
 tools/video/lawfilings_promo_package/
 tools/video/lawfilings_promo_package.zip
+tools/video/cartoon/frames_*/
+tools/video/cartoon/preview_*/
+tools/video/cartoon/_a_*/
+tools/video/cartoon/narration_*.wav
+tools/video/cartoon/timeline_*.json
+tools/video/cartoon/*.mp4
+tools/video/cartoon/_azure_*/

@@ -1,0 +1,35 @@
+{
+  "en": {
+    "voice": "Rishi",
+    "scenes": [
+      [
+        "You paid for it. It was never delivered, or it never worked. The seller won't listen.",
+        "You know you should complain in a consumer court. But the forms, the format, the legal language, the running around: it feels like too much.",
+        "That's exactly why LawFilings exists."
+      ],
+      [
+        "Log in, choose your court and the kind of case, and answer simple questions in plain language, in your own language. Your complaint is drafted for you, in proper court format.",
+        "Then you get step-by-step guidance and the official e-filing link, to file it online.",
+        "Prefer to hand it over? Find a verified advocate in our directory, and send your case to them directly."
+      ],
+      [
+        "And if you're an advocate, you already know how much of your day goes into drafting."
+      ],
+      [
+        "LawFilings gives you drafting wizards for over forty kinds of filings. District Courts, High Courts, the Supreme Court, D R T, N C L T, Consumer Forums, and Taxation Tribunals.",
+        "Upload a notice or an agreement, and the fields fill themselves in. Your name, address and phone are remembered, so you never retype them.",
+        "Search the Law Library, check cause lists, and calculate court fees, all in one place.",
+        "Less time drafting. More time arguing."
+      ],
+      [
+        "Available in thirteen Indian languages.",
+        "LawFilings. Draft faster. File with confidence. lawfilings dot in."
+      ]
+    ],
+    "azure": {
+      "locale": "en-IN",
+      "voice": "en-IN-NeerjaNeural",
+      "rate": "+8%"
+    }
+  }
+}
