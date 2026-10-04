@@ -3,6 +3,8 @@
 <head>
 <meta charset="utf-8" />
 <title>LawFilings cartoon promo</title>
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;8..60,600;8..60,700&display=swap" rel="stylesheet" />
 <style>
   html, body { margin: 0; background: #000; }
   #stage { background: #f3ead6; position: relative; width: 1280px; height: 720px; overflow: hidden; font-family: 'Helvetica Neue', Arial, sans-serif; }
@@ -10,7 +12,7 @@
   #caption { position: absolute; left: 90px; right: 90px; bottom: 26px; text-align: center; color: #fff; font-size: 27px; line-height: 1.3;
     background: rgba(20, 39, 63, 0.82); border-radius: 14px; padding: 12px 22px; font-weight: 600; letter-spacing: .1px; }
   text { font-family: 'Helvetica Neue', Arial, sans-serif; }
-  .serif { font-family: Georgia, 'Times New Roman', serif; }
+  .serif { font-family: 'Source Serif 4', Georgia, 'Times New Roman', serif; }
 </style>
 </head>
 <body>
@@ -50,7 +52,7 @@ addScene('S0', 'url(#gCool)', `
   <g id="cloudLogo">
     <g stroke="#14273f" stroke-width="7" fill="#14273f"><circle cx="-150" cy="10" r="60"/><circle cx="-90" cy="-30" r="70"/><circle cx="0" cy="-45" r="75"/><circle cx="90" cy="-30" r="70"/><circle cx="150" cy="10" r="60"/><circle cx="100" cy="45" r="55"/><circle cx="0" cy="55" r="60"/><circle cx="-100" cy="45" r="55"/><circle cx="-180" cy="82" r="16"/><circle cx="-196" cy="118" r="11"/></g>
     <g fill="#fff"><circle cx="-150" cy="10" r="60"/><circle cx="-90" cy="-30" r="70"/><circle cx="0" cy="-45" r="75"/><circle cx="90" cy="-30" r="70"/><circle cx="150" cy="10" r="60"/><circle cx="100" cy="45" r="55"/><circle cx="0" cy="55" r="60"/><circle cx="-100" cy="45" r="55"/><circle cx="-180" cy="82" r="16"/><circle cx="-196" cy="118" r="11"/></g>
-    <g transform="translate(-112 5) scale(0.9)">${logo('cl-logo')}</g>
+    <g transform="translate(-112 5) scale(0.9)">${logo('cl-logo', 84)}</g>
     <text class="serif" x="-62" y="22" font-size="46" font-weight="700" fill="#14273f">LawFilings</text>
   </g>
   ${chip('cForms', 'Forms', 150, '#d9534f')}${chip('cFormat', 'Format', 150, '#e08a1e')}${chip('cLegal', 'Legal language', 250, '#7b4a9e')}${chip('cRun', 'Running around', 250, '#2f8f6b')}
@@ -166,7 +168,7 @@ const LANGS = ['English', 'हिन्दी', 'ਪੰਜਾਬੀ', 'ગુજ
 const LCOL = ['#3b6ea5', '#d9534f', '#2f8f6b', '#7b4a9e', '#e08a1e', '#3b6ea5', '#d9534f', '#2f8f6b', '#7b4a9e', '#e08a1e', '#3b6ea5', '#d9534f', '#2f8f6b'];
 addScene('S4', 'url(#gNavy)', `
   <g id="stars"></g>
-  <g id="lgo">${logo('lg')}</g>
+  <g id="lgo">${logo('lg', 150)}</g>
   <text id="brand" class="serif" x="640" y="330" text-anchor="middle" font-size="84" font-weight="700" fill="#14273f">LawFilings</text>
   <g id="langChips"></g>
   <text id="n13" x="640" y="480" text-anchor="middle" font-size="40" font-weight="900" fill="#14273f">13 Indian languages</text>

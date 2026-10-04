@@ -1,14 +1,24 @@
 import { useLanguage } from '../lib/language';
 import './LandingVideo.css';
 
-// Explainer videos exist for these site languages; every other language shows the English one.
+// Which cuts of the explainer exist. Hindi is shown to every language except English and the four
+// South Indian languages (Tamil, Telugu, Kannada, Malayalam), which get the English cut; see
+// pickVideoLanguage.
 const VIDEO_LANGUAGES = ['en', 'hi'];
+const ENGLISH_CUT_LANGUAGES = ['en', 'ta', 'te', 'kn', 'ml'];
+
+/** English and the South Indian languages get the English cut; everyone else gets the Hindi cut
+ *  when one exists. */
+export function pickVideoLanguage(language: string, available: string[]): string {
+  if (ENGLISH_CUT_LANGUAGES.includes(language)) return 'en';
+  return available.includes('hi') ? 'hi' : 'en';
+}
 
 interface Props {
   /** File stem under /videos: `<base>-<lang>.mp4` and `poster-<base>-<lang>.jpg` (the default,
    *  'explainer', keeps the original `poster-<lang>.jpg` name). */
   base?: string;
-  /** Site languages that have their own cut of this video; every other language gets English. */
+  /** Cuts of this video that exist, e.g. ['en', 'hi']; see pickVideoLanguage for who sees which. */
   languages?: string[];
   id?: string;
   ariaLabel?: string;
@@ -21,7 +31,7 @@ interface Props {
  */
 export function LandingVideo({ base = 'explainer', languages = VIDEO_LANGUAGES, id = 'how-it-works', ariaLabel }: Props = {}) {
   const { t, language } = useLanguage();
-  const lang = languages.includes(language) ? language : 'en';
+  const lang = pickVideoLanguage(language, languages);
   const poster = base === 'explainer' ? `/videos/poster-${lang}.jpg` : `/videos/poster-${base}-${lang}.jpg`;
   return (
     <div className="landing-video" id={id}>

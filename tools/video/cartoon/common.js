@@ -92,9 +92,30 @@ function bubble(id, text, w, h, fill = '#fff', stroke = '#14273f', tail = 'left'
 function chip(id, text, w, fill, color = '#fff', size = 22) {
   return `<g id="${id}"><rect x="${-w / 2}" y="-24" width="${w}" height="48" rx="24" fill="${fill}" filter="url(#shadow)"/><text x="0" y="${size * 0.36}" text-anchor="middle" font-size="${size}" font-weight="800" fill="${color}">${text}</text></g>`;
 }
-function logo(id, size = 1) {
-  return `<g id="${id}"><circle r="44" fill="#14273f"/><circle r="44" fill="none" stroke="#d4a72c" stroke-width="4"/>
-   <g stroke="#d4a72c" stroke-width="4" fill="none" stroke-linecap="round"><line x1="0" y1="-26" x2="0" y2="22"/><line x1="-26" y1="-16" x2="26" y2="-16"/><path d="M-26 -16 L-34 4 Q-26 12 -18 4 Z"/><path d="M26 -16 L18 4 Q26 12 34 4 Z"/><line x1="-14" y1="24" x2="14" y2="24"/></g></g>`;
+// The site's own mark (src/components/BrandMark.tsx), same geometry and fixed brand colours. `px` is
+// the rendered diameter, used for the same small-size stroke/colour boosts the component applies;
+// the group is centred on the origin at 88 units across (the navy disc), scale it with tf().
+function logo(id, px = 150) {
+  const NAVY = '#14273F', GOLD = '#D4AF37', SOFT = '#E8CC6E';
+  const k = Math.min(1.6, Math.max(1, 150 / px));
+  const sc = px < 100 ? SOFT : GOLD;
+  const sw = (n) => (n * k).toFixed(2);
+  let sheets = '';
+  const ys = [121, 116.5, 112, 107.5, 103, 98.5], rot = [0, 1.5, 3, 4.5, 6, 8];
+  ys.forEach((y, i) => { sheets += `<rect x="135" y="${y}" width="50" height="4" rx="0.8" fill="${SOFT}" stroke="${sc}" stroke-width="${sw(0.5)}"${rot[i] ? ` transform="rotate(${rot[i]} 160 ${y + 2})"` : ''}/>`; });
+  return `<g id="${id}"><g transform="scale(0.4681) translate(-120 -120)">
+    <circle cx="120" cy="120" r="94" fill="${NAVY}"/>
+    <circle cx="120" cy="120" r="99" fill="none" stroke="${sc}" stroke-width="${sw(1.5)}"/>
+    <circle cx="120" cy="120" r="90" fill="none" stroke="${sc}" stroke-width="${sw(1)}" opacity="0.75"/>
+    <g stroke="${sc}" stroke-linecap="round">
+      <line x1="72" y1="125" x2="112" y2="125" stroke-width="${sw(3)}"/><line x1="92" y1="125" x2="92" y2="70" stroke-width="${sw(3)}"/>
+      <line x1="62" y1="70" x2="122" y2="70" stroke-width="${sw(2)}"/>
+      <line x1="62" y1="70" x2="55" y2="110" stroke-width="${sw(1.8)}"/><line x1="62" y1="70" x2="69" y2="110" stroke-width="${sw(1.8)}"/>
+      <line x1="122" y1="70" x2="115" y2="110" stroke-width="${sw(1.8)}"/><line x1="122" y1="70" x2="129" y2="110" stroke-width="${sw(1.8)}"/>
+    </g>
+    <path d="M55 110 a7 7 0 0 0 14 0" fill="none" stroke="${sc}" stroke-width="${sw(2.2)}"/><path d="M115 110 a7 7 0 0 0 14 0" fill="none" stroke="${sc}" stroke-width="${sw(2.2)}"/>
+    <circle cx="92" cy="70" r="${sw(2.6)}" fill="${SOFT}"/>
+    <g>${sheets}</g></g></g>`;
 }
 function washer(id) {
   return `<g id="${id}">

@@ -20,3 +20,22 @@ window.DICT_HI = {
   'More time arguing!': 'बहस के लिए ज़्यादा समय!',
   '13 Indian languages': '13 भारतीय भाषाएँ', 'Draft faster. File with confidence.': 'तेज़ ड्राफ्टिंग। भरोसे के साथ फाइलिंग।',
 };
+
+Object.assign(window.DICT_HI, {
+  'BUILT FOR': 'इनके लिए बना', 'The one who actually': 'वह जो सच में', 'files court cases': 'अदालती मामले दाखिल करता है',
+  'Advocates': 'वकील', 'Individuals': 'आम नागरिक', 'Businesses': 'कारोबार', 'Law students': 'विधि छात्र',
+  'District Court': 'ज़िला न्यायालय', 'High Court': 'उच्च न्यायालय', 'Tribunal': 'अधिकरण', 'Consumer Commission': 'उपभोक्ता आयोग',
+  'DRAFT': 'ड्राफ्ट', 'Order VIII Rule 1, CPC': 'आदेश 8 नियम 1, सी पी सी',
+  'Where your time goes': 'आपका समय कहाँ जाता है', 'Formatting': 'फ़ॉर्मेटिंग', 'Judgment': 'विवेचना',
+  'What happened?': 'क्या हुआ?', 'Defective goods': 'खराब सामान', 'Money not returned': 'पैसे वापस नहीं मिले', 'Something else': 'कुछ और',
+  'plain words, no legal forms': 'सरल शब्द, कोई कानूनी फ़ॉर्म नहीं',
+  'Constitution & Key Statutes': 'संविधान और प्रमुख अधिनियम', 'browse before you ever start a case': 'मामला शुरू करने से पहले देखें',
+  'Log in to begin': 'शुरू करने के लिए लॉग इन करें',
+  'Chasing dues…': 'बकाया वसूली…', 'UNPAID': 'अवैतनिक', 'Money Recovery Suit': 'धन वसूली वाद',
+  'Commercial Courts Act': 'वाणिज्यिक न्यायालय अधिनियम', 'DRT application': 'डी आर टी आवेदन', 'NCLT Section 9': 'एन सी एल टी धारा 9',
+  'Dues recovered': 'बकाया वसूल',
+  'Sourced Act text': 'स्रोत-सहित अधिनियम पाठ', 'primary text, not summarised': 'मूल पाठ, सार नहीं',
+  'What does this section say?': 'यह धारा क्या कहती है?', "answers only from the Act's text": 'जवाब सिर्फ़ अधिनियम के पाठ से',
+  'for study, not a substitute': 'पढ़ाई के लिए, विकल्प नहीं',
+  'Built for the one who': 'उसके लिए बना,', 'actually files court cases': 'जो सच में मामले दाखिल करता है',
+});
