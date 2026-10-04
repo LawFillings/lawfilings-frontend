@@ -1,16 +1,15 @@
 import { useLanguage } from '../lib/language';
 import './LandingVideo.css';
 
-// Which cuts of the explainer exist. Hindi is shown to every language except English and the four
-// South Indian languages (Tamil, Telugu, Kannada, Malayalam), which get the English cut; see
-// pickVideoLanguage.
-const VIDEO_LANGUAGES = ['en', 'hi'];
+// Which cuts of the explainer exist. Visitors get their own language's cut when there is one; English
+// and the four South Indian languages (Tamil, Telugu, Kannada, Malayalam) get English; every other
+// language gets Hindi.
+const VIDEO_LANGUAGES = ['en', 'hi', 'pa'];
 const ENGLISH_CUT_LANGUAGES = ['en', 'ta', 'te', 'kn', 'ml'];
 
-/** English and the South Indian languages get the English cut; everyone else gets the Hindi cut
- *  when one exists. */
 export function pickVideoLanguage(language: string, available: string[]): string {
   if (ENGLISH_CUT_LANGUAGES.includes(language)) return 'en';
+  if (available.includes(language)) return language;
   return available.includes('hi') ? 'hi' : 'en';
 }
 

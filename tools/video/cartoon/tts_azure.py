@@ -17,6 +17,23 @@ if len(key) < 30 or 'YOUR' in key.upper() or 'PASTE' in key.upper():
 if not re.fullmatch(r'[a-z0-9]+', region) or region in ('yourregion', 'region'):
     sys.exit('That does not look like a real region. Use the Location from Keys and Endpoint, e.g. centralindia.')
 
+# Check each configured voice exists in this region first; if not, list what the locale offers.
+try:
+    req = urllib.request.Request(f'https://{region}.tts.speech.microsoft.com/cognitiveservices/voices/list', headers={'Ocp-Apim-Subscription-Key': key})
+    with urllib.request.urlopen(req, timeout=60) as r: voices = json.loads(r.read().decode('utf-8'))
+except Exception as e:
+    voices = None; print('(could not fetch the voice list, skipping the voice check:', e, ')')
+if voices is not None:
+    have = {v['ShortName'] for v in voices}
+    bad = False
+    for name in names:
+        az = all_cfg[name]['azure']
+        if az['voice'] not in have:
+            bad = True
+            options = [f"{v['ShortName']} ({v['Gender']})" for v in voices if v['Locale'] == az['locale']]
+            print(f"Voice {az['voice']} for '{name}' is not available in region {region}. {az['locale']} voices there: {', '.join(options) or 'none'}")
+    if '--list-voices' in sys.argv or bad: sys.exit('Edit the voice in lines.json (azure.voice) and run again.' if bad else 0)
+
 for name in names:
     cfg = all_cfg[name]; az = cfg['azure']
     out = os.path.join(HERE, f'_azure_{name}'); os.makedirs(out, exist_ok=True)
@@ -26,6 +43,8 @@ for name in names:
             if ONLY is not None and n not in ONLY:
                 n += 1; continue
             t = text.replace('&', '&amp;').replace('<', '&lt;')
+            for w in az.get('englishWords', []):  # say these Latin-script words in Indian English, not in the local voice's accent
+                t = re.sub(rf'(?<![A-Za-z])({re.escape(w)})(?![A-Za-z])', r'<lang xml:lang="en-IN">\1</lang>', t)
             ssml = (f"<speak version='1.0' xml:lang='{az['locale']}' xmlns='http://www.w3.org/2001/10/synthesis'>"
                     f"<voice name='{az['voice']}'><prosody rate='{az['rate']}'>{t}</prosody></voice></speak>")
             req = urllib.request.Request(f'https://{region}.tts.speech.microsoft.com/cognitiveservices/v1', data=ssml.encode('utf-8'),

@@ -30,6 +30,7 @@
 </div>
 <script src="common.js"></script>
 <script src="i18n_hi.js"></script>
+<script src="i18n_pa.js"></script>
 <script>
 const scenes = $('scenes');
 function addScene(id, bg, content) { scenes.insertAdjacentHTML('beforeend', `<g id="${id}"><rect width="1280" height="720" fill="${bg}"/>${content}</g>`); }
@@ -228,7 +229,7 @@ function sceneS5(t, L) {
   tf('urlpill', { x: 640, y: 570, s: pop(t, 3.0, 0.5) });
 }
 
-if (String(window.__LANG).endsWith('hi')) applyDict(window.DICT_HI);
+{ const code = String(window.__LANG).replace('builtfor_', ''); const dict = window['DICT_' + code.toUpperCase()]; if (dict) applyDict(dict); }
 
 // ---------- main seek ----------
 let TL = null;

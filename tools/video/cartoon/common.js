@@ -140,6 +140,7 @@ function applyDict(map) {
     const fs = parseFloat(el.getAttribute('font-size'));
     const w0 = el.getComputedTextLength();
     el.textContent = tr;
+    el.removeAttribute('letter-spacing'); // wide tracking breaks up joined scripts
     const w1 = el.getComputedTextLength();
     if (fs && w1 > w0 * 1.1) el.setAttribute('font-size', (fs * (w0 * 1.1) / w1).toFixed(1));
   });

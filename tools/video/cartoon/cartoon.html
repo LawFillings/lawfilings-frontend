@@ -32,6 +32,7 @@
 
 <script src="common.js"></script>
 <script src="i18n_hi.js"></script>
+<script src="i18n_pa.js"></script>
 <script>
 // ---------- scene construction ----------
 const scenes = $('scenes');
@@ -183,7 +184,7 @@ addScene('S4', 'url(#gNavy)', `
   $('stars').innerHTML = s;
 })();
 
-if (window.__LANG === 'hi') applyDict(window.DICT_HI);
+{ const code = String(window.__LANG).replace('builtfor_', ''); const dict = window['DICT_' + code.toUpperCase()]; if (dict) applyDict(dict); }
 
 // ---------- timeline ----------
 let TL = null;
