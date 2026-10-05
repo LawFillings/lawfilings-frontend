@@ -1,12 +1,13 @@
 .pricing-page {
-  max-width: 760px;
+  max-width: 1100px;
   margin: 0 auto;
   padding: var(--space-6) var(--space-5) var(--space-8);
 }
 
 .pricing-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  align-items: stretch;
   gap: var(--space-3);
 }
 
@@ -40,7 +41,7 @@
   font-size: 20px;
   font-weight: 600;
   color: var(--ink);
-  margin: var(--space-7) 0 var(--space-1);
+  margin: 56px 0 var(--space-1);
 }
 
 .pricing-tier-heading:first-of-type {
@@ -55,4 +56,49 @@
 
 .pricing-card-pro {
   border-color: var(--accent-gold);
+}
+
+.pricing-card-permonth {
+  font-size: 13px;
+  color: var(--accent-deep);
+  margin: calc(var(--space-2) * -1) 0 var(--space-3);
+  min-height: 1.4em; /* keeps the buttons level across cards with and without a saving line */
+  white-space: pre;
+}
+
+.pricing-benefits {
+  list-style: none;
+  margin: var(--space-4) 0 0;
+  padding: var(--space-4) 0 0;
+  border-top: 1px solid var(--line-soft);
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  gap: var(--space-2);
+  font-size: 14px;
+  line-height: 1.45;
+  color: var(--text-secondary);
+}
+
+.pricing-benefits li {
+  position: relative;
+  padding-inline-start: 22px;
+}
+
+.pricing-benefits li::before {
+  content: '✓';
+  position: absolute;
+  inset-inline-start: 0;
+  color: var(--accent-deep);
+  font-weight: 700;
+}
+
+/* "Everything in Base, plus:" is a lead-in, not a feature — no tick. */
+.pricing-card-pro .pricing-benefits li:first-child {
+  padding-inline-start: 0;
+  font-weight: 600;
+  color: var(--ink);
+}
+.pricing-card-pro .pricing-benefits li:first-child::before {
+  content: none;
 }
