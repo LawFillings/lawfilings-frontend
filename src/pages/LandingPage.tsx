@@ -2,6 +2,7 @@ import { externalLawNewsSites } from "../data/newsItems";
 import { forums } from "../data/mockData";
 import { forumRows, forumTabLabel } from "../data/forumPicker";
 import { useSettings } from "../lib/settings";
+import { ContactSection } from "../components/ContactSection";
 import { useLanguage } from "../lib/language";
 import { useState } from "react";
 import { LandingVideo } from "../components/LandingVideo";
@@ -442,6 +443,8 @@ export function LandingPage({
           }
         />
       )}
+
+      <ContactSection />
 
       <footer className="landing-footer">
         <div className="landing-footer-col">

@@ -1,0 +1,61 @@
+/* Full-bleed band above the landing footer — same technique as the other landing bands. */
+.landing-contact {
+  width: 100vw;
+  margin-left: calc(50% - 50vw);
+  margin-right: calc(50% - 50vw);
+  background: linear-gradient(140deg, var(--accent-deep), var(--accent));
+  padding: var(--space-8) clamp(20px, 6vw, 110px);
+  box-sizing: border-box;
+}
+
+.landing-contact-inner {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
+  gap: var(--space-8);
+  align-items: start;
+}
+
+.landing-contact-eyebrow {
+  font-family: var(--font-mono);
+  font-size: 13px;
+  color: var(--accent-gold-soft);
+  margin: 0 0 var(--space-2);
+}
+
+.landing-contact-title {
+  font-size: 32px;
+  line-height: 1.2;
+  color: var(--text-on-accent);
+  margin: 0 0 var(--space-3);
+}
+
+.landing-contact-sub {
+  font-size: 16px;
+  line-height: 1.6;
+  color: rgba(255, 255, 255, 0.86);
+  margin: 0 0 var(--space-5);
+  max-width: 44ch;
+}
+
+.landing-contact-email {
+  display: inline-block;
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--accent-gold-soft);
+}
+
+.landing-contact-card {
+  background: var(--paper-raised);
+  border-radius: 16px;
+  padding: var(--space-6) var(--space-5);
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.18);
+}
+
+@media (max-width: 900px) {
+  .landing-contact-inner {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+}

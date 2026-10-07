@@ -317,7 +317,15 @@ function AppScreens() {
       );
     }
     if (screen.kind === 'about') return <AboutPage onBack={onBack} onStartFiling={startFilingNav} />;
-    if (screen.kind === 'contact') return <ContactPage onBack={onBack} />;
+    if (screen.kind === 'contact')
+      return (
+        <ContactPage
+          onBack={onBack}
+          onOpenPricing={openPricingNav}
+          onOpenGrievanceOfficer={openGrievanceOfficerNav}
+          onOpenPrivacyPolicy={openPrivacyPolicyNav}
+        />
+      );
     if (screen.kind === 'privacyPolicy') return <PrivacyPolicyPage onBack={onBack} />;
     if (screen.kind === 'termsOfService') return <TermsOfServicePage onBack={onBack} />;
     if (screen.kind === 'grievanceOfficer') return <GrievanceOfficerPage onBack={onBack} />;
