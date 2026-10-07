@@ -59,7 +59,63 @@
 }
 
 .contact-form {
-  max-width: 420px;
+  max-width: 480px;
+}
+
+.contact-field-gap {
+  margin-top: var(--space-4);
+}
+
+.contact-form select {
+  width: 100%;
+  padding: var(--space-3);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  font-family: var(--font-body);
+  font-size: 15px;
+  color: var(--ink);
+}
+
+/* Off-screen rather than display:none, so naive bots still "see" and fill it. */
+.contact-honeypot {
+  position: absolute;
+  inset-inline-start: -9999px;
+  width: 1px;
+  height: 1px;
+  opacity: 0;
+}
+
+.contact-error {
+  margin: var(--space-4) 0 0;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius);
+  background: #fbeaea;
+  color: #8a2a2a;
+  font-size: 14px;
+}
+
+.contact-consent {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.5;
+  margin: var(--space-3) 0 0;
+}
+
+.contact-success {
+  margin-top: var(--space-6);
+  padding: var(--space-5);
+  border: 1px solid var(--accent-gold);
+  border-radius: var(--radius);
+  background: var(--paper-raised);
+  line-height: 1.6;
+}
+
+.contact-success-title {
+  font-family: var(--font-display);
+  font-size: 22px;
+  margin: 0 0 var(--space-2);
+  color: var(--ink);
 }
 
 .contact-send-btn {
@@ -72,6 +128,13 @@
   border-radius: var(--radius);
   margin-top: var(--space-4);
   text-decoration: none;
+  border: 0;
+  cursor: pointer;
+}
+
+.contact-send-btn:disabled {
+  opacity: 0.6;
+  cursor: default;
 }
 
 .contact-send-btn:hover {
