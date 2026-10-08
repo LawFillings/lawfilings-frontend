@@ -42,7 +42,7 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
   const [isBorrower, setIsBorrower] = useState(true);
   const [reviewOf, setReviewOf] = useState<'interim' | 'final'>('interim');
 
-  const [ncltTypeId, setNcltTypeId] = useState<NcltApplicationTypeId>('s9');
+  const [ncltTypeId, setNcltTypeId] = useState<NcltApplicationTypeId>('s7');
 
   const [consumerTypeId, setConsumerTypeId] = useState<ConsumerApplicationTypeId>('complaint');
   const [consumerValue, setConsumerValue] = useState('');

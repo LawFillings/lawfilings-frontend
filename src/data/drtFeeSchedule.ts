@@ -7,8 +7,12 @@
 //     where the fee additionally depends on whether the applicant is the borrower or another
 //     aggrieved party, and the DRAT appeal against an SA-based order (SARFAESI Act section 18)
 //     which rule 13(3) makes chargeable at the same rate as the original SA.
-// Verified 2026-09-26 against two independent secondary sources quoting each Rule's text; treat as
-// provisional until checked against the Rules' own gazette text, same caveat as courtFeeSlabs.ts.
+// Verified 2026-09-26 against two independent secondary sources quoting each Rule's text, then
+// re-checked 2026-10-08 against published texts of Rule 7(2) (Indian Kanoon), Rule 13(2) (Legitquest)
+// and DRAT Rule 8(2) (DRAT's own Procedure Rules page, via search extract) — all figures and caps
+// agreed. Still published compilations, not the gazette itself: confirm before relying on them.
+// Note the DRAT appeal fee comes from Rule 8(2) of the DRAT (Procedure) Rules, 1994, not Rule 7 of
+// the DRT Rules (whose three-slab item concerns appeals against a Recovery Officer's order).
 
 export type DrtApplicationTypeId = 'oa' | 'sa' | 'review' | 'ia_ma' | 'drat_appeal';
 
@@ -30,8 +34,8 @@ export const DRT_APPLICATION_TYPES: DrtApplicationType[] = [
     governingLaw: 'Debts Recovery Tribunal (Procedure) Rules, 1993, Rule 7(1)(a)',
     needsAmount: true,
     sourceNote:
-      'Compiled from secondary sources quoting Rule 7 verbatim, not yet independently checked against the Rules’ own gazette text — confirm the computed figure before relying on it for a filing.',
-    lastVerified: '2026-09-26',
+      '₹12,000 up to ₹10 lakh of debt, then ₹1,000 for every lakh (or part of a lakh) above ₹10 lakh, subject to a maximum of ₹1,50,000. Re-checked 2026-10-08 against a published text of Rule 7(2) and tribunal FAQ pages — the figures and the ₹1,50,000 cap agree. A published compilation, not the gazette itself: confirm the computed figure before filing.',
+    lastVerified: '2026-10-08',
   },
   {
     id: 'sa',
@@ -39,8 +43,8 @@ export const DRT_APPLICATION_TYPES: DrtApplicationType[] = [
     governingLaw: 'Security Interest (Enforcement) Rules, 2002, Rule 13(2)',
     needsAmount: true,
     sourceNote:
-      'Compiled from secondary sources quoting Rule 13 verbatim, not yet independently checked against the Rules’ own gazette text — confirm the computed figure before relying on it for a filing. An appeal to DRAT against an SA order (SARFAESI section 18) is chargeable at this same rate, under Rule 13(3).',
-    lastVerified: '2026-09-26',
+      'Borrower: ₹500 per lakh (or part) below ₹10 lakh; ₹5,000 plus ₹250 per lakh (or part) above ₹10 lakh, maximum ₹1,00,000. Any other aggrieved person: ₹125 per lakh below ₹10 lakh; ₹1,250 plus ₹125 per lakh above, maximum ₹50,000. Re-checked 2026-10-08 against a published text of Rule 13(2) — figures and caps agree; a published compilation, not the gazette itself, so confirm before filing. An appeal to DRAT against an SA order (SARFAESI section 18) is chargeable at this same rate, under Rule 13(3).',
+    lastVerified: '2026-10-08',
   },
   {
     id: 'review',
@@ -48,8 +52,8 @@ export const DRT_APPLICATION_TYPES: DrtApplicationType[] = [
     governingLaw: 'Debts Recovery Tribunal (Procedure) Rules, 1993, Rule 7(1)(3)',
     needsAmount: true,
     sourceNote:
-      'The fee for reviewing an interim order is a flat ₹125, regardless of amount. For a final order, it is 50% of the fee payable on the original OA for that amount of debt, capped at ₹15,000 — compiled from secondary sources, not yet independently checked against the Rules’ own gazette text.',
-    lastVerified: '2026-09-26',
+      'The fee for reviewing an interim order is a flat ₹125, regardless of amount. For a final order, it is 50% of the fee payable on the original OA for that amount of debt, capped at ₹15,000 (a review to correct a clerical or arithmetical mistake is excluded). Re-checked 2026-10-08 against a published text of Rule 7(2).',
+    lastVerified: '2026-10-08',
   },
   {
     id: 'ia_ma',
@@ -57,17 +61,17 @@ export const DRT_APPLICATION_TYPES: DrtApplicationType[] = [
     governingLaw: 'Debts Recovery Tribunal (Procedure) Rules, 1993, Rule 7(1)(4)',
     needsAmount: false,
     sourceNote:
-      'A flat ₹250 regardless of amount — the Rules only define this fee for an Interlocutory Application; a Miscellaneous Application is charged the same rate in practice, but that specific equivalence is not independently confirmed against the Rules’ own text.',
-    lastVerified: '2026-09-26',
+      'A flat ₹250 regardless of amount (confirmed 2026-10-08 against a published text of Rule 7(2)) — the Rules only define this fee for an Interlocutory Application; a Miscellaneous Application is charged the same rate in practice, but that specific equivalence is not independently confirmed against the Rules’ own text.',
+    lastVerified: '2026-10-08',
   },
   {
     id: 'drat_appeal',
     label: 'Appeal to DRAT against a DRT order (from an OA)',
-    governingLaw: 'Recovery of Debts and Bankruptcy Act, 1993, Section 20; DRT (Procedure) Rules, 1993, Rule 7(1)(5)',
+    governingLaw: 'Recovery of Debts and Bankruptcy Act, 1993, Section 20; Debts Recovery Appellate Tribunal (Procedure) Rules, 1994, Rule 8(2)',
     needsAmount: true,
     sourceNote:
-      'Compiled from secondary sources quoting Rule 7 verbatim, not yet independently checked against the Rules’ own gazette text. This is the fee for appealing a DRT order made on an OA; an appeal against an order made on an SA (SARFAESI section 18) is charged at the SA rate instead — use the Securitisation Application option above for that.',
-    lastVerified: '2026-09-26',
+      'Three flat slabs by the amount of debt as determined by the DRT (including interest, per the DRAT’s own FAQ): below ₹10 lakh ₹12,000; ₹10 lakh to below ₹30 lakh ₹20,000; ₹30 lakh or more ₹30,000 — Rule 8(2), Debts Recovery Appellate Tribunal (Procedure) Rules, 1994. Re-checked 2026-10-08 against a published text of that Rule; a compilation, not the gazette itself, so confirm before filing. This is the fee for appealing a DRT order made on an OA; an appeal against an order made on an SA (SARFAESI section 18) is charged at the SA rate instead — use the Securitisation Application option above for that.',
+    lastVerified: '2026-10-08',
   },
 ];
 
