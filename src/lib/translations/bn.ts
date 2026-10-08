@@ -595,6 +595,7 @@ export const bn: Translations = {
       heading: 'আপনার ডায়েরির জন্য মামলা যোগ করুন',
       title: 'শিরোনাম',
       titlePlaceholder: 'যেমন শর্মা বনাম ভার্মা — আদায় মামলা',
+      caseTypeNo: "ধরন/নং.",
       caseNoPlaceholder: "যেমন OA 456/2024",
       courtName: "আদালতের নাম",
       courtNamePlaceholder: "যেমন ঋণ আদায় ট্রাইব্যুনাল-II, দিল্লি",
@@ -614,7 +615,7 @@ export const bn: Translations = {
     calendarWeekdays: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
     tableHeaders: {
       case: 'শিরোনাম',
-      type: 'ধরন/নং.',
+      type: "আদালত/মামলা নং.",
       status: 'অবস্থা',
       nextHearing: 'পরবর্তী শুনানি',
       updatedOn: 'আপডেট তারিখ',

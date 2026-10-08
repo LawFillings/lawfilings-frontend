@@ -595,6 +595,7 @@ export const ta: Translations = {
       heading: 'உங்கள் நாட்குறிப்புக்கு ஒரு வழக்கைச் சேர்க்கவும்',
       title: 'தலைப்பு',
       titlePlaceholder: 'எடுத்துக்காட்டாக ஷர்மா vs வர்மா — மீட்பு வழக்கு',
+      caseTypeNo: "வகை/எண்.",
       caseNoPlaceholder: "எடுத்துக்காட்டாக OA 456/2024",
       courtName: "நீதிமன்றத்தின் பெயர்",
       courtNamePlaceholder: "எடுத்துக்காட்டாக கடன் மீட்பு தீர்ப்பாயம்-II, டெல்லி",
@@ -614,7 +615,7 @@ export const ta: Translations = {
     calendarWeekdays: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'],
     tableHeaders: {
       case: 'தலைப்பு',
-      type: 'வகை/எண்.',
+      type: "நீதிமன்றம்/வழக்கு எண்.",
       status: 'நிலை',
       nextHearing: 'அடுத்த விசாரணை',
       updatedOn: 'புதுப்பிக்கப்பட்ட தேதி',

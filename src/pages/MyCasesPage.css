@@ -349,3 +349,20 @@
   font-weight: 600;
   color: var(--ink);
 }
+
+.my-cases-type-cell .my-cases-row-court {
+  margin: 0 0 2px;
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--ink-soft);
+}
+
+.my-cases-row-type {
+  display: block;
+  font-size: 12px;
+  color: var(--text-muted);
+}
+
+.my-cases-caseno-field {
+  gap: var(--space-2);
+}

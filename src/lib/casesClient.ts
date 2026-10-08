@@ -125,6 +125,8 @@ async function request(path: string, token: string, options: RequestInit = {}) {
 export interface CreateCaseInput {
   forumId?: string;
   caseTypeId?: string;
+  /** A user-written type, for when nothing in the case_types catalog fits (excludes caseTypeId). */
+  customTypeLabel?: string;
   title: string;
   caseNumber?: string;
   courtName?: string;

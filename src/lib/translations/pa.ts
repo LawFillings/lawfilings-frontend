@@ -595,6 +595,7 @@ export const pa: Translations = {
       heading: 'ਆਪਣੀ ਡਾਇਰੀ ਲਈ ਮਾਮਲਾ ਜੋੜੋ',
       title: 'ਸਿਰਲੇਖ',
       titlePlaceholder: 'ਜਿਵੇਂ ਸ਼ਰਮਾ ਬਨਾਮ ਵਰਮਾ — ਵਸੂਲੀ ਵਾਦ',
+      caseTypeNo: "ਕਿਸਮ/ਨੰ.",
       caseNoPlaceholder: "ਜਿਵੇਂ OA 456/2024",
       courtName: "ਅਦਾਲਤ ਦਾ ਨਾਮ",
       courtNamePlaceholder: "ਜਿਵੇਂ ਕਰਜ਼ਾ ਵਸੂਲੀ ਟ੍ਰਿਬਿਊਨਲ-II, ਦਿੱਲੀ",
@@ -614,7 +615,7 @@ export const pa: Translations = {
     calendarWeekdays: ['ਐ', 'ਸੋ', 'ਮੰ', 'ਬੁੱ', 'ਵੀ', 'ਸ਼ੁੱ', 'ਸ਼'],
     tableHeaders: {
       case: 'ਸਿਰਲੇਖ',
-      type: 'ਕਿਸਮ/ਨੰ.',
+      type: "ਅਦਾਲਤ/ਕੇਸ ਨੰ.",
       status: 'ਸਥਿਤੀ',
       nextHearing: 'ਅਗਲੀ ਸੁਣਵਾਈ',
       updatedOn: 'ਅੱਪਡੇਟ ਮਿਤੀ',

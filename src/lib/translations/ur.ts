@@ -595,6 +595,7 @@ export const ur: Translations = {
       heading: 'اپنی ڈائری کے لیے ایک مقدمہ شامل کریں',
       title: 'عنوان',
       titlePlaceholder: 'مثلاً شرما بمقابلہ ورما — وصولی کا دعویٰ',
+      caseTypeNo: "مقدمہ کی قسم/نمبر",
       caseNoPlaceholder: "مثلاً OA 456/2024",
       courtName: "عدالت کا نام",
       courtNamePlaceholder: "مثلاً قرض وصولی ٹریبونل-II، دہلی",
@@ -614,7 +615,7 @@ export const ur: Translations = {
     calendarWeekdays: ['ا', 'پ', 'م', 'ب', 'ج', 'ج', 'ہ'],
     tableHeaders: {
       case: 'عنوان',
-      type: 'مقدمہ کی قسم/نمبر',
+      type: "عدالت/مقدمہ نمبر",
       status: 'حیثیت',
       nextHearing: 'اگلی سماعت',
       updatedOn: 'اپ ڈیٹ کی تاریخ',

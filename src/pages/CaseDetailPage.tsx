@@ -232,7 +232,7 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
                   className="my-cases-type-custom-input"
                   value={caseNumberDraft}
                   placeholder={t.myCases.diaryForm.caseNoPlaceholder}
-                  aria-label={t.myCases.tableHeaders.type}
+                  aria-label={t.myCases.diaryForm.caseTypeNo}
                   maxLength={100}
                   onChange={(e) => setCaseNumberDraft(e.target.value)}
                 />
@@ -280,7 +280,7 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
 
             {!editingCase && (
               <p className="case-detail-type-line">
-                {t.myCases.tableHeaders.type}: {caseRecord.customTypeLabel ?? caseRecord.caseTypeName ?? t.myCases.diaryTag}
+                {t.myCases.diaryForm.caseTypeNo}: {caseRecord.customTypeLabel ?? caseRecord.caseTypeName ?? t.myCases.diaryTag}
                 {caseRecord.caseNumber ? ` · ${caseRecord.caseNumber}` : ''}
                 {caseRecord.courtName ? ` · ${caseRecord.courtName}` : ''}
               </p>

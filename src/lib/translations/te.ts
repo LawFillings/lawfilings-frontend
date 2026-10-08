@@ -595,6 +595,7 @@ export const te: Translations = {
       heading: 'మీ డైరీ కోసం ఒక కేసును జోడించండి',
       title: 'శీర్షిక',
       titlePlaceholder: 'ఉదా. శర్మ vs వర్మ — రికవరీ దావా',
+      caseTypeNo: "రకం/నం.",
       caseNoPlaceholder: "ఉదా. OA 456/2024",
       courtName: "కోర్టు పేరు",
       courtNamePlaceholder: "ఉదా. రుణ రికవరీ ట్రిబ్యునల్-II, ఢిల్లీ",
@@ -614,7 +615,7 @@ export const te: Translations = {
     calendarWeekdays: ['ఆ', 'సో', 'మం', 'బు', 'గు', 'శు', 'శ'],
     tableHeaders: {
       case: 'శీర్షిక',
-      type: 'రకం/నం.',
+      type: "కోర్టు/కేసు నం.",
       status: 'స్థితి',
       nextHearing: 'తదుపరి విచారణ',
       updatedOn: 'అప్‌డేట్ తేదీ',

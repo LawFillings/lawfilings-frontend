@@ -595,6 +595,7 @@ export const kn: Translations = {
       heading: 'ನಿಮ್ಮ ಡೈರಿಗಾಗಿ ಒಂದು ಪ್ರಕರಣ ಸೇರಿಸಿ',
       title: 'ಶೀರ್ಷಿಕೆ',
       titlePlaceholder: 'ಉದಾ. ಶರ್ಮಾ vs ವರ್ಮಾ — ವಸೂಲಿ ದಾವೆ',
+      caseTypeNo: "ಪ್ರಕಾರ/ಸಂ.",
       caseNoPlaceholder: "ಉದಾ. OA 456/2024",
       courtName: "ನ್ಯಾಯಾಲಯದ ಹೆಸರು",
       courtNamePlaceholder: "ಉದಾ. ಸಾಲ ವಸೂಲಿ ನ್ಯಾಯಮಂಡಳಿ-II, ದೆಹಲಿ",
@@ -614,7 +615,7 @@ export const kn: Translations = {
     calendarWeekdays: ['ಭಾ', 'ಸೋ', 'ಮಂ', 'ಬು', 'ಗು', 'ಶು', 'ಶ'],
     tableHeaders: {
       case: 'ಶೀರ್ಷಿಕೆ',
-      type: 'ಪ್ರಕಾರ/ಸಂ.',
+      type: "ನ್ಯಾಯಾಲಯ/ಪ್ರಕರಣ ಸಂ.",
       status: 'ಸ್ಥಿತಿ',
       nextHearing: 'ಮುಂದಿನ ವಿಚಾರಣೆ',
       updatedOn: 'ನವೀಕರಿಸಿದ ದಿನಾಂಕ',

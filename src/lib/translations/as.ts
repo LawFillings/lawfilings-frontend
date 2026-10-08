@@ -595,6 +595,7 @@ export const as: Translations = {
       heading: 'আপোনাৰ ডায়েৰীৰ বাবে গোচৰ যোগ কৰক',
       title: 'শিৰোনাম',
       titlePlaceholder: 'যেনে শৰ্মা বনাম বৰ্মা — উলিয়াই অনা গোচৰ',
+      caseTypeNo: "প্ৰকাৰ/নং.",
       caseNoPlaceholder: "যেনে OA 456/2024",
       courtName: "আদালতৰ নাম",
       courtNamePlaceholder: "যেনে ঋণ উদ্ধাৰ ট্ৰাইব্যুনেল-II, দিল্লী",
@@ -614,7 +615,7 @@ export const as: Translations = {
     calendarWeekdays: ['ৰ', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
     tableHeaders: {
       case: 'শিৰোনাম',
-      type: 'প্ৰকাৰ/নং.',
+      type: "আদালত/গোচৰ নং.",
       status: 'স্থিতি',
       nextHearing: 'পৰৱৰ্তী শুনানি',
       updatedOn: 'আপডেট তাৰিখ',

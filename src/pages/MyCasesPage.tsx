@@ -82,7 +82,11 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
   const [saveError, setSaveError] = useState<string | null>(null);
 
   const [caseTypes, setCaseTypes] = useState<CaseTypeOption[]>([]);
-  const [savingTypeId, setSavingTypeId] = useState<string | null>(null);
+  // The form's CaseType/No. field: a dropdown of case types (blank = an unclassified diary entry,
+  // or "other" for a type typed by hand) next to the case number.
+  const CUSTOM_TYPE_VALUE = '__custom__';
+  const [newTypeSelect, setNewTypeSelect] = useState('');
+  const [newCustomType, setNewCustomType] = useState('');
 
   const SUGGESTED_STATUSES = Object.values(t.caseDetail.suggestedStatuses);
 
@@ -109,39 +113,6 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
     return acc;
   }, {});
 
-  const [customTypeEditingId, setCustomTypeEditingId] = useState<string | null>(null);
-  const [customTypeDraft, setCustomTypeDraft] = useState('');
-
-  const handleChangeType = async (caseId: string, type: { caseTypeId?: string | null; customTypeLabel?: string | null }) => {
-    if (!token) return;
-    setSavingTypeId(caseId);
-    try {
-      await casesClient.updateCaseType(caseId, type, token);
-      load();
-    } catch (err) {
-      setError(err instanceof Error ? err.message : t.myCases.failedToLoad);
-    } finally {
-      setSavingTypeId(null);
-    }
-  };
-
-  const handleTypeSelect = (c: CaseRecord, value: string) => {
-    if (value === '__custom__') {
-      setCustomTypeDraft(c.customTypeLabel ?? '');
-      setCustomTypeEditingId(c.id);
-      return;
-    }
-    handleChangeType(c.id, { caseTypeId: value || null, customTypeLabel: null });
-  };
-
-  /** Clearing the text and blurring resets the case back to unassigned "Diary" — there's no other
-   * way back from a custom label to the catalog select once one is set. */
-  const handleSaveCustomType = async (caseId: string) => {
-    const trimmed = customTypeDraft.trim();
-    setCustomTypeEditingId(null);
-    await handleChangeType(caseId, { caseTypeId: null, customTypeLabel: trimmed || null });
-  };
-
   useEffect(() => {
     if (highlightedIds.length === 0) return;
     const timer = setTimeout(() => setHighlightedIds([]), 3000);
@@ -164,6 +135,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
         {
           title: newTitle.trim(),
           caseNumber: newCaseNumber.trim() || undefined,
+          caseTypeId: newTypeSelect && newTypeSelect !== CUSTOM_TYPE_VALUE ? newTypeSelect : undefined,
+          customTypeLabel: newTypeSelect === CUSTOM_TYPE_VALUE ? newCustomType.trim() || undefined : undefined,
           courtName: newCourtName.trim() || undefined,
           ownerRole: user.role,
           status: 'assessing',
@@ -183,6 +156,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
       }
       setNewTitle('');
       setNewCaseNumber('');
+      setNewTypeSelect('');
+      setNewCustomType('');
       setNewCourtName('');
       setNewStatusLabel('');
       setNewHearingDate('');
@@ -262,8 +237,34 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                   placeholder={t.myCases.diaryForm.titlePlaceholder}
                 />
               </label>
-              <label className="form-field my-cases-caseno-field">
-                <span>{t.myCases.tableHeaders.type}</span>
+              <div className="form-field my-cases-caseno-field">
+                <span>{t.myCases.diaryForm.caseTypeNo}</span>
+                <select
+                  value={newTypeSelect}
+                  onChange={(e) => setNewTypeSelect(e.target.value)}
+                  aria-label={t.myCases.diaryForm.caseTypeNo}
+                >
+                  <option value="">{t.myCases.diaryTag}</option>
+                  <option value={CUSTOM_TYPE_VALUE}>{t.myCases.typeOther}</option>
+                  {Object.entries(caseTypesByForum).map(([forumType, types]) => (
+                    <optgroup key={forumType} label={forumType}>
+                      {types.map((ct) => (
+                        <option key={ct.id} value={ct.id}>
+                          {ct.name}
+                        </option>
+                      ))}
+                    </optgroup>
+                  ))}
+                </select>
+                {newTypeSelect === CUSTOM_TYPE_VALUE && (
+                  <input
+                    type="text"
+                    value={newCustomType}
+                    onChange={(e) => setNewCustomType(e.target.value)}
+                    placeholder={t.myCases.typeCustomPlaceholder}
+                    maxLength={100}
+                  />
+                )}
                 <input
                   type="text"
                   value={newCaseNumber}
@@ -271,7 +272,7 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                   placeholder={t.myCases.diaryForm.caseNoPlaceholder}
                   maxLength={100}
                 />
-              </label>
+              </div>
               <div className="case-detail-chips">
                 {SUGGESTED_STATUSES.map((s) => (
                   <button
@@ -355,8 +356,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                 <table className="my-cases-table">
                   <thead>
                     <tr>
-                      <th>{t.myCases.tableHeaders.type}</th>
                       <th>{t.myCases.tableHeaders.case}</th>
+                      <th>{t.myCases.tableHeaders.type}</th>
                       <th>{t.myCases.tableHeaders.status}</th>
                       <th>{t.myCases.tableHeaders.nextHearing}</th>
                       <th>{t.myCases.tableHeaders.updatedOn}</th>
@@ -373,60 +374,15 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                         }}
                         onClick={() => onOpenCase(c.id)}
                       >
-                        <td className="my-cases-type-cell" onClick={(e) => e.stopPropagation()}>
-                          {c.caseNumber && <span className="my-cases-row-caseno">{c.caseNumber}</span>}
-                          {c.hasDraft ? (
-                            c.customTypeLabel ?? c.caseTypeName ?? '—'
-                          ) : customTypeEditingId === c.id ? (
-                            <input
-                              type="text"
-                              className="my-cases-type-custom-input"
-                              autoFocus
-                              value={customTypeDraft}
-                              placeholder={t.myCases.typeCustomPlaceholder}
-                              onChange={(e) => setCustomTypeDraft(e.target.value)}
-                              onBlur={() => handleSaveCustomType(c.id)}
-                              onKeyDown={(e) => {
-                                if (e.key === 'Enter') (e.target as HTMLInputElement).blur();
-                                if (e.key === 'Escape') setCustomTypeEditingId(null);
-                              }}
-                            />
-                          ) : c.customTypeLabel ? (
-                            <button
-                              type="button"
-                              className="my-cases-type-custom-label"
-                              disabled={savingTypeId === c.id}
-                              onClick={() => {
-                                setCustomTypeDraft(c.customTypeLabel ?? '');
-                                setCustomTypeEditingId(c.id);
-                              }}
-                            >
-                              {c.customTypeLabel}
-                            </button>
-                          ) : (
-                            <select
-                              className="my-cases-type-select"
-                              value={c.caseTypeId ?? ''}
-                              disabled={savingTypeId === c.id}
-                              onChange={(e) => handleTypeSelect(c, e.target.value)}
-                            >
-                              <option value="">{t.myCases.diaryTag}</option>
-                              <option value="__custom__">{t.myCases.typeOther}</option>
-                              {Object.entries(caseTypesByForum).map(([forumType, types]) => (
-                                <optgroup key={forumType} label={forumType}>
-                                  {types.map((ct) => (
-                                    <option key={ct.id} value={ct.id}>
-                                      {ct.name}
-                                    </option>
-                                  ))}
-                                </optgroup>
-                              ))}
-                            </select>
-                          )}
-                        </td>
                         <td className="my-cases-row-title">
                           {c.title}
+                        </td>
+                        <td className="my-cases-type-cell">
                           {c.courtName && <span className="my-cases-row-court">{c.courtName}</span>}
+                          {c.caseNumber && <span className="my-cases-row-caseno">{c.caseNumber}</span>}
+                          <span className="my-cases-row-type">
+                            {c.customTypeLabel ?? c.caseTypeName ?? (c.hasDraft ? '—' : t.myCases.diaryTag)}
+                          </span>
                         </td>
                         <td>
                           <span className={`my-cases-status-badge tone-${STATUS_TONE[c.status]}`}>

@@ -595,6 +595,7 @@ export const or: Translations = {
       heading: 'ଆପଣଙ୍କ ଡାଏରୀ ପାଇଁ ଏକ ମାମଲା ଯୋଡ଼ନ୍ତୁ',
       title: 'ଶୀର୍ଷକ',
       titlePlaceholder: 'ଉଦାହରଣ ଶର୍ମା ବନାମ ଭର୍ମା — ରିକଭରି ମାମଲା',
+      caseTypeNo: "ପ୍ରକାର/ନଂ.",
       caseNoPlaceholder: "ଉଦାହରଣ OA 456/2024",
       courtName: "ଅଦାଲତର ନାମ",
       courtNamePlaceholder: "ଉଦାହରଣ ଋଣ ଆଦାୟ ଟ୍ରିବ୍ୟୁନାଲ-II, ଦିଲ୍ଲୀ",
@@ -614,7 +615,7 @@ export const or: Translations = {
     calendarWeekdays: ['ର', 'ସୋ', 'ମ', 'ବୁ', 'ଗୁ', 'ଶୁ', 'ଶ'],
     tableHeaders: {
       case: 'ଶୀର୍ଷକ',
-      type: 'ପ୍ରକାର/ନଂ.',
+      type: "ଅଦାଲତ/ମାମଲା ନଂ.",
       status: 'ସ୍ଥିତି',
       nextHearing: 'ପରବର୍ତ୍ତୀ ଶୁଣାଣି',
       updatedOn: 'ଅପଡେଟ୍ ତାରିଖ',

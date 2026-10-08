@@ -595,6 +595,7 @@ export const hi: Translations = {
       heading: 'अपनी डायरी के लिए मामला जोड़ें',
       title: 'शीर्षक',
       titlePlaceholder: 'जैसे शर्मा बनाम वर्मा — वसूली वाद',
+      caseTypeNo: "प्रकार/क्र.",
       caseNoPlaceholder: "जैसे OA 456/2024",
       courtName: "न्यायालय का नाम",
       courtNamePlaceholder: "जैसे ऋण वसूली अधिकरण-II, दिल्ली",
@@ -614,7 +615,7 @@ export const hi: Translations = {
     calendarWeekdays: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
     tableHeaders: {
       case: 'शीर्षक',
-      type: 'प्रकार/क्र.',
+      type: "न्यायालय/मामला क्र.",
       status: 'स्थिति',
       nextHearing: 'अगली सुनवाई',
       updatedOn: 'अद्यतन तिथि',

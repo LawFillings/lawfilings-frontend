@@ -595,6 +595,7 @@ export const ml: Translations = {
       heading: 'നിങ്ങളുടെ ഡയറിക്കായി ഒരു കേസ് ചേർക്കുക',
       title: 'ശീർഷകം',
       titlePlaceholder: 'ഉദാ. ശർമ്മ vs വർമ്മ — റിക്കവറി വ്യവഹാരം',
+      caseTypeNo: "തരം/നം.",
       caseNoPlaceholder: "ഉദാ. OA 456/2024",
       courtName: "കോടതിയുടെ പേര്",
       courtNamePlaceholder: "ഉദാ. കടം തിരിച്ചുപിടിക്കൽ ട്രിബ്യൂണൽ-II, ഡൽഹി",
@@ -614,7 +615,7 @@ export const ml: Translations = {
     calendarWeekdays: ['ഞാ', 'തി', 'ചൊ', 'ബു', 'വ്യാ', 'വെ', 'ശ'],
     tableHeaders: {
       case: 'ശീർഷകം',
-      type: 'തരം/നം.',
+      type: "കോടതി/കേസ് നം.",
       status: 'സ്ഥിതി',
       nextHearing: 'അടുത്ത വാദം കേൾക്കൽ',
       updatedOn: 'അപ്ഡേറ്റ് തീയതി',

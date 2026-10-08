@@ -595,6 +595,7 @@ export const gu: Translations = {
       heading: 'તમારી ડાયરી માટે કેસ ઉમેરો',
       title: 'શીર્ષક',
       titlePlaceholder: 'જેમ કે શર્મા વિરુદ્ધ વર્મા — વસૂલાત દાવો',
+      caseTypeNo: "પ્રકાર/નં.",
       caseNoPlaceholder: "જેમ કે OA 456/2024",
       courtName: "કોર્ટનું નામ",
       courtNamePlaceholder: "જેમ કે ડેબ્ટ્સ રિકવરી ટ્રિબ્યુનલ-II, દિલ્હી",
@@ -614,7 +615,7 @@ export const gu: Translations = {
     calendarWeekdays: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
     tableHeaders: {
       case: 'શીર્ષક',
-      type: 'પ્રકાર/નં.',
+      type: "કોર્ટ/કેસ નં.",
       status: 'સ્થિતિ',
       nextHearing: 'આગલી સુનાવણી',
       updatedOn: 'અપડેટ તારીખ',

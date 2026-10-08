@@ -595,6 +595,7 @@ export const mr: Translations = {
       heading: 'तुमच्या डायरीसाठी प्रकरण जोडा',
       title: 'शीर्षक',
       titlePlaceholder: 'उदा. शर्मा विरुद्ध वर्मा — वसुली दावा',
+      caseTypeNo: "प्रकार/क्र.",
       caseNoPlaceholder: "उदा. OA 456/2024",
       courtName: "न्यायालयाचे नाव",
       courtNamePlaceholder: "उदा. कर्ज वसुली न्यायाधिकरण-II, दिल्ली",
@@ -614,7 +615,7 @@ export const mr: Translations = {
     calendarWeekdays: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
     tableHeaders: {
       case: 'शीर्षक',
-      type: 'प्रकार/क्र.',
+      type: "न्यायालय/प्रकरण क्र.",
       status: 'स्थिती',
       nextHearing: 'पुढील सुनावणी',
       updatedOn: 'अद्ययावत तारीख',

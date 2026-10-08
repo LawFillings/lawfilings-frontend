@@ -593,6 +593,7 @@ export const en = {
       heading: 'Add a case for your diary',
       title: 'Title',
       titlePlaceholder: 'e.g. Sharma vs. Verma — recovery suit',
+      caseTypeNo: "CaseType/No.",
       caseNoPlaceholder: "e.g. OA 456/2024",
       courtName: "Court name",
       courtNamePlaceholder: "e.g. Debts Recovery Tribunal-II, Delhi",
@@ -612,7 +613,7 @@ export const en = {
     calendarWeekdays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
     tableHeaders: {
       case: 'Title',
-      type: 'CaseType/No.',
+      type: "Court/Case no.",
       status: 'Status',
       nextHearing: 'Next hearing',
       updatedOn: 'Updated on',
