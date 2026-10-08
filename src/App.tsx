@@ -186,6 +186,10 @@ function AppScreens() {
         window.history.replaceState(null, '', window.location.pathname);
         return [{ kind: 'landing' }, { kind: 'resetPassword', token }];
       }
+      // Signup's consent text opens the legal pages in a new tab via /#terms and /#privacy.
+      const hash = window.location.hash;
+      if (hash === '#terms') return [{ kind: 'landing' }, { kind: 'termsOfService' }];
+      if (hash === '#privacy') return [{ kind: 'landing' }, { kind: 'privacyPolicy' }];
     } catch {
       // Fall through to the normal landing screen.
     }
@@ -321,9 +325,8 @@ function AppScreens() {
       return (
         <ContactPage
           onBack={onBack}
-          onOpenPricing={openPricingNav}
-          onOpenGrievanceOfficer={openGrievanceOfficerNav}
           onOpenPrivacyPolicy={openPrivacyPolicyNav}
+          onOpenGrievanceOfficer={openGrievanceOfficerNav}
         />
       );
     if (screen.kind === 'privacyPolicy') return <PrivacyPolicyPage onBack={onBack} />;

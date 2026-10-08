@@ -27,6 +27,9 @@ export function SignupPage({ onBack, onSignedUp, onSwitchToLogin, onForgotPasswo
   const [error, setError] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
   const [signedUp, setSignedUp] = useState(false);
+  const [agreed, setAgreed] = useState(false);
+
+  const consentParts = t.auth.signup.agreeText.split(/(\{terms\}|\{privacy\})/);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -39,12 +42,18 @@ export function SignupPage({ onBack, onSignedUp, onSwitchToLogin, onForgotPasswo
       setError(t.auth.signup.barStateRequired);
       return;
     }
+    if (!agreed) {
+      setError(t.auth.signup.termsRequired);
+      return;
+    }
     setSubmitting(true);
     try {
-      const details =
-        role === 'advocate'
+      const details = {
+        termsAccepted: true,
+        ...(role === 'advocate'
           ? { barCouncilNo, barState, verificationDocUrl: verificationDocUrl || undefined }
-          : undefined;
+          : {}),
+      };
       await signup(fullName, email, password, role, details);
       setSignedUp(true);
     } catch (err) {
@@ -178,6 +187,31 @@ export function SignupPage({ onBack, onSignedUp, onSwitchToLogin, onForgotPasswo
               </>
             )}
           </div>
+          <label className="auth-consent">
+            <input
+              type="checkbox"
+              checked={agreed}
+              onChange={(e) => {
+                setAgreed(e.target.checked);
+                setError(null);
+              }}
+            />
+            <span>
+              {consentParts.map((part, i) =>
+                part === '{terms}' ? (
+                  <a key={i} href="/#terms" target="_blank" rel="noopener noreferrer">
+                    {t.termsOfService.title}
+                  </a>
+                ) : part === '{privacy}' ? (
+                  <a key={i} href="/#privacy" target="_blank" rel="noopener noreferrer">
+                    {t.privacyPolicy.title}
+                  </a>
+                ) : (
+                  part
+                ),
+              )}
+            </span>
+          </label>
           <button className="auth-submit" type="submit" disabled={submitting}>
             {submitting ? t.auth.signup.submitting : t.auth.signup.submit}
           </button>

@@ -171,3 +171,14 @@
 .contact-send-btn:hover {
   background: var(--ink-soft);
 }
+
+.contact-next-link {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: var(--accent-deep);
+  text-decoration: underline;
+  text-align: start;
+  cursor: pointer;
+}

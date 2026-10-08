@@ -23,6 +23,7 @@ export interface SignupDetails {
   barCouncilNo?: string;
   barState?: string;
   verificationDocUrl?: string;
+  termsAccepted?: boolean;
 }
 
 // The backend returns raw Postgres column names (full_name, not fullName) — there's no

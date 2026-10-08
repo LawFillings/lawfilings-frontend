@@ -553,6 +553,8 @@ export const en = {
       logIn: 'Log in',
       passwordMismatch: 'Passwords do not match',
       genericError: 'Signup failed',
+      agreeText: "I have read and agree to the {terms}, including its refund and cancellation terms, and the {privacy}.",
+      termsRequired: "Please tick the box to accept the Terms of Service and Privacy Policy.",
       verifyEmailTitle: 'Check your email',
       verifyEmailBody: (email: string) =>
         `We've sent a verification link to ${email}. You can keep using LawFilings now, but you'll need to click that link before you can log in again later.`,
@@ -862,7 +864,7 @@ export const en = {
   termsOfService: {
     eyebrow: 'Legal',
     title: 'Terms of Service',
-    effectiveDate: 'Effective date: 22 August 2026',
+    effectiveDate: 'Effective date: 8 October 2026',
     intro:
       'These Terms of Service ("Terms") govern your access to and use of LawFilings (the "Platform"). By creating an account or using the Platform, you agree to these Terms. If you don’t agree, please don’t use the Platform.',
     sections: [
@@ -892,9 +894,13 @@ export const en = {
         ],
       },
       {
-        heading: '5. Fees and Payment',
+        heading: "5. Fees, Payment, Cancellation and Refunds",
         paragraphs: [
-          'Certain features are chargeable, as described on our Pricing page at the time you use them. Payments are processed by Razorpay; by making a payment you also agree to Razorpay’s terms. Fees, once paid for a service that has been delivered (e.g. a generated draft), are non-refundable except where required by law or expressly stated otherwise at the time of purchase.',
+          'Certain features are chargeable, as described on our Pricing page at the time you use them. Payments are processed by Razorpay; by making a payment you also agree to Razorpay’s terms.',
+          "Plans and renewal. Paid plans (Base and Pro) are offered monthly, quarterly or annually and renew automatically at the end of each period, at the price shown on the Pricing page when you bought the plan, until you cancel.",
+          "Cancelling a plan. You may cancel at any time from the Billing page of your account or by writing to admin@lawfilings.in. After you cancel, you keep access until the end of the period you have already paid for and you will not be charged again. To avoid the next charge, cancel before the renewal date.",
+          "When you can get a refund. We will refund a charge made more than once for the same period, a charge for which you did not receive access because of a technical failure on our side, and a charge made after you cancelled in time. Please write to admin@lawfilings.in within 7 days of the charge, giving your registered email, the payment reference and the reason. Approved refunds are returned to the original payment method, usually within 5 to 7 working days.",
+          "When refunds are not available. The following are not refundable: drafts and other services already delivered; the unused part of a period you have already paid for; a change of mind; dissatisfaction with the outcome of a court filing (LawFilings is a drafting aid and does not guarantee any result); and Pro usage that has reached its fair-use limit for the month. Nothing in this section limits any rights you have under applicable consumer law.",
         ],
       },
       {
@@ -982,7 +988,6 @@ export const en = {
         heading: '2. What You Can Raise',
         paragraphs: [
           'A concern about how your personal data is collected, used, or shared.',
-          'A request to access, correct, or delete your data.',
           'A complaint about content or conduct on the Platform.',
           'Any other grievance relating to your use of LawFilings.',
         ],

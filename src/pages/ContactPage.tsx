@@ -9,17 +9,18 @@ const SUPPORT_PHONE: string = '';
 
 interface Props {
   onBack: () => void;
-  onOpenPricing: () => void;
-  onOpenGrievanceOfficer: () => void;
   onOpenPrivacyPolicy: () => void;
+  onOpenGrievanceOfficer: () => void;
 }
 
 /** Contact & Feedback in the site's shared full-width three-panel scheme (see split-page.css):
  *  hero + contact details on the left, the form in the centre, what-happens-next and related pages
- *  on the right. */
-export function ContactPage({ onBack, onOpenPricing, onOpenGrievanceOfficer, onOpenPrivacyPolicy }: Props) {
+ *  on the right (with a link to the Privacy Policy). */
+export function ContactPage({ onBack, onOpenPrivacyPolicy, onOpenGrievanceOfficer }: Props) {
   const { t } = useLanguage();
   const c = t.contact;
+  // Step 3 is "<question> <call to action>"; the call to action links to the Grievance Officer page.
+  const step3 = c.nextStep3.match(/^(.*?[?؟])\s+(.*)$/);
 
   return (
     <div className="contact-page">
@@ -59,15 +60,20 @@ export function ContactPage({ onBack, onOpenPricing, onOpenGrievanceOfficer, onO
             <ol className="contact-next-steps">
               <li>{c.nextStep1}</li>
               <li>{c.nextStep2}</li>
-              <li>{c.nextStep3}</li>
+              <li>
+                {step3 ? (
+                  <>
+                    {step3[1]}{' '}
+                    <button type="button" className="contact-next-link" onClick={onOpenGrievanceOfficer}>
+                      {step3[2]}
+                    </button>
+                  </>
+                ) : (
+                  c.nextStep3
+                )}
+              </li>
             </ol>
           </div>
-          <button type="button" className="trio-nudge-card" onClick={onOpenGrievanceOfficer}>
-            {t.landing.footer.grievanceOfficer}
-          </button>
-          <button type="button" className="trio-nudge-card" onClick={onOpenPricing}>
-            {t.nav.pricing}
-          </button>
           <button type="button" className="trio-nudge-card" onClick={onOpenPrivacyPolicy}>
             {t.landing.footer.privacyPolicy}
           </button>
