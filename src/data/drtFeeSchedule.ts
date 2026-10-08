@@ -14,7 +14,7 @@
 // Note the DRAT appeal fee comes from Rule 8(2) of the DRAT (Procedure) Rules, 1994, not Rule 7 of
 // the DRT Rules (whose three-slab item concerns appeals against a Recovery Officer's order).
 
-export type DrtApplicationTypeId = 'oa' | 'sa' | 'review' | 'ia_ma' | 'drat_appeal';
+export type DrtApplicationTypeId = 'oa' | 'sa' | 'review' | 'ia_ma' | 'drat_appeal' | 'ro_appeal';
 
 export interface DrtApplicationType {
   id: DrtApplicationTypeId;
@@ -73,6 +73,15 @@ export const DRT_APPLICATION_TYPES: DrtApplicationType[] = [
       'Three flat slabs by the amount of debt as determined by the DRT (including interest, per the DRAT’s own FAQ): below ₹10 lakh ₹12,000; ₹10 lakh to below ₹30 lakh ₹20,000; ₹30 lakh or more ₹30,000 — Rule 8(2), Debts Recovery Appellate Tribunal (Procedure) Rules, 1994. Re-checked 2026-10-08 against a published text of that Rule; a compilation, not the gazette itself, so confirm before filing. This is the fee for appealing a DRT order made on an OA; an appeal against an order made on an SA (SARFAESI section 18) is charged at the SA rate instead — use the Securitisation Application option above for that.',
     lastVerified: '2026-10-08',
   },
+  {
+    id: 'ro_appeal',
+    label: 'Appeal to the DRT against a Recovery Officer’s order (Section 30)',
+    governingLaw: 'Recovery of Debts and Bankruptcy Act, 1993, Sections 30 and 30A; Debts Recovery Tribunal (Procedure) Rules, 1993, Rule 7(2)',
+    needsAmount: true,
+    sourceNote:
+      'Three flat slabs by the amount of debt due, the same amounts as a DRAT appeal: below ₹10 lakh ₹12,000; ₹10 lakh to below ₹30 lakh ₹20,000; ₹30 lakh or more ₹30,000. Checked 2026-10-08 against a published text of Rule 7(2) and tribunal FAQ pages (which describe the slab as the amount appealed against); a compilation, not the gazette itself — confirm which amount your registry applies before filing. Separately, under Section 30A (inserted 2016) an appeal by a person who owes a debt to a bank or financial institution is not entertained unless that person deposits 50% of the debt as determined by the Tribunal — that pre-deposit is a deposit in addition to this fee, shown separately below it as 50% of the amount you enter (the Tribunal applies it to the debt as it determines it; the Section 30A text found has no power to reduce it).',
+    lastVerified: '2026-10-08',
+  },
 ];
 
 /** Rule 7(1)(a)/(b): flat ₹12,000 up to ₹10 lakh, then +₹1,000 per lakh (or part) above
@@ -98,8 +107,10 @@ function saFee(debtDue: number, isBorrower: boolean): number {
     : Math.min(1_250 + excessLakhs * 125, 50_000);
 }
 
-/** Rule 7(1)(5): three flat slabs by amount of debt, not a continuous formula like the OA fee. */
-function dratAppealFee(debtDue: number): number {
+/** Three flat slabs by amount of debt, not a continuous formula like the OA fee. Used for a DRAT
+ *  appeal (DRAT Rules, Rule 8(2)) and for an appeal against a Recovery Officer's order (DRT Rules,
+ *  Rule 7(2)) — different rules, same amounts. */
+function appealSlabFee(debtDue: number): number {
   if (debtDue < 1_000_000) return 12_000;
   if (debtDue < 3_000_000) return 20_000;
   return 30_000;
@@ -146,8 +157,8 @@ export function calculateDrtFee(input: DrtFeeInput): DrtFeeResult | null {
     return { fee, capped: fee === 15_000 && halfOa > 15_000 };
   }
 
-  if (typeId === 'drat_appeal') {
-    return { fee: dratAppealFee(debtDue), capped: false };
+  if (typeId === 'drat_appeal' || typeId === 'ro_appeal') {
+    return { fee: appealSlabFee(debtDue), capped: false };
   }
 
   return null;

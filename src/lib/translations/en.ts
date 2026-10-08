@@ -79,6 +79,8 @@ export const en = {
     drtReviewInterim: "An interim order",
     drtReviewFinal: "A final order",
     drtCapNote: "Capped — the Rules limit the maximum fee to {cap}, regardless of the amount of debt due.",
+    drtPreDepositLabel: "Pre-deposit under Section 30A (50% of the debt)",
+    drtPreDepositNote: "A deposit, not a fee. It applies only if you owe the debt to a bank or financial institution, and is worked out on the debt as determined by the Tribunal — the amount shown is based on the figure you entered.",
     ncltSub: "Flat fees for NCLT and NCLAT petitions, applications, and appeals — these don't scale with the amount involved, so no value input is needed here.",
     ncltApplicationTypeLabel: "Type of application",
     ncltFeeUnavailable: "No confirmed fee amount for this application type — see the note alongside for what is and isn't verified.",
