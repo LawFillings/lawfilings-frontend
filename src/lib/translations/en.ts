@@ -975,7 +975,7 @@ export const en = {
       nameLabel: 'Name',
       name: 'Myank Rai',
       designationLabel: 'Designation',
-      designation: 'Grievance Officer',
+      designation: 'COO',
       emailLabel: 'Email',
       email: 'admin@lawfilings.in',
       phoneLabel: 'Phone',
@@ -985,27 +985,19 @@ export const en = {
     },
     sections: [
       {
-        heading: '2. What You Can Raise',
-        paragraphs: [
-          'A concern about how your personal data is collected, used, or shared.',
-          'A complaint about content or conduct on the Platform.',
-          'Any other grievance relating to your use of LawFilings.',
-        ],
-      },
-      {
-        heading: '3. How to File a Complaint',
+        heading: '2. How to File a Complaint',
         paragraphs: [
           'Write to the Grievance Officer at the email above, with your name, registered account email, and a description of your concern. Where possible, include any relevant case or transaction reference.',
         ],
       },
       {
-        heading: '4. Response Timelines',
+        heading: '3. Response Timelines',
         paragraphs: [
           'We acknowledge every complaint within 24 hours of receipt, and aim to resolve it within 15 days. Complex matters may take longer; where they do, we’ll update you on progress.',
         ],
       },
       {
-        heading: '5. If You’re Not Satisfied',
+        heading: '4. If You’re Not Satisfied',
         paragraphs: [
           'If your complaint isn’t resolved to your satisfaction, you may escalate a data-protection complaint to the Data Protection Board of India, once constituted and operational under the Digital Personal Data Protection Act, 2023.',
         ],
