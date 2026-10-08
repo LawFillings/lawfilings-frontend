@@ -14,6 +14,10 @@ export interface CaseRecord {
    * exclusive with caseTypeId/caseTypeName (at most one of the two is set at a time). */
   customTypeLabel: string | null;
   title: string;
+  /** Case type and number as written by the user, e.g. "OA 456/2024" — free text. */
+  caseNumber: string | null;
+  /** Court name as written by the user, e.g. "Debts Recovery Tribunal-II, Delhi" — free text. */
+  courtName: string | null;
   status: 'assessing' | 'drafting' | 'ready' | 'filed' | 'disposed';
   createdAt: string;
   /** Bumped on title/type changes and on any status-update add/edit/delete. */
@@ -67,6 +71,8 @@ function mapCase(raw: any): CaseRecord {
     caseTypeName: raw.case_type_name ?? null,
     customTypeLabel: raw.custom_type_label ?? null,
     title: raw.title,
+    caseNumber: raw.case_number ?? null,
+    courtName: raw.court_name ?? null,
     status: raw.status,
     createdAt: raw.created_at,
     updatedAt: raw.updated_at ?? raw.created_at,
@@ -120,6 +126,8 @@ export interface CreateCaseInput {
   forumId?: string;
   caseTypeId?: string;
   title: string;
+  caseNumber?: string;
+  courtName?: string;
   ownerRole: 'justice_seeker' | 'advocate';
   /** Only meaningful for manually-added diary entries — wizard-created cases default to 'assessing'. */
   status?: CaseRecord['status'];
@@ -149,7 +157,7 @@ export async function updateCaseTitle(caseId: string, title: string, token: stri
  * Edit/Save, so one Save commits every case-level field at once instead of one request per field. */
 export async function updateCase(
   caseId: string,
-  updates: { title?: string; caseTypeId?: string | null; customTypeLabel?: string | null },
+  updates: { title?: string; caseNumber?: string | null; courtName?: string | null; caseTypeId?: string | null; customTypeLabel?: string | null },
   token: string
 ): Promise<CaseRecord> {
   const data = await request(`/cases/${caseId}`, token, { method: 'PUT', body: JSON.stringify(updates) });

@@ -43,6 +43,8 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
   const [caseTypes, setCaseTypes] = useState<CaseTypeOption[]>([]);
   const [editingCase, setEditingCase] = useState(false);
   const [titleDraft, setTitleDraft] = useState('');
+  const [caseNumberDraft, setCaseNumberDraft] = useState('');
+  const [courtNameDraft, setCourtNameDraft] = useState('');
   const [typeSelectDraft, setTypeSelectDraft] = useState('');
   const [customTypeDraft, setCustomTypeDraft] = useState('');
   const [savingCase, setSavingCase] = useState(false);
@@ -100,6 +102,8 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
   const startEditingCase = () => {
     if (!caseRecord) return;
     setTitleDraft(caseRecord.title);
+    setCaseNumberDraft(caseRecord.caseNumber ?? '');
+    setCourtNameDraft(caseRecord.courtName ?? '');
     if (caseRecord.customTypeLabel) {
       setTypeSelectDraft(CUSTOM_TYPE_VALUE);
       setCustomTypeDraft(caseRecord.customTypeLabel);
@@ -123,6 +127,8 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
         caseId,
         {
           title: trimmedTitle,
+          caseNumber: caseNumberDraft.trim() || null,
+          courtName: courtNameDraft.trim() || null,
           caseTypeId: typeSelectDraft === CUSTOM_TYPE_VALUE ? null : typeSelectDraft || null,
           customTypeLabel: typeSelectDraft === CUSTOM_TYPE_VALUE ? customTypeDraft.trim() || null : null,
         },
@@ -207,10 +213,28 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
               <div className="case-detail-edit-block">
                 <input
                   type="text"
+                  className="my-cases-type-custom-input"
+                  value={courtNameDraft}
+                  placeholder={t.myCases.diaryForm.courtNamePlaceholder}
+                  aria-label={t.myCases.diaryForm.courtName}
+                  maxLength={200}
+                  onChange={(e) => setCourtNameDraft(e.target.value)}
+                />
+                <input
+                  type="text"
                   className="case-detail-title-input"
                   value={titleDraft}
                   onChange={(e) => setTitleDraft(e.target.value)}
                   autoFocus
+                />
+                <input
+                  type="text"
+                  className="my-cases-type-custom-input"
+                  value={caseNumberDraft}
+                  placeholder={t.myCases.diaryForm.caseNoPlaceholder}
+                  aria-label={t.myCases.tableHeaders.type}
+                  maxLength={100}
+                  onChange={(e) => setCaseNumberDraft(e.target.value)}
                 />
                 <select
                   className="my-cases-type-select"
@@ -257,6 +281,8 @@ export function CaseDetailPage({ caseId, onBack, onOpenDraft }: Props) {
             {!editingCase && (
               <p className="case-detail-type-line">
                 {t.myCases.tableHeaders.type}: {caseRecord.customTypeLabel ?? caseRecord.caseTypeName ?? t.myCases.diaryTag}
+                {caseRecord.caseNumber ? ` · ${caseRecord.caseNumber}` : ''}
+                {caseRecord.courtName ? ` · ${caseRecord.courtName}` : ''}
               </p>
             )}
 

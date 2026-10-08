@@ -313,3 +313,39 @@
   color: var(--text-muted);
   border: 1px solid var(--line);
 }
+
+/* The card's 720px minimum height (from .trio-card) suits a page full of content, but is far too
+   tall while only the hero text and the "Add case" button show — so it shortens until the diary
+   form opens, and then grows with the form. */
+.trio-card.my-cases-card-compact {
+  min-height: 300px;
+}
+
+.my-cases-caseno-field input {
+  font-weight: 500;
+  border-color: var(--accent);
+}
+
+.my-cases-row-caseno {
+  display: block;
+  margin-top: 2px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 500;
+  color: var(--ink-soft, #5a6472);
+}
+
+.my-cases-row-court {
+  display: block;
+  margin-top: 2px;
+  font-size: 12px;
+  font-weight: 400;
+  color: var(--ink-soft);
+}
+
+.my-cases-type-cell .my-cases-row-caseno {
+  margin: 0 0 4px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--ink);
+}

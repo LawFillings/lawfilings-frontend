@@ -73,6 +73,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
 
   const [showAddForm, setShowAddForm] = useState(false);
   const [newTitle, setNewTitle] = useState('');
+  const [newCaseNumber, setNewCaseNumber] = useState('');
+  const [newCourtName, setNewCourtName] = useState('');
   const [newStatusLabel, setNewStatusLabel] = useState('');
   const [newHearingDate, setNewHearingDate] = useState('');
   const [newNote, setNewNote] = useState('');
@@ -159,7 +161,13 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
     setSaveError(null);
     try {
       const created = await casesClient.createCase(
-        { title: newTitle.trim(), ownerRole: user.role, status: 'assessing' },
+        {
+          title: newTitle.trim(),
+          caseNumber: newCaseNumber.trim() || undefined,
+          courtName: newCourtName.trim() || undefined,
+          ownerRole: user.role,
+          status: 'assessing',
+        },
         token
       );
       if (newStatusLabel.trim() || newHearingDate || newNote) {
@@ -174,6 +182,8 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
         );
       }
       setNewTitle('');
+      setNewCaseNumber('');
+      setNewCourtName('');
       setNewStatusLabel('');
       setNewHearingDate('');
       setNewNote('');
@@ -192,7 +202,7 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
         {t.common.back}
       </button>
 
-      <div className="trio-card">
+      <div className={showAddForm ? 'trio-card' : 'trio-card my-cases-card-compact'}>
       <aside className="my-cases-hero trio-left">
         <p className="my-cases-eyebrow">
           {t.myCases.yourAccount}
@@ -234,12 +244,32 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
             <div className="my-cases-diary-form">
               <h3 className="my-cases-diary-form-heading">{t.myCases.diaryForm.heading}</h3>
               <label className="form-field">
+                <span>{t.myCases.diaryForm.courtName}</span>
+                <input
+                  type="text"
+                  value={newCourtName}
+                  onChange={(e) => setNewCourtName(e.target.value)}
+                  placeholder={t.myCases.diaryForm.courtNamePlaceholder}
+                  maxLength={200}
+                />
+              </label>
+              <label className="form-field">
                 <span>{t.myCases.diaryForm.title}</span>
                 <input
                   type="text"
                   value={newTitle}
                   onChange={(e) => setNewTitle(e.target.value)}
                   placeholder={t.myCases.diaryForm.titlePlaceholder}
+                />
+              </label>
+              <label className="form-field my-cases-caseno-field">
+                <span>{t.myCases.tableHeaders.type}</span>
+                <input
+                  type="text"
+                  value={newCaseNumber}
+                  onChange={(e) => setNewCaseNumber(e.target.value)}
+                  placeholder={t.myCases.diaryForm.caseNoPlaceholder}
+                  maxLength={100}
                 />
               </label>
               <div className="case-detail-chips">
@@ -344,6 +374,7 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                         onClick={() => onOpenCase(c.id)}
                       >
                         <td className="my-cases-type-cell" onClick={(e) => e.stopPropagation()}>
+                          {c.caseNumber && <span className="my-cases-row-caseno">{c.caseNumber}</span>}
                           {c.hasDraft ? (
                             c.customTypeLabel ?? c.caseTypeName ?? '—'
                           ) : customTypeEditingId === c.id ? (
@@ -393,7 +424,10 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                             </select>
                           )}
                         </td>
-                        <td className="my-cases-row-title">{c.title}</td>
+                        <td className="my-cases-row-title">
+                          {c.title}
+                          {c.courtName && <span className="my-cases-row-court">{c.courtName}</span>}
+                        </td>
                         <td>
                           <span className={`my-cases-status-badge tone-${STATUS_TONE[c.status]}`}>
                             {c.latestStatusLabel ?? t.myCases.statusLabels[c.status]}
