@@ -295,6 +295,15 @@ export function CourtFeeCalculatorPage({ onBack }: Props) {
                   <span className="cfc-result-label">{c.feePayable}</span>
                   <span className="cfc-result-value">{formatINR(drtResult?.fee ?? 0)}</span>
                 </div>
+                {drtTypeId === 'drat_appeal' && drtResult && (
+                  <>
+                    <div className="cfc-result-row">
+                      <span className="cfc-result-label">{c.drtDratPreDepositLabel}</span>
+                      <span className="cfc-result-value">{formatINR(debtNumeric / 2)}</span>
+                    </div>
+                    <p className="cfc-cap-note">{fmt(c.drtDratPreDepositNote, { min: formatINR(debtNumeric / 4) })}</p>
+                  </>
+                )}
                 {drtTypeId === 'ro_appeal' && drtResult && (
                   <>
                     <div className="cfc-result-row">
