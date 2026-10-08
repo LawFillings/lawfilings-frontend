@@ -961,6 +961,10 @@ export const en = {
         heading: '15. Contact Us',
         paragraphs: [
           'Questions about these Terms can be sent to admin@lawfilings.in, or to our Grievance Officer — see the Grievance Officer page.',
+          "You may raise the following with us or with our Grievance Officer:",
+          "A concern regarding collection, usage or sharing of personal data in terms of our Privacy Policy.",
+          'A complaint about content or conduct on the Platform.',
+          'Any other grievance relating to your use of LawFilings.',
         ],
       },
     ],
