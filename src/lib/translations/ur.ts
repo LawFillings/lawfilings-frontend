@@ -971,15 +971,15 @@ export const ur: Translations = {
     officerCard: {
       heading: '1. شکایات افسر',
       nameLabel: 'نام',
-      name: '[شکایات افسر کا نام]',
+      name: 'Myank Rai',
       designationLabel: 'عہدہ',
-      designation: '[عہدہ]',
+      designation: 'شکایات افسر',
       emailLabel: 'ای میل',
       email: 'admin@lawfilings.in',
       phoneLabel: 'فون',
-      phone: '[فون نمبر]',
+      phone: '',
       addressLabel: 'پتہ',
-      address: '[رجسٹرڈ / خط و کتابت کا پتہ]، ہندوستان',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {

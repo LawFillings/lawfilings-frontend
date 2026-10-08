@@ -971,15 +971,15 @@ export const gu: Translations = {
     officerCard: {
       heading: '1. ફરિયાદ અધિકારી',
       nameLabel: 'નામ',
-      name: '[ફરિયાદ અધિકારીનું નામ]',
+      name: 'Myank Rai',
       designationLabel: 'હોદ્દો',
-      designation: '[હોદ્દો]',
+      designation: 'ફરિયાદ અધિકારી',
       emailLabel: 'ઈમેલ',
       email: 'admin@lawfilings.in',
       phoneLabel: 'ફોન',
-      phone: '[ફોન નંબર]',
+      phone: '',
       addressLabel: 'સરનામું',
-      address: '[નોંધાયેલ / પત્રવ્યવહાર સરનામું], ભારત',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {

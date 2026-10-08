@@ -971,15 +971,15 @@ export const ta: Translations = {
     officerCard: {
       heading: '1. குறை தீர்ப்பு அதிகாரி',
       nameLabel: 'பெயர்',
-      name: '[குறை தீர்ப்பு அதிகாரியின் பெயர்]',
+      name: 'Myank Rai',
       designationLabel: 'பதவி',
-      designation: '[பதவி]',
+      designation: 'குறை தீர்ப்பு அதிகாரி',
       emailLabel: 'மின்னஞ்சல்',
       email: 'admin@lawfilings.in',
       phoneLabel: 'தொலைபேசி',
-      phone: '[தொலைபேசி எண்]',
+      phone: '',
       addressLabel: 'முகவரி',
-      address: '[பதிவு / கடிதப் போக்குவரத்து முகவரி], இந்தியா',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {

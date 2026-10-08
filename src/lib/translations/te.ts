@@ -971,15 +971,15 @@ export const te: Translations = {
     officerCard: {
       heading: '1. ఫిర్యాదుల అధికారి',
       nameLabel: 'పేరు',
-      name: '[ఫిర్యాదుల అధికారి పేరు]',
+      name: 'Myank Rai',
       designationLabel: 'హోదా',
-      designation: '[హోదా]',
+      designation: 'ఫిర్యాదుల అధికారి',
       emailLabel: 'ఇమెయిల్',
       email: 'admin@lawfilings.in',
       phoneLabel: 'ఫోన్',
-      phone: '[ఫోన్ నంబర్]',
+      phone: '',
       addressLabel: 'చిరునామా',
-      address: '[నమోదిత / ఉత్తర ప్రత్యుత్తర చిరునామా], భారతదేశం',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {

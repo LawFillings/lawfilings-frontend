@@ -971,15 +971,15 @@ export const ml: Translations = {
     officerCard: {
       heading: '1. പരാതി പരിഹാര ഉദ്യോഗസ്ഥൻ',
       nameLabel: 'പേര്',
-      name: '[പരാതി പരിഹാര ഉദ്യോഗസ്ഥന്റെ പേര്]',
+      name: 'Myank Rai',
       designationLabel: 'പദവി',
-      designation: '[പദവി]',
+      designation: 'പരാതി പരിഹാര ഉദ്യോഗസ്ഥൻ',
       emailLabel: 'ഇമെയിൽ',
       email: 'admin@lawfilings.in',
       phoneLabel: 'ഫോൺ',
-      phone: '[ഫോൺ നമ്പർ]',
+      phone: '',
       addressLabel: 'വിലാസം',
-      address: '[രജിസ്റ്റർ ചെയ്ത / കത്തിടപാട് വിലാസം], ഇന്ത്യ',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {

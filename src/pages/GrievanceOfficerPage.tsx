@@ -24,7 +24,7 @@ export function GrievanceOfficerPage({ onBack }: Props) {
           { label: card.emailLabel, value: card.email },
           { label: card.phoneLabel, value: card.phone },
           { label: card.addressLabel, value: card.address },
-        ],
+        ].filter((row) => row.value),
       }}
       sections={c.sections}
     />

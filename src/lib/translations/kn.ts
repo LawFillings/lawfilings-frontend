@@ -971,15 +971,15 @@ export const kn: Translations = {
     officerCard: {
       heading: '1. ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿ',
       nameLabel: 'ಹೆಸರು',
-      name: '[ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿಯ ಹೆಸರು]',
+      name: 'Myank Rai',
       designationLabel: 'ಹುದ್ದೆ',
-      designation: '[ಹುದ್ದೆ]',
+      designation: 'ಕುಂದುಕೊರತೆ ಅಧಿಕಾರಿ',
       emailLabel: 'ಇಮೇಲ್',
       email: 'admin@lawfilings.in',
       phoneLabel: 'ಫೋನ್',
-      phone: '[ಫೋನ್ ಸಂಖ್ಯೆ]',
+      phone: '',
       addressLabel: 'ವಿಳಾಸ',
-      address: '[ನೋಂದಾಯಿತ / ಪತ್ರವ್ಯವಹಾರ ವಿಳಾಸ], ಭಾರತ',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {

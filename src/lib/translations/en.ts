@@ -973,15 +973,15 @@ export const en = {
     officerCard: {
       heading: '1. Grievance Officer',
       nameLabel: 'Name',
-      name: '[Grievance Officer name]',
+      name: 'Myank Rai',
       designationLabel: 'Designation',
-      designation: '[Designation]',
+      designation: 'Grievance Officer',
       emailLabel: 'Email',
       email: 'admin@lawfilings.in',
       phoneLabel: 'Phone',
-      phone: '[Phone number]',
+      phone: '',
       addressLabel: 'Address',
-      address: '[Registered / correspondence address], India',
+      address: '18/1, Om Vihar, New Delhi, India',
     },
     sections: [
       {
