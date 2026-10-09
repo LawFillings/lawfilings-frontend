@@ -31,7 +31,8 @@
 }
 
 .my-cases-hero {
-  margin-bottom: var(--space-6);
+  /* No bottom margin: inside the trio card it left a light strip under the dark panel. */
+  margin-bottom: 0;
 }
 
 .my-cases-eyebrow {
@@ -396,4 +397,5 @@
 /* The calendar lives in the My Cases card's right panel now, so the table below gets the full width. */
 .my-cases-calendar-panel .case-calendar {
   max-width: none;
+  margin-bottom: 0;
 }
