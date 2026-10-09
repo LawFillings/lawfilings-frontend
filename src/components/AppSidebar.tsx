@@ -70,10 +70,12 @@ export function AppSidebar({
 }: Props) {
   const { user, logout } = useAuth();
   const { t } = useLanguage();
-  const [isCauseListExpanded, setIsCauseListExpanded] = useState(false);
-  const [isLegalToolsExpanded, setIsLegalToolsExpanded] = useState(false);
-  const [isLawLibraryExpanded, setIsLawLibraryExpanded] = useState(false);
-  const [isMoreExpanded, setIsMoreExpanded] = useState(false);
+  // Every group starts open so all pages are visible in the drawer straight away (the carets stay,
+  // so a group can still be folded away).
+  const [isCauseListExpanded, setIsCauseListExpanded] = useState(true);
+  const [isLegalToolsExpanded, setIsLegalToolsExpanded] = useState(true);
+  const [isLawLibraryExpanded, setIsLawLibraryExpanded] = useState(true);
+  const [isMoreExpanded, setIsMoreExpanded] = useState(true);
 
   const close = onCloseMobileMenu;
   const go = (fn: () => void) => () => {

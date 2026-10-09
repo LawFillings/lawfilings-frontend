@@ -10,6 +10,9 @@
   width: 280px;
   max-width: 82vw;
   height: 100vh;
+  /* 100vh is taller than the visible area on phones (the browser toolbar overlaps its bottom), which
+     hid the last menu items; dvh tracks the area that is actually visible. */
+  height: 100dvh;
   display: flex;
   flex-direction: column;
   gap: var(--space-2);
@@ -17,6 +20,9 @@
   background: var(--card-tint);
   border-right: 1px solid var(--line-soft);
   overflow-y: auto;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: calc(var(--space-5) + env(safe-area-inset-bottom, 0px));
   transform: translateX(-100%);
   transition: transform 0.2s ease;
   box-shadow: none;
