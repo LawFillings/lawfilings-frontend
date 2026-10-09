@@ -613,9 +613,10 @@ export const bn: Translations = {
     calendarNextMonth: 'পরের মাস',
     calendarNoUpcoming: 'এখনও কোনো আসন্ন তারিখ লগ করা হয়নি।',
     calendarWeekdays: ['র', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
+    allCourts: "সব আদালত",
+    filterByCourt: "আদালত অনুযায়ী ফিল্টার করুন",
     tableHeaders: {
       case: 'শিরোনাম',
-      type: "আদালত/মামলা নং.",
       status: 'অবস্থা',
       nextHearing: 'পরবর্তী শুনানি',
       updatedOn: 'আপডেট তারিখ',

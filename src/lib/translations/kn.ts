@@ -613,9 +613,10 @@ export const kn: Translations = {
     calendarNextMonth: 'ಮುಂದಿನ ತಿಂಗಳು',
     calendarNoUpcoming: 'ಇನ್ನೂ ಯಾವುದೇ ಮುಂಬರುವ ದಿನಾಂಕಗಳನ್ನು ದಾಖಲಿಸಲಾಗಿಲ್ಲ.',
     calendarWeekdays: ['ಭಾ', 'ಸೋ', 'ಮಂ', 'ಬು', 'ಗು', 'ಶು', 'ಶ'],
+    allCourts: "ಎಲ್ಲಾ ನ್ಯಾಯಾಲಯಗಳು",
+    filterByCourt: "ನ್ಯಾಯಾಲಯದ ಪ್ರಕಾರ ಫಿಲ್ಟರ್ ಮಾಡಿ",
     tableHeaders: {
       case: 'ಶೀರ್ಷಿಕೆ',
-      type: "ನ್ಯಾಯಾಲಯ/ಪ್ರಕರಣ ಸಂ.",
       status: 'ಸ್ಥಿತಿ',
       nextHearing: 'ಮುಂದಿನ ವಿಚಾರಣೆ',
       updatedOn: 'ನವೀಕರಿಸಿದ ದಿನಾಂಕ',

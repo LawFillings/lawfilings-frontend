@@ -613,9 +613,10 @@ export const as: Translations = {
     calendarNextMonth: 'অহা মাহ',
     calendarNoUpcoming: 'এতিয়ালৈকে কোনো আগন্তুক তাৰিখ লিপিবদ্ধ কৰা হোৱা নাই।',
     calendarWeekdays: ['ৰ', 'সো', 'ম', 'বু', 'বৃ', 'শু', 'শ'],
+    allCourts: "সকলো আদালত",
+    filterByCourt: "আদালত অনুসৰি ফিল্টাৰ কৰক",
     tableHeaders: {
       case: 'শিৰোনাম',
-      type: "আদালত/গোচৰ নং.",
       status: 'স্থিতি',
       nextHearing: 'পৰৱৰ্তী শুনানি',
       updatedOn: 'আপডেট তাৰিখ',

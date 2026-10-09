@@ -611,9 +611,10 @@ export const en = {
     calendarNextMonth: 'Next month',
     calendarNoUpcoming: 'No upcoming dates logged yet.',
     calendarWeekdays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+    allCourts: "All courts",
+    filterByCourt: "Filter by court",
     tableHeaders: {
       case: 'Title',
-      type: "Court/Case no.",
       status: 'Status',
       nextHearing: 'Next hearing',
       updatedOn: 'Updated on',

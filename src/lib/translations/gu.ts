@@ -613,9 +613,10 @@ export const gu: Translations = {
     calendarNextMonth: 'આગલો મહિનો',
     calendarNoUpcoming: 'હજુ સુધી કોઈ આગામી તારીખ નોંધાયેલ નથી.',
     calendarWeekdays: ['ર', 'સો', 'મં', 'બુ', 'ગુ', 'શુ', 'શ'],
+    allCourts: "બધી કોર્ટ",
+    filterByCourt: "કોર્ટ પ્રમાણે ફિલ્ટર કરો",
     tableHeaders: {
       case: 'શીર્ષક',
-      type: "કોર્ટ/કેસ નં.",
       status: 'સ્થિતિ',
       nextHearing: 'આગલી સુનાવણી',
       updatedOn: 'અપડેટ તારીખ',

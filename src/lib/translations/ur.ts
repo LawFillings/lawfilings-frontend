@@ -613,9 +613,10 @@ export const ur: Translations = {
     calendarNextMonth: 'اگلا مہینہ',
     calendarNoUpcoming: 'ابھی تک کوئی آئندہ تاریخ درج نہیں کی گئی۔',
     calendarWeekdays: ['ا', 'پ', 'م', 'ب', 'ج', 'ج', 'ہ'],
+    allCourts: "تمام عدالتیں",
+    filterByCourt: "عدالت کے مطابق فلٹر کریں",
     tableHeaders: {
       case: 'عنوان',
-      type: "عدالت/مقدمہ نمبر",
       status: 'حیثیت',
       nextHearing: 'اگلی سماعت',
       updatedOn: 'اپ ڈیٹ کی تاریخ',

@@ -613,9 +613,10 @@ export const mr: Translations = {
     calendarNextMonth: 'पुढील महिना',
     calendarNoUpcoming: 'अजून कोणतीही आगामी तारीख नोंदवलेली नाही.',
     calendarWeekdays: ['र', 'सो', 'मं', 'बु', 'गु', 'शु', 'श'],
+    allCourts: "सर्व न्यायालये",
+    filterByCourt: "न्यायालयानुसार फिल्टर करा",
     tableHeaders: {
       case: 'शीर्षक',
-      type: "न्यायालय/प्रकरण क्र.",
       status: 'स्थिती',
       nextHearing: 'पुढील सुनावणी',
       updatedOn: 'अद्ययावत तारीख',

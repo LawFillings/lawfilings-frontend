@@ -613,9 +613,10 @@ export const ta: Translations = {
     calendarNextMonth: 'அடுத்த மாதம்',
     calendarNoUpcoming: 'இதுவரை வரவிருக்கும் தேதிகள் எதுவும் பதிவு செய்யப்படவில்லை.',
     calendarWeekdays: ['ஞா', 'தி', 'செ', 'பு', 'வி', 'வெ', 'ச'],
+    allCourts: "அனைத்து நீதிமன்றங்கள்",
+    filterByCourt: "நீதிமன்றம் வாரியாக வடிகட்டு",
     tableHeaders: {
       case: 'தலைப்பு',
-      type: "நீதிமன்றம்/வழக்கு எண்.",
       status: 'நிலை',
       nextHearing: 'அடுத்த விசாரணை',
       updatedOn: 'புதுப்பிக்கப்பட்ட தேதி',

@@ -613,9 +613,10 @@ export const pa: Translations = {
     calendarNextMonth: 'ਅਗਲਾ ਮਹੀਨਾ',
     calendarNoUpcoming: 'ਹਾਲੇ ਤੱਕ ਕੋਈ ਆਉਣ ਵਾਲੀ ਤਾਰੀਖ ਦਰਜ ਨਹੀਂ ਕੀਤੀ ਗਈ।',
     calendarWeekdays: ['ਐ', 'ਸੋ', 'ਮੰ', 'ਬੁੱ', 'ਵੀ', 'ਸ਼ੁੱ', 'ਸ਼'],
+    allCourts: "ਸਾਰੀਆਂ ਅਦਾਲਤਾਂ",
+    filterByCourt: "ਅਦਾਲਤ ਅਨੁਸਾਰ ਛਾਣੋ",
     tableHeaders: {
       case: 'ਸਿਰਲੇਖ',
-      type: "ਅਦਾਲਤ/ਕੇਸ ਨੰ.",
       status: 'ਸਥਿਤੀ',
       nextHearing: 'ਅਗਲੀ ਸੁਣਵਾਈ',
       updatedOn: 'ਅੱਪਡੇਟ ਮਿਤੀ',

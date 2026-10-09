@@ -613,9 +613,10 @@ export const or: Translations = {
     calendarNextMonth: 'ପରବର୍ତ୍ତୀ ମାସ',
     calendarNoUpcoming: 'ଏପର୍ଯ୍ୟନ୍ତ କୌଣସି ଆଗାମୀ ତାରିଖ ଲଗ୍ ହୋଇନାହିଁ।',
     calendarWeekdays: ['ର', 'ସୋ', 'ମ', 'ବୁ', 'ଗୁ', 'ଶୁ', 'ଶ'],
+    allCourts: "ସମସ୍ତ ଅଦାଲତ",
+    filterByCourt: "ଅଦାଲତ ଅନୁସାରେ ଫିଲ୍ଟର କରନ୍ତୁ",
     tableHeaders: {
       case: 'ଶୀର୍ଷକ',
-      type: "ଅଦାଲତ/ମାମଲା ନଂ.",
       status: 'ସ୍ଥିତି',
       nextHearing: 'ପରବର୍ତ୍ତୀ ଶୁଣାଣି',
       updatedOn: 'ଅପଡେଟ୍ ତାରିଖ',

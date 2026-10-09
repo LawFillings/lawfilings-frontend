@@ -613,9 +613,10 @@ export const ml: Translations = {
     calendarNextMonth: 'അടുത്ത മാസം',
     calendarNoUpcoming: 'ഇതുവരെ വരാനിരിക്കുന്ന തീയതികളൊന്നും രേഖപ്പെടുത്തിയിട്ടില്ല.',
     calendarWeekdays: ['ഞാ', 'തി', 'ചൊ', 'ബു', 'വ്യാ', 'വെ', 'ശ'],
+    allCourts: "എല്ലാ കോടതികളും",
+    filterByCourt: "കോടതി അനുസരിച്ച് ഫിൽട്ടർ ചെയ്യുക",
     tableHeaders: {
       case: 'ശീർഷകം',
-      type: "കോടതി/കേസ് നം.",
       status: 'സ്ഥിതി',
       nextHearing: 'അടുത്ത വാദം കേൾക്കൽ',
       updatedOn: 'അപ്ഡേറ്റ് തീയതി',

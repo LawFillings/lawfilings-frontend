@@ -90,6 +90,21 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
 
   const SUGGESTED_STATUSES = Object.values(t.caseDetail.suggestedStatuses);
 
+  // Court filter for the table and calendar. Courts are matched ignoring case/extra spaces, so
+  // "Tees Hazari Court" and "tees hazari court " count as one.
+  const [courtFilter, setCourtFilter] = useState('');
+  const courtKey = (name: string | null) => (name ?? '').trim().toLowerCase().replace(/\s+/g, ' ');
+  const courtOptions = (() => {
+    const seen = new Map<string, string>();
+    for (const c of cases ?? []) {
+      const key = courtKey(c.courtName);
+      if (key && !seen.has(key)) seen.set(key, c.courtName!.trim());
+    }
+    return [...seen.entries()].sort((a, b) => a[1].localeCompare(b[1]));
+  })();
+  const activeCourtFilter = courtOptions.some(([key]) => key === courtFilter) ? courtFilter : '';
+  const visibleCases = (cases ?? []).filter((c) => !activeCourtFilter || courtKey(c.courtName) === activeCourtFilter);
+
   const rowRefs = useRef(new Map<string, HTMLTableRowElement>());
 
   const load = () => {
@@ -348,23 +363,37 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
         <>
           <div className="my-cases-layout my-cases-board">
             <div className="my-cases-calendar-col">
-              <CaseCalendar cases={cases} onSelectDate={handleSelectDate} />
+              <CaseCalendar cases={visibleCases} onSelectDate={handleSelectDate} />
             </div>
 
             <div className="my-cases-table-col">
+              {courtOptions.length > 0 && (
+                <label className="my-cases-court-filter">
+                  <span>{t.myCases.filterByCourt}</span>
+                  <select value={activeCourtFilter} onChange={(e) => setCourtFilter(e.target.value)}>
+                    <option value="">{t.myCases.allCourts}</option>
+                    {courtOptions.map(([key, label]) => (
+                      <option key={key} value={key}>
+                        {label}
+                      </option>
+                    ))}
+                  </select>
+                </label>
+              )}
               <div className="my-cases-table-wrap">
                 <table className="my-cases-table">
                   <thead>
                     <tr>
+                      <th>{t.myCases.diaryForm.courtName}</th>
                       <th>{t.myCases.tableHeaders.case}</th>
-                      <th>{t.myCases.tableHeaders.type}</th>
+                      <th>{t.myCases.diaryForm.caseTypeNo}</th>
                       <th>{t.myCases.tableHeaders.status}</th>
                       <th>{t.myCases.tableHeaders.nextHearing}</th>
                       <th>{t.myCases.tableHeaders.updatedOn}</th>
                     </tr>
                   </thead>
                   <tbody>
-                    {cases.map((c) => (
+                    {visibleCases.map((c) => (
                       <tr
                         className={highlightedIds.includes(c.id) ? 'my-cases-row highlighted' : 'my-cases-row'}
                         key={c.id}
@@ -374,11 +403,11 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
                         }}
                         onClick={() => onOpenCase(c.id)}
                       >
+                        <td className="my-cases-court-cell">{c.courtName ?? '—'}</td>
                         <td className="my-cases-row-title">
                           {c.title}
                         </td>
                         <td className="my-cases-type-cell">
-                          {c.courtName && <span className="my-cases-row-court">{c.courtName}</span>}
                           {c.caseNumber && <span className="my-cases-row-caseno">{c.caseNumber}</span>}
                           <span className="my-cases-row-type">
                             {c.customTypeLabel ?? c.caseTypeName ?? (c.hasDraft ? '—' : t.myCases.diaryTag)}

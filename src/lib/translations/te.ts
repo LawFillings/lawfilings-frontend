@@ -613,9 +613,10 @@ export const te: Translations = {
     calendarNextMonth: 'తదుపరి నెల',
     calendarNoUpcoming: 'ఇంకా రాబోయే తేదీలు ఏవీ నమోదు చేయబడలేదు.',
     calendarWeekdays: ['ఆ', 'సో', 'మం', 'బు', 'గు', 'శు', 'శ'],
+    allCourts: "అన్ని కోర్టులు",
+    filterByCourt: "కోర్టు ఆధారంగా ఫిల్టర్ చేయండి",
     tableHeaders: {
       case: 'శీర్షిక',
-      type: "కోర్టు/కేసు నం.",
       status: 'స్థితి',
       nextHearing: 'తదుపరి విచారణ',
       updatedOn: 'అప్‌డేట్ తేదీ',
