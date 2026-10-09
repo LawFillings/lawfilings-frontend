@@ -388,7 +388,6 @@ export const gu: Translations = {
     categoryDraft: "ડ્રાફ્ટમાં સમસ્યા",
     categoryAccount: "એકાઉન્ટ અથવા લૉગ ઇન",
     categoryFeedback: "પ્રતિસાદ અથવા સૂચન",
-    categoryComplaint: "ફરિયાદ",
     consentNote: "આ મોકલીને તમે સંમત થાઓ છો કે અમે તમને જવાબ આપવા માટે તમારી વિગતોનો ઉપયોગ કરી શકીએ. અમારી ગોપનીયતા નીતિ જુઓ.",
     sendButton: "સંદેશ મોકલો",
     sending: "મોકલી રહ્યા છીએ…",

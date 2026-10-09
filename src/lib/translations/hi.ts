@@ -388,7 +388,6 @@ export const hi: Translations = {
     categoryDraft: "ड्राफ़्ट में समस्या",
     categoryAccount: "खाता या लॉगिन",
     categoryFeedback: "प्रतिक्रिया या सुझाव",
-    categoryComplaint: "शिकायत",
     consentNote: "इसे भेजकर आप सहमत होते हैं कि हम आपको उत्तर देने के लिए आपके विवरण का उपयोग कर सकते हैं। हमारी गोपनीयता नीति देखें।",
     sendButton: "संदेश भेजें",
     sending: "भेजा जा रहा है…",

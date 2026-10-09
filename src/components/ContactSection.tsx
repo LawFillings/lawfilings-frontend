@@ -13,17 +13,19 @@ export function ContactSection() {
   return (
     <section className="landing-contact" id="contact-feedback">
       <div className="landing-contact-inner">
-        <div className="landing-contact-copy">
-          <p className="landing-contact-eyebrow">{c.eyebrow}</p>
-          <h2 className="landing-contact-title">{c.homeTitle}</h2>
-          <p className="landing-contact-sub">{c.formNote}</p>
-          <a className="landing-contact-email" href={`mailto:${SUPPORT_EMAIL}`}>
-            {SUPPORT_EMAIL}
-          </a>
-        </div>
-        <div className="landing-contact-card">
-          <ContactForm showNote={false} />
-        </div>
+        <ContactForm
+          variant="landing"
+          intro={
+            <>
+              <p className="landing-contact-eyebrow">{c.eyebrow}</p>
+              <h2 className="landing-contact-title">{c.homeTitle}</h2>
+              <p className="landing-contact-sub">{c.formNote}</p>
+              <a className="landing-contact-email" href={`mailto:${SUPPORT_EMAIL}`}>
+                {SUPPORT_EMAIL}
+              </a>
+            </>
+          }
+        />
       </div>
     </section>
   );

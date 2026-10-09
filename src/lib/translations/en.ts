@@ -386,7 +386,6 @@ export const en = {
     categoryDraft: "Problem with a draft",
     categoryAccount: "Account or login",
     categoryFeedback: "Feedback or suggestion",
-    categoryComplaint: "Complaint",
     consentNote: "By sending this, you agree that we may use your details to reply to you. See our Privacy Policy.",
     sendButton: "Send message",
     sending: "Sending…",

@@ -388,7 +388,6 @@ export const ur: Translations = {
     categoryDraft: "ڈرافٹ میں مسئلہ",
     categoryAccount: "اکاؤنٹ یا لاگ ان",
     categoryFeedback: "رائے یا تجویز",
-    categoryComplaint: "شکایت",
     consentNote: "یہ بھیج کر آپ اس بات سے اتفاق کرتے ہیں کہ ہم آپ کو جواب دینے کے لیے آپ کی تفصیلات استعمال کر سکتے ہیں۔ ہماری رازداری کی پالیسی دیکھیں۔",
     sendButton: "پیغام بھیجیں",
     sending: "بھیجا جا رہا ہے…",

@@ -388,7 +388,6 @@ export const te: Translations = {
     categoryDraft: "డ్రాఫ్ట్‌లో సమస్య",
     categoryAccount: "ఖాతా లేదా లాగిన్",
     categoryFeedback: "అభిప్రాయం లేదా సూచన",
-    categoryComplaint: "ఫిర్యాదు",
     consentNote: "దీన్ని పంపడం ద్వారా, మీకు సమాధానం ఇవ్వడానికి మీ వివరాలను మేము ఉపయోగించవచ్చని మీరు అంగీకరిస్తున్నారు. మా గోప్యతా విధానాన్ని చూడండి.",
     sendButton: "సందేశం పంపండి",
     sending: "పంపుతున్నాము…",

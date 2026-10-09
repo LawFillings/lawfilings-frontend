@@ -388,7 +388,6 @@ export const pa: Translations = {
     categoryDraft: "ਡ੍ਰਾਫਟ ਵਿੱਚ ਸਮੱਸਿਆ",
     categoryAccount: "ਖਾਤਾ ਜਾਂ ਲੌਗ ਇਨ",
     categoryFeedback: "ਫੀਡਬੈਕ ਜਾਂ ਸੁਝਾਅ",
-    categoryComplaint: "ਸ਼ਿਕਾਇਤ",
     consentNote: "ਇਹ ਭੇਜ ਕੇ ਤੁਸੀਂ ਸਹਿਮਤ ਹੁੰਦੇ ਹੋ ਕਿ ਅਸੀਂ ਤੁਹਾਨੂੰ ਜਵਾਬ ਦੇਣ ਲਈ ਤੁਹਾਡੇ ਵੇਰਵੇ ਵਰਤ ਸਕਦੇ ਹਾਂ। ਸਾਡੀ ਪਰਦੇਦਾਰੀ ਨੀਤੀ ਵੇਖੋ।",
     sendButton: "ਸੁਨੇਹਾ ਭੇਜੋ",
     sending: "ਭੇਜਿਆ ਜਾ ਰਿਹਾ ਹੈ…",

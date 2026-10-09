@@ -388,7 +388,6 @@ export const or: Translations = {
     categoryDraft: "ଡ୍ରାଫ୍ଟରେ ସମସ୍ୟା",
     categoryAccount: "ଖାତା କିମ୍ବା ଲଗ୍ ଇନ୍",
     categoryFeedback: "ମତାମତ କିମ୍ବା ପରାମର୍ଶ",
-    categoryComplaint: "ଅଭିଯୋଗ",
     consentNote: "ଏହା ପଠାଇବା ଦ୍ୱାରା, ଆପଣଙ୍କୁ ଉତ୍ତର ଦେବା ପାଇଁ ଆମେ ଆପଣଙ୍କ ବିବରଣୀ ବ୍ୟବହାର କରିପାରିବୁ ବୋଲି ଆପଣ ସହମତ ହେଉଛନ୍ତି। ଆମର ଗୋପନୀୟତା ନୀତି ଦେଖନ୍ତୁ।",
     sendButton: "ବାର୍ତ୍ତା ପଠାନ୍ତୁ",
     sending: "ପଠାଯାଉଛି…",

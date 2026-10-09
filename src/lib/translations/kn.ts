@@ -388,7 +388,6 @@ export const kn: Translations = {
     categoryDraft: "ಡ್ರಾಫ್ಟ್‌ನಲ್ಲಿ ಸಮಸ್ಯೆ",
     categoryAccount: "ಖಾತೆ ಅಥವಾ ಲಾಗಿನ್",
     categoryFeedback: "ಪ್ರತಿಕ್ರಿಯೆ ಅಥವಾ ಸಲಹೆ",
-    categoryComplaint: "ದೂರು",
     consentNote: "ಇದನ್ನು ಕಳುಹಿಸುವ ಮೂಲಕ, ನಿಮಗೆ ಉತ್ತರಿಸಲು ನಿಮ್ಮ ವಿವರಗಳನ್ನು ನಾವು ಬಳಸಬಹುದು ಎಂದು ನೀವು ಒಪ್ಪುತ್ತೀರಿ. ನಮ್ಮ ಗೌಪ್ಯತಾ ನೀತಿಯನ್ನು ನೋಡಿ.",
     sendButton: "ಸಂದೇಶ ಕಳುಹಿಸಿ",
     sending: "ಕಳುಹಿಸಲಾಗುತ್ತಿದೆ…",

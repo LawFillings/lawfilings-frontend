@@ -11,6 +11,11 @@
 .landing-contact-inner {
   max-width: 1200px;
   margin: 0 auto;
+}
+
+/* Left: the section's text with the name/email/phone fields beneath it. Right: a card with just the
+   query type, message and send button, which therefore sits higher than it did with all six fields. */
+.landing-contact-grid {
   display: grid;
   grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.3fr);
   gap: var(--space-8);
@@ -54,8 +59,17 @@
 }
 
 @media (max-width: 900px) {
-  .landing-contact-inner {
+  .landing-contact-grid {
     grid-template-columns: 1fr;
     gap: var(--space-6);
   }
+}
+
+.landing-contact-personal {
+  margin-top: var(--space-6);
+  max-width: 44ch;
+}
+
+.landing-contact-copy .form-field > span {
+  color: rgba(255, 255, 255, 0.9);
 }

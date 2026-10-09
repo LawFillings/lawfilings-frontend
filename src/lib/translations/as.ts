@@ -388,7 +388,6 @@ export const as: Translations = {
     categoryDraft: "ড্ৰাফ্টত সমস্যা",
     categoryAccount: "একাউণ্ট বা লগইন",
     categoryFeedback: "মতামত বা পৰামৰ্শ",
-    categoryComplaint: "অভিযোগ",
     consentNote: "ইয়াক পঠিয়াই আপুনি সন্মত হয় যে আমি আপোনাক উত্তৰ দিবলৈ আপোনাৰ তথ্য ব্যৱহাৰ কৰিব পাৰোঁ। আমাৰ গোপনীয়তা নীতি চাওক।",
     sendButton: "বাৰ্তা পঠিয়াওক",
     sending: "পঠিওৱা হৈছে…",

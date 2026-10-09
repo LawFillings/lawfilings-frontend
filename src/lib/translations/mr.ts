@@ -388,7 +388,6 @@ export const mr: Translations = {
     categoryDraft: "ड्राफ्टमध्ये समस्या",
     categoryAccount: "खाते किंवा लॉग इन",
     categoryFeedback: "अभिप्राय किंवा सूचना",
-    categoryComplaint: "तक्रार",
     consentNote: "हे पाठवून तुम्ही सहमत होता की आम्ही तुम्हाला उत्तर देण्यासाठी तुमचा तपशील वापरू शकतो. आमचे गोपनीयता धोरण पहा.",
     sendButton: "संदेश पाठवा",
     sending: "पाठवत आहोत…",
