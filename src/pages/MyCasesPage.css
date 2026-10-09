@@ -399,3 +399,32 @@
   max-width: none;
   margin-bottom: 0;
 }
+
+/* Slimmer strip above the table: the board's padding and the court filter row take less height, so
+   more of the page is the table itself. (.my-cases-board is defined in split-page.css.) */
+.my-cases-board {
+  padding: 10px var(--space-4) var(--space-4);
+}
+
+.my-cases-court-filter {
+  margin-bottom: 6px;
+  gap: var(--space-2);
+}
+
+.my-cases-court-filter select {
+  padding: 3px var(--space-3);
+  font-size: 13px;
+}
+
+/* Column headings in bold, in the page's dark ink rather than the muted grey, so they stand apart
+   from the (lighter) row text. */
+.my-cases-table th {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* Heading strip in the same light lavender as the card's right-hand (calendar) column — that colour
+   is hard-coded as #f3ecf9 on .trio-right in split-page.css. */
+.my-cases-table thead th {
+  background: #f3ecf9;
+}
