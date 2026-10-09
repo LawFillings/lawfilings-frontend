@@ -197,7 +197,8 @@
 }
 
 .top-masthead-account:hover .top-masthead-account-menu,
-.top-masthead-account:focus-within .top-masthead-account-menu {
+.top-masthead-account:focus-within .top-masthead-account-menu,
+.top-masthead-account-menu.open {
   opacity: 1;
   visibility: visible;
   transform: translateY(0);
@@ -258,14 +259,15 @@
     min-width: 0;
   }
 
-  /* Below this width the primary button navigates immediately on tap, so a hover/focus-reveal
-     dropdown never gets a chance to show — those items are reachable via the hamburger drawer
-     instead (AppSidebar), so hide the now-inert caret and menu rather than imply they work. */
-  .top-masthead-account-caret {
+  /* The guest's primary button ("Log in") navigates immediately on tap, so its hover dropdown never
+     gets a chance to show and its caret would be misleading — those items live in the hamburger
+     drawer (AppSidebar). A logged-in user's "Account menu" button opens its dropdown on tap instead
+     (see TopMasthead.tsx), so only the guest's caret is hidden and the dropdown shows only when open. */
+  .top-masthead-account.is-guest .top-masthead-account-caret {
     display: none;
   }
 
-  .top-masthead-account-menu {
+  .top-masthead-account-menu:not(.open) {
     display: none;
   }
 }

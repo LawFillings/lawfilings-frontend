@@ -1,3 +1,4 @@
+import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../lib/auth';
 import { useLanguage } from '../lib/language';
 import { LanguageSwitcher } from './LanguageSwitcher';
@@ -39,6 +40,32 @@ export function TopMasthead({
 }: Props) {
   const { user, logout } = useAuth();
   const { t } = useLanguage();
+
+  // The account menu opens on hover/focus with a mouse (CSS), but a phone has no hover — so tapping
+  // the button toggles it too, and a tap elsewhere (or Escape) closes it again.
+  const [accountOpen, setAccountOpen] = useState(false);
+  const accountRef = useRef<HTMLDivElement>(null);
+  useEffect(() => {
+    if (!accountOpen) return;
+    const onPointerDown = (e: Event) => {
+      if (accountRef.current && !accountRef.current.contains(e.target as Node)) setAccountOpen(false);
+    };
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') setAccountOpen(false);
+    };
+    document.addEventListener('mousedown', onPointerDown);
+    document.addEventListener('touchstart', onPointerDown);
+    document.addEventListener('keydown', onKeyDown);
+    return () => {
+      document.removeEventListener('mousedown', onPointerDown);
+      document.removeEventListener('touchstart', onPointerDown);
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [accountOpen]);
+  const pick = (fn: () => void) => () => {
+    setAccountOpen(false);
+    fn();
+  };
 
   return (
     <header className="top-masthead">
@@ -106,9 +133,14 @@ export function TopMasthead({
         <button className="top-masthead-btn" onClick={onOpenCaseLawSearch}>
           {t.nav.search}
         </button>
-        <div className="top-masthead-account">
+        <div ref={accountRef} className={user ? 'top-masthead-account' : 'top-masthead-account is-guest'}>
           {user ? (
-            <button type="button" className="top-masthead-btn top-masthead-btn-primary">
+            <button
+              type="button"
+              className="top-masthead-btn top-masthead-btn-primary"
+              aria-expanded={accountOpen}
+              onClick={() => setAccountOpen((open) => !open)}
+            >
               {t.nav.accountMenu}
               <span className="top-masthead-account-caret" aria-hidden="true">▾</span>
             </button>
@@ -118,33 +150,33 @@ export function TopMasthead({
               <span className="top-masthead-account-caret" aria-hidden="true">▾</span>
             </button>
           )}
-          <div className="top-masthead-account-menu" aria-label={t.nav.accountMenu}>
+          <div className={accountOpen ? 'top-masthead-account-menu open' : 'top-masthead-account-menu'} aria-label={t.nav.accountMenu}>
             <LanguageSwitcher compact className="top-masthead-account-menu-item" />
-            <button className="top-masthead-account-menu-item" onClick={onOpenSettings}>
+            <button className="top-masthead-account-menu-item" onClick={pick(onOpenSettings)}>
               {t.nav.pageSettings}
             </button>
             {user?.email === ADMIN_EMAIL && (
-              <button className="top-masthead-account-menu-item" onClick={onOpenAdminGaps}>
+              <button className="top-masthead-account-menu-item" onClick={pick(onOpenAdminGaps)}>
                 Library gaps
               </button>
             )}
             {user?.role === 'advocate' && (
-              <button className="top-masthead-account-menu-item" onClick={onOpenMyAdvocateListing}>
+              <button className="top-masthead-account-menu-item" onClick={pick(onOpenMyAdvocateListing)}>
                 {t.advocateDirectory.myListing.title}
               </button>
             )}
             {user?.role === 'advocate' && (
-              <button className="top-masthead-account-menu-item" onClick={onOpenAdvocateInquiries}>
+              <button className="top-masthead-account-menu-item" onClick={pick(onOpenAdvocateInquiries)}>
                 {t.advocateDirectory.inquiries.title}
               </button>
             )}
             {user && (
-              <button className="top-masthead-account-menu-item" onClick={onOpenBilling}>
+              <button className="top-masthead-account-menu-item" onClick={pick(onOpenBilling)}>
                 {t.nav.billing}
               </button>
             )}
             {user && (
-              <button className="top-masthead-account-menu-item" onClick={logout}>
+              <button className="top-masthead-account-menu-item" onClick={pick(logout)}>
                 {t.nav.logOut}
               </button>
             )}
