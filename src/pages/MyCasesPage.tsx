@@ -343,6 +343,11 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
       </main>
 
       <aside className="trio-right">
+        {user && cases && (
+          <div className="my-cases-calendar-panel">
+            <CaseCalendar cases={visibleCases} onSelectDate={handleSelectDate} />
+          </div>
+        )}
         {showListingNudge ? (
           <>
             <div className="my-cases-advocate-nudge">
@@ -362,10 +367,6 @@ export function MyCasesPage({ onBack, onOpenCase, onOpenLogin, onOpenMyAdvocateL
       {user && cases && cases.length > 0 && (
         <>
           <div className="my-cases-layout my-cases-board">
-            <div className="my-cases-calendar-col">
-              <CaseCalendar cases={visibleCases} onSelectDate={handleSelectDate} />
-            </div>
-
             <div className="my-cases-table-col">
               {courtOptions.length > 0 && (
                 <label className="my-cases-court-filter">
