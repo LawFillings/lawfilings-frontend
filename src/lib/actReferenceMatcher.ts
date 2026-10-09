@@ -321,6 +321,18 @@ const FIXED_CASE_TYPE_CITATIONS: Record<string, Array<{ actId: string; sectionNo
     { actId: 'act-transfer-of-property-1882', sectionNo: '122' },
     { actId: 'act-registration-1908', sectionNo: '17' },
   ],
+  // Rent / Leave & Licence Agreement — what a lease is (s.105), the default notice period for a
+  // monthly tenancy (s.106), how a lease must be made / when it needs registration (s.107 TPA;
+  // s.17 Registration Act), and what a licence is (s.52 Easements Act, the lease-vs-licence line).
+  // Maharashtra's compulsory-registration rule (MRCA s.55) is covered in the wizard's own caveat
+  // rather than cited here, since it applies to one state only.
+  'ct-rent-agreement': [
+    { actId: 'act-transfer-of-property-1882', sectionNo: '105' },
+    { actId: 'act-transfer-of-property-1882', sectionNo: '106' },
+    { actId: 'act-transfer-of-property-1882', sectionNo: '107' },
+    { actId: 'act-registration-1908', sectionNo: '17' },
+    { actId: 'act-indian-easements-1882', sectionNo: '52' },
+  ],
   // Power of Attorney (General/Special) — the Act's own two substantive sections; the state-varying
   // registration requirement is covered in the case type's own plainLanguageSummary rather than
   // cited here, since it isn't fixed by a single central-Act section (see the Act's own [Note:]).

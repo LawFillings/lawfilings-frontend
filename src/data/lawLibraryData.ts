@@ -8307,6 +8307,12 @@ export const acts: Act[] = [
         heading: 'When landlord may recover possession',
         text: 'Notwithstanding anything contained in this Act but subject to the provisions of section 25, a landlord shall be entitled to recover possession of any premises if the court is satisfied— (a) that the tenant has committed any act contrary to the provisions of clause (o) of section 108 of the Transfer of Property Act, 1882; ... (g) that the premises are reasonably and bona fide required by the landlord for occupation by himself or by any person for whose benefit the premises are held, or where the landlord is a trustee of a public charitable trust, that the premises are required for occupation for the purposes of the trust. [Note: this Library reproduces only the chapeau and grounds (a) and (g) of a list running to thirteen grounds in total (clauses (a) through (n), covering also unauthorised structural alterations, nuisance, unlawful sub-letting, need for repairs or demolition/reconstruction, and prolonged non-use). This section was sourced via a bare-act mirror (advocatekhoj.com) rather than a directly machine-readable government PDF — India Code blocks automated access to its own copy of this Act — so verify the exact wording against a certified copy before relying on it.]',
       },
+      {
+        sectionNo: '55',
+        heading: 'Tenancy agreement to be compulsorily registered',
+        text: '(1) Notwithstanding anything contained in this Act or any other law for the time being in force, any agreement for leave and licence or letting of any premises, entered into between the landlord and the tenant or the licensee, as the case may be, after the commencement of this Act, shall be in writing and shall be registered under the Registration Act, 1908. (2) The responsibility of getting such agreement registered shall be on the landlord and, in the absence of the written registered agreement, the contention of the tenant about the terms and conditions, subject to which a premises have been given to him by the landlord on leave and licence or have been let to him, shall prevail, unless proved otherwise. (3) Any landlord who contravenes the provisions of this section shall, on conviction, be punished with imprisonment which may extend to three months or with fine not exceeding rupees five thousand or with both. [Note: this is why a Maharashtra rent or leave-and-licence agreement must be registered even for a short term such as 11 months, unlike the general position under the Transfer of Property Act, 1882 and Registration Act, 1908. Text checked against a bare-act mirror (courtbook.in), not a certified copy — verify the wording, and whether the section has since been amended, against an official copy before relying on it.]',
+      },
+
     ],
   },
   {
@@ -10047,6 +10053,12 @@ export const acts: Act[] = [
         heading: 'Injunction to restrain disturbance',
         text: 'Subject to the provisions of the Specific Relief Act, 1963, sections 36 to 42 (also in this Library), an injunction may be granted to restrain the disturbance of an easement,— (a) if the easement is actually disturbed — when compensation for such disturbance might be recovered under this Chapter; (b) if the disturbance is only threatened or intended — when the act threatened or intended must necessarily, if performed, disturb the easement. [Note: this Act as originally enacted in 1882 refers to "the Specific Relief Act, 1877, sections 52 to 57" — the Specific Relief Act, 1877 has since been repealed and replaced by the Specific Relief Act, 1963, whose corresponding injunction provisions are sections 36-42; this reference is read as updated to the current Act. Clause (b) means an easement holder need not wait for actual disturbance and resulting substantial damage before suing — a genuinely threatened or intended act that would necessarily disturb the easement is independently actionable by way of injunction alone.]',
       },
+      {
+        sectionNo: '52',
+        heading: '"License" defined',
+        text: 'Where one person grants to another, or to a definite number of other persons, a right to do, or continue to do, in or upon the immovable property of the grantor, something which would, in the absence of such right, be unlawful, and such right does not amount to an easement or an interest in the property, the right is called a license. [Note: this is the section that separates a leave-and-licence arrangement from a lease — a licensee gets only permission to occupy, not an interest in the property, so (unlike a lease) the licence confers no tenancy. Text checked against a bare-act mirror (courtbook.in), not a certified copy — verify the wording against an official copy before relying on it.]',
+      },
+
     ],
   },
   {

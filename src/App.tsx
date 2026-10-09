@@ -11,6 +11,7 @@ import { SummarySuitWizard } from './pages/SummarySuitWizard';
 import { LegalNoticeWizard } from './pages/LegalNoticeWizard';
 import { ContractAgreementWizard } from './pages/ContractAgreementWizard';
 import { PropertyDeedWizard } from './pages/PropertyDeedWizard';
+import { RentAgreementWizard } from './pages/RentAgreementWizard';
 import { PowerOfAttorneyWizard } from './pages/PowerOfAttorneyWizard';
 import { BoardResolutionWizard } from './pages/BoardResolutionWizard';
 import { ShareTransferDeedWizard } from './pages/ShareTransferDeedWizard';
@@ -529,6 +530,11 @@ function AppScreens() {
     if (ct.id === 'ct-property-deed') {
       return (
         <PropertyDeedWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
+      );
+    }
+    if (ct.id === 'ct-rent-agreement') {
+      return (
+        <RentAgreementWizard onBack={onBack} onOpenPricing={openPricingNav} {...resumeProps} />
       );
     }
     if (ct.id === 'ct-power-of-attorney') {

@@ -402,8 +402,18 @@ export const caseTypes: CaseType[] = [
     name: 'Property Deed (Sale/Gift/Lease/Mortgage)',
     governingLaw: 'Transfer of Property Act, 1882; Registration Act, 1908',
     plainLanguageSummary:
-      "Draft a Sale Deed, Gift Deed, Lease Deed, or Mortgage Deed for immovable property — these transfer or create an interest in the property itself, and (unlike a private rent/lease agreement) must be registered at the Sub-Registrar's office to take legal effect. Not for a short-term private rent/leave-and-licence arrangement — use Contract Agreement instead.",
+      "Draft a Sale Deed, Gift Deed, Lease Deed, or Mortgage Deed for immovable property — these transfer or create an interest in the property itself, and (unlike a private rent/lease agreement) must be registered at the Sub-Registrar's office to take legal effect. Not for a short-term private rent/leave-and-licence arrangement — use Rent / Leave & Licence Agreement instead.",
     applicantEligibility: 'any_party_to_a_property_transaction',
+    filingCategory: 'original',
+  },
+  {
+    id: 'ct-rent-agreement',
+    forumType: 'misc_drafts',
+    name: 'Rent / Leave & Licence Agreement',
+    governingLaw: 'Transfer of Property Act, 1882; Indian Easements Act, 1882; Registration Act, 1908; applicable State rent control / tenancy law',
+    plainLanguageSummary:
+      'Draft a residential or commercial rent agreement, or a leave and licence agreement, between a landlord and a tenant (or licensor and licensee) — with rent, security deposit, lock-in, notice period and the other usual clauses. Not filed with any court. A rent agreement of 11 months or less generally need not be registered, but a longer one must be — and in Maharashtra every rent or leave-and-licence agreement must be registered, whatever its length. Stamp duty is state-specific and not calculated here.',
+    applicantEligibility: 'any_party',
     filingCategory: 'original',
   },
   {
@@ -2134,6 +2144,24 @@ export const clauses: ClauseDef[] = [
     plainLanguageExplanation: 'States that Indian property law applies and which courts would hear a dispute, if one arose.',
   },
   {
+    code: 'RA-01',
+    caseTypeId: 'ct-rent-agreement',
+    category: 'governing_law',
+    title: 'Governing law and dispute resolution (rent agreement)',
+    bodyTemplate:
+      'This Agreement shall be governed by and construed in accordance with the laws of India, including the Transfer of Property Act, 1882 and any State law on rent control or tenancy that applies to the Premises. Any dispute arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts at {{jurisdiction_place}}.',
+    plainLanguageExplanation: 'States that Indian law (and any local rent law) applies and which courts would hear a dispute, if one arose.',
+  },
+  {
+    code: 'RA-02',
+    caseTypeId: 'ct-rent-agreement',
+    category: 'governing_law',
+    title: 'Governing law and dispute resolution (leave and licence)',
+    bodyTemplate:
+      'This Agreement shall be governed by and construed in accordance with the laws of India, including the Indian Easements Act, 1882 and any State law that applies to the Premises. Any dispute arising out of or in connection with this Agreement shall be subject to the exclusive jurisdiction of the courts at {{jurisdiction_place}}.',
+    plainLanguageExplanation: 'States that Indian law (and any local law) applies and which courts would hear a dispute, if one arose.',
+  },
+  {
     code: 'POA-01',
     caseTypeId: 'ct-power-of-attorney',
     category: 'governing_law',
@@ -2323,6 +2351,14 @@ export const propertyDeedTypeOptions = [
   { id: 'gift_deed', label: 'Gift Deed' },
   { id: 'lease_deed', label: 'Lease Deed (registrable)' },
   { id: 'mortgage_deed', label: 'Mortgage Deed' },
+];
+
+// Drives RentAgreementWizard.tsx's RENT_TYPE_CONFIGS — role labels, recitals, and several clauses
+// differ per type, so each id there must match one here.
+export const rentAgreementTypeOptions = [
+  { id: 'residential_rent', label: 'Residential Rent Agreement' },
+  { id: 'commercial_rent', label: 'Commercial Rent Agreement' },
+  { id: 'leave_licence', label: 'Leave and Licence Agreement' },
 ];
 
 // Drives PowerOfAttorneyWizard.tsx's POA_TYPE_CONFIGS.
