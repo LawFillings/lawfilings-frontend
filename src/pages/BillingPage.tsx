@@ -83,7 +83,17 @@ export function BillingPage({ onBack, onOpenPricing, onOpenLogin }: Props) {
 
       {user && !status && !error && <p className="step-help">Loading…</p>}
 
-      {user && status && (
+      {user && status && status.isAdmin && (
+        <div className="billing-status-card">
+          <span className="my-cases-status-badge tone-safe">Administrator</span>
+          <p className="step-help">
+            This is the operator account — no plan, renewal date or free-draft allowance applies to it, and nothing is
+            charged.
+          </p>
+        </div>
+      )}
+
+      {user && status && !status.isAdmin && (
         <>
           <div className="billing-status-card">
             <span className={`my-cases-status-badge tone-${STATUS_TONE[status.subscriptionStatus]}`}>

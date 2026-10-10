@@ -12,6 +12,8 @@ export interface BillingStatus {
   subscriptionTier: TierId | null;
   subscriptionCurrentPeriodEnd: string | null;
   freeDraftsRemaining: number;
+  /** The operator account — no plan, period or free-draft allowance applies. */
+  isAdmin: boolean;
 }
 
 export interface PaymentRecord {
@@ -32,6 +34,7 @@ function mapStatus(raw: any): BillingStatus {
     subscriptionTier: raw.subscriptionTier,
     subscriptionCurrentPeriodEnd: raw.subscriptionCurrentPeriodEnd,
     freeDraftsRemaining: raw.freeDraftsRemaining,
+    isAdmin: Boolean(raw.isAdmin),
   };
 }
 
