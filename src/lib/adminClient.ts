@@ -26,6 +26,17 @@ async function request(path: string, token: string, options: RequestInit = {}) {
   return data;
 }
 
+/** True when the signed-in account is the operator account the server recognises as admin (the
+ *  server decides — nothing about who is admin is baked into this site's code). */
+export async function isAdmin(token: string): Promise<boolean> {
+  try {
+    const res = await fetch(`${API_BASE}/api/admin/whoami`, { headers: { Authorization: `Bearer ${token}` } });
+    return res.ok;
+  } catch {
+    return false;
+  }
+}
+
 export async function getLibraryGaps(token: string): Promise<LibraryGap[]> {
   const data = await request('/library-gaps', token);
   return data.map(mapGap);
@@ -33,4 +44,32 @@ export async function getLibraryGaps(token: string): Promise<LibraryGap[]> {
 
 export async function dismissLibraryGap(id: string, token: string): Promise<void> {
   await request(`/library-gaps/${id}`, token, { method: 'DELETE' });
+}
+
+export type VerificationStatus = 'pending' | 'verified' | 'rejected';
+
+export interface AdvocateReview {
+  id: string;
+  fullName: string;
+  email: string;
+  phone: string | null;
+  barCouncilNo: string | null;
+  barState: string | null;
+  verificationDocUrl: string | null;
+  verificationStatus: VerificationStatus;
+  createdAt: string;
+}
+
+/** Advocate accounts in one verification state, oldest first. */
+export async function listAdvocateReviews(status: VerificationStatus, token: string): Promise<AdvocateReview[]> {
+  return request(`/advocates?status=${status}`, token);
+}
+
+/** Approve or reject an advocate's verification; the advocate is emailed the outcome. */
+export async function decideAdvocateVerification(
+  id: string,
+  decision: 'verified' | 'rejected',
+  token: string
+): Promise<void> {
+  await request(`/advocates/${id}/verification`, token, { method: 'POST', body: JSON.stringify({ decision }) });
 }

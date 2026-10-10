@@ -1,13 +1,11 @@
 import { useEffect, useRef, useState } from 'react';
 import { useAuth } from '../lib/auth';
+import { isAdmin as fetchIsAdmin } from '../lib/adminClient';
 import { useLanguage } from '../lib/language';
 import { LanguageSwitcher } from './LanguageSwitcher';
 import { BrandMark } from './BrandMark';
 import './TopMasthead.css';
 
-// Real access control is enforced server-side (requireAdmin) — this only hides/shows the nav
-// entry, matching the same single-operator account the backend gates on via ADMIN_EMAIL.
-const ADMIN_EMAIL = 'ypal002@gmail.com';
 
 interface Props {
   onGoHome: () => void;
@@ -16,6 +14,7 @@ interface Props {
   onOpenBilling: () => void;
   onOpenSettings: () => void;
   onOpenAdminGaps: () => void;
+  onOpenAdminAdvocates: () => void;
   onOpenMyAdvocateListing: () => void;
   onOpenAdvocateInquiries: () => void;
   onToggleMobileMenu: () => void;
@@ -34,12 +33,29 @@ export function TopMasthead({
   onOpenBilling,
   onOpenSettings,
   onOpenAdminGaps,
+  onOpenAdminAdvocates,
   onOpenMyAdvocateListing,
   onOpenAdvocateInquiries,
   onToggleMobileMenu,
 }: Props) {
-  const { user, logout } = useAuth();
+  const { user, token, logout } = useAuth();
   const { t } = useLanguage();
+
+  // Whether to show the admin entries is the server's call (GET /api/admin/whoami, gated by the
+  // same ADMIN_EMAIL check as every admin route) — real access control is always enforced there.
+  const [isAdmin, setIsAdmin] = useState(false);
+  useEffect(() => {
+    let cancelled = false;
+    setIsAdmin(false);
+    if (user && token) {
+      fetchIsAdmin(token).then((ok) => {
+        if (!cancelled) setIsAdmin(ok);
+      });
+    }
+    return () => {
+      cancelled = true;
+    };
+  }, [user?.id, token]);
 
   // The account menu opens on hover/focus with a mouse (CSS), but a phone has no hover — so tapping
   // the button toggles it too, and a tap elsewhere (or Escape) closes it again.
@@ -155,10 +171,15 @@ export function TopMasthead({
             <button className="top-masthead-account-menu-item" onClick={pick(onOpenSettings)}>
               {t.nav.pageSettings}
             </button>
-            {user?.email === ADMIN_EMAIL && (
-              <button className="top-masthead-account-menu-item" onClick={pick(onOpenAdminGaps)}>
-                Library gaps
-              </button>
+            {isAdmin && (
+              <>
+                <button className="top-masthead-account-menu-item" onClick={pick(onOpenAdminGaps)}>
+                  Library gaps
+                </button>
+                <button className="top-masthead-account-menu-item" onClick={pick(onOpenAdminAdvocates)}>
+                  Advocate verification
+                </button>
+              </>
             )}
             {user?.role === 'advocate' && (
               <button className="top-masthead-account-menu-item" onClick={pick(onOpenMyAdvocateListing)}>

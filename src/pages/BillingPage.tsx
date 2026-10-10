@@ -96,14 +96,22 @@ export function BillingPage({ onBack, onOpenPricing, onOpenLogin }: Props) {
               </p>
             )}
             {status.subscriptionCurrentPeriodEnd && (
-              <p className="step-help">Renews {new Date(status.subscriptionCurrentPeriodEnd).toLocaleDateString()}</p>
+              <p className="step-help">
+                {status.subscriptionStatus === 'active' ? 'Renews' : 'Access until'}{' '}
+                {new Date(status.subscriptionCurrentPeriodEnd).toLocaleDateString()}
+              </p>
             )}
             <p className="step-help">Free drafts remaining: {status.freeDraftsRemaining}</p>
 
             {status.subscriptionStatus === 'active' ? (
-              <button className="para-btn" onClick={handleCancel} disabled={cancelling}>
-                {cancelling ? 'Cancelling…' : 'Cancel subscription'}
-              </button>
+              <>
+                <button className="para-btn" onClick={handleCancel} disabled={cancelling}>
+                  {cancelling ? 'Cancelling…' : 'Cancel subscription'}
+                </button>
+                <p className="step-help">
+                  Cancelling stops future charges; you keep access until the end of the period you have already paid for.
+                </p>
+              </>
             ) : (
               <button className="para-btn" onClick={onOpenPricing}>
                 Choose a plan →

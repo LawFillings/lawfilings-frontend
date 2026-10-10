@@ -34,7 +34,8 @@ export async function askLibrary(
   matches: { act: Act; section: ActSection }[],
   question: string,
   history: { question: string; answer: string }[],
-  language: Language
+  language: Language,
+  token: string
 ): Promise<AskAboutActResult> {
   try {
     const sections = matches.map(({ act, section }) => ({
@@ -47,7 +48,7 @@ export async function askLibrary(
 
     const res = await fetch(`${API_BASE}/api/law-library/ask`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ sections, question, history, language }),
     });
 
@@ -72,12 +73,13 @@ export async function askLibrary(
 export async function askGeneral(
   question: string,
   history: { question: string; answer: string }[],
-  language: Language
+  language: Language,
+  token: string
 ): Promise<AskGeneralResult> {
   try {
     const res = await fetch(`${API_BASE}/api/law-library/ask-general`, {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
       body: JSON.stringify({ question, history, language }),
     });
 
@@ -98,10 +100,10 @@ export async function askGeneral(
  * this question, so it never even reached askLibrary. Failures here are swallowed on purpose —
  * this is a backlog signal for the team, never something that should interrupt the user's flow.
  */
-export function logSearchGap(question: string) {
+export function logSearchGap(question: string, token: string) {
   fetch(`${API_BASE}/api/law-library/log-gap`, {
     method: 'POST',
-    headers: { 'Content-Type': 'application/json' },
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
     body: JSON.stringify({ question }),
   }).catch(() => {});
 }

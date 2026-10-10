@@ -107,6 +107,7 @@ import { PricingPage } from './pages/PricingPage';
 import { CheckoutScreen, type CheckoutIntent } from './pages/CheckoutScreen';
 import { BillingPage } from './pages/BillingPage';
 import { AdminGapsPage } from './pages/AdminGapsPage';
+import { AdminAdvocatesPage } from './pages/AdminAdvocatesPage';
 import { FindAdvocatePage } from './pages/FindAdvocatePage';
 import { AdvocateProfilePage } from './pages/AdvocateProfilePage';
 import { MyAdvocateListingPage } from './pages/MyAdvocateListingPage';
@@ -159,6 +160,7 @@ type Screen =
   | { kind: 'checkout'; intent: CheckoutIntent }
   | { kind: 'billing' }
   | { kind: 'adminGaps' }
+  | { kind: 'adminAdvocates' }
   | { kind: 'findAdvocate'; forumType?: string; state?: string }
   | { kind: 'advocateProfile'; advocateId: string }
   | { kind: 'myAdvocateListing'; postSignup?: boolean }
@@ -238,6 +240,7 @@ function AppScreens() {
   const openPricingNav = () => navigate({ kind: 'pricing' });
   const openBillingNav = () => navigate({ kind: 'billing' });
   const openAdminGapsNav = () => navigate({ kind: 'adminGaps' });
+  const openAdminAdvocatesNav = () => navigate({ kind: 'adminAdvocates' });
   const openFindAdvocateNav = (filters?: { forumType?: string; state?: string }) =>
     navigate({ kind: 'findAdvocate', forumType: filters?.forumType, state: filters?.state });
   const openMyAdvocateListingNav = () => requireAuth({ kind: 'myAdvocateListing' });
@@ -433,6 +436,9 @@ function AppScreens() {
     }
     if (screen.kind === 'billing') {
       return <BillingPage onBack={onBack} onOpenPricing={openPricingNav} onOpenLogin={openLoginNav} />;
+    }
+    if (screen.kind === 'adminAdvocates') {
+      return <AdminAdvocatesPage onBack={onBack} />;
     }
     if (screen.kind === 'adminGaps') {
       return <AdminGapsPage onBack={onBack} />;
@@ -926,6 +932,10 @@ function AppScreens() {
         }}
         onOpenAdminGaps={() => {
           openAdminGapsNav();
+          closeMobileMenu();
+        }}
+        onOpenAdminAdvocates={() => {
+          openAdminAdvocatesNav();
           closeMobileMenu();
         }}
         onOpenMyAdvocateListing={() => {

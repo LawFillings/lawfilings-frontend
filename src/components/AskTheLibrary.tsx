@@ -30,7 +30,7 @@ interface Props {
 }
 
 export function AskTheLibrary({ onOpenLogin }: Props) {
-  const { user } = useAuth();
+  const { user, token } = useAuth();
   const { t, language } = useLanguage();
   const copy = t.lawLibrary.askAi;
   const [question, setQuestion] = useState('');
@@ -61,12 +61,12 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
 
     const matches = searchLibrarySections(trimmed);
     if (matches.length === 0) {
-      logSearchGap(trimmed);
+      if (token) logSearchGap(trimmed, token);
       await askGeneralFor(trimmed);
       return;
     }
 
-    const result = await askLibrary(matches, trimmed, historyForApi(), language);
+    const result = await askLibrary(matches, trimmed, historyForApi(), language, token ?? '');
 
     if (!result.ok) {
       setLoading(false);
@@ -96,7 +96,7 @@ export function AskTheLibrary({ onOpenLogin }: Props) {
     setLoading(true);
     setError(null);
 
-    const result = await askGeneral(q, historyForApi(), language);
+    const result = await askGeneral(q, historyForApi(), language, token ?? '');
     setLoading(false);
 
     if (!result.ok) {
